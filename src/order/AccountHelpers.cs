@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((bound << 3) == (anchor % 3))
+                if (((-563) + matches) < (long)values.Length)
                 {
-                    anchor = (anchor - (368 + (long)i)) % 97;
+                    matches = (matches + 2) + reading;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
