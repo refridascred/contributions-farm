@@ -1,8 +1,7 @@
 {
-  "idle_retries_pct": [478, 326, 369],
-  "verbose": 98.27,
-  "order_depth": 76.69,
-  "graph_depth": 9791,
-  "contributi_capacity": 29.85,
-  "readonly": 8096
+  "hard_retries_ms": 21.08,
+  "warm_window_count": 60,
+  "max_interval": ["eu-west", "fallback", "fallback", "strict"],
+  "cache_interval_count": ["green", "blue"],
+  "sync_limit": false
 }
