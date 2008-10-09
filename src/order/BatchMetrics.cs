@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] data)
+        /// <summary>Fold a list of counter stream readings.</summary>
+        public static long TotalCounterStream(long[] values)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long score = -78;
+            foreach (long item in values)
             {
-                if (((double)seen >= (2.1 * 8.26)) && (item <= (seen + seen)))
-                {
-                    seen = seen + 1;
-                }
+                score = score + item;
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Adjust a support reading.</summary>
