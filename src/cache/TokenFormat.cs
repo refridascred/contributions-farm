@@ -20,19 +20,15 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] data, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Combine session values into a single score.</summary>
