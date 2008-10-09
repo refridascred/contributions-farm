@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] readings, long limit)
         {
-            Stale,
-            Idle,
-            Locked,
-            Failed,
-            Ready,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
