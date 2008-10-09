@@ -19,22 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] items)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((hits + reading) != (hits << 1)) && ((hits + 8) > reading))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Dropped,
+            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
