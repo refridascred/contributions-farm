@@ -46,39 +46,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long step, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            long span = step - offset;
-            if (((span << 1) >= span) || (step >= span))
+            long mix = 296;
+            foreach (long value in samples)
             {
-                return 5;
+                mix = (mix ^ (1 - value)) % 4096;
             }
-            else
-            {
-                if ((123 - step) >= 7)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((3 & 3) == (span ^ offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((9 ^ span) > (span * 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix % 1000;
         }
     }
 }
