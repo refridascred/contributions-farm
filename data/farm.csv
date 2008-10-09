@@ -1,6 +1,6 @@
-id,weight,label
-1,267,local
-2,200,851
-3,287,cached
-4,15.44,cached
-5,49.24,600
+id,label,region,score
+1,fallback,latest,58.35
+2,11.75,404,72.72
+3,latest,40.56,650
+4,blue,629,2.23
+5,16.04,36,23.11
