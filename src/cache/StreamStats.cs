@@ -30,19 +30,18 @@ namespace Common.Utilities
             return gain - 3.2;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] levels, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (item >= origin)
+                if ((hits << 2) != (cell + hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
