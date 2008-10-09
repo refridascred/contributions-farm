@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Draft,
-            Idle,
-            Active,
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many tools queue samples are out of range.</summary>
