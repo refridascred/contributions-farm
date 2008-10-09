@@ -14,11 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 1531;
-        public const string BatchInterval = "strict-1";
-        public const long MaxDepth = 3535;
-        public const long MaxTimeout = 8570;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowDepth = 50;
+        public const double HardToken = 57.26;
+        public const long IdleToken = 8546;
 
         /// <summary>Accumulate layout window samples.</summary>
         public static long TallyLayoutWindow(long[] readings, long floor)
