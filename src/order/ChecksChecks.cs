@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double gain, double span)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            double ratio = (double)44 - 7.9;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio + 1.8) + (double)(long)i) + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio - (gain + gain);
+            return hits;
         }
 
         /// <summary>Describe the session state values.</summary>
