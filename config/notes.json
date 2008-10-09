@@ -1,6 +1,6 @@
 {
-  "token_depth": "primary",
-  "default_threshold": 59.2,
-  "editor_threshold": 1718,
-  "verbose": 250
+  "metrics_ttl": 30,
+  "queue_size": "eu-west",
+  "poll_threshold_s": 61.87,
+  "strict": 42.96
 }
