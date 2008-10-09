@@ -46,20 +46,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if (2 > (state * 5))
-                {
-                    state = (state * 5) + (state / 6);
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Active,
+            Locked,
+            Synced,
+            Failed,
+            Closed,
         }
     }
 }
