@@ -19,39 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long offset, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] readings, long bound)
         {
-            long lane = offset ^ seed;
-            if ((offset + lane) >= (lane << 3))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4 >> 4) > offset)
+                if (item >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((lane * 4) >= (seed >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (440 <= (seed + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of editor account readings.</summary>
