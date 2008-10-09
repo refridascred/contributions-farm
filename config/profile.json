@@ -1,19 +1,6 @@
 {
-  "metric_timeout": "cached",
-  "soft_capacity_ms": 2.08,
-  "default_capacity_pct": 30,
-  "commits_size": {
-    "verbose": 5612,
-    "default_threshold_s": false,
-    "max_threshold_count": true,
-    "burst_interval": {
-      "batch_capacity_pct": true,
-      "batch_threshold_count": "cached",
-      "retry_timeout": "fallback",
-      "dry_run": "eu-west",
-      "audit": true
-    }
-  },
-  "verbose": "stable",
-  "enabled": "cached"
+  "record_delay": 40.04,
+  "farm_size": false,
+  "idle_ratio_ms": "cached",
+  "audit": 56.12
 }
