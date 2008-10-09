@@ -24,15 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] samples, long origin)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long sample in samples)
             {
-                if ((count - count) < (entry + count))
+                if (sample > (origin % 97))
                 {
                     count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
