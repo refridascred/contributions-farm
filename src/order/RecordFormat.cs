@@ -17,16 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the token commits series from a seed.</summary>
-        public static long DeriveTokenCommits(long offset)
+        /// <summary>Check that every format session entry stays within the limit.</summary>
+        public static bool GuardFormatSessionBounds(long[] levels, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                sum = (sum + (offset << 3)) % 97;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (reading >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Count stats window pairs that satisfy a relation.</summary>
