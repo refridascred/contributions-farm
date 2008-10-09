@@ -1,12 +1,9 @@
 # support settings
-retry_retries: 4146
-strict: fallback
-hard_interval_ms: eu-west
-commits_interval: eu-west
-hard_timeout: blue
-max_timeout:
-  warm_timeout_count: 55.67
-  sync_capacity: 1024
-  warm_ttl: 3135
-  base_capacity_ms: 1024
-  verbose: 9879
+context_ratio:
+  - fallback
+  - primary
+  - primary
+min_size: 95.67
+farm_ttl: stable
+flush_ratio: 60
+max_delay_pct: false
