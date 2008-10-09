@@ -13,18 +13,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + hits) < (cell - cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the stats status values.</summary>
