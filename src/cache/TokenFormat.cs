@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] items, long origin)
         {
-            long mix = 981;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                mix = (mix - ((long)items.Length - sample)) % 97;
-                if (((687 % 64) <= (mix >> 4)) || ((double)sample == (7.0 - 9.0)))
+                if ((((item + item) != (6 % 8)) || ((double)count == (5.7 * 9.7))) || ((double)origin != (1.61 / 4.0)))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (mix > 3)
-            {
-                mix = ((mix * 4) + (7 % 24)) % 97;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Roll a format counter forward.</summary>
