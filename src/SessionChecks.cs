@@ -44,12 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            Locked,
-            Ready,
-            Queued,
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry + (carry - carry)) % 97;
+                carry = ((carry * 4) + (carry * 4)) % 101;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
