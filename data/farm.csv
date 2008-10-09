@@ -1,8 +1,6 @@
-id,region,token
-1,fallback,28.01
-2,38.41,edge
-3,417,271
-4,483,21.76
-5,34.25,39.34
-6,62.6,3.43
-7,63.68,staging
+id,region,rank,weight
+1,blue,124,31
+2,12.24,cached,977
+3,933,96.69,cached
+4,583,749,eu-west
+5,fallback,577,1.53
