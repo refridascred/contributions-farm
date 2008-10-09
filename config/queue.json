@@ -1,10 +1,11 @@
 {
-  "batch_capacity_s": true,
-  "audit": {
-    "batch_threshold_count": "eu-west",
-    "flush_retries_pct": "eu-west",
-    "compress": "legacy"
+  "flush_delay": {
+    "stats_ttl": 92.35,
+    "flush_delay": "staging",
+    "default_threshold": [142, 208, 121, 387]
   },
-  "counter_depth": 60,
-  "warm_capacity_count": [339, 223, 390]
+  "base_ttl_s": 28.92,
+  "audit": true,
+  "min_retries_s": 3377,
+  "sync_ttl_s": ["green", "staging", "cached", "local"]
 }
