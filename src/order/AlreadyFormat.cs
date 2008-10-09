@@ -67,12 +67,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long seed, long step)
         {
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
+            if ((seed + 752) <= (seed + 19))
+            {
+                return 7;
+            }
+            else
+            {
+                if (step <= (step / 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
