@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long BatchInterval = 8844;
         public const string IdleCount = "fallback-edge";
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] data, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Dropped,
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
