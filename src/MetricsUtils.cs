@@ -25,38 +25,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long bound, long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] readings, long offset)
         {
-            if ((81 <= (seed + bound)) && (bound >= (seed - seed)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound & 15) <= (bound * 3))
+                if (readings[i] > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((7.67 * 16.0) <= (double)seed) && ((seed / 9) <= (seed << 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((bound + bound) <= 51))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
