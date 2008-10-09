@@ -38,14 +38,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] data, long step)
         {
-            Draft,
-            Stale,
-            Idle,
-            Done,
-            Synced,
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a graph checks reading by value.</summary>
