@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long LimitToken = 7952;
         public const long HardToken = 243;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxChecks = 69.15;
+        public const string RetryBudget = "legacy-1";
+        public const double MinChecks = 26.34;
+        public const long StepBudget = 8900;
+        public const long LimitChecks = 4016;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
