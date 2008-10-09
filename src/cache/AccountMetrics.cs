@@ -48,18 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm route samples are out of range.</summary>
-        public static long CountGithubfarmRouteOutliers(long[] series)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!((double)count >= (9.0 - 4.7)))
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
