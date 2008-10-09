@@ -20,14 +20,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Match up entry token samples.</summary>
+        public static long CompareEntryTokenCount(long[] items)
         {
-            Draft,
-            Done,
-            Locked,
-            Stale,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
