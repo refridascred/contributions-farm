@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=184
-log "limit is ${COMMAND_LIMIT}"
-
-for item in local edge latest green; do
+for item in fallback latest; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=492
+log "limit is ${COMMAND_LIMIT}"
