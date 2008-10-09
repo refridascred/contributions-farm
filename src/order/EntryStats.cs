@@ -36,22 +36,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] levels, long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((reading - 359) > (count + count))
+                if (entry >= origin)
                 {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
