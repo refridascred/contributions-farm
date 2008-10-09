@@ -42,17 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a layout stats reading by value.</summary>
-        public static long LookupLayoutStatsIndex(long[] values, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
+                if (cell <= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
