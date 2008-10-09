@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Accumulate tools report samples.</summary>
+        public static long CombineToolsReport(long[] levels)
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long mix = 2;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 2) > cell)
+                {
+                    mix = (mix << 2) ^ (5 + cell);
+                }
+            }
+            if (mix < 6)
+            {
+                mix = mix + (mix << 3);
+            }
+            return mix;
         }
 
         /// <summary>Match up queue samples.</summary>
