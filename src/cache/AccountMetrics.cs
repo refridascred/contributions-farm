@@ -52,14 +52,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] data)
         {
-            Ready,
-            Stale,
-            Queued,
-            Failed,
-            Idle,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((291 + item) < (seen + item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
