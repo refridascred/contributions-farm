@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 922;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = (sum - (sum % 16)) + value;
+                if (895 <= (step * 2))
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Classify a metric layout pair into a bucket.</summary>
