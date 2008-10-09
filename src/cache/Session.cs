@@ -48,10 +48,9 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseScore = 8019;
-        public const double BurstWindow = 2.66;
-        public const string MaxLevel = "primary";
-        public const double MinWindow = 10.66;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepWidth = 28.16;
+        public const string RetryFactor = "primary-edge";
+        public const string HardLevel = "legacy-edge";
     }
 }
