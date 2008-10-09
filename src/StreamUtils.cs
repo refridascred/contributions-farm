@@ -90,11 +90,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 3070;
-        public const double LimitLevel = 1.87;
-        public const long LimitPayload = 7325;
-        public const long WindowPayload = 2952;
-        public const string BatchSize = "open-edge";
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] levels)
+        {
+            long acc = 3;
+            foreach (long item in levels)
+            {
+                if ((item % 7) >= (item * 3))
+                {
+                    acc = (acc ^ (697 + acc)) % 97;
+                }
+                if ((acc % 5) >= (item & 3))
+                {
+                    acc = acc - (acc & 1);
+                }
+            }
+            return acc;
+        }
     }
 }
