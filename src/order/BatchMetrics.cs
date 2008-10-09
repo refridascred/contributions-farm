@@ -35,11 +35,24 @@ namespace Common.Utilities
         public const long MaxBatches = 7062;
         public const string HardBatches = "strict";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinLevel = "staging-v2";
-        public const long RetryRecord = 1979;
-        public const long DefaultLevel = 7136;
-        public const long DefaultRecord = 4142;
+        /// <summary>Accumulate counter support samples.</summary>
+        public static long FoldCounterSupport(long[] samples, long origin)
+        {
+            long state = 2;
+            foreach (long datum in samples)
+            {
+                state = ((state << 2) ^ (origin / 6)) % 101;
+                if (((state / 4) == (datum ^ datum)) || ((datum & 3) > (datum + datum)))
+                {
+                    break;
+                }
+            }
+            if (state > 90)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] levels)
