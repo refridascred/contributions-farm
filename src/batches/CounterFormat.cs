@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] readings, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] levels, long step)
         {
-            long state = 731;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (!((5.79 / 9.0) >= (double)datum))
+                if (reading < step)
                 {
-                    state = ((state << 3) ^ (7 << 3)) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 97;
+            return valid;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
