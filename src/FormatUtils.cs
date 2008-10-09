@@ -43,31 +43,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long limit, long limit2)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double gain, double floor)
         {
-            if ((7.5 / 6.0) != (double)limit2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit2 >> 3) != (84 >> 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((9 - limit) == (limit >> 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double mean = (double)5 * 2.94;
+            return mean + (gain - floor);
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
