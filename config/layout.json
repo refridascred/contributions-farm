@@ -1,5 +1,8 @@
 {
-  "audit": [82, 72, 426, 426],
-  "verbose": "legacy",
-  "dry_run": "eu-west"
+  "hard_delay": true,
+  "report_timeout": "cached",
+  "min_delay": 1024,
+  "warm_ttl": "staging",
+  "strict": 96.01,
+  "audit": "local"
 }
