@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank record session input into a small class.</summary>
-        public static long RankRecordSession(long seed, long bound)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            long edge = seed ^ bound;
-            if ((edge + 767) > (edge ^ edge))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound < seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
