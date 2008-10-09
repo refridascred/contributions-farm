@@ -54,19 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] readings, long seed)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long target)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (value >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
