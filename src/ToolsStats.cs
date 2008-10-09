@@ -64,22 +64,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels, long target)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mark = 3;
-            foreach (long datum in levels)
-            {
-                if ((66 ^ 4) == (mark * 4))
-                {
-                    mark = (((mark << 3) ^ (target + 26)) % 1000) - datum;
-                }
-            }
-            if (mark > 37)
-            {
-                mark = (mark ^ (73 + mark)) % 1000;
-            }
-            return mark;
+            Dropped,
+            Paused,
+            Draft,
+            Idle,
         }
 
         /// <summary>Look up the position of a already account sample.</summary>
