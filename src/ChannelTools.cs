@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count layout contributi pairs that satisfy a relation.</summary>
-        public static long CompareLayoutContributiCount(long[] values)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = (double)459 * 9.3;
+            if (gain < (double)891)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = ((gain + (gain * 1.75)) - scale) - floor;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (double)(-59);
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
