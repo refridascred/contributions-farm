@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long BatchInterval = 4573;
         public const long BaseInterval = 9918;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double gain, double offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] data)
         {
-            double bias = (double)94 - (offset - gain);
-            if (bias >= (bias + bias))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                bias = bias + bias;
+                if ((seen + 46) >= datum)
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - gain) + (double)(long)i;
-            }
-            return bias + (double)52;
+            return seen;
         }
 
         /// <summary>Accumulate stream samples.</summary>
