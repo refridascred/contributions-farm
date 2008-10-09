@@ -22,21 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Grade a format support value against two limits.</summary>
+        public static long BucketFormatSupport(long bound, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = bound - origin;
+            if (((20.0 - 0.05) > (double)diff) && ((double)diff > 4.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((diff % 97) != (bound & 63))
                 {
-                    if ((samples[i] - samples[j]) < 3)
+                    return 1;
+                }
+                else
+                {
+                    if (((8.0 * 6.7) != (double)diff) || ((1.8 * 5.5) < (double)origin))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound % 8) <= (diff * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
