@@ -1,15 +1,16 @@
 # Command notes
 
-Keep report and notes names short and lowercase.
-A schema that stays idle for too long is moved to the support list.
+Use batch settings to tune how often checks data is refreshed.
+Each session is validated before it reaches the order queue.
+Use token settings to tune how often checks data is refreshed.
 
-The cache module keeps payload values in sync with the queue cache.
-When a context fails, the commits handler retries a few times before giving up.
-When a profile fails, the stats handler retries a few times before giving up.
+A buffer that stays idle for too long is moved to the editor list.
+Defaults for order live in the config folder and can be overridden per environment.
+The profile report groups every filter by githubfarm.
 
 ## Guidelines
 
-- Validate order input early
-- Keep cluster values small
-- Review support limits each release
-- Log every counter change
+- Review editor limits each release
+- Keep counter values small
+- Log every tools change
+- Document new entry fields
