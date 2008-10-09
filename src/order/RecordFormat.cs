@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every format session entry stays within the limit.</summary>
-        public static bool GuardFormatSessionBounds(long[] levels, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (reading >= offset)
+                if ((matches & 127) > (datum / 9))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count stats window pairs that satisfy a relation.</summary>
