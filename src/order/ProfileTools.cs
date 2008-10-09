@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Paused,
-            Dropped,
-            Active,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultRatio = 3091;
+        public const long MinContributi = 7151;
+        public const long BatchBudget = 3079;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
