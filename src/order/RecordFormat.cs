@@ -63,13 +63,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Ready,
-            Paused,
-            Stale,
+            Done,
             Dropped,
+            New,
         }
     }
 }
