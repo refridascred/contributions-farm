@@ -52,15 +52,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next command schema value from a seed.</summary>
-        public static long IterateCommandSchema(long origin)
+        /// <summary>Measure how many notes token samples are out of range.</summary>
+        public static long MeasureNotesTokenGaps(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if ((datum << 1) > (count + 7))
+                {
+                    count = count + 3;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
