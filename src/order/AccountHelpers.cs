@@ -61,18 +61,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((double)limit != (7.0 * 2.0)) && ((limit <= (670 ^ limit)) || ((tally << 1) >= tally)))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCounter = "local-v2";
+        public const long CacheCounter = 3619;
+        public const long LimitCounter = 9061;
+        public const long RetryInterval = 2991;
     }
 }
