@@ -48,19 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order queue values into a single score.</summary>
-        public static long ScoreOrderQueue(long[] values, long seed)
-        {
-            long carry = 976;
-            foreach (long item in values)
-            {
-                if (9 < (carry & 7))
-                {
-                    carry = (((carry << 2) ^ ((-95) - carry)) ^ item) + seed;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxInterval = 6730;
+        public const long BatchChannel = 8309;
+        public const long CacheChannel = 5193;
+        public const long BurstLevel = 1379;
+        public const double IdleChannel = 7.86;
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
