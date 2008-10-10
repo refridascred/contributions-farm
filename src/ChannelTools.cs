@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] readings, long bound)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)bound == (16.0 * 4.89))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
