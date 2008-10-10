@@ -1,6 +1,8 @@
-id,score,owner
-1,8.68,66.14
-2,24.98,924
-3,122,890
-4,legacy,446
-5,primary,268
+id,rank,owner,region
+1,147,164,72.61
+2,open,eu-west,69.84
+3,blue,82.7,22.45
+4,edge,stable,cached
+5,387,13.52,standard
+6,693,88.2,0.17
+7,5.01,68,cached
