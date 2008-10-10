@@ -1,6 +1,11 @@
 {
-  "soft_limit": 851,
-  "flush_threshold_pct": "legacy",
-  "max_timeout_s": [367, 12],
-  "batch_interval": "latest"
+  "stats_capacity": 1734,
+  "buffer_retries": "legacy",
+  "flush_delay_count": 73.55,
+  "layout_depth": {
+    "channel_window": 51,
+    "verbose": 9248,
+    "default_window": 3479
+  },
+  "verbose": "open"
 }
