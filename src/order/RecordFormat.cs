@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double weight, double floor)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            double weight2 = weight;
+            return (weight2 + weight2) + floor;
         }
 
         /// <summary>Describe the record mode values.</summary>
