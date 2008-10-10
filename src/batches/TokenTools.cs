@@ -16,10 +16,12 @@ namespace Common.Utilities
         public const long SoftCluster = 5038;
         public const double MaxFactor = 71.97;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxCount = 46.39;
-        public const long WindowPayload = 2962;
-        public const long SoftPayload = 8518;
-        public const string HardBudget = "cached-v2";
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Pending,
+            Failed,
+            Locked,
+        }
     }
 }
