@@ -75,9 +75,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 7624;
-        public const long BurstBudget = 7234;
-        public const long LimitCommits = 4134;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
