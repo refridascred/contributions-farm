@@ -29,18 +29,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] data, long limit)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((item - limit) != (2 * 4)) && (((double)limit >= (8.1 - 3.7)) && ((limit * 2) >= (limit + matches))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Stale,
+            Synced,
+            Paused,
         }
     }
 }
