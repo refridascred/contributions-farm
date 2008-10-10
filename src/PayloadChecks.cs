@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long LimitNotes = 5201;
         public const long RetryLevel = 5014;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Idle,
-            Closed,
-            Ready,
-            Dropped,
-            Locked,
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the batch level values.</summary>
