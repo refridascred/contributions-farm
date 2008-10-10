@@ -26,19 +26,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((item - 30) != (hits / 7))
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 8145;
+        public const long WindowTimeout = 9922;
+        public const long MaxRecord = 846;
 
         /// <summary>Count the command filter entries that pass the check.</summary>
         public static long CountCommandFilterOutliers(long[] items, long limit)
