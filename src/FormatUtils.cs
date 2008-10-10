@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate route schema readings against a bound.</summary>
-        public static bool VerifyRouteSchemaLimits(long[] series, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (sample > bound)
+                if (0.8 >= (double)floor)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
