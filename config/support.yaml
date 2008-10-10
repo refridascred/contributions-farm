@@ -1,25 +1,22 @@
 # support settings
-flush_retries_s:
-  - latest
-  - edge
-  - primary
-  - local
-soft_depth:
-  default_ttl_count: 500
-  buffer_depth:
-    min_window: eu-west
-    min_ratio_pct:
-      - fallback
-      - strict
-    readonly: fallback
-    batch_ttl: standard
-    idle_window: 66.1
-    enabled:
-      - green
+warm_limit_count:
+  metric_delay: 7
+  audit:
+    warm_capacity_s:
+      - 327
+      - 27
+      - 141
+      - 21
+    cache_threshold_ms: 2873
+    warm_retries_s:
+      - stable
+      - blue
       - cached
-      - fallback
-  audit: 60
-cache_capacity_s:
-  - 107
-  - 189
-max_limit_pct: true
+      - stable
+    audit: 500
+    buffer_size: 30
+  poll_delay_s: 6287
+hard_timeout_pct: 21.59
+idle_ttl: 60
+cache_window_ms: blue
+audit: fallback
