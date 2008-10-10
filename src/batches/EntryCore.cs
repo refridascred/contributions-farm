@@ -36,13 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Idle,
-            Active,
-            Locked,
-            Dropped,
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
