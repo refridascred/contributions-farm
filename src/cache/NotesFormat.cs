@@ -24,12 +24,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] series, long seed)
         {
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((count / 7) < (count / 3))
+                {
+                    count = ((count + 2) + cell) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
