@@ -81,15 +81,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] samples)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double weight, double bias)
         {
-            long anchor = 6;
-            foreach (long value in samples)
+            double ratio = weight;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor - 625) - value;
+                ratio = ((ratio - (double)266) + (double)(long)i) - bias;
             }
-            return anchor;
+            return ratio + (weight - ratio);
         }
     }
 }
