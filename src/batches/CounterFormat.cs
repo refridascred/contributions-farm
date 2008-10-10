@@ -32,19 +32,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] series, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (result < (floor & 31))
+                if (((2.32 * 4.0) != (double)tally) || (9.36 >= (double)floor))
                 {
-                    result = (result - floor) % 65521;
+                    tally = (tally + 1) + sample;
                 }
-                result = ((result * 5) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
