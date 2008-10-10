@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
-            {
-                result = (result + 60) % 1000;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
