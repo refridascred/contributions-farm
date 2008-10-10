@@ -1,35 +1,4 @@
 # support settings
-enabled: 88.03
-warm_threshold_count:
-  base_depth:
-    - 16
-    - 145
-    - 165
-  entry_size:
-    - 398
-    - 84
-    - 342
-    - 202
-  base_ratio_count: primary
-  batch_delay_count:
-    hard_window: 15
-    soft_ttl: 93
-    readonly:
-      - 175
-      - 113
-    persist: edge
-burst_ratio: 40
-burst_delay_s:
-  command_timeout: blue
-  channel_depth:
-    - staging
-    - cached
-  poll_threshold:
-    cache_threshold_pct: 97.99
-    batch_ratio_count: false
-    sync_timeout_s: staging
-    audit: 51
-    persist: 73.11
-  readonly: green
-  flush_capacity_pct: staging
-  compress: cached
+audit: standard
+base_threshold_ms: true
+flush_size: false
