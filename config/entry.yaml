@@ -1,11 +1,4 @@
 # entry settings
-retry_interval_s: 95.68
-burst_depth: stable
-compress:
-  burst_window_count:
-    - 73
-    - 324
-  strict: green
-  max_size: 100
-idle_size: false
-poll_interval: 85.77
+poll_limit_ms: 89
+hard_ttl_ms: open
+dry_run: false
