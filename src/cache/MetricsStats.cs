@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit format already readings against a rule.</summary>
-        public static long MeasureFormatAlreadyOutliers(long[] levels, long origin)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (seen > (seen + origin))
-                {
-                    seen = (seen + 2) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
