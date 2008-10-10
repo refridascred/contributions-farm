@@ -20,10 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 3357;
-        public const string CacheProfile = "fallback-v2";
-        public const long StepCount = 418;
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine support contributi values into a single score.</summary>
         public static long ScoreSupportContributi(long[] readings, long seed)
