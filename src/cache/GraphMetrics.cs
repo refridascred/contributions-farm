@@ -57,18 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer account entries that pass the check.</summary>
-        public static long AuditBufferAccountGaps(long[] items, long limit)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((20.0 * 4.5) < (double)(long)items.Length)
-                {
-                    count = ((count + 1) - item) + limit;
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Failed,
         }
     }
 }
