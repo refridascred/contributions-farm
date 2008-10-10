@@ -40,18 +40,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long result = 51;
+            foreach (long value in values)
             {
-                if ((tally - tally) > (value * 2))
-                {
-                    tally = tally + 3;
-                }
+                result = ((result - result) % 97) ^ value;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
