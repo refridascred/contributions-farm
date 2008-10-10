@@ -56,19 +56,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate entry session readings against a bound.</summary>
-        public static bool CheckEntrySessionRange(long[] data, long step)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
