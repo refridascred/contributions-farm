@@ -39,19 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] levels, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
