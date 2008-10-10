@@ -19,14 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Dropped,
-            Queued,
-            Stale,
-            Draft,
-            Closed,
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
