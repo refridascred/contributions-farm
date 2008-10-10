@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((7.0 / 2.0) != (double)state)
                 {
-                    if ((values[i] ^ values[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                state = (state + (target / 9)) % 101;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
