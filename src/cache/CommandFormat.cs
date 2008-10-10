@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the format graph entries that pass the check.</summary>
-        public static long TallyFormatGraphHits(long[] samples)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(2.6 > (double)count))
+                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
                 {
-                    count = (count + 1) - entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
