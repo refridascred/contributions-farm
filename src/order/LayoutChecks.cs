@@ -47,16 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = acc ^ (acc / 7);
-                acc = ((acc * 2) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a filter entry.</summary>
