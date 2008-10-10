@@ -37,15 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] series, long floor)
+        /// <summary>Project the next farm support value.</summary>
+        public static double ScaleFarmSupport(double weight, double span)
         {
-            long result = 589;
-            foreach (long value in series)
+            double drift = weight;
+            if (drift >= span)
             {
-                result = ((result + (253 + floor)) % 101) - value;
+                drift = drift - (double)1;
             }
-            return result;
+            else
+            {
+                drift = drift + (drift - span);
+            }
+            return drift - (drift * 7.82);
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
