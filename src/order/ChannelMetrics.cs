@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double gain, double bias)
         {
-            New,
-            Synced,
-            Ready,
+            double weight = (double)(9 + 48);
+            if (weight < weight)
+            {
+                weight = (weight - (weight + 0.8)) + bias;
+            }
+            else
+            {
+                weight = weight + gain;
+            }
+            return weight + (double)(-6);
         }
 
         /// <summary>Match up route samples.</summary>
