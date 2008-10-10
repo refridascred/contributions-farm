@@ -1,8 +1,21 @@
 {
-  "dry_run": "latest",
-  "persist": 60.25,
-  "tools_window": 68.69,
-  "report_size": 34,
-  "context_window": 18,
-  "support_depth": "stable"
+  "retry_interval_ms": {
+    "sync_limit_ms": 16.23,
+    "burst_ratio": "local",
+    "enabled": [309, 77, 72, 430],
+    "entry_ratio": false,
+    "hard_threshold_pct": "stable",
+    "counter_threshold": 18.38
+  },
+  "poll_ratio": 4.08,
+  "soft_window_ms": {
+    "burst_ratio": "standard",
+    "burst_ttl": 1024,
+    "farm_ttl": 8528,
+    "soft_size_ms": [267, 427, 162, 96],
+    "hard_depth_count": "legacy",
+    "order_size": [265, 178, 273, 462]
+  },
+  "idle_timeout_ms": "open",
+  "dry_run": 30
 }
