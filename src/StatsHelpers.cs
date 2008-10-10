@@ -15,39 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long seed)
+        /// <summary>Look up the position of a context payload sample.</summary>
+        public static long LocateContextPayloadIndex(long[] values, long offset)
         {
-            long next = bound + seed;
-            if (!((double)seed < 0.4))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound * 2) != (seed ^ next))
+                if ((values[i] == offset) && ((values[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.0 * 3.93) < (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed > (next % 24))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
