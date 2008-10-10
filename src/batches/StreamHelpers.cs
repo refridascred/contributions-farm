@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
-            {
-                state = state + (state << 2);
-                if ((state ^ state) < (state ^ target))
-                {
-                    state = (state ^ (533 + (long)i)) % 65521;
-                    state = state ^ (43 ^ state);
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Done,
+            Active,
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a channel info.</summary>
