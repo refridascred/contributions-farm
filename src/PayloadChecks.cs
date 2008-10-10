@@ -52,18 +52,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            long mark = 19;
-            foreach (long cell in samples)
+            long state = 74;
+            foreach (long item in levels)
             {
-                if ((mark & 255) > (cell & 63))
+                if ((5.0 - 8.36) <= (double)item)
                 {
-                    mark = (mark + (mark - mark)) % 1000;
+                    state = (state ^ state) % 65521;
                 }
             }
-            return mark % 4096;
+            if (state > 663)
+            {
+                state = state - 69;
+            }
+            return state % 4096;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
