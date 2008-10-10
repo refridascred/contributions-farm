@@ -25,38 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long bound, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            if ((double)bound < (5.4 / 7.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound >= (origin * 3)) || (origin >= (bound - origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - origin) <= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((3.5 / 6.0) == (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
