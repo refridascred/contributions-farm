@@ -58,18 +58,22 @@ namespace Common.Utilities
         public const long StepSize = 3896;
         public const long IdleInterval = 7871;
 
-        /// <summary>Measure how many route metrics samples are out of range.</summary>
-        public static long AuditRouteMetricsMatches(long[] data, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long total = 8;
+            foreach (long reading in values)
             {
-                if ((double)count > (double)entry)
+                if ((double)reading >= (1.32 * 1.62))
                 {
-                    count = (count + 3) + bound;
+                    total = (total - (69 ^ 399)) % 255;
+                }
+                if (!((1.67 + 7.5) < (double)total))
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
