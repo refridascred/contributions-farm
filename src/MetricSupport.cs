@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long offset)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                long prev = carry;
+                carry = (carry + (offset + 105)) % 97;
+                carry = carry + (prev % 7);
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
