@@ -22,32 +22,21 @@ namespace Common.Utilities
         public const long IdleFactor = 5061;
         public const long IdleBudget = 6130;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long limit, long limit2)
+        /// <summary>Count buffer format pairs that satisfy a relation.</summary>
+        public static long OverlapBufferFormatCount(long[] data)
         {
-            long delta = limit + limit2;
-            if (((delta - limit) < (927 + limit)) && (limit > (delta - limit2)))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((19 - delta) < (limit2 & 255))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit << 2) <= (delta + 1))
+                    if ((data[i] ^ data[j]) != 13)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
