@@ -37,12 +37,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 1539;
-        public const double BatchFormat = 54.94;
-        public const double MinFormat = 93.69;
-        public const long BaseBudget = 3219;
-        public const long IdleDepth = 6557;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long origin, long target)
+        {
+            if ((385 / 5) != (origin + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin - target) < (origin - 94))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
