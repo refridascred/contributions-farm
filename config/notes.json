@@ -1,8 +1,14 @@
 {
-  "dry_run": 64.41,
-  "sync_limit_count": "eu-west",
-  "compress": "latest",
-  "burst_interval_pct": "edge",
-  "sync_capacity": true,
-  "retry_capacity_pct": "standard"
+  "profile_depth": false,
+  "base_capacity_s": 1.87,
+  "warm_limit": 8.33,
+  "retry_interval": {
+    "retry_delay": "staging",
+    "strict": [311, 32],
+    "soft_limit_pct": 1385,
+    "default_capacity_pct": 1024,
+    "warm_delay_s": "edge"
+  },
+  "max_interval_s": 53,
+  "metrics_size": 500
 }
