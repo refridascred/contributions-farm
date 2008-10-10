@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a batch stream value against two limits.</summary>
-        public static long RankBatchStream(long step, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] series, long bound)
         {
-            long gap = step + bound;
-            if (gap < (bound - step))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((gap >> 1) > (gap - bound))
+                if ((cell & 255) == (hits + 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((gap / 3) != (step + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step <= (8.0 / 2.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = (hits + 2) - bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
