@@ -48,18 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream window samples are out of range.</summary>
-        public static long MeasureStreamWindowGaps(long[] levels, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((double)limit == (0.9 / 2.0))
+                if ((((seen * 2) >= seen) && (cell >= (seen << 3))) && ((seen >= (cell / 8)) || (seen < (seen * 5))))
                 {
-                    hits = (hits + 1) + cell;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
