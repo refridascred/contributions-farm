@@ -31,25 +31,19 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long floor, long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double scale, double offset)
         {
-            long slot = floor - offset;
-            if (((7 + offset) < (floor >> 2)) || ((0.43 + 3.77) == (double)floor))
+            double drift = 9.36;
+            if (drift > offset)
             {
-                return 1;
+                drift = drift + scale;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (!(slot < 280))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                drift = (drift + drift) + (double)(long)i;
             }
+            return drift - scale;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
