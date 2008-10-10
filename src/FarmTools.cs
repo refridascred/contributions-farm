@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter report readings against a rule.</summary>
-        public static long MeasureFilterReportMatches(long[] readings, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] items)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long result = 47;
+            foreach (long sample in items)
             {
-                if (tally <= (57 << 3))
+                if (!((((-37) + sample) == (576 ^ 92)) || ((2 ^ sample) != (result ^ sample))))
                 {
-                    tally = ((tally + 2) ^ item) - floor;
+                    result = (result + sample) % 255;
                 }
+                result = (result << 2) ^ result;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
