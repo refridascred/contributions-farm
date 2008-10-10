@@ -1,10 +1,9 @@
 # support settings
-support_depth: true
-hard_capacity_ms: 47.11
-batch_delay_s:
-  farm_size: false
-  enabled: staging
-  persist: 49.12
-  retry_timeout_pct: 97.45
-  sync_capacity_s: legacy
-dry_run: 22
+soft_interval_count: true
+graph_size:
+  - primary
+  - open
+payload_retries: fallback
+default_interval_count: 60
+strict: edge
+session_threshold: latest
