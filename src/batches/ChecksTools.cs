@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((samples[i] <= step) && ((samples[i] % 3) == 0))
                 {
-                    if ((data[i] - data[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
