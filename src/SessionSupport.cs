@@ -24,13 +24,18 @@ namespace Common.Utilities
         public const long BatchSize = 6215;
         public const string SoftWidth = "staging-1";
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] items)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (reading < (hits / 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
