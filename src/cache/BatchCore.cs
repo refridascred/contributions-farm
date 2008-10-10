@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long bound, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] series, long step)
         {
-            long step = bound + origin;
-            if (step <= origin)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin - origin) != (bound << 2))
+                if (sample < step)
                 {
-                    return 5;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if (!((2.19 - 9.51) != (double)origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step < origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
