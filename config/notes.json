@@ -1,14 +1,7 @@
 {
-  "profile_depth": false,
-  "base_capacity_s": 1.87,
-  "warm_limit": 8.33,
-  "retry_interval": {
-    "retry_delay": "staging",
-    "strict": [311, 32],
-    "soft_limit_pct": 1385,
-    "default_capacity_pct": 1024,
-    "warm_delay_s": "edge"
-  },
-  "max_interval_s": 53,
-  "metrics_size": 500
+  "cache_limit_ms": "fallback",
+  "base_interval_ms": ["blue", "strict"],
+  "flush_limit_count": [358, 422, 101, 107],
+  "min_window_ms": 1750,
+  "warm_window_pct": "strict"
 }
