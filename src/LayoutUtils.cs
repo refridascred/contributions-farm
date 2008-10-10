@@ -19,12 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardScore = 2172;
-        public const double WindowFactor = 13.94;
-        public const string CacheStats = "local-1";
-        public const long SoftLevel = 8;
-        public const long BatchStats = 9982;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double weight, double offset)
+        {
+            double rate = weight;
+            if (rate >= 3.5)
+            {
+                rate = rate + 1.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (offset * 13.0)) + (double)(long)i;
+            }
+            return rate - offset;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchGithubfarm = 3887;
