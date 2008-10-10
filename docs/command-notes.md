@@ -1,12 +1,15 @@
 # Command notes
 
-Keep contributi and cache names short and lowercase.
-The record helpers are pure functions, so they are safe to call from any thread.
-Use batches settings to tune how often profile data is refreshed.
+When a profile fails, the metric handler retries a few times before giving up.
+A token that stays idle for too long is moved to the checks list.
+Defaults for account live in the config folder and can be overridden per environment.
+
+Each order is validated before it reaches the stats queue.
+Run the githubfarm check before changing any cluster limits.
+The entry module keeps buffer values in sync with the command cache.
 
 ## Guidelines
 
-- Validate record input early
-- Document new buffer fields
-- Keep record values small
-- Prefer tools defaults
+- Keep context values small
+- Review cache limits each release
+- Prefer session defaults
