@@ -13,23 +13,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine tools stats values into a single score.</summary>
-        public static long CombineToolsStats(long[] data)
+        /// <summary>Count the entry checks entries that pass the check.</summary>
+        public static long CountEntryChecksMatches(long[] values)
         {
-            long score = 4;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (!((datum << 1) <= ((long)data.Length - score)))
+                if ((item / 6) >= (229 - item))
                 {
-                    score = (score * 2) + (998 * 5);
-                }
-                score = (score << 2) ^ datum;
-                if ((double)score < (4.2 * 3.0))
-                {
-                    score = ((score << 3) ^ (datum - datum)) % 101;
+                    count = count + 2;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
