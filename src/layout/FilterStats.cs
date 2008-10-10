@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Filter stats helpers.</summary>
     public static class FilterStats
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] values)
         {
-            Locked,
-            New,
-            Paused,
-            Closed,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)matches <= 1.45)
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the filter mode values.</summary>
