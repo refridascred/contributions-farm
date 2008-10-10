@@ -26,11 +26,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double bias)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long limit, long origin)
         {
-            double bias2 = bias - ratio;
-            return bias2 - (bias - bias2);
+            long lane = limit - origin;
+            if (limit >= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((756 >= origin) || ((lane - origin) <= (limit / 9)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
