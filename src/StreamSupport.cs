@@ -45,12 +45,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] series, long floor)
         {
-            Dropped,
-            Paused,
-            Ready,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (!((9.42 + 18.0) != (double)tally))
+                {
+                    tally = ((tally + 1) ^ value) + floor;
+                }
+            }
+            return tally;
         }
     }
 }
