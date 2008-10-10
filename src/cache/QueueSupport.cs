@@ -33,9 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 7504;
-        public const long WindowCommits = 3833;
-        public const double DefaultCommits = 44.24;
+        /// <summary>Audit route batches readings against a rule.</summary>
+        public static long MeasureRouteBatchesHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) != (datum ^ matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
