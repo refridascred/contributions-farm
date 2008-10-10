@@ -25,15 +25,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Iterate the cache githubfarm series from a seed.</summary>
+        public static long RollCacheGithubfarm(long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                total = total ^ ((-9) / 4);
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
