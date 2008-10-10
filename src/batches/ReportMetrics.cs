@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftScore = 70.3;
+        public const long MinReport = 987;
+        public const double RetryReport = 35.11;
+        public const long MaxLevel = 3537;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterLimits(long[] samples, long offset)
