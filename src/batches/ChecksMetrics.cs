@@ -67,12 +67,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Roll a metrics tools counter forward.</summary>
+        public static long StepMetricsTools(long bound)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if (7.5 <= (double)bound)
+                {
+                    mix = ((mix * 2) + ((long)i >> 2)) % 97;
+                }
+                else
+                {
+                    mix = ((mix * 5) + 71) % 255;
+                }
+                mix = ((mix << 2) ^ (bound + bound)) % 65521;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
