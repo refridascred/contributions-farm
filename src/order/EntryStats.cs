@@ -38,22 +38,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the token cluster entries that pass the check.</summary>
-        public static long MeasureTokenClusterGaps(long[] readings)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((matches + matches) >= (-6))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Failed,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a account stats.</summary>
