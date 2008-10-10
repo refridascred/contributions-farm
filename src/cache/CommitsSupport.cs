@@ -61,18 +61,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] levels, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long seed, long origin)
         {
-            long sum = 0;
-            foreach (long sample in levels)
+            if (((-61) + origin) <= 5)
             {
-                if ((limit ^ sample) == (sample % 5))
+                return 5;
+            }
+            else
+            {
+                if (!((seed << 1) <= seed))
                 {
-                    sum = sum - sum;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + seed) <= 1)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
