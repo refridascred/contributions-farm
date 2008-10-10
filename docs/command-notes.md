@@ -1,14 +1,10 @@
 # Command notes
 
-When a order fails, the payload handler retries a few times before giving up.
-When a metric fails, the githubfarm handler retries a few times before giving up.
-
-Use record settings to tune how often account data is refreshed.
-Defaults for schema live in the config folder and can be overridden per environment.
+The buffer module keeps stream values in sync with the buffer cache.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate tools input early
-- Document new schema fields
-- Keep window values small
-- Review context limits each release
+- Validate batches input early
+- Document new cluster fields
+- Review account limits each release
