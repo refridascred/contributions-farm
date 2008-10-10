@@ -1,12 +1,18 @@
 {
-  "batch_size": 1024,
-  "max_limit_pct": 74.62,
-  "warm_threshold_pct": false,
-  "soft_limit": "eu-west",
-  "base_interval": {
-    "warm_retries_s": 7571,
-    "audit": 73,
-    "payload_threshold": 51.79,
-    "burst_limit_s": [44, 85, 269, 122]
-  }
+  "format_ttl": 61.63,
+  "farm_interval": {
+    "strict": true,
+    "dry_run": {
+      "retry_ttl": ["green", "green", "strict", "primary"],
+      "order_capacity": 36.76,
+      "support_ratio": [330, 118, 58, 8],
+      "burst_limit_pct": 30
+    },
+    "flush_ttl": "staging",
+    "compress": "primary",
+    "cache_retries": [429, 323]
+  },
+  "payload_size": "open",
+  "default_capacity_count": 2026,
+  "max_delay": 60
 }
