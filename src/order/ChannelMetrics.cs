@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchCount = 4744;
-        public const long MaxNotes = 5629;
-        public const string WindowSpan = "alpha-edge";
-        public const string WindowScore = "cached-v2";
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long CombineBatch(long[] readings, long bound)
