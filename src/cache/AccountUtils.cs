@@ -5,35 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of notes already entries.</summary>
-        public static long TotalNotesAlready(long[] levels, long limit)
+        /// <summary>Locate a buffer checks reading by value.</summary>
+        public static long LocateBufferChecksIndex(long[] levels, long step)
         {
-            long carry = 2;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long next = (value / 5) * 4;
-                if ((1 - value) <= next)
+                if (levels[i] == step)
                 {
-                    carry = (carry + (next ^ 540)) % 255;
-                }
-                if (!((double)limit >= 16.0))
-                {
-                    carry = (carry + (limit + 12)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (1 * 2)) % 1000;
-                }
-                if ((value ^ value) <= (5 + value))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 736)
-            {
-                carry = (carry + (carry + limit)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
