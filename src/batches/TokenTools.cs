@@ -42,15 +42,16 @@ namespace Common.Utilities
             return weight + (weight - rate);
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] samples, long limit)
+        /// <summary>Roll a checks cache counter forward.</summary>
+        public static long DeriveChecksCache(long offset)
         {
-            long state = 9;
-            foreach (long reading in samples)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state - (reading & 3)) % 4096) - limit;
+                state = ((state * 4) + (offset + offset)) % 97;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return state % 65521;
+            return state;
         }
     }
 }
