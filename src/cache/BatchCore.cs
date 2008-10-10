@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] values, long origin)
+        /// <summary>Look up the position of a metrics checks sample.</summary>
+        public static long LookupMetricsChecksIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen - seen) < seen)
+                if ((data[i] >= seed) && ((data[i] % 2) == 0))
                 {
-                    seen = ((seen + 1) + sample) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the metric context entries that pass the check.</summary>
