@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 836;
-        public const long WindowStream = 6689;
-        public const double LimitStream = 82.63;
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
