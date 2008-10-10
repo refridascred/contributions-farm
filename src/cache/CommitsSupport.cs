@@ -89,11 +89,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            Pending,
+            Stale,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the token state values.</summary>
