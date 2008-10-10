@@ -30,19 +30,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] readings, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] levels, long origin)
         {
-            long anchor = 3;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((sample ^ anchor) <= step)
+                if ((tally << 1) < (entry + origin))
                 {
-                    anchor = (anchor << 2) ^ (step << 1);
+                    tally = tally + 1;
                 }
-                anchor = (anchor * 4) + (step + anchor);
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
