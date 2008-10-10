@@ -1,11 +1,21 @@
 # githubfarm settings
-retry_retries_ms: eu-west
-enabled:
-  - fallback
-  - standard
-  - primary
-burst_size_count: 6275
-readonly:
-  - 303
-  - 270
-base_ratio: 7432
+retry_window: fallback
+default_capacity:
+  flush_timeout: 1024
+  hard_threshold:
+    - 343
+    - 414
+  idle_retries_count: latest
+hard_window:
+  idle_capacity_count: standard
+  burst_size_pct: true
+  cache_retries_count:
+    batch_threshold: 47
+    warm_ttl_ms: false
+    max_window: 61
+  min_size_pct: 3501
+  already_ttl: 50.86
+  hard_ratio: false
+githubfarm_depth: stable
+max_timeout_count: cached
+verbose: 100
