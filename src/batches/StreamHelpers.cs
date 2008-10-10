@@ -62,18 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] data, long floor)
+        /// <summary>Check that every counter payload entry stays within the limit.</summary>
+        public static bool CheckCounterPayloadBounds(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((2.1 - 5.0) <= (double)entry)
+                if (entry > origin)
                 {
-                    matches = (matches + 2) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Measure how many format stats samples are out of range.</summary>
