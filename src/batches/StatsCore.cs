@@ -95,23 +95,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] levels)
-        {
-            long mark = 488;
-            foreach (long sample in levels)
-            {
-                if ((sample % 24) >= mark)
-                {
-                    mark = (mark - sample) % 101;
-                }
-                mark = ((mark << 2) ^ sample) % 255;
-            }
-            if (mark > 51)
-            {
-                mark = (mark ^ 149) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 7553;
+        public const double BurstSpan = 38.48;
+        public const long BurstInterval = 8523;
+        public const string StepSize = "fallback-edge";
     }
 }
