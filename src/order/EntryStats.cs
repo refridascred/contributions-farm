@@ -56,19 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm profile counter forward.</summary>
-        public static long RollFarmProfile(long target)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (result ^ (result - (long)i)) ^ (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
