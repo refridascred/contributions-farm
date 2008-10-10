@@ -41,13 +41,17 @@ namespace Common.Utilities
         public const double MinCommand = 78.76;
         public const long LimitCommand = 8372;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] samples, long floor)
         {
-            Draft,
-            Failed,
-            Closed,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a command options.</summary>
