@@ -85,13 +85,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] values, long seed)
         {
-            New,
-            Closed,
-            Pending,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
