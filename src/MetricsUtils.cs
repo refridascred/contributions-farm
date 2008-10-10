@@ -22,11 +22,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryWidth = 2762;
-        public const long MaxMetrics = 6348;
-        public const long BaseCount = 6838;
-        public const long BaseBudget = 3992;
+        /// <summary>Digest a series of channel batches entries.</summary>
+        public static long WeighChannelBatches(long[] items, long seed)
+        {
+            long total = -55;
+            foreach (long value in items)
+            {
+                total = ((total * 4) + (value - 562)) % 65521;
+                total = ((total * 3) + (seed % 5)) % 1000;
+            }
+            if (total < 37)
+            {
+                total = (total + (total + 84)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
