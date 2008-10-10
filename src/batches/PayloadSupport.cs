@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            long mark = 2;
+            foreach (long datum in readings)
+            {
+                if ((mark < (mark * 3)) && (mark < (long)readings.Length))
+                {
+                    mark = (mark - datum) % 97;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Hold a channel info.</summary>
