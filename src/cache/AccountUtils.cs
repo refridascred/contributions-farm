@@ -33,9 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultSpan = 8274;
-        public const long WindowProfile = 1782;
-        public const string WindowDepth = "latest-edge";
+        /// <summary>Check that every cache batch entry stays within the limit.</summary>
+        public static bool GuardCacheBatchLimits(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
