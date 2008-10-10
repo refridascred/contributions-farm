@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] readings, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (entry != limit)
+                if (item < bound)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
