@@ -1,9 +1,7 @@
-id,weight,owner
-1,106,60.15
-2,green,strict
-3,80.56,44.1
-4,green,stable
-5,214,769
-6,fallback,37.55
-7,76.43,edge
-8,edge,116
+id,rank,score
+1,636,35.8
+2,strict,3.88
+3,833,55.14
+4,43.73,855
+5,19.09,98.15
+6,fallback,96.7
