@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] samples, long bound)
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((449 << 2) != (bound * 2))
+                {
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the route format entries that pass the check.</summary>
