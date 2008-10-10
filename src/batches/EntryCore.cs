@@ -63,11 +63,12 @@ namespace Common.Utilities
             return drift + (bias - drift);
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
