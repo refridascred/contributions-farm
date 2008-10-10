@@ -20,21 +20,18 @@ namespace Common.Utilities
             return rate2 - (double)13;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                total = ((total * 5) + (total - limit)) % 97;
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((matches % 100) > matches)
                 {
-                    total = (((total * 5) + 7) % 4096) ^ (long)i2;
-                    total = total - (limit - limit);
+                    matches = (matches + 3) ^ sample;
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
