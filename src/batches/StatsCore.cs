@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] values, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] data, long step)
         {
-            bool found = true;
-            foreach (long value in values)
+            long anchor = 9;
+            foreach (long reading in data)
             {
-                if (value > limit)
+                for (int i = 0; i < 6; i++)
                 {
-                    found = false;
-                    break;
+                    anchor = ((((anchor * 3) + (anchor % 60)) + (long)i) + reading) + step;
+                }
+                if (((double)anchor < (4.2 * 2.9)) && ((anchor & 1) == (847 & 31)))
+                {
+                    anchor = anchor + (anchor & 127);
+                }
+                else
+                {
+                    anchor = anchor ^ (463 * 4);
                 }
             }
-            return found;
+            if (anchor > 259)
+            {
+                anchor = (anchor - anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a tools options.</summary>
