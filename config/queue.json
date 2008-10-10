@@ -1,23 +1,10 @@
 {
-  "base_size": [365, 263],
-  "min_depth_ms": {
-    "verbose": "cached",
-    "support_threshold": 1024,
-    "sync_size_ms": "open"
+  "default_retries": [451, 252, 285, 366],
+  "flush_ttl": {
+    "warm_limit_pct": 60,
+    "compress": 19.54,
+    "warm_size_count": true
   },
-  "soft_delay": 4956,
-  "channel_size": true,
-  "base_interval": {
-    "min_depth_pct": {
-      "channel_interval": 5276,
-      "cache_capacity_count": "green",
-      "readonly": 71,
-      "audit": "blue",
-      "base_size": 250,
-      "soft_ratio_count": 2366
-    },
-    "burst_retries": 36,
-    "entry_depth": 31
-  },
-  "sync_window": 81
+  "cache_capacity": "edge",
+  "stats_ttl": 25
 }
