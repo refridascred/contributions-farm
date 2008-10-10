@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long score = 90;
-            foreach (long reading in data)
-            {
-                score = score - (reading ^ score);
-            }
-            return score;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
