@@ -47,25 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long step, long step2)
-        {
-            if ((double)step >= (20.0 + 7.47))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step <= (3.0 / 7.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 8193;
+        public const long HardGithubfarm = 292;
+        public const double BaseGithubfarm = 34.48;
+        public const long CacheTimeout = 5558;
+        public const long CacheGithubfarm = 3166;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double BlendBuffer(double weight, double span)
