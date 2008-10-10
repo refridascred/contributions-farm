@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 4392;
-        public const long MinAlready = 5553;
-        public const double DefaultAlready = 90.06;
-        public const long BatchSize = 6215;
-        public const string SoftWidth = "staging-1";
+        /// <summary>Digest a series of profile session entries.</summary>
+        public static long WeighProfileSession(long[] series, long bound)
+        {
+            long score = 34;
+            foreach (long entry in series)
+            {
+                if ((double)bound > (8.1 + 1.8))
+                {
+                    score = (score ^ score) % 65521;
+                }
+                else
+                {
+                    score = ((score << 3) ^ entry) % 4096;
+                }
+                score = (score ^ entry) % 65521;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Scale a counter metrics figure with a bias.</summary>
         public static double BlendCounterMetrics(double rate, double bias)
