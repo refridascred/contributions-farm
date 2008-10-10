@@ -43,19 +43,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a window profile figure with a bias.</summary>
-        public static double BlendWindowProfile(double bias, double span)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double scale = span + (double)665;
-            if (scale < (bias * 2.0))
-            {
-                scale = scale - bias;
-            }
-            else
-            {
-                scale = scale - (8.1 + 10.0);
-            }
-            return scale - bias;
+            Done,
+            Synced,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
