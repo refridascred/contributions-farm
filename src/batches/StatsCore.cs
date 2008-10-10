@@ -65,24 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double scale, double offset)
-        {
-            double ratio = (double)(1 << 3);
-            if (ratio <= (ratio + scale))
-            {
-                ratio = ratio - offset;
-            }
-            else
-            {
-                ratio = ratio - (double)7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + (2.0 / 3.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 2834;
+        public const long DefaultFactor = 5450;
+        public const double BurstPayload = 24.98;
+        public const string RetryPayload = "strict";
+        public const long RetryWidth = 510;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiLimits(long[] series, long seed)
