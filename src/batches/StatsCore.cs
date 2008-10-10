@@ -81,19 +81,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] series, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] samples)
         {
-            bool found = true;
-            foreach (long value in series)
+            long anchor = 6;
+            foreach (long value in samples)
             {
-                if (value >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor - 625) - value;
             }
-            return found;
+            return anchor;
         }
     }
 }
