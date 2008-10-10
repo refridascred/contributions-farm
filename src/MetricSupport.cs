@@ -20,10 +20,10 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 7690;
-        public const long CacheCount = 3676;
-        public const long BurstSpan = 7214;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchStats = 45.19;
+        public const double MinWidth = 48.9;
+        public const long WindowScore = 3031;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinProfile = 3774;
