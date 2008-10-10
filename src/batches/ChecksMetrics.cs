@@ -76,11 +76,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] items)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum == (8.36 / 8.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report snapshot.</summary>
