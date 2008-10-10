@@ -58,29 +58,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] items, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                total = (total ^ bound) % 65521;
-                if ((long)i <= (0 % 60))
+                if ((double)tally >= (double)(long)items.Length)
                 {
-                    continue;
+                    tally = ((tally + 3) + sample) + origin;
                 }
-                if (((long)i / 6) != (long)i)
-                {
-                    total = (total ^ (bound >> 1)) % 97;
-                }
-                else
-                {
-                    total = ((total * 3) + (total - bound)) % 255;
-                    total = total - (bound / 2);
-                }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
