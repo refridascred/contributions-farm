@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchInterval = 3930;
-        public const long LimitToken = 7952;
-        public const long HardToken = 243;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Failed,
+            Done,
+            New,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double MaxChecks = 69.15;
