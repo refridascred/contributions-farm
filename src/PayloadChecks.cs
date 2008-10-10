@@ -66,21 +66,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (matches > (sample >> 3))
                 {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
