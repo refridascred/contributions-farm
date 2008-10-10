@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Paused,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepScore = 6780;
+        public const long BasePayload = 3090;
+        public const long MinPayload = 668;
+        public const string RetryCount = "strict";
+        public const long WindowDepth = 6456;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] data)
