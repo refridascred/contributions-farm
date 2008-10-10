@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of farm route entries.</summary>
-        public static long WeighFarmRoute(long[] values, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] levels, long seed)
         {
-            long carry = 7;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((2 ^ carry) <= (bound ^ item))
+                if (sample <= seed)
                 {
-                    carry = ((carry << 2) ^ (carry + carry)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return ok;
         }
 
         /// <summary>Project the next cache value.</summary>
