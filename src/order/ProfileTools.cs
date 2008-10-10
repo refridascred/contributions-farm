@@ -45,18 +45,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] items)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double bias2 = 7.2;
+            if (bias2 > (bias / 2.0))
             {
-                if ((((seen * 2) >= seen) && (cell >= (seen << 3))) && ((seen >= (cell / 8)) || (seen < (seen * 5))))
-                {
-                    seen = seen + 2;
-                }
+                bias2 = (bias2 - bias) - weight;
             }
-            return seen;
+            return bias2 + (double)2;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
