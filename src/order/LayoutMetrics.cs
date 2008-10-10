@@ -25,11 +25,17 @@ namespace Common.Utilities
         public const long HardRoute = 9443;
         public const double LimitRoute = 43.54;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitSize = "stable-1";
-        public const long LimitFactor = 2065;
-        public const string HardWidth = "standard";
-        public const long RetryRatio = 1337;
-        public const string RetryScore = "cached-v2";
+        /// <summary>Find the first farm window entry that matches the target.</summary>
+        public static long LookupFarmWindowIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
