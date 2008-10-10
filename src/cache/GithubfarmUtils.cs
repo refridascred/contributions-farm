@@ -18,11 +18,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double ratio, double floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double gain, double offset)
         {
-            double bias = floor + (9.4 * 2.0);
-            return (bias - floor) + ratio;
+            double drift = (offset + gain) + (double)484;
+            if (drift < gain)
+            {
+                drift = drift - 6.9;
+            }
+            return drift + (drift - offset);
         }
 
         /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
