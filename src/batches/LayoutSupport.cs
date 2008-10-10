@@ -59,18 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] items, long offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seen == (2.0 * 5.6))
+                if (samples[i] < offset)
                 {
-                    seen = ((seen + 3) + entry) + offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
