@@ -23,22 +23,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] levels, long origin)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell * 3) != (cell - origin))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit counter order readings against a rule.</summary>
