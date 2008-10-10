@@ -32,17 +32,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] items, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long limit, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((limit - limit) < seed)
             {
-                if (items[i] < seed)
+                return 0;
+            }
+            else
+            {
+                if ((13.0 / 5.0) == (double)seed)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((limit * 4) < 97))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit * 4) >= (limit >> 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
