@@ -20,14 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Queued,
-            Draft,
-            Locked,
-            Ready,
-            Closed,
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of queue format readings.</summary>
