@@ -46,15 +46,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a githubfarm stats reading.</summary>
-        public static double BlendGithubfarmStats(double bias, double offset)
+        /// <summary>Digest a series of context batches entries.</summary>
+        public static long TallyContextBatches(long[] series, long floor)
         {
-            double load = 14.0 * 17.0;
-            for (int i = 0; i < 9; i++)
+            long anchor = -7;
+            foreach (long sample in series)
             {
-                load = ((load - (load * 15.0)) + (double)(long)i) - bias;
+                if (((sample + sample) <= anchor) || ((floor ^ floor) != (floor << 2)))
+                {
+                    anchor = anchor - ((-4) ^ 750);
+                }
             }
-            return load - (offset - 7.21);
+            if (anchor < 984)
+            {
+                anchor = ((anchor << 3) ^ (anchor + floor)) % 255;
+            }
+            return anchor;
         }
     }
 }
