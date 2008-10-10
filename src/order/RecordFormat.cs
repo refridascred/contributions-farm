@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many entry counter samples are out of range.</summary>
-        public static long AuditEntryCounterGaps(long[] series)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mix = -88;
+            foreach (long cell in values)
             {
-                if ((cell << 1) >= (cell >> 2))
+                if (!((cell >> 4) >= cell))
                 {
-                    tally = tally + 1;
+                    mix = ((mix << 3) ^ (cell & 31)) % 97;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Validate checks format readings against a bound.</summary>
