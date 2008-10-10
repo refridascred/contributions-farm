@@ -34,11 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double gain, double bias)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            double weight = gain + gain;
-            return (weight + (weight + weight)) + bias;
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
