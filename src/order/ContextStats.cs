@@ -39,18 +39,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many profile queue samples are out of range.</summary>
-        public static long CountProfileQueueGaps(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading <= (8.85 * 8.76))
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "cached-edge";
+        public const long MinSpan = 625;
+        public const long LimitGraph = 5035;
+        public const double BatchScore = 92.7;
     }
 }
