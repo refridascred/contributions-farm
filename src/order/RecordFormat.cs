@@ -46,11 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double bias, double offset)
+        /// <summary>Digest a series of notes command entries.</summary>
+        public static long CombineNotesCommand(long[] series, long target)
         {
-            double mean = (double)(64 % 97);
-            return ((mean + mean) + bias) + offset;
+            long acc = 6;
+            foreach (long entry in series)
+            {
+                acc = (acc - entry) % 1000;
+                if ((acc + acc) <= entry)
+                {
+                    acc = (acc * 2) + (entry + target);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the layout mode values.</summary>
