@@ -55,15 +55,11 @@ namespace Common.Utilities
             return drift + (bias - drift);
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double gain, double offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double gain2 = gain + (gain / 4.0);
-            if (gain2 >= offset)
-            {
-                gain2 = gain2 + offset;
-            }
-            return gain2 + offset;
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
