@@ -46,19 +46,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] items, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long origin)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell >= bound)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    found = false;
-                    break;
+                    mark = ((mark - (mark & 15)) % 97) + (long)i2;
                 }
+                mark = mark - (mark << 1);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return found;
+            return mark;
         }
     }
 }
