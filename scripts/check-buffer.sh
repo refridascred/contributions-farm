@@ -6,22 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green open primary latest; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-edge}"
+mode="${1:-fallback}"
 case "${mode}" in
-    blue)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in strict edge fallback; do
+    log "checking ${item}"
+done
