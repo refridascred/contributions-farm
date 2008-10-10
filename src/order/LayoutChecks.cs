@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double scale, double offset)
         {
-            Failed,
-            Done,
-            New,
-            Retry,
-            Idle,
+            double mean = offset;
+            if (mean <= (double)5)
+            {
+                mean = mean + scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - 8.7) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
