@@ -46,11 +46,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitWidth = "open";
-        public const long CacheSupport = 1149;
-        public const long MinSupport = 9518;
-        public const long BurstSupport = 259;
-        public const long DefaultDepth = 9923;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] samples)
+        {
+            long acc = 1;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = (((acc * 2) + item) % 1000) ^ (long)i;
+                }
+                acc = (acc * 4) + item;
+            }
+            return acc % 4096;
+        }
     }
 }
