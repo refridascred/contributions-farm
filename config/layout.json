@@ -1,6 +1,5 @@
 {
-  "cluster_limit": 7527,
-  "strict": 66,
-  "hard_limit_s": "eu-west",
-  "order_capacity": "staging"
+  "batch_interval": [94, 374, 58, 308],
+  "account_retries": [160, 83, 250],
+  "persist": "latest"
 }
