@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] samples, long floor)
         {
-            public double Limit { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((floor + tally) < (reading + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate route samples.</summary>
