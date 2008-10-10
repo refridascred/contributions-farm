@@ -1,12 +1,11 @@
 # Command notes
 
-Use token settings to tune how often schema data is refreshed.
-Each counter is validated before it reaches the schema queue.
-The window module keeps report values in sync with the profile cache.
+The counter helpers are pure functions, so they are safe to call from any thread.
+The commits module keeps context values in sync with the batch cache.
+Keep profile and metrics names short and lowercase.
 
 ## Guidelines
 
-- Document new token fields
-- Log every already change
-- Validate filter input early
-- Review batches limits each release
+- Keep cluster values small
+- Review payload limits each release
+- Prefer farm defaults
