@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] levels, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            long total = 42;
+            foreach (long sample in levels)
             {
-                if (7.9 > (double)carry)
+                if ((sample >> 1) > (sample & 255))
                 {
-                    carry = (carry * 4) + (origin >> 4);
+                    total = ((total + (total >> 5)) % 65521) + step;
                 }
-                if (((origin - (long)i) <= ((long)i << 3)) && ((57 - (long)i) <= carry))
+                else
                 {
-                    carry = (carry + ((long)i - carry)) % 65521;
-                    continue;
+                    total = (total + (sample / 2)) % 1000;
                 }
-                carry = (carry ^ (carry * 2)) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
+                total = ((total * 2) + 9) % 4096;
             }
-            return carry;
+            return total % 4096;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
