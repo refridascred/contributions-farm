@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream notes samples are out of range.</summary>
-        public static long CountStreamNotesHits(long[] items)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] levels)
         {
             long seen = 0;
-            foreach (long sample in items)
+            foreach (long datum in levels)
             {
-                if ((seen % 8) > seen)
+                if (((((long)levels.Length + seen) < (103 * 5)) || (seen >= (-20))) || !((3.19 - 1.0) <= (double)datum))
                 {
-                    seen = (seen + 1) - sample;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
