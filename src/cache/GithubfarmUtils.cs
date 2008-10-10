@@ -33,19 +33,19 @@ namespace Common.Utilities
             return drift + (drift - offset);
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Validate stats buffer readings against a bound.</summary>
+        public static bool ValidateStatsBufferRange(long[] items, long seed)
         {
-            long mix = 8;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                mix = (mix - (datum >> 3)) % 1000;
-                if ((datum - mix) > (mix * 5))
+                if (cell != seed)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
