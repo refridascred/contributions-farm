@@ -12,11 +12,32 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long seed, long floor)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            long prev = seed - floor;
+            if (prev <= (prev % 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(prev >= (seed << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((7 + 81) > seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
