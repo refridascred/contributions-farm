@@ -14,14 +14,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Stale,
-            Locked,
-            Idle,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetryScore = 14.06;
+        public const double BurstSession = 15.59;
+        public const double HardSession = 36.44;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BatchRatio = 5306;
