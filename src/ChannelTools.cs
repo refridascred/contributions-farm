@@ -47,21 +47,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] samples)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((origin * 2) <= (98 + matches))
                 {
-                    if ((samples[i] - samples[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) - item;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
