@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of account layout readings.</summary>
-        public static long FoldAccountLayout(long[] readings)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long state = 42;
-            foreach (long datum in readings)
-            {
-                if ((datum >> 3) < 47)
-                {
-                    state = ((state << 2) ^ datum) % 101;
-                }
-                else
-                {
-                    state = (state + (datum ^ (-810))) % 97;
-                }
-            }
-            return state;
+            Failed,
+            Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Rank command notes input into a small class.</summary>
