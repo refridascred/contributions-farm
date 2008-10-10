@@ -66,21 +66,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] items)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 207;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((acc * 5) >= item) || ((step - 248) <= (1 + step)))
                 {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + step) % 65521;
+                }
+                if ((double)acc >= 9.7)
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many payload window samples are out of range.</summary>
