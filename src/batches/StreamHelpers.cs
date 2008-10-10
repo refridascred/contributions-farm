@@ -65,13 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            Failed,
-            New,
-            Pending,
-            Retry,
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((long)i == (target - target)))
+                {
+                    anchor = (anchor * 3) + (target + anchor);
+                    anchor = (anchor - (698 + 1)) % 65521;
+                    continue;
+                }
+                anchor = anchor ^ (target & 31);
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a order record.</summary>
