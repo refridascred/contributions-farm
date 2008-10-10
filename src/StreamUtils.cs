@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxCommits = "fallback-edge";
-        public const double BurstDepth = 76.7;
-        public const double MinCommits = 48.18;
-        public const double RetryWidth = 29.69;
-        public const long CacheCommits = 7822;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long floor)
+        {
+            long edge = step ^ floor;
+            if ((step ^ step) >= (floor - step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((edge * 2) != (step % 64))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((15.0 * 0.29) != (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long RollAccount(long target)
