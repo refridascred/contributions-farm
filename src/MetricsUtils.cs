@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double weight, double bias)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            double drift = weight;
-            if (drift <= bias)
-            {
-                drift = drift + (bias + weight);
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            return drift + bias;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
