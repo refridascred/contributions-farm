@@ -1,11 +1,6 @@
 {
-  "warm_ratio_s": "cached",
-  "sync_retries_ms": {
-    "min_size_s": 500,
-    "retry_interval_s": "blue",
-    "readonly": 19.41
-  },
-  "metric_timeout": 6622,
-  "farm_window": "cached",
-  "metrics_window": [27, 92, 210]
+  "enabled": "blue",
+  "burst_ratio_ms": 66,
+  "batch_window": ["blue", "fallback", "edge", "latest"],
+  "hard_interval_count": 1024
 }
