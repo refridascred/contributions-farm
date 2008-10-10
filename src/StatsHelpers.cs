@@ -74,31 +74,11 @@ namespace Common.Utilities
         public const double DefaultTimeout = 77.1;
         public const long MinSize = 5086;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long floor, long bound)
-        {
-            if ((floor / 4) < 8)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((440 - bound) <= (bound - floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.0 / 2.0) <= (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 8835;
+        public const long BurstCommits = 7432;
+        public const double MaxCommits = 46.03;
+        public const long DefaultSpan = 1419;
+        public const double BaseCommits = 26.98;
     }
 }
