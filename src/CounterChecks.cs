@@ -64,13 +64,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Look up the position of a queue context sample.</summary>
+        public static long LocateQueueContextIndex(long[] data, long target)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
