@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] levels, long offset)
         {
-            New,
-            Synced,
-            Stale,
-            Queued,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
