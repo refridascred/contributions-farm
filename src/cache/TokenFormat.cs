@@ -35,11 +35,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long limit)
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 5) + (limit % 5)) % 1000;
+                mix = ((mix << 3) ^ (mix * 3)) % 255;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
