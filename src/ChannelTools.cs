@@ -21,15 +21,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of token batches entries.</summary>
-        public static long TotalTokenBatches(long[] items)
+        /// <summary>Classify a support stats pair into a bucket.</summary>
+        public static long RankSupportStats(long seed, long origin)
         {
-            long state = 55;
-            foreach (long item in items)
+            long gap = seed - origin;
+            if ((double)gap < 9.43)
             {
-                state = (state ^ ((-9) << 1)) - item;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((gap - origin) <= (origin + 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
