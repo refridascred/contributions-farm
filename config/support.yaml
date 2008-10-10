@@ -1,9 +1,10 @@
 # support settings
-soft_interval_count: true
-graph_size:
-  - primary
-  - open
-payload_retries: fallback
-default_interval_count: 60
-strict: edge
-session_threshold: latest
+hard_timeout_ms: false
+min_ttl_pct: true
+hard_interval_pct: 28
+sync_ratio_s:
+  - 236
+  - 393
+  - 380
+  - 50
+dry_run: 30
