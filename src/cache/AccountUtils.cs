@@ -30,14 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            New,
-            Idle,
-            Pending,
-            Queued,
-            Active,
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
