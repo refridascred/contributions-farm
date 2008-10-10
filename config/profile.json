@@ -1,12 +1,6 @@
 {
-  "max_interval_count": {
-    "notes_limit": false,
-    "min_window_ms": 59.02,
-    "hard_ttl": [310, 213, 467, 386],
-    "batch_capacity_count": ["fallback", "stable"],
-    "batch_size_ms": 4190,
-    "dry_run": "strict"
-  },
-  "retry_retries_pct": true,
-  "retry_capacity": 9047
+  "compress": ["local", "cached"],
+  "min_limit_count": ["fallback", "cached", "standard"],
+  "strict": "latest",
+  "base_limit": 18.12
 }
