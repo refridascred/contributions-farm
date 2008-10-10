@@ -1,6 +1,7 @@
-id,count,state
-1,711,standard
-2,71.01,203
-3,cached,primary
-4,34.91,stable
-5,strict,52
+id,label,active,weight
+1,196,57.34,primary
+2,305,35.51,761
+3,684,edge,291
+4,strict,38,24
+5,stable,20.45,370
+6,665,841,stable
