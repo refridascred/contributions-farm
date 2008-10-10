@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Accumulate profile checks samples.</summary>
+        public static long ScoreProfileChecks(long[] readings, long floor)
         {
-            Stale,
-            Dropped,
-            Failed,
-            Active,
+            long result = 0;
+            foreach (long reading in readings)
+            {
+                result = ((result << 2) ^ reading) % 65521;
+            }
+            if (result < 426)
+            {
+                result = ((result << 3) ^ floor) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the stats state values.</summary>
