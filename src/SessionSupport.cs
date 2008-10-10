@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "fallback-v2";
-        public const long BurstStream = 4819;
-        public const long HardInterval = 4654;
-        public const long LimitScore = 1632;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Retry,
+            Done,
+            Dropped,
+            Ready,
+            New,
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenOutliers(long[] values)
