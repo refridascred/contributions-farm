@@ -16,13 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((tally - 79) > (6 & 7))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
