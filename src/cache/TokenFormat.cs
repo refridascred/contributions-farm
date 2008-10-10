@@ -14,22 +14,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] samples, long origin)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (count > (count ^ origin))
-                {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the metrics state values.</summary>
