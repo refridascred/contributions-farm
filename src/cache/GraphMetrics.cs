@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two farm route measurements.</summary>
-        public static double ScaleFarmRoute(double bias, double bias2)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            double weight = (bias / 5.0) + bias;
-            for (int i = 0; i < 3; i++)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                weight = ((weight + (double)(-88)) + (double)(long)i) - bias2;
+                if ((double)(long)i < (8.1 * 6.7))
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+                acc = (acc ^ (acc & 3)) % 65521;
+                if ((832 + acc) > (offset % 16))
+                {
+                    acc = acc ^ offset;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return weight - (bias / 7.0);
+            return acc;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
