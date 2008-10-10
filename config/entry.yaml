@@ -1,23 +1,4 @@
 # entry settings
-verbose:
-  warm_size_s: true
-  cache_window_pct:
-    enabled: primary
-    dry_run: true
-    max_size_ms: 500
-    payload_interval: stable
-    githubfarm_ttl: cached
-  report_size: true
-  strict:
-    - stable
-    - local
-enabled: 66.89
-default_limit_pct:
-  readonly: 63
-  account_capacity: 9474
-  cache_depth: true
-  hard_depth: open
-soft_timeout_pct: 26.01
-already_limit:
-  - 381
-  - 485
+idle_size_s: primary
+notes_retries: 1296
+metric_threshold: false
