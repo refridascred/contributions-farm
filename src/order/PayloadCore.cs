@@ -40,22 +40,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long step, long bound)
         {
-            long state = 842;
-            foreach (long entry in readings)
+            if ((step <= (step % 7)) || ((step + step) != (bound - step)))
             {
-                if ((2.41 + 4.5) <= (double)state)
+                return 6;
+            }
+            else
+            {
+                if (!((step + bound) < (step % 2)))
                 {
-                    state = state ^ (entry + (long)readings.Length);
+                    return 2;
                 }
                 else
                 {
-                    state = state - (state + 453);
+                    return 0;
                 }
             }
-            return state;
         }
     }
 }
