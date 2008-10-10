@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double scale, double floor)
-        {
-            double rate = (floor - scale) + floor;
-            if (rate <= floor)
-            {
-                rate = rate - 2.7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (floor + floor);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxCommits = "fallback-edge";
+        public const double BurstDepth = 76.7;
+        public const double MinCommits = 48.18;
+        public const double RetryWidth = 29.69;
+        public const long CacheCommits = 7822;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long RollAccount(long target)
