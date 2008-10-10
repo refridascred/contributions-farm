@@ -1,5 +1,5 @@
 {
-  "metric_delay": 5928,
-  "batch_depth": "eu-west",
-  "idle_delay_ms": 46
+  "batch_threshold": "latest",
+  "batches_limit": "eu-west",
+  "queue_size": true
 }
