@@ -36,14 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Idle,
-            Closed,
-            Dropped,
-            Synced,
-            Active,
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Look up the position of a channel batch sample.</summary>
