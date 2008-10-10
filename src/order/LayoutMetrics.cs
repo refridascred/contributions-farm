@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Combine notes commits values into a single score.</summary>
+        public static long FoldNotesCommits(long[] data)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = 2;
+            foreach (long datum in data)
+            {
+                if ((datum ^ datum) < (anchor * 2))
+                {
+                    anchor = anchor ^ (anchor << 3);
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
