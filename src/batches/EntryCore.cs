@@ -16,21 +16,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(bound > (bound * 4)))
                 {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor + anchor) % 65521;
                 }
+                anchor = anchor - ((long)i % 97);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a counter info.</summary>
