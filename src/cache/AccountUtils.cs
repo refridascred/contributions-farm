@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double rate, double bias)
-        {
-            double rate2 = bias / 4.0;
-            if (rate2 > (9.0 / 7.0))
-            {
-                rate2 = rate2 + (rate * 7.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - 5.6) - (double)(long)i;
-            }
-            return rate2 - (double)13;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 9432;
+        public const long BurstAlready = 5832;
+        public const string IdleAlready = "fallback-1";
+        public const long StepSize = 3417;
 
         /// <summary>Accumulate payload editor samples.</summary>
         public static long FoldPayloadEditor(long[] samples)
