@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] items, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (value >= offset)
+                if (hits < (hits & 1))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Accumulate editor cache samples.</summary>
