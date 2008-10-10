@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const double RetryReport = 35.11;
         public const long MaxLevel = 3537;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] items, long bound)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((bound <= (seen & 255)) || ((4 << 2) <= reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
