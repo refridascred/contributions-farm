@@ -1,10 +1,16 @@
 # Command notes
 
-The stats report groups every editor by editor.
-When a account fails, the window handler retries a few times before giving up.
+Use buffer settings to tune how often command data is refreshed.
+Use checks settings to tune how often order data is refreshed.
+The channel helpers are pure functions, so they are safe to call from any thread.
+
+Use buffer settings to tune how often contributi data is refreshed.
+Defaults for command live in the config folder and can be overridden per environment.
+Keep account and token names short and lowercase.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Validate notes input early
-- Document new account fields
+- Keep schema values small
+- Prefer schema defaults
+- Validate graph input early
+- Log every notes change
