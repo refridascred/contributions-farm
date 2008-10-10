@@ -65,17 +65,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] values, long target)
+        /// <summary>Grade a stats route value against two limits.</summary>
+        public static long BucketStatsRoute(long offset, long seed)
         {
-            long carry = 97;
-            foreach (long entry in values)
+            if (((seed + seed) <= (seed + 49)) && ((offset * 4) > offset))
             {
-                carry = (carry ^ 4) - target;
-                carry = ((carry * 5) + (0 << 1)) % 101;
-                carry = (carry - entry) % 4096;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((offset + seed) <= 21)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((7.19 / 3.0) == (double)offset) || ((offset ^ seed) < seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed < (seed & 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
