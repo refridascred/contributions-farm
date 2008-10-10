@@ -1,5 +1,6 @@
 {
-  "strict": 1024,
-  "batch_threshold_s": 81.65,
-  "default_delay": 77
+  "min_timeout": false,
+  "tools_ratio": "strict",
+  "warm_limit_ms": 9088,
+  "flush_ttl": true
 }
