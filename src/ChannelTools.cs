@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long mark = -9;
-            foreach (long item in readings)
-            {
-                if (((mark ^ item) < mark) && ((double)item >= (0.59 * 8.4)))
-                {
-                    mark = (mark ^ mark) % 4096;
-                }
-            }
-            if (mark > 2)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark;
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
