@@ -42,26 +42,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate token checks samples.</summary>
-        public static long TallyTokenChecks(long[] levels)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long carry = 99;
-            foreach (long item in levels)
-            {
-                if (!((item & 127) > (item + 3)))
-                {
-                    carry = ((carry * 5) + (item ^ carry)) % 97;
-                }
-                if ((carry << 2) != (carry + item))
-                {
-                    break;
-                }
-            }
-            if (carry > 1)
-            {
-                carry = (carry + (carry + carry)) % 1000;
-            }
-            return carry % 1000;
+            Stale,
+            Pending,
+            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the already kind values.</summary>
