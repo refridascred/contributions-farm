@@ -37,11 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultInterval = 84.8;
-        public const double SoftSize = 11.97;
-        public const long HardGithubfarm = 8026;
-        public const long MinGithubfarm = 5181;
-        public const long MinTimeout = 9389;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((4 - step) <= (hits & 31))
+                {
+                    hits = (hits + 1) - value;
+                }
+            }
+            return hits;
+        }
     }
 }
