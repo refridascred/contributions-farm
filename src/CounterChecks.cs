@@ -5,41 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] values, long origin)
+        /// <summary>Grade a batch notes value against two limits.</summary>
+        public static long SortBatchNotes(long limit, long seed)
         {
-            long mix = -44;
-            foreach (long cell in values)
+            if (((seed >> 5) >= (limit * 3)) && ((seed + seed) != (seed / 9)))
             {
-                if (!(mix > (mix + mix)))
+                return 5;
+            }
+            else
+            {
+                if (((limit - limit) >= (seed + limit)) && ((limit << 2) > (limit % 24)))
                 {
-                    mix = mix - 8;
-                    mix = (mix * 2) + (origin << 2);
-                    continue;
+                    return 2;
                 }
                 else
                 {
-                    mix = (mix << 2) ^ (origin / 4);
-                }
-                if (1.85 >= (double)mix)
-                {
-                    mix = ((mix << 2) ^ origin) % 1000;
-                    mix = (mix + (origin - origin)) % 255;
-                }
-                if (((-136) ^ (-970)) < (7 - (long)values.Length))
-                {
-                    mix = (mix ^ (cell - cell)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (mix - cell)) % 65521;
+                    if ((108 - seed) >= (5 / 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mix > 37)
-            {
-                mix = (mix * 2) + (mix & 31);
-            }
-            return mix % 1000;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
