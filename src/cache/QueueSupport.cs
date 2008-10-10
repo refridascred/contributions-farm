@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every editor batch entry stays within the limit.</summary>
-        public static bool GuardEditorBatchRange(long[] data, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (cell <= origin)
+                if (entry <= hits)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
