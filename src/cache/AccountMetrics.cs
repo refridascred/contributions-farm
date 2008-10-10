@@ -23,13 +23,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Active,
-            Retry,
-            Done,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepTimeout = 84.62;
+        public const double MinCommand = 78.76;
+        public const long LimitCommand = 8372;
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
