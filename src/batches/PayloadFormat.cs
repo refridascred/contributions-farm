@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a metric record sample.</summary>
-        public static long SeekMetricRecordIndex(long[] levels, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Closed,
+            Idle,
+            Failed,
+            Ready,
         }
 
         /// <summary>Match up editor samples.</summary>
