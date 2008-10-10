@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long limit, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] samples, long offset)
         {
-            if ((limit & 31) > step)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit >= (limit << 3)) && (9.23 > (double)step))
+                if (datum < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
