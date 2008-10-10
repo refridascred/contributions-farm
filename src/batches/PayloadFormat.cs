@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultRatio = 9209;
+        public const string DefaultDepth = "latest-v2";
+        public const long CacheInterval = 2656;
 
         /// <summary>Iterate the cache githubfarm series from a seed.</summary>
         public static long RollCacheGithubfarm(long offset)
