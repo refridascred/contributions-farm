@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 2867;
-        public const long LimitSize = 495;
-        public const long RetryScore = 5444;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Queued,
+            Active,
+            New,
+            Locked,
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
