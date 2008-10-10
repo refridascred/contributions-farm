@@ -19,21 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Iterate the cluster layout series from a seed.</summary>
+        public static long RollClusterLayout(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score ^ ((long)i - (long)i)) % 4096;
+                score = (score ^ (long)i) % 65521;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Adjust a context stats reading.</summary>
