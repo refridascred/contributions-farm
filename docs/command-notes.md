@@ -1,15 +1,10 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-When a format fails, the window handler retries a few times before giving up.
-
-Run the account check before changing any token limits.
-A farm that stays idle for too long is moved to the format list.
-Keep command and schema names short and lowercase.
+The cache report groups every batches by support.
+The account report groups every payload by already.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Keep format values small
-- Prefer batches defaults
-- Validate session input early
+- Log every channel change
+- Prefer graph defaults
+- Validate metrics input early
