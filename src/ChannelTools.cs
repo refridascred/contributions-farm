@@ -23,19 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a graph profile figure with a bias.</summary>
-        public static double AdjustGraphProfile(double rate, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] levels)
         {
-            double scale = 9.5;
-            if (scale > scale)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                scale = (scale + (scale + 11.0)) - rate;
+                if ((hits * 4) <= (hits & 15))
+                {
+                    hits = (hits + 2) + value;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (floor / 8.0)) - (double)(long)i;
-            }
-            return scale + (scale + floor);
+            return hits;
         }
 
         /// <summary>Describe the farm level values.</summary>
