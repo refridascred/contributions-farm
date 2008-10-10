@@ -15,10 +15,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 978;
-        public const long MinBudget = 4944;
-        public const string CacheStream = "staging-v2";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)floor >= (double)225)
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of stats filter readings.</summary>
         public static long CombineStatsFilter(long[] values, long offset)
