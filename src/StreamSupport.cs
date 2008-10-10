@@ -40,23 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] readings, long origin)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long sum = 29;
-            foreach (long datum in readings)
-            {
-                if ((((long)readings.Length * 2) >= datum) && ((datum + 91) < 95))
-                {
-                    sum = (sum + (datum + origin)) % 255;
-                }
-                sum = sum - (82 & 31);
-            }
-            if (sum > 54)
-            {
-                sum = (sum + (3 * 4)) % 97;
-            }
-            return sum;
+            Idle,
+            Synced,
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the notes kind values.</summary>
