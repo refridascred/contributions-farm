@@ -65,26 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] values)
+        /// <summary>Look up the position of a context batches sample.</summary>
+        public static long LookupContextBatchesIndex(long[] data, long limit)
         {
-            long sum = 71;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7 >> 4) >= (sum ^ sum))
+                if (data[i] > limit)
                 {
-                    sum = sum + sum;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (entry - 5)) % 101;
+                    return (long)i;
                 }
             }
-            if (sum < 31)
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum % 4096;
+            return -1;
         }
     }
 }
