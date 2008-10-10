@@ -53,21 +53,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] series)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = step ^ seed;
+            if ((step - 184) < step)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((-912) + seed) < lane)
                 {
-                    if ((series[i] + series[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
