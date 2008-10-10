@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double rate, double offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] series)
         {
-            double weight = offset;
-            if (weight >= weight)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                weight = weight + (rate * 9.9);
+                if ((((double)reading < 3.7) && ((-59) >= (seen % 5))) || ((reading >> 3) > seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (rate / 8.0)) + (double)(long)i;
-            }
-            return weight + (weight - rate);
+            return seen;
         }
 
         /// <summary>Roll a checks cache counter forward.</summary>
