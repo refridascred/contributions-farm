@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many stream entry samples are out of range.</summary>
-        public static long MeasureStreamEntryOutliers(long[] readings)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (reading <= (reading >> 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Synced,
+            Pending,
+            Dropped,
+            Active,
+            Idle,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
