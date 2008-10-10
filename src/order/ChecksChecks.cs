@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double gain, double span)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double ratio = (double)24 - (span / 8.0);
-            return ratio + gain;
+            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
