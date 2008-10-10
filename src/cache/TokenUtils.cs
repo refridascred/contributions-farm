@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up layout counter samples.</summary>
-        public static long PairLayoutCounterCount(long[] levels)
+        /// <summary>Measure how many stream buffer samples are out of range.</summary>
+        public static long CountStreamBufferOutliers(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)item <= 8.12) || ((670 + 65) <= item))
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Rank route input into a small class.</summary>
