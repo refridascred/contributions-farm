@@ -16,11 +16,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            Draft,
+            New,
+            Active,
+            Stale,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
