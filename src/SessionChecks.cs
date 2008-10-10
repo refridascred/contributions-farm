@@ -12,23 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] levels, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long score = 3;
-            foreach (long entry in levels)
-            {
-                score = (score - (floor >> 5)) % 1000;
-                if ((score < (floor ^ entry)) && ((score >> 2) == (floor + (-59))))
-                {
-                    score = score - (entry / 8);
-                }
-                else
-                {
-                    score = ((score * 2) + (score + floor)) % 255;
-                }
-            }
-            return score;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Digest a series of command counter entries.</summary>
