@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(187 << 2);
+            if (weight > (weight - weight))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight + weight) - bias;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight - (double)90;
         }
 
         /// <summary>Count the contributi tools entries that pass the check.</summary>
