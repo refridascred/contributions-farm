@@ -38,13 +38,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] data, long floor)
         {
-            Idle,
-            Failed,
-            Closed,
-            Paused,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((seen % 10) <= floor) || (((sample - floor) <= floor) || ((seen + seen) < floor)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account stats.</summary>
