@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] readings, long target)
+        /// <summary>Validate checks format readings against a bound.</summary>
+        public static bool VerifyChecksFormatRange(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((651 >= (63 + hits)) || ((hits / 4) == (target - 58)))
+                if (value <= bound)
                 {
-                    hits = (hits + 1) + value;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
