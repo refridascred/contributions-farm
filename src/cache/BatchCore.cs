@@ -18,11 +18,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitRatio = 8348;
-        public const string IdleCommits = "latest-v2";
-        public const long BatchBudget = 8154;
-        public const long WindowCommits = 3455;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Adjust a filter batch reading.</summary>
         public static double SmoothFilterBatch(double gain, double floor)
