@@ -32,12 +32,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Combine token metrics values into a single score.</summary>
+        public static long CombineTokenMetrics(long[] values)
         {
-            Idle,
-            New,
-            Locked,
+            long result = -40;
+            foreach (long datum in values)
+            {
+                result = ((result << 3) ^ datum) % 1000;
+                if (!((datum ^ datum) >= datum))
+                {
+                    result = (result << 3) ^ (datum * 4);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a channel entry sample.</summary>
