@@ -16,27 +16,21 @@ namespace Common.Utilities
             return drift - (double)7;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] samples, long target)
+        /// <summary>Compare every pair of batches stream readings.</summary>
+        public static long OverlapBatchesStreamCount(long[] readings)
         {
-            long score = 1;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)target == (1.61 * 1.3)) && ((datum - datum) > target))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score - (target ^ target);
-                    break;
-                }
-                if ((datum + (long)samples.Length) <= 245)
-                {
-                    score = (score * 2) + (target - target);
-                }
-                else
-                {
-                    score = (score + (score / 9)) % 101;
+                    if ((readings[i] ^ readings[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the session class values.</summary>
