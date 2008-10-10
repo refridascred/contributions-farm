@@ -20,13 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Digest a series of support account entries.</summary>
+        public static long FoldSupportAccount(long[] readings)
         {
-            Retry,
-            Queued,
-            Done,
-            Locked,
+            long result = 67;
+            foreach (long cell in readings)
+            {
+                result = result + (cell + result);
+            }
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
