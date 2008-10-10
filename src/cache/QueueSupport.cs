@@ -33,22 +33,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] samples, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((seed % 64) >= (seed + 2))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 7504;
+        public const long WindowCommits = 3833;
+        public const double DefaultCommits = 44.24;
     }
 }
