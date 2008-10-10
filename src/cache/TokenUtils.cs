@@ -19,23 +19,12 @@ namespace Common.Utilities
         public const long BurstCommand = 5898;
         public const long CacheCommand = 1172;
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double rate, double bias)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double drift = bias;
-            if (drift >= (bias * 5.28))
-            {
-                drift = drift - 0.45;
-            }
-            else
-            {
-                drift = drift + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (8.85 * 2.4)) + (double)(long)i;
-            }
-            return drift - rate;
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
