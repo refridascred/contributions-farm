@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] samples, long bound)
+        /// <summary>Match up batch cluster samples.</summary>
+        public static long MatchBatchClusterCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((449 << 2) != (bound * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] + samples[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the commits mode values.</summary>
