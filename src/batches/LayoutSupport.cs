@@ -19,17 +19,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] readings, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (readings[i] >= limit)
+                acc = acc + (acc << 1);
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    acc = ((acc + acc) % 255) - (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Classify a filter batches pair into a bucket.</summary>
