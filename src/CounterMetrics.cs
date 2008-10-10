@@ -55,15 +55,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data)
-        {
-            long score = 7;
-            foreach (long datum in data)
-            {
-                score = ((score * 2) + score) + datum;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardDepth = "fallback-v2";
+        public const long BaseEntry = 9525;
+        public const long BatchWidth = 4102;
+        public const long BurstEntry = 5445;
+        public const long LimitEntry = 6729;
     }
 }
