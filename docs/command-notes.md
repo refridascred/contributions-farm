@@ -1,14 +1,14 @@
 # Command notes
 
-Each context is validated before it reaches the account queue.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Run the route check before changing any cache limits.
+Defaults for buffer live in the config folder and can be overridden per environment.
+A batch that stays idle for too long is moved to the stream list.
 
-When a githubfarm fails, the token handler retries a few times before giving up.
-The farm module keeps entry values in sync with the support cache.
+Run the githubfarm check before changing any channel limits.
+Keep report and stats names short and lowercase.
 
 ## Guidelines
 
-- Document new context fields
-- Log every graph change
-- Prefer batches defaults
-- Review githubfarm limits each release
+- Document new notes fields
+- Validate cluster input early
+- Log every counter change
