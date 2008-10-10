@@ -45,11 +45,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSpan = 8759;
-        public const double RetryLevel = 17.78;
-        public const long BurstSession = 5356;
-        public const long DefaultSession = 1758;
-        public const long RetryScore = 7475;
+        /// <summary>Measure how many batches graph samples are out of range.</summary>
+        public static long MeasureBatchesGraphGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value >> 2) != (tally + value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
