@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const long HardAccount = 8483;
         public const long MinAccount = 5584;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Locate a cluster order reading by value.</summary>
+        public static long SeekClusterOrderIndex(long[] values, long limit)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
