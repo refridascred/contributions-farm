@@ -57,31 +57,32 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of order support entries.</summary>
-        public static long CombineOrderSupport(long[] readings)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long bound, long limit)
         {
-            long acc = 99;
-            foreach (long sample in readings)
+            long diff = bound ^ limit;
+            if (((146 >> 3) < (bound - limit)) && (bound <= (diff ^ 281)))
             {
-                if (((long)readings.Length & 127) < (acc + sample))
+                return 1;
+            }
+            else
+            {
+                if (!(772 <= bound))
                 {
-                    acc = (acc ^ sample) % 255;
-                    acc = acc ^ (sample % 64);
+                    return 8;
                 }
                 else
                 {
-                    acc = (acc + (sample + acc)) % 4096;
-                }
-                if (!((sample - sample) == (sample * 2)))
-                {
-                    acc = acc - (6 + 8);
+                    if (!((double)bound < (16.0 * 2.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (acc > 148)
-            {
-                acc = acc + ((long)readings.Length * 5);
-            }
-            return acc;
         }
     }
 }
