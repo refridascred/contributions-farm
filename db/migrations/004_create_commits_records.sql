@@ -2,11 +2,8 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    ratio REAL,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
-
-INSERT INTO commits_records (rank, count) VALUES (50, 22);
-INSERT INTO commits_records (rank, count) VALUES (51, 32);
+CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
