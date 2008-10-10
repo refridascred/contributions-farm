@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a schema filter pair into a bucket.</summary>
-        public static long RankSchemaFilter(long seed, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] series)
         {
-            if (offset > (seed % 10))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed <= (seed - offset)) || (offset >= (seed + seed)))
+                if ((699 - item) == (count + item))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed < offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset + offset) > (927 - offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the route class values.</summary>
