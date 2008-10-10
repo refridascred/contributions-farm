@@ -50,12 +50,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Closed,
-            Done,
-            Stale,
+            Dropped,
+            Paused,
+            Ready,
         }
     }
 }
