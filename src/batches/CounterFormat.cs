@@ -43,12 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            Ready,
+            Stale,
+            Synced,
+            Done,
         }
     }
 }
