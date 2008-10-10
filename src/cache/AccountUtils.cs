@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const double HardGithubfarm = 62.44;
         public const long BaseGithubfarm = 6095;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] values)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((18 + entry) <= matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
