@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((matches & 7) >= (cell & 31))
+                if ((19.0 / 7.0) <= (double)hits)
                 {
-                    matches = matches + 1;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
