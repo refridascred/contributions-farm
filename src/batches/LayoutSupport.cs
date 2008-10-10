@@ -29,12 +29,18 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchWindow = "open-1";
-        public const string BaseFactor = "cached";
-        public const long RetryRatio = 26;
-        public const long LimitWindow = 6478;
-        public const long BaseTimeout = 3693;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count profile command pairs that satisfy a relation.</summary>
         public static long MatchProfileCommandCount(long[] values)
