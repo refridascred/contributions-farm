@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long seed, long target)
         {
-            long result = -739;
-            foreach (long value in samples)
+            if (target <= (seed + 61))
             {
-                result = (result - (77 - value)) % 255;
+                return 1;
             }
-            return result % 4096;
+            else
+            {
+                if ((309 << 1) < seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)target <= (9.9 / 6.0)) && ((target << 1) <= (seed >> 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target - 493) <= target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
