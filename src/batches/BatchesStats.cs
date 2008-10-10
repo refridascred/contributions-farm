@@ -27,13 +27,27 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Roll a already report counter forward.</summary>
+        public static long IterateAlreadyReport(long limit)
         {
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((4.37 + 7.19) > (double)limit)
+                {
+                    result = result ^ 76;
+                }
+                else
+                {
+                    result = (result ^ (result + limit)) % 97;
+                }
+                if (!(((long)i - result) >= result))
+                {
+                    result = (result * 5) + ((long)i * 3);
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count editor tools pairs that satisfy a relation.</summary>
