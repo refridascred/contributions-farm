@@ -36,25 +36,18 @@ namespace Common.Utilities
             return (weight2 - span) + weight;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] data, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((long)i == (acc - acc))
+                if ((0.9 + 4.64) < (double)offset)
                 {
-                    acc = (acc ^ (896 - acc)) % 97;
-                    continue;
+                    tally = (tally + 2) - value;
                 }
-                else
-                {
-                    acc = acc + offset;
-                    acc = (acc * 4) + (long)i;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
