@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of stream buffer entries.</summary>
-        public static long TotalStreamBuffer(long[] data)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            long result = 63;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((6.96 * 7.3) <= (double)(long)data.Length) && (result > 811))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result ^ result) % 97) - item;
-                }
-                else
-                {
-                    result = ((result * 4) + (result >> 4)) % 4096;
-                }
-                if ((double)(long)data.Length < (14.0 * 12.0))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Project the next payload value.</summary>
