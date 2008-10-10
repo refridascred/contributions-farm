@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchDepth = 2763;
+        public const long LimitNotes = 5201;
+        public const long RetryLevel = 5014;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
