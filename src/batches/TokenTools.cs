@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] series)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double bias, double span)
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((((double)reading < 3.7) && ((-59) >= (seen % 5))) || ((reading >> 3) > seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double load = bias;
+            return load - (span / 7.0);
         }
 
         /// <summary>Roll a checks cache counter forward.</summary>
