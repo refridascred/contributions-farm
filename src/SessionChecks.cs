@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] series, long origin)
+        /// <summary>Accumulate editor cache samples.</summary>
+        public static long DigestEditorCache(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long mark = 91;
+            foreach (long reading in data)
             {
-                if (cell <= origin)
+                if ((reading % 100) != (mark ^ reading))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark * 3) + (mark + reading);
                 }
             }
-            return flag;
+            if (mark < (-10))
+            {
+                mark = ((mark * 2) + (mark + mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of command counter entries.</summary>
