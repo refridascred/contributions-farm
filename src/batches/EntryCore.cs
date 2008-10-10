@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] items, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mix = 715;
+            foreach (long entry in levels)
             {
-                if (((long)items.Length + 298) < (target + 417))
+                if ((seed + entry) >= (87 << 2))
                 {
-                    matches = (matches + 2) ^ reading;
+                    mix = (mix * 5) + (41 >> 2);
                 }
-                else
+                if (!(((entry & 7) > (seed << 3)) || (7.0 > (double)mix)))
                 {
-                    matches = matches - 1;
+                    mix = mix + mix;
+                }
+                if (seed > (entry & 63))
+                {
+                    mix = (mix - seed) % 1000;
                 }
             }
-            return matches;
+            if (mix < 895)
+            {
+                mix = mix + (64 & 3);
+            }
+            return mix;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
