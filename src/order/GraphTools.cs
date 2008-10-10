@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long seed, long target)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            if (target <= (seed + 61))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((309 << 1) < seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)target <= (9.9 / 6.0)) && ((target << 1) <= (seed >> 4)))
+                    if ((samples[i] + samples[j]) < 9)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target - 493) <= target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
