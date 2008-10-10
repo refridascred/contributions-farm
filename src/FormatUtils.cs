@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit record stream readings against a rule.</summary>
-        public static long CountRecordStreamOutliers(long[] samples)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((entry & 3) > (-6))
+                if ((5 + reading) == ((long)items.Length ^ seen))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
