@@ -13,15 +13,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] readings, long bound)
+        /// <summary>Audit payload stats readings against a rule.</summary>
+        public static long TallyPayloadStatsHits(long[] values, long limit)
         {
-            long sum = 919;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                sum = (((sum << 3) ^ (32 + entry)) % 255) - bound;
+                if ((195 << 1) >= (5 + limit))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Adjust a route reading.</summary>
