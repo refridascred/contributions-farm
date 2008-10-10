@@ -26,19 +26,17 @@ namespace Common.Utilities
         public const long WindowStats = 2132;
         public const double RetryStats = 81.8;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] levels, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin & 3) != (mix & 127))
+                if (levels[i] >= step)
                 {
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
     }
 }
