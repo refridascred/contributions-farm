@@ -83,12 +83,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Active,
-            Idle,
-            Stale,
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
