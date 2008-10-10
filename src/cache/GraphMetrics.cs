@@ -34,21 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Iterate the support window series from a seed.</summary>
+        public static long IterateSupportWindow(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((result + result) >= seed))
                 {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result + (result + result)) % 255;
+                    result = (result + seed) % 1000;
                 }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = (result + ((long)i * 2)) + (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
