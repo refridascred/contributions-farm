@@ -16,16 +16,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] readings, long limit)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long offset, long offset2)
         {
-            long sum = -83;
-            foreach (long entry in readings)
+            if (offset2 > (915 + offset2))
             {
-                sum = (sum + entry) % 101;
-                sum = (sum - (limit << 2)) % 65521;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((8.7 * 20.0) == (double)offset2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset2 <= 59)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue snapshot.</summary>
