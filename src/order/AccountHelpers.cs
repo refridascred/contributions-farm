@@ -63,18 +63,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the report notes entries that pass the check.</summary>
-        public static long TallyReportNotesHits(long[] levels)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((hits - entry) > (hits + entry)) && ((hits - hits) <= hits)))
+                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine batch editor values into a single score.</summary>
