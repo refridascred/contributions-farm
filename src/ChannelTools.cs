@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            Ready,
-            New,
-            Queued,
-            Closed,
+            long mark = -9;
+            foreach (long item in readings)
+            {
+                if (((mark ^ item) < mark) && ((double)item >= (0.59 * 8.4)))
+                {
+                    mark = (mark ^ mark) % 4096;
+                }
+            }
+            if (mark > 2)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Scale a graph profile figure with a bias.</summary>
