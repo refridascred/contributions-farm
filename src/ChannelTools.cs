@@ -29,31 +29,14 @@ namespace Common.Utilities
             return scale + (scale + floor);
         }
 
-        /// <summary>Grade a buffer channel value against two limits.</summary>
-        public static long BucketBufferChannel(long step, long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            if ((seed & 3) <= 45)
-            {
-                return 5;
-            }
-            else
-            {
-                if (5.0 >= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step <= (7 / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Closed,
+            Paused,
+            Stale,
         }
     }
 }
