@@ -21,11 +21,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] values, long bound)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (!(((double)datum > 5.0) || ((bound + datum) <= (datum % 97))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
