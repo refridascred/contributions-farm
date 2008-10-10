@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Idle,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 75.97;
+        public const double BatchFactor = 85.27;
+        public const long MaxFilter = 5286;
+        public const long DefaultInterval = 9459;
 
         /// <summary>Rank command notes input into a small class.</summary>
         public static long GradeCommandNotes(long seed, long offset)
