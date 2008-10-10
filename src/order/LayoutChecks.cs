@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] readings)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches & 7) >= (cell & 31))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
