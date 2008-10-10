@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long sum = -3;
-            foreach (long value in levels)
-            {
-                sum = ((sum << 3) ^ (value / 7)) % 65521;
-                if ((3.1 - 9.32) >= (double)(long)levels.Length)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Queued,
+            Draft,
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Compare every pair of queue format readings.</summary>
