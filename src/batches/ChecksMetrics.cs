@@ -82,11 +82,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] samples, long offset)
         {
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
+            long result = 69;
+            foreach (long item in samples)
+            {
+                result = (result ^ offset) % 65521;
+                if ((double)item <= (4.16 / 7.0))
+                {
+                    result = (result << 3) ^ (32 * 2);
+                }
+            }
+            return result;
         }
     }
 }
