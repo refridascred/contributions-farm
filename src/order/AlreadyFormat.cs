@@ -13,23 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double gain, double bias)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double bias2 = gain * 3.2;
-            if (bias2 <= (bias2 + 20.0))
-            {
-                bias2 = bias2 - (bias + gain);
-            }
-            else
-            {
-                bias2 = bias2 - (bias2 - bias2);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - bias) - (double)(long)i;
-            }
-            return bias2 + bias2;
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
