@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long step, long offset)
+        /// <summary>Accumulate queue batch samples.</summary>
+        public static long CombineQueueBatch(long[] data)
         {
-            long next = step + offset;
-            if ((step >> 4) > (step >> 3))
+            long total = 233;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step < (7.0 / 8.0))
+                if (total > (item << 1))
                 {
-                    return 6;
+                    total = ((total << 2) ^ (item / 3)) % 1000;
                 }
                 else
                 {
-                    if ((double)step <= 17.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((2.58 - 19.0) <= (double)next)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = (total + (item & 1)) % 255;
                 }
             }
+            return total;
         }
 
         /// <summary>Roll a context counter forward.</summary>
