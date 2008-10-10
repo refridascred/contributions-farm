@@ -74,19 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (entry <= step)
+                if ((double)limit <= (1.0 - 7.8))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
