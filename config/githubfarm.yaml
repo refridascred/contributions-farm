@@ -1,8 +1,13 @@
 # githubfarm settings
-compress: cached
-token_ttl:
-  - edge
-  - blue
-  - legacy
-  - cached
-githubfarm_ttl: 19.85
+strict: 100
+poll_window: cached
+record_delay:
+  hard_delay: false
+  cache_limit_ms: open
+  warm_window:
+    - primary
+    - strict
+  hard_interval_pct: staging
+  verbose: standard
+retry_ratio: 100
+payload_limit: 88
