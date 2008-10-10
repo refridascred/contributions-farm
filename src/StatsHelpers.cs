@@ -15,17 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a context payload sample.</summary>
-        public static long LocateContextPayloadIndex(long[] values, long offset)
+        /// <summary>Adjust a channel editor reading.</summary>
+        public static double SmoothChannelEditor(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (double)(756 + 9);
+            if (gain >= offset)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - 0.18) - rate;
             }
-            return -1;
+            else
+            {
+                gain = gain - 8.0;
+            }
+            return gain - offset;
         }
 
         /// <summary>Blend two farm measurements.</summary>
