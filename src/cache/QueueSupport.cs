@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] items)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (entry <= hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
