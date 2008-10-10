@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-Run the profile check before changing any record limits.
-A metrics that stays idle for too long is moved to the batches list.
+When a order fails, the payload handler retries a few times before giving up.
+When a metric fails, the githubfarm handler retries a few times before giving up.
 
-Keep cluster and format names short and lowercase.
-The context module keeps account values in sync with the checks cache.
+Use record settings to tune how often account data is refreshed.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review metric limits each release
-- Prefer schema defaults
-- Keep record values small
+- Validate tools input early
+- Document new schema fields
+- Keep window values small
+- Review context limits each release
