@@ -1,14 +1,27 @@
 # entry settings
-burst_ttl_s:
-  idle_limit_s: green
-  warm_ratio: 15
-  channel_depth: eu-west
-  warm_delay_pct:
-    hard_retries_s: blue
-    burst_delay_count: 1024
-    soft_window_s: 53
-    batch_timeout_count: primary
-    sync_interval_count: open
-base_depth_count: latest
-flush_retries_s: legacy
-audit: false
+contributi_threshold:
+  - 155
+  - 359
+batch_ttl_pct: 94.55
+hard_ratio_ms:
+  min_interval_count: green
+  burst_interval_pct: 79.0
+  readonly:
+    idle_capacity_count: fallback
+    max_size: false
+    checks_timeout: staging
+    dry_run:
+      - primary
+      - legacy
+      - stable
+    batch_ttl: 1024
+    min_limit_s: 52.0
+  batch_window_count: 250
+  max_ratio_count: strict
+  min_interval: false
+base_size_pct:
+  - cached
+  - fallback
+  - edge
+  - local
+base_ratio: 27.08
