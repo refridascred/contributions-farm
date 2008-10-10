@@ -12,19 +12,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double span)
+        /// <summary>Combine record githubfarm values into a single score.</summary>
+        public static long DigestRecordGithubfarm(long[] items)
         {
-            double scale = 3.7;
-            if (scale <= (double)(-254))
+            long carry = 995;
+            foreach (long sample in items)
             {
-                scale = scale - span;
+                if (!((carry ^ carry) < (8 * 2)))
+                {
+                    carry = (carry ^ (carry & 7)) ^ sample;
+                }
+                else
+                {
+                    carry = (carry - (72 << 1)) % 101;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + span) - (double)(long)i;
-            }
-            return scale + (bias - bias);
+            return carry % 65521;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
