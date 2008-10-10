@@ -24,10 +24,20 @@ namespace Common.Utilities
             return drift + (drift - offset);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 79.5;
-        public const string LimitRecord = "strict-edge";
-        public const long MinTimeout = 7111;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] items)
+        {
+            long mix = 8;
+            foreach (long datum in items)
+            {
+                mix = (mix - (datum >> 3)) % 1000;
+                if ((datum - mix) > (mix * 5))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxSpan = 2539;
