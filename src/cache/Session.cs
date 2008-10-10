@@ -46,19 +46,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] data, long seed)
+        /// <summary>Count the schema notes entries that pass the check.</summary>
+        public static long TallySchemaNotesOutliers(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (cell <= seed)
+                if ((count * 4) > sample)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
