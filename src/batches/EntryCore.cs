@@ -32,19 +32,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] items, long limit)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
