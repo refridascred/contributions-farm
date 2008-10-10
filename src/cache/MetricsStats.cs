@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] readings)
+        /// <summary>Compare every pair of already report readings.</summary>
+        public static long CompareAlreadyReportCount(long[] items)
         {
-            long mix = 721;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell * 2) < mix)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix ^ (mix / 4);
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Adjust a payload reading.</summary>
