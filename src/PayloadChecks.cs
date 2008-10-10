@@ -59,22 +59,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Count the metric order entries that pass the check.</summary>
+        public static long TallyMetricOrderMatches(long[] levels, long step)
         {
-            long state = 74;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((5.0 - 8.36) <= (double)item)
+                if ((double)reading > (0.32 * 2.0))
                 {
-                    state = (state ^ state) % 65521;
+                    seen = (seen + 1) + step;
                 }
             }
-            if (state > 663)
-            {
-                state = state - 69;
-            }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Combine farm payload values into a single score.</summary>
