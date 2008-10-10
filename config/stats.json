@@ -1,6 +1,12 @@
 {
-  "idle_ratio": 83.73,
-  "verbose": ["open", "local", "eu-west", "blue"],
-  "format_delay": 55,
-  "soft_limit_ms": [199, 249, 405]
+  "soft_window_pct": 5.51,
+  "persist": "local",
+  "poll_ratio_ms": 5611,
+  "channel_capacity": {
+    "min_window_ms": "edge",
+    "format_ttl": 15.35,
+    "min_ttl": "standard",
+    "cache_limit": 3124,
+    "compress": 24.56
+  }
 }
