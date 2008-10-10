@@ -53,19 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = ((result - (result + result)) % 4096) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Draft,
+            Stale,
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
