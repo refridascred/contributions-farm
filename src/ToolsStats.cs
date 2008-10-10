@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Audit batches support readings against a rule.</summary>
+        public static long CountBatchesSupportOutliers(long[] values)
         {
-            Failed,
-            Dropped,
-            Done,
-            Idle,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading >> 1) < (reading & 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
