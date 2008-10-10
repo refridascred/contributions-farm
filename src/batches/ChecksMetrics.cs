@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metrics layout entry that matches the target.</summary>
-        public static long FindMetricsLayoutIndex(long[] values, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (values[i] == bound)
+                if ((double)item >= 13.0)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
