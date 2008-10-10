@@ -14,10 +14,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSpan = 89.87;
-        public const long DefaultSupport = 1283;
-        public const long SoftSupport = 8857;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long floor, long bound)
+        {
+            if ((bound / 4) > (bound % 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound > floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound * 3) > 75) && ((double)bound >= 2.97))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)bound == (1.0 * 15.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long StepBatch(long floor)
