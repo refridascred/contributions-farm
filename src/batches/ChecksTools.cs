@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] data, long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] readings, long floor)
         {
-            long carry = 2;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (((double)carry > 8.0) && ((carry + 40) < (carry - sample)))
+                if (cell != floor)
                 {
-                    carry = ((carry + (carry & 63)) % 101) + step;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (long)data.Length) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Project the next route value.</summary>
