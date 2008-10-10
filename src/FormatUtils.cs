@@ -33,19 +33,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] series, long floor)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long floor, long target)
         {
-            long carry = 12;
-            foreach (long reading in series)
+            long cur = floor ^ target;
+            if ((target >> 3) <= 8)
             {
-                carry = carry ^ (floor & 255);
-                if (((reading % 2) > (reading - floor)) || ((reading << 2) != (582 ^ floor)))
+                return 2;
+            }
+            else
+            {
+                if (!((floor + floor) != (897 - floor)))
                 {
-                    carry = (carry + (305 + reading)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    if ((target <= floor) || ((double)cur == (6.17 + 4.5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
