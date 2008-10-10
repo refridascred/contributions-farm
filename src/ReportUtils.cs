@@ -51,21 +51,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Synced,
+            Stale,
+            Idle,
+            Retry,
         }
     }
 }
