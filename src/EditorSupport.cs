@@ -63,11 +63,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryNotes = "stable-1";
-        public const long CacheScore = 8991;
-        public const long HardLevel = 6312;
-        public const long MinNotes = 6893;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheHits(long[] values, long origin)
