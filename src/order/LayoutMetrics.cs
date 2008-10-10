@@ -30,13 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Adjust a context stats reading.</summary>
+        public static double BlendContextStats(double ratio, double span)
         {
-            Queued,
-            New,
-            Retry,
-            Active,
+            double scale = (double)9 + (double)787;
+            if (scale < scale)
+            {
+                scale = ((scale - scale) + ratio) - span;
+            }
+            return scale - scale;
         }
     }
 }
