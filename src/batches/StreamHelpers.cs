@@ -31,19 +31,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
-        public static bool GuardBufferGithubfarmBounds(long[] levels, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (reading <= seed)
+                if (reading > seed)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
