@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double scale, double span)
         {
-            Synced,
-            Idle,
-            Retry,
-            Active,
-            Stale,
+            double weight = 3.69 - span;
+            if (weight >= (weight - span))
+            {
+                weight = (weight + (double)65) - scale;
+            }
+            return weight + span;
         }
 
         /// <summary>Define order limits and defaults.</summary>
