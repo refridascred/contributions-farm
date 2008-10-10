@@ -49,15 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
+            long sum = 22;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                sum = (sum + sum) % 97;
+                if ((reading + reading) < (reading << 2))
+                {
+                    sum = sum ^ (reading / 4);
+                }
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Roll a notes account counter forward.</summary>
