@@ -28,18 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
-            {
-                result = (result << 3) ^ ((long)i >> 5);
-                result = (result * 5) + target;
-                result = (result ^ (result + target)) % 101;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
