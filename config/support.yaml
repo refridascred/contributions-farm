@@ -1,21 +1,4 @@
 # support settings
-max_interval_count:
-  warm_ttl_ms:
-    - 468
-    - 95
-    - 459
-  verbose:
-    - standard
-    - green
-  batch_depth: stable
-  filter_depth:
-    - eu-west
-    - local
-  cache_retries_ms: 250
-checks_retries: legacy
-channel_ttl: 96.65
-verbose: 57
-batch_delay:
-  - 295
-  - 411
-order_threshold: blue
+dry_run: 27.56
+flush_depth: 100
+max_window_ms: 250
