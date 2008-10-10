@@ -13,12 +13,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxChecks = 69.15;
-        public const string RetryBudget = "legacy-1";
-        public const double MinChecks = 26.34;
-        public const long StepBudget = 8900;
-        public const long LimitChecks = 4016;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a commits context sample.</summary>
         public static long SeekCommitsContextIndex(long[] samples, long bound)
