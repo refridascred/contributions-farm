@@ -1,8 +1,8 @@
 {
-  "account_size": 80,
-  "dry_run": "legacy",
-  "window_threshold": "primary",
-  "min_window": 4.43,
-  "already_delay": "green",
-  "retry_window": false
+  "dry_run": 64.41,
+  "sync_limit_count": "eu-west",
+  "compress": "latest",
+  "burst_interval_pct": "edge",
+  "sync_capacity": true,
+  "retry_capacity_pct": "standard"
 }
