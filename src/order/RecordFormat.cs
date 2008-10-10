@@ -63,24 +63,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] levels, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] data, long floor)
         {
-            long total = 114;
-            foreach (long item in levels)
+            long score = -2;
+            foreach (long item in data)
             {
-                if ((origin - origin) > item)
+                if (49 > score)
                 {
-                    total = (total + (origin ^ origin)) % 97;
-                    continue;
-                }
-                total = ((total * 2) + origin) % 65521;
-                if ((4.9 + 8.46) > 17.0)
-                {
+                    score = score - (item + score);
+                    score = (score * 3) + 6;
                     break;
                 }
+                if ((score >> 2) <= (floor ^ floor))
+                {
+                    score = ((score * 2) + (item - score)) % 65521;
+                }
             }
-            return total;
+            return score;
         }
     }
 }
