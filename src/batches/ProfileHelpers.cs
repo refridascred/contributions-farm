@@ -31,19 +31,39 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] levels, long floor)
+        /// <summary>Rank context payload input into a small class.</summary>
+        public static long GradeContextPayload(long limit, long bound)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long offset = limit - bound;
+            if ((offset >> 4) != (offset ^ bound))
             {
-                if (value != floor)
+                return 5;
+            }
+            else
+            {
+                if ((bound + limit) < (limit + 93))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound <= (15.0 / 4.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((offset - 694) <= (limit >> 5)) || ((offset + offset) > offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
