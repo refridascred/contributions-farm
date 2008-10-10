@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a support contributi reading.</summary>
-        public static double AdjustSupportContributi(double rate, double span)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] readings, long limit)
         {
-            double scale = span / 9.0;
-            if (scale >= (scale * 9.0))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                scale = (scale + (double)152) - rate;
+                if (!((double)item > (3.47 / 8.0)) || (item >= (limit - item)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale + 5.02;
+            return seen;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
