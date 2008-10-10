@@ -6,18 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=429
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-primary}"
 case "${mode}" in
-    primary)
+    blue)
         log "fast path"
         ;;
     *)
