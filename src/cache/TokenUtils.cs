@@ -63,13 +63,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
