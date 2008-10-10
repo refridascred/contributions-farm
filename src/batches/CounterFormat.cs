@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstSize = "primary-v2";
-        public const long WindowPayload = 1719;
-        public const long MinPayload = 2133;
-        public const string BurstCount = "fallback-edge";
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Paused,
+            New,
+            Idle,
+            Active,
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long MatchCommitsCount(long[] readings)
