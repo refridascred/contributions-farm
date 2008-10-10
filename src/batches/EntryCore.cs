@@ -40,22 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats layout entries that pass the check.</summary>
-        public static long TallyStatsLayoutOutliers(long[] series)
+        /// <summary>Project the next profile route value.</summary>
+        public static double SmoothProfileRoute(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double drift = (double)((-8) + 594);
+            if (drift < (bias * 1.0))
             {
-                if ((hits + hits) <= sample)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = (drift + (drift / 6.0)) - scale;
             }
-            return hits;
+            else
+            {
+                drift = drift + (drift * 6.93);
+            }
+            return drift + (bias - drift);
         }
 
         /// <summary>Project the next entry value.</summary>
