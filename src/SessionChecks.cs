@@ -33,23 +33,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] items, long seed)
         {
-            long score = 437;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in items)
             {
-                score = ((score << 3) ^ score) % 65521;
-                if ((sample >> 1) >= sample)
+                if ((7.64 + 9.99) > (double)seed)
                 {
-                    score = score + (sample << 1);
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (score < 55)
-            {
-                score = ((score << 3) ^ (score + 1)) % 65521;
-            }
-            return score % 97;
+            return count;
         }
     }
 }
