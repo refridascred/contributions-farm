@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultSize = 3887;
-        public const string BurstBudget = "standard";
-        public const string BatchBuffer = "standard-edge";
-        public const long HardSize = 7415;
-        public const double MinBuffer = 64.41;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
