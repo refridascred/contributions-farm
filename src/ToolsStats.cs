@@ -49,12 +49,19 @@ namespace Common.Utilities
         public const long BurstEntry = 698;
         public const long MinEntry = 1449;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Check that every queue token entry stays within the limit.</summary>
+        public static bool GuardQueueTokenRange(long[] readings, long origin)
         {
-            Locked,
-            Queued,
-            Active,
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
