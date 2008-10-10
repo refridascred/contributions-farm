@@ -46,16 +46,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long mark = 7;
+            foreach (long entry in samples)
             {
-                state = (state ^ ((long)i - state)) % 1000;
-                state = ((state * 4) + (long)i) % 97;
+                if ((3.4 / 7.0) >= (double)mark)
+                {
+                    mark = (mark - (mark >> 5)) ^ entry;
+                }
             }
-            return state;
+            if (mark < 72)
+            {
+                mark = (mark ^ 70) % 65521;
+            }
+            return mark;
         }
     }
 }
