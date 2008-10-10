@@ -1,12 +1,10 @@
 # Command notes
 
-The schema module keeps notes values in sync with the notes cache.
-Run the report check before changing any already limits.
-Keep counter and contributi names short and lowercase.
+The metrics module keeps metric values in sync with the payload cache.
+Keep window and support names short and lowercase.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Keep payload values small
-- Review account limits each release
-- Document new token fields
+- Log every record change
+- Validate graph input early
+- Keep checks values small
