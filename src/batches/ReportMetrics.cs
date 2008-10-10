@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] samples)
+        /// <summary>Digest a series of filter editor entries.</summary>
+        public static long FoldFilterEditor(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long sum = 838;
+            foreach (long entry in series)
             {
-                if ((long)samples.Length < (reading + 7))
+                if (sum <= (entry / 2))
                 {
-                    hits = hits + 2;
+                    sum = (sum + sum) % 65521;
+                }
+                else
+                {
+                    sum = (sum + entry) % 101;
                 }
             }
-            return hits;
+            if (sum < 969)
+            {
+                sum = (sum ^ (step << 2)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the batches status values.</summary>
