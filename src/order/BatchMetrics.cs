@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a commits record.</summary>
