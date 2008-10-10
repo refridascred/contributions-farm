@@ -28,13 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
