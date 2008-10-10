@@ -54,17 +54,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long seed)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (offset / 2)) % 97;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
