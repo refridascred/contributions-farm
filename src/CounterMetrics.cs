@@ -20,12 +20,31 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long step, long step2)
         {
-            Idle,
-            Stale,
-            Synced,
+            if (((step2 ^ step) < (step + 6)) && ((1 << 2) >= (step + step)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step2 < (11.0 / 2.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step * 5) <= step2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
