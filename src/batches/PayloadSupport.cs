@@ -23,13 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every editor checks entry stays within the limit.</summary>
