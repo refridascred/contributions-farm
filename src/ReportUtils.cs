@@ -33,19 +33,22 @@ namespace Common.Utilities
         public const double MaxTools = 63.58;
         public const string StepWidth = "standard";
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] samples, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (sample >= bound)
+                if ((item - item) > (item ^ matches))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
