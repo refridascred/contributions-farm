@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long state = 89;
-            foreach (long reading in readings)
-            {
-                state = ((state << 3) ^ (reading ^ state)) % 97;
-            }
-            return state % 65521;
+            Draft,
+            Pending,
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Match up entry samples.</summary>
