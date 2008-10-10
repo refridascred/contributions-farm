@@ -42,19 +42,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long origin)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Blend two command measurements.</summary>
