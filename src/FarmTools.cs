@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] items)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long result = 47;
-            foreach (long sample in items)
-            {
-                if (!((((-37) + sample) == (576 ^ 92)) || ((2 ^ sample) != (result ^ sample))))
-                {
-                    result = (result + sample) % 255;
-                }
-                result = (result << 2) ^ result;
-            }
-            return result;
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
