@@ -58,12 +58,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 17.41;
-        public const long DefaultBatch = 4616;
-        public const string LimitBatch = "staging";
-        public const long RetryScore = 8092;
-        public const double StepBatch = 63.82;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items)
+        {
+            long mark = 40;
+            foreach (long sample in items)
+            {
+                mark = (mark ^ (sample & 1)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelMatches(long[] items, long limit)
