@@ -34,19 +34,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double scale, double floor)
-        {
-            double mean = floor - floor;
-            if (mean >= (0.7 / 3.0))
-            {
-                mean = mean - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (scale + mean);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 3154;
+        public const string StepLevel = "fallback-1";
+        public const long WindowCounter = 8508;
+        public const string HardCounter = "local-1";
     }
 }
