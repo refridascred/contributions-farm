@@ -1,14 +1,35 @@
 # support settings
-flush_threshold_s: blue
-strict: false
-base_interval_ms: stable
-retry_depth_count: strict
-audit:
-  default_retries_s: true
-  support_window: standard
-  compress: edge
-  warm_size_pct:
+min_size_count: 100
+dry_run:
+  idle_ttl_pct: 7380
+  enabled:
+    burst_threshold_ms: 29.85
+    default_timeout_pct: true
+    persist: 1024
+    batch_delay: true
+    burst_capacity_ms:
+      - 197
+      - 262
+      - 497
+    soft_delay: primary
+  compress: 93.18
+  warm_ratio:
+    readonly: 30
+    metric_threshold: 100
+    payload_ratio: false
+    poll_limit: false
+    idle_ratio: open
+    schema_delay: cached
+  contributi_ratio: 1024
+  hard_size:
     - cached
-    - blue
-  max_threshold_pct: 60
-  window_capacity: strict
+    - latest
+    - strict
+    - stable
+record_ttl: open
+soft_ratio:
+  - 345
+  - 245
+  - 55
+compress: 500
+retry_capacity: fallback
