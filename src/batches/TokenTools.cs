@@ -33,18 +33,15 @@ namespace Common.Utilities
             return weight + (weight - rate);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] samples, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long state = 9;
+            foreach (long reading in samples)
             {
-                if ((4 - step) <= (hits & 31))
-                {
-                    hits = (hits + 1) - value;
-                }
+                state = ((state - (reading & 3)) % 4096) - limit;
             }
-            return hits;
+            return state % 65521;
         }
     }
 }
