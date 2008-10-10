@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
