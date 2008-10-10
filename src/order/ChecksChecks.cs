@@ -30,39 +30,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long origin, long limit)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long cur = origin - limit;
-            if ((limit % 16) < (cur / 9))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin > (9.28 - 19.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit & 255) == (6 / 8)) || ((cur - cur) <= origin))
+                    if ((values[i] ^ values[j]) < 19)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((cur % 2) < (limit ^ limit)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
