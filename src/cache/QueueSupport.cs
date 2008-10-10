@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of context checks entries.</summary>
-        public static long ScoreContextChecks(long[] levels, long target)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long carry = 7;
-            foreach (long cell in levels)
-            {
-                carry = ((carry << 2) ^ (target % 7)) + cell;
-                if ((target ^ carry) != (target & 3))
-                {
-                    carry = ((carry * 2) + 38) % 4096;
-                }
-            }
-            return carry;
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
