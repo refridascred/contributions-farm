@@ -1,5 +1,8 @@
 {
-  "soft_ttl": "local",
-  "audit": 34,
-  "warm_size_s": "strict"
+  "max_delay_pct": 49,
+  "enabled": 20.74,
+  "burst_capacity_count": "legacy",
+  "farm_window": 1902,
+  "dry_run": false,
+  "report_capacity": false
 }
