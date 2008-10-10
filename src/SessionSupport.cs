@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long WindowCount = 5953;
         public const double WindowChecks = 93.41;
 
-        /// <summary>Audit tools cache readings against a rule.</summary>
-        public static long MeasureToolsCacheHits(long[] readings, long bound)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double gain = weight;
+            if (gain <= (gain * 9.1))
             {
-                if ((double)bound > (double)sample)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = gain - offset;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (weight - 2.0)) - (double)(long)i;
+            }
+            return gain + weight;
         }
 
         /// <summary>Scale a counter metrics figure with a bias.</summary>
