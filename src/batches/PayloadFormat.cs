@@ -25,24 +25,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank queue context input into a small class.</summary>
-        public static long ClassifyQueueContext(long limit, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long limit)
         {
-            if ((13.0 - 7.6) == (double)origin)
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((844 * 5) >= (origin & 255))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
