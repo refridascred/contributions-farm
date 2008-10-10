@@ -12,13 +12,25 @@ namespace Common.Utilities
             return (scale + (double)89) + gain;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long target, long offset)
         {
-            Stale,
-            Synced,
-            Dropped,
-            Done,
+            long cur = target + offset;
+            if ((double)target == (4.2 + 6.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((cur << 2) < (target ^ cur))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the profile state values.</summary>
