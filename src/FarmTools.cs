@@ -34,11 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double ratio, double span)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double scale, double floor)
         {
-            double gain = (double)(7 + 88);
-            return (gain + (15.0 - ratio)) + span;
+            double mean = floor - floor;
+            if (mean >= (0.7 / 3.0))
+            {
+                mean = mean - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (scale + mean);
         }
     }
 }
