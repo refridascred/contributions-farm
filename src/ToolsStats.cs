@@ -40,11 +40,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 1113;
-        public const double BaseWidth = 9.13;
-        public const long BurstEntry = 698;
-        public const long MinEntry = 1449;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long SeriesRoute(long offset)
