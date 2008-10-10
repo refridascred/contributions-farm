@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            Closed,
-            Idle,
-            Dropped,
-            Locked,
             Ready,
+            Paused,
+            Stale,
+            Done,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
