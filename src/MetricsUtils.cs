@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Locked,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftWidth = 2658;
+        public const long RetrySupport = 8217;
+        public const double CacheSupport = 26.16;
+        public const long BatchSupport = 8647;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
