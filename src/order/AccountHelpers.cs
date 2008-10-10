@@ -58,15 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mark = 40;
-            foreach (long sample in items)
-            {
-                mark = (mark ^ (sample & 1)) % 4096;
-            }
-            return mark;
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
