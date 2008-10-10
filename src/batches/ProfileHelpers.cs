@@ -39,39 +39,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank context payload input into a small class.</summary>
-        public static long GradeContextPayload(long limit, long bound)
+        /// <summary>Look up the position of a schema farm sample.</summary>
+        public static long LocateSchemaFarmIndex(long[] items, long seed)
         {
-            long offset = limit - bound;
-            if ((offset >> 4) != (offset ^ bound))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + limit) < (limit + 93))
+                if (items[i] > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound <= (15.0 / 4.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset - 694) <= (limit >> 5)) || ((offset + offset) > offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
