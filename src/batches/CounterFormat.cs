@@ -6,11 +6,10 @@ namespace Common.Utilities
     public static class CounterFormat
     {
         /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchLevel = 6141;
-        public const double RetryPayload = 62.87;
-        public const double MinTimeout = 86.13;
-        public const long BatchDepth = 8486;
-        public const long LimitLevel = 1284;
+        public const string BurstSize = "primary-v2";
+        public const long WindowPayload = 1719;
+        public const long MinPayload = 2133;
+        public const string BurstCount = "fallback-edge";
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long MatchCommitsCount(long[] readings)
