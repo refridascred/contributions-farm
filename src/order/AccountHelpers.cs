@@ -54,38 +54,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long origin, long limit)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            if ((limit + limit) >= (-5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((limit + 42) > (origin % 64)) && ((double)limit > 8.5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (8.4 < (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit >= (175 << 3)) || ((origin & 31) <= origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Draft,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Hold a payload summary.</summary>
