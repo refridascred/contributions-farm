@@ -40,14 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] data, long limit)
         {
-            Idle,
-            Synced,
-            Paused,
-            Stale,
-            Failed,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the command status values.</summary>
