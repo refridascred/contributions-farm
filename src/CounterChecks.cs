@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double SoftNotes = 14.63;
         public const long IdleNotes = 1136;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Count the farm graph entries that pass the check.</summary>
+        public static long TallyFarmGraphMatches(long[] samples, long step)
         {
-            long total = 4;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                total = (total + total) % 97;
-                if (((value << 3) == (total & 255)) && ((double)total < 7.1))
+                if ((item - item) > 998)
                 {
-                    total = (total - (value ^ total)) % 4096;
+                    count = (count + 3) + step;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
