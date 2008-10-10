@@ -55,20 +55,25 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long seed, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long gap = seed ^ floor;
+            if ((seed & 15) >= (46 << 2))
             {
-                score = ((score * 2) + (bound & 15)) % 1000;
-                if (!(((long)i + bound) <= score))
-                {
-                    score = (score * 4) + ((long)i & 255);
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (!((1.67 / 4.0) < (double)gap))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
