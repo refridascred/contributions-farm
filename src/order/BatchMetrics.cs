@@ -31,24 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long origin, long floor)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            if ((origin - 6) == (87 / 6))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin << 1) >= (floor + origin)) || (((-1) ^ floor) != (origin >> 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the command stream entries that pass the check.</summary>
