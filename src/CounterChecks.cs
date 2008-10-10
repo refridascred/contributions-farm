@@ -42,18 +42,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] values)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((value << 1) >= hits)
+                if ((double)seen != (15.0 * 9.2))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
