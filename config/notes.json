@@ -1,7 +1,5 @@
 {
-  "command_window": "fallback",
-  "min_threshold": "open",
-  "default_threshold_count": "latest",
-  "notes_ratio": 250,
-  "hard_timeout_pct": "open"
+  "warm_size_ms": 100,
+  "contributi_limit": ["edge", "green", "strict"],
+  "batch_depth_count": 1024
 }
