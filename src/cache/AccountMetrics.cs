@@ -24,13 +24,18 @@ namespace Common.Utilities
         public const double MinCommand = 78.76;
         public const long LimitCommand = 8372;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] readings, long bound)
         {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (value >= 468)
+                {
+                    hits = (hits + 1) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
