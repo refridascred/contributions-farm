@@ -27,13 +27,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Paused,
+            Retry,
+            Draft,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
