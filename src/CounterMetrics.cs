@@ -63,22 +63,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report support entries that pass the check.</summary>
-        public static long TallyReportSupportGaps(long[] samples, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long score = 7;
+            foreach (long datum in data)
             {
-                if ((cell << 3) > (step / 2))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 2) + score) + datum;
             }
-            return tally;
+            return score;
         }
     }
 }
