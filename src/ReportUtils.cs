@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 75.97;
-        public const double BatchFactor = 85.27;
-        public const long MaxFilter = 5286;
-        public const long DefaultInterval = 9459;
+        /// <summary>Classify a schema filter pair into a bucket.</summary>
+        public static long RankSchemaFilter(long seed, long offset)
+        {
+            if (offset > (seed % 10))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed <= (seed - offset)) || (offset >= (seed + seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed < offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset + offset) > (927 - offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
