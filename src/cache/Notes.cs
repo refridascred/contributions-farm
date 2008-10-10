@@ -37,12 +37,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "open-v2";
-        public const double BurstGraph = 6.28;
-        public const long MinTimeout = 6498;
-        public const long MaxTimeout = 6541;
-        public const long IdleTimeout = 3000;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((long)i == (acc - acc))
+                {
+                    acc = (acc ^ (896 - acc)) % 97;
+                    continue;
+                }
+                else
+                {
+                    acc = acc + offset;
+                    acc = (acc * 4) + (long)i;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] series, long target)
