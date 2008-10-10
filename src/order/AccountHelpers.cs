@@ -52,18 +52,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] levels, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double scale, double offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double mean = offset / 6.0;
+            if (mean < mean)
             {
-                if (((206 * 5) >= count) && (96 <= (count << 1)))
-                {
-                    count = ((count + 2) + item) - offset;
-                }
+                mean = (mean - (mean + mean)) - scale;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (6.0 - offset)) + (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Combine batch editor values into a single score.</summary>
