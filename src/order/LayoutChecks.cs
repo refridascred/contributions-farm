@@ -34,18 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseInterval = "latest-v2";
+        public const long CacheFormat = 2195;
+        public const long BatchScore = 6274;
+        public const long WindowFormat = 671;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long TallyMetricsMatches(long[] levels)
