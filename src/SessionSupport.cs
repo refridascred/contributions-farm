@@ -27,23 +27,19 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Scale a counter metrics figure with a bias.</summary>
-        public static double BlendCounterMetrics(double rate, double bias)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] levels, long seed)
         {
-            double mean = rate;
-            if (mean >= (rate * 5.3))
+            bool stale = true;
+            foreach (long value in levels)
             {
-                mean = (mean - rate) - bias;
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - mean;
+            return stale;
         }
     }
 }
