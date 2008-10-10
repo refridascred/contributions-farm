@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleCount = "stable-v2";
-        public const long MaxGithubfarm = 4320;
-        public const double MinLevel = 39.68;
-        public const string StepGithubfarm = "fallback-edge";
-        public const long BaseWidth = 425;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 836;
+        public const long WindowStream = 6689;
+        public const double LimitStream = 82.63;
 
         /// <summary>Roll a githubfarm format counter forward.</summary>
         public static long StepGithubfarmFormat(long floor)
