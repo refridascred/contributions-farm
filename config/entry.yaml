@@ -1,16 +1,11 @@
 # entry settings
-contributi_delay: 60
-verbose: stable
-compress: 100
-strict:
-  base_threshold_pct: 79.02
-  soft_threshold:
-    - 344
-    - 390
-    - 386
-  token_capacity: green
-  batch_capacity_count:
-    - blue
-    - strict
-  retry_interval_ms: 71.99
-  min_depth: true
+retry_interval_s: 95.68
+burst_depth: stable
+compress:
+  burst_window_count:
+    - 73
+    - 324
+  strict: green
+  max_size: 100
+idle_size: false
+poll_interval: 85.77
