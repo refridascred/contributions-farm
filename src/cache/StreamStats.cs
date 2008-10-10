@@ -15,10 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 4436;
-        public const string WindowProfile = "stable-1";
-        public const long IdleBudget = 1208;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinWidth = 4677;
+        public const long MaxCommits = 3676;
+        public const long StepCommits = 1726;
+        public const long StepSpan = 1324;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardSize = 7431;
