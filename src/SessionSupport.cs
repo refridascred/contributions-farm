@@ -28,18 +28,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)hits == (9.7 * 9.0))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 1075;
+        public const long MinSize = 5227;
+        public const long LimitFactor = 330;
     }
 }
