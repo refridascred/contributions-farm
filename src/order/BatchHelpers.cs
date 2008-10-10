@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((step & 15) <= mix) && ((mix & 1) > (step >> 3)))
-                {
-                    mix = mix + (mix ^ mix);
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Closed,
+            Retry,
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define record limits and defaults.</summary>
