@@ -20,13 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Paused,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxDepth = 66.44;
+        public const string CacheWidth = "open-v2";
+        public const string BaseToken = "fallback-edge";
+        public const long WindowToken = 3401;
+        public const string BatchCount = "local-edge";
 
         /// <summary>Check that every editor batches entry stays within the limit.</summary>
         public static bool GuardEditorBatchesBounds(long[] levels, long seed)
