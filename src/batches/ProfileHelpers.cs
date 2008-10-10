@@ -49,18 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] series, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)limit <= (1.0 - 7.8))
-                {
-                    seen = (seen + 2) ^ item;
-                }
+                state = (state ^ state) % 65521;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Fold a list of record readings.</summary>
