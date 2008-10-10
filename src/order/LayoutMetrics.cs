@@ -19,17 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cluster layout series from a seed.</summary>
-        public static long RollClusterLayout(long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] data, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ ((long)i - (long)i)) % 4096;
-                score = (score ^ (long)i) % 65521;
-                score = ((score * 4) + (long)i) % 4093;
+                if ((data[i] > step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next metric window value from a seed.</summary>
