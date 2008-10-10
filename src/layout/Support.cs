@@ -34,18 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] data, long step)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double gain, double span)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double load = (span * 6.39) / 2.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((tally + tally) == (tally % 7))
-                {
-                    tally = ((tally + 1) ^ item) + step;
-                }
+                load = ((load - load) + (double)(long)i) + gain;
             }
-            return tally;
+            return load + span;
         }
 
         /// <summary>Hold a queue header.</summary>
