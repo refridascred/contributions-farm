@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] values)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] samples, long floor)
         {
-            long mix = -88;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((cell >> 4) >= cell))
+                if ((samples[i] >= floor) && ((samples[i] % 5) != 0))
                 {
-                    mix = ((mix << 3) ^ (cell & 31)) % 97;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
