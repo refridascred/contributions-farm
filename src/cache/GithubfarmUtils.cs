@@ -31,19 +31,25 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] series, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long origin)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long span = limit - origin;
+            if (origin > span)
             {
-                if (sample != origin)
+                return 6;
+            }
+            else
+            {
+                if (span > limit)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
     }
 }
