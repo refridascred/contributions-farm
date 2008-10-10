@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] series)
         {
-            Retry,
-            Done,
-            Active,
+            long total = 53;
+            foreach (long sample in series)
+            {
+                total = ((total << 3) ^ (total & 127)) - sample;
+            }
+            return total;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
