@@ -13,18 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] items)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((4.0 * 6.0) > (double)count)
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
