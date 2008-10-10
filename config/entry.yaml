@@ -1,37 +1,16 @@
 # entry settings
-queue_threshold:
-  - 462
-  - 58
-  - 366
-base_interval_pct: 7388
-poll_timeout:
-  hard_size_ms: primary
-  readonly: false
-  persist:
-    - strict
-    - open
-  batch_ttl: 5070
+contributi_delay: 60
+verbose: stable
+compress: 100
 strict:
-  - eu-west
-  - local
-  - primary
-base_ttl:
-  warm_capacity_ms:
-    base_delay: strict
-    default_interval_s: 11.1
-    payload_threshold: 100
-  max_retries: 14
-  cache_capacity_s:
-    - staging
-    - cached
-  sync_threshold_s:
-    default_delay_count: 52.94
-    flush_timeout_count: 662
-    record_timeout: latest
-    idle_size_s: cached
-    default_capacity_ms:
-      - staging
-      - cached
-      - strict
-    metric_threshold: 250
-  batch_capacity: stable
+  base_threshold_pct: 79.02
+  soft_threshold:
+    - 344
+    - 390
+    - 386
+  token_capacity: green
+  batch_capacity_count:
+    - blue
+    - strict
+  retry_interval_ms: 71.99
+  min_depth: true
