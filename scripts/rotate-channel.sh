@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge local cached legacy; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=178
+log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-cached}"
+mode="${1:-legacy}"
 case "${mode}" in
-    edge)
+    legacy)
         log "fast path"
         ;;
     *)
