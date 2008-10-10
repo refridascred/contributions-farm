@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double rate, double offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            double scale = 4.29 + 4.45;
-            if (scale <= (double)110)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale - (double)36) - rate) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (double)4;
-            }
-            return scale + (8.24 - 11.0);
+            return hits;
         }
 
         /// <summary>Describe the token class values.</summary>
