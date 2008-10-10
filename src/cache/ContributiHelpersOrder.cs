@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double gain, double span)
-        {
-            double scale = span / 7.0;
-            return (scale + (double)89) + gain;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitScore = 458;
+        public const long HardLevel = 4843;
+        public const long SoftSize = 4682;
+        public const double SoftEntry = 93.34;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleInterval = 7060;
