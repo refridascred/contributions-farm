@@ -19,31 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long step, long target)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            if ((double)target <= (1.0 + 17.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + step) < (1 >> 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((12 - (-2)) <= (target / 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
