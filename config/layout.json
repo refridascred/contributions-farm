@@ -1,6 +1,18 @@
 {
-  "enabled": 90.18,
-  "soft_capacity_count": true,
-  "support_depth": 30,
-  "warm_ttl_pct": "legacy"
+  "base_delay_pct": {
+    "compress": "legacy",
+    "flush_timeout_s": 88,
+    "graph_timeout": true,
+    "route_window": [345, 323, 162, 31]
+  },
+  "enabled": 6985,
+  "order_ttl": 21.56,
+  "cache_timeout_count": {
+    "burst_threshold_s": false,
+    "hard_ratio_ms": [326, 420],
+    "batches_depth": 93.87,
+    "audit": "primary"
+  },
+  "min_delay": 60,
+  "sync_delay_s": 67
 }
