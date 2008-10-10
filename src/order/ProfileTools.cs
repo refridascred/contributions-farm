@@ -41,21 +41,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Blend two format cluster measurements.</summary>
+        public static double SmoothFormatCluster(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (bias * 2.44) * 2.7;
+            if (weight > (double)6)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight - (bias2 + weight);
             }
-            return count;
+            else
+            {
+                weight = weight - 7.42;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - (weight - bias2);
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
