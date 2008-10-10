@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 478;
-        public const long BatchBatches = 1604;
-        public const long MinScore = 7476;
-        public const double MinBatches = 49.09;
+        /// <summary>Audit buffer cache readings against a rule.</summary>
+        public static long CountBufferCacheMatches(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((limit >> 4) == (entry & 15))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long bound)
