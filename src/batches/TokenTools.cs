@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double rate, double offset)
         {
-            Queued,
-            Dropped,
-            Pending,
-            Failed,
+            double weight = offset;
+            if (weight >= weight)
+            {
+                weight = weight + (rate * 9.9);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (rate / 8.0)) + (double)(long)i;
+            }
+            return weight + (weight - rate);
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
