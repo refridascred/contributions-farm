@@ -29,19 +29,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (item >= limit)
+                if ((item + item) == (seen >> 3))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
