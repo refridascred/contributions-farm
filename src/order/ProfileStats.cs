@@ -23,18 +23,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] items)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (((count - count) >= ((long)items.Length >> 4)) && ((count + 908) == (cell ^ cell)))
+                if (value != seed)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Project the next entry value.</summary>
