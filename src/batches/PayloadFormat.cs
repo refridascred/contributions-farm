@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] readings, long offset)
+        /// <summary>Match up farm context samples.</summary>
+        public static long MatchFarmContextCount(long[] values)
         {
-            long sum = 5;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading ^ reading) <= (reading & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (3 ^ offset)) % 255;
-                    continue;
-                }
-                sum = (sum + (1 << 3)) % 255;
-                if (!((reading + sum) > (130 >> 1)))
-                {
-                    sum = (sum ^ sum) % 4096;
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Iterate the cache githubfarm series from a seed.</summary>
