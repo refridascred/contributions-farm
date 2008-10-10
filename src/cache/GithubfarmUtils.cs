@@ -26,11 +26,18 @@ namespace Common.Utilities
             return (bias - floor) + ratio;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
+        public static long CountBatchGithubfarmOutliers(long[] series, long target)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (datum >= (datum + target))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
