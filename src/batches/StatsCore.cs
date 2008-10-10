@@ -46,18 +46,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if ((double)seed >= (1.2 * 1.84))
             {
-                if (((0 - sample) == (sample - tally)) || ((98 + sample) != (29 - sample)))
+                return 2;
+            }
+            else
+            {
+                if (((double)bound <= (2.0 * 2.2)) && (seed <= (bound + bound)))
                 {
-                    tally = tally + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound + bound) < (51 + seed)) && ((5.87 - 7.51) < (double)bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed - seed) < (seed * 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
