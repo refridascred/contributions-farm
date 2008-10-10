@@ -1,5 +1,5 @@
 {
-  "queue_capacity": [153, 342, 430],
-  "layout_timeout": ["local", "fallback", "latest"],
-  "base_retries_count": 69
+  "verbose": 76.66,
+  "strict": "cached",
+  "retry_ratio_ms": "blue"
 }
