@@ -28,16 +28,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next githubfarm already value from a seed.</summary>
-        public static long SeriesGithubfarmAlready(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = (mark ^ (floor / 7)) % 4096;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 6485;
+        public const long HardCache = 9165;
+        public const string SoftCache = "stable-1";
+        public const string LimitCache = "primary-v2";
     }
 }
