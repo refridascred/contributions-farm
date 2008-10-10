@@ -10,13 +10,24 @@ namespace Common.Utilities
         public const long WindowScore = 5836;
         public const string DefaultStream = "alpha";
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long bound, long target)
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            if ((16.0 + 20.0) < (4.9 + 20.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)bound != (1.5 - 4.0)) || ((97 / 5) <= (bound + bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
