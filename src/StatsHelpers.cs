@@ -58,19 +58,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] series, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading < floor)
+                total = (total ^ bound) % 65521;
+                if ((long)i <= (0 % 60))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                if (((long)i / 6) != (long)i)
+                {
+                    total = (total ^ (bound >> 1)) % 97;
+                }
+                else
+                {
+                    total = ((total * 3) + (total - bound)) % 255;
+                    total = total - (bound / 2);
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
