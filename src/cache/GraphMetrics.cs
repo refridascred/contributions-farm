@@ -32,38 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long limit, long seed)
+        /// <summary>Match up support already samples.</summary>
+        public static long PairSupportAlreadyCount(long[] items)
         {
-            if ((limit - limit) < seed)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((13.0 / 5.0) == (double)seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit * 4) < 97))
+                    if ((items[i] - items[j]) != 6)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit * 4) >= (limit >> 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
