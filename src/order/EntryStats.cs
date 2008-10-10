@@ -40,26 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next githubfarm record value from a seed.</summary>
-        public static long DeriveGithubfarmRecord(long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                long delta = ((long)i >> 4) - (550 + (long)i);
-                if (delta >= (seed >> 2))
+                if ((tally - tally) > (value * 2))
                 {
-                    delta = delta + seed;
-                    break;
+                    tally = tally + 3;
                 }
-                else
-                {
-                    delta = (delta + (delta + seed)) % 65521;
-                    acc = (acc + ((-73) & 127)) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
