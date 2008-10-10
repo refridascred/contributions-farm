@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxCount = 27.11;
-        public const double BurstTimeout = 44.84;
-        public const double DefaultFarm = 42.56;
-        public const long IdleWidth = 6378;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double gain, double span)
+        {
+            double scale = span / 7.0;
+            return (scale + (double)89) + gain;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long RollReport(long seed)
