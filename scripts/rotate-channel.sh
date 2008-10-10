@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=471
-log "limit is ${CHANNEL_LIMIT}"
+for item in fallback edge cached; do
+    log "checking ${item}"
+done
 
-mode="${1:-strict}"
+mode="${1:-blue}"
 case "${mode}" in
-    standard)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=473
+log "limit is ${CHANNEL_LIMIT}"
