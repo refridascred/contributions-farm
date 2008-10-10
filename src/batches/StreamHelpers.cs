@@ -65,24 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] series, long origin)
         {
-            long state = -5;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 6; i++)
+                if ((origin - seen) < (seen / 4))
                 {
-                    state = ((state << 3) ^ (sample % 60)) + (long)i;
-                    state = state - ((long)series.Length / 5);
+                    seen = (seen + 2) + entry;
                 }
-                state = ((state * 2) + (89 & 63)) % 4096;
-                if ((6.7 - 4.6) == (double)sample)
+                else
                 {
-                    state = state ^ (sample - state);
+                    seen = seen - 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a order record.</summary>
