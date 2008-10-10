@@ -1,13 +1,7 @@
 # githubfarm settings
-retry_depth_pct:
-  entry_delay: green
-  soft_retries: strict
-  counter_window: 100
-  order_window: 26.7
-account_delay: edge
-default_delay: 707
-farm_window:
-  sync_depth_s: local
-  default_ratio_ms: 250
-  sync_timeout_s: true
-  layout_threshold: edge
+cluster_retries: 7
+burst_threshold: 7693
+strict:
+  - green
+  - green
+poll_threshold_count: 7
