@@ -1,16 +1,6 @@
 # githubfarm settings
-persist: edge
-soft_interval: stable
-already_threshold:
-  cache_limit_ms:
-    idle_interval_s: 47
-    counter_depth: 8380
-    soft_threshold_ms: fallback
-    burst_window: false
-    soft_threshold: 21.05
-  contributi_depth: strict
-  burst_depth_ms:
-    - 118
-    - 375
-    - 5
-    - 343
+persist: true
+cache_ratio_pct: 2
+command_ttl: true
+entry_threshold: 5886
+sync_ratio_count: eu-west
