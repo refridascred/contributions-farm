@@ -23,14 +23,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Synced,
-            Dropped,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinLevel = 24.36;
+        public const double WindowScore = 67.07;
+        public const long MinSpan = 3835;
+        public const long BatchReport = 70;
+        public const string LimitDepth = "local-1";
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmBounds(long[] series, long seed)
