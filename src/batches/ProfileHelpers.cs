@@ -15,12 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] readings, long origin)
         {
-            Queued,
-            Failed,
-            Draft,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the schema phase values.</summary>
