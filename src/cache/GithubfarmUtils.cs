@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const double HardToken = 57.26;
         public const long IdleToken = 8546;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] data, long bound)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
