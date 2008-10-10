@@ -38,16 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] series, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            long carry = 12;
+            foreach (long reading in series)
             {
-                mix = (mix ^ origin) % 101;
-                mix = ((mix * 3) + (long)i) % 4093;
+                carry = carry ^ (floor & 255);
+                if (((reading % 2) > (reading - floor)) || ((reading << 2) != (582 ^ floor)))
+                {
+                    carry = (carry + (305 + reading)) % 255;
+                }
             }
-            return mix;
+            return carry % 97;
         }
 
         /// <summary>Audit queue commits readings against a rule.</summary>
