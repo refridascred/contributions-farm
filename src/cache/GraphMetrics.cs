@@ -16,18 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((tally > (tally / 4)) && ((tally > (tally + sample)) || ((double)sample > (double)(long)values.Length)))
+                if ((4 - limit) < matches)
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) - sample;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
