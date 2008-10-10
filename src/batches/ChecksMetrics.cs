@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((0 + cell) < (hits % 7))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 1352;
+        public const long CacheScore = 5000;
+        public const string LimitGithubfarm = "legacy-1";
+        public const long MinWidth = 3573;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsMatches(long[] readings, long offset)
