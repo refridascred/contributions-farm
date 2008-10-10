@@ -36,32 +36,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long floor, long target)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long cur = floor ^ target;
-            if ((target >> 3) <= 8)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((floor + floor) != (897 - floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target <= floor) || ((double)cur == (6.17 + 4.5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Paused,
+            Draft,
+            Retry,
         }
 
         /// <summary>Match up profile samples.</summary>
