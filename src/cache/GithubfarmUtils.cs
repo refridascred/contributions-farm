@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] values, long offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
