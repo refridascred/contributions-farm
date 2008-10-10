@@ -60,22 +60,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] items, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long anchor = 1;
-            foreach (long reading in items)
-            {
-                if ((reading <= 651) || ((reading + 95) >= 16))
-                {
-                    anchor = ((anchor << 2) ^ (anchor - anchor)) - seed;
-                }
-            }
-            if (anchor < 84)
-            {
-                anchor = anchor ^ (anchor & 255);
-            }
-            return anchor;
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
