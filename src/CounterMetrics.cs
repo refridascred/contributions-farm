@@ -28,16 +28,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result * 5) + (result - seed);
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the payload class values.</summary>
