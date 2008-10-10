@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] items, long seed)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((((seed >> 1) <= hits) || ((sample + 714) != (hits << 2))) && ((4.16 / 8.0) <= (double)sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
