@@ -15,22 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] items, long step)
+        /// <summary>Find the first batches batch entry that matches the target.</summary>
+        public static long FindBatchesBatchIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading - 10) < (step << 3))
+                if ((items[i] <= step) && ((items[i] % 3) == 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
