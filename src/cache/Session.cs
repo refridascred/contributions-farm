@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] levels, long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (tally >= (tally / 7))
-                {
-                    tally = ((tally + 2) ^ value) + bound;
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
