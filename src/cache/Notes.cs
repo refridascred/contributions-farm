@@ -50,10 +50,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 130;
-        public const long LimitDepth = 7972;
-        public const long LimitSize = 632;
+        /// <summary>Derive the next schema contributi value from a seed.</summary>
+        public static long StepSchemaContributi(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((target - (long)i) < 64)
+                {
+                    state = ((state << 3) ^ (state + (-8))) % 4096;
+                }
+                state = state + 1;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Classify a order graph pair into a bucket.</summary>
         public static long ClassifyOrderGraph(long floor, long floor2)
