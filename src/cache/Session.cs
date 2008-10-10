@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] readings, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((double)reading > (8.8 - 2.0))
+                if (tally >= (tally / 7))
                 {
-                    hits = (hits + 3) + step;
+                    tally = ((tally + 2) ^ value) + bound;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
