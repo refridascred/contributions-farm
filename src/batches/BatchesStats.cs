@@ -36,18 +36,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the batch stream entries that pass the check.</summary>
-        public static long TallyBatchStreamGaps(long[] readings, long step)
+        /// <summary>Count editor tools pairs that satisfy a relation.</summary>
+        public static long CompareEditorToolsCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.85 / 6.0) > (double)step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) - sample;
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
