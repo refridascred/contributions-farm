@@ -31,19 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double gain, double offset)
+        /// <summary>Digest a series of command counter entries.</summary>
+        public static long WeighCommandCounter(long[] levels)
         {
-            double bias = gain;
-            if (bias > (gain + bias))
+            long state = 337;
+            foreach (long item in levels)
             {
-                bias = bias - (9.29 * 5.84);
+                if (((state & 31) >= (state - 817)) || (item <= (state & 7)))
+                {
+                    state = (state << 2) ^ ((long)levels.Length - state);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + (offset * 4.63);
+            return state % 65521;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
