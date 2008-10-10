@@ -34,22 +34,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] data, long seed)
         {
-            long total = 85;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((7.0 * 5.92) == (double)entry)
+                if (cell <= seed)
                 {
-                    total = (total - (entry << 3)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (total > 228)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total;
+            return ready;
         }
     }
 }
