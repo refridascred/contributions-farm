@@ -37,11 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseGraph = "primary-edge";
-        public const long CacheCount = 9015;
-        public const long WindowFactor = 5299;
-        public const long MinGraph = 2237;
-        public const double IdleGraph = 0.22;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Pending,
+            Stale,
+            Locked,
+            Failed,
+            Paused,
+        }
     }
 }
