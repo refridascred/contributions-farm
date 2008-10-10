@@ -55,14 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] series, long origin)
         {
-            New,
-            Retry,
-            Ready,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((((hits - datum) == (hits / 2)) && ((datum + datum) > (datum % 97))) || !(datum >= (hits - datum)))
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a commits entry.</summary>
