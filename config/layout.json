@@ -1,16 +1,6 @@
 {
-  "soft_size": false,
-  "batches_retries": {
-    "sync_delay_pct": {
-      "dry_run": 500,
-      "poll_limit_pct": 4337,
-      "queue_threshold": true,
-      "idle_interval_count": false,
-      "enabled": 8559
-    },
-    "warm_ratio": "cached",
-    "hard_limit_s": "legacy"
-  },
-  "hard_ttl": false,
-  "retry_ttl_s": 2471
+  "enabled": 90.18,
+  "soft_capacity_count": true,
+  "support_depth": 30,
+  "warm_ttl_pct": "legacy"
 }
