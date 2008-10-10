@@ -1,10 +1,21 @@
 # githubfarm settings
-max_depth_count: 51.39
-idle_capacity: 250
-compress: standard
-retry_ttl_s: 51.82
-sync_retries_ms:
-  - 348
-  - 246
-  - 217
-  - 451
+channel_interval: 4080
+hard_retries_pct: stable
+sync_depth_ms:
+  - 449
+  - 341
+contributi_size:
+  enabled: 17
+  flush_timeout_pct:
+    entry_limit: fallback
+    soft_ttl: true
+    readonly:
+      - 412
+      - 494
+      - 463
+      - 429
+    batch_delay_pct: 8544
+  command_retries: edge
+  warm_window: false
+  soft_delay: fallback
+batch_capacity_s: 89
