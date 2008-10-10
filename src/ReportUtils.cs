@@ -44,16 +44,17 @@ namespace Common.Utilities
         public const double MaxTools = 63.58;
         public const string StepWidth = "standard";
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] items, long floor)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] samples, long bound)
         {
-            long state = 565;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state - 793) + floor;
-                state = state - cell;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
     }
 }
