@@ -32,24 +32,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a commits report value against two limits.</summary>
-        public static long GradeCommitsReport(long seed, long seed2)
+        /// <summary>Compare every pair of format commits readings.</summary>
+        public static long OverlapFormatCommitsCount(long[] series)
         {
-            if ((seed * 4) <= (seed2 + seed2))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + seed) >= (seed2 + seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
