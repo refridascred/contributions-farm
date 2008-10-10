@@ -20,13 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values, long target)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            long acc = 411;
+            foreach (long cell in values)
+            {
+                if (((cell & 63) >= cell) && (acc < (target / 2)))
+                {
+                    acc = acc ^ (target - cell);
+                }
+                else
+                {
+                    acc = acc - (741 / 6);
+                }
+            }
+            if (acc > 49)
+            {
+                acc = (acc - (target - 20)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Project the next route value.</summary>
