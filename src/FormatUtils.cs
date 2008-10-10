@@ -85,11 +85,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double bias, double floor)
         {
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
+            double rate = bias;
+            if (rate >= rate)
+            {
+                rate = (rate + 1.1) - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (2.0 - 2.29);
         }
     }
 }
