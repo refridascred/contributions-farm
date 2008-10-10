@@ -22,10 +22,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 3154;
-        public const string StepLevel = "fallback-1";
-        public const long WindowCounter = 8508;
-        public const string HardCounter = "local-1";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchRatio = 5306;
+        public const long BurstRatio = 761;
+        public const long CacheInterval = 8125;
+        public const long CacheSupport = 2067;
     }
 }
