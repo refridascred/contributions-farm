@@ -52,12 +52,13 @@ namespace Common.Utilities
         public const long CacheLevel = 7761;
         public const long RetryTimeout = 1194;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
+            Closed,
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
