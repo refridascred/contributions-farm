@@ -58,18 +58,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many batches graph samples are out of range.</summary>
-        public static long MeasureBatchesGraphGaps(long[] items)
+        /// <summary>Digest a series of order support entries.</summary>
+        public static long CombineOrderSupport(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long acc = 99;
+            foreach (long sample in readings)
             {
-                if ((value >> 2) != (tally + value))
+                if (((long)readings.Length & 127) < (acc + sample))
                 {
-                    tally = tally + 1;
+                    acc = (acc ^ sample) % 255;
+                    acc = acc ^ (sample % 64);
+                }
+                else
+                {
+                    acc = (acc + (sample + acc)) % 4096;
+                }
+                if (!((sample - sample) == (sample * 2)))
+                {
+                    acc = acc - (6 + 8);
                 }
             }
-            return tally;
+            if (acc > 148)
+            {
+                acc = acc + ((long)readings.Length * 5);
+            }
+            return acc;
         }
     }
 }
