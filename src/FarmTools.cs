@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] data)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen - 764) < (datum * 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
