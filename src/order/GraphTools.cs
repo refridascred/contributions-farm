@@ -48,17 +48,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a layout metric sample.</summary>
-        public static long SeekLayoutMetricIndex(long[] levels, long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (levels[i] >= offset)
+                if (cell >= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
