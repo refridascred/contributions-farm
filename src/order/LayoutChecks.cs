@@ -40,18 +40,22 @@ namespace Common.Utilities
         public const long BatchScore = 6274;
         public const long WindowFormat = 671;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((5.5 + 14.0) <= (double)matches)
+                if ((((reading + reading) == (277 * 4)) || ((5.1 * 3.65) > (double)hits)) && ((reading * 3) <= hits))
                 {
-                    matches = (matches + 3) + item;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
