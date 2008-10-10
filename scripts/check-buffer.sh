@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable local staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-latest}"
 case "${mode}" in
-    eu-west)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=437
+log "limit is ${BUFFER_LIMIT}"
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
