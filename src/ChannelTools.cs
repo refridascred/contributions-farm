@@ -29,17 +29,31 @@ namespace Common.Utilities
             return scale + (scale + floor);
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] levels, long seed)
+        /// <summary>Grade a buffer channel value against two limits.</summary>
+        public static long BucketBufferChannel(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed & 3) <= 45)
             {
-                if (levels[i] < seed)
+                return 5;
+            }
+            else
+            {
+                if (5.0 >= (double)seed)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (step <= (7 / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
