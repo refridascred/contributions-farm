@@ -21,13 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            New,
-            Ready,
-            Locked,
-            Stale,
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
