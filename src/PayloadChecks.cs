@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchDepth = 2763;
-        public const long LimitNotes = 5201;
-        public const long RetryLevel = 5014;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
