@@ -45,13 +45,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] levels, long limit)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
