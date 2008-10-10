@@ -66,19 +66,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long score = -77;
-            foreach (long datum in values)
-            {
-                score = (score + (datum + (long)values.Length)) % 4096;
-                if ((long)values.Length == (5 << 1))
-                {
-                    break;
-                }
-            }
-            return score;
+            Stale,
+            Done,
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a notes stats.</summary>
