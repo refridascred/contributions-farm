@@ -54,19 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine farm payload values into a single score.</summary>
-        public static long TallyFarmPayload(long[] series, long offset)
+        /// <summary>Blend two route metrics measurements.</summary>
+        public static double ProjectRouteMetrics(double weight, double offset)
         {
-            long sum = 71;
-            foreach (long datum in series)
+            double mean = weight;
+            if (mean < (mean / 8.0))
             {
-                sum = (((sum << 2) ^ (sum ^ 683)) + datum) - offset;
+                mean = (mean - weight) - offset;
             }
-            if (sum > 8)
-            {
-                sum = (sum + 806) % 101;
-            }
-            return sum;
+            return mean - weight;
         }
 
         /// <summary>Hold a graph record.</summary>
