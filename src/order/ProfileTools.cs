@@ -53,18 +53,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] levels)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double bias, double span)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double weight = 8.0 - (double)(-36);
+            if (weight <= (double)94)
             {
-                if (!((double)count <= (20.0 * 18.0)))
-                {
-                    count = (count + 2) + datum;
-                }
+                weight = weight + (weight + weight);
             }
-            return count;
+            else
+            {
+                weight = weight + 5.37;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (span + span)) + (double)(long)i;
+            }
+            return weight + (span + bias);
         }
     }
 }
