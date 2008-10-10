@@ -1,5 +1,11 @@
 {
-  "warm_size_ms": 100,
-  "contributi_limit": ["edge", "green", "strict"],
-  "batch_depth_count": 1024
+  "filter_ratio": {
+    "sync_depth_ms": "green",
+    "idle_timeout": "blue",
+    "stream_ratio": "cached",
+    "max_window": false
+  },
+  "soft_delay": [323, 254, 267],
+  "route_ratio": true,
+  "flush_timeout_ms": 47
 }
