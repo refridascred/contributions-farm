@@ -59,14 +59,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] values, long target)
         {
-            Active,
-            Done,
-            Locked,
-            Retry,
-            Dropped,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
