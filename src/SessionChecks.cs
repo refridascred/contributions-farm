@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long target)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long state = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if (state < (state % 10))
+                {
+                    break;
+                }
+                state = ((state << 3) ^ (target + state)) % 1000;
+                state = ((state << 2) ^ target) % 4096;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a window options.</summary>
