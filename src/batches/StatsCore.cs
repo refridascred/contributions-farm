@@ -68,15 +68,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double weight, double bias)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            double ratio = weight;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio - (double)266) + (double)(long)i) - bias;
-            }
-            return ratio + (weight - ratio);
+            public double Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
