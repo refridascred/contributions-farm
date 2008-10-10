@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every layout counter entry stays within the limit.</summary>
-        public static bool ValidateLayoutCounterRange(long[] items, long seed)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum > seed)
+                state = state + (state << 2);
+                if ((state ^ state) < (state ^ target))
                 {
-                    ready = false;
-                    break;
+                    state = (state ^ (533 + (long)i)) % 65521;
+                    state = state ^ (43 ^ state);
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Count the commits checks entries that pass the check.</summary>
