@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] samples, long target)
+        /// <summary>Audit format already readings against a rule.</summary>
+        public static long MeasureFormatAlreadyOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((samples[i] > target) && ((samples[i] % 5) != 0))
+                if (seen > (seen + origin))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a profile editor reading by value.</summary>
