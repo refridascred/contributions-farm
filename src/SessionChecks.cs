@@ -42,17 +42,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long origin)
+        /// <summary>Iterate the window batch series from a seed.</summary>
+        public static long DeriveWindowBatch(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] > origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
