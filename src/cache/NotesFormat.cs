@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] levels, long target)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)target != (8.6 + 3.17))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Blend two support batches measurements.</summary>
