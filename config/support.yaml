@@ -1,31 +1,12 @@
 # support settings
-metric_retries: 6153
-audit: false
-base_size_ms:
-  soft_threshold: cached
-  queue_window: open
-  base_ratio: green
-  schema_ttl: strict
-  cluster_interval:
-    readonly:
-      - fallback
-      - green
-      - eu-west
-    soft_limit: standard
-    default_delay: 79
-    flush_delay_ms: local
-    flush_ttl_count:
-      - standard
-      - green
-      - edge
-    max_size_pct:
-      - strict
-      - stable
-  notes_retries: 16.35
-verbose:
-  - 464
-  - 79
-  - 73
-  - 385
-token_window: latest
-cache_retries_count: legacy
+persist:
+  flush_size: 79.14
+  readonly: 500
+  batch_window: 500
+  metric_threshold: true
+hard_ttl: staging
+editor_interval:
+  - blue
+  - staging
+  - edge
+  - fallback
