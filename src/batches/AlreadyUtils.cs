@@ -96,18 +96,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many payload window samples are out of range.</summary>
-        public static long TallyPayloadWindowGaps(long[] items)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((matches + matches) <= entry)
-                {
-                    matches = matches + 3;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
     }
 }
