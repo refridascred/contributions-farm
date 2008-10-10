@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const double SoftInterval = 27.12;
         public const long BatchCluster = 2969;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowScore = 2785;
-        public const double IdleRatio = 31.67;
-        public const long BaseScore = 9848;
-        public const long SoftWindow = 2430;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepBudget = "open";
+        public const string IdleCluster = "staging-edge";
+        public const long SoftCluster = 5038;
+        public const double MaxFactor = 71.97;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double LimitContributi = 73.34;
