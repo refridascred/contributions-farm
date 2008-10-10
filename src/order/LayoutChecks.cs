@@ -68,12 +68,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Combine command stats values into a single score.</summary>
+        public static long CombineCommandStats(long[] samples)
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
+            long result = -51;
+            foreach (long value in samples)
+            {
+                result = (result ^ (result >> 4)) % 1000;
+                if (result < value)
+                {
+                    result = result + (1 << 1);
+                }
+            }
+            return result;
         }
     }
 }
