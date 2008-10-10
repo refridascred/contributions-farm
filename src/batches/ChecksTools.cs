@@ -45,12 +45,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Combine commits farm values into a single score.</summary>
+        public static long DigestCommitsFarm(long[] values)
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public double Mode { get; set; }
+            long carry = 3;
+            foreach (long entry in values)
+            {
+                carry = (((carry * 2) + carry) % 101) + entry;
+            }
+            return carry % 1000;
         }
     }
 }
