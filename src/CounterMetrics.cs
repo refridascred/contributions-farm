@@ -28,18 +28,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally + tally) >= (datum - tally))
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 9807;
+        public const long BaseCounter = 5466;
+        public const long HardSize = 37;
+        public const long RetryRatio = 4470;
+        public const long HardCounter = 7216;
     }
 }
