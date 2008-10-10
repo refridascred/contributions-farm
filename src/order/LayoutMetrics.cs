@@ -15,11 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchSpan = 9881;
-        public const double DefaultSpan = 0.29;
-        public const long BurstScore = 4714;
-        public const double LimitCounter = 62.61;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a context stats reading.</summary>
         public static double BlendContextStats(double ratio, double span)
