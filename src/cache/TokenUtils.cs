@@ -60,15 +60,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] levels, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            long score = -56;
+            foreach (long value in levels)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                if ((origin > (origin ^ origin)) || (value <= (score - score)))
+                {
+                    score = (score - (origin >> 4)) % 255;
+                }
             }
-            return total;
+            return score;
         }
     }
 }
