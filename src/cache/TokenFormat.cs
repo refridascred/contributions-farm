@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (entry >= (seen - entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
