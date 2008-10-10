@@ -1,12 +1,15 @@
 {
-  "burst_delay_s": "eu-west",
-  "soft_ratio": "standard",
-  "cache_size": "legacy",
-  "burst_threshold_pct": {
-    "cache_ratio": 6.33,
-    "order_ratio": [327, 136, 71],
-    "min_depth": [295, 198, 482, 316],
-    "base_ttl_s": 63
+  "base_capacity": {
+    "default_capacity_ms": 2505,
+    "cache_retries": true,
+    "flush_limit_count": "stable",
+    "enabled": ["open", "eu-west", "staging"],
+    "burst_ratio_ms": 5073,
+    "readonly": 38.13
   },
-  "hard_interval": false
+  "sync_limit": 8651,
+  "schema_ttl": 78,
+  "batch_size_count": 4797,
+  "stats_retries": ["eu-west", "standard", "standard"],
+  "warm_window": "staging"
 }
