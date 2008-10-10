@@ -1,6 +1,6 @@
 {
-  "poll_window": [324, 414, 424, 375],
-  "verbose": ["edge", "blue"],
-  "flush_size": 44,
-  "audit": [474, 233, 468, 313]
+  "token_interval": 43.5,
+  "context_ratio": "fallback",
+  "audit": "green",
+  "hard_retries_pct": 79.76
 }
