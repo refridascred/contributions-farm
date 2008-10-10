@@ -44,19 +44,14 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double ratio, double bias)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            double weight = ratio * 18.0;
-            if (weight <= (double)5)
-            {
-                weight = (weight + (double)60) - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (double)42) + (double)(long)i;
-            }
-            return weight - weight;
+            Locked,
+            Queued,
+            Synced,
+            Stale,
+            Pending,
         }
     }
 }
