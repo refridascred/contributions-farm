@@ -27,15 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a report commits figure with a bias.</summary>
-        public static double ProjectReportCommits(double weight, double span)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double scale, double floor)
         {
-            double gain = (double)(106 + 523);
-            if (gain >= span)
+            double scale2 = (8.0 / 8.0) / 3.0;
+            if (scale2 >= (double)(-335))
             {
-                gain = (gain + (double)666) + weight;
+                scale2 = ((scale2 - (double)3) + scale) - floor;
             }
-            return gain + (double)6;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (scale2 / 5.0)) + (double)(long)i;
+            }
+            return scale2 + 4.8;
         }
     }
 }
