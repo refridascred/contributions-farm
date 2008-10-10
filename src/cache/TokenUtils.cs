@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] data, long target)
-        {
-            long sum = 0;
-            foreach (long sample in data)
-            {
-                sum = ((sum + (sample + sum)) % 97) - target;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 6149;
+        public const long HardMetrics = 6042;
+        public const string MinMetrics = "fallback-1";
+        public const double IdleMetrics = 65.1;
+        public const long RetryBudget = 7290;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BaseCommand = 6321;
