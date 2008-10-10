@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = (mix * 2) + mix;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 76.99;
+        public const long WindowScore = 5836;
+        public const string DefaultStream = "alpha";
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
