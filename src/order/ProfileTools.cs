@@ -13,18 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((tally - 79) > (6 & 7))
+                if ((((reading ^ (long)series.Length) < (199 + hits)) || ((hits & 7) > (hits ^ hits))) || (reading <= (reading + reading)))
                 {
-                    tally = (tally + 3) ^ reading;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
