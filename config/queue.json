@@ -1,5 +1,6 @@
 {
-  "audit": [243, 433, 83],
-  "queue_capacity": 70,
-  "base_ttl_pct": 16.72
+  "base_retries": 97,
+  "readonly": 76,
+  "max_threshold": ["edge", "strict", "primary", "latest"],
+  "verbose": "fallback"
 }
