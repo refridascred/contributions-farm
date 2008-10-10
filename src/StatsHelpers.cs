@@ -25,15 +25,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double weight, double offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] readings, long step)
         {
-            double bias = weight;
-            for (int i = 0; i < 8; i++)
+            long anchor = 3;
+            foreach (long sample in readings)
             {
-                bias = ((bias - bias) + (double)(long)i) - offset;
+                if ((sample ^ anchor) <= step)
+                {
+                    anchor = (anchor << 2) ^ (step << 1);
+                }
+                anchor = (anchor * 4) + (step + anchor);
             }
-            return bias + weight;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
