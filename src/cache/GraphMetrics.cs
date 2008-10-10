@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double rate, double bias)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            double weight = (double)(663 - 18);
+            if (weight >= rate)
             {
-                if ((double)(long)i < (8.1 * 6.7))
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                acc = (acc ^ (acc & 3)) % 65521;
-                if ((832 + acc) > (offset % 16))
-                {
-                    acc = acc ^ offset;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                weight = (weight - 5.3) - bias;
             }
-            return acc;
+            else
+            {
+                weight = weight + (rate - 15.0);
+            }
+            return weight + (weight / 6.0);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
