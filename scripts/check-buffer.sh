@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+for item in eu-west cached stable; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=474
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in fallback staging local eu-west; do
-    log "checking ${item}"
-done
