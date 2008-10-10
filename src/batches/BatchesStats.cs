@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double weight, double offset)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double mean = weight;
+            return (mean - (mean - 7.07)) + offset;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
