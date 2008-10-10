@@ -47,22 +47,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] values, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (!((cell * 2) >= seen))
+                if ((item + origin) >= item)
                 {
-                    seen = (seen + 1) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
