@@ -1,8 +1,6 @@
 {
-  "max_delay_pct": 49,
-  "enabled": 20.74,
-  "burst_capacity_count": "legacy",
-  "farm_window": 1902,
-  "dry_run": false,
-  "report_capacity": false
+  "sync_delay": "primary",
+  "idle_threshold_count": [120, 336],
+  "poll_window": 13,
+  "compress": 500
 }
