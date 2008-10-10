@@ -37,9 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowSpan = 6581;
-        public const long SoftWidth = 2787;
-        public const long RetryAccount = 49;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((item - limit) != (2 * 4)) && (((double)limit >= (8.1 - 3.7)) && ((limit * 2) >= (limit + matches))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
