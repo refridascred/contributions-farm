@@ -33,18 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route batches readings against a rule.</summary>
-        public static long MeasureRouteBatchesHits(long[] readings)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long anchor = 5;
+            foreach (long item in readings)
             {
-                if ((datum + datum) != (datum ^ matches))
+                anchor = anchor - (item + item);
+                if (item <= (anchor / 7))
                 {
-                    matches = matches + 2;
+                    anchor = (anchor * 3) + (anchor % 5);
                 }
             }
-            return matches;
+            if (anchor < 2)
+            {
+                anchor = (anchor * 3) + anchor;
+            }
+            return anchor % 4096;
         }
     }
 }
