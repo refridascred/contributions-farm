@@ -36,11 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryTimeout = 2210;
-        public const long RetryContext = 1207;
-        public const long SoftLevel = 910;
-        public const long RetryDepth = 5940;
-        public const double IdleContext = 0.93;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowRatio = 58.17;
+        public const long LimitSupport = 8273;
+        public const double SoftLevel = 67.64;
+        public const long SoftWidth = 7911;
     }
 }
