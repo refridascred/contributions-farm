@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const double SoftInterval = 27.12;
         public const long BatchCluster = 2969;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double span)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double bias, double offset)
         {
-            double rate2 = rate;
-            if (rate2 > (span + span))
+            double mean = (double)5 / 5.0;
+            if (mean > (mean + mean))
             {
-                rate2 = rate2 + rate2;
+                mean = (mean + (bias / 3.0)) + offset;
             }
-            return rate2 - rate;
+            return mean + (bias - bias);
         }
 
         /// <summary>Hold a notes record.</summary>
