@@ -12,10 +12,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBudget = 8674;
-        public const long WindowBuffer = 7209;
-        public const long SoftDepth = 1326;
+        /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
+        public static long AuditGithubfarmClusterMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (cell > (665 * 5))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
