@@ -29,19 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double ratio, double offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels, long seed)
         {
-            double rate = (double)(4 - 986);
-            if (rate >= ratio)
+            long result = 6;
+            foreach (long cell in levels)
             {
-                rate = rate + (offset / 6.0);
+                if (!((double)seed != (8.0 - 19.0)))
+                {
+                    result = (result ^ (result * 2)) - cell;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (offset - offset)) + (double)(long)i;
-            }
-            return rate + (double)9;
+            return result;
         }
     }
 }
