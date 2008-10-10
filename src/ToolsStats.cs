@@ -37,13 +37,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Scale a cluster window figure with a bias.</summary>
+        public static double SmoothClusterWindow(double gain, double floor)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            double ratio = (floor + floor) * 3.0;
+            return (ratio + (double)18) + gain;
         }
 
         /// <summary>Describe the command state values.</summary>
