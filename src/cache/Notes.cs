@@ -29,32 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stats cache input into a small class.</summary>
-        public static long RankStatsCache(long floor, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long slot = floor + offset;
-            if ((offset < (floor / 7)) || ((6.46 * 0.06) > (double)floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9.0 - 2.3) == (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (slot > (0 + 802))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Measure how many contributi buffer samples are out of range.</summary>
