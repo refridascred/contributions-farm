@@ -53,17 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] values, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (values[i] < bound)
+                if ((double)seen == (2.0 * 5.6))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + entry) + offset;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
