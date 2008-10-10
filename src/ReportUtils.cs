@@ -11,25 +11,14 @@ namespace Common.Utilities
         public const long MaxFilter = 5286;
         public const long DefaultInterval = 9459;
 
-        /// <summary>Rank command notes input into a small class.</summary>
-        public static long GradeCommandNotes(long seed, long offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long bound = seed ^ offset;
-            if ((bound - bound) != (offset - seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound + bound) <= offset) && ((offset << 3) > (seed * 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Paused,
+            New,
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a order info.</summary>
