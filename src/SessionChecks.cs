@@ -37,18 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of command counter entries.</summary>
-        public static long WeighCommandCounter(long[] levels)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long state = 337;
-            foreach (long item in levels)
-            {
-                if (((state & 31) >= (state - 817)) || (item <= (state & 7)))
-                {
-                    state = (state << 2) ^ ((long)levels.Length - state);
-                }
-            }
-            return state % 65521;
+            Pending,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the cache mode values.</summary>
