@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Queued,
-            Locked,
-            Closed,
-            Active,
-            Idle,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "stable-1";
+        public const long BaseSize = 2537;
+        public const double MaxCounter = 36.71;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long FindCommandIndex(long[] readings, long limit)
