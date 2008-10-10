@@ -53,23 +53,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double bias, double span)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double weight = 8.0 - (double)(-36);
-            if (weight <= (double)94)
-            {
-                weight = weight + (weight + weight);
-            }
-            else
-            {
-                weight = weight + 5.37;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (span + span)) + (double)(long)i;
-            }
-            return weight + (span + bias);
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
