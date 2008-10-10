@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            Failed,
+            Active,
+            Closed,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
