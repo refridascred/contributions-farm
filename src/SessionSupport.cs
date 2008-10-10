@@ -27,19 +27,15 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] levels, long seed)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long floor)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (value < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return stale;
+            return sum;
         }
     }
 }
