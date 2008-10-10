@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open strict; do
+for item in strict open staging; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=45
+CHANNEL_LIMIT=456
 log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-green}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
