@@ -1,39 +1,9 @@
 # entry settings
-filter_timeout:
-  hard_threshold_s: 20.47
-  tools_retries:
-    - 342
-    - 129
-    - 37
-  burst_threshold_count:
-    poll_ratio_s:
-      - 362
-      - 468
-    idle_delay_ms: 20.28
-    max_timeout: eu-west
-    readonly: true
-    cache_threshold: 48.29
-    buffer_timeout: 1024
-  session_depth:
-    - fallback
-    - local
-    - standard
-  verbose:
-    - cached
-    - strict
+max_interval: 4068
+retry_interval: latest
+cache_retries:
+  min_window_pct: false
   dry_run: 1024
-max_retries_s: local
-base_interval_pct: 42.43
-cache_retries_s: true
-idle_depth_ms:
-  hard_size: 41.04
-  enabled: 250
-  filter_size: false
-  queue_delay:
-    burst_capacity: staging
-    readonly: 51.75
-    payload_threshold: true
-    batch_limit_count: 26
-    base_size_ms: 10
-    persist: open
-  cache_ratio_ms: 60
+  min_threshold: standard
+  flush_size_s: fallback
+  warm_threshold_s: fallback
