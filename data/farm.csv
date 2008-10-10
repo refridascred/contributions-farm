@@ -1,7 +1,7 @@
-id,token,count,score,level
-1,fallback,592,fallback,local
-2,42.96,206,411,62.93
-3,10,21.21,337,41.42
-4,503,78.09,68,blue
-5,36,282,41.87,121
-6,833,140,83,608
+id,owner,state
+1,741,25.85
+2,24.08,399
+3,287,primary
+4,strict,257
+5,28.13,fallback
+6,832,526
