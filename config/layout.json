@@ -1,5 +1,11 @@
 {
-  "batch_threshold": "latest",
-  "batches_limit": "eu-west",
-  "queue_size": true
+  "batch_size": 42.16,
+  "retry_timeout_ms": 100,
+  "default_capacity_count": "green",
+  "default_window_ms": false,
+  "flush_capacity_ms": {
+    "cache_depth_pct": 72.77,
+    "max_interval_pct": 74.67,
+    "min_capacity": false
+  }
 }
