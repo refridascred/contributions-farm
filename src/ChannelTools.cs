@@ -14,18 +14,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] levels)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((hits * 4) <= (hits & 15))
+                state = state - (state >> 3);
+                state = (state << 2) ^ limit;
+                if ((2.91 - 0.6) <= (double)limit)
                 {
-                    hits = (hits + 2) + value;
+                    state = (state - (0 + state)) % 1000;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Digest a series of token batches entries.</summary>
