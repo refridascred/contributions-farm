@@ -1,5 +1,19 @@
 {
-  "compress": 12.83,
-  "soft_limit": 56,
-  "stream_capacity": ["local", "open"]
+  "schema_timeout": 4427,
+  "base_ttl_count": "primary",
+  "retry_ttl_count": "open",
+  "profile_depth": 1256,
+  "layout_size": ["green", "fallback", "stable"],
+  "flush_capacity_s": {
+    "retry_threshold": 8154,
+    "sync_threshold_count": "standard",
+    "hard_limit_pct": {
+      "cache_size": "edge",
+      "soft_limit": 71.65,
+      "soft_interval_s": true,
+      "context_ttl": 100,
+      "max_window_count": [60, 484, 338, 387],
+      "farm_window": "staging"
+    }
+  }
 }
