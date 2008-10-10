@@ -32,39 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long floor, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] series, long floor)
         {
-            long diff = floor ^ bound;
-            if ((bound - 50) >= floor)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((diff + bound) == (20 * 3))
+                if (reading < floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(191 >= (bound & 255)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)bound >= (double)390))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
