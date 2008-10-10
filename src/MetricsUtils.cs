@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            Draft,
+            Retry,
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the stats state values.</summary>
