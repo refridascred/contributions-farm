@@ -20,31 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long step, long origin)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            if ((step & 1) <= (1 + step))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step >= (step % 3)) || ((step - step) != (step >> 4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((origin - step) < (origin % 10)))
+                    if ((values[i] - values[j]) > 20)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
