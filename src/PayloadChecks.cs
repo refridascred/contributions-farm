@@ -56,22 +56,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFarm = "standard";
+        public const long WindowTimeout = 6801;
+        public const long StepBudget = 9086;
+        public const long LimitTimeout = 4038;
+        public const long HardDepth = 9431;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaBounds(long[] readings, long target)
