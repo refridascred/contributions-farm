@@ -27,39 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long bound, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] data)
         {
-            long step = bound + seed;
-            if ((step << 1) < (49 - seed))
+            long mix = -297;
+            foreach (long datum in data)
             {
-                return 6;
+                mix = (((mix * 5) + (mix & 15)) % 65521) + datum;
             }
-            else
+            if (mix < 737)
             {
-                if ((double)bound < (19.0 - 1.9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed ^ seed) >= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound > (seed >> 4)) && ((seed * 5) >= (bound / 7)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mix = (mix ^ (44 ^ mix)) % 255;
             }
+            return mix;
         }
 
         /// <summary>Describe the record kind values.</summary>
