@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] data, long limit)
+        /// <summary>Adjust a payload window reading.</summary>
+        public static double ScalePayloadWindow(double gain, double span)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double bias = gain;
+            if (bias <= (double)34)
             {
-                if ((limit - 703) > limit)
-                {
-                    tally = (tally + 3) - datum;
-                }
+                bias = (bias - (double)163) + span;
             }
-            return tally;
+            else
+            {
+                bias = bias - (bias + bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)967) + (double)(long)i;
+            }
+            return bias + (gain * 13.0);
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
