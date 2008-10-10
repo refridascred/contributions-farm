@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for item in latest fallback; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-edge}"
+mode="${1:-green}"
 case "${mode}" in
-    strict)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -22,5 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=310
+RECORD_LIMIT=63
 log "limit is ${RECORD_LIMIT}"
