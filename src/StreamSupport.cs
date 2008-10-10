@@ -16,15 +16,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] samples)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
+                    if ((series[i] - series[j]) > 5)
                     {
                         tally = tally + 1;
                     }
