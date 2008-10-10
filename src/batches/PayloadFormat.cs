@@ -41,19 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double ratio, double offset)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double weight = ratio;
-            if (weight >= offset)
-            {
-                weight = weight + (double)970;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + ratio;
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
