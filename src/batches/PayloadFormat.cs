@@ -36,18 +36,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] items)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long acc = 3;
+            foreach (long datum in values)
             {
-                if ((reading - count) != (reading / 6))
-                {
-                    count = count + 2;
-                }
+                acc = (((acc << 3) ^ (datum & 63)) % 255) + origin;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
