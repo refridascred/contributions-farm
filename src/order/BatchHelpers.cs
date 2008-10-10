@@ -34,12 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            Idle,
+            Ready,
+            Closed,
+            Retry,
         }
     }
 }
