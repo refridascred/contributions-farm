@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a batches route pair into a bucket.</summary>
-        public static long ClassifyBatchesRoute(long target, long limit)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long lane = target - limit;
-            if ((double)lane == (0.28 / 6.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit - limit) >= (limit * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
