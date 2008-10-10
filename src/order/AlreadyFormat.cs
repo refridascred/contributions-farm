@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Failed,
-            Pending,
-            Queued,
+            Closed,
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a metric info.</summary>
