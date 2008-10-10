@@ -51,19 +51,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double ratio, double span)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            double scale = ratio;
-            if (scale > (8.82 / 8.0))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - (span - 3.15);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (double)0;
-            }
-            return scale + span;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
