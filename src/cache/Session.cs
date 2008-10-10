@@ -23,17 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] samples, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a report entry.</summary>
