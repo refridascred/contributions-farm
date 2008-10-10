@@ -15,19 +15,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] values, long offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Pending,
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Blend two farm measurements.</summary>
