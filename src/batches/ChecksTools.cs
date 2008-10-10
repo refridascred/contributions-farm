@@ -16,18 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] series, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((hits + (long)series.Length) >= (hits ^ hits))
                 {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 1) - sample) + origin;
                 }
             }
             return hits;
