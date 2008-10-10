@@ -32,18 +32,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] items)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (((sample + tally) >= (tally * 4)) && ((tally + sample) > tally))
+                if (reading <= seed)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
