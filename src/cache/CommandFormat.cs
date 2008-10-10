@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long seed, long target)
+        /// <summary>Count the format graph entries that pass the check.</summary>
+        public static long TallyFormatGraphHits(long[] samples)
         {
-            long next = seed + target;
-            if ((314 * 5) > next)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (target >= (78 & 3))
+                if (!(2.6 > (double)count))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 1) - entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate token samples.</summary>
