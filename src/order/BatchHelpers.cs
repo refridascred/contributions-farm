@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] samples)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mix = 4;
-            foreach (long sample in samples)
-            {
-                mix = ((mix * 4) + (sample + sample)) % 65521;
-            }
-            if (mix < (-493))
-            {
-                mix = ((mix * 3) + (mix * 4)) % 65521;
-            }
-            return mix;
+            public double Owner { get; set; }
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
