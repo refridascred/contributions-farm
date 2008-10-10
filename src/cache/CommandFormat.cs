@@ -43,19 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm farm readings.</summary>
-        public static long TotalGithubfarmFarm(long[] samples)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long carry = 79;
-            foreach (long entry in samples)
-            {
-                carry = carry - (carry + carry);
-                if (((20.0 + 5.8) != (double)entry) || ((long)samples.Length == (entry + entry)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
