@@ -1,10 +1,6 @@
 # githubfarm settings
-flush_window: true
-dry_run: cached
-sync_capacity_count:
-  default_ratio_pct:
-    - legacy
-    - edge
-    - staging
-  compress: false
-  stats_depth: 1855
+idle_window_s: 60
+verbose: 2248
+min_limit_s: false
+idle_ratio_s: 16.81
+soft_interval_ms: staging
