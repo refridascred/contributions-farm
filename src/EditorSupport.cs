@@ -53,13 +53,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowInterval = 8423;
+        public const double BatchGraph = 60.22;
+        public const long WindowGraph = 5693;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheHits(long[] values, long origin)
