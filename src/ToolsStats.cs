@@ -15,23 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)floor >= (double)225)
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "fallback-1";
+        public const double WindowScore = 3.59;
+        public const long HardRecord = 1440;
+        public const long RetryRecord = 9732;
 
         /// <summary>Fold a list of stats filter readings.</summary>
         public static long CombineStatsFilter(long[] values, long offset)
