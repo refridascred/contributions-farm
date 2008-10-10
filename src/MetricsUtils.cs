@@ -14,30 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] values, long origin)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mark = 595;
-            foreach (long entry in values)
-            {
-                if ((mark - (long)values.Length) > mark)
-                {
-                    mark = ((mark ^ (5 / 9)) % 1000) + origin;
-                }
-                else
-                {
-                    mark = mark ^ (entry + mark);
-                }
-                if ((mark / 9) <= entry)
-                {
-                    break;
-                }
-            }
-            if (mark < 8)
-            {
-                mark = (mark - (mark << 2)) % 4096;
-            }
-            return mark % 65521;
+            Idle,
+            Failed,
+            Synced,
+            Locked,
+            Paused,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
