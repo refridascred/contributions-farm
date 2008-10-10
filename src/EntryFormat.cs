@@ -29,19 +29,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] items, long origin)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] items, long origin)
         {
-            long result = 93;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result ^ (6 + cell)) % 1000;
+                if ((items[i] == origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result < 600)
-            {
-                result = (result - origin) % 4096;
-            }
-            return result % 4096;
+            return -1;
         }
     }
 }
