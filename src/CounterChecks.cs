@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a filter token reading by value.</summary>
-        public static long SeekFilterTokenIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchLevel = 4730;
+        public const double BaseSize = 68.44;
+        public const string BurstFarm = "staging-edge";
+        public const string WindowFarm = "open";
+        public const long RetryFarm = 1220;
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
