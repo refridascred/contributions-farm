@@ -42,22 +42,26 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine route entry values into a single score.</summary>
-        public static long DigestRouteEntry(long[] values, long offset)
+        /// <summary>Accumulate token checks samples.</summary>
+        public static long TallyTokenChecks(long[] levels)
         {
-            long score = 380;
-            foreach (long sample in values)
+            long carry = 99;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 12; i++)
+                if (!((item & 127) > (item + 3)))
                 {
-                    score = ((score - score) % 101) ^ (long)i;
+                    carry = ((carry * 5) + (item ^ carry)) % 97;
                 }
-                if ((score << 1) >= (offset + score))
+                if ((carry << 2) != (carry + item))
                 {
-                    score = (score + (sample / 7)) % 255;
+                    break;
                 }
             }
-            return score;
+            if (carry > 1)
+            {
+                carry = (carry + (carry + carry)) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the already kind values.</summary>
