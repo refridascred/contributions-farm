@@ -44,15 +44,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a schema checks reading.</summary>
-        public static double ScaleSchemaChecks(double rate, double bias)
+        /// <summary>Accumulate layout payload samples.</summary>
+        public static long DigestLayoutPayload(long[] items)
         {
-            double load = bias;
-            for (int i = 0; i < 3; i++)
+            long mix = 994;
+            foreach (long reading in items)
             {
-                load = (load + (load / 5.0)) - (double)(long)i;
+                mix = ((mix << 2) ^ (reading / 9)) % 97;
+                mix = (mix * 3) + (mix - mix);
             }
-            return load + rate;
+            return mix;
         }
 
         /// <summary>Adjust a report reading.</summary>
