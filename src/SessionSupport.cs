@@ -28,12 +28,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Queued,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "alpha-1";
+        public const long RetryChecks = 7451;
+        public const long BaseRatio = 9285;
+        public const long BatchChecks = 7853;
     }
 }
