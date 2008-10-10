@@ -64,18 +64,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit payload token readings against a rule.</summary>
-        public static long AuditPayloadTokenOutliers(long[] items, long limit)
+        /// <summary>Combine stats farm values into a single score.</summary>
+        public static long WeighStatsFarm(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            long score = 151;
+            foreach (long cell in levels)
             {
-                if (!(16.0 < (double)count))
+                if ((cell << 2) <= floor)
                 {
-                    count = ((count + 3) ^ item) - limit;
+                    score = (score << 2) ^ (floor ^ score);
+                }
+                else
+                {
+                    score = ((score * 3) + (score - 3)) % 4096;
                 }
             }
-            return count;
+            if (score > 46)
+            {
+                score = score + 78;
+            }
+            return score;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
