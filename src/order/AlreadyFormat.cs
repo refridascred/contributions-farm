@@ -16,14 +16,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double gain, double bias)
         {
-            Locked,
-            Closed,
-            Queued,
-            Failed,
-            Draft,
+            double bias2 = gain * 3.2;
+            if (bias2 <= (bias2 + 20.0))
+            {
+                bias2 = bias2 - (bias + gain);
+            }
+            else
+            {
+                bias2 = bias2 - (bias2 - bias2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - bias) - (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
