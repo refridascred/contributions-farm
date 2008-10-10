@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels, long step)
+        /// <summary>Count the format layout entries that pass the check.</summary>
+        public static long MeasureFormatLayoutGaps(long[] items, long target)
         {
-            long carry = 34;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                carry = carry - reading;
+                if ((double)hits >= (17.0 + 2.05))
+                {
+                    hits = ((hits + 2) ^ sample) - target;
+                }
             }
-            if (carry > 379)
-            {
-                carry = (carry ^ step) % 4096;
-            }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
