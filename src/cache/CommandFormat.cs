@@ -47,12 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] series, long origin)
         {
-            Retry,
-            Closed,
-            Queued,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
