@@ -20,18 +20,25 @@ namespace Common.Utilities
             return rate2 - (double)13;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] items)
+        /// <summary>Accumulate payload editor samples.</summary>
+        public static long FoldPayloadEditor(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long acc = 778;
+            foreach (long sample in samples)
             {
-                if ((matches % 100) > matches)
+                acc = (acc * 4) + 52;
+                if (((0.02 - 6.1) <= (3.0 - 6.6)) || ((double)sample >= (1.78 + 3.21)))
                 {
-                    matches = (matches + 3) ^ sample;
+                    acc = (acc ^ (acc / 7)) % 255;
+                    acc = (acc << 3) ^ (sample & 63);
                 }
+                acc = ((acc << 2) ^ (sample % 64)) % 65521;
             }
-            return matches;
+            if (acc > 3)
+            {
+                acc = (acc * 4) + 28;
+            }
+            return acc;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
