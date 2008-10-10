@@ -23,22 +23,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] series, long floor)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading ^ seen) >= (913 >> 3))
-                {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
