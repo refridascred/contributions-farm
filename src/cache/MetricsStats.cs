@@ -55,17 +55,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a route context reading by value.</summary>
-        public static long FindRouteContextIndex(long[] values, long step)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Paused,
+            Closed,
+            Pending,
+            Active,
         }
     }
 }
