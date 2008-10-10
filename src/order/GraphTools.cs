@@ -31,22 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] samples, long floor)
+        /// <summary>Measure how many tools schema samples are out of range.</summary>
+        public static long TallyToolsSchemaGaps(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (!((reading < (reading & 255)) && ((seen >> 2) == (seen - reading))))
+                if (((value - target) < (6 ^ 6)) && ((tally - tally) > (target >> 2)))
                 {
-                    seen = (seen + 3) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
