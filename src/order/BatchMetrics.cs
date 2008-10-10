@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] data, long target)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long floor, long step)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            if (((step & 7) < (step * 2)) || (step < (step + step)))
             {
-                if (reading >= target)
+                return 7;
+            }
+            else
+            {
+                if (525 >= (step & 3))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Roll a token counter forward.</summary>
