@@ -49,12 +49,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long origin, long origin2)
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            long offset = origin - origin2;
+            if ((origin & 31) <= (origin2 - origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((7.0 * 2.6) != (double)origin) || ((origin2 & 15) <= 577))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((8.49 / 4.0) > (double)origin) || ((origin - offset) >= origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset >> 4) == (origin & 31))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream status values.</summary>
