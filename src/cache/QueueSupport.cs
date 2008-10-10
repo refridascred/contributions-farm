@@ -26,23 +26,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] readings, long floor)
         {
-            long anchor = 5;
-            foreach (long item in readings)
+            long state = 22;
+            foreach (long cell in readings)
             {
-                anchor = anchor - (item + item);
-                if (item <= (anchor / 7))
-                {
-                    anchor = (anchor * 3) + (anchor % 5);
-                }
+                state = (state - (cell & 1)) % 1000;
             }
-            if (anchor < 2)
+            if (state < (-510))
             {
-                anchor = (anchor * 3) + anchor;
+                state = ((state << 3) ^ (floor - state)) % 255;
             }
-            return anchor % 4096;
+            return state;
         }
     }
 }
