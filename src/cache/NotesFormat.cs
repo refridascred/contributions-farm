@@ -19,10 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 3533;
-        public const long IdleOrder = 8057;
-        public const string RetryBudget = "alpha-v2";
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TotalCommits(long[] samples)
