@@ -23,11 +23,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
