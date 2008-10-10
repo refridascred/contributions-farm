@@ -67,14 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] values, long step)
         {
-            Retry,
-            Synced,
-            Dropped,
-            Paused,
-            Closed,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the cache status values.</summary>
