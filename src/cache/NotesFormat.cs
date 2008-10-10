@@ -38,12 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)tally < (0.4 * 12.0))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
     }
 }
