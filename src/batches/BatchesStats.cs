@@ -22,18 +22,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((double)reading == (double)hits)
+                if (count > (count - 240))
                 {
-                    hits = hits + 2;
+                    count = ((count + 2) + sample) - offset;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
