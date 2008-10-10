@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] samples, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long target, long offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long gap = target + offset;
+            if (((double)target == (0.2 * 6.2)) && ((6.0 + 14.0) >= (double)target))
             {
-                if (sample > bound)
+                return 2;
+            }
+            else
+            {
+                if ((898 + gap) < gap)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a stats options.</summary>
