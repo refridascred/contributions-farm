@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] readings, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
