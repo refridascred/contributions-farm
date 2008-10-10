@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long limit, long target)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long bound)
         {
-            if ((9.7 * 8.4) >= (double)target)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit >> 2) >= target) || ((limit << 2) <= target))
+                if (value >= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the account phase values.</summary>
