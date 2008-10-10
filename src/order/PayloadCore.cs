@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next farm cluster value.</summary>
-        public static double ScaleFarmCluster(double gain, double offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            double bias = offset;
-            if (bias < 7.0)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                bias = (bias - bias) - gain;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return bias - bias;
+            return carry;
         }
 
         /// <summary>Describe the tools state values.</summary>
