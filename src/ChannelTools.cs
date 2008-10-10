@@ -40,25 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support stats pair into a bucket.</summary>
-        public static long RankSupportStats(long seed, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long step)
         {
-            long gap = seed - origin;
-            if ((double)gap < 9.43)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((gap - origin) <= (origin + 4))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 6;
+                    mark = (mark - (91 / 3)) ^ (long)i2;
                 }
-                else
-                {
-                    return 3;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
+            return mark;
         }
     }
 }
