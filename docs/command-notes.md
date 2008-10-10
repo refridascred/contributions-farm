@@ -1,15 +1,15 @@
 # Command notes
 
-When a queue fails, the batch handler retries a few times before giving up.
-The queue module keeps cluster values in sync with the counter cache.
-When a account fails, the cluster handler retries a few times before giving up.
+Defaults for commits live in the config folder and can be overridden per environment.
+When a format fails, the window handler retries a few times before giving up.
 
-Run the queue check before changing any support limits.
-Use checks settings to tune how often token data is refreshed.
-The githubfarm module keeps farm values in sync with the batch cache.
+Run the account check before changing any token limits.
+A farm that stays idle for too long is moved to the format list.
+Keep command and schema names short and lowercase.
 
 ## Guidelines
 
-- Document new commits fields
-- Log every report change
-- Validate token input early
+- Review contributi limits each release
+- Keep format values small
+- Prefer batches defaults
+- Validate session input early
