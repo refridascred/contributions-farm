@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
