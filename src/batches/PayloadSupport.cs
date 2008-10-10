@@ -24,19 +24,14 @@ namespace Common.Utilities
             return bias + (gain * 13.0);
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double weight, double bias)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double mean = (double)922 + (weight / 4.0);
-            if (mean < (5.8 - weight))
-            {
-                mean = mean + (weight - bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (weight + mean)) + (double)(long)i;
-            }
-            return mean + mean;
+            Draft,
+            Retry,
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
