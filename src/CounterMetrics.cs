@@ -31,11 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultTimeout = 3718;
-        public const string WindowLevel = "open";
-        public const long MaxWidth = 1175;
-        public const long DefaultEntry = 1354;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Paused,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Adjust a graph editor reading.</summary>
         public static double ProjectGraphEditor(double gain, double bias)
