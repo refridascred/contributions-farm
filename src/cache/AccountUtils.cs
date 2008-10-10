@@ -33,19 +33,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultSpan = 8274;
+        public const long WindowProfile = 1782;
+        public const string WindowDepth = "latest-edge";
     }
 }
