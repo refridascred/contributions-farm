@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many stream buffer samples are out of range.</summary>
-        public static long CountStreamBufferOutliers(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long state = 9;
+            foreach (long cell in values)
             {
-                if (((double)item <= 8.12) || ((670 + 65) <= item))
+                if ((double)cell < (double)state)
                 {
-                    matches = matches + 1;
+                    state = ((state * 2) + (cell ^ state)) % 4096;
                 }
             }
-            return matches;
+            if (state < 415)
+            {
+                state = (state * 3) + 3;
+            }
+            return state;
         }
 
         /// <summary>Rank route input into a small class.</summary>
