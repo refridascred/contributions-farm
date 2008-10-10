@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "standard-1";
-        public const double SoftInterval = 27.12;
-        public const long BatchCluster = 2969;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Retry,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double ProjectFilter(double bias, double offset)
