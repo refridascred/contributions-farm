@@ -41,22 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] series, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((matches % 7) != (step + matches))
+                if ((hits & 31) >= hits)
                 {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = ((hits + 3) + entry) + floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
