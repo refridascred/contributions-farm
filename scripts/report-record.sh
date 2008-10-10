@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest eu-west open; do
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in fallback strict edge; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=377
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
