@@ -45,11 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 9807;
-        public const long BaseCounter = 5466;
-        public const long HardSize = 37;
-        public const long RetryRatio = 4470;
-        public const long HardCounter = 7216;
+        /// <summary>Roll a commits githubfarm counter forward.</summary>
+        public static long SeriesCommitsGithubfarm(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((long)i ^ acc) <= acc)
+                {
+                    acc = ((acc << 2) ^ (seed & 31)) % 1000;
+                    acc = (acc + (seed << 3)) % 97;
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
