@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] samples)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Count the route format entries that pass the check.</summary>
