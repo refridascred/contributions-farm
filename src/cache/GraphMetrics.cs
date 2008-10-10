@@ -36,25 +36,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long step, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] values)
         {
-            long diff = step - limit;
-            if ((8.5 + 7.2) < (double)limit)
+            long total = 9;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((4 + step) <= step) || (diff >= limit))
+                if ((cell ^ 378) <= ((-6) << 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    total = ((total * 2) + (33 + cell)) % 4096;
                 }
             }
+            if (total < (-1))
+            {
+                total = ((total << 2) ^ (total * 4)) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the metrics status values.</summary>
