@@ -70,21 +70,22 @@ namespace Common.Utilities
         public const long HardLevel = 6312;
         public const long MinNotes = 6893;
 
-        /// <summary>Iterate the commits stats series from a seed.</summary>
-        public static long SeriesCommitsStats(long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] values, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                bool ready = target <= (target >> 5);
-                if (!ready)
+                if ((entry + origin) == (406 & 3))
                 {
-                    ready = (2.2 * 6.22) >= (double)(long)i;
-                    continue;
+                    seen = seen + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
