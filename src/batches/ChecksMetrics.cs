@@ -67,17 +67,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a metrics contributi reading by value.</summary>
-        public static long LookupMetricsContributiIndex(long[] levels, long origin)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
