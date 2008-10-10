@@ -32,11 +32,28 @@ namespace Common.Utilities
         public const long LimitContext = 1030;
         public const double DefaultDepth = 11.61;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepInterval = 27.14;
-        public const string HardRatio = "open";
-        public const double HardSpan = 98.51;
-        public const long CacheWidth = 1735;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] readings)
+        {
+            long mix = -349;
+            foreach (long datum in readings)
+            {
+                if ((double)104 >= (double)mix)
+                {
+                    mix = (mix ^ (mix * 5)) % 1000;
+                }
+                mix = (mix ^ (3 + datum)) % 4096;
+                if ((17.0 + 1.9) != (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TallyBatches(long[] data)
