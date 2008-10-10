@@ -49,17 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi window sample.</summary>
-        public static long SeekContributiWindowIndex(long[] levels, long step)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
