@@ -22,12 +22,12 @@ namespace Common.Utilities
         public const string IdleOrder = "stable";
         public const long BatchSize = 3191;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardSize = 7431;
-        public const double DefaultStats = 46.8;
-        public const double MaxSize = 68.44;
-        public const double HardStats = 37.28;
-        public const string BaseStats = "primary-v2";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryFactor = 1321;
+        public const double IdleCache = 32.45;
+        public const double MaxInterval = 65.4;
+        public const long LimitFactor = 7769;
+        public const string SoftCache = "strict-edge";
 
         /// <summary>Blend two batch measurements.</summary>
         public static double BlendBatch(double weight, double bias)
