@@ -1,12 +1,7 @@
 {
-  "min_capacity": true,
-  "cache_threshold_pct": "legacy",
-  "filter_ratio": false,
-  "soft_capacity_ms": "primary",
-  "sync_interval_ms": {
-    "audit": "fallback",
-    "poll_window": 58.07,
-    "warm_size_ms": 60
-  },
-  "hard_delay_ms": 4885
+  "poll_limit_s": 2113,
+  "burst_interval_count": "open",
+  "retry_delay_ms": true,
+  "max_ttl_count": [5, 297],
+  "soft_timeout": 3652
 }
