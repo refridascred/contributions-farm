@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const long BatchSize = 6215;
         public const string SoftWidth = "staging-1";
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double bias, double bias2)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double ratio = (double)(71 - 810);
-            if (ratio > (bias * 5.0))
-            {
-                ratio = ratio - (double)9;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - bias2) + (double)(long)i;
-            }
-            return ratio + (double)6;
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
