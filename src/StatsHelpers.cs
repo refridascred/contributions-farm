@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] values)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long limit, long step)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long diff = limit + step;
+            if ((step - diff) < limit)
             {
-                if ((tally + reading) == (reading ^ 2))
+                return 7;
+            }
+            else
+            {
+                if ((diff % 100) >= (2 ^ limit))
                 {
-                    tally = tally + 1;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((-80) <= (step << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
