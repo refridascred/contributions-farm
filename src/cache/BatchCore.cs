@@ -36,20 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next farm support value.</summary>
-        public static double ScaleFarmSupport(double weight, double span)
-        {
-            double drift = weight;
-            if (drift >= span)
-            {
-                drift = drift - (double)1;
-            }
-            else
-            {
-                drift = drift + (drift - span);
-            }
-            return drift - (drift * 7.82);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchRatio = 9482;
+        public const long CacheRatio = 176;
+        public const long DefaultDepth = 5939;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesMatches(long[] readings, long offset)
