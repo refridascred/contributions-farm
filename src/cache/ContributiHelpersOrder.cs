@@ -16,17 +16,11 @@ namespace Common.Utilities
         public const long StepBudget = 6906;
         public const long BaseFactor = 2535;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] series, long limit)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = bias - ratio;
+            return bias2 - (bias - bias2);
         }
     }
 }
