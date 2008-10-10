@@ -52,17 +52,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] readings, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
