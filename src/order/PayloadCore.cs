@@ -16,13 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double rate, double offset)
         {
-            Draft,
-            Retry,
-            Dropped,
-            Active,
+            double mean = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean + offset) + (double)(long)i) - rate;
+            }
+            return mean + (double)(-5);
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
