@@ -1,5 +1,6 @@
 {
-  "batch_interval": [94, 374, 58, 308],
-  "account_retries": [160, 83, 250],
-  "persist": "latest"
+  "burst_depth_count": "blue",
+  "default_threshold_ms": [198, 357, 323],
+  "poll_limit": "fallback",
+  "persist": "staging"
 }
