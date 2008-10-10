@@ -16,11 +16,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 9616;
-        public const long SoftQueue = 1766;
-        public const long IdleFactor = 5061;
-        public const long IdleBudget = 6130;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] series, long offset)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count buffer format pairs that satisfy a relation.</summary>
         public static long OverlapBufferFormatCount(long[] data)
