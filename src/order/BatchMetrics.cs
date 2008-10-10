@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
