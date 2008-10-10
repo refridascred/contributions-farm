@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] levels, long target)
+        /// <summary>Audit record command readings against a rule.</summary>
+        public static long MeasureRecordCommandMatches(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((levels[i] == target) && ((levels[i] % 2) != 0))
+                if (datum > (3 + count))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
