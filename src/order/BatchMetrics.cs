@@ -27,26 +27,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] items)
         {
-            long acc = 733;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((acc % 8) < (sample - acc))
+                if ((0.22 - 13.0) < (double)matches)
                 {
-                    break;
-                }
-                if ((sample / 6) != (acc + sample))
-                {
-                    acc = (acc - (93 + acc)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 3) + 212) % 65521;
+                    matches = (matches + 1) + item;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the farm state values.</summary>
