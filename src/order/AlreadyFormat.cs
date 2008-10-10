@@ -14,12 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheSpan = 27.02;
-        public const double MinTimeout = 23.8;
-        public const long RetryScore = 6927;
-        public const long BatchTimeout = 174;
-        public const long DefaultBatches = 7527;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 3158;
+        public const double StepBudget = 21.45;
+        public const long RetryEntry = 3804;
+        public const long HardEntry = 8306;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long SortMetrics(long limit, long limit2)
