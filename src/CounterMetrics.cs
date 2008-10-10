@@ -73,21 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits githubfarm counter forward.</summary>
-        public static long SeriesCommitsGithubfarm(long seed)
+        /// <summary>Count the report support entries that pass the check.</summary>
+        public static long TallyReportSupportGaps(long[] samples, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((long)i ^ acc) <= acc)
+                if ((cell << 3) > (step / 2))
                 {
-                    acc = ((acc << 2) ^ (seed & 31)) % 1000;
-                    acc = (acc + (seed << 3)) % 97;
-                    break;
+                    tally = tally + 1;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
