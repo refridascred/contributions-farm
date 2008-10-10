@@ -1,7 +1,12 @@
 {
-  "command_window": 41.96,
-  "metrics_ratio": "blue",
-  "schema_delay": 63,
-  "poll_window": 5896,
-  "sync_timeout": "blue"
+  "dry_run": 6874,
+  "batch_retries_s": "latest",
+  "readonly": false,
+  "batch_depth_pct": 82.83,
+  "min_retries": {
+    "compress": ["eu-west", "latest", "standard", "standard"],
+    "editor_ttl": 8197,
+    "profile_interval": 1024,
+    "order_capacity": 37.63
+  }
 }
