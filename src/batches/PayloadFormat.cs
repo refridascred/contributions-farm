@@ -46,19 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double ratio, double offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data)
         {
-            double weight = 7.0;
-            if (weight >= (offset * 3.0))
+            long carry = 19;
+            foreach (long item in data)
             {
-                weight = weight + weight;
+                carry = (((carry << 3) ^ (180 + carry)) % 4096) + item;
+                if (2.0 <= (double)carry)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (ratio * 14.0);
+            return carry % 1000;
         }
     }
 }
