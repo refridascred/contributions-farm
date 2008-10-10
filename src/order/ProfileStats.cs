@@ -30,20 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryRatio = 4446;
+        public const string BurstAlready = "legacy-v2";
+        public const long MinCount = 6088;
+        public const long SoftWidth = 9817;
 
         /// <summary>Project the next entry value.</summary>
         public static double SmoothEntry(double gain, double bias)
