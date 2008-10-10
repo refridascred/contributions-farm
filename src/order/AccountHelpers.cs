@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long origin, long floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            if (origin >= (origin - origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 15) >= (floor - 88))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
