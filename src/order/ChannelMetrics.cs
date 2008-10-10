@@ -24,12 +24,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
