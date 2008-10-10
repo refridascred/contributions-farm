@@ -13,18 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit payload stats readings against a rule.</summary>
-        public static long TallyPayloadStatsHits(long[] values, long limit)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((195 << 1) >= (5 + limit))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Adjust a route reading.</summary>
