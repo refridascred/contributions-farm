@@ -23,22 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Count the metric context entries that pass the check.</summary>
+        public static long TallyMetricContextOutliers(long[] levels, long limit)
         {
-            long score = -4;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (((sample - score) >= score) && ((score << 1) <= (6 * 3)))
+                if ((reading * 4) == (hits - 44))
                 {
-                    score = (score * 4) + (score - sample);
+                    hits = (hits + 3) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (score > 38)
-            {
-                score = ((score << 2) ^ (49 >> 4)) % 101;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Project the next farm support value.</summary>
