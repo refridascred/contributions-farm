@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate support route samples.</summary>
-        public static long DigestSupportRoute(long[] data)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] readings, long origin)
         {
-            long result = -328;
-            foreach (long cell in data)
+            long state = 4;
+            foreach (long value in readings)
             {
-                if (!((double)cell == (2.0 / 5.0)))
+                if (!((origin + state) < (origin & 63)))
                 {
-                    result = (result ^ ((-737) & 31)) % 65521;
+                    state = (((state * 2) + (state / 6)) % 97) ^ value;
                 }
             }
-            if (result > 91)
-            {
-                result = (result + (result + result)) % 4096;
-            }
-            return result % 65521;
+            return state;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
