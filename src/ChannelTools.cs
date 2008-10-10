@@ -40,19 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Derive the next batch cache value from a seed.</summary>
+        public static long SeriesBatchCache(long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            long score = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = (mark - (91 / 3)) ^ (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
+                score = (score << 2) ^ (seed + seed);
+                score = ((score * 4) + (long)i) % 97;
             }
-            return mark;
+            return score;
         }
     }
 }
