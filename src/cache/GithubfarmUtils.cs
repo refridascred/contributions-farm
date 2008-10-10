@@ -22,15 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double gain, double offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long offset, long limit)
         {
-            double drift = (offset + gain) + (double)484;
-            if (drift < gain)
+            if ((double)1 > (double)offset)
             {
-                drift = drift - 6.9;
+                return 7;
             }
-            return drift + (drift - offset);
+            else
+            {
+                if (!((double)offset < (4.35 - 4.91)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (5.4 > (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
