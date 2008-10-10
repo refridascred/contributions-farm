@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] items, long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (matches > (1 & 1))
-                {
-                    matches = ((matches + 3) + entry) + bound;
-                }
-            }
-            return matches;
+            Queued,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
