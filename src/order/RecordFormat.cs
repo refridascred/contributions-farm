@@ -80,12 +80,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count the order githubfarm entries that pass the check.</summary>
+        public static long CountOrderGithubfarmGaps(long[] data, long limit)
         {
-            Draft,
-            Pending,
-            New,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value / 2) >= (limit << 1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
