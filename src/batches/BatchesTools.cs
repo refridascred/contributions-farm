@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] readings, long limit)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (6.5 >= (double)8)
+                {
+                    seen = ((seen + 3) - value) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next metrics value.</summary>
