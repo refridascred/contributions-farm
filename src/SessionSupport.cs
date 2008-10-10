@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] series)
+        /// <summary>Look up the position of a entry support sample.</summary>
+        public static long LocateEntrySupportIndex(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen <= (cell + seen)) && ((cell % 5) < seen))
+                if (values[i] >= bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
