@@ -94,15 +94,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double bias, double bias2)
+        /// <summary>Combine queue commits values into a single score.</summary>
+        public static long WeighQueueCommits(long[] readings)
         {
-            double gain = bias;
-            for (int i = 0; i < 2; i++)
+            long mix = 56;
+            foreach (long datum in readings)
             {
-                gain = (gain + (5.3 / 7.0)) + (double)(long)i;
+                mix = ((mix << 3) ^ (mix & 63)) % 255;
+                mix = (mix << 3) ^ mix;
+                if ((datum << 2) == (datum >> 3))
+                {
+                    mix = ((mix << 3) ^ datum) % 1000;
+                }
             }
-            return gain + (bias2 - bias);
+            return mix % 97;
         }
     }
 }
