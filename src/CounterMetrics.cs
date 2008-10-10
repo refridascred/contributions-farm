@@ -32,27 +32,27 @@ namespace Common.Utilities
         public const long LimitContext = 1030;
         public const double DefaultDepth = 11.61;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] levels, long offset)
         {
-            long mix = -349;
-            foreach (long datum in readings)
+            long sum = -8;
+            foreach (long item in levels)
             {
-                if ((double)104 >= (double)mix)
+                long matches = (offset + offset) - sum;
+                if (matches > 113)
                 {
-                    mix = (mix ^ (mix * 5)) % 1000;
+                    sum = (sum << 2) ^ (554 >> 3);
                 }
-                mix = (mix ^ (3 + datum)) % 4096;
-                if ((17.0 + 1.9) != (double)mix)
+                if ((offset ^ item) < offset)
                 {
-                    break;
+                    sum = ((sum * 5) + (offset - sum)) % 255;
                 }
             }
-            if (mix > 8)
+            if (sum > 373)
             {
-                mix = mix + (mix + mix);
+                sum = sum ^ (sum & 3);
             }
-            return mix;
+            return sum % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
