@@ -88,17 +88,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a route payload reading by value.</summary>
-        public static long LookupRoutePayloadIndex(long[] readings, long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Pending,
+            New,
         }
     }
 }
