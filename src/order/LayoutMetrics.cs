@@ -26,19 +26,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((anchor < bound) && ((anchor ^ bound) > bound))
-                {
-                    anchor = anchor ^ (bound + 206);
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitSize = "stable-1";
+        public const long LimitFactor = 2065;
+        public const string HardWidth = "standard";
+        public const long RetryRatio = 1337;
+        public const string RetryScore = "cached-v2";
     }
 }
