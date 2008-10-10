@@ -16,19 +16,17 @@ namespace Common.Utilities
             return load - (bias / 7.0);
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] samples, long target)
+        /// <summary>Look up the position of a route support sample.</summary>
+        public static long SeekRouteSupportIndex(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum != target)
+                if ((values[i] > origin) && ((values[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the command status values.</summary>
