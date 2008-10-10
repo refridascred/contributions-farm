@@ -67,12 +67,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Idle,
-            Failed,
-            Dropped,
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many payload window samples are out of range.</summary>
