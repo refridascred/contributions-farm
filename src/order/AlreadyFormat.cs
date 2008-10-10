@@ -15,12 +15,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
+            Locked,
+            Closed,
+            Queued,
             Failed,
-            Paused,
-            Idle,
+            Draft,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
