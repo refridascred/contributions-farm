@@ -28,19 +28,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] data, long step)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix << 2) ^ 68;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
