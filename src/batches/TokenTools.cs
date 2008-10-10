@@ -21,18 +21,13 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] data)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((((1.3 / 5.0) > (4.0 + 9.47)) || ((entry + entry) > (86 + (long)data.Length))) || ((1.94 / 2.0) > (double)entry))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
