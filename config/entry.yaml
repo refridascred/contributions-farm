@@ -1,6 +1,5 @@
 # entry settings
-default_ratio_s: 12.05
-channel_interval: 7.86
-soft_limit: fallback
-persist: false
-soft_delay: legacy
+cache_size_pct: 32
+filter_depth: 22.6
+batch_size_ms: stable
+default_delay_ms: 671
