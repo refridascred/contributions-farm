@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long bound, long step)
         {
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Total { get; set; }
+            long edge = bound + step;
+            if ((edge % 100) > (step ^ bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step >= edge)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step > (269 & 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step / 9) < edge)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the route format entries that pass the check.</summary>
