@@ -31,18 +31,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] values, long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((reading + seed) != (seed * 5))
+                if (sample != origin)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
