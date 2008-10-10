@@ -1,16 +1,28 @@
 # githubfarm settings
-cache_window: legacy
-hard_threshold_pct:
-  - strict
-  - eu-west
-window_interval: edge
-retry_delay_s: false
-sync_size_count:
-  retry_depth_ms: 51.75
-  strict:
-    metric_ratio: 28.35
-    notes_capacity: eu-west
-    verbose: true
-  filter_threshold: 82.21
-  dry_run: blue
-  idle_window: 63.99
+graph_depth: strict
+burst_depth_count: 100
+account_limit: 42
+warm_delay:
+  payload_delay:
+    cache_capacity: open
+    verbose:
+      - edge
+      - eu-west
+      - standard
+    warm_threshold_count: legacy
+    strict:
+      - eu-west
+      - blue
+      - eu-west
+      - eu-west
+    audit: 28.74
+    compress: 8870
+  cache_threshold: 8594
+  retry_ttl_count: 94
+  base_size_s:
+    min_ratio_count: false
+    layout_ratio: 1772
+    audit: 47.84
+  compress: 31.04
+  githubfarm_threshold: 500
+flush_timeout_s: true
