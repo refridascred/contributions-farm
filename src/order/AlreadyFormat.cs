@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Pending,
-            Ready,
-            Synced,
-            Locked,
+            Idle,
+            Paused,
             Draft,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the context status values.</summary>
