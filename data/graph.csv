@@ -1,8 +1,6 @@
-id,region,token,ratio,score
-1,69.81,60.4,edge,edge
-2,80.19,65.1,689,29.6
-3,63.16,18.7,local,latest
-4,658,standard,legacy,772
-5,644,238,147,64.97
-6,39.92,44,fallback,strict
-7,45.07,staging,229,green
+id,token,weight,owner
+1,fallback,0.72,20.9
+2,edge,843,open
+3,142,282,30.01
+4,603,85.39,55.14
+5,latest,335,926
