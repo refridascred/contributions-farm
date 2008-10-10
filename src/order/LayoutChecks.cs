@@ -20,15 +20,17 @@ namespace Common.Utilities
         public const long StepBudget = 8900;
         public const long LimitChecks = 4016;
 
-        /// <summary>Roll a tools batches counter forward.</summary>
-        public static long IterateToolsBatches(long origin)
+        /// <summary>Look up the position of a commits context sample.</summary>
+        public static long SeekCommitsContextIndex(long[] samples, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
