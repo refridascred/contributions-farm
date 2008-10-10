@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long acc = 4;
-            foreach (long value in series)
-            {
-                acc = acc ^ (acc - (-819));
-                if (value <= (acc << 1))
-                {
-                    acc = (acc + (9 ^ value)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 4) + value) % 255;
-                }
-            }
-            return acc % 4096;
+            public double Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
