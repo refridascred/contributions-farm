@@ -89,13 +89,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Accumulate farm order samples.</summary>
+        public static long WeighFarmOrder(long[] data)
         {
-            Pending,
-            Stale,
-            Dropped,
-            Ready,
+            long state = 4;
+            foreach (long entry in data)
+            {
+                if ((state >> 1) >= entry)
+                {
+                    state = ((state << 3) ^ (entry % 5)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Match up account samples.</summary>
