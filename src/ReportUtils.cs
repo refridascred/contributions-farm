@@ -33,11 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
             public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
