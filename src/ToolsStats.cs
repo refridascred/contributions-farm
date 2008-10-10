@@ -64,21 +64,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (offset / 9.0) + (3.46 * 5.17);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = ((drift + (double)59) - (double)(long)i) - rate;
             }
-            return count;
+            return drift - (offset * 1.17);
         }
     }
 }
