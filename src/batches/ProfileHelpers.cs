@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate entry metrics samples.</summary>
-        public static long CombineEntryMetrics(long[] series, long origin)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long seed)
         {
-            long state = 539;
-            foreach (long reading in series)
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (((18.0 * 20.0) >= (double)(long)series.Length) && (state <= (state % 7)))
+                if (((4.0 + 8.3) >= (double)(long)i) && (mix < seed))
                 {
-                    state = (state - (state + origin)) - reading;
+                    mix = (mix + (seed % 16)) % 4096;
+                    mix = (mix * 3) + (mix - 9);
                 }
-                else
+                mix = ((mix << 3) ^ ((long)i >> 2)) % 4096;
+                if ((seed << 1) > ((long)i >> 2))
                 {
-                    state = (state ^ (state & 15)) % 65521;
+                    mix = (mix * 4) + (seed + mix);
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Describe the format status values.</summary>
