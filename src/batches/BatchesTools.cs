@@ -21,18 +21,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] values, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (!(((double)datum > 5.0) || ((bound + datum) <= (datum % 97))))
+                if ((reading ^ hits) > hits)
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
