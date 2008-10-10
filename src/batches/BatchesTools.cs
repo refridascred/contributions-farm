@@ -22,18 +22,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] samples)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading ^ hits) > hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
