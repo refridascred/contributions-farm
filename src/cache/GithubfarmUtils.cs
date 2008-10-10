@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total - (origin << 3)) % 255;
-                total = ((total * 4) + 675) % 255;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
