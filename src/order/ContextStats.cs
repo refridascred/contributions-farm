@@ -43,17 +43,16 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Look up the position of a channel batch sample.</summary>
-        public static long LocateChannelBatchIndex(long[] values, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 7;
+            foreach (long cell in data)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                mix = (mix - (mix >> 3)) ^ cell;
+                mix = mix ^ 89;
             }
-            return -1;
+            return mix;
         }
     }
 }
