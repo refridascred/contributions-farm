@@ -26,24 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter format value against two limits.</summary>
-        public static long RankCounterFormat(long floor, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] items, long bound)
         {
-            if ((46 % 12) == (floor << 3))
+            long acc = 871;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((floor - origin) < origin))
+                if ((191 > acc) && ((acc + 667) <= item))
                 {
-                    return 6;
+                    acc = ((acc + 545) % 65521) - bound;
                 }
                 else
                 {
-                    return 2;
+                    acc = ((acc << 2) ^ (acc - 5)) % 255;
                 }
             }
+            return acc;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
