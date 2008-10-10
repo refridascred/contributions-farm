@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] data, long limit)
         {
-            long mark = 2;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((mark < (mark * 3)) && (mark < (long)readings.Length))
+                if ((limit - 703) > limit)
                 {
-                    mark = (mark - datum) % 97;
+                    tally = (tally + 3) - datum;
                 }
             }
-            if (mark < 3)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
