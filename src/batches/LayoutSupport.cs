@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Fold a list of stream metrics readings.</summary>
+        public static long TallyStreamMetrics(long[] data, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
+            long mark = 6;
+            foreach (long item in data)
             {
-                total = (total ^ (bound + (long)i)) % 65521;
-                total = ((total * 2) + (long)i) % 1000;
+                mark = (((mark << 2) ^ ((long)data.Length - item)) % 65521) - offset;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Measure how many notes filter samples are out of range.</summary>
