@@ -33,11 +33,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Validate profile order readings against a bound.</summary>
+        public static bool CheckProfileOrderRange(long[] levels, long floor)
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
