@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long BatchScore = 4831;
         public const long RetryLevel = 9287;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] samples)
         {
-            Pending,
-            Retry,
-            Draft,
-            Idle,
-            Done,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((4 * 5) < seen)
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
