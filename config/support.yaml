@@ -1,4 +1,5 @@
 # support settings
-dry_run: 27.56
-flush_depth: 100
-max_window_ms: 250
+batch_size: 73
+notes_window: 250
+hard_retries_s: 50
+payload_threshold: 4127
