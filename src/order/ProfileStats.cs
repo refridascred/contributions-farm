@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
