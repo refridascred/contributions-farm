@@ -1,11 +1,11 @@
 # Command notes
 
-Keep support and cluster names short and lowercase.
-Each entry is validated before it reaches the token queue.
+Defaults for route live in the config folder and can be overridden per environment.
+Defaults for session live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new context fields
-- Log every metric change
-- Validate queue input early
-- Review contributi limits each release
+- Review notes limits each release
+- Keep order values small
+- Log every profile change
+- Validate record input early
