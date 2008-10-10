@@ -20,10 +20,33 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchStats = 45.19;
-        public const double MinWidth = 48.9;
-        public const long WindowScore = 3031;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long floor, long bound)
+        {
+            long edge = floor - bound;
+            if (((6 + bound) <= 18) || ((3.49 / 6.0) > (double)bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (edge < (edge % 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((floor % 7) == (floor * 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinProfile = 3774;
