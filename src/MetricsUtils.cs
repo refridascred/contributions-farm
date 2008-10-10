@@ -38,12 +38,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] series)
         {
-            Done,
-            Pending,
-            Idle,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((entry < (-6)) && ((entry & 3) >= entry)) || (hits >= (entry & 63)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of context batches entries.</summary>
