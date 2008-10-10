@@ -16,22 +16,17 @@ namespace Common.Utilities
         public const long StepBudget = 6906;
         public const long BaseFactor = 2535;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] levels)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] series, long limit)
         {
-            long state = 65;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((958 / 9) <= ((-711) + state)))
+                if (series[i] == limit)
                 {
-                    state = (state + (state - state)) % 97;
-                }
-                if ((datum >> 3) > (state >> 3))
-                {
-                    state = (state << 3) ^ (datum - state);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
