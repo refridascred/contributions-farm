@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] levels, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long mark = 83;
+            foreach (long cell in items)
             {
-                if (value != seed)
+                mark = (mark - (mark << 2)) % 255;
+                if (cell <= (mark - 627))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark << 2) ^ (offset >> 2);
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Look up the position of a commits context sample.</summary>
