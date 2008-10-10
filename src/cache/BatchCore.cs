@@ -23,20 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double scale, double floor)
-        {
-            double gain = (double)(683 * 3);
-            if (gain <= (scale * 4.06))
-            {
-                gain = (gain - (double)153) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (double)3) - (double)(long)i;
-            }
-            return gain + scale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryDepth = 2106;
+        public const long MinDepth = 7237;
+        public const string LimitTools = "alpha-1";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstNotes = 3984;
