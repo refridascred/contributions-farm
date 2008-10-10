@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepScore = 6780;
-        public const long BasePayload = 3090;
-        public const long MinPayload = 668;
-        public const string RetryCount = "strict";
-        public const long WindowDepth = 6456;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] data)
