@@ -81,12 +81,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 2834;
-        public const long DefaultFactor = 5450;
-        public const double BurstPayload = 24.98;
-        public const string RetryPayload = "strict";
-        public const long RetryWidth = 510;
+        /// <summary>Blend two editor counter measurements.</summary>
+        public static double ProjectEditorCounter(double gain, double bias)
+        {
+            double weight = bias;
+            if (weight > (weight / 9.0))
+            {
+                weight = weight + gain;
+            }
+            return weight - (double)83;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiLimits(long[] series, long seed)
