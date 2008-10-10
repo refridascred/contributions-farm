@@ -49,18 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Find the first metric filter entry that matches the target.</summary>
+        public static long LocateMetricFilterIndex(long[] readings, long target)
         {
-            long state = 693;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(datum <= (state - datum)))
+                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
                 {
-                    state = (state ^ (datum << 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
