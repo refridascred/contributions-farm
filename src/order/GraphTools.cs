@@ -22,11 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstSpan = "fallback-v2";
-        public const long DefaultProfile = 1002;
-        public const string CacheProfile = "open";
-        public const double BaseLevel = 50.79;
+        /// <summary>Roll a githubfarm format counter forward.</summary>
+        public static long StepGithubfarmFormat(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)state == (8.9 / 4.0))
+                {
+                    state = (state << 2) ^ (511 + 813);
+                }
+                if (!((state + floor) > state))
+                {
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] values)
