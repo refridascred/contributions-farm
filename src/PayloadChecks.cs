@@ -10,38 +10,11 @@ namespace Common.Utilities
         public const long LimitNotes = 5201;
         public const long RetryLevel = 5014;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long limit, long floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            if ((limit + limit) <= (limit / 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit == (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit << 3) != (692 + 2)) || ((floor / 6) < 60))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor << 3) > 799)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
