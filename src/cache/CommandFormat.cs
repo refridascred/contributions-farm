@@ -24,22 +24,13 @@ namespace Common.Utilities
         public const double MinScore = 20.29;
         public const long HardLevel = 81;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] values, long limit)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)hits == (4.0 * 18.0))
-                {
-                    hits = ((hits + 2) + sample) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
