@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long limit, long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            if ((bound > ((-71) >> 4)) || ((18.0 - 6.0) == (double)limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit & 255) > limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Project the next cache value.</summary>
