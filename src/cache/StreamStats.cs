@@ -17,24 +17,13 @@ namespace Common.Utilities
         public const long WindowBuffer = 7209;
         public const long SoftDepth = 1326;
 
-        /// <summary>Grade a batch metric value against two limits.</summary>
-        public static long GradeBatchMetric(long offset, long seed)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if ((1.0 - 20.0) < (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (8 <= (offset - seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            New,
+            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
