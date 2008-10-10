@@ -29,17 +29,14 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] samples, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Retry,
+            Closed,
+            Failed,
         }
 
         /// <summary>Count profile command pairs that satisfy a relation.</summary>
