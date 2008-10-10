@@ -1,15 +1,14 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-The format module keeps profile values in sync with the channel cache.
+Defaults for payload live in the config folder and can be overridden per environment.
+Each cluster is validated before it reaches the cluster queue.
+Run the schema check before changing any entry limits.
 
-Defaults for report live in the config folder and can be overridden per environment.
-Run the channel check before changing any session limits.
-A checks that stays idle for too long is moved to the farm list.
+Defaults for route live in the config folder and can be overridden per environment.
+A command that stays idle for too long is moved to the payload list.
 
 ## Guidelines
 
-- Review context limits each release
-- Validate githubfarm input early
-- Document new format fields
-- Log every commits change
+- Review farm limits each release
+- Prefer batches defaults
+- Document new commits fields
