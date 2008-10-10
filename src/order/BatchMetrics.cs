@@ -72,22 +72,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of buffer account entries.</summary>
-        public static long FoldBufferAccount(long[] series)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] levels)
         {
-            long score = 901;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (118 > (score + score))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score - (value >> 2);
+                    if ((levels[i] + levels[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < 52)
-            {
-                score = (score + (score << 3)) % 101;
-            }
-            return score;
+            return seen;
         }
     }
 }
