@@ -1,9 +1,7 @@
 # entry settings
-max_interval: 4068
-retry_interval: latest
-cache_retries:
-  min_window_pct: false
-  dry_run: 1024
-  min_threshold: standard
-  flush_size_s: fallback
-  warm_threshold_s: fallback
+batch_size_count:
+  - legacy
+  - cached
+default_timeout: latest
+hard_interval_pct: 8697
+batches_capacity: legacy
