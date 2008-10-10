@@ -21,43 +21,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] data, long floor)
+        /// <summary>Derive the next report cluster value from a seed.</summary>
+        public static long StepReportCluster(long step)
         {
-            long state = 92;
-            foreach (long cell in data)
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((74 ^ floor) == (state + (-8)))
-                {
-                    state = ((state << 2) ^ floor) % 255;
-                    continue;
-                }
-                else
-                {
-                    state = (state << 3) ^ (long)data.Length;
-                }
-                if ((state ^ 4) < (cell % 7))
-                {
-                    state = ((state * 4) + (cell / 2)) % 65521;
-                }
-                else
-                {
-                    state = state ^ (floor / 4);
-                }
-                if ((cell & 7) < 99)
-                {
-                    state = (state ^ state) % 97;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (5 & 15)) % 97;
-                }
+                anchor = (anchor + ((long)i / 9)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (state > 83)
-            {
-                state = state ^ (floor + floor);
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
