@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up contributi account samples.</summary>
-        public static long MatchContributiAccountCount(long[] levels)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((double)offset < (8.0 - 2.3)) || ((target - offset) <= ((-8) + offset)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (target < 50)
                 {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the payload mode values.</summary>
