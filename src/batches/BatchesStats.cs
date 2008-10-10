@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many cluster channel samples are out of range.</summary>
-        public static long MeasureClusterChannelGaps(long[] readings)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)matches >= (14.0 * 0.2))
-                {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a stats entry.</summary>
