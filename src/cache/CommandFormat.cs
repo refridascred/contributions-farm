@@ -52,19 +52,9 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] series, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleBudget = 4460;
+        public const double MaxWidth = 33.24;
+        public const string StepInterval = "open";
     }
 }
