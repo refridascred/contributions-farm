@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the token account entries that pass the check.</summary>
-        public static long CountTokenAccountHits(long[] readings, long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long limit, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            if ((9.7 * 8.4) >= (double)target)
             {
-                if (!((6.3 - 8.7) == (double)step))
+                return 5;
+            }
+            else
+            {
+                if (((limit >> 2) >= target) || ((limit << 2) <= target))
                 {
-                    tally = (tally + 2) ^ reading;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
