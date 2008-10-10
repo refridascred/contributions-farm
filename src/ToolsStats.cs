@@ -40,11 +40,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a cluster window figure with a bias.</summary>
-        public static double SmoothClusterWindow(double gain, double floor)
+        /// <summary>Combine githubfarm batch values into a single score.</summary>
+        public static long FoldGithubfarmBatch(long[] values)
         {
-            double ratio = (floor + floor) * 3.0;
-            return (ratio + (double)18) + gain;
+            long mark = 648;
+            foreach (long sample in values)
+            {
+                if (mark < (mark << 3))
+                {
+                    mark = mark + (sample % 64);
+                }
+                if ((double)sample >= (double)mark)
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Check that every order format entry stays within the limit.</summary>
