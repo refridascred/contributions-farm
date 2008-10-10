@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] samples, long origin)
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
