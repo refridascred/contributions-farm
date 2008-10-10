@@ -15,15 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double rate, double offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double gain, double span)
         {
-            double gain = (double)807 - rate;
-            if (gain <= (double)123)
+            double weight = span;
+            for (int i = 0; i < 3; i++)
             {
-                gain = (gain - (gain / 4.0)) - offset;
+                weight = (weight - gain) + (double)(long)i;
             }
-            return gain - (double)80;
+            return weight + (weight - 18.0);
         }
 
         /// <summary>Blend two metric measurements.</summary>
