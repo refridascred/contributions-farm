@@ -39,13 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Done,
-            Locked,
-            Retry,
-            Active,
+            public double Total { get; set; }
+            public double Size { get; set; }
         }
     }
 }
