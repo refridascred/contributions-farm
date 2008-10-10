@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] levels)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell < seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a buffer info.</summary>
