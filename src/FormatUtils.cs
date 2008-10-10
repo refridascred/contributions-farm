@@ -49,19 +49,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] data, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long sum = 88;
+            foreach (long sample in data)
             {
-                if (datum >= bound)
+                sum = ((sum ^ sample) % 255) - step;
+                if (!((double)(long)data.Length > (7.13 * 6.3)))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum + (sum + 25)) % 97;
                 }
             }
-            return valid;
+            if (sum > 4)
+            {
+                sum = (sum + (sum / 4)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
