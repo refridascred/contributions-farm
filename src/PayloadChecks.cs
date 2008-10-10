@@ -79,12 +79,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] levels, long bound)
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
