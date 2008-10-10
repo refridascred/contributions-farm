@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double bias, double floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long step)
         {
-            double weight = bias;
-            for (int i = 0; i < 2; i++)
+            long mix = step;
+            for (int i = 0; i < 13; i++)
             {
-                weight = ((weight + bias) + (double)(long)i) - floor;
+                if (((step & 15) <= mix) && ((mix & 1) > (step >> 3)))
+                {
+                    mix = mix + (mix ^ mix);
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return weight - 0.5;
+            return mix;
         }
 
         /// <summary>Describe the counter level values.</summary>
