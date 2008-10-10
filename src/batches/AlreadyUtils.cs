@@ -58,19 +58,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long seed, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            if ((7.0 - 8.6) <= (double)floor)
             {
-                if (!(result <= (origin % 7)))
-                {
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((seed - seed) >= (floor / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor - 1) > seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6.55 <= (double)floor) || ((double)floor <= (4.6 + 3.88)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
