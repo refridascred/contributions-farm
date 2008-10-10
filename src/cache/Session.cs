@@ -46,22 +46,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the schema notes entries that pass the check.</summary>
-        public static long TallySchemaNotesOutliers(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count * 4) > sample)
-                {
-                    count = (count + 1) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepRatio = 4967;
+        public const long DefaultTimeout = 8091;
+        public const long HardInterval = 2116;
+        public const long RetryFactor = 533;
     }
 }
