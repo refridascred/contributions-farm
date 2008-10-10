@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Count the token account entries that pass the check.</summary>
+        public static long CountTokenAccountHits(long[] readings, long step)
         {
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!((6.3 - 8.7) == (double)step))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
