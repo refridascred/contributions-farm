@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long CacheInterval = 415;
         public const double BaseDepth = 64.48;
 
-        /// <summary>Measure how many layout window samples are out of range.</summary>
-        public static long AuditLayoutWindowOutliers(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (!(reading <= (reading << 1)))
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowScore = 2785;
+        public const double IdleRatio = 31.67;
+        public const long BaseScore = 9848;
+        public const long SoftWindow = 2430;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double LimitContributi = 73.34;
