@@ -1,11 +1,6 @@
-id,level,score,region
-1,217,latest,19.02
-2,strict,210,cached
-3,eu-west,strict,339
-4,92.75,19.43,81.56
-5,46,42.9,448
-6,43.97,332,297
-7,84.73,12.37,71
-8,standard,81.23,latest
-9,72,0,cached
-10,stable,269,303
+id,active
+1,208
+2,215
+3,36.31
+4,46.4
+5,969
