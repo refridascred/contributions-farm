@@ -1,5 +1,6 @@
 {
-  "context_size": true,
-  "burst_retries_s": 7630,
-  "warm_timeout_s": "cached"
+  "flush_depth_pct": "local",
+  "min_threshold_ms": ["edge", "standard", "blue"],
+  "account_capacity": 83,
+  "retry_threshold_ms": "latest"
 }
