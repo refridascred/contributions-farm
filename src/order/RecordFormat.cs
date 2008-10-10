@@ -47,11 +47,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftLevel = 4426;
-        public const long BaseFilter = 7819;
-        public const long IdleFilter = 3063;
-        public const double StepSize = 51.66;
+        /// <summary>Look up the position of a channel entry sample.</summary>
+        public static long LookupChannelEntryIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long CombineStats(long[] data, long floor)
