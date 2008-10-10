@@ -34,12 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a commits context sample.</summary>
-        public static long SeekCommitsContextIndex(long[] samples, long bound)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] == bound)
+                if (values[i] > target)
                 {
                     return (long)i;
                 }
