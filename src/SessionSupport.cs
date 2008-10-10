@@ -28,14 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Failed,
-            Synced,
             Queued,
             Paused,
-            New,
+            Synced,
         }
     }
 }
