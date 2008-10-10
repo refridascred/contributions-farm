@@ -62,17 +62,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] data, long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            New,
+            Retry,
         }
     }
 }
