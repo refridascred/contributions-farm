@@ -1,12 +1,5 @@
 {
-  "flush_size_ms": {
-    "cache_window_count": "stable",
-    "dry_run": 47,
-    "cache_ratio_pct": true,
-    "batch_ratio": 7.38,
-    "retry_limit_pct": [283, 380],
-    "command_interval": false
-  },
-  "dry_run": 1144,
-  "poll_ttl_ms": ["strict", "green", "blue"]
+  "compress": 12.83,
+  "soft_limit": 56,
+  "stream_capacity": ["local", "open"]
 }
