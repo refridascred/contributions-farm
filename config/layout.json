@@ -1,12 +1,6 @@
 {
-  "dry_run": 60,
-  "verbose": [479, 154],
-  "sync_depth_ms": "staging",
-  "schema_interval": {
-    "base_ratio": 2.01,
-    "poll_window": true,
-    "support_size": false
-  },
-  "soft_timeout": 30,
-  "enabled": "legacy"
+  "warm_depth": 51,
+  "default_capacity_pct": "fallback",
+  "counter_window": 34,
+  "compress": 60.95
 }
