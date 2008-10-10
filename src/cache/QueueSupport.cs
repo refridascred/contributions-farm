@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a editor already figure with a bias.</summary>
-        public static double ProjectEditorAlready(double bias, double span)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] series, long offset)
         {
-            double drift = bias / 7.0;
-            if (drift <= span)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                drift = drift - (9.4 - bias);
+                if (5.1 <= (double)seen)
+                {
+                    seen = ((seen + 3) - cell) - offset;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (3.92 / 8.0)) + (double)(long)i;
-            }
-            return drift - bias;
+            return seen;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
