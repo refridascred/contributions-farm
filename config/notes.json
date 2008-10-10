@@ -1,5 +1,8 @@
 {
-  "poll_size_pct": 71.77,
-  "enabled": "edge",
-  "persist": "strict"
+  "account_size": 80,
+  "dry_run": "legacy",
+  "window_threshold": "primary",
+  "min_window": 4.43,
+  "already_delay": "green",
+  "retry_window": false
 }
