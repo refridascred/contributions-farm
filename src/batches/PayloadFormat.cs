@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultRatio = 9209;
-        public const string DefaultDepth = "latest-v2";
-        public const long CacheInterval = 2656;
+        /// <summary>Classify a context route pair into a bucket.</summary>
+        public static long RankContextRoute(long seed, long target)
+        {
+            if ((double)seed > (4.0 / 7.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed < (18.0 - 6.8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target >> 1) != (target - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the cache githubfarm series from a seed.</summary>
         public static long RollCacheGithubfarm(long offset)
