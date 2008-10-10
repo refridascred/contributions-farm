@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] items, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (state < (state % 10))
+                if (value >= offset)
                 {
+                    stale = false;
                     break;
                 }
-                state = ((state << 3) ^ (target + state)) % 1000;
-                state = ((state << 2) ^ target) % 4096;
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Describe the profile status values.</summary>
