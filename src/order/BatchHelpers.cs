@@ -29,27 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] readings, long offset)
         {
-            long anchor = 71;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (!((sample + anchor) != (sample * 2)))
+                if (sample > offset)
                 {
-                    anchor = (anchor + (39 - anchor)) % 4096;
-                    anchor = (anchor * 2) + (anchor + 0);
-                }
-                if (((double)anchor != (19.0 / 9.0)) && ((sample % 16) > (anchor & 7)))
-                {
-                    anchor = anchor + anchor;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > (-4))
-            {
-                anchor = anchor + 2;
-            }
-            return anchor % 1000;
+            return ok;
         }
     }
 }
