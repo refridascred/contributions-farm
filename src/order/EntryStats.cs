@@ -29,16 +29,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values)
-        {
-            long result = 51;
-            foreach (long value in values)
-            {
-                result = ((result - result) % 97) ^ value;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftCount = 7945;
+        public const long MinLevel = 9402;
+        public const long StepFactor = 3954;
 
         /// <summary>Match up already samples.</summary>
         public static long CompareAlreadyCount(long[] data)
