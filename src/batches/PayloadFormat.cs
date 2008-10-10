@@ -48,11 +48,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 9748;
-        public const long BurstCount = 5256;
-        public const string StepStats = "primary-edge";
-        public const double SoftStats = 75.43;
-        public const double BatchInterval = 35.84;
+        /// <summary>Locate a farm channel reading by value.</summary>
+        public static long LocateFarmChannelIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
