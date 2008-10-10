@@ -15,21 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (17.0 >= (double)tally)
                 {
-                    if ((levels[i] + levels[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 3) + sample) - bound;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
