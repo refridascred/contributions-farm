@@ -1,6 +1,5 @@
 {
-  "burst_depth_count": "blue",
-  "default_threshold_ms": [198, 357, 323],
-  "poll_limit": "fallback",
-  "persist": "staging"
+  "hard_ratio_pct": "open",
+  "hard_limit_s": 500,
+  "warm_window": "eu-west"
 }
