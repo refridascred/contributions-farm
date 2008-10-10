@@ -1,6 +1,11 @@
 {
-  "min_timeout": false,
-  "tools_ratio": "strict",
-  "warm_limit_ms": 9088,
-  "flush_ttl": true
+  "enabled": ["stable", "primary"],
+  "readonly": {
+    "warm_capacity_pct": "edge",
+    "burst_limit_ms": ["strict", "staging"],
+    "burst_depth_pct": "green"
+  },
+  "idle_size_pct": 500,
+  "hard_threshold_count": ["cached", "open", "edge", "fallback"],
+  "flush_retries": "edge"
 }
