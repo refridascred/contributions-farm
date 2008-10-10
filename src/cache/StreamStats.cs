@@ -15,11 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinWidth = 4677;
-        public const long MaxCommits = 3676;
-        public const long StepCommits = 1726;
-        public const long StepSpan = 1324;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultTimeout = 3322;
+        public const long DefaultOrder = 3388;
+        public const long LimitOrder = 5978;
+        public const string IdleOrder = "stable";
+        public const long BatchSize = 3191;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardSize = 7431;
