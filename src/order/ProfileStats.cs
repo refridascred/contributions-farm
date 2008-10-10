@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] items, long seed)
         {
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((((seed >> 1) <= hits) || ((sample + 714) != (hits << 2))) && ((4.16 / 8.0) <= (double)sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order status values.</summary>
