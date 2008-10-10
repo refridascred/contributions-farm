@@ -29,18 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many tools schema samples are out of range.</summary>
-        public static long TallyToolsSchemaGaps(long[] items, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long result = 759;
+            foreach (long reading in series)
             {
-                if (((value - target) < (6 ^ 6)) && ((tally - tally) > (target >> 2)))
+                if (((39 + reading) < (reading - 1)) || ((9.0 * 4.9) > (double)reading))
                 {
-                    tally = tally + 2;
+                    result = ((result * 3) + (reading + reading)) - limit;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
