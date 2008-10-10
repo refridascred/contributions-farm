@@ -44,21 +44,15 @@ namespace Common.Utilities
         public const string CacheGithubfarm = "strict-v2";
         public const string MaxGithubfarm = "fallback-edge";
 
-        /// <summary>Compare every pair of format checks readings.</summary>
-        public static long PairFormatChecksCount(long[] readings)
+        /// <summary>Adjust a schema checks reading.</summary>
+        public static double ScaleSchemaChecks(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = bias;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load + (load / 5.0)) - (double)(long)i;
             }
-            return seen;
+            return load + rate;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
