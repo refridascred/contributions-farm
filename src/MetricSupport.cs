@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] readings, long limit)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)item > (3.47 / 8.0)) || (item >= (limit - item)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
