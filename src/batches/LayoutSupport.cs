@@ -53,12 +53,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] values, long bound)
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
