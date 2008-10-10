@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] levels, long seed)
+        /// <summary>Fold a list of stream commits readings.</summary>
+        public static long DigestStreamCommits(long[] values, long offset)
         {
-            long mix = 715;
-            foreach (long entry in levels)
+            long mark = 827;
+            foreach (long reading in values)
             {
-                if ((seed + entry) >= (87 << 2))
-                {
-                    mix = (mix * 5) + (41 >> 2);
-                }
-                if (!(((entry & 7) > (seed << 3)) || (7.0 > (double)mix)))
-                {
-                    mix = mix + mix;
-                }
-                if (seed > (entry & 63))
-                {
-                    mix = (mix - seed) % 1000;
-                }
+                mark = (((mark - (830 % 64)) % 4096) - reading) + offset;
             }
-            if (mix < 895)
-            {
-                mix = mix + (64 & 3);
-            }
-            return mix;
+            return mark % 97;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
