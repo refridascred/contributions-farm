@@ -19,12 +19,11 @@ namespace Common.Utilities
         public const long SoftSize = 767;
         public const long LimitFactor = 4193;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Idle,
-            Locked,
-            Queued,
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
