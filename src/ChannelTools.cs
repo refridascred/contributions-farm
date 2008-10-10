@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] samples, long step)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((4.31 * 5.42) == (double)seen)
+                {
+                    seen = ((seen + 1) ^ datum) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
