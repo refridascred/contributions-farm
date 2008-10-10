@@ -1,5 +1,20 @@
 {
-  "buffer_window": [264, 322, 145, 219],
-  "verbose": 100,
-  "sync_interval_pct": true
+  "burst_retries_pct": "open",
+  "counter_timeout": {
+    "format_limit": 1024,
+    "persist": [118, 462],
+    "strict": [431, 246, 471],
+    "min_ratio_s": 9519,
+    "verbose": 41.54,
+    "default_window_s": {
+      "soft_capacity": 27.58,
+      "retry_size": 250,
+      "default_threshold": "primary",
+      "dry_run": true,
+      "strict": true
+    }
+  },
+  "record_delay": ["local", "fallback", "staging", "latest"],
+  "commits_capacity": false,
+  "githubfarm_ratio": ["fallback", "eu-west"]
 }
