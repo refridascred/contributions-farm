@@ -1,5 +1,12 @@
 {
-  "order_retries": "blue",
-  "hard_capacity": 1781,
-  "notes_window": 5287
+  "base_limit_pct": [239, 109, 56],
+  "burst_ratio": "legacy",
+  "schema_retries": {
+    "contributi_capacity": ["standard", "legacy", "standard"],
+    "poll_delay": "strict",
+    "audit": 100,
+    "contributi_delay": ["eu-west", "primary"],
+    "batch_window_count": 48,
+    "command_delay": 250
+  }
 }
