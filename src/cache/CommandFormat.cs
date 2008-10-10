@@ -26,11 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleScore = 4294;
-        public const string HardQueue = "standard";
-        public const double MinScore = 20.29;
-        public const long HardLevel = 81;
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of githubfarm farm readings.</summary>
         public static long TotalGithubfarmFarm(long[] samples)
