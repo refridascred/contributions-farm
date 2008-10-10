@@ -41,22 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "strict";
+        public const long CacheBudget = 4501;
+        public const long BatchCache = 9192;
+        public const long HardCache = 9899;
+        public const string SoftCache = "staging-1";
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
