@@ -20,22 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] items)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((5 + reading) == ((long)items.Length ^ seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of graph readings.</summary>
