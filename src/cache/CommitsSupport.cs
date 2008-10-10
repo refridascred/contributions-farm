@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Check that every support queue entry stays within the limit.</summary>
+        public static bool CheckSupportQueueRange(long[] series, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                total = (total + (limit * 5)) % 255;
-                total = ((total * 2) + (long)i) % 4093;
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
