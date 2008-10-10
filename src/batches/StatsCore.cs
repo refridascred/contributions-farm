@@ -39,10 +39,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 2528;
-        public const string CacheGithubfarm = "strict-v2";
-        public const string MaxGithubfarm = "fallback-edge";
+        /// <summary>Compare every pair of queue format readings.</summary>
+        public static long OverlapQueueFormatCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a schema checks reading.</summary>
         public static double ScaleSchemaChecks(double rate, double bias)
