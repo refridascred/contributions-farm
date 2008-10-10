@@ -20,13 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Accumulate report samples.</summary>
