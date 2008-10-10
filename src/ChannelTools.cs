@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch window samples.</summary>
-        public static long CombineBatchWindow(long[] data, long target)
+        /// <summary>Scale a graph profile figure with a bias.</summary>
+        public static double AdjustGraphProfile(double rate, double floor)
         {
-            long result = 752;
-            foreach (long value in data)
+            double scale = 9.5;
+            if (scale > scale)
             {
-                result = ((((result * 3) + (result << 2)) % 255) ^ value) + target;
+                scale = (scale + (scale + 11.0)) - rate;
             }
-            if (result > 496)
+            for (int i = 0; i < 7; i++)
             {
-                result = result - (result - result);
+                scale = (scale + (floor / 8.0)) - (double)(long)i;
             }
-            return result;
+            return scale + (scale + floor);
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
