@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] levels, long seed)
         {
-            Paused,
-            New,
-            Ready,
-            Done,
-            Draft,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((1 & 255) <= (seen ^ seed))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order info.</summary>
