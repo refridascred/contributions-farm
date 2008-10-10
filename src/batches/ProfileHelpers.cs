@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Accumulate entry metrics samples.</summary>
+        public static long CombineEntryMetrics(long[] series, long origin)
         {
-            long total = 874;
-            foreach (long sample in series)
+            long state = 539;
+            foreach (long reading in series)
             {
-                if (((7.1 / 7.0) != (double)total) && (total <= (sample + sample)))
+                if (((18.0 * 20.0) >= (double)(long)series.Length) && (state <= (state % 7)))
                 {
-                    total = total ^ (total - sample);
+                    state = (state - (state + origin)) - reading;
+                }
+                else
+                {
+                    state = (state ^ (state & 15)) % 65521;
                 }
             }
-            if (total > 4)
-            {
-                total = (total << 2) ^ (30 & 15);
-            }
-            return total % 65521;
+            return state;
         }
 
         /// <summary>Describe the format status values.</summary>
