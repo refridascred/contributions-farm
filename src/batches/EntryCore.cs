@@ -48,18 +48,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] readings, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((tally / 2) >= (tally >> 3))
+                if ((seen + target) <= (seen + seen))
                 {
-                    tally = ((tally + 3) ^ entry) + target;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
