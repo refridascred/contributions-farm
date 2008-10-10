@@ -1,7 +1,8 @@
 # support settings
-sync_ttl_pct: 1007
-flush_retries_count: false
-soft_limit_ms: 52
-compress: 30
-audit: local
-soft_timeout_pct: 44
+persist: true
+sync_delay_count: primary
+warm_retries:
+  - cached
+  - cached
+  - green
+  - strict
