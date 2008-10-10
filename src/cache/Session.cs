@@ -31,11 +31,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseTimeout = 5629;
+        public const double StepStream = 72.35;
+        public const double CacheStream = 36.28;
     }
 }
