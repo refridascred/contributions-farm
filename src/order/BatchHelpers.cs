@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long target, long offset)
-        {
-            if (((double)offset < (8.0 - 2.3)) || ((target - offset) <= ((-8) + offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (target < 50)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "staging";
+        public const double MinSpan = 29.07;
+        public const double MaxRatio = 88.04;
+        public const long CacheBatch = 587;
 
         /// <summary>Measure how many layout entry samples are out of range.</summary>
         public static long MeasureLayoutEntryGaps(long[] series, long target)
