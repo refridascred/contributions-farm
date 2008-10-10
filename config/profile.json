@@ -1,22 +1,5 @@
 {
-  "idle_window_pct": {
-    "audit": 8999,
-    "warm_depth": "standard",
-    "cache_depth": 65.36,
-    "batch_ttl_s": {
-      "already_delay": "legacy",
-      "idle_timeout": "green",
-      "cache_delay_ms": false,
-      "poll_retries": [329, 59, 442, 400],
-      "dry_run": 93.11
-    },
-    "format_interval": {
-      "poll_window_count": "edge",
-      "dry_run": 90.89,
-      "cache_delay": "green"
-    }
-  },
-  "context_capacity": true,
-  "min_threshold_s": 73.99,
-  "sync_interval": false
+  "sync_threshold_count": 16.35,
+  "cluster_ratio": [210, 64],
+  "enabled": "stable"
 }
