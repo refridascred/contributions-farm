@@ -1,5 +1,8 @@
 {
-  "compress": 60.83,
-  "retry_threshold_pct": 500,
-  "entry_retries": true
+  "max_interval_ms": [37, 386, 166, 200],
+  "min_capacity_s": [484, 80, 215],
+  "base_ratio": 78,
+  "report_retries": "cached",
+  "retry_size_s": "cached",
+  "stats_ratio": 30
 }
