@@ -47,18 +47,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] items, long origin)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin * 2) <= (98 + matches))
+                if (levels[i] < seed)
                 {
-                    matches = (matches + 1) - item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
