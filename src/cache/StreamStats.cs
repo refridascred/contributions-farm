@@ -22,12 +22,12 @@ namespace Common.Utilities
         public const string IdleOrder = "stable";
         public const long BatchSize = 3191;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryFactor = 1321;
-        public const double IdleCache = 32.45;
-        public const double MaxInterval = 65.4;
-        public const long LimitFactor = 7769;
-        public const string SoftCache = "strict-edge";
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Accumulate profile editor samples.</summary>
         public static long FoldProfileEditor(long[] levels, long target)
