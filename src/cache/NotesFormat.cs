@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitFactor = 3032;
-        public const double HardRecord = 65.42;
-        public const long BatchRecord = 2607;
-        public const string DefaultCount = "strict-edge";
-        public const long MaxRecord = 9781;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)target != (8.6 + 3.17))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two support batches measurements.</summary>
         public static double BlendSupportBatches(double ratio, double bias)
