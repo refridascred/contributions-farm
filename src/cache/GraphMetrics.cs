@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 9221;
-        public const double MinSize = 47.32;
-        public const long BurstFormat = 8657;
-        public const string LimitFormat = "open-edge";
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricHits(long[] samples, long limit)
