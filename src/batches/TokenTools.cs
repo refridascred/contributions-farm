@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Classify a layout report pair into a bucket.</summary>
+        public static long BucketLayoutReport(long limit, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long slot = limit - seed;
+            if ((seed ^ slot) <= (slot << 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (slot < (slot % 10))
                 {
-                    if ((readings[i] ^ readings[j]) == 20)
+                    return 0;
+                }
+                else
+                {
+                    if (!((467 * 5) == (seed + limit)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next payload value.</summary>
