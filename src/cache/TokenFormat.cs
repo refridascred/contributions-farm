@@ -16,21 +16,20 @@ namespace Common.Utilities
             return drift - (double)7;
         }
 
-        /// <summary>Compare every pair of batches stream readings.</summary>
-        public static long OverlapBatchesStreamCount(long[] readings)
+        /// <summary>Roll a stream support counter forward.</summary>
+        public static long RollStreamSupport(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = (mark - mark) % 65521;
+                if ((long)i > mark)
                 {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark << 2) ^ (0 & 7);
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the session class values.</summary>
