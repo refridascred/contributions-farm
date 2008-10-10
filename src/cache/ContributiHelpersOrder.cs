@@ -26,25 +26,13 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long limit, long origin)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long lane = limit - origin;
-            if (limit >= origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((756 >= origin) || ((lane - origin) <= (limit / 9)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
