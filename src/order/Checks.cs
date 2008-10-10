@@ -19,11 +19,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 8493;
-        public const long MaxCluster = 4745;
-        public const long CacheRatio = 6402;
-        public const double RetryCluster = 26.12;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Pending,
+            Dropped,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long floor, long offset)
