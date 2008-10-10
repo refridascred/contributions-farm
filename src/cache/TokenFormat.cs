@@ -22,14 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] samples, long origin)
         {
-            Active,
-            Idle,
-            Dropped,
-            New,
-            Failed,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (count > (count ^ origin))
+                {
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
