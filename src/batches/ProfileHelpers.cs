@@ -12,11 +12,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftFactor = 4719;
-        public const double CacheOrder = 84.89;
-        public const long IdleSize = 2475;
-        public const double RetrySize = 11.02;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Synced,
+            Closed,
+            Locked,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
