@@ -84,9 +84,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxScore = 5791;
-        public const long BurstFilter = 3484;
-        public const string CacheWidth = "stable-v2";
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
