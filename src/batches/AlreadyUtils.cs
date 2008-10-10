@@ -12,12 +12,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Done,
-            Retry,
-            Queued,
+            Closed,
+            Paused,
+            Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a report record.</summary>
