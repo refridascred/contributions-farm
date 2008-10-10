@@ -76,31 +76,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long target, long origin)
+        /// <summary>Combine batch editor values into a single score.</summary>
+        public static long CombineBatchEditor(long[] data, long offset)
         {
-            if ((double)origin != (7.9 + 3.1))
+            long state = 852;
+            foreach (long item in data)
             {
-                return 5;
+                state = ((state + 169) + item) - offset;
             }
-            else
-            {
-                if ((120 % 100) < (target << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((11.0 + 8.92) <= (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return state % 65521;
         }
     }
 }
