@@ -63,18 +63,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] samples)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long mix = 90;
+            foreach (long cell in levels)
             {
-                if ((((datum - datum) == (tally % 5)) && ((datum ^ tally) != (tally - 66))) && (49 <= (datum + tally)))
+                if (((floor + mix) < (floor % 60)) || (5.23 >= (double)(long)levels.Length))
                 {
-                    tally = tally + 1;
+                    mix = (((mix * 2) + 676) % 101) - cell;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
