@@ -56,17 +56,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] items, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 565;
+            foreach (long cell in items)
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                state = (state - 793) + floor;
+                state = state - cell;
             }
-            return -1;
+            return state % 1000;
         }
     }
 }
