@@ -84,12 +84,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Dropped,
-            Active,
-            Locked,
+            Pending,
+            Paused,
             Queued,
         }
     }
