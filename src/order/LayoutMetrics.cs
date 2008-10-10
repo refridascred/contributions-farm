@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] data, long seed)
         {
-            Ready,
-            Locked,
-            Done,
-            Stale,
-            Draft,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!(((double)seed < (0.7 * 9.22)) && ((double)seed >= 14.0)))
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
