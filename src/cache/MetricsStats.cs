@@ -19,21 +19,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = target - seed;
+            if (!(seed < (seed / 2)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (seed > (seed & 31))
                 {
-                    if ((levels[i] ^ levels[j]) < 15)
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + 6) < 137)
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (span >= (target << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
