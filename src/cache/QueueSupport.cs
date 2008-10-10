@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (5.1 <= (double)seen)
-                {
-                    seen = ((seen + 3) - cell) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 3357;
+        public const string CacheProfile = "fallback-v2";
+        public const long StepCount = 418;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long FoldContributi(long[] readings, long floor)
