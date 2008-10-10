@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
+            Pending,
+            Queued,
             Dropped,
-            Closed,
-            Done,
-            New,
         }
 
         /// <summary>Accumulate report samples.</summary>
