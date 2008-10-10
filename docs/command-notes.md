@@ -1,11 +1,12 @@
 # Command notes
 
-The report module keeps queue values in sync with the cache cache.
-The contributi report groups every route by record.
+The stats helpers are pure functions, so they are safe to call from any thread.
+The queue module keeps payload values in sync with the order cache.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new buffer fields
-- Validate filter input early
-- Review checks limits each release
-- Keep cache values small
+- Log every queue change
+- Validate farm input early
+- Keep channel values small
+- Review report limits each release
