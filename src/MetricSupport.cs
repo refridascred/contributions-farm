@@ -48,9 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 3774;
-        public const long DefaultBudget = 7517;
-        public const long MaxFactor = 9729;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double gain, double bias)
+        {
+            double weight = gain + gain;
+            return (weight + (weight + weight)) + bias;
+        }
     }
 }
