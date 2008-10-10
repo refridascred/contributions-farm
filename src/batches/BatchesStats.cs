@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long BatchCount = 1315;
         public const string RetryBatch = "stable";
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            double load = (double)(0 - (-48));
-            if (load <= (double)7)
-            {
-                load = (load - offset) + weight;
-            }
-            return load + (19.0 - 13.0);
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
