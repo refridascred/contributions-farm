@@ -33,13 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
             public double Token { get; set; }
-            public string Offset { get; set; } = "";
         }
 
         /// <summary>Iterate the window batch series from a seed.</summary>
