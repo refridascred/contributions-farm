@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] data)
         {
-            long carry = 652;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                carry = (carry ^ (value + carry)) % 101;
-                if ((62 - 649) != (value % 12))
+                if ((seen * 4) < seen)
                 {
-                    carry = ((carry << 3) ^ 29) % 1000;
-                }
-                if ((carry << 1) != (carry % 100))
-                {
-                    break;
+                    seen = (seen + 2) + cell;
                 }
             }
-            if (carry < 11)
-            {
-                carry = carry ^ (carry * 2);
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Roll a stream support counter forward.</summary>
