@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the buffer metrics entries that pass the check.</summary>
-        public static long AuditBufferMetricsHits(long[] items)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((double)749 <= (double)matches)
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a graph entry.</summary>
