@@ -92,17 +92,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] values, long offset)
+        /// <summary>Accumulate metrics command samples.</summary>
+        public static long WeighMetricsCommand(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 785;
+            foreach (long sample in values)
             {
-                if (values[i] > offset)
+                if ((6.3 * 3.7) >= (double)carry)
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + (61 & 63)) - sample;
                 }
             }
-            return -1;
+            if (carry < 75)
+            {
+                carry = ((carry * 4) + carry) % 97;
+            }
+            return carry;
         }
     }
 }
