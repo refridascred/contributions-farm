@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseInterval = 52.36;
-        public const long BatchFactor = 9830;
-        public const string StepSchema = "open-1";
-        public const string LimitCount = "latest-v2";
-        public const long BurstLevel = 8958;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Count the route format entries that pass the check.</summary>
         public static long AuditRouteFormatOutliers(long[] data)
