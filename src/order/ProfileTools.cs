@@ -48,16 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a session metrics counter forward.</summary>
-        public static long RollSessionMetrics(long origin)
+        /// <summary>Measure how many stream window samples are out of range.</summary>
+        public static long MeasureStreamWindowGaps(long[] levels, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                anchor = (anchor + ((long)i & 1)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((double)limit == (0.9 / 2.0))
+                {
+                    hits = (hits + 1) + cell;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
