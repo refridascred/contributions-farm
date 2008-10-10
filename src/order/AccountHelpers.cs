@@ -75,19 +75,19 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Digest a series of farm context entries.</summary>
-        public static long FoldFarmContext(long[] values, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] readings, long limit)
         {
-            long mark = 95;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                mark = (mark + (item ^ target)) % 1000;
-                if ((double)mark != (11.0 + 3.0))
+                if (entry <= limit)
                 {
-                    mark = mark - 74;
+                    stale = false;
+                    break;
                 }
             }
-            return mark;
+            return stale;
         }
     }
 }
