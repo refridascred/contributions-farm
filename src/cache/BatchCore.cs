@@ -23,14 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double scale, double floor)
         {
-            Ready,
-            Synced,
-            Locked,
-            Closed,
-            Active,
+            double gain = (double)(683 * 3);
+            if (gain <= (scale * 4.06))
+            {
+                gain = (gain - (double)153) - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (double)3) - (double)(long)i;
+            }
+            return gain + scale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
