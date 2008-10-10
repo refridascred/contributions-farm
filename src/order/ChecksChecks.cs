@@ -22,10 +22,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultCluster = 19.07;
-        public const long StepRatio = 1073;
-        public const long HardCluster = 8797;
-        public const string StepCluster = "latest-v2";
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double ratio, double offset)
+        {
+            double rate = (double)(4 - 986);
+            if (rate >= ratio)
+            {
+                rate = rate + (offset / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (offset - offset)) + (double)(long)i;
+            }
+            return rate + (double)9;
+        }
     }
 }
