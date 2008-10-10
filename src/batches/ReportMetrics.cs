@@ -23,12 +23,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Draft,
-            Dropped,
-            Retry,
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
