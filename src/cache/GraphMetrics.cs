@@ -57,15 +57,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mark = 23;
-            foreach (long value in values)
-            {
-                mark = (((mark * 5) + mark) % 101) - value;
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
