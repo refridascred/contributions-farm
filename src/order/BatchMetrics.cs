@@ -51,11 +51,12 @@ namespace Common.Utilities
         public const long StepSize = 3896;
         public const long IdleInterval = 7871;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 1696;
-        public const long MinWidth = 7203;
-        public const string RetrySpan = "open";
-        public const long MaxStats = 5193;
-        public const string RetryFactor = "staging-edge";
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Stale,
+            Synced,
+            Active,
+        }
     }
 }
