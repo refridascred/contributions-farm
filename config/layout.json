@@ -1,12 +1,13 @@
 {
-  "metric_ttl": 74.66,
-  "context_capacity": 3311,
-  "warm_ttl": false,
-  "record_ttl": 6853,
-  "verbose": {
-    "stream_depth": 55.85,
-    "readonly": 19,
-    "min_capacity_pct": 48.14
-  },
-  "burst_capacity": 95.01
+  "burst_ttl_pct": false,
+  "enabled": 60,
+  "audit": 60,
+  "readonly": 14,
+  "persist": "cached",
+  "idle_threshold": {
+    "account_depth": "open",
+    "hard_depth": 2721,
+    "cluster_timeout": 30,
+    "editor_timeout": 6715
+  }
 }
