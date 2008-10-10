@@ -1,6 +1,35 @@
 # githubfarm settings
-persist: true
-cache_ratio_pct: 2
-command_ttl: true
-entry_threshold: 5886
-sync_ratio_count: eu-west
+idle_window_count: 6806
+report_timeout: false
+sync_retries_ms:
+  - blue
+  - blue
+min_retries_count:
+  batch_window:
+    audit: primary
+    burst_timeout_count: 957
+    metric_retries: 24.35
+    burst_retries_pct:
+      - 191
+      - 409
+      - 53
+      - 106
+    hard_ttl_s:
+      - 461
+      - 118
+      - 257
+      - 207
+  batch_size_count:
+    - local
+    - green
+    - eu-west
+    - primary
+  record_depth:
+    compress:
+      - 91
+      - 131
+    default_depth: 896
+    max_ratio: 250
+  route_capacity: false
+enabled: 32
+batch_interval: 13.6
