@@ -1,19 +1,8 @@
 {
-  "farm_interval": ["blue", "stable", "stable"],
-  "default_delay_s": 30,
-  "enabled": ["cached", "latest", "eu-west"],
-  "readonly": 81.08,
-  "window_timeout": false,
-  "hard_retries_count": {
-    "verbose": {
-      "cache_limit": 74.86,
-      "cache_window_count": 26.93,
-      "soft_limit_s": 6,
-      "base_timeout": "local",
-      "soft_delay": "blue",
-      "poll_ttl_s": "green"
-    },
-    "idle_ttl_s": "eu-west",
-    "max_size_pct": 100
-  }
+  "enabled": 60,
+  "default_interval": 46.75,
+  "persist": "stable",
+  "already_depth": false,
+  "max_delay": [341, 457],
+  "dry_run": "local"
 }
