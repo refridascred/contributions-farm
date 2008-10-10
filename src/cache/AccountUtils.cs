@@ -41,12 +41,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
             public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
