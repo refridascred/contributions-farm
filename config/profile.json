@@ -1,5 +1,5 @@
 {
-  "cache_ttl": 250,
-  "token_delay": ["standard", "local", "standard", "local"],
-  "metrics_window": "fallback"
+  "buffer_window": [264, 322, 145, 219],
+  "verbose": 100,
+  "sync_interval_pct": true
 }
