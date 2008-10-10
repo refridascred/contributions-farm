@@ -1,27 +1,6 @@
 # entry settings
-contributi_threshold:
-  - 155
-  - 359
-batch_ttl_pct: 94.55
-hard_ratio_ms:
-  min_interval_count: green
-  burst_interval_pct: 79.0
-  readonly:
-    idle_capacity_count: fallback
-    max_size: false
-    checks_timeout: staging
-    dry_run:
-      - primary
-      - legacy
-      - stable
-    batch_ttl: 1024
-    min_limit_s: 52.0
-  batch_window_count: 250
-  max_ratio_count: strict
-  min_interval: false
-base_size_pct:
-  - cached
-  - fallback
-  - edge
-  - local
-base_ratio: 27.08
+burst_depth_ms: 7699
+cluster_threshold: 8185
+max_timeout_count: cached
+support_limit: 30
+default_threshold_s: 7295
