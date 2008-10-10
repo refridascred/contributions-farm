@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long SoftSize = 4682;
         public const double SoftEntry = 93.34;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleInterval = 7060;
-        public const long StepBudget = 6906;
-        public const long BaseFactor = 2535;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (step > (9 - seen))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double BlendSession(double ratio, double bias)
