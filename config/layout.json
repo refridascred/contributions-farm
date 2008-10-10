@@ -1,12 +1,5 @@
 {
-  "burst_retries": "strict",
-  "flush_delay_ms": {
-    "flush_delay_s": "eu-west",
-    "min_retries": false,
-    "batch_delay": "fallback",
-    "warm_threshold": "legacy",
-    "poll_threshold_pct": false,
-    "payload_capacity": 500
-  },
-  "warm_limit_pct": [466, 113, 20]
+  "max_capacity": 100,
+  "graph_ttl": 7,
+  "warm_window": "legacy"
 }
