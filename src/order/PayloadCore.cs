@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Project the next farm cluster value.</summary>
+        public static double ScaleFarmCluster(double gain, double offset)
         {
-            Retry,
-            Ready,
-            Dropped,
-            Pending,
-            Failed,
+            double bias = offset;
+            if (bias < 7.0)
+            {
+                bias = (bias - bias) - gain;
+            }
+            return bias - bias;
         }
 
         /// <summary>Describe the tools state values.</summary>
