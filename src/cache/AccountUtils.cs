@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const double HardGithubfarm = 62.44;
         public const long BaseGithubfarm = 6095;
 
-        /// <summary>Check that every cache batch entry stays within the limit.</summary>
-        public static bool GuardCacheBatchLimits(long[] data, long floor)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
