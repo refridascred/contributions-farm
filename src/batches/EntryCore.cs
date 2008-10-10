@@ -38,14 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 1.2;
+        public const double StepSession = 81.32;
+        public const double DefaultSpan = 27.69;
+        public const long BaseSession = 6125;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] values, long limit)
