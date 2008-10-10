@@ -30,10 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseSpan = 9015;
-        public const long IdleBuffer = 5866;
-        public const long MinBuffer = 6929;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long FoldCluster(long[] samples, long origin)
