@@ -23,18 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route format entries that pass the check.</summary>
-        public static long AuditRouteFormatOutliers(long[] data)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)data.Length - datum) > (count / 8))
+                if (levels[i] == origin)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit schema profile readings against a rule.</summary>
