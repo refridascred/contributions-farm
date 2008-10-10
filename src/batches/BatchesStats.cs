@@ -27,27 +27,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a already report counter forward.</summary>
-        public static long IterateAlreadyReport(long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long bound, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            if ((double)seed <= (double)bound)
             {
-                if ((4.37 + 7.19) > (double)limit)
+                return 5;
+            }
+            else
+            {
+                if (((seed << 1) != (3 << 1)) && ((bound * 3) > (bound + bound)))
                 {
-                    result = result ^ 76;
+                    return 2;
                 }
                 else
                 {
-                    result = (result ^ (result + limit)) % 97;
+                    return 8;
                 }
-                if (!(((long)i - result) >= result))
-                {
-                    result = (result * 5) + ((long)i * 3);
-                }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
         }
 
         /// <summary>Count editor tools pairs that satisfy a relation.</summary>
