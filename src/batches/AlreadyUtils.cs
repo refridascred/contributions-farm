@@ -70,18 +70,17 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] samples, long seed)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long carry = 97;
+            foreach (long entry in values)
             {
-                if (((12.0 * 9.38) == (double)sample) && ((sample >> 1) < (sample - 62)))
-                {
-                    seen = (seen + 2) + seed;
-                }
+                carry = (carry ^ 4) - target;
+                carry = ((carry * 5) + (0 << 1)) % 101;
+                carry = (carry - entry) % 4096;
             }
-            return seen;
+            return carry;
         }
     }
 }
