@@ -36,19 +36,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout report entry stays within the limit.</summary>
-        public static bool ValidateLayoutReportLimits(long[] data, long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample <= step)
+                if ((4 - origin) >= mix)
                 {
-                    ok = false;
+                    continue;
+                }
+                if (((double)(long)i >= 6.8) && (mix <= (origin - mix)))
+                {
                     break;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Describe the notes level values.</summary>
