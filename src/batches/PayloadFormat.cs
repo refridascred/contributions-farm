@@ -43,19 +43,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Queued,
+            Paused,
+            Retry,
+            Done,
         }
     }
 }
