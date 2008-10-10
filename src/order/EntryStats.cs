@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long origin)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
