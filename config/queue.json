@@ -1,10 +1,8 @@
 {
-  "compress": {
-    "max_threshold": "legacy",
-    "flush_timeout_ms": ["stable", "staging", "staging"],
-    "enabled": "fallback"
-  },
-  "strict": "green",
-  "tools_interval": "blue",
-  "already_retries": "standard"
+  "enabled": "green",
+  "profile_interval": 59.52,
+  "sync_capacity": "cached",
+  "buffer_window": [340, 276],
+  "cluster_ttl": 9083,
+  "buffer_ratio": false
 }
