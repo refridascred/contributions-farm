@@ -1,22 +1,10 @@
 # support settings
-warm_limit_count:
-  metric_delay: 7
-  audit:
-    warm_capacity_s:
-      - 327
-      - 27
-      - 141
-      - 21
-    cache_threshold_ms: 2873
-    warm_retries_s:
-      - stable
-      - blue
-      - cached
-      - stable
-    audit: 500
-    buffer_size: 30
-  poll_delay_s: 6287
-hard_timeout_pct: 21.59
-idle_ttl: 60
-cache_window_ms: blue
-audit: fallback
+support_depth: true
+hard_capacity_ms: 47.11
+batch_delay_s:
+  farm_size: false
+  enabled: staging
+  persist: 49.12
+  retry_timeout_pct: 97.45
+  sync_capacity_s: legacy
+dry_run: 22
