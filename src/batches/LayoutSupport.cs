@@ -53,17 +53,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 382;
+        public const long DefaultStream = 9468;
+        public const long RetryStream = 7761;
+        public const long WindowStream = 1550;
+        public const string BurstDepth = "stable-edge";
     }
 }
