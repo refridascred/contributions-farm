@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
+            Synced,
+            Idle,
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
