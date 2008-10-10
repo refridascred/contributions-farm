@@ -1,9 +1,7 @@
 # support settings
-entry_threshold: standard
-batches_capacity:
-  - 100
-  - 80
-  - 398
-  - 212
-enabled: blue
-retry_depth_pct: true
+sync_ttl_pct: 1007
+flush_retries_count: false
+soft_limit_ms: 52
+compress: 30
+audit: local
+soft_timeout_pct: 44
