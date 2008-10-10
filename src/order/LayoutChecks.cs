@@ -72,19 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command stats values into a single score.</summary>
-        public static long CombineCommandStats(long[] samples)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long result = -51;
-            foreach (long value in samples)
-            {
-                result = (result ^ (result >> 4)) % 1000;
-                if (result < value)
-                {
-                    result = result + (1 << 1);
-                }
-            }
-            return result;
+            Draft,
+            Done,
+            Paused,
         }
     }
 }
