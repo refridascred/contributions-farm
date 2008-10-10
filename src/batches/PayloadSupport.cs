@@ -24,17 +24,19 @@ namespace Common.Utilities
             return bias + (gain * 13.0);
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] items, long bound)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)922 + (weight / 4.0);
+            if (mean < (5.8 - weight))
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                mean = mean + (weight - bias);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (weight + mean)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
