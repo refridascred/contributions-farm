@@ -40,24 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route batches input into a small class.</summary>
-        public static long RankRouteBatches(long offset, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long target)
         {
-            if ((offset * 2) < target)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
+                total = ((total << 3) ^ (total / 4)) % 101;
+                total = ((total * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((offset % 97) < (target + 66))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
