@@ -62,18 +62,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] items)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((entry - matches) != (matches + matches))
+                if (value < step)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
