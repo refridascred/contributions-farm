@@ -55,13 +55,18 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                score = ((score * 2) + (bound & 15)) % 1000;
+                if (!(((long)i + bound) <= score))
+                {
+                    score = (score * 4) + ((long)i & 255);
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
             return score;
         }
