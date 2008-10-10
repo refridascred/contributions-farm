@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchDepth = 2450;
-        public const long CacheInterval = 415;
-        public const double BaseDepth = 64.48;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long WindowScore = 2785;
