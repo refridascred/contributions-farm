@@ -15,19 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen ^ value) >= (seen >> 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchSpan = 9881;
+        public const double DefaultSpan = 0.29;
+        public const long BurstScore = 4714;
+        public const double LimitCounter = 62.61;
 
         /// <summary>Adjust a context stats reading.</summary>
         public static double BlendContextStats(double ratio, double span)
