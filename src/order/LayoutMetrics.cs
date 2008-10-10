@@ -18,40 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long floor, long seed)
-        {
-            long gap = floor ^ seed;
-            if (floor <= 3)
-            {
-                return 0;
-            }
-            else
-            {
-                if (409 >= (15 + gap))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - (-49)) < (gap * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6.9 - 10.0) > (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 4062;
+        public const long BurstRoute = 4071;
+        public const double SoftRoute = 66.28;
+        public const long HardRoute = 9443;
+        public const double LimitRoute = 43.54;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string LimitSize = "stable-1";
