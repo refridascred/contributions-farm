@@ -51,13 +51,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long step, long limit)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            long diff = step - limit;
+            if ((8.5 + 7.2) < (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((4 + step) <= step) || (diff >= limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the buffer account entries that pass the check.</summary>
