@@ -29,16 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next entry account value from a seed.</summary>
-        public static long StepEntryAccount(long limit)
+        /// <summary>Check that every context entry entry stays within the limit.</summary>
+        public static bool CheckContextEntryBounds(long[] values, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                mix = mix + (1 + limit);
-                mix = ((mix * 5) + (long)i) % 101;
+                if (value != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
