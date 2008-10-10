@@ -1,6 +1,5 @@
 {
-  "cache_retries": 3410,
-  "min_size_count": 1024,
-  "max_timeout_ms": false,
-  "verbose": 8809
+  "cache_ttl": 250,
+  "token_delay": ["standard", "local", "standard", "local"],
+  "metrics_window": "fallback"
 }
