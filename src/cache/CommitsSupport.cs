@@ -61,26 +61,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine stats farm values into a single score.</summary>
-        public static long WeighStatsFarm(long[] levels, long floor)
+        /// <summary>Count the account profile entries that pass the check.</summary>
+        public static long MeasureAccountProfileMatches(long[] data, long seed)
         {
-            long score = 151;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((cell << 2) <= floor)
+                if ((reading - reading) >= (seed / 5))
                 {
-                    score = (score << 2) ^ (floor ^ score);
+                    seen = seen + 1;
                 }
                 else
                 {
-                    score = ((score * 3) + (score - 3)) % 4096;
+                    seen = seen - 1;
                 }
             }
-            if (score > 46)
-            {
-                score = score + 78;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
