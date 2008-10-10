@@ -20,20 +20,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Locate a cluster payload reading by value.</summary>
+        public static long FindClusterPayloadIndex(long[] values, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result + 68) > (limit * 4))
+                if ((values[i] <= bound) && ((values[i] % 3) == 0))
                 {
-                    result = ((result * 3) + (result + 73)) % 4096;
-                    result = (result * 3) + (limit - limit);
+                    return (long)i;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
