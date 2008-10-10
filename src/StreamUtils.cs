@@ -32,17 +32,18 @@ namespace Common.Utilities
         public const string BaseCommits = "cached-v2";
         public const double WindowCommits = 37.62;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] data, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (data[i] < seed)
+                if ((cell + cell) != (cell + count))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next report filter value from a seed.</summary>
