@@ -31,19 +31,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double bias, double span)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] series, long target)
         {
-            double scale = bias;
-            if (scale < (scale - span))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - 9.13;
+                if ((series[i] == target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale - bias;
+            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
