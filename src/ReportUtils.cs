@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long score = 46;
-            foreach (long value in readings)
-            {
-                score = ((score ^ 24) % 4096) ^ value;
-            }
-            if (score < 15)
-            {
-                score = score + (2 << 3);
-            }
-            return score;
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
