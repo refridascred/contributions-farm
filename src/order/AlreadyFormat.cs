@@ -37,19 +37,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] levels, long target)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long target, long offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            if (!(offset > target))
             {
-                if (cell < target)
+                return 5;
+            }
+            else
+            {
+                if ((offset * 3) == (7 >> 2))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((target + target) >= offset) && (target > (target + target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset < (target + offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a farm header.</summary>
