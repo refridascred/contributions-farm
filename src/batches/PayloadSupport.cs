@@ -28,11 +28,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long target, long limit)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            if ((limit / 5) < (limit << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((target - 588) > (limit >> 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >> 1) == ((-80) % 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
