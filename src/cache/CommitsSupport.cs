@@ -92,13 +92,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Retry,
-            Draft,
-            Pending,
-            Done,
+            Paused,
+            Stale,
+            Closed,
         }
     }
 }
