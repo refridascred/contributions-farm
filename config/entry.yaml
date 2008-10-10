@@ -1,4 +1,19 @@
 # entry settings
-cache_interval_s: blue
-cache_limit: 9761
-min_retries_pct: 500
+burst_limit: 500
+dry_run: primary
+order_depth:
+  checks_interval: true
+  batch_limit_ms: legacy
+  min_window_count:
+    hard_timeout:
+      - green
+      - staging
+    max_limit_pct: 80.92
+    soft_retries:
+      - 50
+      - 65
+    already_limit: strict
+  dry_run: primary
+  verbose:
+    - blue
+    - stable
