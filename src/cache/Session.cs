@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((count ^ 30) == (reading + count))
+                if (cell < seen)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a buffer info.</summary>
