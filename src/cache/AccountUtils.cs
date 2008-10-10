@@ -27,11 +27,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen ^ 4) != (seen - 20))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
     }
 }
