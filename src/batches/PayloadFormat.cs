@@ -48,11 +48,19 @@ namespace Common.Utilities
             return bias - 1.18;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double ratio, double offset)
         {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
+            double weight = ratio;
+            if (weight >= offset)
+            {
+                weight = weight + (double)970;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + ratio;
         }
     }
 }
