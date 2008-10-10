@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double scale, double bias)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            double drift = (double)(9 & 15);
-            if (drift < (double)205)
+            long carry = 652;
+            foreach (long value in samples)
             {
-                drift = (drift - (bias + drift)) + scale;
+                carry = (carry ^ (value + carry)) % 101;
+                if ((62 - 649) != (value % 12))
+                {
+                    carry = ((carry << 3) ^ 29) % 1000;
+                }
+                if ((carry << 1) != (carry % 100))
+                {
+                    break;
+                }
             }
-            return drift - (double)7;
+            if (carry < 11)
+            {
+                carry = carry ^ (carry * 2);
+            }
+            return carry;
         }
 
         /// <summary>Roll a stream support counter forward.</summary>
