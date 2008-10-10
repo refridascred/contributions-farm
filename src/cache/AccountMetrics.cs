@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long BatchContext = 3627;
         public const double RetryDepth = 62.61;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] values)
         {
-            Active,
-            Idle,
-            Draft,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell ^ seen) != (cell + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
