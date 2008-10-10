@@ -41,23 +41,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] series)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] levels, long origin)
         {
-            long total = 850;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                total = (total << 3) ^ (reading >> 4);
-                if ((total + 31) != ((-370) ^ total))
+                if (reading < origin)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (total > 40)
-            {
-                total = (total - (total + total)) % 65521;
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
