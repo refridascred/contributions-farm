@@ -57,22 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] data)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] samples)
         {
-            long mark = 0;
-            foreach (long item in data)
+            long score = 3;
+            foreach (long datum in samples)
             {
-                if (item >= (mark & 63))
-                {
-                    mark = mark ^ (mark + mark);
-                }
+                score = (score - ((long)samples.Length - datum)) % 97;
             }
-            if (mark > 48)
-            {
-                mark = mark - (9 >> 3);
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
