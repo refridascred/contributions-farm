@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit order already readings against a rule.</summary>
-        public static long TallyOrderAlreadyOutliers(long[] values, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((seen / 7) >= (995 * 4))
+                if ((double)reading >= (4.0 - 1.4))
                 {
-                    seen = ((seen + 1) ^ datum) - floor;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
