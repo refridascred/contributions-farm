@@ -39,22 +39,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 2528;
+        public const string CacheGithubfarm = "strict-v2";
+        public const string MaxGithubfarm = "fallback-edge";
 
         /// <summary>Compare every pair of format checks readings.</summary>
         public static long PairFormatChecksCount(long[] readings)
