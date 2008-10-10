@@ -27,10 +27,12 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseInterval = 9143;
-        public const long DefaultSize = 38;
-        public const long StepStream = 6303;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportHits(long[] levels)
