@@ -31,38 +31,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a tools format value against two limits.</summary>
-        public static long SortToolsFormat(long floor, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] items)
         {
-            if (((limit - floor) > (floor / 3)) || ((floor % 64) != (571 ^ limit)))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor >= (7.91 + 20.0))
+                if (((sample + tally) >= (tally * 4)) && ((tally + sample) > tally))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.32 + 1.0) >= (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit >= (floor + floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
