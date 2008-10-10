@@ -1,5 +1,13 @@
 {
-  "verbose": 76.66,
-  "strict": "cached",
-  "retry_ratio_ms": "blue"
+  "min_timeout": true,
+  "flush_limit_ms": ["blue", "open", "open", "fallback"],
+  "notes_ttl": {
+    "cache_size_s": "stable",
+    "poll_size": "open",
+    "max_delay_pct": 17.13,
+    "sync_ratio_count": "strict",
+    "soft_capacity": true
+  },
+  "compress": "stable",
+  "poll_capacity_pct": 4873
 }
