@@ -48,15 +48,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] items)
+        /// <summary>Count notes cluster pairs that satisfy a relation.</summary>
+        public static long PairNotesClusterCount(long[] items)
         {
             long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0.22 - 13.0) < (double)matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) + item;
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
