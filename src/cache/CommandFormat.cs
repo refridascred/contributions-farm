@@ -36,32 +36,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long bound, long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] data, long floor)
         {
-            long diff = bound ^ limit;
-            if (((146 >> 3) < (bound - limit)) && (bound <= (diff ^ 281)))
+            bool ready = true;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(772 <= bound))
+                if (entry <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)bound < (16.0 * 2.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
