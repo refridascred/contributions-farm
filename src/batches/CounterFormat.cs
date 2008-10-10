@@ -26,19 +26,19 @@ namespace Common.Utilities
             return weight + (weight - 18.0);
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double bias, double floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long floor)
         {
-            double mean = 1.9 * 18.0;
-            if (mean > bias)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                mean = (mean + (bias + 1.52)) + floor;
+                if (result < (floor & 31))
+                {
+                    result = (result - floor) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean + (mean + 10.0);
-            }
-            return mean - 6.15;
+            return result;
         }
     }
 }
