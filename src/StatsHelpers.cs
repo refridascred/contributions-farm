@@ -44,12 +44,12 @@ namespace Common.Utilities
         public const long StepSize = 3529;
         public const string IdleBatch = "cached-1";
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] data, long offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 2) == 0))
+                if (series[i] == step)
                 {
                     return (long)i;
                 }
