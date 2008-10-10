@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] data)
-        {
-            long anchor = 79;
-            foreach (long item in data)
-            {
-                anchor = ((anchor << 3) ^ (item >> 1)) % 97;
-                anchor = anchor - (item * 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxSession = 67.52;
+        public const string DefaultLevel = "strict-v2";
+        public const string BaseRatio = "open-1";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 4392;
