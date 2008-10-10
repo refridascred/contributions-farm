@@ -29,21 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((7.2 / 8.0) > (double)seen)
                 {
-                    if ((readings[i] + readings[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
