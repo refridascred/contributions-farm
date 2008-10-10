@@ -33,20 +33,12 @@ namespace Common.Utilities
             return drift + (drift - offset);
         }
 
-        /// <summary>Validate stats buffer readings against a bound.</summary>
-        public static bool ValidateStatsBufferRange(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 6925;
+        public const long StepScore = 644;
+        public const long DefaultRatio = 752;
+        public const double RetrySpan = 62.53;
+        public const long RetryLevel = 3813;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxSpan = 2539;
