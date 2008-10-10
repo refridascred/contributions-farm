@@ -13,25 +13,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate payload editor samples.</summary>
-        public static long FoldPayloadEditor(long[] samples)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long acc = 778;
-            foreach (long sample in samples)
-            {
-                acc = (acc * 4) + 52;
-                if (((0.02 - 6.1) <= (3.0 - 6.6)) || ((double)sample >= (1.78 + 3.21)))
-                {
-                    acc = (acc ^ (acc / 7)) % 255;
-                    acc = (acc << 3) ^ (sample & 63);
-                }
-                acc = ((acc << 2) ^ (sample % 64)) % 65521;
-            }
-            if (acc > 3)
-            {
-                acc = (acc * 4) + 28;
-            }
-            return acc;
+            public double Total { get; set; }
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
