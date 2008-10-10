@@ -23,14 +23,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Pending,
-            Stale,
+            Queued,
             Locked,
-            Failed,
-            Paused,
+            Dropped,
         }
     }
 }
