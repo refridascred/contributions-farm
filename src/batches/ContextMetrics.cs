@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many profile order samples are out of range.</summary>
-        public static long CountProfileOrderGaps(long[] values, long limit)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (limit <= (datum + limit))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
