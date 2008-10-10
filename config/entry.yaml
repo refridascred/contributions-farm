@@ -1,9 +1,19 @@
 # entry settings
-cache_timeout: 30
-hard_depth: 11
-checks_delay: 97
-strict: 30
-hard_delay:
-  - legacy
-  - latest
-  - staging
+format_retries: 56
+readonly: 9296
+strict:
+  layout_window:
+    - 109
+    - 406
+    - 239
+  enabled: true
+  window_delay:
+    sync_size_count: false
+    enabled:
+      - primary
+      - primary
+    graph_window: 381
+    batch_limit_s: 63.82
+  persist: 30
+flush_window: 14
+poll_window: 3191
