@@ -40,19 +40,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the command stream entries that pass the check.</summary>
-        public static long CountCommandStreamOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count / 4) == (count << 1))
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 4297;
+        public const long SoftFactor = 6797;
+        public const long DefaultFormat = 545;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchBudget = 3715;
