@@ -55,23 +55,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] values)
-        {
-            long total = 9;
-            foreach (long cell in values)
-            {
-                if ((cell ^ 378) <= ((-6) << 3))
-                {
-                    total = ((total * 2) + (33 + cell)) % 4096;
-                }
-            }
-            if (total < (-1))
-            {
-                total = ((total << 2) ^ (total * 4)) % 65521;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 5788;
+        public const double BaseSupport = 47.09;
+        public const string BaseLevel = "staging-v2";
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
