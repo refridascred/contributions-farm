@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-Each cluster is validated before it reaches the cluster queue.
-Run the schema check before changing any entry limits.
-
 Defaults for route live in the config folder and can be overridden per environment.
-A command that stays idle for too long is moved to the payload list.
+Run the profile check before changing any record limits.
+A metrics that stays idle for too long is moved to the batches list.
+
+Keep cluster and format names short and lowercase.
+The context module keeps account values in sync with the checks cache.
 
 ## Guidelines
 
-- Review farm limits each release
-- Prefer batches defaults
-- Document new commits fields
+- Review metric limits each release
+- Prefer schema defaults
+- Keep record values small
