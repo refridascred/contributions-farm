@@ -33,10 +33,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardLevel = 7350;
-        public const long IdleCommits = 4084;
-        public const long DefaultDepth = 655;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long RollCluster(long bound)
