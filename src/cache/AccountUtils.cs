@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double bias, double floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long limit)
         {
-            double drift = bias;
-            if (drift <= drift)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                drift = drift - bias;
+                total = ((total * 5) + (total - limit)) % 97;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = (((total * 5) + 7) % 4096) ^ (long)i2;
+                    total = total - (limit - limit);
+                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return drift + floor;
+            return total;
         }
 
         /// <summary>Digest a series of payload counter entries.</summary>
