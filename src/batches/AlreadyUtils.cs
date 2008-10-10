@@ -47,24 +47,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long step, long step2)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            if ((step2 % 16) != (step ^ step2))
             {
-                if (((origin % 16) != (origin ^ 1)) && (state < (long)i))
+                return 1;
+            }
+            else
+            {
+                if (((step + step2) < step2) || ((step2 + step2) >= (830 / 2)))
                 {
-                    state = (state + state) % 1000;
-                    state = (state ^ origin) % 97;
+                    return 7;
                 }
                 else
                 {
-                    state = (state - (91 / 3)) % 4096;
+                    if (!((step - step) > (step - step2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((step2 + 7) != (step2 ^ step2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
