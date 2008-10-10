@@ -39,17 +39,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] items, long limit)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long seed, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((origin >> 3) >= seed) && ((seed - origin) > origin))
             {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if (seed < (origin & 1))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin < (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin << 2) != (seed & 15))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first metric filter entry that matches the target.</summary>
