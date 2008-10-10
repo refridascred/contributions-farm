@@ -12,14 +12,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] series, long limit)
         {
-            Closed,
-            Paused,
-            Draft,
-            Synced,
-            Stale,
+            long score = 85;
+            foreach (long reading in series)
+            {
+                score = (score * 5) + (reading % 97);
+                if ((double)limit != (13.0 * 8.77))
+                {
+                    break;
+                }
+            }
+            if (score < 65)
+            {
+                score = ((score << 2) ^ score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a report record.</summary>
