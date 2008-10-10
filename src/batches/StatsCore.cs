@@ -56,19 +56,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] series, long target)
+        /// <summary>Compare every pair of format checks readings.</summary>
+        public static long PairFormatChecksCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
