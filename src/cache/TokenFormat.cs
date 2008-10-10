@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] data)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen * 4) < seen)
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a stream support counter forward.</summary>
