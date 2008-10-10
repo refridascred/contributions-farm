@@ -1,10 +1,6 @@
 # support settings
-hard_timeout_ms: false
-min_ttl_pct: true
-hard_interval_pct: 28
-sync_ratio_s:
-  - 236
-  - 393
-  - 380
-  - 50
-dry_run: 30
+entry_timeout:
+  - staging
+  - fallback
+idle_ttl_count: 69
+max_threshold_s: eu-west
