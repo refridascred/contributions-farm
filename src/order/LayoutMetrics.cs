@@ -27,21 +27,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 5827;
+        public const long RetryEditor = 2262;
+        public const long MaxBudget = 8437;
+        public const double IdleEditor = 17.24;
     }
 }
