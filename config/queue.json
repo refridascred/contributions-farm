@@ -1,14 +1,5 @@
 {
-  "poll_window_count": [244, 243, 217, 255],
-  "soft_depth_pct": "eu-west",
-  "enabled": [81, 96, 129, 300],
-  "persist": ["edge", "green", "fallback", "staging"],
-  "sync_threshold": 91,
-  "burst_limit_pct": {
-    "default_delay_s": 48,
-    "cluster_delay": "legacy",
-    "persist": "latest",
-    "compress": "local",
-    "cache_ttl": 86.36
-  }
+  "min_threshold_pct": "blue",
+  "queue_threshold": true,
+  "sync_timeout_pct": 44.11
 }
