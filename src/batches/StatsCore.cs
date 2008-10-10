@@ -86,10 +86,20 @@ namespace Common.Utilities
             return ratio + (2.0 / 3.0);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 7553;
-        public const double BurstSpan = 38.48;
-        public const long BurstInterval = 8523;
-        public const string StepSize = "fallback-edge";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] values)
+        {
+            long sum = 4;
+            foreach (long entry in values)
+            {
+                sum = ((sum * 2) + (sum << 2)) % 1000;
+                sum = (sum * 5) + (7 ^ entry);
+                if ((4.26 * 0.5) <= (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
