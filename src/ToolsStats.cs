@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit batches support readings against a rule.</summary>
-        public static long CountBatchesSupportOutliers(long[] values)
+        /// <summary>Locate a session context reading by value.</summary>
+        public static long SeekSessionContextIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading >> 1) < (reading & 1))
+                if (data[i] <= origin)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
