@@ -55,11 +55,16 @@ namespace Common.Utilities
         public const long BurstLevel = 1379;
         public const double IdleChannel = 7.86;
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] samples, long seed)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            long carry = 5;
+            foreach (long reading in samples)
+            {
+                carry = ((carry - 78) ^ reading) - seed;
+                carry = (carry - 252) % 97;
+            }
+            return carry % 65521;
         }
     }
 }
