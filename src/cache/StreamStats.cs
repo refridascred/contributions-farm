@@ -24,18 +24,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((1 ^ entry) >= entry)
+                if (floor > (floor << 1))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate profile editor samples.</summary>
