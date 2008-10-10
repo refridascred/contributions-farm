@@ -1,6 +1,6 @@
 {
-  "retry_size_pct": 4667,
-  "batch_ratio": true,
-  "hard_threshold_pct": "strict",
-  "min_threshold": 69.49
+  "default_retries_s": "legacy",
+  "audit": "cached",
+  "cache_interval_count": 39.13,
+  "default_threshold": "green"
 }
