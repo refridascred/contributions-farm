@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public double Count { get; set; }
+            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Audit payload stats readings against a rule.</summary>
