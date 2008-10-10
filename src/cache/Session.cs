@@ -46,10 +46,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 9531;
-        public const double RetryWidth = 64.48;
-        public const string SoftSize = "legacy-edge";
-        public const long BurstRoute = 5113;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 6131;
+        public const long BurstScore = 9622;
+        public const long RetryFactor = 4722;
     }
 }
