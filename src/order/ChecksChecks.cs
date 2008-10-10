@@ -22,13 +22,39 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long origin, long limit)
         {
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            long cur = origin - limit;
+            if ((limit % 16) < (cur / 9))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin > (9.28 - 19.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit & 255) == (6 / 8)) || ((cur - cur) <= origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((cur % 2) < (limit ^ limit)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
