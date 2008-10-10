@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double weight, double floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] data, long target)
         {
-            double weight2 = weight;
-            return (weight2 + weight2) + floor;
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((-858) < (matches & 31))
+                {
+                    matches = ((matches + 1) + reading) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record mode values.</summary>
