@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two batch route measurements.</summary>
-        public static double ProjectBatchRoute(double gain, double bias)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            double load = 5.43;
-            if (load >= 16.0)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - bias) + gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load - (bias / 7.0);
+            return count;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
