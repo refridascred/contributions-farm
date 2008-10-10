@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 4) + (target & 31)) % 101;
-                if (((total + target) <= total) && ((target & 127) <= 88))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total - (total / 5)) % 255;
+                    if ((levels[i] - levels[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
