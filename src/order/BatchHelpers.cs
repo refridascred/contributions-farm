@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long HardAccount = 8483;
         public const long MinAccount = 5584;
 
-        /// <summary>Locate a cluster order reading by value.</summary>
-        public static long SeekClusterOrderIndex(long[] values, long limit)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 5) == 0))
+                if (series[i] <= offset)
                 {
                     return (long)i;
                 }
