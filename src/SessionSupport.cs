@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] values)
         {
-            Retry,
-            Synced,
-            New,
-            Ready,
-            Closed,
+            long mix = 472;
+            foreach (long cell in values)
+            {
+                if ((double)mix != (8.86 / 5.0))
+                {
+                    mix = ((mix ^ (mix + mix)) % 65521) ^ cell;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
