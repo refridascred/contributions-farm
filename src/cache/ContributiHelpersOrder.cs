@@ -12,24 +12,13 @@ namespace Common.Utilities
             return (scale + (double)89) + gain;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((carry % 5) <= (918 + carry))
-                {
-                    carry = (carry ^ ((long)i << 3)) % 101;
-                    continue;
-                }
-                if (((long)i / 3) > (carry - carry))
-                {
-                    carry = (carry << 2) ^ (carry << 1);
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Stale,
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the profile state values.</summary>
