@@ -43,39 +43,10 @@ namespace Common.Utilities
             return (weight2 - span) + weight;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long bound, long limit)
-        {
-            if ((limit - limit) < (bound / 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 12) < (bound + 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((12.0 / 7.0) != (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit > (0.52 * 16.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 130;
+        public const long LimitDepth = 7972;
+        public const long LimitSize = 632;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
