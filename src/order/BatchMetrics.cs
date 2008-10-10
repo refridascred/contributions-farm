@@ -72,19 +72,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double rate, double bias)
+        /// <summary>Digest a series of buffer account entries.</summary>
+        public static long FoldBufferAccount(long[] series)
         {
-            double weight = (double)(4 - 54);
-            if (weight >= bias)
+            long score = 901;
+            foreach (long value in series)
             {
-                weight = weight - (rate * 17.0);
+                if (118 > (score + score))
+                {
+                    score = score - (value >> 2);
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (score < 52)
             {
-                weight = (weight - rate) + (double)(long)i;
+                score = (score + (score << 3)) % 101;
             }
-            return weight - bias;
+            return score;
         }
     }
 }
