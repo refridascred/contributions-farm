@@ -12,23 +12,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] series, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] readings)
         {
-            long score = 85;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                score = (score * 5) + (reading % 97);
-                if ((double)limit != (13.0 * 8.77))
+                if ((datum - tally) >= 8)
                 {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            if (score < 65)
-            {
-                score = ((score << 2) ^ score) % 97;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
