@@ -1,11 +1,19 @@
 {
-  "cache_size": "standard",
-  "counter_limit": 8004,
-  "audit": {
-    "retry_ratio": true,
-    "audit": [458, 38],
-    "verbose": false,
-    "min_size": "primary"
-  },
-  "hard_timeout_pct": "primary"
+  "farm_interval": ["blue", "stable", "stable"],
+  "default_delay_s": 30,
+  "enabled": ["cached", "latest", "eu-west"],
+  "readonly": 81.08,
+  "window_timeout": false,
+  "hard_retries_count": {
+    "verbose": {
+      "cache_limit": 74.86,
+      "cache_window_count": 26.93,
+      "soft_limit_s": 6,
+      "base_timeout": "local",
+      "soft_delay": "blue",
+      "poll_ttl_s": "green"
+    },
+    "idle_ttl_s": "eu-west",
+    "max_size_pct": 100
+  }
 }
