@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((7.0 / 2.0) != (double)state)
-                {
-                    break;
-                }
-                state = (state + (target / 9)) % 101;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
