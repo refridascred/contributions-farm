@@ -65,14 +65,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] series)
         {
-            Pending,
-            Retry,
-            Synced,
-            Idle,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
