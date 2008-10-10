@@ -40,21 +40,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinSpan = 26.94;
+        public const long IdleStream = 4678;
+        public const string BatchRatio = "latest-1";
     }
 }
