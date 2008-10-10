@@ -24,19 +24,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] values, long target)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
