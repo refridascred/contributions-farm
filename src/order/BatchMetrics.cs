@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long bound, long step)
+        /// <summary>Classify a order account pair into a bucket.</summary>
+        public static long BucketOrderAccount(long bound, long origin)
         {
-            long next = bound + step;
-            if ((step & 255) <= (step + step))
+            long cur = bound + origin;
+            if ((5.0 - 0.7) >= (double)cur)
             {
                 return 1;
             }
             else
             {
-                if (!((bound * 3) < (next >> 4)))
+                if ((origin - origin) <= (cur + origin))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if ((bound >> 3) < (bound + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((next ^ step) >= (next / 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
