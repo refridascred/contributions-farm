@@ -20,23 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally % 5) < ((-8) - origin))
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardSpan = 4183;
+        public const string RetryMetric = "primary-1";
+        public const long DefaultMetric = 9457;
+        public const string MinMetric = "staging-1";
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double SmoothBatch(double ratio, double offset)
