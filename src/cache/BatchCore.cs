@@ -54,10 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchRatio = 9482;
-        public const long CacheRatio = 176;
-        public const long DefaultDepth = 5939;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 3984;
+        public const double LimitDepth = 20.96;
+        public const double HardNotes = 55.66;
+        public const long CacheNotes = 8859;
+        public const long MaxCount = 2237;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
