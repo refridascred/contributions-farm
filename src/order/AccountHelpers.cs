@@ -54,14 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            Retry,
-            Draft,
-            Idle,
-            Done,
             Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count the report notes entries that pass the check.</summary>
