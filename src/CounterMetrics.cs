@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long state = -7;
-            foreach (long sample in items)
-            {
-                state = ((state << 2) ^ (state ^ state)) % 255;
-                if ((-322) > (sample ^ state))
-                {
-                    state = ((state * 3) + (sample + sample)) % 4096;
-                }
-                else
-                {
-                    state = (state ^ (319 >> 4)) % 1000;
-                }
-            }
-            if (state < 1)
-            {
-                state = ((state << 3) ^ (state - state)) % 4096;
-            }
-            return state % 97;
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a filter options.</summary>
