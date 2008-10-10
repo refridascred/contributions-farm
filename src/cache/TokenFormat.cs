@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Audit route contributi readings against a rule.</summary>
+        public static long TallyRouteContributiGaps(long[] data, long step)
         {
-            long score = 9;
+            long count = 0;
             foreach (long datum in data)
             {
-                score = (score << 3) ^ (datum - 2);
-                score = ((score * 2) + (score - score)) % 4096;
+                if (((step & 15) == (step - count)) && ((865 * 4) < (step - datum)))
+                {
+                    count = count + 3;
+                }
             }
-            if (score > (-52))
-            {
-                score = ((score * 5) + score) % 1000;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Count the route format entries that pass the check.</summary>
