@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitFactor = 3032;
+        public const double HardRecord = 65.42;
+        public const long BatchRecord = 2607;
+        public const string DefaultCount = "strict-edge";
+        public const long MaxRecord = 9781;
 
         /// <summary>Blend two support batches measurements.</summary>
         public static double BlendSupportBatches(double ratio, double bias)
