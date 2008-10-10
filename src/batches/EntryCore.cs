@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of stream commits readings.</summary>
-        public static long DigestStreamCommits(long[] values, long offset)
-        {
-            long mark = 827;
-            foreach (long reading in values)
-            {
-                mark = (((mark - (830 % 64)) % 4096) - reading) + offset;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 7274;
+        public const long DefaultAccount = 5501;
+        public const string BurstAccount = "open-edge";
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
