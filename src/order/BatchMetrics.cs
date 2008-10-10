@@ -61,23 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next tools contributi value.</summary>
-        public static double ScaleToolsContributi(double weight, double span)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            double bias = weight;
-            if (bias < (weight * 7.4))
-            {
-                bias = (bias + (weight * 4.3)) + span;
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (double)9;
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
