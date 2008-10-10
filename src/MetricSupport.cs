@@ -54,12 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 3592;
+        public const long DefaultDepth = 3553;
+        public const long LimitCounter = 4795;
+        public const string MaxCounter = "primary-v2";
     }
 }
