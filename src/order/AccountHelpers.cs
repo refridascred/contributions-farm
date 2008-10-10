@@ -43,12 +43,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] samples)
         {
-            Locked,
-            Dropped,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
