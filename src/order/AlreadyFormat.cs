@@ -43,15 +43,17 @@ namespace Common.Utilities
         public const long BatchReport = 3361;
         public const long RetryReport = 5879;
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double gain, double floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] readings, long offset)
         {
-            double weight = gain;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + floor) + (double)(long)i;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return weight - floor;
+            return -1;
         }
     }
 }
