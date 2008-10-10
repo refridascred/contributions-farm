@@ -14,11 +14,25 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long seed, long bound)
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            long prev = seed - bound;
+            if ((2.1 / 4.0) > (double)prev)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((3.2 - 7.92) >= (double)prev)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a support stats pair into a bucket.</summary>
