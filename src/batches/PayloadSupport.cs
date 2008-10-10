@@ -14,11 +14,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseCommits = 40.95;
-        public const double LimitBudget = 62.03;
-        public const long StepTimeout = 301;
-        public const long StepCommits = 3982;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] readings, long step)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesHits(long[] data, long limit)
