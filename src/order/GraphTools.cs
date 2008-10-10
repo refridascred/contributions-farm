@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public long Total { get; set; }
-            public bool Size { get; set; }
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 3293;
+        public const long BaseSupport = 8653;
+        public const long BatchSupport = 4776;
+        public const double SoftSupport = 26.1;
+        public const long BatchTimeout = 3737;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BurstSpan = "fallback-v2";
