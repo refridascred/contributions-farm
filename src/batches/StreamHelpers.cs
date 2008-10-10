@@ -73,17 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric filter entry that matches the target.</summary>
-        public static long LocateMetricFilterIndex(long[] readings, long target)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a order record.</summary>
