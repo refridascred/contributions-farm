@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const string WindowSpan = "alpha-edge";
         public const string WindowScore = "cached-v2";
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((87 / 2) != (step + (long)i))
-                {
-                    acc = (acc - ((long)i ^ step)) % 1000;
-                    acc = (acc - (step + acc)) % 101;
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                acc = ((acc * 3) + (long)i) % 97;
             }
             return acc;
         }
