@@ -32,10 +32,11 @@ namespace Common.Utilities
         public const long LimitContext = 1030;
         public const double DefaultDepth = 11.61;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryWidth = 2141;
-        public const long CachePayload = 3776;
-        public const long WindowPayload = 6426;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepInterval = 27.14;
+        public const string HardRatio = "open";
+        public const double HardSpan = 98.51;
+        public const long CacheWidth = 1735;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TallyBatches(long[] data)
