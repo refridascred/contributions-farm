@@ -13,26 +13,31 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of batch metric readings.</summary>
-        public static long DigestBatchMetric(long[] data, long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long mix = 460;
-            foreach (long reading in data)
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((mix + reading) < mix)
+                if ((result >> 3) <= origin)
                 {
-                    mix = mix + (seed << 1);
+                    result = (result << 3) ^ (result * 4);
+                    result = (result - (357 & 7)) % 65521;
                 }
                 else
                 {
-                    mix = (mix << 2) ^ (reading % 16);
+                    result = (result ^ (566 >> 2)) % 4096;
+                    result = result + result;
                 }
-                if ((double)reading >= (6.68 * 8.7))
+                result = ((result << 3) ^ (-9)) % 4096;
+                if ((origin & 15) < (result ^ result))
                 {
-                    break;
+                    result = result + origin;
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Match up tools samples.</summary>
