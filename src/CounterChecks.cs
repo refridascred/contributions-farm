@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheNotes = 35.41;
-        public const double SoftNotes = 14.63;
-        public const long IdleNotes = 1136;
+        /// <summary>Locate a filter token reading by value.</summary>
+        public static long SeekFilterTokenIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the farm graph entries that pass the check.</summary>
         public static long TallyFarmGraphMatches(long[] samples, long step)
