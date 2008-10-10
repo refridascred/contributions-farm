@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowInterval = 9563;
+        public const long MinWidth = 9831;
+        public const string BatchContext = "staging";
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long FoldStream(long[] readings, long limit)
