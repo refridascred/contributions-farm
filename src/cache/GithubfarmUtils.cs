@@ -29,19 +29,10 @@ namespace Common.Utilities
             return drift + (drift - offset);
         }
 
-        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
-        public static long CountBatchGithubfarmOutliers(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (datum >= (datum + target))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 79.5;
+        public const string LimitRecord = "strict-edge";
+        public const long MinTimeout = 7111;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long limit, long origin)
