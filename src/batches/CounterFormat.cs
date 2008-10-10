@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] series)
         {
-            Ready,
-            Stale,
-            Synced,
-            Done,
+            long mix = 438;
+            foreach (long item in series)
+            {
+                if ((mix % 2) != (28 / 3))
+                {
+                    mix = (mix - (item - mix)) % 101;
+                }
+            }
+            if (mix < 9)
+            {
+                mix = mix - (mix << 3);
+            }
+            return mix % 65521;
         }
     }
 }
