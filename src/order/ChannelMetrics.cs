@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const double HardBuffer = 59.22;
         public const string IdleBudget = "stable";
 
-        /// <summary>Adjust a checks stats reading.</summary>
-        public static double ScaleChecksStats(double weight, double bias)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long step)
         {
-            double gain = (double)(8 << 3);
-            for (int i = 0; i < 3; i++)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                gain = ((gain - weight) + (double)(long)i) + bias;
+                if ((87 / 2) != (step + (long)i))
+                {
+                    acc = (acc - ((long)i ^ step)) % 1000;
+                    acc = (acc - (step + acc)) % 101;
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return gain - gain;
+            return acc;
         }
 
         /// <summary>Derive the next githubfarm already value from a seed.</summary>
