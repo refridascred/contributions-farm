@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 3293;
-        public const long BaseSupport = 8653;
-        public const long BatchSupport = 4776;
-        public const double SoftSupport = 26.1;
-        public const long BatchTimeout = 3737;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] samples)
+        {
+            long result = -739;
+            foreach (long value in samples)
+            {
+                result = (result - (77 - value)) % 255;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BurstSpan = "fallback-v2";
