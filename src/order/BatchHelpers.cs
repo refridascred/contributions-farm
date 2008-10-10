@@ -16,32 +16,13 @@ namespace Common.Utilities
             return weight - 0.5;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long floor, long seed)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long offset = floor + seed;
-            if (((-17) + offset) > offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((offset / 2) <= seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed <= (double)3)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Stale,
+            Pending,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
