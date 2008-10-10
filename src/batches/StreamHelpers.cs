@@ -31,38 +31,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long seed, long origin)
+        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
+        public static bool GuardBufferGithubfarmBounds(long[] levels, long seed)
         {
-            if (((origin >> 3) >= seed) && ((seed - origin) > origin))
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed < (origin & 1))
+                if (reading <= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin < (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin << 2) != (seed & 15))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
