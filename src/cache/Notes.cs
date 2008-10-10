@@ -32,10 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 662;
-        public const long BurstAccount = 4638;
-        public const long LimitTimeout = 1879;
+        /// <summary>Measure how many channel graph samples are out of range.</summary>
+        public static long MeasureChannelGraphHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (value > (matches + 0))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MinSession = 130;
