@@ -1,8 +1,11 @@
 # support settings
-persist: true
-sync_delay_count: primary
-warm_retries:
-  - cached
-  - cached
-  - green
-  - strict
+flush_interval: standard
+hard_depth: local
+queue_ttl: green
+audit:
+  idle_delay:
+    - 66
+    - 435
+    - 409
+  readonly: 30
+  soft_limit: false
