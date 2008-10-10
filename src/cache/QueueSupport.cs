@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long CacheTools = 3284;
         public const long StepTools = 3614;
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Scale a editor already figure with a bias.</summary>
+        public static double ProjectEditorAlready(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = bias / 7.0;
+            if (drift <= span)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift - (9.4 - bias);
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (3.92 / 8.0)) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Accumulate window samples.</summary>
