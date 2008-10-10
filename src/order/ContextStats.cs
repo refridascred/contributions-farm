@@ -46,10 +46,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardGraph = "cached-edge";
-        public const long MinSpan = 625;
-        public const long LimitGraph = 5035;
-        public const double BatchScore = 92.7;
+        /// <summary>Look up the position of a channel batch sample.</summary>
+        public static long LocateChannelBatchIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
