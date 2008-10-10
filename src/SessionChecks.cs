@@ -22,11 +22,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            Idle,
+            New,
+            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Digest a series of command counter entries.</summary>
