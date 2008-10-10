@@ -32,14 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Done,
-            Queued,
-            Pending,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseTimeout = 8008;
+        public const long BurstCluster = 1265;
+        public const long BaseSpan = 6192;
+        public const long MinCluster = 1407;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
