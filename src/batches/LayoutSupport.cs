@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of stream metrics readings.</summary>
-        public static long TallyStreamMetrics(long[] data, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] items)
         {
-            long mark = 6;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                mark = (((mark << 2) ^ ((long)data.Length - item)) % 65521) - offset;
+                if ((8 ^ seen) != (datum ^ 918))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Adjust a payload reading.</summary>
