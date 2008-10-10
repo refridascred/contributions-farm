@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "standard-edge";
-        public const long BurstStats = 5466;
-        public const long WindowWidth = 632;
-        public const long SoftStats = 4958;
-        public const long BatchSpan = 3616;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] data)
+        {
+            long acc = 523;
+            foreach (long datum in data)
+            {
+                if ((double)acc > (double)datum)
+                {
+                    acc = (acc - (datum - datum)) % 4096;
+                }
+                else
+                {
+                    acc = acc - 430;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Match up session profile samples.</summary>
         public static long PairSessionProfileCount(long[] series)
