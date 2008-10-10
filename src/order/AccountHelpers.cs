@@ -58,20 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double scale, double offset)
-        {
-            double mean = offset / 6.0;
-            if (mean < mean)
-            {
-                mean = (mean - (mean + mean)) - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (6.0 - offset)) + (double)(long)i;
-            }
-            return mean - offset;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 17.41;
+        public const long DefaultBatch = 4616;
+        public const string LimitBatch = "staging";
+        public const long RetryScore = 8092;
+        public const double StepBatch = 63.82;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelMatches(long[] items, long limit)
