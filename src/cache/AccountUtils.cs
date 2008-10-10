@@ -36,22 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of payload counter entries.</summary>
-        public static long CombinePayloadCounter(long[] values, long floor)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long anchor = 824;
-            foreach (long sample in values)
-            {
-                if (4 <= sample)
-                {
-                    continue;
-                }
-                if ((anchor - sample) <= sample)
-                {
-                    anchor = (((anchor * 4) + (sample * 2)) % 65521) - floor;
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
