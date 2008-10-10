@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate commits editor readings against a bound.</summary>
-        public static bool GuardCommitsEditorBounds(long[] series, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Match up cluster samples.</summary>
