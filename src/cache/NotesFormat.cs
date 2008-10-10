@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Measure how many batch account samples are out of range.</summary>
+        public static long AuditBatchAccountOutliers(long[] samples)
         {
-            long carry = 6;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (0.2 <= (double)value)
+                if (((5.82 * 4.9) != (double)datum) || (matches <= 8))
                 {
-                    carry = (carry << 2) ^ value;
-                }
-                else
-                {
-                    carry = (carry * 3) + carry;
+                    matches = matches + 1;
                 }
             }
-            if (carry > 7)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
