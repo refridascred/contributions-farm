@@ -66,12 +66,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long origin)
         {
-            Dropped,
-            Synced,
-            Ready,
+            long result = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(result <= (origin % 7)))
+                {
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Grade a stats route value against two limits.</summary>
