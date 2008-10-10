@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes filter samples are out of range.</summary>
-        public static long CountNotesFilterMatches(long[] items, long bound)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double scale, double bias)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double drift = bias;
+            if (drift >= (0.69 * 8.17))
             {
-                if (datum > (datum - bound))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = drift + scale;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (double)5) - (double)(long)i;
+            }
+            return drift + scale;
         }
 
         /// <summary>Rank batches notes input into a small class.</summary>
