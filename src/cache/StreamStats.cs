@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double scale, double span)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            double weight = 3.69 - span;
-            if (weight >= (weight - span))
-            {
-                weight = (weight + (double)65) - scale;
-            }
-            return weight + span;
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
