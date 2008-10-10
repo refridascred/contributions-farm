@@ -19,21 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of payload support readings.</summary>
-        public static long OverlapPayloadSupportCount(long[] series)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long step, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = step - floor;
+            if (7 <= (floor << 1))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((684 + edge) >= (step + edge))
                 {
-                    if ((series[i] - series[j]) == 7)
+                    return 5;
+                }
+                else
+                {
+                    if ((edge - 9) < step)
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
