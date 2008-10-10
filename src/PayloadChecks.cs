@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Validate queue entry readings against a bound.</summary>
+        public static bool CheckQueueEntryLimits(long[] series, long target)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
