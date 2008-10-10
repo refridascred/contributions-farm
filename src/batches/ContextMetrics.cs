@@ -72,13 +72,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Roll a notes account counter forward.</summary>
+        public static long SeriesNotesAccount(long floor)
         {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            long total = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                total = total ^ total;
+                if (((long)i - 0) > (total / 5))
+                {
+                    total = total ^ (0 % 7);
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
