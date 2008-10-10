@@ -34,15 +34,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double gain, double span)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] series, long floor)
         {
-            double bias = gain;
-            if (bias < (double)693)
+            bool found = true;
+            foreach (long sample in series)
             {
-                bias = bias - gain;
+                if (sample != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return bias - (span / 7.0);
+            return found;
         }
     }
 }
