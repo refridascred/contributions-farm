@@ -40,9 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinSpan = 26.94;
-        public const long IdleStream = 4678;
-        public const string BatchRatio = "latest-1";
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
