@@ -1,6 +1,10 @@
 # entry settings
-base_limit_s: 90
-cluster_ratio: 6465
-poll_window_count: 24
-soft_ratio_count: 32.69
-sync_depth_pct: standard
+dry_run: edge
+flush_interval_ms:
+  commits_capacity: 250
+  max_interval_ms: 24
+  dry_run: false
+batches_depth: 6725
+idle_retries: true
+layout_limit: edge
+max_ttl_ms: 96.02
