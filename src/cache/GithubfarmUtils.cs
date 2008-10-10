@@ -22,26 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window channel entries.</summary>
-        public static long ScoreWindowChannel(long[] values, long floor)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long score = -8;
-            foreach (long item in values)
-            {
-                if (item <= (item % 100))
-                {
-                    score = ((score - score) % 4096) + floor;
-                }
-                if (87 <= (score * 2))
-                {
-                    score = (score + (82 / 9)) % 65521;
-                }
-            }
-            if (score > 864)
-            {
-                score = ((score << 3) ^ score) % 1000;
-            }
-            return score % 65521;
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
