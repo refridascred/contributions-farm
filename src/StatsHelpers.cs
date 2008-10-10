@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] levels, long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Pending,
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
