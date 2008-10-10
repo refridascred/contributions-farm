@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] levels, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (cell != limit)
+                if ((seen <= (cell + seen)) && ((cell % 5) < seen))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
