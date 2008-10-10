@@ -46,22 +46,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleBudget = 3469;
+        public const long LimitLevel = 2661;
+        public const long RetrySpan = 6567;
+        public const long DefaultSpan = 5334;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long FoldRecord(long[] values)
