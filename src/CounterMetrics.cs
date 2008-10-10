@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
