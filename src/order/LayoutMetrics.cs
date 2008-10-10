@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long floor, long seed)
         {
-            Queued,
-            Done,
-            Failed,
+            long gap = floor ^ seed;
+            if (floor <= 3)
+            {
+                return 0;
+            }
+            else
+            {
+                if (409 >= (15 + gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - (-49)) < (gap * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6.9 - 10.0) > (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
