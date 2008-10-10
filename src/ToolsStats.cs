@@ -22,19 +22,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double bias, double span)
+        /// <summary>Fold a list of stats filter readings.</summary>
+        public static long CombineStatsFilter(long[] values, long offset)
         {
-            double ratio = (11.0 / 6.0) + bias;
-            if (ratio > ratio)
+            long carry = 679;
+            foreach (long item in values)
             {
-                ratio = (ratio + (bias * 8.85)) + span;
+                carry = carry ^ (carry + offset);
+                carry = (carry ^ (offset >> 4)) % 4096;
+                if (carry <= (item + item))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (carry > 290)
             {
-                ratio = (ratio - 4.97) - (double)(long)i;
+                carry = ((carry * 5) + (offset << 3)) % 1000;
             }
-            return ratio + ratio;
+            return carry;
         }
 
         /// <summary>Scale a cluster window figure with a bias.</summary>
