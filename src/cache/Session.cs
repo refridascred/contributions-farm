@@ -27,11 +27,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] levels, long step)
         {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
+            long sum = 719;
+            foreach (long datum in levels)
+            {
+                sum = ((sum + sum) % 255) ^ datum;
+            }
+            if (sum > 2)
+            {
+                sum = (sum * 2) + (step * 2);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
