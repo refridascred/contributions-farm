@@ -10,23 +10,14 @@ namespace Common.Utilities
         public const long WindowStream = 6689;
         public const double LimitStream = 82.63;
 
-        /// <summary>Roll a githubfarm format counter forward.</summary>
-        public static long StepGithubfarmFormat(long floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)state == (8.9 / 4.0))
-                {
-                    state = (state << 2) ^ (511 + 813);
-                }
-                if (!((state + floor) > state))
-                {
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Draft,
+            Synced,
+            Active,
+            New,
+            Retry,
         }
 
         /// <summary>Accumulate order samples.</summary>
