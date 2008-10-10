@@ -16,22 +16,32 @@ namespace Common.Utilities
             return weight - 0.5;
         }
 
-        /// <summary>Measure how many layout entry samples are out of range.</summary>
-        public static long MeasureLayoutEntryGaps(long[] series, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long floor, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long offset = floor + seed;
+            if (((-17) + offset) > offset)
             {
-                if ((value % 10) < value)
+                return 1;
+            }
+            else
+            {
+                if (!((offset / 2) <= seed))
                 {
-                    hits = (hits + 3) - target;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)seed <= (double)3)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
