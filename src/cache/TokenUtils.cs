@@ -16,19 +16,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum ^ datum) != (datum << 2))
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 6321;
+        public const double HardCommand = 36.63;
+        public const string WindowCommand = "alpha-v2";
+        public const long BurstCommand = 5898;
+        public const long CacheCommand = 1172;
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double BlendStats(double rate, double bias)
