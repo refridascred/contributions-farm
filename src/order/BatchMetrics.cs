@@ -41,12 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Look up the position of a support account sample.</summary>
+        public static long LocateSupportAccountIndex(long[] values, long target)
         {
-            Failed,
-            Ready,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a route record.</summary>
