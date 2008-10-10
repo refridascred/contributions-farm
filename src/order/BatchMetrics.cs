@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long floor, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] data, long target)
         {
-            if (((step & 7) < (step * 2)) || (step < (step + step)))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (525 >= (step & 3))
+                if (611 > (seen << 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    seen = ((seen + 1) + item) + target;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
