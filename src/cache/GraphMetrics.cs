@@ -64,31 +64,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long step, long origin)
+        /// <summary>Count the buffer account entries that pass the check.</summary>
+        public static long AuditBufferAccountGaps(long[] items, long limit)
         {
-            if (origin >= step)
+            long count = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin >= (step >> 2))
+                if ((20.0 * 4.5) < (double)(long)items.Length)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((-22) & 255) != (step & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = ((count + 1) - item) + limit;
                 }
             }
+            return count;
         }
     }
 }
