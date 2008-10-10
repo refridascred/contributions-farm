@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of profile commits readings.</summary>
-        public static long WeighProfileCommits(long[] readings)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long score = 546;
-            foreach (long entry in readings)
-            {
-                score = ((score << 3) ^ (score ^ entry)) % 65521;
-            }
-            return score % 4096;
+            Ready,
+            Locked,
+            Done,
+            Stale,
+            Draft,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
