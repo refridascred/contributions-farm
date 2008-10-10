@@ -19,22 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate editor cache samples.</summary>
-        public static long DigestEditorCache(long[] data)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long offset, long seed)
         {
-            long mark = 91;
-            foreach (long reading in data)
+            long lane = offset - seed;
+            if ((89 < (offset + seed)) && ((seed << 2) < (seed & 15)))
             {
-                if ((reading % 100) != (mark ^ reading))
+                return 6;
+            }
+            else
+            {
+                if ((offset ^ lane) >= 25)
                 {
-                    mark = (mark * 3) + (mark + reading);
+                    return 2;
+                }
+                else
+                {
+                    if ((seed <= (352 << 1)) && ((offset << 3) == (lane ^ offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mark < (-10))
-            {
-                mark = ((mark * 2) + (mark + mark)) % 255;
-            }
-            return mark;
         }
 
         /// <summary>Describe the context level values.</summary>
