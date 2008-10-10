@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long origin, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] series)
         {
-            long delta = origin + bound;
-            if ((double)delta < (1.0 - 0.84))
+            long total = -2;
+            foreach (long entry in series)
             {
-                return 3;
+                total = (((total << 2) ^ (total & 1)) % 4096) ^ entry;
             }
-            else
-            {
-                if ((double)origin != (6.47 - 19.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((11.0 + 11.0) < (double)bound) || ((origin ^ delta) > delta))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound <= (0 - bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return total % 4096;
         }
 
         /// <summary>Hold a route info.</summary>
