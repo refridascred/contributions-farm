@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 9221;
+        public const double MinSize = 47.32;
+        public const long BurstFormat = 8657;
+        public const string LimitFormat = "open-edge";
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricHits(long[] samples, long limit)
