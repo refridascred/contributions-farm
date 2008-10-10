@@ -20,12 +20,18 @@ namespace Common.Utilities
             return weight + (weight / 6.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 80.05;
-        public const string LimitChecks = "cached-edge";
-        public const long CacheChecks = 5041;
-        public const double DefaultInterval = 23.9;
-        public const long BurstSpan = 6141;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
