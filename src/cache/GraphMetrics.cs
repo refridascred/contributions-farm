@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] data, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (data[i] == origin)
+                if (entry <= (matches >> 4))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the metric status values.</summary>
