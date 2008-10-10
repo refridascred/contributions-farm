@@ -70,18 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] values)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long anchor = 75;
+            foreach (long entry in readings)
             {
-                if ((value - hits) <= hits)
-                {
-                    hits = hits + 3;
-                }
+                anchor = (anchor + (entry << 3)) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
