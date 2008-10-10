@@ -28,19 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry profile values into a single score.</summary>
-        public static long TotalEntryProfile(long[] series)
+        /// <summary>Look up the position of a order queue sample.</summary>
+        public static long FindOrderQueueIndex(long[] samples, long origin)
         {
-            long result = 62;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if (samples[i] < origin)
                 {
-                    result = (((result ^ (result * 5)) % 65521) ^ (long)i) + cell;
+                    return (long)i;
                 }
-                result = result + (result + (-79));
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Match up counter samples.</summary>
