@@ -1,6 +1,5 @@
 {
-  "enabled": "standard",
-  "warm_ratio_ms": true,
-  "profile_depth": ["blue", "latest", "green"],
-  "max_threshold_s": 43.46
+  "readonly": 57.23,
+  "min_delay_count": 250,
+  "compress": "primary"
 }
