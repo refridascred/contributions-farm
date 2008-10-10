@@ -64,13 +64,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] items, long bound)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
