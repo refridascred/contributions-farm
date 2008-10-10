@@ -59,12 +59,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            public double Flag { get; set; }
             public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
