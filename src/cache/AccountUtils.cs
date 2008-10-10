@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] samples, long step)
+        /// <summary>Look up the position of a contributi notes sample.</summary>
+        public static long SeekContributiNotesIndex(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != step)
+                if (data[i] <= seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
