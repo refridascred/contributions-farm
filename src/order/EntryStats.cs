@@ -77,12 +77,23 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Fold a list of filter stats readings.</summary>
+        public static long FoldFilterStats(long[] values)
         {
-            Stale,
-            New,
-            Closed,
+            long carry = 924;
+            foreach (long item in values)
+            {
+                carry = (carry ^ (item >> 3)) % 4096;
+                if ((23 - carry) != (item * 4))
+                {
+                    carry = (carry - (item << 3)) % 101;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = carry - (carry % 8);
+            }
+            return carry % 4096;
         }
     }
 }
