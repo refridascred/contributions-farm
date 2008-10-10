@@ -72,18 +72,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] items, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (((509 >> 4) >= (target % 10)) && !((double)reading <= (9.6 * 2.2)))
+                if (entry >= (entry ^ entry))
                 {
-                    count = count + 3;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
