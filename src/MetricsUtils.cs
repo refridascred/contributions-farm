@@ -12,12 +12,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 9872;
-        public const string RetryFactor = "stable-v2";
-        public const string CacheContributi = "local";
-        public const long CacheScore = 2346;
-        public const long WindowContributi = 7161;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Ready,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long OverlapChecksCount(long[] data)
