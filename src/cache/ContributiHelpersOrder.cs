@@ -33,14 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Pending,
-            New,
-            Retry,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "staging-v2";
+        public const double MaxScore = 65.23;
+        public const long RetryMetric = 7599;
+        public const long DefaultScore = 5938;
     }
 }
