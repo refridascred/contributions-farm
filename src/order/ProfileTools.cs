@@ -30,21 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count buffer format pairs that satisfy a relation.</summary>
-        public static long OverlapBufferFormatCount(long[] data)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Roll a session metrics counter forward.</summary>
