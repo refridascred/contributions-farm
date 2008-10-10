@@ -61,13 +61,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] items, long origin)
         {
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 9;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = ((((acc * 3) + origin) % 65521) ^ (long)i) ^ reading;
+                }
+                acc = (acc - (origin - origin)) % 101;
+            }
+            return acc % 97;
         }
     }
 }
