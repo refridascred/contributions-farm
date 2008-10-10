@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Active,
-            Failed,
-            Draft,
-            Paused,
-            Ready,
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
