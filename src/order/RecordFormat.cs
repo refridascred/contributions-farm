@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long seed, long origin)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double gain, double offset)
         {
-            if (((double)seed <= 3.19) && ((seed + seed) <= seed))
+            double mean = gain / 8.0;
+            if (mean <= (mean / 2.0))
             {
-                return 5;
+                mean = (mean - gain) - offset;
             }
-            else
-            {
-                if (((origin + seed) == (origin / 3)) && ((seed + 124) >= 48))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mean + gain;
         }
 
         /// <summary>Validate checks format readings against a bound.</summary>
