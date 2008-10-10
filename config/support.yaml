@@ -1,13 +1,25 @@
 # support settings
-burst_size_pct: 66
-soft_retries: local
-farm_window: 69.98
-idle_timeout: latest
-cache_depth_s:
-  cache_interval_ms: 9791
-  batch_ratio_count: staging
-  cluster_capacity: 1947
-  counter_window:
-    - 65
-    - 418
-    - 297
+flush_retries_s:
+  - latest
+  - edge
+  - primary
+  - local
+soft_depth:
+  default_ttl_count: 500
+  buffer_depth:
+    min_window: eu-west
+    min_ratio_pct:
+      - fallback
+      - strict
+    readonly: fallback
+    batch_ttl: standard
+    idle_window: 66.1
+    enabled:
+      - green
+      - cached
+      - fallback
+  audit: 60
+cache_capacity_s:
+  - 107
+  - 189
+max_limit_pct: true
