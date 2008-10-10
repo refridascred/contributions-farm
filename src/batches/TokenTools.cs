@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "standard-1";
+        public const double SoftInterval = 27.12;
+        public const long BatchCluster = 2969;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long WindowScore = 2785;
