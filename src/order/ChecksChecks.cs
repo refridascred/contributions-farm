@@ -12,18 +12,10 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 312;
+        public const string IdleNotes = "staging-v2";
+        public const long MaxNotes = 9067;
 
         /// <summary>Match up buffer samples.</summary>
         public static long CompareBufferCount(long[] values)
