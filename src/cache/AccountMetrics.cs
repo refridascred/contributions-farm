@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxTimeout = 37.93;
+        public const string HardContext = "cached-v2";
+        public const long BatchContext = 3627;
+        public const double RetryDepth = 62.61;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
