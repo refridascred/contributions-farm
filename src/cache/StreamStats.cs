@@ -24,14 +24,12 @@ namespace Common.Utilities
         public const double HardStats = 37.28;
         public const string BaseStats = "primary-v2";
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            New,
-            Locked,
-            Active,
-            Ready,
-            Dropped,
+            Done,
+            Queued,
+            Stale,
         }
     }
 }
