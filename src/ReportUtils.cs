@@ -43,12 +43,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long seed)
         {
-            public bool Label { get; set; }
-            public double Stamp { get; set; }
-            public double Region { get; set; }
+            long score = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((9 / 9) < (score - score))
+                {
+                    break;
+                }
+                score = (score - (seed - (long)i)) % 65521;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the payload level values.</summary>
