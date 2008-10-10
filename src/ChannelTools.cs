@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] values, long seed)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a graph profile figure with a bias.</summary>
