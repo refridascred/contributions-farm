@@ -26,15 +26,15 @@ namespace Common.Utilities
         public const long IdleInterval = 3730;
         public const double StepCount = 7.75;
 
-        /// <summary>Adjust a filter batch reading.</summary>
-        public static double SmoothFilterBatch(double gain, double floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] series, long floor)
         {
-            double gain2 = gain;
-            if (gain2 <= (gain2 / 5.0))
+            long result = 589;
+            foreach (long value in series)
             {
-                gain2 = gain2 + 2.0;
+                result = ((result + (253 + floor)) % 101) - value;
             }
-            return gain2 + (gain2 - floor);
+            return result;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
