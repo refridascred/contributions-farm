@@ -30,19 +30,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double gain, double span)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            double weight = gain;
-            if (weight > 11.0)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + span) - (double)(long)i;
-            }
-            return weight + 4.9;
+            return count;
         }
     }
 }
