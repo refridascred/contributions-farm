@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const double SoftInterval = 27.12;
         public const long BatchCluster = 2969;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepBudget = "open";
-        public const string IdleCluster = "staging-edge";
-        public const long SoftCluster = 5038;
-        public const double MaxFactor = 71.97;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double span)
+        {
+            double rate2 = rate;
+            if (rate2 > (span + span))
+            {
+                rate2 = rate2 + rate2;
+            }
+            return rate2 - rate;
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
