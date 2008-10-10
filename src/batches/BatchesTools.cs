@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long bound, long bound2)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels, long step)
         {
-            long cur = bound + bound2;
-            if ((21 >> 1) >= (bound2 + 221))
+            long carry = 34;
+            foreach (long reading in levels)
             {
-                return 1;
+                carry = carry - reading;
             }
-            else
+            if (carry > 379)
             {
-                if ((cur & 127) != (cur >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                carry = (carry ^ step) % 4096;
             }
+            return carry % 65521;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
