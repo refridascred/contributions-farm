@@ -88,18 +88,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((93 & 3) < (offset + 347))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 9.36;
+        public const long IdleAlready = 7596;
+        public const long BatchAlready = 3245;
     }
 }
