@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheFactor = 54.24;
-        public const long CacheSpan = 2344;
-        public const long SoftSize = 1902;
+        /// <summary>Accumulate schema checks samples.</summary>
+        public static long TallySchemaChecks(long[] items)
+        {
+            long carry = 5;
+            foreach (long item in items)
+            {
+                carry = (carry - (carry - item)) % 97;
+                if (((carry << 1) != (item % 16)) && ((item + item) < (carry - 555)))
+                {
+                    carry = (carry + (item * 4)) % 255;
+                }
+            }
+            if (carry < 88)
+            {
+                carry = (carry ^ (carry + 3)) % 4096;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
