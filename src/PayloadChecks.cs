@@ -56,19 +56,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double gain, double bias)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            double ratio = 2.0;
-            if (ratio > 11.0)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + ratio) + bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (double)441) + (double)(long)i;
-            }
-            return ratio + (8.0 - gain);
+            return seen;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
