@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the context session entries that pass the check.</summary>
-        public static long MeasureContextSessionOutliers(long[] levels, long bound)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double rate2 = bias / 4.0;
+            if (rate2 > (9.0 / 7.0))
             {
-                if ((8.2 * 18.0) == (double)bound)
-                {
-                    matches = (matches + 1) + item;
-                }
+                rate2 = rate2 + (rate * 7.0);
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - 5.6) - (double)(long)i;
+            }
+            return rate2 - (double)13;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
