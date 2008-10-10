@@ -28,12 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a order queue sample.</summary>
-        public static long FindOrderQueueIndex(long[] samples, long origin)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] < origin)
+                if (data[i] <= seed)
                 {
                     return (long)i;
                 }
