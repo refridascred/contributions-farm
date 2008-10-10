@@ -22,27 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] levels, long target)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            long state = 2;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state << 3) ^ (datum + 80)) % 1000;
-                if ((state % 7) <= state)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state << 3) ^ (datum % 8)) % 101;
-                }
-                else
-                {
-                    state = (state + target) % 97;
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > 5)
-            {
-                state = (state - (state ^ state)) % 1000;
-            }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
