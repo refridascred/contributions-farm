@@ -1,14 +1,12 @@
 # Command notes
 
-Use metrics settings to tune how often stream data is refreshed.
-Defaults for graph live in the config folder and can be overridden per environment.
-Keep stats and entry names short and lowercase.
-
-The cache module keeps command values in sync with the payload cache.
-The checks module keeps support values in sync with the channel cache.
+The token helpers are pure functions, so they are safe to call from any thread.
+Run the commits check before changing any channel limits.
+Run the channel check before changing any stream limits.
 
 ## Guidelines
 
-- Validate notes input early
-- Document new batch fields
-- Keep schema values small
+- Review metrics limits each release
+- Document new cache fields
+- Validate counter input early
+- Prefer stats defaults
