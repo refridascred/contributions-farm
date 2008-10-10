@@ -1,20 +1,8 @@
 # githubfarm settings
-hard_ttl_ms: 9215
-sync_interval_pct: 40.83
-audit:
-  - local
+compress: cached
+token_ttl:
+  - edge
+  - blue
   - legacy
-  - primary
-persist:
-  sync_depth_count: false
-  counter_capacity:
-    verbose: 83
-    poll_limit_s: open
-    idle_ratio_count:
-      - stable
-      - eu-west
-      - stable
-    token_depth: 48.36
-  poll_depth_s: local
-hard_size: 72.04
-schema_depth: stable
+  - cached
+githubfarm_ttl: 19.85
