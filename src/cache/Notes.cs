@@ -48,15 +48,15 @@ namespace Common.Utilities
         public const long LimitDepth = 7972;
         public const long LimitSize = 632;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Adjust a already cache reading.</summary>
+        public static double ScaleAlreadyCache(double gain, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            double ratio = (double)(9 - 1);
+            for (int i = 0; i < 7; i++)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                ratio = (((ratio - ratio) - (double)(long)i) - gain) + offset;
             }
-            return carry;
+            return ratio + (ratio * 5.0);
         }
     }
 }
