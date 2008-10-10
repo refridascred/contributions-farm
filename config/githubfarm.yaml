@@ -1,13 +1,5 @@
 # githubfarm settings
-strict: 100
-poll_window: cached
-record_delay:
-  hard_delay: false
-  cache_limit_ms: open
-  warm_window:
-    - primary
-    - strict
-  hard_interval_pct: staging
-  verbose: standard
-retry_ratio: 100
-payload_limit: 88
+warm_threshold_count: 1024
+idle_delay_pct: legacy
+stats_limit: 46.53
+persist: 4
