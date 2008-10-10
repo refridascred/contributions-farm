@@ -20,24 +20,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long bound, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double weight, double bias)
         {
-            if ((double)seed <= (double)bound)
+            double drift = (double)(3 / 2);
+            if (drift < (drift * 9.69))
             {
-                return 5;
+                drift = (drift - (double)58) - weight;
             }
-            else
-            {
-                if (((seed << 1) != (3 << 1)) && ((bound * 3) > (bound + bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return drift + (bias / 6.0);
         }
 
         /// <summary>Define route limits and defaults.</summary>
