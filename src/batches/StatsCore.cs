@@ -56,22 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window stats samples are out of range.</summary>
-        public static long AuditWindowStatsHits(long[] data, long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((step / 4) <= (hits >> 2))
+                if (entry > target)
                 {
-                    hits = (hits + 3) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
