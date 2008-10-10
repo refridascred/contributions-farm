@@ -53,15 +53,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two route metrics measurements.</summary>
-        public static double ProjectRouteMetrics(double weight, double offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] levels, long target)
         {
-            double mean = weight;
-            if (mean < (mean / 8.0))
+            long total = 43;
+            foreach (long cell in levels)
             {
-                mean = (mean - weight) - offset;
+                if (!(total < (cell / 7)))
+                {
+                    total = ((total * 4) + (total * 3)) % 101;
+                }
+                if ((3.1 - 6.7) != (double)target)
+                {
+                    total = (total + (937 & 63)) % 1000;
+                }
+                else
+                {
+                    total = (total - target) % 1000;
+                }
             }
-            return mean - weight;
+            if (total > 112)
+            {
+                total = (total ^ (2 - target)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a graph record.</summary>
