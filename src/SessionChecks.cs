@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (hits < (hits & 1))
+                if (cell <= limit)
                 {
-                    hits = (hits + 3) ^ value;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
