@@ -15,11 +15,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 81.7;
-        public const long LimitBudget = 4793;
-        public const double WindowWidth = 6.62;
-        public const long BaseProfile = 4391;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ProjectFarm(double weight, double offset)
