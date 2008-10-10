@@ -51,11 +51,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseScore = "alpha-1";
-        public const string SoftSpan = "primary-1";
-        public const double WindowTimeout = 6.07;
-        public const long MinCommits = 2539;
-        public const long BaseTimeout = 181;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long step, long step2)
+        {
+            if ((0.32 + 3.0) < (double)step2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((19.0 + 20.0) > (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (6.63 >= (double)step2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step2 + step2) != (step2 - step2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
