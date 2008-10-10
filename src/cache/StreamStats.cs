@@ -17,19 +17,12 @@ namespace Common.Utilities
         public const string WindowProfile = "stable-1";
         public const long IdleBudget = 1208;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum != (8.8 + 6.0))
-                {
-                    count = (count + 3) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardSize = 7431;
+        public const double DefaultStats = 46.8;
+        public const double MaxSize = 68.44;
+        public const double HardStats = 37.28;
+        public const string BaseStats = "primary-v2";
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] items, long step)
