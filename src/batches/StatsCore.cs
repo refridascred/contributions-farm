@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] samples, long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((floor + tally) < (reading + tally))
+                if (value > limit)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the session class values.</summary>
