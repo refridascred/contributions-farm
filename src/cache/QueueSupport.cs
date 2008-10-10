@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long StepSchema = 4770;
         public const string CacheLevel = "stable";
 
-        /// <summary>Find the first cache counter entry that matches the target.</summary>
-        public static long LocateCacheCounterIndex(long[] series, long target)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = span / 4.0;
+            if (load < span)
             {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
+                load = load + span;
             }
-            return -1;
+            return load - (load - bias);
         }
 
         /// <summary>Derive the next entry account value from a seed.</summary>
