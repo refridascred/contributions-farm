@@ -49,13 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
