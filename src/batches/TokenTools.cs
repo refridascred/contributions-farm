@@ -16,10 +16,10 @@ namespace Common.Utilities
         public const long SoftCluster = 5038;
         public const double MaxFactor = 71.97;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 73.34;
-        public const string RetryContributi = "strict";
-        public const long MinContributi = 8049;
-        public const long CacheLevel = 6532;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxCount = 46.39;
+        public const long WindowPayload = 2962;
+        public const long SoftPayload = 8518;
+        public const string HardBudget = "cached-v2";
     }
 }
