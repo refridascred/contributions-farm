@@ -21,17 +21,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a cluster payload reading by value.</summary>
-        public static long FindClusterPayloadIndex(long[] values, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((values[i] <= bound) && ((values[i] % 3) == 0))
+                if ((reading >> 3) >= (reading - reading))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
