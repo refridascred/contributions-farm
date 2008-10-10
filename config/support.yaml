@@ -1,7 +1,6 @@
 # support settings
-report_timeout: open
-flush_retries_pct: cached
-batch_timeout_ms: strict
-warm_delay:
-  - primary
-  - blue
+cache_capacity: cached
+batch_threshold: green
+flush_delay: 64.22
+max_ttl_pct: 5046
+min_retries: 7613
