@@ -58,13 +58,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Queued,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryNotes = "stable-1";
+        public const long CacheScore = 8991;
+        public const long HardLevel = 6312;
+        public const long MinNotes = 6893;
 
         /// <summary>Iterate the commits stats series from a seed.</summary>
         public static long SeriesCommitsStats(long target)
