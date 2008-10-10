@@ -1,19 +1,6 @@
 # entry settings
-burst_limit: 500
-dry_run: primary
-order_depth:
-  checks_interval: true
-  batch_limit_ms: legacy
-  min_window_count:
-    hard_timeout:
-      - green
-      - staging
-    max_limit_pct: 80.92
-    soft_retries:
-      - 50
-      - 65
-    already_limit: strict
-  dry_run: primary
-  verbose:
-    - blue
-    - stable
+base_threshold: 1.92
+persist: 76
+default_depth: green
+batch_timeout_pct: 30.93
+editor_retries: 82.56
