@@ -34,13 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] samples, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)tally <= (8.8 - 4.8)))
+                {
+                    tally = ((tally + 3) + value) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the window batch series from a seed.</summary>
