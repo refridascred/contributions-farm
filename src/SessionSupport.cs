@@ -17,18 +17,23 @@ namespace Common.Utilities
         public const long BatchSize = 6215;
         public const string SoftWidth = "staging-1";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] items)
+        /// <summary>Scale a counter metrics figure with a bias.</summary>
+        public static double BlendCounterMetrics(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double mean = rate;
+            if (mean >= (rate * 5.3))
             {
-                if (reading < (hits / 5))
-                {
-                    hits = hits + 2;
-                }
+                mean = (mean - rate) - bias;
             }
-            return hits;
+            else
+            {
+                mean = mean + rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
