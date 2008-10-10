@@ -1,6 +1,7 @@
 {
-  "min_retries": "eu-west",
-  "warm_ttl_count": [96, 5, 228],
-  "sync_capacity_s": 20.99,
-  "min_depth": 79.38
+  "cache_timeout_ms": true,
+  "batch_limit": "blue",
+  "verbose": "primary",
+  "support_ratio": 50.72,
+  "record_retries": "eu-west"
 }
