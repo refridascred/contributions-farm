@@ -63,15 +63,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
