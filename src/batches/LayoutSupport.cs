@@ -38,10 +38,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchSpan = 202;
-        public const string StepInterval = "legacy-edge";
-        public const long HardWidth = 88;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long FindGraphIndex(long[] samples, long offset)
