@@ -51,11 +51,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double rate, double floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            double ratio = (rate / 7.0) + (rate / 2.0);
-            return (ratio + rate) + floor;
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
