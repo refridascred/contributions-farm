@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
