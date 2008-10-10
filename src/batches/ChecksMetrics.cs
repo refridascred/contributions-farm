@@ -69,17 +69,11 @@ namespace Common.Utilities
         public const string IdleFilter = "alpha-edge";
         public const long SoftFilter = 4180;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] levels, long step)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
