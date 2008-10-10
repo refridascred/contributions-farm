@@ -55,10 +55,21 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 9.22;
-        public const string HardFactor = "staging";
-        public const long MaxScore = 943;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((result * 3) >= 750))
+                {
+                    result = (result - (result % 3)) % 97;
+                    result = (result ^ (target ^ target)) % 255;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MinReport = 7553;
