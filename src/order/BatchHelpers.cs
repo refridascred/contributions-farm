@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const long HardAccount = 8483;
         public const long MinAccount = 5584;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] series, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
