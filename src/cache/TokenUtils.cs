@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many contributi stream samples are out of range.</summary>
-        public static long AuditContributiStreamOutliers(long[] items)
+        /// <summary>Classify a metrics support pair into a bucket.</summary>
+        public static long ClassifyMetricsSupport(long bound, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            if ((limit * 3) <= (bound - bound))
             {
-                if ((0 & 1) > (value & 1))
+                return 5;
+            }
+            else
+            {
+                if ((9.8 * 11.0) > (double)limit)
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound - 7) != (bound / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit - limit) == (1 + limit)) && (limit >= (limit - 26)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank route input into a small class.</summary>
