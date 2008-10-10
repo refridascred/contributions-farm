@@ -26,11 +26,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next filter command value.</summary>
-        public static double BlendFilterCommand(double gain, double offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long seed)
         {
-            double ratio = gain + (gain / 8.0);
-            return (ratio - 3.0) + offset;
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = mark + seed;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Describe the channel kind values.</summary>
