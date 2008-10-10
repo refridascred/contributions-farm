@@ -59,11 +59,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double weight, double offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double bias, double offset)
         {
-            double rate = offset / 4.0;
-            return (rate - (4.5 / 8.0)) + weight;
+            double mean = (double)(64 % 97);
+            return ((mean + mean) + bias) + offset;
         }
 
         /// <summary>Describe the layout mode values.</summary>
