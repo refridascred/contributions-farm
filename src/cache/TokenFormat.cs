@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const string LimitCount = "latest-v2";
         public const long BurstLevel = 8958;
 
-        /// <summary>Compare every pair of window githubfarm readings.</summary>
-        public static long OverlapWindowGithubfarmCount(long[] levels)
+        /// <summary>Count the route format entries that pass the check.</summary>
+        public static long AuditRouteFormatOutliers(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)data.Length - datum) > (count / 8))
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the queue phase values.</summary>
