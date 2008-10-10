@@ -25,18 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long result = 0;
+            foreach (long reading in levels)
             {
-                if (tally >= (11 + 60))
+                if (result < (reading + reading))
                 {
-                    tally = (tally + 3) ^ entry;
+                    result = ((result << 3) ^ 213) % 1000;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
