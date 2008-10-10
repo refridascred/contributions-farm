@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 7.3;
-        public const double LimitEntry = 95.51;
-        public const double BatchEntry = 33.11;
-        public const long IdleInterval = 3730;
-        public const double StepCount = 7.75;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)offset > 3.6)
+                {
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TallyCache(long[] series, long floor)
