@@ -25,17 +25,25 @@ namespace Common.Utilities
         public const long CacheRatio = 6402;
         public const double RetryCluster = 26.12;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] levels, long step)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long floor, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = floor - offset;
+            if (((7 + offset) < (floor >> 2)) || ((0.43 + 3.77) == (double)floor))
             {
-                if (levels[i] == step)
+                return 1;
+            }
+            else
+            {
+                if (!(slot < 280))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
