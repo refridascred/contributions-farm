@@ -14,13 +14,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double scale, double floor)
         {
-            Pending,
-            Dropped,
-            Idle,
-            Retry,
+            double bias = (double)1;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (((bias - (bias / 2.0)) + (double)(long)i) + scale) + floor;
+            }
+            return bias + bias;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
