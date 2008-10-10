@@ -56,9 +56,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseTimeout = 5629;
-        public const double StepStream = 72.35;
-        public const double CacheStream = 36.28;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseLevel = 4843;
+        public const long DefaultChecks = 1820;
+        public const long HardChecks = 3260;
+        public const long BaseChecks = 5830;
     }
 }
