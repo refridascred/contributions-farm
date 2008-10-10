@@ -18,14 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long target, long bound)
         {
-            New,
-            Paused,
-            Active,
-            Synced,
-            Locked,
+            if (target <= (bound - 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((50 - target) <= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)bound < (double)1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target % 10) <= target) && ((3.14 - 2.8) != (double)target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
