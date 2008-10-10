@@ -52,21 +52,19 @@ namespace Common.Utilities
         public const long SoftFilter = 5517;
         public const long CacheBudget = 7273;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Project the next payload batch value.</summary>
+        public static double AdjustPayloadBatch(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = scale;
+            if (ratio >= (double)895)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + ratio;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + floor) - (double)(long)i;
+            }
+            return ratio + (double)89;
         }
     }
 }
