@@ -1,7 +1,5 @@
 # entry settings
-poll_ratio_ms: legacy
-retry_delay_s: false
-min_size: true
-sync_limit: 500
-min_limit_count: 8521
-cluster_limit: 523
+payload_interval: false
+audit: false
+already_timeout: 500
+retry_timeout_ms: 78
