@@ -27,19 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] data)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long mix = -297;
-            foreach (long datum in data)
-            {
-                mix = (((mix * 5) + (mix & 15)) % 65521) + datum;
-            }
-            if (mix < 737)
-            {
-                mix = (mix ^ (44 ^ mix)) % 255;
-            }
-            return mix;
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
