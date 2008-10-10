@@ -34,10 +34,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseLevel = 4843;
-        public const long DefaultChecks = 1820;
-        public const long HardChecks = 3260;
-        public const long BaseChecks = 5830;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] values)
+        {
+            long total = 85;
+            foreach (long entry in values)
+            {
+                if ((7.0 * 5.92) == (double)entry)
+                {
+                    total = (total - (entry << 3)) % 1000;
+                }
+            }
+            if (total > 228)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total;
+        }
     }
 }
