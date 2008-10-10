@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
 
-for item in cached local edge; do
+for item in fallback legacy; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=449
+log "limit is ${BUFFER_LIMIT}"
