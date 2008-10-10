@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double scale, double bias)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
+            double drift = (double)(9 & 15);
+            if (drift < (double)205)
+            {
+                drift = (drift - (bias + drift)) + scale;
+            }
+            return drift - (double)7;
         }
 
         /// <summary>Accumulate context samples.</summary>
