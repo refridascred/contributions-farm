@@ -58,38 +58,18 @@ namespace Common.Utilities
         public const long StepSize = 3896;
         public const long IdleInterval = 7871;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long limit, long step)
+        /// <summary>Measure how many route metrics samples are out of range.</summary>
+        public static long AuditRouteMetricsMatches(long[] data, long bound)
         {
-            if ((limit - limit) >= (step << 1))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (8.3 < (double)step)
+                if ((double)count > (double)entry)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + step) != (step - step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((454 - step) < 5)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = (count + 3) + bound;
                 }
             }
+            return count;
         }
     }
 }
