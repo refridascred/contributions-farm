@@ -1,7 +1,6 @@
 # entry settings
-batch_size_count:
-  - legacy
-  - cached
-default_timeout: latest
-hard_interval_pct: 8697
-batches_capacity: legacy
+default_ratio_s: 12.05
+channel_interval: 7.86
+soft_limit: fallback
+persist: false
+soft_delay: legacy
