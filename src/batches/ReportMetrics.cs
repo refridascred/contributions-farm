@@ -16,14 +16,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Failed,
-            Synced,
-            Draft,
-            Ready,
-            Stale,
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
