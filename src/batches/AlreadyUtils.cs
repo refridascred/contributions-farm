@@ -19,12 +19,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long origin)
         {
-            Retry,
-            Failed,
-            Synced,
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((mix >> 5) >= origin)
+                {
+                    mix = (mix ^ origin) % 4096;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (((mix << 3) ^ (2 - origin)) % 4096) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
