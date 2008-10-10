@@ -81,18 +81,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum ^ tally) == (datum << 1))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxScore = 5791;
+        public const long BurstFilter = 3484;
+        public const string CacheWidth = "stable-v2";
     }
 }
