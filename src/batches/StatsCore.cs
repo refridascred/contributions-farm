@@ -67,20 +67,23 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double scale, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            double ratio = (double)(1 << 3);
+            if (ratio <= (ratio + scale))
             {
-                if (!((result * 3) >= 750))
-                {
-                    result = (result - (result % 3)) % 97;
-                    result = (result ^ (target ^ target)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                ratio = ratio - offset;
             }
-            return result;
+            else
+            {
+                ratio = ratio - (double)7;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (2.0 / 3.0);
         }
 
         /// <summary>Define report limits and defaults.</summary>
