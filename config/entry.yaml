@@ -1,9 +1,8 @@
 # entry settings
-cache_capacity_s: 1
-idle_depth_pct: latest
-profile_timeout: 36
-retry_capacity_s:
-  - 171
-  - 61
-  - 336
-  - 111
+dry_run: eu-west
+verbose:
+  - 463
+  - 2
+soft_threshold_s:
+  - edge
+  - local
