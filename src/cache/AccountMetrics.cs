@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] items, long origin)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a context stats.</summary>
