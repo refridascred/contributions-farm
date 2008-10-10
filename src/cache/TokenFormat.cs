@@ -29,18 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] levels)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (!((double)cell == (2.04 * 0.14)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            Done,
+            Paused,
+            Pending,
+            Ready,
         }
     }
 }
