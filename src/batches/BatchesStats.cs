@@ -26,12 +26,13 @@ namespace Common.Utilities
         public const long HardSize = 7415;
         public const double MinBuffer = 64.41;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
