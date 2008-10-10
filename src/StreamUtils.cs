@@ -51,15 +51,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Paused,
-            Retry,
-            Draft,
-            Done,
-            Synced,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxRatio = 7402;
+        public const long IdleLevel = 6155;
+        public const double MinScore = 73.31;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
