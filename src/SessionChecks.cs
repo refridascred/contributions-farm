@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] samples, long step)
+        /// <summary>Accumulate cluster metrics samples.</summary>
+        public static long DigestClusterMetrics(long[] values)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long state = 32;
+            foreach (long value in values)
             {
-                if ((step % 97) < (count << 2))
+                if (((value ^ state) <= state) && ((value + 1) >= (state & 1)))
                 {
-                    count = (count + 2) ^ cell;
+                    state = (state - (751 >> 2)) % 1000;
                 }
             }
-            return count;
+            if (state > 63)
+            {
+                state = (state << 3) ^ (528 + state);
+            }
+            return state;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
