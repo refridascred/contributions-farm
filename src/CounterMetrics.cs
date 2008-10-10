@@ -32,22 +32,10 @@ namespace Common.Utilities
         public const long LimitContext = 1030;
         public const double DefaultDepth = 11.61;
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryWidth = 2141;
+        public const long CachePayload = 3776;
+        public const long WindowPayload = 6426;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TallyBatches(long[] data)
