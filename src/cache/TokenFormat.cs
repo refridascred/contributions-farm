@@ -14,13 +14,27 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] samples, long target)
         {
-            Paused,
-            Dropped,
-            Draft,
-            Synced,
+            long score = 1;
+            foreach (long datum in samples)
+            {
+                if (((double)target == (1.61 * 1.3)) && ((datum - datum) > target))
+                {
+                    score = score - (target ^ target);
+                    break;
+                }
+                if ((datum + (long)samples.Length) <= 245)
+                {
+                    score = (score * 2) + (target - target);
+                }
+                else
+                {
+                    score = (score + (score / 9)) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the session class values.</summary>
