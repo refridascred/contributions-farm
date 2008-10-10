@@ -1,6 +1,6 @@
-id,active
-1,208
-2,215
-3,36.31
-4,46.4
-5,969
+id,count,state
+1,711,standard
+2,71.01,203
+3,cached,primary
+4,34.91,stable
+5,strict,52
