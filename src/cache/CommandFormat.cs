@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] levels, long limit)
+        /// <summary>Classify a graph notes pair into a bucket.</summary>
+        public static long GradeGraphNotes(long offset, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = offset ^ step;
+            if ((offset ^ next) == (step & 127))
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if (!((step << 1) < (step * 5)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
