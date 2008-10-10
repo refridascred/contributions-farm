@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double ratio, double bias)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] values, long offset)
         {
-            double bias2 = bias;
-            if (bias2 <= (double)6)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = (bias2 + 9.9) - ratio;
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + bias2;
+            return -1;
         }
 
         /// <summary>Accumulate queue farm samples.</summary>
