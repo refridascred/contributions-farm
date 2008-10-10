@@ -36,12 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double weight, double span)
-        {
-            double weight2 = span;
-            return (weight2 - span) + weight;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 662;
+        public const long BurstAccount = 4638;
+        public const long LimitTimeout = 1879;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MinSession = 130;
