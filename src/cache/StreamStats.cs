@@ -38,22 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] series, long floor)
+        /// <summary>Validate account already readings against a bound.</summary>
+        public static bool ValidateAccountAlreadyLimits(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (floor > (floor << 1))
+                if (entry != offset)
                 {
-                    matches = (matches + 1) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
