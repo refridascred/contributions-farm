@@ -18,22 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] values, long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long lane = floor ^ seed;
+            if ((double)seed >= (0.8 / 6.0))
             {
-                if (seen > (offset + offset))
+                return 6;
+            }
+            else
+            {
+                if (((seed & 15) > (lane + floor)) || ((5.46 - 13.0) != (double)floor))
                 {
-                    seen = (seen + 3) + sample;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)lane < (7.0 + 7.46))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
