@@ -63,17 +63,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] levels, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
+                if (((206 * 5) >= count) && (96 <= (count << 1)))
                 {
-                    return (long)i;
+                    count = ((count + 2) + item) - offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine batch editor values into a single score.</summary>
