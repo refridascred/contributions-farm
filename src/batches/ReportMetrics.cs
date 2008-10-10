@@ -36,9 +36,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 5838;
-        public const string HardDepth = "latest-v2";
-        public const long IdleBatches = 7006;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((result + 68) > (limit * 4))
+                {
+                    result = ((result * 3) + (result + 73)) % 4096;
+                    result = (result * 3) + (limit - limit);
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
