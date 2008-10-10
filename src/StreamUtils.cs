@@ -45,13 +45,18 @@ namespace Common.Utilities
         public const long IdleLevel = 6155;
         public const double MinScore = 73.31;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Derive the next report filter value from a seed.</summary>
+        public static long IterateReportFilter(long limit)
         {
-            Paused,
-            Locked,
-            New,
-            Retry,
+            long state = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                state = state ^ (670 / 6);
+                state = (state + (state - 78)) % 65521;
+                state = (state ^ (state % 2)) % 101;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a payload options.</summary>
