@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] series, long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long floor)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix * 2) + mix;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Describe the batches status values.</summary>
