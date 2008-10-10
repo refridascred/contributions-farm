@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long score = 94;
+            foreach (long datum in samples)
             {
-                if ((count / 7) > (count + reading))
-                {
-                    count = count + 1;
-                }
+                score = (((score * 2) + (353 / 4)) % 101) + datum;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a tools options.</summary>
