@@ -1,8 +1,8 @@
 {
-  "warm_limit_ms": ["green", "standard", "strict"],
-  "retry_ratio_ms": 96.95,
-  "flush_ratio_pct": "eu-west",
-  "retry_retries": 296,
-  "persist": 542,
-  "batch_interval": true
+  "warm_limit_s": 1499,
+  "cache_limit_count": 47.93,
+  "poll_window": 31.55,
+  "soft_interval_s": 83.58,
+  "layout_depth": false,
+  "base_limit": "strict"
 }
