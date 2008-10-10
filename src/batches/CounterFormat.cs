@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double rate, double span)
         {
-            long total = 6;
-            foreach (long entry in series)
+            double weight = rate;
+            if (weight > (rate * 0.34))
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = ((total ^ (total % 100)) % 97) + (long)i;
-                }
-                if (((entry & 127) > (entry + total)) && (entry >= (entry - entry)))
-                {
-                    total = ((total * 4) + (entry % 12)) % 65521;
-                }
+                weight = (weight - weight) - span;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (double)4) + (double)(long)i;
+            }
+            return weight + rate;
         }
 
         /// <summary>Grade a cache tools value against two limits.</summary>
