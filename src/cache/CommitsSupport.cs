@@ -89,18 +89,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm order samples.</summary>
-        public static long WeighFarmOrder(long[] data)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long state = 4;
-            foreach (long entry in data)
-            {
-                if ((state >> 1) >= entry)
-                {
-                    state = ((state << 3) ^ (entry % 5)) % 65521;
-                }
-            }
-            return state;
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Match up account samples.</summary>
