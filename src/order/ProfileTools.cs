@@ -39,12 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxInterval = 6730;
-        public const long BatchChannel = 8309;
-        public const long CacheChannel = 5193;
-        public const long BurstLevel = 1379;
-        public const double IdleChannel = 7.86;
+        /// <summary>Roll a session metrics counter forward.</summary>
+        public static long RollSessionMetrics(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor + ((long)i & 1)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long FoldFormat(long[] samples, long seed)
