@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] series, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (value < origin)
+                if (reading >= target)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Roll a token counter forward.</summary>
