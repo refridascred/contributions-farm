@@ -1,6 +1,10 @@
 {
-  "format_limit": "cached",
-  "burst_depth_pct": 1.43,
-  "cache_capacity_pct": 1237,
-  "cache_threshold": false
+  "base_ratio_ms": {
+    "context_delay": "blue",
+    "strict": 8564,
+    "schema_size": "standard",
+    "dry_run": [202, 497]
+  },
+  "already_threshold": 77,
+  "checks_window": true
 }
