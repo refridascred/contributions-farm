@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double ratio, double offset)
         {
-            Closed,
-            Pending,
-            Locked,
-            Active,
-            Draft,
+            double scale = ratio + (ratio / 7.0);
+            if (scale > scale)
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (ratio * 8.2)) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Describe the entry mode values.</summary>
