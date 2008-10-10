@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a session context reading by value.</summary>
-        public static long SeekSessionContextIndex(long[] data, long origin)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Paused,
+            Closed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
