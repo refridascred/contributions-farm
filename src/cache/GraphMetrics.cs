@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Blend two farm route measurements.</summary>
+        public static double ScaleFarmRoute(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (bias / 5.0) + bias;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = ((weight + (double)(-88)) + (double)(long)i) - bias2;
             }
-            return tally;
+            return weight - (bias / 7.0);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
