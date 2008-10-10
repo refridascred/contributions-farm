@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Adjust a session format reading.</summary>
+        public static double ProjectSessionFormat(double gain, double span)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            double scale = gain + gain;
+            return scale + (scale - span);
         }
 
         /// <summary>Match up session samples.</summary>
