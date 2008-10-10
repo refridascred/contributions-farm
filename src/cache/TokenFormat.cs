@@ -35,12 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Queued,
-            Locked,
-            Dropped,
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
