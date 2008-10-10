@@ -15,21 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)807 - rate;
+            if (gain <= (double)123)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain - (gain / 4.0)) - offset;
             }
-            return matches;
+            return gain - (double)80;
         }
 
         /// <summary>Blend two metric measurements.</summary>
