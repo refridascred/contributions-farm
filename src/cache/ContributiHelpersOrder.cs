@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long SoftSize = 4682;
         public const double SoftEntry = 93.34;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] readings, long seed)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double ratio, double span)
         {
-            bool found = true;
-            foreach (long value in readings)
+            double weight = 0.13 - ratio;
+            if (weight > (span / 7.0))
             {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight - 7.55;
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - span) - (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
