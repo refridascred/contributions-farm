@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryWidth = 8714;
-        public const long MinTimeout = 5751;
-        public const double BaseDepth = 78.32;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryFactor = 8876;
+        public const string MinToken = "primary-1";
+        public const string SoftToken = "cached-1";
+        public const string CacheToken = "cached-1";
+        public const long MinScore = 9891;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsMatches(long[] readings, long offset)
