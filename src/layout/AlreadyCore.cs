@@ -27,16 +27,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                state = (state << 2) ^ (state + (long)i);
-                state = ((state * 3) + (long)i) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
