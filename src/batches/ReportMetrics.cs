@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] samples)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long anchor = 804;
+            foreach (long value in levels)
             {
-                if ((double)reading >= (4.0 - 1.4))
+                if ((double)value > (1.02 * 9.63))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = ((anchor << 3) ^ anchor) % 1000;
                 }
             }
-            return count;
+            if (anchor < 5)
+            {
+                anchor = (anchor ^ (anchor - (-3))) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate contributi buffer samples.</summary>
