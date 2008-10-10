@@ -36,17 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a order editor reading by value.</summary>
-        public static long LocateOrderEditorIndex(long[] values, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (values[i] > seed)
+                if ((reading - count) != (reading / 6))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
