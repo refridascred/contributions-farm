@@ -55,17 +55,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] readings, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                state = (state - (origin + origin)) % 97;
-                state = state ^ (786 + state);
-                state = ((state * 3) + (long)i) % 1000;
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
     }
 }
