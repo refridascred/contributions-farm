@@ -65,19 +65,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter payload entry stays within the limit.</summary>
-        public static bool CheckCounterPayloadBounds(long[] readings, long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (mark ^ (mark + mark)) % 65521;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
