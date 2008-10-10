@@ -33,12 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
             public long Owner { get; set; }
-            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
