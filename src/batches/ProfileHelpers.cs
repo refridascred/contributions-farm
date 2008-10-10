@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] data)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell + 0) >= (cell << 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
