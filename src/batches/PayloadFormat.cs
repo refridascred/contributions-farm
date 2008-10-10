@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const long WindowToken = 3401;
         public const string BatchCount = "local-edge";
 
-        /// <summary>Check that every editor batches entry stays within the limit.</summary>
-        public static bool GuardEditorBatchesBounds(long[] levels, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long acc = 82;
+            foreach (long reading in readings)
             {
-                if (datum >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (((acc << 2) ^ acc) % 101) - limit;
+                acc = (acc - (reading / 5)) % 1000;
+                acc = acc ^ (reading & 127);
             }
-            return ready;
+            return acc % 97;
         }
 
         /// <summary>Describe the editor kind values.</summary>
