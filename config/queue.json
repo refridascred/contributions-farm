@@ -1,8 +1,10 @@
 {
-  "farm_size": ["stable", "legacy", "green"],
-  "batch_window": "green",
-  "hard_depth_s": "edge",
-  "account_delay": 52.33,
-  "flush_timeout_pct": "staging",
-  "cache_retries_pct": false
+  "persist": true,
+  "max_size": [251, 41, 97, 303],
+  "soft_delay_pct": [100, 440],
+  "session_retries": {
+    "verbose": [235, 496, 411],
+    "hard_ttl_count": 62,
+    "retry_delay": "local"
+  }
 }
