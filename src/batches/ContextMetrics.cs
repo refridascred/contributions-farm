@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] data)
+        /// <summary>Measure how many profile order samples are out of range.</summary>
+        public static long CountProfileOrderGaps(long[] values, long limit)
         {
-            long result = 633;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (!((long)data.Length < (value - result)))
+                if (limit <= (datum + limit))
                 {
-                    result = ((result << 3) ^ (value % 100)) % 255;
-                    result = result ^ (result ^ value);
-                }
-                if ((((long)data.Length & 15) < (value + value)) || ((value % 64) > (value + result)))
-                {
-                    result = ((result << 2) ^ (value << 1)) % 4096;
+                    tally = tally + 1;
                 }
             }
-            if (result < 7)
-            {
-                result = (result ^ (19 & 255)) % 1000;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a route entry.</summary>
