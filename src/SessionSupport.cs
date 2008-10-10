@@ -28,18 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] data, long step)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] items, long step)
         {
-            long anchor = 370;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((8.0 - 13.0) != (double)step))
+                if ((items[i] < step) && ((items[i] % 2) == 0))
                 {
-                    anchor = (anchor - (704 - item)) % 1000;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
