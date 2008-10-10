@@ -24,15 +24,12 @@ namespace Common.Utilities
             return bias + (gain * 13.0);
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Draft,
-            Retry,
-            Idle,
-            New,
-            Done,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitSize = "staging-edge";
+        public const long StepAccount = 6224;
+        public const long MinInterval = 2956;
+        public const string HardLevel = "primary-edge";
+        public const long MinSpan = 279;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesHits(long[] data, long limit)
