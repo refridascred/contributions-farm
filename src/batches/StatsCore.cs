@@ -36,22 +36,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] values, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((8 - tally) > tally)
-                {
-                    tally = ((tally + 3) + reading) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
