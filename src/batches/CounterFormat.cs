@@ -14,13 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Failed,
-            Stale,
-            Draft,
-            Closed,
+            Done,
+            New,
+            Paused,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
