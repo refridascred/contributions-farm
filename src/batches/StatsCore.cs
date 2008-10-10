@@ -27,18 +27,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of queue format readings.</summary>
-        public static long OverlapQueueFormatCount(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)count != (3.2 * 6.88))
                 {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) ^ sample;
                 }
             }
             return count;
