@@ -12,10 +12,20 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 312;
-        public const string IdleNotes = "staging-v2";
-        public const long MaxNotes = 9067;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Scale a report commits figure with a bias.</summary>
         public static double ProjectReportCommits(double weight, double span)
