@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first layout buffer entry that matches the target.</summary>
-        public static long LookupLayoutBufferIndex(long[] values, long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] >= origin)
+                if (series[i] >= floor)
                 {
                     return (long)i;
                 }
