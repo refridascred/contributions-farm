@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 4) + floor) % 255;
-                if ((floor - floor) != (result + 80))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result << 2) ^ result) % 4096;
-                    result = result + 5;
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
