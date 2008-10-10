@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 5502;
-        public const long RetryLevel = 3571;
-        public const long SoftSize = 767;
-        public const long LimitFactor = 4193;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
