@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue token readings against a bound.</summary>
-        public static bool ValidateQueueTokenRange(long[] items, long limit)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value > limit)
+                if (series[i] >= limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
