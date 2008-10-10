@@ -23,17 +23,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] series, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((series[i] == target) && ((series[i] % 3) != 0))
+                if ((reading ^ seen) >= (913 >> 3))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
