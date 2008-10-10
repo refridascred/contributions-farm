@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a metrics support pair into a bucket.</summary>
-        public static long ClassifyMetricsSupport(long bound, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            if ((limit * 3) <= (bound - bound))
+            long mix = 682;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.8 * 11.0) > (double)limit)
+                mix = (mix ^ (cell + cell)) % 255;
+                if (!(72 <= (mix + mix)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - 7) != (bound / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((limit - limit) == (1 + limit)) && (limit >= (limit - 26)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix > 0)
+            {
+                mix = ((mix * 4) + 6) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
