@@ -56,17 +56,18 @@ namespace Common.Utilities
             return drift - (drift * 7.82);
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] data, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((data[i] < floor) && ((data[i] % 3) == 0))
+                if (tally >= (tally << 2))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) + entry) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
