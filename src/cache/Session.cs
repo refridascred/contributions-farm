@@ -14,39 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long bound, long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] samples, long step)
         {
-            long prev = bound - target;
-            if (prev < (bound * 5))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((prev >> 5) >= (target ^ 90)))
+                if (samples[i] <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound == (3.59 + 16.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)bound <= (4.2 * 4.3)) && ((prev - prev) < (prev / 9)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a report entry.</summary>
