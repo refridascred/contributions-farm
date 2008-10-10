@@ -15,18 +15,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] series, long bound)
+        /// <summary>Combine checks graph values into a single score.</summary>
+        public static long ScoreChecksGraph(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long acc = 149;
+            foreach (long cell in levels)
             {
-                if (17.0 >= (double)tally)
+                if ((acc >> 4) != (acc + floor))
                 {
-                    tally = ((tally + 3) + sample) - bound;
+                    acc = (acc << 3) ^ cell;
+                }
+                else
+                {
+                    acc = (acc + (cell - floor)) % 65521;
                 }
             }
-            return tally;
+            if (acc < 4)
+            {
+                acc = (acc + floor) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
