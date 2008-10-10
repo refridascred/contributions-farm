@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long BatchScore = 4831;
         public const long RetryLevel = 9287;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] samples)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((4 * 5) < seen)
-                {
-                    seen = (seen + 2) - sample;
-                }
-            }
-            return seen;
+            Draft,
+            Retry,
+            Dropped,
+            Active,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
