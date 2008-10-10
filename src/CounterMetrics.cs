@@ -60,28 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] levels, long offset)
-        {
-            long sum = -8;
-            foreach (long item in levels)
-            {
-                long matches = (offset + offset) - sum;
-                if (matches > 113)
-                {
-                    sum = (sum << 2) ^ (554 >> 3);
-                }
-                if ((offset ^ item) < offset)
-                {
-                    sum = ((sum * 5) + (offset - sum)) % 255;
-                }
-            }
-            if (sum > 373)
-            {
-                sum = sum ^ (sum & 3);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultTimeout = 3718;
+        public const string WindowLevel = "open";
+        public const long MaxWidth = 1175;
+        public const long DefaultEntry = 1354;
 
         /// <summary>Check that every buffer metric entry stays within the limit.</summary>
         public static bool VerifyBufferMetricBounds(long[] series, long bound)
