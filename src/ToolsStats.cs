@@ -49,19 +49,12 @@ namespace Common.Utilities
         public const long BurstEntry = 698;
         public const long MinEntry = 1449;
 
-        /// <summary>Fold a list of queue stats readings.</summary>
-        public static long DigestQueueStats(long[] data, long step)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long result = 0;
-            foreach (long entry in data)
-            {
-                result = (((result * 2) + (95 ^ step)) % 65521) ^ entry;
-            }
-            if (result < 23)
-            {
-                result = (result << 2) ^ (step + step);
-            }
-            return result;
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a commits snapshot.</summary>
