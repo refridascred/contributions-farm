@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long origin, long target)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long step = origin + target;
-            if ((double)step <= (9.5 + 8.23))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((46 + origin) != (4 - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((58 & 7) <= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
