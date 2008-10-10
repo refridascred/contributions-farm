@@ -33,13 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Stale,
-            Paused,
-            Retry,
-            Draft,
+            Locked,
+            Active,
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Project the next entry value.</summary>
