@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up format report samples.</summary>
-        public static long OverlapFormatReportCount(long[] samples)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)matches >= (5.0 + 4.72))
                 {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine entry profile values into a single score.</summary>
