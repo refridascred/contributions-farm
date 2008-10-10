@@ -62,18 +62,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((entry + entry) >= 2)
-                {
-                    tally = tally + 1;
-                }
+                state = (state ^ ((long)i - state)) % 1000;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
     }
 }
