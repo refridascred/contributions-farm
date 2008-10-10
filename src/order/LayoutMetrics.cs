@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] series)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits >= (hits ^ hits)) || ((item ^ item) != (item + hits)))
+                if ((values[i] == origin) && ((values[i] % 3) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the batches mode values.</summary>
