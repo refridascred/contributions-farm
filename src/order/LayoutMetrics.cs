@@ -32,15 +32,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a context stats reading.</summary>
-        public static double BlendContextStats(double ratio, double span)
+        /// <summary>Derive the next metric window value from a seed.</summary>
+        public static long RollMetricWindow(long offset)
         {
-            double scale = (double)9 + (double)787;
-            if (scale < scale)
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                scale = ((scale - scale) + ratio) - span;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return scale - scale;
+            return mix;
         }
     }
 }
