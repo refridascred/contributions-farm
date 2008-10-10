@@ -1,7 +1,6 @@
-id,rank,score
-1,636,35.8
-2,strict,3.88
-3,833,55.14
-4,43.73,855
-5,19.09,98.15
-6,fallback,96.7
+id,region,count
+1,primary,71.85
+2,487,35.04
+3,edge,open
+4,71.56,197
+5,open,0.52
