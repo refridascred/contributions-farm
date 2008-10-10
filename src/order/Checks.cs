@@ -40,13 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Stale,
-            Active,
-            Pending,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchTimeout = 4548;
+        public const string BatchWidth = "local-1";
+        public const long SoftFilter = 5517;
+        public const long CacheBudget = 7273;
 
         /// <summary>Match up channel samples.</summary>
         public static long CompareChannelCount(long[] data)
