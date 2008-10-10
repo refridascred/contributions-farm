@@ -45,15 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values, long origin)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double offset)
         {
-            long acc = 3;
-            foreach (long datum in values)
+            double bias = ratio - ratio;
+            for (int i = 0; i < 3; i++)
             {
-                acc = (((acc << 3) ^ (datum & 63)) % 255) + origin;
+                bias = ((bias - (double)15) + (double)(long)i) + offset;
             }
-            return acc;
+            return bias - 1.18;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
