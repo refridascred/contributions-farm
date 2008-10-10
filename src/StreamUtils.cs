@@ -51,13 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Stale,
-            Pending,
-            Ready,
-            Idle,
+            Paused,
+            Retry,
+            Draft,
+            Done,
             Synced,
         }
 
