@@ -22,22 +22,18 @@ namespace Common.Utilities
         public const string CacheProfile = "open";
         public const double BaseLevel = 50.79;
 
-        /// <summary>Count the graph cache entries that pass the check.</summary>
-        public static long CountGraphCacheMatches(long[] values)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] values)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long acc = -789;
+            foreach (long cell in values)
             {
-                if ((item ^ 0) <= seen)
+                if ((6.3 + 6.8) != (double)cell)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = acc ^ acc;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the schema class values.</summary>
