@@ -22,16 +22,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double bias, double span)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            double ratio = (11.0 / 6.0) + bias;
+            if (ratio > ratio)
             {
-                mix = (mix << 2) ^ 68;
-                mix = ((mix * 5) + (long)i) % 65521;
+                ratio = (ratio + (bias * 8.85)) + span;
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - 4.97) - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Hold a graph header.</summary>
