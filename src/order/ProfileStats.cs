@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "standard-v2";
-        public const long BaseEditor = 3226;
-        public const long IdleEditor = 9888;
-        public const long WindowDepth = 5697;
-        public const double BatchTimeout = 59.74;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits - 3) <= ((-750) >> 5))
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
