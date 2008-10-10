@@ -1,6 +1,20 @@
 {
-  "dry_run": "open",
-  "poll_capacity": 9564,
-  "soft_threshold_pct": 31.43,
-  "entry_timeout": "edge"
+  "max_limit": 250,
+  "profile_timeout": {
+    "default_depth": 79.75,
+    "window_timeout": [224, 362, 457],
+    "burst_window_count": "staging",
+    "metrics_depth": [250, 307],
+    "cache_limit": 33
+  },
+  "readonly": 10.99,
+  "idle_ttl": {
+    "filter_window": 51.44,
+    "editor_size": 61.82,
+    "max_depth": "local",
+    "flush_depth_s": "staging",
+    "soft_threshold_pct": "blue",
+    "flush_interval_pct": "standard"
+  },
+  "sync_threshold": "strict"
 }
