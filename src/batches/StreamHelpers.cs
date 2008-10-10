@@ -22,15 +22,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
