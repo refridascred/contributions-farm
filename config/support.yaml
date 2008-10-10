@@ -1,5 +1,9 @@
 # support settings
-batch_size: 73
-notes_window: 250
-hard_retries_s: 50
-payload_threshold: 4127
+persist: false
+editor_retries:
+  - local
+  - legacy
+poll_ttl_pct: 3795
+default_delay_ms: true
+sync_limit_count: 59.04
+compress: 27
