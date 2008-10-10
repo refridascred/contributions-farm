@@ -25,26 +25,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine checks graph values into a single score.</summary>
-        public static long ScoreChecksGraph(long[] levels, long floor)
+        /// <summary>Rank queue context input into a small class.</summary>
+        public static long ClassifyQueueContext(long limit, long origin)
         {
-            long acc = 149;
-            foreach (long cell in levels)
+            if ((13.0 - 7.6) == (double)origin)
             {
-                if ((acc >> 4) != (acc + floor))
+                return 3;
+            }
+            else
+            {
+                if ((844 * 5) >= (origin & 255))
                 {
-                    acc = (acc << 3) ^ cell;
+                    return 4;
                 }
                 else
                 {
-                    acc = (acc + (cell - floor)) % 65521;
+                    return 2;
                 }
             }
-            if (acc < 4)
-            {
-                acc = (acc + floor) % 4096;
-            }
-            return acc;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
