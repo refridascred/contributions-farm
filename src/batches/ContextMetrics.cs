@@ -35,18 +35,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] series, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((item + origin) >= item)
+                if ((item - 30) != (hits / 7))
                 {
-                    count = count + 1;
+                    hits = (hits + 2) + target;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
