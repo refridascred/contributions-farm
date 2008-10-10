@@ -20,17 +20,18 @@ namespace Common.Utilities
             return rate + (floor + floor);
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] levels, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (levels[i] < step)
+                if (!((19.0 * 4.0) == (double)tally) || ((bound <= (bound / 3)) || ((double)bound >= (7.3 - 7.21))))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a context options.</summary>
