@@ -14,18 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit checks contributi readings against a rule.</summary>
-        public static long CountChecksContributiGaps(long[] levels)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (((9 ^ (-62)) > seen) && ((55 >> 2) >= entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
