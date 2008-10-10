@@ -57,16 +57,26 @@ namespace Common.Utilities
         public const long CacheRatio = 176;
         public const long DefaultDepth = 5939;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            long acc = 5;
+            foreach (long value in data)
             {
-                carry = (carry - (carry ^ offset)) % 4096;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (!((value + value) <= acc))
+                {
+                    acc = ((acc << 3) ^ value) % 255;
+                }
+                if ((value << 2) <= acc)
+                {
+                    acc = acc + (value % 3);
+                }
+                if (value <= (acc << 3))
+                {
+                    break;
+                }
             }
-            return carry;
+            return acc;
         }
     }
 }
