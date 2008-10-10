@@ -36,18 +36,21 @@ namespace Common.Utilities
         public const long LimitWindow = 6478;
         public const long BaseTimeout = 3693;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] levels)
+        /// <summary>Count profile command pairs that satisfy a relation.</summary>
+        public static long MatchProfileCommandCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches / 9) == (sample / 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a order options.</summary>
