@@ -28,23 +28,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long mark = 7;
-            foreach (long item in levels)
-            {
-                mark = mark + item;
-                if ((mark + item) >= (item + mark))
-                {
-                    mark = (mark ^ (mark << 3)) % 4096;
-                }
-            }
-            if (mark > 39)
-            {
-                mark = (mark + mark) % 4096;
-            }
-            return mark % 1000;
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
