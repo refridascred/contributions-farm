@@ -71,22 +71,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics command samples.</summary>
-        public static long WeighMetricsCommand(long[] values)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long carry = 785;
-            foreach (long sample in values)
-            {
-                if ((6.3 * 3.7) >= (double)carry)
-                {
-                    carry = ((carry * 5) + (61 & 63)) - sample;
-                }
-            }
-            if (carry < 75)
-            {
-                carry = ((carry * 4) + carry) % 97;
-            }
-            return carry;
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
