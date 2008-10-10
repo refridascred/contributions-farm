@@ -12,19 +12,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item - seen) >= (long)readings.Length)
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 4436;
+        public const string WindowProfile = "stable-1";
+        public const long IdleBudget = 1208;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyMatches(long[] series, long seed)
