@@ -24,19 +24,14 @@ namespace Common.Utilities
         public const double HardStats = 37.28;
         public const string BaseStats = "primary-v2";
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] items, long step)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Locked,
+            Active,
+            Ready,
+            Dropped,
         }
     }
 }
