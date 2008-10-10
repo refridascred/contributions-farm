@@ -31,19 +31,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] values, long step)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double ratio, double offset)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            double gain = ratio;
+            if (gain > offset)
             {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain - offset;
             }
-            return ready;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain - ratio;
         }
     }
 }
