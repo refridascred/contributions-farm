@@ -69,9 +69,23 @@ namespace Common.Utilities
             return gain2 + offset;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "stable-1";
-        public const long SoftWindow = 9085;
-        public const long LimitInterval = 8433;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double weight, double span)
+        {
+            double load = weight;
+            if (load > 0.43)
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load + (span - load);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (span - load)) - (double)(long)i;
+            }
+            return load - (double)115;
+        }
     }
 }
