@@ -35,10 +35,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 5788;
-        public const double BaseSupport = 47.09;
-        public const string BaseLevel = "staging-v2";
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Dropped,
+            Synced,
+            Locked,
+            Active,
+            Queued,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double IdleSize = 29.17;
