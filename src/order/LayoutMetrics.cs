@@ -27,10 +27,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 5827;
-        public const long RetryEditor = 2262;
-        public const long MaxBudget = 8437;
-        public const double IdleEditor = 17.24;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 2609;
+        public const long BatchTimeout = 6619;
+        public const long HardContributi = 1106;
+        public const string MinContributi = "standard-edge";
+        public const double BaseSize = 47.97;
     }
 }
