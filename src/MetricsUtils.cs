@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
