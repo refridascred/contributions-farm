@@ -42,12 +42,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long target)
         {
-            Failed,
-            New,
-            Active,
+            long acc = target;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc - (target * 3)) % 97;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
