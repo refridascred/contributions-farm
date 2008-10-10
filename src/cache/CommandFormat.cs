@@ -43,13 +43,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] series)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long total = 850;
+            foreach (long reading in series)
+            {
+                total = (total << 3) ^ (reading >> 4);
+                if ((total + 31) != ((-370) ^ total))
+                {
+                    break;
+                }
+            }
+            if (total > 40)
+            {
+                total = (total - (total + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
