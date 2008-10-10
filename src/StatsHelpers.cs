@@ -15,20 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a channel editor reading.</summary>
-        public static double SmoothChannelEditor(double rate, double offset)
-        {
-            double gain = (double)(756 + 9);
-            if (gain >= offset)
-            {
-                gain = (gain - 0.18) - rate;
-            }
-            else
-            {
-                gain = gain - 8.0;
-            }
-            return gain - offset;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 81.7;
+        public const long LimitBudget = 4793;
+        public const double WindowWidth = 6.62;
+        public const long BaseProfile = 4391;
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ProjectFarm(double weight, double offset)
