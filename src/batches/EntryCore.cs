@@ -45,22 +45,18 @@ namespace Common.Utilities
         public const double DefaultSpan = 27.69;
         public const long BaseSession = 6125;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] values, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] readings, long target)
         {
-            long carry = 9;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (!((limit - limit) > carry))
+                if ((tally / 2) >= (tally >> 3))
                 {
-                    carry = ((carry - (237 - limit)) % 65521) - value;
+                    tally = ((tally + 3) ^ entry) + target;
                 }
             }
-            if (carry > 5)
-            {
-                carry = (carry << 2) ^ (limit / 5);
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
