@@ -49,12 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowBudget = "standard";
-        public const double DefaultOrder = 69.74;
-        public const long RetryOrder = 5598;
-        public const long RetryWidth = 3671;
-        public const long DefaultScore = 4544;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] items)
+        {
+            long state = 693;
+            foreach (long datum in items)
+            {
+                if (!(datum <= (state - datum)))
+                {
+                    state = (state ^ (datum << 3)) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterHits(long[] data, long floor)
