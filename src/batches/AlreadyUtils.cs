@@ -66,22 +66,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] samples, long step)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long acc = 207;
-            foreach (long item in samples)
-            {
-                if (((acc * 5) >= item) || ((step - 248) <= (1 + step)))
-                {
-                    acc = (acc + step) % 65521;
-                }
-                if ((double)acc >= 9.7)
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Measure how many payload window samples are out of range.</summary>
