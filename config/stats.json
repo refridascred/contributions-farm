@@ -1,5 +1,6 @@
 {
-  "batch_delay_count": "standard",
-  "stats_window": 7868,
-  "metrics_retries": 53.62
+  "poll_window_s": 34,
+  "context_retries": 100,
+  "readonly": 93,
+  "soft_timeout": [454, 350, 24]
 }
