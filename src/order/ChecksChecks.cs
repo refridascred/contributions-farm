@@ -13,11 +13,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a profile summary.</summary>
