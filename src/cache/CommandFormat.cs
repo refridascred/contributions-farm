@@ -25,15 +25,22 @@ namespace Common.Utilities
         public const double MinScore = 20.29;
         public const long HardLevel = 81;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] values, long limit)
         {
-            long anchor = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                anchor = ((anchor ^ (anchor >> 5)) % 65521) + entry;
+                if ((double)hits == (4.0 * 18.0))
+                {
+                    hits = ((hits + 2) + sample) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
