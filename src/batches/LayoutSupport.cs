@@ -30,12 +30,12 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchWindow = "open-1";
+        public const string BaseFactor = "cached";
+        public const long RetryRatio = 26;
+        public const long LimitWindow = 6478;
+        public const long BaseTimeout = 3693;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportHits(long[] levels)
