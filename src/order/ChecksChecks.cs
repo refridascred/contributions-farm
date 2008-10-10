@@ -12,19 +12,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] levels, long limit)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > limit)
+                if (values[i] >= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
