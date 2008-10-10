@@ -44,12 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 7.48;
-        public const double WindowDepth = 25.76;
-        public const long StepFactor = 1196;
-        public const long DefaultBudget = 4039;
-        public const long CacheWindow = 5754;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
