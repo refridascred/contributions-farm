@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Combine tools commits values into a single score.</summary>
+        public static long FoldToolsCommits(long[] items, long target)
         {
-            long acc = 883;
-            foreach (long value in items)
+            long score = 898;
+            foreach (long reading in items)
             {
-                acc = acc + (value - acc);
+                score = ((((score << 3) ^ (246 ^ (long)items.Length)) % 255) ^ reading) + target;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
