@@ -42,29 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long bound, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long floor)
         {
-            if (((85 + target) == ((-7) + bound)) && ((bound ^ target) <= (bound >> 1)))
+            if (floor <= (floor ^ limit))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((1 / 6) < (target - target))
+                if ((floor - limit) != (limit >> 3))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)4 != (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 0;
                 }
             }
         }
