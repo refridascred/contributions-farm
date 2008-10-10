@@ -52,18 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchBudget = 3715;
+        public const double SoftScore = 67.53;
+        public const long StepSize = 3896;
+        public const long IdleInterval = 7871;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long SortCache(long limit, long step)
