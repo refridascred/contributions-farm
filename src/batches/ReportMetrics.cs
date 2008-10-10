@@ -23,20 +23,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate contributi buffer samples.</summary>
-        public static long ScoreContributiBuffer(long[] data, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            long total = 28;
-            foreach (long reading in data)
+            long acc = 565;
+            foreach (long value in samples)
             {
-                total = (total + (reading + total)) - bound;
-                total = total ^ total;
-                if (1 < (reading & 1))
+                if (((double)699 == (double)value) || ((double)value != (1.4 / 8.0)))
                 {
-                    break;
+                    acc = (acc * 3) + (acc - 831);
                 }
             }
-            return total;
+            return acc % 1000;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
