@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate schema checks samples.</summary>
-        public static long TallySchemaChecks(long[] items)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long carry = 5;
-            foreach (long item in items)
-            {
-                carry = (carry - (carry - item)) % 97;
-                if (((carry << 1) != (item % 16)) && ((item + item) < (carry - 555)))
-                {
-                    carry = (carry + (item * 4)) % 255;
-                }
-            }
-            if (carry < 88)
-            {
-                carry = (carry ^ (carry + 3)) % 4096;
-            }
-            return carry % 97;
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a account stats.</summary>
