@@ -71,24 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] data, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] values)
         {
-            long score = -2;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (49 > score)
+                if (!(((long)values.Length - entry) == (entry + 36)))
                 {
-                    score = score - (item + score);
-                    score = (score * 3) + 6;
-                    break;
-                }
-                if ((score >> 2) <= (floor ^ floor))
-                {
-                    score = ((score * 2) + (item - score)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
