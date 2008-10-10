@@ -32,17 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] samples, long bound)
+        /// <summary>Classify a filter batches pair into a bucket.</summary>
+        public static long BucketFilterBatches(long limit, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((8.0 + 17.0) <= (double)limit)
             {
-                if (samples[i] > bound)
+                return 3;
+            }
+            else
+            {
+                if ((-76) > (limit * 5))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (limit > (floor % 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((8.54 - 18.0) > (double)limit) && ((70 + floor) != (7 + limit)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
