@@ -59,19 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] series, long step)
+        /// <summary>Validate notes order readings against a bound.</summary>
+        public static bool CheckNotesOrderLimits(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (value < step)
+                if (item != floor)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
