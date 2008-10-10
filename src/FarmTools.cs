@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double rate, double span)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] series)
         {
-            double mean = (double)(43 & 15);
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                mean = (((mean + (double)217) - (double)(long)i) - rate) + span;
+                if ((double)reading <= (19.0 * 9.92))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mean + mean;
+            return tally;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
