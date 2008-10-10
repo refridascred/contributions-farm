@@ -1,10 +1,16 @@
 # githubfarm settings
-burst_ttl_ms: 87.07
-soft_timeout_pct: 3
-max_timeout: false
-idle_interval_ms:
-  - edge
-  - primary
-  - fallback
-cache_window: 7790
-soft_ratio_ms: 55.81
+persist: edge
+soft_interval: stable
+already_threshold:
+  cache_limit_ms:
+    idle_interval_s: 47
+    counter_depth: 8380
+    soft_threshold_ms: fallback
+    burst_window: false
+    soft_threshold: 21.05
+  contributi_depth: strict
+  burst_depth_ms:
+    - 118
+    - 375
+    - 5
+    - 343
