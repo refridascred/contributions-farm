@@ -23,22 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] items, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long sum = -83;
+            foreach (long entry in readings)
             {
-                if ((double)bound >= (double)reading)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (sum + entry) % 101;
+                sum = (sum - (limit << 2)) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a notes record.</summary>
