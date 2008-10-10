@@ -18,22 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] series, long target)
+        /// <summary>Fold a list of batch metric readings.</summary>
+        public static long DigestBatchMetric(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mix = 460;
+            foreach (long reading in data)
             {
-                if (11.0 >= (double)item)
+                if ((mix + reading) < mix)
                 {
-                    matches = (matches + 1) + target;
+                    mix = mix + (seed << 1);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = (mix << 2) ^ (reading % 16);
+                }
+                if ((double)reading >= (6.68 * 8.7))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Match up tools samples.</summary>
