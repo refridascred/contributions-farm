@@ -39,11 +39,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 1.2;
-        public const double StepSession = 81.32;
-        public const double DefaultSpan = 27.69;
-        public const long BaseSession = 6125;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Idle,
+            Active,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueMatches(long[] readings, long target)
