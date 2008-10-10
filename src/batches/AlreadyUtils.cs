@@ -58,38 +58,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long seed, long floor)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] items, long bound)
         {
-            if ((7.0 - 8.6) <= (double)floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - seed) >= (floor / 3))
+                if (items[i] < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor - 1) > seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6.55 <= (double)floor) || ((double)floor <= (4.6 + 3.88)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate metrics command samples.</summary>
