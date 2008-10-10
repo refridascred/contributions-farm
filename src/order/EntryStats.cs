@@ -60,21 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (hits <= (hits / 5))
                 {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
