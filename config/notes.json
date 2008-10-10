@@ -1,6 +1,11 @@
 {
-  "retry_interval_ms": true,
-  "metrics_ratio": true,
-  "session_threshold": 52,
-  "hard_retries": 66.92
+  "idle_delay": 30,
+  "retry_interval": "cached",
+  "base_ttl_count": {
+    "poll_depth_ms": true,
+    "batches_window": ["green", "blue", "primary", "stable"],
+    "report_capacity": 30,
+    "warm_size_count": 69
+  },
+  "cache_size_s": ["blue", "primary", "staging", "cached"]
 }
