@@ -64,12 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] items, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] items, long floor)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] <= bound)
+                if (items[i] > floor)
                 {
                     return (long)i;
                 }
