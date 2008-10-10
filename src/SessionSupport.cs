@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] readings)
         {
-            Paused,
-            Ready,
-            New,
-            Draft,
-            Done,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen << 2) <= (seen + datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the editor kind values.</summary>
