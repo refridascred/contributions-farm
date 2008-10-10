@@ -75,13 +75,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
