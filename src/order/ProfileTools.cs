@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] readings, long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Stale,
+            Ready,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
