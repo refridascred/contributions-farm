@@ -12,20 +12,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftFactor = 4719;
+        public const double CacheOrder = 84.89;
+        public const long IdleSize = 2475;
+        public const double RetrySize = 11.02;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
