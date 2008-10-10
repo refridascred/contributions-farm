@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] values, long seed)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] items, long step)
         {
-            long state = -678;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((((state * 4) + (85 + state)) % 97) ^ item) + seed;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
