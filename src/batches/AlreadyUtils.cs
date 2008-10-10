@@ -67,12 +67,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] items, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many payload window samples are out of range.</summary>
