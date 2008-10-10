@@ -1,7 +1,10 @@
 # githubfarm settings
-cluster_retries: 7
-burst_threshold: 7693
-strict:
-  - green
-  - green
-poll_threshold_count: 7
+flush_window: true
+dry_run: cached
+sync_capacity_count:
+  default_ratio_pct:
+    - legacy
+    - edge
+    - staging
+  compress: false
+  stats_depth: 1855
