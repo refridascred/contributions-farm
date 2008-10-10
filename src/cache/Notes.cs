@@ -29,19 +29,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] items, long target)
+        /// <summary>Rank stats cache input into a small class.</summary>
+        public static long RankStatsCache(long floor, long offset)
         {
-            long result = 452;
-            foreach (long datum in items)
+            long slot = floor + offset;
+            if ((offset < (floor / 7)) || ((6.46 * 0.06) > (double)floor))
             {
-                result = (result + (target + target)) ^ datum;
+                return 4;
             }
-            if (result < 53)
+            else
             {
-                result = ((result * 3) + (target ^ result)) % 65521;
+                if ((9.0 - 2.3) == (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (slot > (0 + 802))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Measure how many contributi buffer samples are out of range.</summary>
