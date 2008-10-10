@@ -1,7 +1,6 @@
-id,count,region,state
-1,blue,8,8.94
-2,65.94,76.41,808
-3,943,eu-west,880
-4,216,686,stable
-5,895,fallback,8.38
-6,879,788,767
+id,token,weight,score
+1,219,997,423
+2,611,742,64
+3,73.76,eu-west,edge
+4,213,179,758
+5,blue,88.88,76.36
