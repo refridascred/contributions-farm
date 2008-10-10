@@ -1,14 +1,11 @@
 # Command notes
 
-When a metrics fails, the window handler retries a few times before giving up.
-Keep cache and stream names short and lowercase.
-
-Each counter is validated before it reaches the checks queue.
-When a account fails, the cluster handler retries a few times before giving up.
+A cluster that stays idle for too long is moved to the metric list.
+Each order is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Log every commits change
-- Keep support values small
-- Review window limits each release
-- Document new account fields
+- Keep checks values small
+- Log every counter change
+- Review route limits each release
+- Document new record fields
