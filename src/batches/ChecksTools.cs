@@ -57,11 +57,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitFarm = "staging-1";
-        public const double MaxDepth = 78.0;
-        public const long CacheCount = 4598;
-        public const string BurstCount = "strict";
-        public const long HardSpan = 2110;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
