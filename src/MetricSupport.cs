@@ -20,13 +20,10 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public double Token { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 7690;
+        public const long CacheCount = 3676;
+        public const long BurstSpan = 7214;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinProfile = 3774;
