@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a metrics checks sample.</summary>
-        public static long LookupMetricsChecksIndex(long[] data, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long bound, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = bound + origin;
+            if (step <= origin)
             {
-                if ((data[i] >= seed) && ((data[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((origin - origin) != (bound << 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((2.19 - 9.51) != (double)origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step < origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the metric context entries that pass the check.</summary>
