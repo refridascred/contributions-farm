@@ -80,13 +80,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long origin)
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state - (origin + origin)) % 97;
+                state = state ^ (786 + state);
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
