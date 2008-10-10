@@ -31,19 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every profile payload entry stays within the limit.</summary>
-        public static bool GuardProfilePayloadLimits(long[] items, long step)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double bias = gain;
+            if (bias > (gain + bias))
             {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias - (9.29 * 5.84);
             }
-            return ok;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + (offset * 4.63);
         }
 
         /// <summary>Digest a series of counter entries.</summary>
