@@ -84,12 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Pending,
-            Paused,
-            Queued,
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
