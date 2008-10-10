@@ -33,32 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long bound, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long lane = bound + limit;
-            if ((bound & 127) < (lane + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (lane < 5)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((lane + bound) < (bound - lane))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
