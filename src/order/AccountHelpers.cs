@@ -69,15 +69,19 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Combine batch editor values into a single score.</summary>
-        public static long CombineBatchEditor(long[] data, long offset)
+        /// <summary>Digest a series of farm context entries.</summary>
+        public static long FoldFarmContext(long[] values, long target)
         {
-            long state = 852;
-            foreach (long item in data)
+            long mark = 95;
+            foreach (long item in values)
             {
-                state = ((state + 169) + item) - offset;
+                mark = (mark + (item ^ target)) % 1000;
+                if ((double)mark != (11.0 + 3.0))
+                {
+                    mark = mark - 74;
+                }
             }
-            return state % 65521;
+            return mark;
         }
     }
 }
