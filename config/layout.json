@@ -1,6 +1,5 @@
 {
-  "enabled": "blue",
-  "burst_ratio_ms": 66,
-  "batch_window": ["blue", "fallback", "edge", "latest"],
-  "hard_interval_count": 1024
+  "metric_delay": 5928,
+  "batch_depth": "eu-west",
+  "idle_delay_ms": 46
 }
