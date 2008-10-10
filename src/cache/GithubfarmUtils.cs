@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRatio = 5659;
+        public const long IdleWidth = 2546;
+        public const long RetryLevel = 3024;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double ScaleGithubfarm(double gain, double offset)
