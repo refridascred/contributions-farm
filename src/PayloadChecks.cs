@@ -79,19 +79,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] levels, long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double gain = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (5.3 / 7.0)) + (double)(long)i;
             }
-            return flag;
+            return gain + (bias2 - bias);
         }
     }
 }
