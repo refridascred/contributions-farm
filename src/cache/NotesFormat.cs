@@ -31,15 +31,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] values, long step)
         {
-            long mix = 66;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                mix = ((mix - (mix & 1)) % 65521) ^ sample;
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return ready;
         }
     }
 }
