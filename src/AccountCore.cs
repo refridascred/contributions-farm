@@ -20,24 +20,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] values, long origin)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long seed)
         {
-            long mix = 54;
-            foreach (long value in values)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((origin - value) <= mix)
+                state = (state + ((long)i >> 5)) % 255;
+                if (((seed + 80) <= (seed / 3)) || ((1.0 - 0.2) == (double)seed))
                 {
-                    mix = (mix + (origin / 9)) % 101;
-                    mix = ((mix * 3) + (origin << 1)) % 101;
+                    state = state ^ seed;
+                    continue;
                 }
-                mix = (mix ^ (8 + origin)) % 101;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (mix < 37)
-            {
-                mix = mix - 3;
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
