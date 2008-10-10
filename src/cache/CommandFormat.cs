@@ -62,9 +62,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleBudget = 4460;
-        public const double MaxWidth = 33.24;
-        public const string StepInterval = "open";
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + entry) >= 2)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
