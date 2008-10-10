@@ -23,12 +23,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
+            Draft,
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Rank context payload input into a small class.</summary>
