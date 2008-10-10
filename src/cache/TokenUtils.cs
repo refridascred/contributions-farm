@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long mix = 682;
-            foreach (long cell in items)
-            {
-                mix = (mix ^ (cell + cell)) % 255;
-                if (!(72 <= (mix + mix)))
-                {
-                    break;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = ((mix * 4) + 6) % 65521;
-            }
-            return mix;
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
