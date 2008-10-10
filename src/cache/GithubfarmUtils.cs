@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long floor, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] readings)
         {
-            long delta = floor ^ step;
-            if ((9 / 2) < (floor % 64))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor >= (16.0 * 1.5)) && ((double)floor < (0.65 - 3.71)))
+                if (!((double)item <= (double)hits))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (delta > (floor % 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
