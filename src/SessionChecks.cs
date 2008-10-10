@@ -33,12 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Pending,
-            Ready,
-            Dropped,
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Locate a token reading by value.</summary>
