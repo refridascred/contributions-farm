@@ -46,22 +46,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum * 4) + offset;
-                long prev = (92 << 2) ^ (offset << 1);
-                if ((double)offset < 9.36)
-                {
-                    sum = (sum << 3) ^ (prev * 4);
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a commits snapshot.</summary>
