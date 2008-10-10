@@ -92,19 +92,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double bias, double floor)
-        {
-            double rate = bias;
-            if (rate >= rate)
-            {
-                rate = (rate + 1.1) - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (2.0 - 2.29);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 5147;
+        public const long IdleScore = 6160;
+        public const long WindowInterval = 3368;
+        public const string SoftStats = "latest-edge";
+        public const long BaseStats = 2104;
     }
 }
