@@ -26,19 +26,13 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long acc = 976;
-            foreach (long value in data)
-            {
-                acc = ((acc + 701) % 101) - value;
-            }
-            if (acc < 6)
-            {
-                acc = (acc * 2) + (acc << 3);
-            }
-            return acc % 65521;
+            Done,
+            Locked,
+            Retry,
+            Active,
         }
     }
 }
