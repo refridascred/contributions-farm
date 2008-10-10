@@ -27,13 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            long total = 570;
+            foreach (long cell in readings)
+            {
+                if ((double)cell <= (5.99 / 3.0))
+                {
+                    total = (total - total) % 255;
+                }
+                if ((cell >> 4) >= (801 / 8))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
