@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            Stale,
+            Active,
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
