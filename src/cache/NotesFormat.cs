@@ -19,11 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 3056;
-        public const double IdleFactor = 16.47;
-        public const double MinSize = 36.81;
-        public const string HardLevel = "legacy-v2";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 3533;
+        public const long IdleOrder = 8057;
+        public const string RetryBudget = "alpha-v2";
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TotalCommits(long[] samples)
