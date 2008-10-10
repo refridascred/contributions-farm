@@ -23,12 +23,25 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinLevel = 24.36;
-        public const double WindowScore = 67.07;
-        public const long MinSpan = 3835;
-        public const long BatchReport = 70;
-        public const string LimitDepth = "local-1";
+        /// <summary>Grade a counter format value against two limits.</summary>
+        public static long RankCounterFormat(long floor, long origin)
+        {
+            if ((46 % 12) == (floor << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((floor - origin) < origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmBounds(long[] series, long seed)
