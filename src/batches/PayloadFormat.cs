@@ -20,19 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cluster checks entry stays within the limit.</summary>
-        public static bool GuardClusterChecksRange(long[] samples, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (entry != step)
+                if ((tally % 5) < ((-8) - origin))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
