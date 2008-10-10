@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            Failed,
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a stats options.</summary>
