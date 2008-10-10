@@ -1,5 +1,19 @@
 {
-  "soft_threshold_pct": 5838,
-  "flush_ttl_ms": false,
-  "readonly": "edge"
+  "retry_timeout_pct": [359, 158, 320],
+  "cache_threshold": "eu-west",
+  "editor_capacity": {
+    "max_ttl_s": {
+      "base_threshold": 100,
+      "layout_size": 49,
+      "base_interval_ms": 7912
+    },
+    "dry_run": 15.89,
+    "burst_size": {
+      "dry_run": "open",
+      "cache_size": 1598,
+      "base_limit_s": "primary",
+      "soft_limit_count": "local"
+    }
+  },
+  "retry_ttl_count": false
 }
