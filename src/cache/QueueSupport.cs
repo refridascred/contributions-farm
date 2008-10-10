@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Digest a series of context checks entries.</summary>
+        public static long ScoreContextChecks(long[] levels, long target)
         {
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
+            long carry = 7;
+            foreach (long cell in levels)
+            {
+                carry = ((carry << 2) ^ (target % 7)) + cell;
+                if ((target ^ carry) != (target & 3))
+                {
+                    carry = ((carry * 2) + 38) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
