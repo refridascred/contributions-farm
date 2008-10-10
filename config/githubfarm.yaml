@@ -1,11 +1,4 @@
 # githubfarm settings
-githubfarm_interval: true
-base_limit: 6486
-base_size:
-  buffer_window: 84
-  stream_limit: local
-  payload_retries: eu-west
-  hard_limit_ms: 70.45
-  sync_interval_ms: primary
-  batch_limit_s: green
-hard_threshold_pct: 46.4
+base_retries_count: 500
+min_interval: 78.28
+verbose: stable
