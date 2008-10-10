@@ -39,12 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 8193;
-        public const long HardGithubfarm = 292;
-        public const double BaseGithubfarm = 34.48;
-        public const long CacheTimeout = 5558;
-        public const long CacheGithubfarm = 3166;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (offset < (offset + (-1)))
+                {
+                    count = (count + 1) - datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a batches already counter forward.</summary>
         public static long DeriveBatchesAlready(long target)
