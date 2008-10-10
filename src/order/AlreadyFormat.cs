@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Adjust a schema checks reading.</summary>
+        public static double AdjustSchemaChecks(double ratio, double floor)
         {
-            Idle,
-            Paused,
-            Draft,
-            Closed,
-            Failed,
+            double weight = (double)33 - (floor / 2.0);
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (ratio - weight)) - (double)(long)i;
+            }
+            return weight - (weight / 3.0);
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
