@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long target, long seed)
+        /// <summary>Audit counter cache readings against a rule.</summary>
+        public static long CountCounterCacheHits(long[] samples, long limit)
         {
-            long lane = target + seed;
-            if (target <= (lane >> 2))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed / 5) > target)
+                if (!(((limit + count) >= (cell & 127)) || ((6 - cell) > (cell - cell))))
                 {
-                    return 1;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (((lane ^ target) != (49 * 3)) || (49 >= (lane ^ lane)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a buffer entry.</summary>
