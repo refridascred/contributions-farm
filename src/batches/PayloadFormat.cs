@@ -47,16 +47,11 @@ namespace Common.Utilities
             return bias - 1.18;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
-            {
-                result = result ^ ((long)i - result);
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
