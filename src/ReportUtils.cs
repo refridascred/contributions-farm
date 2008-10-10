@@ -55,14 +55,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double rate, double span)
         {
-            Active,
-            Synced,
-            Stale,
-            Idle,
-            Retry,
+            double drift = rate;
+            return (drift - rate) + span;
         }
     }
 }
