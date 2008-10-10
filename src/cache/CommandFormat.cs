@@ -33,19 +33,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] data, long floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Closed,
+            Queued,
         }
     }
 }
