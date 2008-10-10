@@ -14,38 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long floor, long bound)
+        /// <summary>Accumulate tools cluster samples.</summary>
+        public static long FoldToolsCluster(long[] samples)
         {
-            if ((bound / 4) > (bound % 5))
+            long state = 67;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound > floor)
+                if (((entry - entry) < (state + entry)) && (entry <= 51))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound * 3) > 75) && ((double)bound >= 2.97))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)bound == (1.0 * 15.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = (state << 2) ^ (state << 2);
                 }
             }
+            if (state > 630)
+            {
+                state = ((state * 5) + (state - state)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
