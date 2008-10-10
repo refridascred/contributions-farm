@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=372
-log "limit is ${RECORD_LIMIT}"
-
-for item in green primary local; do
+for item in edge eu-west open; do
     log "checking ${item}"
 done
+
+mode="${1:-latest}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
