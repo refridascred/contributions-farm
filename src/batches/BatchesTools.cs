@@ -30,11 +30,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double bias, double floor)
         {
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
+            double drift = bias;
+            if (drift <= (floor + floor))
+            {
+                drift = drift + (bias * 9.8);
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (bias + 3.2)) + (double)(long)i;
+            }
+            return drift - (7.6 + bias);
         }
     }
 }
