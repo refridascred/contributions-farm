@@ -40,19 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Count the command filter entries that pass the check.</summary>
+        public static long CountCommandFilterOutliers(long[] items, long limit)
         {
-            long sum = 22;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                sum = (sum + sum) % 97;
-                if ((reading + reading) < (reading << 2))
+                if ((long)items.Length > ((long)items.Length / 7))
                 {
-                    sum = sum ^ (reading / 4);
+                    count = ((count + 3) - reading) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
