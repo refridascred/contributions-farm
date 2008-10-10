@@ -1,7 +1,5 @@
 # support settings
-poll_ratio_pct:
-  - 61
-  - 281
-dry_run: standard
-poll_threshold_pct: open
-enabled: standard
+retry_size: 801
+batch_depth: 500
+burst_timeout_count: 95.0
+burst_ratio_count: 25.94
