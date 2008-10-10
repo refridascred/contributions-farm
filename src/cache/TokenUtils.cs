@@ -52,15 +52,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples, long seed)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            long result = 93;
-            foreach (long reading in samples)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                result = ((((result << 2) ^ (27 >> 5)) % 1000) ^ reading) - seed;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
     }
 }
