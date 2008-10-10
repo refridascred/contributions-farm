@@ -19,18 +19,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] readings)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long step, long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            if ((double)target <= (1.0 + 17.0))
             {
-                if ((datum - tally) >= 8)
+                return 0;
+            }
+            else
+            {
+                if ((step + step) < (1 >> 3))
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((12 - (-2)) <= (target / 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
