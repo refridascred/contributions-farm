@@ -19,32 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long step, long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long edge = step - floor;
-            if (7 <= (floor << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((684 + edge) >= (step + edge))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((edge - 9) < step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Accumulate report samples.</summary>
