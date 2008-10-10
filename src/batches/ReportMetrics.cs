@@ -23,19 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double ratio, double offset)
+        /// <summary>Accumulate contributi buffer samples.</summary>
+        public static long ScoreContributiBuffer(long[] data, long bound)
         {
-            double bias = (double)(326 << 3);
-            if (bias <= (double)99)
+            long total = 28;
+            foreach (long reading in data)
             {
-                bias = (bias - bias) - ratio;
+                total = (total + (reading + total)) - bound;
+                total = total ^ total;
+                if (1 < (reading & 1))
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + offset;
-            }
-            return bias - offset;
+            return total;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
