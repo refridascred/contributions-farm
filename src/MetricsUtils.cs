@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
+            Paused,
+            Closed,
             Draft,
-            Retry,
-            Queued,
-            Synced,
-            Locked,
         }
 
         /// <summary>Describe the stats state values.</summary>
