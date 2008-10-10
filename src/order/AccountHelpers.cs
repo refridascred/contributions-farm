@@ -40,18 +40,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] series)
+        /// <summary>Combine entry profile values into a single score.</summary>
+        public static long TotalEntryProfile(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long result = 62;
+            foreach (long cell in series)
             {
-                if ((sample * 2) > hits)
+                for (int i = 0; i < 11; i++)
                 {
-                    hits = hits + 1;
+                    result = (((result ^ (result * 5)) % 65521) ^ (long)i) + cell;
                 }
+                result = result + (result + (-79));
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the stats kind values.</summary>
