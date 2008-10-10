@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 5.56;
-        public const long MinTools = 3240;
-        public const long CacheTools = 3284;
-        public const long StepTools = 3614;
+        /// <summary>Check that every editor batch entry stays within the limit.</summary>
+        public static bool GuardEditorBatchRange(long[] data, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Scale a editor already figure with a bias.</summary>
         public static double ProjectEditorAlready(double bias, double span)
