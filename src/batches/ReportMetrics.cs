@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of filter editor entries.</summary>
-        public static long FoldFilterEditor(long[] series, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] series, long offset)
         {
-            long sum = 838;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (sum <= (entry / 2))
+                if (sample <= offset)
                 {
-                    sum = (sum + sum) % 65521;
-                }
-                else
-                {
-                    sum = (sum + entry) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum < 969)
-            {
-                sum = (sum ^ (step << 2)) % 255;
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Describe the batches status values.</summary>
