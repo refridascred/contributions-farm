@@ -36,19 +36,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor checks entry stays within the limit.</summary>
-        public static bool ValidateEditorChecksRange(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowSpan = 6581;
+        public const long SoftWidth = 2787;
+        public const long RetryAccount = 49;
     }
 }
