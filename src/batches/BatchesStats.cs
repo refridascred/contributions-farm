@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
