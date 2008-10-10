@@ -11,19 +11,30 @@ namespace Common.Utilities
         public const double CacheSupport = 26.16;
         public const long BatchSupport = 8647;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] samples, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long mark = 595;
+            foreach (long entry in values)
             {
-                if (cell != offset)
+                if ((mark - (long)values.Length) > mark)
                 {
-                    found = false;
+                    mark = ((mark ^ (5 / 9)) % 1000) + origin;
+                }
+                else
+                {
+                    mark = mark ^ (entry + mark);
+                }
+                if ((mark / 9) <= entry)
+                {
                     break;
                 }
             }
-            return found;
+            if (mark < 8)
+            {
+                mark = (mark - (mark << 2)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
