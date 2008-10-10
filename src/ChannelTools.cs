@@ -40,16 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batch cache value from a seed.</summary>
-        public static long SeriesBatchCache(long seed)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score << 2) ^ (seed + seed);
-                score = ((score * 4) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
