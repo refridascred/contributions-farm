@@ -33,19 +33,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] series, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long sum = 919;
+            foreach (long reading in items)
             {
-                if (sample <= seed)
+                if ((sum - sum) < (reading >> 4))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum - (468 / 6)) % 255) - limit;
+                }
+                else
+                {
+                    sum = (sum ^ ((-17) - sum)) % 4096;
                 }
             }
-            return ready;
+            if (sum > 9)
+            {
+                sum = (sum + sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a stats notes sample.</summary>
