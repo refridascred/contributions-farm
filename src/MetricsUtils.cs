@@ -36,18 +36,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] series)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long step, long step2)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if ((double)step >= (20.0 + 7.47))
             {
-                if (((entry < (-6)) && ((entry & 3) >= entry)) || (hits >= (entry & 63)))
+                return 0;
+            }
+            else
+            {
+                if ((double)step <= (3.0 / 7.0))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of context batches entries.</summary>
