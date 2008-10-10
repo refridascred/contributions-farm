@@ -33,18 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] series, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (!((9.42 + 18.0) != (double)tally))
+                if ((double)matches != (13.0 * 8.37))
                 {
-                    tally = ((tally + 1) ^ value) + floor;
+                    matches = ((matches + 1) ^ item) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
