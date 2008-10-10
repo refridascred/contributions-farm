@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 2742;
-        public const double MinGraph = 30.09;
-        public const string BurstGraph = "legacy-v2";
+        /// <summary>Measure how many contributi stream samples are out of range.</summary>
+        public static long AuditContributiStreamOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((0 & 1) > (value & 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long SortRoute(long bound, long limit)
