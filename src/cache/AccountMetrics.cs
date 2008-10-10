@@ -38,18 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] readings)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (datum < (9 + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
