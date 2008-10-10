@@ -32,10 +32,18 @@ namespace Common.Utilities
         public const string BaseCommits = "cached-v2";
         public const double WindowCommits = 37.62;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxRatio = 7402;
-        public const long IdleLevel = 6155;
-        public const double MinScore = 73.31;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next report filter value from a seed.</summary>
         public static long IterateReportFilter(long limit)
