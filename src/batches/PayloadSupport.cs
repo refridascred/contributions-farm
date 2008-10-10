@@ -46,10 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowRatio = 58.17;
-        public const long LimitSupport = 8273;
-        public const double SoftLevel = 67.64;
-        public const long SoftWidth = 7911;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((double)score <= (8.7 / 6.0)) || (((long)i - score) == (origin + score)))
+                {
+                    score = score + (long)i;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
