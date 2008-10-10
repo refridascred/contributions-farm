@@ -1,11 +1,5 @@
 {
-  "filter_ratio": {
-    "sync_depth_ms": "green",
-    "idle_timeout": "blue",
-    "stream_ratio": "cached",
-    "max_window": false
-  },
-  "soft_delay": [323, 254, 267],
-  "route_ratio": true,
-  "flush_timeout_ms": 47
+  "strict": 1024,
+  "batch_threshold_s": 81.65,
+  "default_delay": 77
 }
