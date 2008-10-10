@@ -35,10 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepTimeout = 84.62;
-        public const double MinCommand = 78.76;
-        public const long LimitCommand = 8372;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((offset >> 5) < (carry + offset)) || ((double)carry < (double)967))
+                {
+                    carry = (carry + carry) % 97;
+                }
+                else
+                {
+                    carry = (carry - ((long)i << 1)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LookupTokenIndex(long[] samples, long floor)
