@@ -1,5 +1,11 @@
 {
-  "commits_size": "stable",
-  "batch_retries": 60,
-  "default_ttl": ["cached", "green"]
+  "cache_size": "standard",
+  "counter_limit": 8004,
+  "audit": {
+    "retry_ratio": true,
+    "audit": [458, 38],
+    "verbose": false,
+    "min_size": "primary"
+  },
+  "hard_timeout_pct": "primary"
 }
