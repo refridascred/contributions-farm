@@ -24,15 +24,11 @@ namespace Common.Utilities
         public const long CacheNotes = 1129;
         public const long HardNotes = 3974;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double scale, double floor)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double mean = (double)(36 - (-55));
-            if (mean < (floor * 0.7))
-            {
-                mean = (mean + mean) - scale;
-            }
-            return mean - (double)0;
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a batches record.</summary>
