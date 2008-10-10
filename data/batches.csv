@@ -1,6 +1,11 @@
-id,label,rank,ratio
-1,609,360,81
-2,80.66,open,922
-3,54.66,310,707
-4,fallback,green,43.19
-5,latest,73,960
+id,rank,label,token,ratio
+1,standard,34.5,standard,86.7
+2,strict,edge,706,eu-west
+3,431,41.86,561,edge
+4,stable,29.33,74.32,440
+5,44.91,103,890,934
+6,54,807,262,307
+7,green,latest,785,709
+8,540,strict,3.0,43.09
+9,683,214,125,937
+10,39.61,921,421,green
