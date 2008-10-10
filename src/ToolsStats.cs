@@ -49,12 +49,19 @@ namespace Common.Utilities
             return (ratio + (double)18) + gain;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Check that every order format entry stays within the limit.</summary>
+        public static bool CheckOrderFormatRange(long[] items, long target)
         {
-            Ready,
-            Retry,
-            Stale,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
