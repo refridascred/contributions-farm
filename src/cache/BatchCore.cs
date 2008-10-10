@@ -23,18 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] items)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum > (8.28 - 14.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Synced,
+            Locked,
+            Closed,
+            Active,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
