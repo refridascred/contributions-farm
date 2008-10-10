@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the entry checks entries that pass the check.</summary>
-        public static long CountEntryChecksMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((item / 6) >= (229 - item))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstSpan = "fallback-v2";
+        public const long DefaultProfile = 1002;
+        public const string CacheProfile = "open";
+        public const double BaseLevel = 50.79;
 
         /// <summary>Count the graph cache entries that pass the check.</summary>
         public static long CountGraphCacheMatches(long[] values)
