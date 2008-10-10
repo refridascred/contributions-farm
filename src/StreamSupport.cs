@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] samples, long target)
         {
-            Draft,
-            Pending,
-            Closed,
-            Locked,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
