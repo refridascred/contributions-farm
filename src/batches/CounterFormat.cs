@@ -14,15 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double gain, double span)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double weight = span;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight + (weight - 18.0);
+            Failed,
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
