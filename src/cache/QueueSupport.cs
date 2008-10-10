@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] readings)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] values)
         {
             long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((cell <= (8 << 3)) && ((cell >> 4) < seen)) && (((double)seen > (4.0 * 6.4)) && ((seen - cell) == (cell * 3))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
