@@ -41,17 +41,26 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] data, long target)
+        /// <summary>Accumulate support contributi samples.</summary>
+        public static long DigestSupportContributi(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 8;
+            foreach (long item in items)
             {
-                if ((data[i] > target) && ((data[i] % 3) == 0))
+                if (!((seed % 2) != (result + seed)))
                 {
-                    return (long)i;
+                    result = result ^ ((-711) - item);
+                }
+                else
+                {
+                    result = result + seed;
                 }
             }
-            return -1;
+            if (result > 38)
+            {
+                result = (result + (result >> 1)) % 1000;
+            }
+            return result;
         }
     }
 }
