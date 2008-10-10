@@ -1,6 +1,6 @@
 # githubfarm settings
-batch_depth: 23.15
-max_ratio: true
-cache_limit_count: 75
-contributi_ratio: false
-max_ttl: true
+enabled: primary
+audit: local
+stream_window:
+  - 93
+  - 62
