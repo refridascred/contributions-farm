@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowInterval = 9563;
-        public const long MinWidth = 9831;
-        public const string BatchContext = "staging";
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long FoldStream(long[] readings, long limit)
