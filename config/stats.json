@@ -1,12 +1,7 @@
 {
-  "compress": {
-    "verbose": "green",
-    "session_interval": [104, 48],
-    "enabled": "legacy",
-    "command_timeout": 54.16
-  },
-  "format_depth": ["fallback", "primary", "standard", "blue"],
-  "poll_capacity": "open",
-  "burst_depth_pct": [401, 78],
-  "readonly": "standard"
+  "min_delay": ["green", "strict", "standard", "standard"],
+  "min_window": 5185,
+  "cache_threshold_pct": "stable",
+  "buffer_delay": false,
+  "max_ratio": ["legacy", "open", "eu-west"]
 }
