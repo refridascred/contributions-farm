@@ -19,25 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long floor, long floor2)
-        {
-            if (floor2 <= (floor << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor2 != (3.76 + 19.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultSize = 3887;
+        public const string BurstBudget = "standard";
+        public const string BatchBuffer = "standard-edge";
+        public const long HardSize = 7415;
+        public const double MinBuffer = 64.41;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
