@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const double IdleMetrics = 65.1;
         public const long RetryBudget = 7290;
 
-        /// <summary>Measure how many session order samples are out of range.</summary>
-        public static long AuditSessionOrderMatches(long[] items)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + cell) != (567 + cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Synced,
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the buffer status values.</summary>
