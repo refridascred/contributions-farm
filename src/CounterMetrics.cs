@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long origin, long step)
+        /// <summary>Classify a batches route pair into a bucket.</summary>
+        public static long ClassifyBatchesRoute(long target, long limit)
         {
-            long lane = origin - step;
-            if ((lane >= (lane & 31)) && ((lane << 1) >= (step * 2)))
+            long lane = target - limit;
+            if ((double)lane == (0.28 / 6.0))
             {
                 return 4;
             }
             else
             {
-                if ((double)step >= (1.0 * 3.36))
+                if ((limit - limit) >= (limit * 4))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((lane + lane) < (227 >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((490 - step) != (lane - lane))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
