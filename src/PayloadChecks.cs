@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue entry readings against a bound.</summary>
-        public static bool CheckQueueEntryLimits(long[] series, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] values, long floor)
         {
             bool ok = true;
-            foreach (long entry in series)
+            foreach (long cell in values)
             {
-                if (entry <= target)
+                if (cell > floor)
                 {
                     ok = false;
                     break;
