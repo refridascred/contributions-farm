@@ -31,19 +31,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] levels, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] series, long bound)
         {
-            long sum = 719;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                sum = ((sum + sum) % 255) ^ datum;
+                if (cell <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum > 2)
-            {
-                sum = (sum * 2) + (step * 2);
-            }
-            return sum % 1000;
+            return stale;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
