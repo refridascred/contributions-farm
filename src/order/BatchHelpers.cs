@@ -25,13 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long bound, long origin)
         {
-            Dropped,
-            Paused,
-            Pending,
-            Locked,
+            if ((double)bound < (5.4 / 7.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound >= (origin * 3)) || (origin >= (bound - origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - origin) <= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3.5 / 6.0) == (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
