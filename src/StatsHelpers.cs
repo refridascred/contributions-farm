@@ -78,11 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepSpan = 75.2;
-        public const long MinCommand = 4467;
-        public const double MaxCommand = 26.86;
-        public const long WindowCommand = 3082;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftInterval = "cached-edge";
+        public const double RetryBatch = 36.99;
+        public const long CacheLevel = 8474;
+        public const double DefaultTimeout = 77.1;
+        public const long MinSize = 5086;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long BucketGraph(long floor, long bound)
