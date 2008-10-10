@@ -50,31 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long target, long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            if ((target + target) < (target & 127))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((5.81 / 3.0) < (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((-89) <= (target << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
