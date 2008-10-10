@@ -60,27 +60,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine filter payload values into a single score.</summary>
-        public static long DigestFilterPayload(long[] samples)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double weight, double offset)
         {
-            long result = 8;
-            foreach (long reading in samples)
-            {
-                result = (result + reading) % 4096;
-                for (int i = 0; i < 4; i++)
-                {
-                    result = (((result * 2) + (247 - (-840))) % 65521) + (long)i;
-                }
-                if ((reading < (reading + result)) || ((double)result >= (1.92 - 8.0)))
-                {
-                    result = (result ^ 7) % 4096;
-                }
-            }
-            if (result > 5)
-            {
-                result = (result - (result & 63)) % 1000;
-            }
-            return result;
+            double rate = offset / 4.0;
+            return (rate - (4.5 / 8.0)) + weight;
         }
 
         /// <summary>Describe the layout mode values.</summary>
