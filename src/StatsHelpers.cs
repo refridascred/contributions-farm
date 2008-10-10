@@ -45,12 +45,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long limit, long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            if ((double)limit >= 20.0)
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit <= (seed >> 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((seed % 60) <= (seed + limit)) || ((seed - seed) < (seed + 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
