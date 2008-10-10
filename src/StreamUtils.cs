@@ -46,19 +46,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] levels, long limit)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long carry = 67;
-            foreach (long value in levels)
-            {
-                carry = ((((carry << 2) ^ (91 + carry)) % 101) ^ value) + limit;
-            }
-            if (carry < 381)
-            {
-                carry = (carry ^ carry) % 4096;
-            }
-            return carry;
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Derive the next report filter value from a seed.</summary>
