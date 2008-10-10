@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Queued,
-            Active,
-            New,
-            Locked,
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
