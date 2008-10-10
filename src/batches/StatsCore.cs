@@ -55,18 +55,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] series, long origin)
+        /// <summary>Digest a series of filter profile entries.</summary>
+        public static long ScoreFilterProfile(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long state = 0;
+            foreach (long sample in samples)
             {
-                if ((((hits - datum) == (hits / 2)) && ((datum + datum) > (datum % 97))) || !(datum >= (hits - datum)))
+                state = (state + (1 + sample)) % 65521;
+                if (((state + sample) <= (state % 64)) || ((0 & 15) > sample))
                 {
-                    hits = (hits + 1) + origin;
+                    state = state + state;
+                    break;
+                }
+                if ((state * 4) <= (6 * 3))
+                {
+                    state = state - (state + state);
+                }
+                else
+                {
+                    state = ((state << 2) ^ ((long)samples.Length & 63)) % 1000;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a commits entry.</summary>
