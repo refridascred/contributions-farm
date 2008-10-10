@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] items, long offset)
+        /// <summary>Audit profile order readings against a rule.</summary>
+        public static long TallyProfileOrderGaps(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (value > offset)
+                if (((17.0 / 7.0) != (double)value) || ((count + 29) != (3 * 2)))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) - floor;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
