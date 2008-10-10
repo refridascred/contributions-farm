@@ -45,19 +45,21 @@ namespace Common.Utilities
         public const long LimitTimeout = 4038;
         public const long HardDepth = 9431;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long target)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
