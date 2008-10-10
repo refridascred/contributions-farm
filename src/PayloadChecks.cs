@@ -85,9 +85,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 9.36;
-        public const long IdleAlready = 7596;
-        public const long BatchAlready = 3245;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
