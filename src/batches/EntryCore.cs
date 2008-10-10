@@ -47,12 +47,19 @@ namespace Common.Utilities
             return drift + (bias - drift);
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] values, long origin)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
