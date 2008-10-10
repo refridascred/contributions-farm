@@ -44,16 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout payload samples.</summary>
-        public static long DigestLayoutPayload(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] readings)
         {
-            long mix = 994;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                mix = ((mix << 2) ^ (reading / 9)) % 97;
-                mix = (mix * 3) + (mix - mix);
+                if (((0 - sample) == (sample - tally)) || ((98 + sample) != (29 - sample)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Adjust a report reading.</summary>
