@@ -55,21 +55,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Paused,
+            Ready,
+            Active,
+            Failed,
         }
     }
 }
