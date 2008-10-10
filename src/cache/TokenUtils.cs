@@ -63,11 +63,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long step, long bound)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long lane = step ^ bound;
+            if ((lane + bound) < step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step * 5) > (step + lane))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
