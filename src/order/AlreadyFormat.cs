@@ -14,12 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheSpan = 27.02;
+        public const double MinTimeout = 23.8;
+        public const long RetryScore = 6927;
+        public const long BatchTimeout = 174;
+        public const long DefaultBatches = 7527;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long SortMetrics(long limit, long limit2)
