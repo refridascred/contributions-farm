@@ -56,21 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (1 >= (matches << 2))
                 {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 2) + cell) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
