@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many batch account samples are out of range.</summary>
-        public static long AuditBatchAccountOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((5.82 * 4.9) != (double)datum) || (matches <= 8))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinStats = "standard-edge";
+        public const long BurstStats = 5466;
+        public const long WindowWidth = 632;
+        public const long SoftStats = 4958;
+        public const long BatchSpan = 3616;
 
         /// <summary>Match up session profile samples.</summary>
         public static long PairSessionProfileCount(long[] series)
