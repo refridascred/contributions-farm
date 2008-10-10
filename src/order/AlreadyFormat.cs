@@ -37,38 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long target, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] data, long step)
         {
-            if (!(offset > target))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset * 3) == (7 >> 2))
+                if (step < (tally + step))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((target + target) >= offset) && (target > (target + target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset < (target + offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = (tally + 3) - datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a farm header.</summary>
