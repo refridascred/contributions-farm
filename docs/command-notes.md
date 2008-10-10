@@ -1,14 +1,12 @@
 # Command notes
 
-Each entry is validated before it reaches the format queue.
-The editor module keeps checks values in sync with the counter cache.
-
-Defaults for queue live in the config folder and can be overridden per environment.
-When a format fails, the report handler retries a few times before giving up.
+Keep contributi and cache names short and lowercase.
+The record helpers are pure functions, so they are safe to call from any thread.
+Use batches settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Review context limits each release
-- Log every queue change
-- Keep report values small
-- Prefer stream defaults
+- Validate record input early
+- Document new buffer fields
+- Keep record values small
+- Prefer tools defaults
