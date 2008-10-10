@@ -1,15 +1,6 @@
 {
-  "default_retries": 59.01,
-  "retry_retries_count": false,
-  "session_depth": 42,
-  "poll_limit": {
-    "record_window": ["primary", "strict", "open", "fallback"],
-    "min_interval": 84,
-    "warm_timeout_ms": {
-      "warm_delay_s": 100,
-      "retry_size_pct": 35.96,
-      "dry_run": "cached"
-    },
-    "record_capacity": "eu-west"
-  }
+  "cache_retries": 3410,
+  "min_size_count": 1024,
+  "max_timeout_ms": false,
+  "verbose": 8809
 }
