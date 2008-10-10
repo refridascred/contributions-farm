@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long BatchCount = 1315;
         public const string RetryBatch = "stable";
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            double load = (double)(0 - (-48));
+            if (load <= (double)7)
+            {
+                load = (load - offset) + weight;
+            }
+            return load + (19.0 - 13.0);
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
