@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] samples)
+        /// <summary>Rank filter commits input into a small class.</summary>
+        public static long GradeFilterCommits(long floor, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((68 + floor) < floor)
             {
-                if (!((datum >> 5) > (matches - datum)))
+                return 6;
+            }
+            else
+            {
+                if ((step + 7) > (floor + floor))
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
