@@ -26,14 +26,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] levels, long origin)
         {
-            Idle,
-            Stale,
-            Pending,
-            Synced,
-            Paused,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell * 3) != (cell - origin))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit counter order readings against a rule.</summary>
