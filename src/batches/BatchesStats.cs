@@ -47,19 +47,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] data, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long step)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
     }
 }
