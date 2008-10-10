@@ -39,18 +39,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] values, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (((cell + hits) >= ((long)values.Length - cell)) || ((hits + step) < cell))
+                if (59 >= (seen + limit))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
