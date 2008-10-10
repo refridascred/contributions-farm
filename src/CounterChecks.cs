@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string WindowFarm = "open";
         public const long RetryFarm = 1220;
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] values)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value << 1) >= hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
