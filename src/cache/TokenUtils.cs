@@ -22,22 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long offset, long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long bound, long limit)
         {
-            if ((offset * 4) >= limit)
+            if ((limit << 1) == (limit >> 5))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((739 - limit) < (offset ^ offset))
+                if ((limit / 3) <= (limit << 3))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    return 1;
                 }
             }
         }
