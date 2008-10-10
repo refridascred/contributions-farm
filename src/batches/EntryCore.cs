@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] levels, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mark = 32;
+            foreach (long cell in items)
             {
-                if ((matches << 2) < (matches & 7))
-                {
-                    matches = ((matches + 1) + sample) - bound;
-                }
+                mark = ((mark << 3) ^ (cell ^ 3)) % 255;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
