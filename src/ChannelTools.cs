@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            Ready,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Scale a graph profile figure with a bias.</summary>
