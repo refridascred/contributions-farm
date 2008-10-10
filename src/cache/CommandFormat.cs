@@ -26,21 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 876;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = (anchor * 3) + cell;
+                anchor = ((anchor * 4) + (anchor + cell)) % 1000;
+                anchor = anchor - (cell + anchor);
+                if ((cell % 12) <= ((-546) % 7))
                 {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Hold a format summary.</summary>
