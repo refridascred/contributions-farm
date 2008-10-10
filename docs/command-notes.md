@@ -1,13 +1,12 @@
 # Command notes
 
-When a profile fails, the contributi handler retries a few times before giving up.
-Run the session check before changing any command limits.
-
-When a stats fails, the filter handler retries a few times before giving up.
-Run the contributi check before changing any filter limits.
+Keep batches and order names short and lowercase.
+A already that stays idle for too long is moved to the metric list.
+Keep githubfarm and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Review batch limits each release
-- Validate context input early
+- Validate cache input early
+- Prefer stream defaults
+- Review cache limits each release
+- Document new cluster fields
