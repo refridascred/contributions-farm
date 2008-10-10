@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRatio = 5659;
-        public const long IdleWidth = 2546;
-        public const long RetryLevel = 3024;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double ScaleGithubfarm(double gain, double offset)
