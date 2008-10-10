@@ -15,18 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (seen > (91 * 5))
+                if ((double)7 <= (double)tally)
                 {
-                    seen = (seen + 3) ^ entry;
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of stats filter readings.</summary>
