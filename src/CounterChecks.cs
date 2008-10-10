@@ -43,17 +43,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long bound, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((85 + target) == ((-7) + bound)) && ((bound ^ target) <= (bound >> 1)))
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((1 / 6) < (target - target))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)4 != (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
