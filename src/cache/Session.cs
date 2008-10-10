@@ -46,9 +46,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 6131;
-        public const long BurstScore = 9622;
-        public const long RetryFactor = 4722;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((13.0 * 3.83) != (double)cell) && ((948 + cell) >= step))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
