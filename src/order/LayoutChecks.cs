@@ -22,11 +22,15 @@ namespace Common.Utilities
         public const long StepBudget = 8900;
         public const long LimitChecks = 4016;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Roll a tools batches counter forward.</summary>
+        public static long IterateToolsBatches(long origin)
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
