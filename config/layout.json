@@ -1,6 +1,5 @@
 {
-  "editor_timeout": [131, 222],
-  "base_ratio": "cached",
-  "report_limit": 34.76,
-  "sync_interval_ms": 6409
+  "compress": 60.83,
+  "retry_threshold_pct": 500,
+  "entry_retries": true
 }
