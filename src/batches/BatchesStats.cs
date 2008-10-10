@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit profile order readings against a rule.</summary>
-        public static long TallyProfileOrderGaps(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (((17.0 / 7.0) != (double)value) || ((count + 29) != (3 * 2)))
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinScore = 8824;
+        public const double BurstSpan = 84.41;
+        public const long BatchCount = 1315;
+        public const string RetryBatch = "stable";
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
