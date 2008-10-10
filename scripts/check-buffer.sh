@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+mode="${1:-stable}"
 case "${mode}" in
     cached)
         log "fast path"
@@ -16,12 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback standard local; do
+for item in stable green standard latest; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=331
+log "limit is ${BUFFER_LIMIT}"
