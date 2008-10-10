@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a entry window reading by value.</summary>
-        public static long SeekEntryWindowIndex(long[] data, long bound)
+        /// <summary>Digest a series of buffer report entries.</summary>
+        public static long CombineBufferReport(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 976;
+            foreach (long sample in values)
             {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
+                sum = ((sum + sample) % 65521) - offset;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a context stats.</summary>
