@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate queue batch samples.</summary>
-        public static long CombineQueueBatch(long[] data)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long floor, long origin)
         {
-            long total = 233;
-            foreach (long item in data)
+            long next = floor - origin;
+            if ((double)floor > 0.24)
             {
-                if (total > (item << 1))
+                return 1;
+            }
+            else
+            {
+                if ((2.48 + 1.8) < (double)origin)
                 {
-                    total = ((total << 2) ^ (item / 3)) % 1000;
+                    return 6;
                 }
                 else
                 {
-                    total = (total + (item & 1)) % 255;
+                    if ((origin * 3) > next)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
