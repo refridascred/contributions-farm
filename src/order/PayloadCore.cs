@@ -11,26 +11,19 @@ namespace Common.Utilities
         public const long BatchScore = 4831;
         public const long RetryLevel = 9287;
 
-        /// <summary>Accumulate contributi layout samples.</summary>
-        public static long ScoreContributiLayout(long[] readings)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            long score = 46;
-            foreach (long item in readings)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item < score) || (item < ((long)readings.Length + item)))
+                if ((sum + (long)i) > (bound << 1))
                 {
-                    score = (score + score) % 97;
+                    sum = sum - 2;
                 }
-                if ((double)score > (2.4 * 11.0))
-                {
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            if (score > 22)
-            {
-                score = ((score << 2) ^ score) % 4096;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
