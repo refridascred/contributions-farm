@@ -16,18 +16,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((2.0 - 2.17) > (double)tally)
+                if ((datum ^ datum) != (datum << 2))
                 {
-                    tally = (tally + 2) + entry;
+                    matches = (matches + 2) + limit;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
