@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Iterate the queue layout series from a seed.</summary>
+        public static long RollQueueLayout(long floor)
         {
-            Queued,
-            Failed,
-            Stale,
+            long result = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((4.0 + 2.0) == (double)(long)i)
+                {
+                    result = (result << 2) ^ 891;
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
