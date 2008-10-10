@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] data, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] readings)
         {
-            long anchor = 9;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 6; i++)
+                if ((count / 7) > (count + reading))
                 {
-                    anchor = ((((anchor * 3) + (anchor % 60)) + (long)i) + reading) + step;
-                }
-                if (((double)anchor < (4.2 * 2.9)) && ((anchor & 1) == (847 & 31)))
-                {
-                    anchor = anchor + (anchor & 127);
-                }
-                else
-                {
-                    anchor = anchor ^ (463 * 4);
+                    count = count + 1;
                 }
             }
-            if (anchor > 259)
-            {
-                anchor = (anchor - anchor) % 1000;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a tools options.</summary>
