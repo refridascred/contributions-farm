@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] readings, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (((double)seed == (4.23 + 12.0)) && (seed >= (tally / 4)))
+                if (value > offset)
                 {
-                    tally = (tally + 3) ^ entry;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
