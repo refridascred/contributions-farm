@@ -42,12 +42,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            Paused,
-            Idle,
-            Done,
+            long acc = 8;
+            foreach (long entry in readings)
+            {
+                acc = (acc - entry) % 255;
+                if ((acc << 1) != (acc >> 2))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Blend two command measurements.</summary>
