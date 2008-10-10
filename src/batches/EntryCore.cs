@@ -69,19 +69,9 @@ namespace Common.Utilities
             return gain2 + offset;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "stable-1";
+        public const long SoftWindow = 9085;
+        public const long LimitInterval = 8433;
     }
 }
