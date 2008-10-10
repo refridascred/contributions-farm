@@ -53,18 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long target)
         {
-            long carry = 4;
-            foreach (long value in samples)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((carry - carry) != (carry + carry))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    carry = carry - (value - carry);
+                    result = ((result - (result + result)) % 4096) ^ (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return carry % 65521;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
