@@ -29,13 +29,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items)
         {
-            Idle,
-            Ready,
-            Closed,
-            Retry,
+            long anchor = 71;
+            foreach (long sample in items)
+            {
+                if (!((sample + anchor) != (sample * 2)))
+                {
+                    anchor = (anchor + (39 - anchor)) % 4096;
+                    anchor = (anchor * 2) + (anchor + 0);
+                }
+                if (((double)anchor != (19.0 / 9.0)) && ((sample % 16) > (anchor & 7)))
+                {
+                    anchor = anchor + anchor;
+                }
+            }
+            if (anchor > (-4))
+            {
+                anchor = anchor + 2;
+            }
+            return anchor % 1000;
         }
     }
 }
