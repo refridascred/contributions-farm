@@ -16,20 +16,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] readings, long step)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long result = 28;
-            foreach (long datum in readings)
-            {
-                result = (result ^ (datum - datum)) % 65521;
-                result = (result + (result & 31)) % 255;
-                if ((double)step <= (7.0 - 3.97))
-                {
-                    break;
-                }
-            }
-            return result;
+            New,
+            Ready,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
