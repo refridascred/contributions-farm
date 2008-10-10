@@ -31,18 +31,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] items)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double weight = (double)(27 + 4);
+            if (weight < (9.3 - bias))
             {
-                if (tally < (tally * 3))
-                {
-                    tally = (tally + 1) + datum;
-                }
+                weight = weight - scale;
             }
-            return tally;
+            else
+            {
+                weight = weight - (weight - scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (scale - bias)) + (double)(long)i;
+            }
+            return weight + (double)49;
         }
 
         /// <summary>Combine commits farm values into a single score.</summary>
