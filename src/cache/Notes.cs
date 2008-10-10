@@ -37,23 +37,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many contributi buffer samples are out of range.</summary>
-        public static long TallyContributiBufferOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (datum < (seen << 2))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "open-v2";
+        public const double BurstGraph = 6.28;
+        public const long MinTimeout = 6498;
+        public const long MaxTimeout = 6541;
+        public const long IdleTimeout = 3000;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] series, long target)
