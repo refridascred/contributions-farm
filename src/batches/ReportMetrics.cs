@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit order already readings against a rule.</summary>
+        public static long TallyOrderAlreadyOutliers(long[] values, long floor)
         {
-            Paused,
-            New,
-            Dropped,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen / 7) >= (995 * 4))
+                {
+                    seen = ((seen + 1) ^ datum) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
