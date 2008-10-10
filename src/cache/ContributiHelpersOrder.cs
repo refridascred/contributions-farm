@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long SoftSize = 4682;
         public const double SoftEntry = 93.34;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double ratio, double span)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            double weight = 0.13 - ratio;
-            if (weight > (span / 7.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - 7.55;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - span) - (double)(long)i;
-            }
-            return weight + span;
+            return matches;
         }
 
         /// <summary>Describe the counter mode values.</summary>
