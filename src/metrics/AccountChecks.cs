@@ -48,11 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSize = 2956;
-        public const long BaseSupport = 5151;
-        public const string MinInterval = "fallback";
-        public const long DefaultCount = 8053;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!((step >= (count * 5)) && ((item - step) >= item)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the window channel series from a seed.</summary>
         public static long StepWindowChannel(long limit)
