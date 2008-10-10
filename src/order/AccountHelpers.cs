@@ -64,11 +64,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Rank stream checks input into a small class.</summary>
+        public static long BucketStreamChecks(long floor, long bound)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            if ((5.9 * 16.0) < (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound - 231) >= (bound ^ floor)) || ((5 >> 2) == (floor + floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
