@@ -19,23 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)offset > 3.6)
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 7378;
+        public const long MaxEditor = 7082;
+        public const long MinInterval = 3551;
 
         /// <summary>Project the next farm support value.</summary>
         public static double ScaleFarmSupport(double weight, double span)
