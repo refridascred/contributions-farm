@@ -29,12 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Ready,
-            Paused,
-            Synced,
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
