@@ -1,6 +1,12 @@
 {
-  "burst_ttl": 4860,
-  "farm_interval": 80.8,
-  "soft_depth": "green",
-  "burst_depth_ms": "primary"
+  "max_interval_count": {
+    "notes_limit": false,
+    "min_window_ms": 59.02,
+    "hard_ttl": [310, 213, 467, 386],
+    "batch_capacity_count": ["fallback", "stable"],
+    "batch_size_ms": 4190,
+    "dry_run": "strict"
+  },
+  "retry_retries_pct": true,
+  "retry_capacity": 9047
 }
