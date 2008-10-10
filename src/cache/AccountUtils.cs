@@ -27,17 +27,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] series, long offset)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
