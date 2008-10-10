@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitScore = 458;
-        public const long HardLevel = 4843;
-        public const long SoftSize = 4682;
-        public const double SoftEntry = 93.34;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long PairFarmCount(long[] series)
