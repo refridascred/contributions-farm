@@ -1,7 +1,16 @@
 # githubfarm settings
-default_ratio: false
-dry_run: 8839
-verbose: 9496
-batch_window: 50
-burst_depth_pct: true
-min_threshold: 86.97
+cache_window: legacy
+hard_threshold_pct:
+  - strict
+  - eu-west
+window_interval: edge
+retry_delay_s: false
+sync_size_count:
+  retry_depth_ms: 51.75
+  strict:
+    metric_ratio: 28.35
+    notes_capacity: eu-west
+    verbose: true
+  filter_threshold: 82.21
+  dry_run: blue
+  idle_window: 63.99
