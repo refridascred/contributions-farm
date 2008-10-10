@@ -23,12 +23,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Check that every editor checks entry stays within the limit.</summary>
+        public static bool ValidateEditorChecksRange(long[] values, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
