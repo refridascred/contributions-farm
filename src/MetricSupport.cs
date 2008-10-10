@@ -54,10 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 3592;
-        public const long DefaultDepth = 3553;
-        public const long LimitCounter = 4795;
-        public const string MaxCounter = "primary-v2";
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Active,
+            Queued,
+            Draft,
+            Failed,
+        }
     }
 }
