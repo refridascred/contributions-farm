@@ -30,18 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] values)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((18 + entry) <= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Idle,
+            Pending,
+            Queued,
+            Active,
         }
     }
 }
