@@ -65,22 +65,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] series)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            long state = -5;
+            foreach (long sample in series)
             {
-                if (!((long)i == (target - target)))
+                for (int i = 0; i < 6; i++)
                 {
-                    anchor = (anchor * 3) + (target + anchor);
-                    anchor = (anchor - (698 + 1)) % 65521;
-                    continue;
+                    state = ((state << 3) ^ (sample % 60)) + (long)i;
+                    state = state - ((long)series.Length / 5);
                 }
-                anchor = anchor ^ (target & 31);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                state = ((state * 2) + (89 & 63)) % 4096;
+                if ((6.7 - 4.6) == (double)sample)
+                {
+                    state = state ^ (sample - state);
+                }
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Hold a order record.</summary>
