@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the checks class values.</summary>
