@@ -13,12 +13,14 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 70.68;
-        public const long BurstDepth = 8744;
-        public const long BurstQueue = 8840;
-        public const long DefaultQueue = 8019;
-        public const long MaxWidth = 645;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Queued,
+            Synced,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] series, long target)
