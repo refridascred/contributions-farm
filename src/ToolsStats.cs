@@ -15,11 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] data)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (seen > (91 * 5))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of stats filter readings.</summary>
