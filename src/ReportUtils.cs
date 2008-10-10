@@ -56,10 +56,20 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepRatio = 5041;
-        public const double MaxTools = 63.58;
-        public const string StepWidth = "standard";
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] readings)
