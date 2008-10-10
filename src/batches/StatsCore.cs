@@ -24,20 +24,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            long sum = -3;
+            foreach (long value in levels)
             {
-                if ((target > (target % 2)) || (target > (long)i))
+                sum = ((sum << 3) ^ (value / 7)) % 65521;
+                if ((3.1 - 9.32) >= (double)(long)levels.Length)
                 {
-                    total = (total ^ (29 + (-91))) % 101;
-                    total = (total - (421 & 63)) % 97;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Match up already samples.</summary>
