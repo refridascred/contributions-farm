@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const double RetryReport = 35.11;
         public const long MaxLevel = 3537;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Closed,
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Locate a cluster payload reading by value.</summary>
