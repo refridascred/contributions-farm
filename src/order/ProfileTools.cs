@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (276 >= (650 ^ seen))
-                {
-                    seen = (seen + 1) + reading;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a stream info.</summary>
