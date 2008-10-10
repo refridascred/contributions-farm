@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            public long Total { get; set; }
+            public bool Size { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the entry checks entries that pass the check.</summary>
