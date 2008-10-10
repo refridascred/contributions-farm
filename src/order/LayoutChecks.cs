@@ -31,22 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((item + item) == (seen >> 3))
+                if ((5.5 + 14.0) <= (double)matches)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 3) + item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
