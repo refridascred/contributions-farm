@@ -29,18 +29,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels, long seed)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long result = 6;
-            foreach (long cell in levels)
-            {
-                if (!((double)seed != (8.0 - 19.0)))
-                {
-                    result = (result ^ (result * 2)) - cell;
-                }
-            }
-            return result;
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
