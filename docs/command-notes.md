@@ -1,11 +1,15 @@
 # Command notes
 
-The schema module keeps support values in sync with the payload cache.
-The tools module keeps buffer values in sync with the queue cache.
+Use token settings to tune how often context data is refreshed.
+Keep token and batches names short and lowercase.
+Use record settings to tune how often commits data is refreshed.
+
+When a contributi fails, the cluster handler retries a few times before giving up.
+Use contributi settings to tune how often buffer data is refreshed.
+The session module keeps layout values in sync with the schema cache.
 
 ## Guidelines
 
-- Document new layout fields
-- Keep githubfarm values small
-- Prefer layout defaults
-- Log every batches change
+- Log every metrics change
+- Validate route input early
+- Document new editor fields
