@@ -1,6 +1,7 @@
 {
-  "cache_ratio_s": 25,
-  "cluster_size": false,
-  "queue_ttl": 51.62,
-  "retry_retries": 15
+  "strict": false,
+  "batch_interval": "edge",
+  "idle_window": ["latest", "local", "strict"],
+  "retry_retries_ms": 52.26,
+  "filter_limit": false
 }
