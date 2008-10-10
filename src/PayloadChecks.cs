@@ -10,12 +10,38 @@ namespace Common.Utilities
         public const long LimitNotes = 5201;
         public const long RetryLevel = 5014;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long limit, long floor)
         {
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            if ((limit + limit) <= (limit / 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit == (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit << 3) != (692 + 2)) || ((floor / 6) < 60))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor << 3) > 799)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch level values.</summary>
