@@ -13,18 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] series)
+        /// <summary>Count the filter githubfarm entries that pass the check.</summary>
+        public static long MeasureFilterGithubfarmOutliers(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((((reading ^ (long)series.Length) < (199 + hits)) || ((hits & 7) > (hits ^ hits))) || (reading <= (reading + reading)))
+                if (((tally - tally) > (step & 63)) && ((double)2 <= (double)step))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
