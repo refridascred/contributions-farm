@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long SoftSize = 4682;
         public const double SoftEntry = 93.34;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] levels, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (step > (9 - seen))
+                if (value < seed)
                 {
-                    seen = (seen + 3) ^ reading;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Project the next session value.</summary>
