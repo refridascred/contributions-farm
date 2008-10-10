@@ -43,19 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] series, long seed)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] series)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long anchor = 0;
+            foreach (long entry in series)
             {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor ^ (anchor >> 5)) % 65521) + entry;
             }
-            return found;
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of order support entries.</summary>
