@@ -57,18 +57,16 @@ namespace Common.Utilities
         public const long CacheRatio = 176;
         public const long DefaultDepth = 5939;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] readings, long offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (tally >= (tally << 2))
-                {
-                    tally = ((tally + 3) + entry) - offset;
-                }
+                carry = (carry - (carry ^ offset)) % 4096;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
     }
 }
