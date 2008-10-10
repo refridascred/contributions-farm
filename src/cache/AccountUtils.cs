@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two tools contributi measurements.</summary>
-        public static double ScaleToolsContributi(double scale, double bias)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] values, long offset)
         {
-            double rate = scale;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate + (double)(long)i) + bias;
+                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - scale;
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
