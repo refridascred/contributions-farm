@@ -56,22 +56,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] samples, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long anchor = 21;
+            foreach (long item in data)
             {
-                if (1 >= (matches << 2))
+                if (item > (anchor - item))
                 {
-                    matches = ((matches + 2) + cell) - target;
+                    anchor = (anchor ^ (item & 1)) % 1000;
+                    anchor = (anchor * 5) + (item << 1);
                 }
-                else
+                if (14 <= (anchor % 10))
                 {
-                    matches = matches - 1;
+                    anchor = (anchor ^ (item >> 5)) % 65521;
                 }
+                anchor = anchor - item;
             }
-            return matches;
+            return anchor;
         }
     }
 }
