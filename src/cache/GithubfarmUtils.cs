@@ -22,31 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long offset, long limit)
+        /// <summary>Digest a series of window channel entries.</summary>
+        public static long ScoreWindowChannel(long[] values, long floor)
         {
-            if ((double)1 > (double)offset)
+            long score = -8;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)offset < (4.35 - 4.91)))
+                if (item <= (item % 100))
                 {
-                    return 5;
+                    score = ((score - score) % 4096) + floor;
                 }
-                else
+                if (87 <= (score * 2))
                 {
-                    if (5.4 > (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    score = (score + (82 / 9)) % 65521;
                 }
             }
+            if (score > 864)
+            {
+                score = ((score << 3) ^ score) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
