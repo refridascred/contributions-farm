@@ -32,19 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] items, long offset)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
