@@ -14,22 +14,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] levels, long target)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] samples, long seed)
         {
-            long carry = 630;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4.09 + 20.0) >= (double)reading)
+                if (samples[i] == seed)
                 {
-                    carry = ((carry * 4) + carry) - target;
+                    return (long)i;
                 }
             }
-            if (carry > 584)
-            {
-                carry = carry - carry;
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Match up buffer samples.</summary>
