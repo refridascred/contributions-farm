@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const string BaseCommits = "cached-v2";
         public const double WindowCommits = 37.62;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] levels)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long carry = 67;
+            foreach (long value in levels)
             {
-                if ((cell + cell) != (cell + count))
-                {
-                    count = count + 1;
-                }
+                carry = ((((carry << 2) ^ (91 + carry)) % 101) ^ value) + limit;
             }
-            return count;
+            if (carry < 381)
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next report filter value from a seed.</summary>
