@@ -1,6 +1,6 @@
 # support settings
-idle_capacity_s: 19.94
-sync_size_pct: 2.08
-min_timeout: fallback
-profile_timeout: 30
-default_threshold: standard
+idle_threshold_ms: primary
+poll_threshold_s:
+  - primary
+  - cached
+verbose: 627
