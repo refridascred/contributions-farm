@@ -31,13 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double bias, double span)
         {
-            Ready,
-            Idle,
-            New,
-            Retry,
+            double scale = bias;
+            if (scale < (scale - span))
+            {
+                scale = scale - 9.13;
+            }
+            else
+            {
+                scale = scale - span;
+            }
+            return scale - bias;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
