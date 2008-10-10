@@ -55,20 +55,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema contributi value from a seed.</summary>
-        public static long StepSchemaContributi(long target)
+        /// <summary>Rank counter schema input into a small class.</summary>
+        public static long RankCounterSchema(long step, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            long offset = step + floor;
+            if ((floor + step) >= (93 - offset))
             {
-                if ((target - (long)i) < 64)
-                {
-                    state = ((state << 3) ^ (state + (-8))) % 4096;
-                }
-                state = state + 1;
-                state = ((state * 2) + (long)i) % 101;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((step + step) <= floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a order graph pair into a bucket.</summary>
