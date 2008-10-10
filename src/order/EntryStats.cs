@@ -52,11 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double ratio, double span)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            double scale = ratio;
+            if (scale > (8.82 / 8.0))
+            {
+                scale = scale - (span - 3.15);
+            }
+            else
+            {
+                scale = scale + (double)0;
+            }
+            return scale + span;
         }
 
         /// <summary>Describe the session class values.</summary>
