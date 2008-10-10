@@ -48,38 +48,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long seed, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] values, long bound)
         {
-            if ((double)seed >= (1.2 * 1.84))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound <= (2.0 * 2.2)) && (seed <= (bound + bound)))
+                if ((8 - tally) > tally)
                 {
-                    return 3;
+                    tally = ((tally + 3) + reading) + bound;
                 }
                 else
                 {
-                    if (((bound + bound) < (51 + seed)) && ((5.87 - 7.51) < (double)bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed - seed) < (seed * 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the editor state values.</summary>
