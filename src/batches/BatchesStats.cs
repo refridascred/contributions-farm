@@ -32,15 +32,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double weight, double bias)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] samples)
         {
-            double drift = (double)(3 / 2);
-            if (drift < (drift * 9.69))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                drift = (drift - (double)58) - weight;
+                if ((double)reading == (double)hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            return drift + (bias / 6.0);
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
