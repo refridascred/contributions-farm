@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit context stats readings against a rule.</summary>
-        public static long CountContextStatsMatches(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (origin >= (origin - origin))
             {
-                if ((sample - sample) > sample)
+                return 3;
+            }
+            else
+            {
+                if ((floor & 15) >= (floor - 88))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
