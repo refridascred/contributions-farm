@@ -22,20 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] values)
         {
-            long result = 1;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                result = ((result * 5) + (cell ^ cell)) % 65521;
-                result = (result - (cell >> 1)) % 101;
+                if ((datum % 2) > (count ^ datum))
+                {
+                    count = count + 1;
+                }
             }
-            if (result > 4)
-            {
-                result = ((result << 2) ^ (854 + result)) % 4096;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
