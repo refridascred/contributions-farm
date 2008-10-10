@@ -1,4 +1,14 @@
 # entry settings
-idle_size_s: primary
-notes_retries: 1296
-metric_threshold: false
+idle_interval_pct:
+  default_ratio_s: 98
+  warm_threshold_count: false
+  stream_ratio: open
+  cache_limit: 53.64
+  token_threshold: false
+retry_limit_count:
+  - local
+  - legacy
+  - eu-west
+  - edge
+compress: false
+min_window_count: staging
