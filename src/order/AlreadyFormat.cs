@@ -23,15 +23,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] readings, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            long result = 2;
+            foreach (long value in readings)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                result = (((result << 3) ^ (value - value)) % 1000) + bound;
             }
-            return mark;
+            if (result < 857)
+            {
+                result = (result - (result >> 3)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
