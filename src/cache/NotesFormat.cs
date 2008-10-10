@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Validate payload cluster readings against a bound.</summary>
+        public static bool GuardPayloadClusterBounds(long[] levels, long floor)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two support batches measurements.</summary>
