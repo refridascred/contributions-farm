@@ -86,20 +86,19 @@ namespace Common.Utilities
             return ratio + (2.0 / 3.0);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] series, long seed)
         {
-            long sum = 4;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long value in series)
             {
-                sum = ((sum * 2) + (sum << 2)) % 1000;
-                sum = (sum * 5) + (7 ^ entry);
-                if ((4.26 * 0.5) <= (double)sum)
+                if (value >= seed)
                 {
+                    found = false;
                     break;
                 }
             }
-            return sum;
+            return found;
         }
     }
 }
