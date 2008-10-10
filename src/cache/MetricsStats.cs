@@ -19,39 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long target, long seed)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double gain, double floor)
         {
-            long span = target - seed;
-            if (!(seed < (seed / 2)))
+            double mean = floor;
+            if (mean > (mean / 4.0))
             {
-                return 4;
+                mean = (mean - 16.0) - gain;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (seed > (seed & 31))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + 6) < 137)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (span >= (target << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mean = (mean - 2.7) - (double)(long)i;
             }
+            return mean - mean;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
