@@ -37,18 +37,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((291 + item) < (seen + item))
+                if (datum < (9 + count))
                 {
-                    seen = seen + 2;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
