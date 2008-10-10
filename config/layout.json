@@ -1,8 +1,12 @@
 {
-  "warm_limit_s": 1499,
-  "cache_limit_count": 47.93,
-  "poll_window": 31.55,
-  "soft_interval_s": 83.58,
-  "layout_depth": false,
-  "base_limit": "strict"
+  "metric_ttl": 74.66,
+  "context_capacity": 3311,
+  "warm_ttl": false,
+  "record_ttl": 6853,
+  "verbose": {
+    "stream_depth": 55.85,
+    "readonly": 19,
+    "min_capacity_pct": 48.14
+  },
+  "burst_capacity": 95.01
 }
