@@ -90,19 +90,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] samples, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long mix = 27;
+            foreach (long item in data)
             {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix + (16 + 468)) % 255) - item;
+                mix = mix + seed;
+                mix = ((mix * 3) + (seed & 1)) % 101;
             }
-            return found;
+            return mix;
         }
     }
 }
