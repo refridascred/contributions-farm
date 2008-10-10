@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleDepth = 1182;
-        public const long LimitDepth = 2620;
-        public const long CacheTimeout = 9369;
+        /// <summary>Check that every layout counter entry stays within the limit.</summary>
+        public static bool ValidateLayoutCounterRange(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the commits checks entries that pass the check.</summary>
         public static long TallyCommitsChecksGaps(long[] series, long origin)
