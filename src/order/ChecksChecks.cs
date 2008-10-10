@@ -27,15 +27,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a context report reading.</summary>
-        public static double BlendContextReport(double gain, double floor)
-        {
-            double weight = gain / 8.0;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + gain) + (double)(long)i;
-            }
-            return weight + floor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 19.07;
+        public const long StepRatio = 1073;
+        public const long HardCluster = 8797;
+        public const string StepCluster = "latest-v2";
     }
 }
