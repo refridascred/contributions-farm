@@ -28,9 +28,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 1075;
-        public const long MinSize = 5227;
-        public const long LimitFactor = 330;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] readings, long step)
+        {
+            long carry = 2;
+            foreach (long entry in readings)
+            {
+                if (!(carry >= (step * 5)))
+                {
+                    carry = ((carry + (carry / 6)) % 65521) ^ entry;
+                }
+                if ((7.05 * 1.64) < (double)carry)
+                {
+                    carry = carry + (carry + step);
+                }
+            }
+            return carry;
+        }
     }
 }
