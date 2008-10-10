@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long origin, long step)
         {
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            long lane = origin - step;
+            if ((lane >= (lane & 31)) && ((lane << 1) >= (step * 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step >= (1.0 * 3.36))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((lane + lane) < (227 >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((490 - step) != (lane - lane))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
