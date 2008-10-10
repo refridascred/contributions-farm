@@ -19,13 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Queued,
-            Ready,
-            Retry,
             Dropped,
+            Queued,
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Accumulate report samples.</summary>
