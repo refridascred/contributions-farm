@@ -23,19 +23,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] readings, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] samples, long floor)
         {
-            long result = 2;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                result = (((result << 3) ^ (value - value)) % 1000) + bound;
+                if ((floor + floor) != (9 + floor))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
             }
-            if (result < 857)
-            {
-                result = (result - (result >> 3)) % 255;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
