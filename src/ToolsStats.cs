@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const string BatchBatches = "fallback-v2";
         public const long RetryBatches = 3759;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Find the first account editor entry that matches the target.</summary>
+        public static long FindAccountEditorIndex(long[] items, long limit)
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
