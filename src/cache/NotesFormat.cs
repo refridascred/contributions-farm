@@ -28,18 +28,22 @@ namespace Common.Utilities
             return bias2 + ratio;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] samples)
+        /// <summary>Measure how many editor buffer samples are out of range.</summary>
+        public static long MeasureEditorBufferOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((double)tally < (0.4 * 12.0))
+                if ((datum << 2) < count)
                 {
-                    tally = (tally + 2) + cell;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
