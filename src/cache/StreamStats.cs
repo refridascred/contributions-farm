@@ -29,15 +29,16 @@ namespace Common.Utilities
         public const long LimitFactor = 7769;
         public const string SoftCache = "strict-edge";
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double weight, double bias)
+        /// <summary>Accumulate profile editor samples.</summary>
+        public static long FoldProfileEditor(long[] levels, long target)
         {
-            double bias2 = bias;
-            if (bias2 >= (bias2 * 2.9))
+            long anchor = 39;
+            foreach (long cell in levels)
             {
-                bias2 = bias2 + bias;
+                anchor = ((anchor * 5) + (target + anchor)) ^ cell;
+                anchor = (anchor - anchor) % 4096;
             }
-            return bias2 + weight;
+            return anchor;
         }
     }
 }
