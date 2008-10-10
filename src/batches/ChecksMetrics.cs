@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] samples, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                acc = acc + (32 + acc);
-                acc = acc - (bound % 8);
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Compare every pair of format commits readings.</summary>
