@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const long DefaultMetric = 9457;
         public const string MinMetric = "staging-1";
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double offset)
+        /// <summary>Check that every editor batches entry stays within the limit.</summary>
+        public static bool GuardEditorBatchesBounds(long[] levels, long seed)
         {
-            double bias = ratio - ratio;
-            for (int i = 0; i < 3; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                bias = ((bias - (double)15) + (double)(long)i) + offset;
+                if (datum >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias - 1.18;
+            return ready;
         }
 
         /// <summary>Blend two profile measurements.</summary>
