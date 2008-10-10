@@ -38,18 +38,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the metrics entry entries that pass the check.</summary>
-        public static long MeasureMetricsEntryMatches(long[] series)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (datum > seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a route context reading by value.</summary>
