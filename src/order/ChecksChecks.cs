@@ -17,21 +17,12 @@ namespace Common.Utilities
         public const string IdleNotes = "staging-v2";
         public const long MaxNotes = 9067;
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
     }
 }
