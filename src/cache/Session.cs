@@ -46,21 +46,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Derive the next command schema value from a seed.</summary>
+        public static long IterateCommandSchema(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
     }
 }
