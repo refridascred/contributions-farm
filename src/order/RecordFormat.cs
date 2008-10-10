@@ -32,30 +32,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] series, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long acc = -70;
-            foreach (long value in series)
-            {
-                if (!((double)value >= (1.49 * 8.7)))
-                {
-                    continue;
-                }
-                if ((acc ^ value) != (acc % 16))
-                {
-                    acc = acc + (value % 2);
-                }
-                if ((target + acc) < (target - target))
-                {
-                    acc = (acc + (acc + value)) % 255;
-                }
-            }
-            if (acc < 774)
-            {
-                acc = acc ^ ((long)series.Length & 3);
-            }
-            return acc;
+            Idle,
+            New,
+            Locked,
         }
 
         /// <summary>Look up the position of a channel entry sample.</summary>
