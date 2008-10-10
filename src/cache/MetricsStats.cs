@@ -16,31 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long offset, long offset2)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            if (offset2 > (915 + offset2))
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 2;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((8.7 * 20.0) == (double)offset2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset2 <= 59)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
