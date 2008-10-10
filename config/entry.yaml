@@ -1,16 +1,9 @@
 # entry settings
-flush_interval:
-  flush_threshold: false
-  readonly: 64
-  warm_timeout_ms: 30
-sync_size_s:
-  soft_interval: 28.23
-  soft_capacity: 500
-  retry_timeout_count: standard
-  flush_window: standard
-max_retries_count: 1024
-support_timeout:
-  - open
-  - eu-west
-  - standard
-retry_capacity_count: local
+cache_timeout: 30
+hard_depth: 11
+checks_delay: 97
+strict: 30
+hard_delay:
+  - legacy
+  - latest
+  - staging
