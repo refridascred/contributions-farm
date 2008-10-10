@@ -48,11 +48,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftInterval = "cached-edge";
-        public const double RetryBatch = 36.99;
-        public const long CacheLevel = 8474;
-        public const double DefaultTimeout = 77.1;
-        public const long MinSize = 5086;
+        public const string LimitScore = "alpha";
+        public const long StepSize = 3529;
+        public const string IdleBatch = "cached-1";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCommits = 8835;
