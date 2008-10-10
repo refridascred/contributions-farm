@@ -19,10 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 7378;
-        public const long MaxEditor = 7082;
-        public const long MinInterval = 3551;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] values)
+        {
+            long score = -4;
+            foreach (long sample in values)
+            {
+                if (((sample - score) >= score) && ((score << 1) <= (6 * 3)))
+                {
+                    score = (score * 4) + (score - sample);
+                }
+            }
+            if (score > 38)
+            {
+                score = ((score << 2) ^ (49 >> 4)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Project the next farm support value.</summary>
         public static double ScaleFarmSupport(double weight, double span)
