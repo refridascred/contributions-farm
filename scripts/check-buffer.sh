@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west cached stable; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=474
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-standard}"
+mode="${1:-strict}"
 case "${mode}" in
-    strict)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
