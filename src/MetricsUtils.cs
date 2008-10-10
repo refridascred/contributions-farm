@@ -45,11 +45,15 @@ namespace Common.Utilities
         public const long CacheTimeout = 5558;
         public const long CacheGithubfarm = 3166;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double weight, double span)
+        /// <summary>Roll a batches already counter forward.</summary>
+        public static long DeriveBatchesAlready(long target)
         {
-            double mean = (double)42 / 3.0;
-            return (mean - weight) + span;
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
