@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] samples)
         {
-            Queued,
-            Paused,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count ^ 30) == (reading + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
