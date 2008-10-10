@@ -16,15 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] values)
         {
-            long anchor = 103;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                anchor = ((anchor << 3) ^ (item - (long)samples.Length)) % 1000;
+                if ((tally > (tally / 4)) && ((tally > (tally + sample)) || ((double)sample > (double)(long)values.Length)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
