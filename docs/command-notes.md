@@ -1,14 +1,12 @@
 # Command notes
 
-Run the route check before changing any cache limits.
-Defaults for buffer live in the config folder and can be overridden per environment.
-A batch that stays idle for too long is moved to the stream list.
-
-Run the githubfarm check before changing any channel limits.
-Keep report and stats names short and lowercase.
+Use token settings to tune how often schema data is refreshed.
+Each counter is validated before it reaches the schema queue.
+The window module keeps report values in sync with the profile cache.
 
 ## Guidelines
 
-- Document new notes fields
-- Validate cluster input early
-- Log every counter change
+- Document new token fields
+- Log every already change
+- Validate filter input early
+- Review batches limits each release
