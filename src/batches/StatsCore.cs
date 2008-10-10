@@ -55,27 +55,10 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] data, long bound)
-        {
-            long carry = 619;
-            foreach (long sample in data)
-            {
-                if (carry > (sample & 7))
-                {
-                    break;
-                }
-                if ((bound % 16) != (carry + bound))
-                {
-                    carry = ((carry << 3) ^ 221) % 101;
-                }
-                if ((2.97 - 1.5) > (double)bound)
-                {
-                    carry = (carry ^ (carry % 12)) % 101;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 9.22;
+        public const string HardFactor = "staging";
+        public const long MaxScore = 943;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MinReport = 7553;
