@@ -66,23 +66,9 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Fold a list of filter stats readings.</summary>
-        public static long FoldFilterStats(long[] values)
-        {
-            long carry = 924;
-            foreach (long item in values)
-            {
-                carry = (carry ^ (item >> 3)) % 4096;
-                if ((23 - carry) != (item * 4))
-                {
-                    carry = (carry - (item << 3)) % 101;
-                }
-            }
-            if (carry < 7)
-            {
-                carry = carry - (carry % 8);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstSchema = "staging-1";
+        public const long SoftScore = 8715;
+        public const double RetryScore = 93.94;
     }
 }
