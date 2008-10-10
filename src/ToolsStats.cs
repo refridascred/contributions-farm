@@ -15,11 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Roll a stats queue counter forward.</summary>
+        public static long SeriesStatsQueue(long origin)
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of stats filter readings.</summary>
