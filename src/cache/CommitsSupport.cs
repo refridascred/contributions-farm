@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every support queue entry stays within the limit.</summary>
-        public static bool CheckSupportQueueRange(long[] series, long step)
+        /// <summary>Measure how many stream entry samples are out of range.</summary>
+        public static long MeasureStreamEntryOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (value != step)
+                if (reading <= (reading >> 1))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
