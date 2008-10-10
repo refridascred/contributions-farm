@@ -31,21 +31,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 28;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result ^ (datum - datum)) % 65521;
+                result = (result + (result & 31)) % 255;
+                if ((double)step <= (7.0 - 3.97))
                 {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Project the next profile route value.</summary>
