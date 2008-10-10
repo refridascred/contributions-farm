@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double scale, double bias)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] readings, long limit)
         {
-            double bias2 = (double)(8 / 8);
-            if (bias2 > 8.51)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = bias2 + bias;
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - scale;
+            return -1;
         }
 
         /// <summary>Describe the entry kind values.</summary>
