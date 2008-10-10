@@ -26,13 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] series, long seed)
         {
-            New,
-            Draft,
-            Closed,
-            Ready,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum != (8.8 + 6.0))
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
