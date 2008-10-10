@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
-        public static bool ValidateContributiLayoutBounds(long[] items, long bound)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != bound)
+                if (items[i] <= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a profile summary.</summary>
