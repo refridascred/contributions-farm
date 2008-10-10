@@ -15,12 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryBudget = "fallback-edge";
-        public const long IdleInterval = 2437;
-        public const long BurstRecord = 2091;
-        public const long BaseFactor = 8992;
-        public const long MinLevel = 330;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsRange(long[] readings, long offset)
