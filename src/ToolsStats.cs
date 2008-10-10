@@ -57,13 +57,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
