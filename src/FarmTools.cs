@@ -14,11 +14,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Synced,
-            Ready,
+            Stale,
+            Locked,
+            Idle,
             Active,
         }
 
