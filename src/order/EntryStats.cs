@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] levels, long floor)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
+            long carry = 45;
+            foreach (long entry in levels)
+            {
+                if ((4.0 * 8.42) < (double)(long)levels.Length)
+                {
+                    carry = (carry + (entry >> 3)) % 4096;
+                }
+                if (((7.0 - 8.8) <= (double)floor) || ((floor + 68) <= entry))
+                {
+                    carry = (carry ^ (308 * 5)) % 65521;
+                }
+                else
+                {
+                    carry = (carry + (floor & 7)) % 65521;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
