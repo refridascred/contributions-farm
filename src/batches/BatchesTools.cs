@@ -31,14 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Audit cache commits readings against a rule.</summary>
+        public static long AuditCacheCommitsOutliers(long[] items)
         {
-            Done,
-            Stale,
-            Dropped,
-            Queued,
-            Synced,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (!((count - count) < (28 % 60)))
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
         }
     }
 }
