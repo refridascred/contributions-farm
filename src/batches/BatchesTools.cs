@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the format layout entries that pass the check.</summary>
-        public static long MeasureFormatLayoutGaps(long[] items, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)hits >= (17.0 + 2.05))
+                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
                 {
-                    hits = ((hits + 2) ^ sample) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
