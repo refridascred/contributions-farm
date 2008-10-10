@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a context route pair into a bucket.</summary>
-        public static long RankContextRoute(long seed, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] levels, long step)
         {
-            if ((double)seed > (4.0 / 7.0))
+            long anchor = 8;
+            foreach (long sample in levels)
             {
-                return 4;
+                anchor = ((anchor << 2) ^ sample) % 4096;
             }
-            else
+            if (anchor < 8)
             {
-                if ((double)seed < (18.0 - 6.8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target >> 1) != (target - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                anchor = (anchor + (step / 4)) % 4096;
             }
+            return anchor;
         }
 
         /// <summary>Iterate the cache githubfarm series from a seed.</summary>
