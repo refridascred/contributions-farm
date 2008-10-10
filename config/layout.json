@@ -1,18 +1,6 @@
 {
-  "base_delay_pct": {
-    "compress": "legacy",
-    "flush_timeout_s": 88,
-    "graph_timeout": true,
-    "route_window": [345, 323, 162, 31]
-  },
-  "enabled": 6985,
-  "order_ttl": 21.56,
-  "cache_timeout_count": {
-    "burst_threshold_s": false,
-    "hard_ratio_ms": [326, 420],
-    "batches_depth": 93.87,
-    "audit": "primary"
-  },
-  "min_delay": 60,
-  "sync_delay_s": 67
+  "cluster_limit": 7527,
+  "strict": 66,
+  "hard_limit_s": "eu-west",
+  "order_capacity": "staging"
 }
