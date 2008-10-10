@@ -1,6 +1,5 @@
 {
-  "audit": "stable",
-  "soft_capacity": 90,
-  "max_window": "blue",
-  "batch_ttl_pct": 53.1
+  "batch_delay_count": "standard",
+  "stats_window": 7868,
+  "metrics_retries": 53.62
 }
