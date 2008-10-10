@@ -34,13 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardWidth = 4736;
+        public const string BaseCommits = "cached-v2";
+        public const double WindowCommits = 37.62;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxRatio = 7402;
