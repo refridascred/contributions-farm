@@ -1,8 +1,4 @@
 # githubfarm settings
-audit:
-  persist: true
-  sync_threshold_s: 250
-  enabled: strict
-  readonly: edge
-default_threshold: 29.9
-base_interval: legacy
+default_size: 42
+dry_run: 7226
+soft_delay_count: open
