@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long StepSchema = 4770;
         public const string CacheLevel = "stable";
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double bias, double span)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] readings)
         {
-            double load = span / 4.0;
-            if (load < span)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                load = load + span;
+                if (((cell <= (8 << 3)) && ((cell >> 4) < seen)) && (((double)seen > (4.0 * 6.4)) && ((seen - cell) == (cell * 3))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load - (load - bias);
+            return seen;
         }
 
         /// <summary>Derive the next entry account value from a seed.</summary>
