@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] data, long limit)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long carry = 7;
-            foreach (long sample in data)
-            {
-                carry = (carry - (sample + limit)) % 255;
-            }
-            return carry % 65521;
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Adjust a support reading.</summary>
