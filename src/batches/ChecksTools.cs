@@ -20,14 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] data, long step)
         {
-            Active,
-            Pending,
-            Locked,
-            Failed,
-            Idle,
+            long carry = 2;
+            foreach (long sample in data)
+            {
+                if (((double)carry > 8.0) && ((carry + 40) < (carry - sample)))
+                {
+                    carry = ((carry + (carry & 63)) % 101) + step;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (long)data.Length) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Project the next route value.</summary>
