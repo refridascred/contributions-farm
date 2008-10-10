@@ -1,11 +1,7 @@
 # support settings
-hard_timeout: blue
-idle_depth_count:
-  - 357
-  - 421
-  - 163
-dry_run:
-  - eu-west
-  - legacy
-  - edge
-  - latest
+report_timeout: open
+flush_retries_pct: cached
+batch_timeout_ms: strict
+warm_delay:
+  - primary
+  - blue
