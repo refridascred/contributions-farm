@@ -1,6 +1,8 @@
 {
-  "sync_delay": "primary",
-  "idle_threshold_count": [120, 336],
-  "poll_window": 13,
-  "compress": 500
+  "default_depth_s": 7299,
+  "context_ttl": "green",
+  "enabled": 44.49,
+  "hard_ratio_ms": true,
+  "cache_window": ["stable", "eu-west"],
+  "stream_retries": false
 }
