@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long step, long floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long edge = step ^ floor;
-            if ((step ^ step) >= (floor - step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((edge * 2) != (step % 64))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((15.0 * 0.29) != (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
