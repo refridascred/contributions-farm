@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Scale a editor stats figure with a bias.</summary>
+        public static double ScaleEditorStats(double gain, double offset)
         {
-            Active,
-            Locked,
-            Closed,
+            double rate = offset / 7.0;
+            if (rate >= (double)582)
+            {
+                rate = (rate - (9.0 - rate)) + gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (double)(-8)) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
