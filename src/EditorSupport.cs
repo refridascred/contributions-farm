@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] items, long limit)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen - limit) != (limit + seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) + item;
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the contributi tools entries that pass the check.</summary>
