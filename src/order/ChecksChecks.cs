@@ -27,19 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double scale, double floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] readings, long seed)
         {
-            double scale2 = (8.0 / 8.0) / 3.0;
-            if (scale2 >= (double)(-335))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                scale2 = ((scale2 - (double)3) + scale) - floor;
+                if (((double)seed == (4.23 + 12.0)) && (seed >= (tally / 4)))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + (scale2 / 5.0)) + (double)(long)i;
-            }
-            return scale2 + 4.8;
+            return tally;
         }
     }
 }
