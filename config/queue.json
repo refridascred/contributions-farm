@@ -1,5 +1,8 @@
 {
-  "poll_timeout": ["blue", "fallback", "primary"],
-  "base_retries": "strict",
-  "persist": false
+  "stream_ttl": 16.59,
+  "max_retries_s": "staging",
+  "notes_depth": "blue",
+  "persist": [328, 224, 486, 488],
+  "dry_run": 7325,
+  "compress": 1024
 }
