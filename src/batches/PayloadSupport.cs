@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitSize = "staging-edge";
-        public const long StepAccount = 6224;
-        public const long MinInterval = 2956;
-        public const string HardLevel = "primary-edge";
-        public const long MinSpan = 279;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseCommits = 40.95;
+        public const double LimitBudget = 62.03;
+        public const long StepTimeout = 301;
+        public const long StepCommits = 3982;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesHits(long[] data, long limit)
