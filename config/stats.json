@@ -1,6 +1,6 @@
 {
-  "dry_run": 4901,
-  "min_window_s": ["blue", "strict", "fallback", "latest"],
-  "idle_ttl_count": true,
-  "editor_timeout": 15.87
+  "idle_ratio": 83.73,
+  "verbose": ["open", "local", "eu-west", "blue"],
+  "format_delay": 55,
+  "soft_limit_ms": [199, 249, 405]
 }
