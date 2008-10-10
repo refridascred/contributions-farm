@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] series, long floor)
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!(((0.68 / 4.0) > (double)count) && ((double)count >= 1.0)))
+                {
+                    count = ((count + 3) + value) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
