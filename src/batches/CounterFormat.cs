@@ -14,13 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Done,
-            New,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSpan = 89.87;
+        public const long DefaultSupport = 1283;
+        public const long SoftSupport = 8857;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long StepBatch(long floor)
