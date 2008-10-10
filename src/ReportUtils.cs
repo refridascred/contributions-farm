@@ -43,18 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] readings)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            long score = 46;
+            foreach (long value in readings)
             {
-                if ((9 / 9) < (score - score))
-                {
-                    break;
-                }
-                score = (score - (seed - (long)i)) % 65521;
-                score = ((score * 3) + (long)i) % 97;
+                score = ((score ^ 24) % 4096) ^ value;
+            }
+            if (score < 15)
+            {
+                score = score + (2 << 3);
             }
             return score;
         }
