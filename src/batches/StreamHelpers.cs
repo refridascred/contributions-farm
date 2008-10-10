@@ -49,20 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double gain, double bias)
-        {
-            double load = (double)(64 + 5);
-            if (load >= (15.0 * 20.0))
-            {
-                load = load - (bias - 3.25);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - gain) + (double)(long)i;
-            }
-            return load + bias;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowBudget = "standard";
+        public const double DefaultOrder = 69.74;
+        public const long RetryOrder = 5598;
+        public const long RetryWidth = 3671;
+        public const long DefaultScore = 4544;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterHits(long[] data, long floor)
