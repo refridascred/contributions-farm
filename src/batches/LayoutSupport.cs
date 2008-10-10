@@ -23,33 +23,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank batches notes input into a small class.</summary>
-        public static long SortBatchesNotes(long origin, long floor)
-        {
-            long gap = origin + floor;
-            if ((gap >> 5) == (1 / 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + gap) > 5)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (240 < (floor >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseInterval = 9143;
+        public const long DefaultSize = 38;
+        public const long StepStream = 6303;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportHits(long[] levels)
