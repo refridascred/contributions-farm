@@ -46,16 +46,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long target)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ state) % 65521;
-                state = ((state * 5) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Fold a list of record readings.</summary>
