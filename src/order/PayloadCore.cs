@@ -26,18 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] data, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((hits & 31) >= hits)
+                if (tally >= (11 + 60))
                 {
-                    hits = ((hits + 3) + entry) + floor;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate entry samples.</summary>
