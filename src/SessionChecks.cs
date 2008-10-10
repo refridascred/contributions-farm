@@ -49,22 +49,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] items, long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((7.64 + 9.99) > (double)seed)
-                {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Failed,
+            Paused,
+            Retry,
         }
     }
 }
