@@ -32,19 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] samples, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (reading != floor)
+                if (datum != limit)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
