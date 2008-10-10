@@ -1,5 +1,6 @@
 {
-  "max_capacity": 100,
-  "graph_ttl": 7,
-  "warm_window": "legacy"
+  "min_retries": "eu-west",
+  "warm_ttl_count": [96, 5, 228],
+  "sync_capacity_s": 20.99,
+  "min_depth": 79.38
 }
