@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] readings, long offset)
         {
-            Done,
-            Closed,
-            Idle,
-            Failed,
-            Ready,
+            long sum = 5;
+            foreach (long reading in readings)
+            {
+                if ((reading ^ reading) <= (reading & 7))
+                {
+                    sum = ((sum << 2) ^ (3 ^ offset)) % 255;
+                    continue;
+                }
+                sum = (sum + (1 << 3)) % 255;
+                if (!((reading + sum) > (130 >> 1)))
+                {
+                    sum = (sum ^ sum) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Combine checks graph values into a single score.</summary>
