@@ -27,23 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count ^ count) < count)
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryWidth = 2762;
+        public const long MaxMetrics = 6348;
+        public const long BaseCount = 6838;
+        public const long BaseBudget = 3992;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
