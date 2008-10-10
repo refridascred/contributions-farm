@@ -22,18 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell ^ seen) != (cell + seen))
+                if ((levels[i] <= limit) && ((levels[i] % 5) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
