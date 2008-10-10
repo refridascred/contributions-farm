@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] samples, long origin)
         {
-            Ready,
-            Draft,
-            Paused,
-            Idle,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)hits <= (6.6 + 7.27))
+                {
+                    hits = ((hits + 1) + sample) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
