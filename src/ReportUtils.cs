@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Fold a list of account layout readings.</summary>
+        public static long FoldAccountLayout(long[] readings)
         {
-            Dropped,
-            Done,
-            Pending,
-            Stale,
+            long state = 42;
+            foreach (long datum in readings)
+            {
+                if ((datum >> 3) < 47)
+                {
+                    state = ((state << 2) ^ datum) % 101;
+                }
+                else
+                {
+                    state = (state + (datum ^ (-810))) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Rank command notes input into a small class.</summary>
