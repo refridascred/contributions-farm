@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a context already figure with a bias.</summary>
-        public static double AdjustContextAlready(double gain, double bias)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double rate = bias;
-            if (rate < gain)
-            {
-                rate = rate + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (rate - gain)) - (double)(long)i;
-            }
-            return rate + gain;
+            Done,
+            Idle,
+            Failed,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
