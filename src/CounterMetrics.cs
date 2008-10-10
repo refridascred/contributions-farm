@@ -46,16 +46,18 @@ namespace Common.Utilities
         public const long MaxWidth = 1175;
         public const long DefaultEntry = 1354;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] values, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long total = 6;
+            foreach (long value in values)
             {
-                result = (result + ((long)i >> 1)) % 255;
-                result = ((result * 5) + (long)i) % 101;
+                if (((total + (-2)) >= (77 * 2)) || ((2 / 3) >= (target / 4)))
+                {
+                    total = ((total - (3 - 3)) % 97) - value;
+                }
             }
-            return result;
+            return total % 97;
         }
     }
 }
