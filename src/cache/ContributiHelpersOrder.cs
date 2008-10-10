@@ -22,21 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Paused,
+            Active,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a command snapshot.</summary>
