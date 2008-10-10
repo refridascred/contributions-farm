@@ -1,8 +1,6 @@
 {
-  "window_ttl": ["open", "green"],
-  "base_retries_s": 89.63,
-  "layout_ratio": [455, 352],
-  "burst_capacity_count": "cached",
-  "dry_run": true,
-  "entry_interval": 53
+  "soft_limit": 851,
+  "flush_threshold_pct": "legacy",
+  "max_timeout_s": [367, 12],
+  "batch_interval": "latest"
 }
