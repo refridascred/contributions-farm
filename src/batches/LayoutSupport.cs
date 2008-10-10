@@ -62,22 +62,31 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] values)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long target, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if ((target + target) < (target & 127))
             {
-                if ((hits ^ hits) > (datum - hits))
+                return 1;
+            }
+            else
+            {
+                if ((5.81 / 3.0) < (double)target)
                 {
-                    hits = hits + 3;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((-89) <= (target << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
