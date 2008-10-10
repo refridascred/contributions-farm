@@ -19,19 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] levels, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long floor, long floor2)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            if (floor2 <= (floor << 1))
             {
-                if (item < bound)
+                return 7;
+            }
+            else
+            {
+                if ((double)floor2 != (3.76 + 19.0))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
