@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string WindowFarm = "open";
         public const long RetryFarm = 1220;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Stale,
-            Pending,
-            Failed,
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
