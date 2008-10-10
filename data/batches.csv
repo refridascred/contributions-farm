@@ -1,7 +1,7 @@
-id,level,owner
-1,689,stable
-2,322,164
-3,2.97,392
-4,5.24,983
-5,93.68,primary
-6,621,230
+id,count,region,state
+1,blue,8,8.94
+2,65.94,76.41,808
+3,943,eu-west,880
+4,216,686,stable
+5,895,fallback,8.38
+6,879,788,767
