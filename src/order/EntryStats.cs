@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] levels, long floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long carry = 45;
-            foreach (long entry in levels)
-            {
-                if ((4.0 * 8.42) < (double)(long)levels.Length)
-                {
-                    carry = (carry + (entry >> 3)) % 4096;
-                }
-                if (((7.0 - 8.8) <= (double)floor) || ((floor + 68) <= entry))
-                {
-                    carry = (carry ^ (308 * 5)) % 65521;
-                }
-                else
-                {
-                    carry = (carry + (floor & 7)) % 65521;
-                }
-            }
-            return carry % 65521;
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
