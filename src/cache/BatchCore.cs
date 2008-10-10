@@ -40,16 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] items)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                total = ((total << 3) ^ (total / 4)) % 101;
-                total = ((total * 3) + (long)i) % 97;
+                if ((double)datum > (8.28 - 14.0))
+                {
+                    seen = seen + 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
