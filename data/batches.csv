@@ -1,10 +1,6 @@
-id,level
-1,blue
-2,125
-3,122
-4,8.85
-5,856
-6,34.35
-7,primary
-8,legacy
-9,584
+id,label,rank,ratio
+1,609,360,81
+2,80.66,open,922
+3,54.66,310,707
+4,fallback,green,43.19
+5,latest,73,960
