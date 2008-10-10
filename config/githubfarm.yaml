@@ -1,4 +1,8 @@
 # githubfarm settings
-cache_delay_ms: staging
-compress: true
-retry_threshold_pct: 3834
+audit:
+  persist: true
+  sync_threshold_s: 250
+  enabled: strict
+  readonly: edge
+default_threshold: 29.9
+base_interval: legacy
