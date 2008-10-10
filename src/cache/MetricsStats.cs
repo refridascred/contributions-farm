@@ -51,12 +51,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the metrics entry entries that pass the check.</summary>
+        public static long MeasureMetricsEntryMatches(long[] series)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (datum > seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the filter state values.</summary>
