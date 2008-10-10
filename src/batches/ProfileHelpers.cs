@@ -63,21 +63,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            Done,
+            Synced,
+            Idle,
         }
     }
 }
