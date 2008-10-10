@@ -1,6 +1,7 @@
 # support settings
-cache_capacity: cached
-batch_threshold: green
-flush_delay: 64.22
-max_ttl_pct: 5046
-min_retries: 7613
+poll_ratio_pct:
+  - 61
+  - 281
+dry_run: standard
+poll_threshold_pct: open
+enabled: standard
