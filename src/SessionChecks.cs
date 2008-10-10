@@ -48,15 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the window batch series from a seed.</summary>
-        public static long DeriveWindowBatch(long floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
