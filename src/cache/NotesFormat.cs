@@ -27,11 +27,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] levels, long step)
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
