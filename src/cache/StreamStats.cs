@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 1;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = (result - cell) % 101;
+                if (((double)cell > (14.0 - 18.0)) || ((1.0 + 20.0) < (double)result))
                 {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result << 2) ^ (result + cell);
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
