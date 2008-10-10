@@ -64,19 +64,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next payload batch value.</summary>
-        public static double AdjustPayloadBatch(double scale, double floor)
-        {
-            double ratio = scale;
-            if (ratio >= (double)895)
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + floor) - (double)(long)i;
-            }
-            return ratio + (double)89;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "legacy-v2";
+        public const long LimitWidth = 8715;
+        public const string BaseLevel = "latest";
+        public const long DefaultChecks = 6467;
     }
 }
