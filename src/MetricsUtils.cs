@@ -24,16 +24,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark + seed;
-                mark = ((mark * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
