@@ -1,6 +1,8 @@
 # entry settings
-flush_size_s: 1024
-poll_window_s: 72.3
-soft_delay_s: 9.14
-entry_capacity: false
-enabled: cached
+strict: 922
+batch_depth: edge
+idle_window_ms: 500
+metric_limit:
+  - 349
+  - 377
+  - 168
