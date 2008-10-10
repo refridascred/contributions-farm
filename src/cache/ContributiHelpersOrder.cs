@@ -52,19 +52,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] readings, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long mark = 350;
+            foreach (long item in samples)
             {
-                if (entry > target)
+                if (mark <= (mark + mark))
                 {
-                    ok = false;
-                    break;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark - (item << 1)) % 4096;
+                }
+                if (((item + item) > (item % 16)) && (mark < (68 & 3)))
+                {
+                    mark = ((mark * 2) + (item >> 4)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (item + item)) % 4096;
                 }
             }
-            return ok;
+            if (mark < 7)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
     }
 }
