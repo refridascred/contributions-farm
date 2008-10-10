@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit editor filter readings against a rule.</summary>
-        public static long MeasureEditorFilterGaps(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((double)bound < 4.7)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitDepth = 70.89;
+        public const long StepRatio = 5468;
+        public const long BatchScore = 4831;
+        public const long RetryLevel = 9287;
 
         /// <summary>Accumulate contributi layout samples.</summary>
         public static long ScoreContributiLayout(long[] readings)
