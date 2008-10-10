@@ -67,25 +67,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a metrics tools counter forward.</summary>
-        public static long StepMetricsTools(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (7.5 <= (double)bound)
-                {
-                    mix = ((mix * 2) + ((long)i >> 2)) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 5) + 71) % 255;
-                }
-                mix = ((mix << 2) ^ (bound + bound)) % 65521;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFilter = "alpha-v2";
+        public const string IdleFilter = "alpha-edge";
+        public const long SoftFilter = 4180;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] levels, long step)
