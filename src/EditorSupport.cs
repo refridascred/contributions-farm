@@ -16,17 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] values, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((values[i] >= origin) && ((values[i] % 5) == 0))
+                if ((seen - limit) != (limit + seen))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the contributi tools entries that pass the check.</summary>
