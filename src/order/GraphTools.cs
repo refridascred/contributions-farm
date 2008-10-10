@@ -32,13 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
+            Done,
+            Queued,
             Pending,
-            Paused,
-            Ready,
-            Dropped,
+            New,
         }
 
         /// <summary>Describe the session status values.</summary>
