@@ -71,12 +71,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 1821;
-        public const double BaseProfile = 88.82;
-        public const long RetryProfile = 7768;
-        public const long DefaultRatio = 7863;
-        public const long HardProfile = 4981;
+        /// <summary>Digest a series of context channel entries.</summary>
+        public static long ScoreContextChannel(long[] levels)
+        {
+            long mix = 18;
+            foreach (long item in levels)
+            {
+                mix = (mix + mix) - item;
+            }
+            if (mix < 54)
+            {
+                mix = ((mix << 3) ^ (123 + 16)) % 97;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
