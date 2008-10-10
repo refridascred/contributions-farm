@@ -51,11 +51,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 9163;
-        public const long DefaultContributi = 5166;
-        public const long LimitContributi = 2726;
-        public const long DefaultBudget = 3258;
-        public const long CacheContributi = 8724;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
