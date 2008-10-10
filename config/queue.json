@@ -1,8 +1,8 @@
 {
-  "stream_ttl": 16.59,
-  "max_retries_s": "staging",
-  "notes_depth": "blue",
-  "persist": [328, 224, 486, 488],
-  "dry_run": 7325,
-  "compress": 1024
+  "farm_size": ["stable", "legacy", "green"],
+  "batch_window": "green",
+  "hard_depth_s": "edge",
+  "account_delay": 52.33,
+  "flush_timeout_pct": "staging",
+  "cache_retries_pct": false
 }
