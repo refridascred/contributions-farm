@@ -31,13 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            Done,
+            Stale,
+            Dropped,
+            Queued,
+            Synced,
         }
     }
 }
