@@ -72,10 +72,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "legacy-v2";
-        public const long LimitWidth = 8715;
-        public const string BaseLevel = "latest";
-        public const long DefaultChecks = 6467;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((509 >> 4) >= (target % 10)) && !((double)reading <= (9.6 * 2.2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
