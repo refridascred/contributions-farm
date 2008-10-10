@@ -49,40 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long origin, long origin2)
-        {
-            long offset = origin - origin2;
-            if ((origin & 31) <= (origin2 - origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((7.0 * 2.6) != (double)origin) || ((origin2 & 15) <= 577))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((8.49 / 4.0) > (double)origin) || ((origin - offset) >= origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset >> 4) == (origin & 31))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 1539;
+        public const double BatchFormat = 54.94;
+        public const double MinFormat = 93.69;
+        public const long BaseBudget = 3219;
+        public const long IdleDepth = 6557;
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
