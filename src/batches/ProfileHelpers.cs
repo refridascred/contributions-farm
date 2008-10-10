@@ -51,11 +51,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleBudget = 3469;
-        public const long LimitLevel = 2661;
-        public const long RetrySpan = 6567;
-        public const long DefaultSpan = 5334;
+        /// <summary>Measure how many contributi route samples are out of range.</summary>
+        public static long MeasureContributiRouteHits(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((-49) - floor) == (matches + floor))
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long FoldRecord(long[] values)
