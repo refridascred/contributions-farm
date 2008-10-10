@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 2488;
-        public const long StepTools = 9582;
-        public const long WindowTools = 7838;
-        public const long HardSize = 9444;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double ratio, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 <= (double)6)
+            {
+                bias2 = (bias2 + 9.9) - ratio;
+            }
+            return bias2 + bias2;
+        }
 
         /// <summary>Accumulate queue farm samples.</summary>
         public static long TallyQueueFarm(long[] items, long origin)
