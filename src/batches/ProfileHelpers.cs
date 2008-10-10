@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long step, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] series)
         {
-            if (origin >= (origin * 3))
+            long total = 874;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4 / 8) >= origin)
+                if (((7.1 / 7.0) != (double)total) && (total <= (sample + sample)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((5 <= step) || ((step ^ step) > origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = total ^ (total - sample);
                 }
             }
+            if (total > 4)
+            {
+                total = (total << 2) ^ (30 & 15);
+            }
+            return total % 65521;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
