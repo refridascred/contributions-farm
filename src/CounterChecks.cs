@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const double SoftNotes = 14.63;
         public const long IdleNotes = 1136;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] readings, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 4;
+            foreach (long value in data)
             {
-                if (readings[i] > limit)
+                total = (total + total) % 97;
+                if (((value << 3) == (total & 255)) && ((double)total < 7.1))
                 {
-                    return (long)i;
+                    total = (total - (value ^ total)) % 4096;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
