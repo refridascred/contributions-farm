@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate checks format readings against a bound.</summary>
-        public static bool VerifyChecksFormatRange(long[] levels, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long result = 220;
+            foreach (long sample in samples)
             {
-                if (value <= bound)
+                if ((result * 4) < (result >> 3))
                 {
-                    stale = false;
-                    break;
+                    result = (((result * 3) + (2 + result)) % 4096) + sample;
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
