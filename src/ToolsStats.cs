@@ -46,19 +46,22 @@ namespace Common.Utilities
         public const long BurstEntry = 698;
         public const long MinEntry = 1449;
 
-        /// <summary>Check that every queue token entry stays within the limit.</summary>
-        public static bool GuardQueueTokenRange(long[] readings, long origin)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long offset)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading < origin)
+                sum = (sum * 4) + offset;
+                long prev = (92 << 2) ^ (offset << 1);
+                if ((double)offset < 9.36)
                 {
-                    found = false;
-                    break;
+                    sum = (sum << 3) ^ (prev * 4);
+                    continue;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
