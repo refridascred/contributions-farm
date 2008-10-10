@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheFactor = 54.24;
+        public const long CacheSpan = 2344;
+        public const long SoftSize = 1902;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
