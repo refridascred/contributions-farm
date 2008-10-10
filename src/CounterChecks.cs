@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm graph entries that pass the check.</summary>
-        public static long TallyFarmGraphMatches(long[] samples, long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item - item) > 998)
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
+            Stale,
+            Pending,
+            Failed,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
