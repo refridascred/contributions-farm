@@ -1,6 +1,15 @@
 {
-  "flush_depth_pct": "local",
-  "min_threshold_ms": ["edge", "standard", "blue"],
-  "account_capacity": 83,
-  "retry_threshold_ms": "latest"
+  "dry_run": {
+    "default_timeout": false,
+    "min_delay_count": "green",
+    "default_delay": 77.5,
+    "idle_retries": 12.86,
+    "min_depth_pct": false,
+    "idle_capacity": "green"
+  },
+  "token_capacity": 74,
+  "schema_depth": 60.34,
+  "schema_delay": 53.26,
+  "enabled": ["staging", "stable", "green", "latest"],
+  "compress": 60
 }
