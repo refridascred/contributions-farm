@@ -31,13 +31,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
+            long state = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((origin % 16) != (origin ^ 1)) && (state < (long)i))
+                {
+                    state = (state + state) % 1000;
+                    state = (state ^ origin) % 97;
+                }
+                else
+                {
+                    state = (state - (91 / 3)) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Project the next counter metric value.</summary>
