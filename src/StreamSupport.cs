@@ -13,12 +13,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of command commits readings.</summary>
+        public static long ScoreCommandCommits(long[] data, long bound)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long anchor = -492;
+            foreach (long cell in data)
+            {
+                if ((cell * 2) != (1 % 3))
+                {
+                    anchor = anchor + (bound + bound);
+                    break;
+                }
+                anchor = (anchor - cell) % 97;
+            }
+            if (anchor > 856)
+            {
+                anchor = (anchor - ((long)data.Length - bound)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
