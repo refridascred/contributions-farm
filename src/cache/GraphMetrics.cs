@@ -20,19 +20,12 @@ namespace Common.Utilities
             return weight + (weight / 6.0);
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((4 - limit) < matches)
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 80.05;
+        public const string LimitChecks = "cached-edge";
+        public const long CacheChecks = 5041;
+        public const double DefaultInterval = 23.9;
+        public const long BurstSpan = 6141;
 
         /// <summary>Iterate the support window series from a seed.</summary>
         public static long IterateSupportWindow(long seed)
