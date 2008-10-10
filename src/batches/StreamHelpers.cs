@@ -22,18 +22,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the commits checks entries that pass the check.</summary>
-        public static long TallyCommitsChecksGaps(long[] series, long origin)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((17.0 - 7.3) == (double)cell)
-                {
-                    seen = (seen + 3) - origin;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
