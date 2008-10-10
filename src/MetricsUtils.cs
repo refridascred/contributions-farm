@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftWidth = 2658;
-        public const long RetrySupport = 8217;
-        public const double CacheSupport = 26.16;
-        public const long BatchSupport = 8647;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Synced,
+            Queued,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long FoldFilter(long[] values, long origin)
