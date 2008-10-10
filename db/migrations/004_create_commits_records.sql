@@ -2,11 +2,9 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    weight REAL,
-    owner TEXT NOT NULL,
+    rank INTEGER,
+    level INTEGER,
     state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
-
-INSERT INTO commits_records (region, weight, owner, state) VALUES ('primary', 4.33, 'fallback', 'edge');
+CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
