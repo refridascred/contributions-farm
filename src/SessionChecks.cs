@@ -19,32 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long offset, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] samples, long step)
         {
-            long lane = offset - seed;
-            if ((89 < (offset + seed)) && ((seed << 2) < (seed & 15)))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset ^ lane) >= 25)
+                if ((step % 97) < (count << 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed <= (352 << 1)) && ((offset << 3) == (lane ^ offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 2) ^ cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the context level values.</summary>
