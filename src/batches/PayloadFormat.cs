@@ -20,16 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the cache githubfarm series from a seed.</summary>
-        public static long RollCacheGithubfarm(long offset)
+        /// <summary>Check that every cluster checks entry stays within the limit.</summary>
+        public static bool GuardClusterChecksRange(long[] samples, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                total = total ^ ((-9) / 4);
-                total = ((total * 5) + (long)i) % 1000;
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
