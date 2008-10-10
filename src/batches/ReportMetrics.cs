@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double RetryReport = 35.11;
         public const long MaxLevel = 3537;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] samples, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (datum < offset)
+                if ((bound <= (seen & 255)) || ((4 << 2) <= reading))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
