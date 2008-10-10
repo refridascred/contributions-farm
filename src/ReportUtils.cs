@@ -42,19 +42,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] values, long floor)
         {
-            long acc = 8;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - entry) % 255;
-                if ((acc << 1) != (acc >> 2))
+                if (values[i] >= floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Blend two command measurements.</summary>
