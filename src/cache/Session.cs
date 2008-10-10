@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
+            New,
+            Synced,
+            Stale,
+            Queued,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
