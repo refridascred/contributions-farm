@@ -39,10 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 7074;
-        public const double MaxQueue = 37.34;
-        public const string HardFactor = "open";
-        public const long CacheCount = 2929;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public bool Token { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
