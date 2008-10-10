@@ -31,20 +31,38 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Grade a tools format value against two limits.</summary>
+        public static long SortToolsFormat(long floor, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            if (((limit - floor) > (floor / 3)) || ((floor % 64) != (571 ^ limit)))
             {
-                state = ((state * 4) + state) % 65521;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = (state ^ 82) - (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 4093;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((double)floor >= (7.91 + 20.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.32 + 1.0) >= (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit >= (floor + floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph header.</summary>
