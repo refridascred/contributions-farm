@@ -25,12 +25,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] series)
         {
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)seen < 2.9)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a session metrics counter forward.</summary>
