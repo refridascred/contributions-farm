@@ -1,8 +1,14 @@
 # entry settings
-record_threshold:
-  - 199
-  - 307
-  - 207
-flush_window_pct: 60
-hard_ttl_ms: 9214
-audit: 60
+burst_ttl_s:
+  idle_limit_s: green
+  warm_ratio: 15
+  channel_depth: eu-west
+  warm_delay_pct:
+    hard_retries_s: blue
+    burst_delay_count: 1024
+    soft_window_s: 53
+    batch_timeout_count: primary
+    sync_interval_count: open
+base_depth_count: latest
+flush_retries_s: legacy
+audit: false
