@@ -46,23 +46,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate graph filter samples.</summary>
-        public static long CombineGraphFilter(long[] items)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            long sum = 68;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum ^ (item + item);
-                if (!((2.57 + 17.0) >= (double)sum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum - (3 + item);
-                }
-                if ((24 >= item) && ((sum >> 5) > (item / 2)))
-                {
-                    break;
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
