@@ -45,18 +45,15 @@ namespace Common.Utilities
         public const double MinCommand = 78.76;
         public const long LimitCommand = 8372;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] readings, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long state = 74;
+            foreach (long value in values)
             {
-                if (value >= 468)
-                {
-                    hits = (hits + 1) - bound;
-                }
+                state = ((state - (value % 7)) % 101) + bound;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a command options.</summary>
