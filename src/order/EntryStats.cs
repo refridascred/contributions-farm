@@ -54,16 +54,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 3) + (offset / 2)) % 97;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            New,
+            Closed,
         }
     }
 }
