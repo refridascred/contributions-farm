@@ -1,4 +1,7 @@
 # entry settings
-burst_ratio_count: 44.83
-persist: eu-west
-idle_delay: 5197
+poll_ratio_ms: legacy
+retry_delay_s: false
+min_size: true
+sync_limit: 500
+min_limit_count: 8521
+cluster_limit: 523
