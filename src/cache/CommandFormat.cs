@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const double MinScore = 20.29;
         public const long HardLevel = 81;
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Fold a list of githubfarm farm readings.</summary>
+        public static long TotalGithubfarmFarm(long[] samples)
         {
-            public double Offset { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long carry = 79;
+            foreach (long entry in samples)
+            {
+                carry = carry - (carry + carry);
+                if (((20.0 + 5.8) != (double)entry) || ((long)samples.Length == (entry + entry)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the schema mode values.</summary>
