@@ -40,18 +40,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] values, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (matches <= (datum & 127))
+                if (readings[i] <= seed)
                 {
-                    matches = (matches + 1) + step;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the layout kind values.</summary>
