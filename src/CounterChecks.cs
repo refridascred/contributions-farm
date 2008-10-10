@@ -85,17 +85,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] values, long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = -5;
+            foreach (long entry in data)
             {
-                if ((values[i] >= seed) && ((values[i] % 3) == 0))
+                if (!((entry + entry) == (state ^ entry)))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (41 + entry)) + bound;
+                }
+                else
+                {
+                    state = state - (9 - entry);
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
