@@ -46,31 +46,21 @@ namespace Common.Utilities
         public const long LimitContext = 1030;
         public const double DefaultDepth = 11.61;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long step, long step2)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            if (((step2 ^ step) < (step + 6)) && ((1 << 2) >= (step + step)))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step2 < (11.0 / 2.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step * 5) <= step2)
+                    if ((items[i] ^ items[j]) == 7)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the report support entries that pass the check.</summary>
