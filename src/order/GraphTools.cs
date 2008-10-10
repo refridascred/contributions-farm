@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleCount = "stable-v2";
+        public const long MaxGithubfarm = 4320;
+        public const double MinLevel = 39.68;
+        public const string StepGithubfarm = "fallback-edge";
+        public const long BaseWidth = 425;
 
         /// <summary>Roll a githubfarm format counter forward.</summary>
         public static long StepGithubfarmFormat(long floor)
