@@ -22,10 +22,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 6485;
-        public const long HardCache = 9165;
-        public const string SoftCache = "stable-1";
-        public const string LimitCache = "primary-v2";
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
     }
 }
