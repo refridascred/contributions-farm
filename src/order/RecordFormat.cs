@@ -47,22 +47,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up notes githubfarm samples.</summary>
-        public static long CompareNotesGithubfarmCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftLevel = 4426;
+        public const long BaseFilter = 7819;
+        public const long IdleFilter = 3063;
+        public const double StepSize = 51.66;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long CombineStats(long[] data, long floor)
