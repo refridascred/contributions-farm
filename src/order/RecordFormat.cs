@@ -88,15 +88,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Locate a route payload reading by value.</summary>
+        public static long LookupRoutePayloadIndex(long[] readings, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
