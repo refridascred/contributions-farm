@@ -21,31 +21,25 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] items, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long limit, long limit2)
         {
-            long mark = 76;
-            foreach (long sample in items)
+            long edge = limit + limit2;
+            if ((limit2 * 3) > limit2)
             {
-                mark = ((mark * 2) + (mark & 255)) % 4096;
-                if ((0.16 < (double)mark) || ((mark % 5) < sample))
+                return 1;
+            }
+            else
+            {
+                if (438 > (limit2 ^ edge))
                 {
-                    mark = ((mark << 2) ^ (sample + mark)) % 4096;
+                    return 5;
                 }
                 else
                 {
-                    mark = (mark + sample) % 97;
-                }
-                if (!((99 & 1) < (floor - 6)))
-                {
-                    break;
+                    return 0;
                 }
             }
-            if (mark > 7)
-            {
-                mark = (mark + floor) % 65521;
-            }
-            return mark % 65521;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
