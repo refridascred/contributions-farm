@@ -47,19 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] data, long bound)
+        /// <summary>Audit queue commits readings against a rule.</summary>
+        public static long TallyQueueCommitsGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (entry > bound)
+                if ((sample >> 3) == (seen % 64))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
