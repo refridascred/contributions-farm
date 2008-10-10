@@ -15,16 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a stats queue counter forward.</summary>
-        public static long SeriesStatsQueue(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 978;
+        public const long MinBudget = 4944;
+        public const string CacheStream = "staging-v2";
 
         /// <summary>Fold a list of stats filter readings.</summary>
         public static long CombineStatsFilter(long[] values, long offset)
