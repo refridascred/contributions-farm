@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double bias, double span)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] items, long origin)
         {
-            double gain = (7.52 - bias) * 2.9;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = ((gain - gain) + (double)(long)i) + span;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return gain + gain;
+            return -1;
         }
 
         /// <summary>Hold a context stats.</summary>
