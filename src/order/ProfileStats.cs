@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] samples)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((item & 15) <= hits)
-                {
-                    hits = hits + 3;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a session snapshot.</summary>
