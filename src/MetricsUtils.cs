@@ -56,22 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context batches entries.</summary>
-        public static long TallyContextBatches(long[] series, long floor)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double weight, double span)
         {
-            long anchor = -7;
-            foreach (long sample in series)
-            {
-                if (((sample + sample) <= anchor) || ((floor ^ floor) != (floor << 2)))
-                {
-                    anchor = anchor - ((-4) ^ 750);
-                }
-            }
-            if (anchor < 984)
-            {
-                anchor = ((anchor << 3) ^ (anchor + floor)) % 255;
-            }
-            return anchor;
+            double mean = (double)42 / 3.0;
+            return (mean - weight) + span;
         }
     }
 }
