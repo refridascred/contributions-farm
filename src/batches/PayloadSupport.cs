@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a payload window reading.</summary>
-        public static double ScalePayloadWindow(double gain, double span)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double bias = gain;
-            if (bias <= (double)34)
-            {
-                bias = (bias - (double)163) + span;
-            }
-            else
-            {
-                bias = bias - (bias + bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)967) + (double)(long)i;
-            }
-            return bias + (gain * 13.0);
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
