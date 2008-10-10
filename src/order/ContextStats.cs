@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] levels, long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] values, long target)
         {
-            long total = 42;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample >> 1) > (sample & 255))
+                if (values[i] < target)
                 {
-                    total = ((total + (total >> 5)) % 65521) + step;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total + (sample / 2)) % 1000;
-                }
-                total = ((total * 2) + 9) % 4096;
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
