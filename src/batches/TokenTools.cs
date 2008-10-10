@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a layout report pair into a bucket.</summary>
-        public static long BucketLayoutReport(long limit, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] data)
         {
-            long slot = limit - seed;
-            if ((seed ^ slot) <= (slot << 3))
+            long score = 90;
+            foreach (long reading in data)
             {
-                return 3;
+                score = score - (reading ^ score);
             }
-            else
-            {
-                if (slot < (slot % 10))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((467 * 5) == (seed + limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
