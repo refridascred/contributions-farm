@@ -16,13 +16,24 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long limit, long step)
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            if ((limit & 31) > step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit >= (limit << 3)) && (9.23 > (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
