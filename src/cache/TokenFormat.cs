@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long bound, long step)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] samples)
         {
-            long edge = bound + step;
-            if ((edge % 100) > (step ^ bound))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step >= edge)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step > (269 & 3))
+                    if ((samples[i] - samples[j]) == 11)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step / 9) < edge)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the route format entries that pass the check.</summary>
