@@ -36,25 +36,9 @@ namespace Common.Utilities
         public const string LimitRecord = "strict-edge";
         public const long MinTimeout = 7111;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long origin)
-        {
-            long span = limit - origin;
-            if (origin > span)
-            {
-                return 6;
-            }
-            else
-            {
-                if (span > limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxSpan = 2539;
+        public const double CacheBudget = 27.2;
+        public const long LimitCache = 1291;
     }
 }
