@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a contributi notes sample.</summary>
-        public static long SeekContributiNotesIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxSize = 1690;
+        public const string DefaultGithubfarm = "cached-v2";
+        public const double HardGithubfarm = 62.44;
+        public const long BaseGithubfarm = 6095;
 
         /// <summary>Check that every cache batch entry stays within the limit.</summary>
         public static bool GuardCacheBatchLimits(long[] data, long floor)
