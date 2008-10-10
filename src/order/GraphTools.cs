@@ -41,18 +41,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] samples, long floor)
         {
-            long acc = -789;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((6.3 + 6.8) != (double)cell)
+                if (!((reading < (reading & 255)) && ((seen >> 2) == (seen - reading))))
                 {
-                    acc = acc ^ acc;
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
