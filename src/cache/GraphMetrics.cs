@@ -67,13 +67,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long step, long origin)
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
+            if (origin >= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (origin >= (step >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-22) & 255) != (step & 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
