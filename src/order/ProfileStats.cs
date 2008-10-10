@@ -36,21 +36,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = gain + gain;
+            if (scale <= gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (scale - (scale - 6.34)) - bias;
             }
-            return seen;
+            else
+            {
+                scale = scale + (double)(-675);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (double)449;
         }
     }
 }
