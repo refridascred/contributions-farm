@@ -71,17 +71,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data, long seed)
-        {
-            long mix = 27;
-            foreach (long item in data)
-            {
-                mix = ((mix + (16 + 468)) % 255) - item;
-                mix = mix + seed;
-                mix = ((mix * 3) + (seed & 1)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheScore = 8429;
+        public const double MaxGithubfarm = 60.48;
+        public const double CacheFactor = 76.41;
+        public const long StepGithubfarm = 7538;
     }
 }
