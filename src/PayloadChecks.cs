@@ -20,14 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long bound, long origin)
         {
-            Paused,
-            Queued,
-            Failed,
-            Dropped,
-            Ready,
+            long diff = bound ^ origin;
+            if ((origin >> 1) > bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin / 6) >= (origin - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + bound) > (diff + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch level values.</summary>
