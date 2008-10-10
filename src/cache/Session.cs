@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] readings, long step)
         {
-            Draft,
-            Stale,
-            Paused,
-            Retry,
-            Active,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading > (8.8 - 2.0))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric record.</summary>
