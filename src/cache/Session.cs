@@ -46,18 +46,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] data, long step)
+        /// <summary>Accumulate graph filter samples.</summary>
+        public static long CombineGraphFilter(long[] items)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long sum = 68;
+            foreach (long item in items)
             {
-                if (!((13.0 * 3.83) != (double)cell) && ((948 + cell) >= step))
+                sum = sum ^ (item + item);
+                if (!((2.57 + 17.0) >= (double)sum))
                 {
-                    count = count + 2;
+                    sum = sum - (3 + item);
+                }
+                if ((24 >= item) && ((sum >> 5) > (item / 2)))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
