@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            Synced,
+            Dropped,
+            Closed,
+            Locked,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
