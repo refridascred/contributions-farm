@@ -13,19 +13,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] samples)
-        {
-            long result = 220;
-            foreach (long sample in samples)
-            {
-                if ((result * 4) < (result >> 3))
-                {
-                    result = (((result * 3) + (2 + result)) % 4096) + sample;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 70.68;
+        public const long BurstDepth = 8744;
+        public const long BurstQueue = 8840;
+        public const long DefaultQueue = 8019;
+        public const long MaxWidth = 645;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] series, long target)
