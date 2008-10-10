@@ -26,12 +26,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "standard";
-        public const long WindowTimeout = 6801;
-        public const long StepBudget = 9086;
-        public const long LimitTimeout = 4038;
-        public const long HardDepth = 9431;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] samples)
+        {
+            long mark = 19;
+            foreach (long cell in samples)
+            {
+                if ((mark & 255) > (cell & 63))
+                {
+                    mark = (mark + (mark - mark)) % 1000;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long PairRecordCount(long[] values)
