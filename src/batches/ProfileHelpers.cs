@@ -44,13 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] levels, long floor)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public bool Count { get; set; }
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
