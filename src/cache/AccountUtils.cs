@@ -13,21 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = bias;
+            if (drift <= drift)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - bias;
             }
-            return hits;
+            return drift + floor;
         }
 
         /// <summary>Hold a route stats.</summary>
