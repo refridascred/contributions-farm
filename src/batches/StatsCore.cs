@@ -16,11 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Fold a list of stream editor readings.</summary>
+        public static long TotalStreamEditor(long[] levels, long bound)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long mark = 251;
+            foreach (long entry in levels)
+            {
+                if (entry < mark)
+                {
+                    mark = ((mark ^ (1 / 4)) % 65521) + bound;
+                }
+                else
+                {
+                    mark = ((mark * 2) + ((-2) / 7)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a editor stats.</summary>
