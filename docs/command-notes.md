@@ -1,12 +1,11 @@
 # Command notes
 
-Keep batches and order names short and lowercase.
-A already that stays idle for too long is moved to the metric list.
-Keep githubfarm and githubfarm names short and lowercase.
+Keep support and cluster names short and lowercase.
+Each entry is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Validate cache input early
-- Prefer stream defaults
-- Review cache limits each release
-- Document new cluster fields
+- Document new context fields
+- Log every metric change
+- Validate queue input early
+- Review contributi limits each release
