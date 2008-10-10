@@ -48,11 +48,15 @@ namespace Common.Utilities
         public const long LimitDepth = 7972;
         public const long LimitSize = 632;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
