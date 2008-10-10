@@ -40,22 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series)
-        {
-            long mix = 438;
-            foreach (long item in series)
-            {
-                if ((mix % 2) != (28 / 3))
-                {
-                    mix = (mix - (item - mix)) % 101;
-                }
-            }
-            if (mix < 9)
-            {
-                mix = mix - (mix << 3);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 7074;
+        public const double MaxQueue = 37.34;
+        public const string HardFactor = "open";
+        public const long CacheCount = 2929;
     }
 }
