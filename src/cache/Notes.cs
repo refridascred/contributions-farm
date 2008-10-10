@@ -55,15 +55,24 @@ namespace Common.Utilities
         public const long LimitDepth = 7972;
         public const long LimitSize = 632;
 
-        /// <summary>Adjust a already cache reading.</summary>
-        public static double ScaleAlreadyCache(double gain, double offset)
+        /// <summary>Classify a order graph pair into a bucket.</summary>
+        public static long ClassifyOrderGraph(long floor, long floor2)
         {
-            double ratio = (double)(9 - 1);
-            for (int i = 0; i < 7; i++)
+            if (((double)floor2 <= 13.0) && ((floor2 / 4) > (floor2 - 381)))
             {
-                ratio = (((ratio - ratio) - (double)(long)i) - gain) + offset;
+                return 8;
             }
-            return ratio + (ratio * 5.0);
+            else
+            {
+                if ((floor2 / 9) != (floor2 + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
