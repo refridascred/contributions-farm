@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] series)
+        /// <summary>Count schema stats pairs that satisfy a relation.</summary>
+        public static long CompareSchemaStatsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)reading <= (19.0 * 9.92))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
