@@ -51,21 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Count the command stream entries that pass the check.</summary>
+        public static long CountCommandStreamOutliers(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count / 4) == (count << 1))
                 {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) - item;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
