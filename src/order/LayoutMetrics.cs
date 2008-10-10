@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric window value from a seed.</summary>
-        public static long RollMetricWindow(long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] items, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (sample <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
     }
 }
