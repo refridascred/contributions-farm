@@ -75,22 +75,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((matches >= (datum >> 2)) || ((double)datum > (9.97 - 2.4)))
+                if ((6.8 - 18.0) <= (double)cell)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 1) + target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
