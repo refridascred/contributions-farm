@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values)
-        {
-            long state = 9;
-            foreach (long cell in values)
-            {
-                if ((double)cell < (double)state)
-                {
-                    state = ((state * 2) + (cell ^ state)) % 4096;
-                }
-            }
-            if (state < 415)
-            {
-                state = (state * 3) + 3;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 2742;
+        public const double MinGraph = 30.09;
+        public const string BurstGraph = "legacy-v2";
 
         /// <summary>Rank route input into a small class.</summary>
         public static long SortRoute(long bound, long limit)
