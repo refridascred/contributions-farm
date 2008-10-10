@@ -1,6 +1,13 @@
 {
-  "hard_threshold_ms": "edge",
-  "buffer_ratio": [243, 12, 486],
-  "support_window": 1525,
-  "route_interval": 20.5
+  "default_depth_ms": {
+    "persist": 56.17,
+    "filter_ratio": 29,
+    "layout_threshold": 13.61,
+    "verbose": "open",
+    "min_window": 32,
+    "cache_threshold_ms": 56.01
+  },
+  "command_timeout": "staging",
+  "entry_ttl": 46,
+  "persist": 54.15
 }
