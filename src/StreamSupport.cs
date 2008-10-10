@@ -16,17 +16,27 @@ namespace Common.Utilities
             return load - (bias / 7.0);
         }
 
-        /// <summary>Look up the position of a route support sample.</summary>
-        public static long SeekRouteSupportIndex(long[] values, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 2;
+            foreach (long datum in levels)
             {
-                if ((values[i] > origin) && ((values[i] % 5) != 0))
+                state = ((state << 3) ^ (datum + 80)) % 1000;
+                if ((state % 7) <= state)
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (datum % 8)) % 101;
+                }
+                else
+                {
+                    state = (state + target) % 97;
                 }
             }
-            return -1;
+            if (state > 5)
+            {
+                state = (state - (state ^ state)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the command status values.</summary>
