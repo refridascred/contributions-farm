@@ -25,15 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] series)
+        /// <summary>Measure how many layout entry samples are out of range.</summary>
+        public static long MeasureLayoutEntryGaps(long[] series, long target)
         {
-            long total = 53;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                total = ((total << 3) ^ (total & 127)) - sample;
+                if ((value % 10) < value)
+                {
+                    hits = (hits + 3) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
