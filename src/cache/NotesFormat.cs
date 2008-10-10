@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Blend two support batches measurements.</summary>
+        public static double BlendSupportBatches(double ratio, double bias)
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            double bias2 = ratio;
+            if (bias2 > (ratio / 9.0))
+            {
+                bias2 = (bias2 - (bias2 + 20.0)) - bias;
+            }
+            else
+            {
+                bias2 = bias2 + (ratio - ratio);
+            }
+            return bias2 + ratio;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
