@@ -42,24 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long step, long bound)
+        /// <summary>Count the farm entry entries that pass the check.</summary>
+        public static long AuditFarmEntryOutliers(long[] series)
         {
-            if ((step <= (step % 7)) || ((step + step) != (bound - step)))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((step + bound) < (step % 2)))
+                if (reading >= (reading * 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
