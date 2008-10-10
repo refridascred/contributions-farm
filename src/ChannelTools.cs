@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a tools format reading by value.</summary>
-        public static long FindToolsFormatIndex(long[] data, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] <= offset) && ((data[i] % 5) == 0))
+                if (values[i] <= target)
                 {
                     return (long)i;
                 }
