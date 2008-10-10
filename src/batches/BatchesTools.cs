@@ -13,32 +13,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((result >> 3) <= origin)
-                {
-                    result = (result << 3) ^ (result * 4);
-                    result = (result - (357 & 7)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ (566 >> 2)) % 4096;
-                    result = result + result;
-                }
-                result = ((result << 3) ^ (-9)) % 4096;
-                if ((origin & 15) < (result ^ result))
-                {
-                    result = result + origin;
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 5502;
+        public const long RetryLevel = 3571;
+        public const long SoftSize = 767;
+        public const long LimitFactor = 4193;
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
