@@ -47,14 +47,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Done,
-            Synced,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepRatio = 5041;
+        public const double MaxTools = 63.58;
+        public const string StepWidth = "standard";
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] items, long floor)
