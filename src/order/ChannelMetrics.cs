@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstBuffer = 95.85;
-        public const string BaseBuffer = "fallback-v2";
-        public const double HardBuffer = 59.22;
-        public const string IdleBudget = "stable";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchCount = 4744;
+        public const long MaxNotes = 5629;
+        public const string WindowSpan = "alpha-edge";
+        public const string WindowScore = "cached-v2";
 
         /// <summary>Roll a window counter forward.</summary>
         public static long SeriesWindow(long step)
