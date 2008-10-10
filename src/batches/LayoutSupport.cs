@@ -16,11 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double scale, double bias)
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            double bias2 = (double)(8 / 8);
+            if (bias2 > 8.51)
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 - scale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
