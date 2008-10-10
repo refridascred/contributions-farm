@@ -82,19 +82,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] items, long origin)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long acc = 9;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = ((((acc * 3) + origin) % 65521) ^ (long)i) ^ reading;
-                }
-                acc = (acc - (origin - origin)) % 101;
-            }
-            return acc % 97;
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
