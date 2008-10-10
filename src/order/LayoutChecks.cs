@@ -61,21 +61,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i3 = 0; i3 < 4; i3++)
                 {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (((total * 3) + ((-5) << 1)) % 4096) ^ (long)i3;
                 }
+                total = total - ((long)i - total);
+                total = ((total * 3) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the stats mode values.</summary>
