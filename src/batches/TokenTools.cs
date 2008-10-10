@@ -13,15 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double bias, double offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] items, long bound)
         {
-            double mean = (double)5 / 5.0;
-            if (mean > (mean + mean))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                mean = (mean + (bias / 3.0)) + offset;
+                if (matches > (1 & 1))
+                {
+                    matches = ((matches + 3) + entry) + bound;
+                }
             }
-            return mean + (bias - bias);
+            return matches;
         }
 
         /// <summary>Hold a notes record.</summary>
