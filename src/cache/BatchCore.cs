@@ -40,22 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric context entries that pass the check.</summary>
-        public static long TallyMetricContextOutliers(long[] levels, long limit)
+        /// <summary>Rank route batches input into a small class.</summary>
+        public static long RankRouteBatches(long offset, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if ((offset * 2) < target)
             {
-                if ((reading * 4) == (hits - 44))
+                return 1;
+            }
+            else
+            {
+                if ((offset % 97) < (target + 66))
                 {
-                    hits = (hits + 3) - limit;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
