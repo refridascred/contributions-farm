@@ -20,13 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double bias, double offset)
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            double load = bias - (double)299;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load - 9.0) + (double)(long)i) - offset;
+            }
+            return load - (double)1;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
