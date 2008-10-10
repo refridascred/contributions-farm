@@ -91,13 +91,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            New,
+            Closed,
+            Pending,
+            Locked,
         }
     }
 }
