@@ -22,11 +22,18 @@ namespace Common.Utilities
         public const string IdleOrder = "stable";
         public const long BatchSize = 3191;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] readings)
         {
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((1 ^ entry) >= entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate profile editor samples.</summary>
