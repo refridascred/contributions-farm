@@ -20,14 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] series, long origin)
         {
-            Idle,
-            New,
-            Locked,
-            Dropped,
-            Paused,
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of command counter entries.</summary>
