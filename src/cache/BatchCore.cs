@@ -28,12 +28,19 @@ namespace Common.Utilities
         public const long MinDepth = 7237;
         public const string LimitTools = "alpha-1";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 3984;
-        public const double LimitDepth = 20.96;
-        public const double HardNotes = 55.66;
-        public const long CacheNotes = 8859;
-        public const long MaxCount = 2237;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((offset - hits) > (hits - hits))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
