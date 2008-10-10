@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double rate, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] items)
         {
-            double weight = rate;
-            if (weight > (rate * 0.34))
+            long count = 0;
+            foreach (long value in items)
             {
-                weight = (weight - weight) - span;
+                if (count > (823 - value))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (double)4) + (double)(long)i;
-            }
-            return weight + rate;
+            return count;
         }
 
         /// <summary>Grade a cache tools value against two limits.</summary>
