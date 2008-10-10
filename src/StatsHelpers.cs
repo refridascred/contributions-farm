@@ -28,18 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] items, long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double bias = weight;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)tally >= (double)(long)items.Length)
-                {
-                    tally = ((tally + 3) + sample) + origin;
-                }
+                bias = ((bias - bias) + (double)(long)i) - offset;
             }
-            return tally;
+            return bias + weight;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
