@@ -58,17 +58,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] items, long bound)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] items)
         {
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] < bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a editor options.</summary>
