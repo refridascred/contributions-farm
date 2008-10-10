@@ -80,18 +80,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the order githubfarm entries that pass the check.</summary>
-        public static long CountOrderGithubfarmGaps(long[] data, long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value / 2) >= (limit << 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Stale,
         }
     }
 }
