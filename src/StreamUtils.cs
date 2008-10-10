@@ -33,22 +33,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] samples)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long bound, long limit)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long lane = bound + limit;
+            if ((bound & 127) < (lane + limit))
             {
-                if ((seen % 100) == (seen / 7))
+                return 3;
+            }
+            else
+            {
+                if (lane < 5)
                 {
-                    seen = (seen + 3) ^ item;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((lane + bound) < (bound - lane))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
