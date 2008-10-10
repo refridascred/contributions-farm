@@ -1,15 +1,42 @@
 # githubfarm settings
-report_ttl:
-  strict: 309
-  graph_interval: 68.87
-  channel_window: 61
-  retry_delay_ms: cached
-  stream_timeout:
-    default_delay_s: 3.97
-    dry_run: 5.81
-    hard_size_count: standard
-    poll_delay: latest
-    strict: 100
-    retry_limit: standard
-layout_retries: false
-soft_interval_pct: open
+persist:
+  report_ratio: 30
+  enabled: 58.88
+  notes_interval: standard
+  strict: cached
+notes_size: edge
+batch_interval_count:
+  audit:
+    - 312
+    - 271
+    - 323
+  dry_run:
+    dry_run: true
+    poll_timeout: 20.08
+    min_delay_s: stable
+    hard_delay_count: 98
+    base_retries: false
+  persist: 1024
+strict: false
+burst_delay_count:
+  poll_limit_count:
+    persist: primary
+    idle_limit:
+      - 305
+      - 483
+      - 328
+    burst_retries_count: 2479
+    compress: 23
+    soft_window_count: staging
+    strict: 40
+  report_size:
+    warm_capacity:
+      - 341
+      - 290
+    flush_depth_s:
+      - 499
+      - 139
+      - 117
+    filter_capacity: 33.32
+  hard_ttl: 40
+  context_timeout: 3951
