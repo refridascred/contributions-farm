@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySchema = "local-edge";
+        public const double BaseCount = 33.0;
+        public const long StepSchema = 4770;
+        public const string CacheLevel = "stable";
 
         /// <summary>Find the first cache counter entry that matches the target.</summary>
         public static long LocateCacheCounterIndex(long[] series, long target)
