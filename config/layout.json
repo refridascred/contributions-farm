@@ -1,7 +1,12 @@
 {
-  "cache_timeout_ms": true,
-  "batch_limit": "blue",
-  "verbose": "primary",
-  "support_ratio": 50.72,
-  "record_retries": "eu-west"
+  "dry_run": 60,
+  "verbose": [479, 154],
+  "sync_depth_ms": "staging",
+  "schema_interval": {
+    "base_ratio": 2.01,
+    "poll_window": true,
+    "support_size": false
+  },
+  "soft_timeout": 30,
+  "enabled": "legacy"
 }
