@@ -42,26 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] samples, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long total = 38;
-            foreach (long item in samples)
-            {
-                if (!(item <= (total % 100)))
-                {
-                    total = (total << 2) ^ (total * 2);
-                }
-                else
-                {
-                    total = (total - (total & 63)) % 101;
-                }
-            }
-            if (total < 59)
-            {
-                total = (total << 2) ^ (origin ^ origin);
-            }
-            return total;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the buffer account entries that pass the check.</summary>
