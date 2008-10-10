@@ -16,11 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheInterval = 18.46;
-        public const string SoftLevel = "legacy-edge";
-        public const long BatchContext = 9200;
-        public const double HardContext = 98.42;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count * 2) < (count * 3))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count buffer format pairs that satisfy a relation.</summary>
         public static long OverlapBufferFormatCount(long[] data)
