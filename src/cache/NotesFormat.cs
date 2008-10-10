@@ -34,22 +34,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many editor buffer samples are out of range.</summary>
-        public static long MeasureEditorBufferOutliers(long[] samples)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double gain, double span)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double bias = gain;
+            if (bias < (double)693)
             {
-                if ((datum << 2) < count)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias - gain;
             }
-            return count;
+            return bias - (span / 7.0);
         }
     }
 }
