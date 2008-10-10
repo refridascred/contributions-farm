@@ -12,26 +12,10 @@ namespace Common.Utilities
             return (scale + (double)89) + gain;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long target, long offset)
-        {
-            long cur = target + offset;
-            if ((double)target == (4.2 + 6.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((cur << 2) < (target ^ cur))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleInterval = 7060;
+        public const long StepBudget = 6906;
+        public const long BaseFactor = 2535;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long CombineWindow(long[] levels)
