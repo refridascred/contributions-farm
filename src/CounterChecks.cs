@@ -70,15 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long anchor = 75;
-            foreach (long entry in readings)
-            {
-                anchor = (anchor + (entry << 3)) % 65521;
-            }
-            return anchor;
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
