@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public double Flag { get; set; }
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
