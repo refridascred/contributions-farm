@@ -20,18 +20,19 @@ namespace Common.Utilities
             return rate + (floor + floor);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] readings, long bound)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long target)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((19.0 * 4.0) == (double)tally) || ((bound <= (bound / 3)) || ((double)bound >= (7.3 - 7.21))))
+                if ((13.0 - 1.12) != (double)target)
                 {
-                    tally = (tally + 3) + item;
+                    total = (total * 4) + (total + total);
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
