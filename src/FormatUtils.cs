@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] items, long step)
+        /// <summary>Audit record stream readings against a rule.</summary>
+        public static long CountRecordStreamOutliers(long[] samples)
         {
-            long total = 372;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                total = ((total - (3 + step)) % 4096) ^ datum;
+                if ((entry & 3) > (-6))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (total > 1)
-            {
-                total = total + (total % 60);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
