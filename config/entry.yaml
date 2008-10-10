@@ -1,4 +1,8 @@
 # entry settings
-poll_limit_ms: 89
-hard_ttl_ms: open
-dry_run: false
+audit: 1024
+tools_ttl: 60
+verbose:
+  - standard
+  - staging
+  - legacy
+  - open
