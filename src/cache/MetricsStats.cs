@@ -65,14 +65,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double weight, double span)
         {
-            Locked,
-            Failed,
-            Retry,
-            Closed,
-            Dropped,
+            double gain = span;
+            return (gain + (double)43) + weight;
         }
     }
 }
