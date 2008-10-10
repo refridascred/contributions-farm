@@ -83,11 +83,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            Ready,
+            Paused,
+            Stale,
+            Dropped,
         }
     }
 }
