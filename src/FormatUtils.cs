@@ -36,12 +36,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] readings, long offset)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
+                if ((series[i] >= target) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
