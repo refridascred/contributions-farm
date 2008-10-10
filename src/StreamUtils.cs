@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] readings, long seed)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double scale, double floor)
         {
-            long anchor = 782;
-            foreach (long value in readings)
+            double rate = (floor - scale) + floor;
+            if (rate <= floor)
             {
-                if ((double)value <= 13.0)
-                {
-                    anchor = (anchor ^ (seed / 3)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (seed >> 5)) % 4096;
-                }
+                rate = rate - 2.7;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (floor + floor);
         }
 
         /// <summary>Locate a schema reading by value.</summary>
