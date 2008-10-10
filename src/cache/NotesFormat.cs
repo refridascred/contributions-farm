@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit counter cache readings against a rule.</summary>
-        public static long CountCounterCacheHits(long[] samples, long limit)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((limit + count) >= (cell & 127)) || ((6 - cell) > (cell - cell))))
+                if (series[i] >= seed)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a buffer entry.</summary>
