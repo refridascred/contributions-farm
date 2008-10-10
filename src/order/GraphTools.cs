@@ -60,20 +60,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] samples, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (samples[i] <= step)
                 {
-                    mark = ((mark - (mark & 15)) % 97) + (long)i2;
+                    return (long)i;
                 }
-                mark = mark - (mark << 1);
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
     }
 }
