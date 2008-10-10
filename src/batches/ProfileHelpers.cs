@@ -89,13 +89,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] values)
         {
-            Pending,
-            Idle,
-            Paused,
-            Done,
+            long sum = 71;
+            foreach (long entry in values)
+            {
+                if ((7 >> 4) >= (sum ^ sum))
+                {
+                    sum = sum + sum;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (entry - 5)) % 101;
+                }
+            }
+            if (sum < 31)
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum % 4096;
         }
     }
 }
