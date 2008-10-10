@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long floor)
         {
-            Synced,
-            Pending,
-            Dropped,
-            Active,
-            Idle,
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry - floor) % 4096;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
