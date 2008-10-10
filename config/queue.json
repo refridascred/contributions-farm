@@ -1,5 +1,5 @@
 {
-  "min_threshold_pct": "blue",
-  "queue_threshold": true,
-  "sync_timeout_pct": 44.11
+  "audit": [243, 433, 83],
+  "queue_capacity": 70,
+  "base_ttl_pct": 16.72
 }
