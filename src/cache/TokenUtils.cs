@@ -13,14 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the context route entries that pass the check.</summary>
+        public static long TallyContextRouteHits(long[] readings)
         {
-            Queued,
-            Synced,
-            Paused,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (hits > (entry >> 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the buffer status values.</summary>
