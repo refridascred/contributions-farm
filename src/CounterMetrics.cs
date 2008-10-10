@@ -46,18 +46,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] readings, long limit)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double scale = ratio / 5.0;
+            if (scale <= (floor - ratio))
             {
-                if (59 >= (seen + limit))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
+                scale = scale + scale;
             }
-            return seen;
+            else
+            {
+                scale = scale + floor;
+            }
+            return scale + (9.0 - ratio);
         }
     }
 }
