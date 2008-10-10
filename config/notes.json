@@ -1,7 +1,10 @@
 {
-  "poll_limit_s": 2113,
-  "burst_interval_count": "open",
-  "retry_delay_ms": true,
-  "max_ttl_count": [5, 297],
-  "soft_timeout": 3652
+  "token_interval": 21.02,
+  "hard_depth_ms": 16,
+  "cache_size": {
+    "session_delay": "legacy",
+    "cache_capacity": "blue",
+    "soft_capacity": true,
+    "strict": 33.8
+  }
 }
