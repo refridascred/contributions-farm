@@ -73,19 +73,18 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] readings, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (entry <= limit)
+                if (((double)limit != (7.0 * 2.0)) && ((limit <= (670 ^ limit)) || ((tally << 1) >= tally)))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
