@@ -12,22 +12,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
-        public static long AuditGithubfarmClusterMatches(long[] items)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (cell > (665 * 5))
+                if ((item - seen) >= (long)readings.Length)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) + target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
