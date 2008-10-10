@@ -19,20 +19,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long step, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            long offset2 = step - offset;
+            if ((offset2 + step) > offset)
             {
-                acc = acc + (acc << 1);
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = ((acc + acc) % 255) - (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (!((265 + step) > (803 ^ offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Classify a filter batches pair into a bucket.</summary>
