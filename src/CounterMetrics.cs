@@ -26,11 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheCount = 1988;
-        public const long StepLevel = 4405;
-        public const long LimitContext = 1030;
-        public const double DefaultDepth = 11.61;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long floor, long step)
+        {
+            if ((step << 2) < (step % 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor > (4 & 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((floor + step) < (step >> 4)) || ((8.04 * 3.45) <= (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0.23 * 0.86) > (double)floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] levels, long offset)
