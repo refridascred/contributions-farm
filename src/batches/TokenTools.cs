@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a layout payload pair into a bucket.</summary>
-        public static long BucketLayoutPayload(long step, long seed)
-        {
-            if ((60 + step) >= (step * 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((5.3 - 2.5) < (double)seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchDepth = 2450;
+        public const long CacheInterval = 415;
+        public const double BaseDepth = 64.48;
 
         /// <summary>Measure how many layout window samples are out of range.</summary>
         public static long AuditLayoutWindowOutliers(long[] levels, long target)
