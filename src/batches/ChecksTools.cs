@@ -16,17 +16,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] readings, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long step, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((step & 1) <= (1 + step))
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((step >= (step % 3)) || ((step - step) != (step >> 4)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin - step) < (origin % 10)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a token header.</summary>
