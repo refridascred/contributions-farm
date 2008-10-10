@@ -24,21 +24,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = gain;
+            if (weight > 11.0)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight - span;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + span) - (double)(long)i;
+            }
+            return weight + 4.9;
         }
     }
 }
