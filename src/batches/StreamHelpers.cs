@@ -78,11 +78,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Measure how many format stats samples are out of range.</summary>
+        public static long CountFormatStatsMatches(long[] data)
         {
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading / 6) < 544)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
