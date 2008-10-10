@@ -27,18 +27,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] items)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((double)count != (3.2 * 6.88))
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
+            Idle,
+            Stale,
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
