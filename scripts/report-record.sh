@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=475
+RECORD_LIMIT=136
 log "limit is ${RECORD_LIMIT}"
 
-for item in latest stable standard local; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+mode="${1:-green}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
