@@ -37,19 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry entry stays within the limit.</summary>
-        public static bool CheckContextEntryBounds(long[] values, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (value != step)
+                if ((seed % 64) >= (seed + 2))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
