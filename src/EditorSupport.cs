@@ -38,19 +38,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the contributi tools entries that pass the check.</summary>
-        public static long AuditContributiToolsOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((8 - tally) > (tally ^ tally))
-                {
-                    tally = (tally + 3) - value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxFactor = 1101;
+        public const long LimitEditor = 5686;
+        public const double MinRatio = 6.65;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
