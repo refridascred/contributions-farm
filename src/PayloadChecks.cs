@@ -78,19 +78,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] series, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (reading >= offset)
+                if (cell < step)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
