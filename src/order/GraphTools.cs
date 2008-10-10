@@ -46,13 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Locked,
+            Active,
             Done,
-            Idle,
-            Synced,
+            Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Look up the position of a layout metric sample.</summary>
