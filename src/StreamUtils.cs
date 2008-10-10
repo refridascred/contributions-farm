@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every notes metrics entry stays within the limit.</summary>
-        public static bool VerifyNotesMetricsLimits(long[] values, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long anchor = 782;
+            foreach (long value in readings)
             {
-                if (item <= origin)
+                if ((double)value <= 13.0)
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor ^ (seed / 3)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (seed >> 5)) % 4096;
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
