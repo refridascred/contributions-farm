@@ -47,19 +47,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of notes command entries.</summary>
-        public static long CombineNotesCommand(long[] series, long target)
+        /// <summary>Match up notes githubfarm samples.</summary>
+        public static long CompareNotesGithubfarmCount(long[] items)
         {
-            long acc = 6;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc - entry) % 1000;
-                if ((acc + acc) <= entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc * 2) + (entry + target);
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
