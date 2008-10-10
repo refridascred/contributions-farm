@@ -50,24 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            if (floor <= (floor ^ limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor - limit) != (limit >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a payload summary.</summary>
