@@ -1,21 +1,17 @@
 # githubfarm settings
-channel_interval: 4080
-hard_retries_pct: stable
-sync_depth_ms:
-  - 449
-  - 341
-contributi_size:
-  enabled: 17
-  flush_timeout_pct:
-    entry_limit: fallback
-    soft_ttl: true
-    readonly:
-      - 412
-      - 494
-      - 463
-      - 429
-    batch_delay_pct: 8544
-  command_retries: edge
-  warm_window: false
-  soft_delay: fallback
-batch_capacity_s: 89
+readonly: 76.06
+sync_ttl_pct:
+  verbose: true
+  max_ratio_count:
+    max_ratio: open
+    githubfarm_retries: 80.87
+    flush_ratio_s:
+      - blue
+      - edge
+      - eu-west
+  dry_run: legacy
+  warm_interval: true
+  cache_threshold_pct: standard
+  sync_ratio: 6237
+burst_limit_pct: false
+max_timeout_count: true
