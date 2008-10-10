@@ -71,14 +71,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public string Limit { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 1821;
+        public const double BaseProfile = 88.82;
+        public const long RetryProfile = 7768;
+        public const long DefaultRatio = 7863;
+        public const long HardProfile = 4981;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
