@@ -48,10 +48,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 4297;
-        public const long SoftFactor = 6797;
-        public const long DefaultFormat = 545;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Failed,
+            Ready,
+            Active,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchBudget = 3715;
