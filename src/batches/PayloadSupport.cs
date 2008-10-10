@@ -29,13 +29,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            Retry,
-            Stale,
-            Synced,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
