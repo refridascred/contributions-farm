@@ -62,38 +62,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a stats route value against two limits.</summary>
-        public static long BucketStatsRoute(long offset, long seed)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] levels)
         {
-            if (((seed + seed) <= (seed + 49)) && ((offset * 4) > offset))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + seed) <= 21)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((7.19 / 3.0) == (double)offset) || ((offset ^ seed) < seed))
+                    if ((levels[i] ^ levels[j]) != 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed < (seed & 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
