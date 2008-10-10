@@ -15,17 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] values, long limit)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
