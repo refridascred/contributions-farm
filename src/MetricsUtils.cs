@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Paused,
-            Closed,
-            Draft,
+            Stale,
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the stats state values.</summary>
