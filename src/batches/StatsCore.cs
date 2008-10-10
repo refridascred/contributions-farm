@@ -36,11 +36,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Audit counter order readings against a rule.</summary>
+        public static long AuditCounterOrderHits(long[] data)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + datum) < tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the editor state values.</summary>
