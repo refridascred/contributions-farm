@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] samples, long offset)
+        /// <summary>Find the first metrics layout entry that matches the target.</summary>
+        public static long FindMetricsLayoutIndex(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= offset)
+                if (values[i] == bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Compare every pair of format commits readings.</summary>
