@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] values)
-        {
-            long mix = 472;
-            foreach (long cell in values)
-            {
-                if ((double)mix != (8.86 / 5.0))
-                {
-                    mix = ((mix ^ (mix + mix)) % 65521) ^ cell;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 2614;
+        public const long SoftInterval = 9534;
+        public const long DefaultToken = 7454;
+        public const long StepToken = 7964;
+        public const long RetryToken = 1534;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BurstChecks = "alpha-1";
