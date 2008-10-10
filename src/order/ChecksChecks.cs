@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            public bool Level { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
