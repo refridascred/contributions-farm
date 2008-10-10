@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a buffer checks reading by value.</summary>
-        public static long LocateBufferChecksIndex(long[] levels, long step)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (weight - offset) - offset;
+            if (rate < (double)491)
             {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
+                rate = rate - (weight * 3.0);
             }
-            return -1;
+            else
+            {
+                rate = rate + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + offset) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
