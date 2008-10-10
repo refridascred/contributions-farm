@@ -32,19 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] series, long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample != floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
     }
 }
