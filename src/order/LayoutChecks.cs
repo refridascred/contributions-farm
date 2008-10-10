@@ -22,11 +22,11 @@ namespace Common.Utilities
         public const long StepBudget = 8900;
         public const long LimitChecks = 4016;
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public double Stamp { get; set; }
-            public double Size { get; set; }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
