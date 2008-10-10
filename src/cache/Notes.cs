@@ -29,12 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double weight, double span)
         {
-            Queued,
-            Done,
-            Retry,
+            double weight2 = span;
+            return (weight2 - span) + weight;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
