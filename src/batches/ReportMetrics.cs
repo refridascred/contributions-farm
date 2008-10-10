@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const long WindowScore = 5836;
         public const string DefaultStream = "alpha";
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Idle,
-            Closed,
-            Done,
-            Synced,
-            Pending,
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
