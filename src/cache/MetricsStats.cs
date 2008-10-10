@@ -38,12 +38,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a route context reading by value.</summary>
