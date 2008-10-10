@@ -1,6 +1,10 @@
 # entry settings
-base_threshold: 1.92
-persist: 76
-default_depth: green
-batch_timeout_pct: 30.93
-editor_retries: 82.56
+verbose: true
+retry_ttl_s: 100
+retry_size_pct: 250
+editor_capacity:
+  soft_timeout: 100
+  burst_retries_pct: true
+  verbose: 76.05
+  batch_window: standard
+  sync_depth_pct: 30
