@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] readings)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((double)item <= (double)hits))
-                {
-                    hits = hits + 3;
-                }
+                total = (total - (origin << 3)) % 255;
+                total = ((total * 4) + 675) % 255;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Adjust a route reading.</summary>
