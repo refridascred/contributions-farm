@@ -1,4 +1,6 @@
 # githubfarm settings
-base_retries_count: 500
-min_interval: 78.28
-verbose: stable
+batch_depth: 23.15
+max_ratio: true
+cache_limit_count: 75
+contributi_ratio: false
+max_ttl: true
