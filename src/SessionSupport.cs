@@ -28,22 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] readings, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] data, long step)
         {
-            long carry = 2;
-            foreach (long entry in readings)
+            long anchor = 370;
+            foreach (long item in data)
             {
-                if (!(carry >= (step * 5)))
+                if (!((8.0 - 13.0) != (double)step))
                 {
-                    carry = ((carry + (carry / 6)) % 65521) ^ entry;
-                }
-                if ((7.05 * 1.64) < (double)carry)
-                {
-                    carry = carry + (carry + step);
+                    anchor = (anchor - (704 - item)) % 1000;
                 }
             }
-            return carry;
+            return anchor;
         }
     }
 }
