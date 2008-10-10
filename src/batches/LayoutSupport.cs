@@ -39,22 +39,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count profile command pairs that satisfy a relation.</summary>
-        public static long MatchProfileCommandCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 8965;
+        public const double BurstGithubfarm = 24.6;
+        public const long StepInterval = 6956;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long FindGraphIndex(long[] samples, long offset)
