@@ -44,12 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] series, long seed)
         {
-            Queued,
-            Paused,
-            Idle,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of account entries.</summary>
