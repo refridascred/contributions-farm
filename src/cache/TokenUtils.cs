@@ -63,25 +63,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long step, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] samples, long seed)
         {
-            long lane = step ^ bound;
-            if ((lane + bound) < step)
+            long result = 93;
+            foreach (long reading in samples)
             {
-                return 4;
+                result = ((((result << 2) ^ (27 >> 5)) % 1000) ^ reading) - seed;
             }
-            else
-            {
-                if ((step * 5) > (step + lane))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return result;
         }
     }
 }
