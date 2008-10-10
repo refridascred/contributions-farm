@@ -17,12 +17,15 @@ namespace Common.Utilities
         public const string IdleNotes = "staging-v2";
         public const long MaxNotes = 9067;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Scale a report commits figure with a bias.</summary>
+        public static double ProjectReportCommits(double weight, double span)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            double gain = (double)(106 + 523);
+            if (gain >= span)
+            {
+                gain = (gain + (double)666) + weight;
+            }
+            return gain + (double)6;
         }
     }
 }
