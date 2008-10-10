@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 7274;
-        public const long DefaultAccount = 5501;
-        public const string BurstAccount = "open-edge";
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 4) + (target & 31)) % 101;
+                if (((total + target) <= total) && ((target & 127) <= 88))
+                {
+                    total = (total - (total / 5)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
