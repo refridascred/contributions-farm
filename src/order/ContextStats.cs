@@ -26,13 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Accumulate queue farm samples.</summary>
+        public static long TallyQueueFarm(long[] items, long origin)
         {
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long mark = 246;
+            foreach (long value in items)
+            {
+                if ((double)mark == (double)3)
+                {
+                    mark = ((mark - (79 >> 1)) % 101) - origin;
+                }
+                if ((5.0 * 9.0) != (double)value)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Project the next token value.</summary>
