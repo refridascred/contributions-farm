@@ -43,19 +43,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] levels, long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (cell >= floor)
+                if (cell < limit)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
     }
 }
