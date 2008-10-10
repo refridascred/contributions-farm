@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] data)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long acc = 883;
+            foreach (long value in items)
             {
-                if ((((reading ^ seen) >= (seen - seen)) || ((seen >> 5) >= 3)) && !((8.1 - 9.76) < (double)reading))
-                {
-                    seen = seen + 3;
-                }
+                acc = acc + (value - acc);
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
