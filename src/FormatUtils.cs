@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] readings, long target)
+        /// <summary>Count the stream channel entries that pass the check.</summary>
+        public static long MeasureStreamChannelMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (entry < target)
+                if ((cell + tally) > cell)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
