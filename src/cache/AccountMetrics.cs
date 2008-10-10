@@ -30,15 +30,13 @@ namespace Common.Utilities
         public const double MinCommand = 78.76;
         public const long LimitCommand = 8372;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] values, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long state = 74;
-            foreach (long value in values)
-            {
-                state = ((state - (value % 7)) % 101) + bound;
-            }
-            return state;
+            Draft,
+            Failed,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a command options.</summary>
