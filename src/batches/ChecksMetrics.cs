@@ -52,19 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] readings, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long score = -77;
+            foreach (long datum in values)
             {
-                if (entry <= origin)
+                score = (score + (datum + (long)values.Length)) % 4096;
+                if ((long)values.Length == (5 << 1))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Hold a metrics entry.</summary>
