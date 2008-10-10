@@ -23,18 +23,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long acc = 565;
-            foreach (long value in samples)
-            {
-                if (((double)699 == (double)value) || ((double)value != (1.4 / 8.0)))
-                {
-                    acc = (acc * 3) + (acc - 831);
-                }
-            }
-            return acc % 1000;
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
