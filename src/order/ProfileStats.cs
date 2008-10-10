@@ -30,11 +30,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryRatio = 4446;
-        public const string BurstAlready = "legacy-v2";
-        public const long MinCount = 6088;
-        public const long SoftWidth = 9817;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Dropped,
+            Draft,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double SmoothEntry(double gain, double bias)
