@@ -36,23 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] items, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4 - origin) >= mix)
+                if ((items[i] == limit) && ((items[i] % 2) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                if (((double)(long)i >= 6.8) && (mix <= (origin - mix)))
-                {
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Blend two session measurements.</summary>
