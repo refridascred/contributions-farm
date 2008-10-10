@@ -31,18 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache commits readings against a rule.</summary>
-        public static long AuditCacheCommitsOutliers(long[] items)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!((count - count) < (28 % 60)))
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            Done,
+            Ready,
+            Failed,
+            New,
+            Dropped,
         }
     }
 }
