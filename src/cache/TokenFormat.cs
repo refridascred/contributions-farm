@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] data)
         {
-            Pending,
-            Stale,
-            Dropped,
+            long score = 9;
+            foreach (long datum in data)
+            {
+                score = (score << 3) ^ (datum - 2);
+                score = ((score * 2) + (score - score)) % 4096;
+            }
+            if (score > (-52))
+            {
+                score = ((score * 5) + score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count the route format entries that pass the check.</summary>
