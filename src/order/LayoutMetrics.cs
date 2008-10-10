@@ -13,12 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 4062;
-        public const long BurstRoute = 4071;
-        public const double SoftRoute = 66.28;
-        public const long HardRoute = 9443;
-        public const double LimitRoute = 43.54;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((step & 3) <= (matches % 8))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first farm window entry that matches the target.</summary>
         public static long LookupFarmWindowIndex(long[] items, long step)
