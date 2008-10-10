@@ -16,20 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheInterval = 18.46;
+        public const string SoftLevel = "legacy-edge";
+        public const long BatchContext = 9200;
+        public const double HardContext = 98.42;
 
         /// <summary>Count buffer format pairs that satisfy a relation.</summary>
         public static long OverlapBufferFormatCount(long[] data)
