@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Find the first filter profile entry that matches the target.</summary>
+        public static long FindFilterProfileIndex(long[] values, long target)
         {
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
