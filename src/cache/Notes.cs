@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] series, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (!(((0.68 / 4.0) > (double)count) && ((double)count >= 1.0)))
+                if (((bound > (seen & 31)) || ((seen + 2) < (bound + (-466)))) || (((bound ^ seen) >= 7) && ((double)seen < (6.82 / 7.0))))
                 {
-                    count = ((count + 3) + value) + floor;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
