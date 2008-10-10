@@ -16,19 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double scale, double bias)
+        /// <summary>Roll a report contributi counter forward.</summary>
+        public static long IterateReportContributi(long offset)
         {
-            double drift = bias;
-            if (drift >= (0.69 * 8.17))
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                drift = drift + scale;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)5) - (double)(long)i;
-            }
-            return drift + scale;
+            return score;
         }
 
         /// <summary>Rank batches notes input into a small class.</summary>
