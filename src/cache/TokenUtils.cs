@@ -42,13 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long bound)
         {
-            Idle,
-            Closed,
-            Done,
-            Stale,
+            long result = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
