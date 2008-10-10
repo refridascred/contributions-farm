@@ -33,24 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] items, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((reading - 10) < (step << 3))
                 {
-                    anchor = ((anchor << 3) ^ (88 + anchor)) ^ (long)i2;
+                    seen = seen + 1;
                 }
-                if ((double)offset < (8.6 * 5.2))
+                else
                 {
-                    anchor = ((anchor << 2) ^ (anchor * 3)) % 255;
-                    anchor = (anchor - (anchor << 1)) % 97;
+                    seen = seen - 1;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
