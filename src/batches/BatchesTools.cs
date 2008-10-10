@@ -14,15 +14,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a counter layout counter forward.</summary>
-        public static long SeriesCounterLayout(long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] series, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (11.0 >= (double)item)
+                {
+                    matches = (matches + 1) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
