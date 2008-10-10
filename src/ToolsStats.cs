@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheLevel = "legacy-1";
-        public const double MinBatches = 43.98;
-        public const double DefaultInterval = 18.8;
-        public const string BatchBatches = "fallback-v2";
-        public const long RetryBatches = 3759;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyLimits(long[] data, long step)
