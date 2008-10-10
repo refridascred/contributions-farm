@@ -26,12 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public string Count { get; set; } = "";
+            Idle,
+            Closed,
+            Done,
+            Stale,
         }
     }
 }
