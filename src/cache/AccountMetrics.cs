@@ -35,23 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (((offset >> 5) < (carry + offset)) || ((double)carry < (double)967))
+                if (((7.4 - 8.3) < (double)matches) || ((cell << 3) < matches))
                 {
-                    carry = (carry + carry) % 97;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    carry = (carry - ((long)i << 1)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
