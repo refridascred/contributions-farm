@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] readings, long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long step, long offset)
         {
-            long state = 4;
-            foreach (long value in readings)
+            long next = step + offset;
+            if ((step >> 4) > (step >> 3))
             {
-                if (!((origin + state) < (origin & 63)))
+                return 0;
+            }
+            else
+            {
+                if ((double)step < (7.0 / 8.0))
                 {
-                    state = (((state * 2) + (state / 6)) % 97) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step <= 17.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((2.58 - 19.0) <= (double)next)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Roll a context counter forward.</summary>
