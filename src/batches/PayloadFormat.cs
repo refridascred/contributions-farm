@@ -20,11 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardSpan = 4183;
-        public const string RetryMetric = "primary-1";
-        public const long DefaultMetric = 9457;
-        public const string MinMetric = "staging-1";
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Paused,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Check that every editor batches entry stays within the limit.</summary>
         public static bool GuardEditorBatchesBounds(long[] levels, long seed)
