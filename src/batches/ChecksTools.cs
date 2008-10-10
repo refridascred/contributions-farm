@@ -20,15 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Active,
+            Pending,
+            Locked,
+            Failed,
+            Idle,
         }
 
         /// <summary>Project the next route value.</summary>
