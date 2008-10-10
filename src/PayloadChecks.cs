@@ -20,13 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
+            Paused,
+            Queued,
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the batch level values.</summary>
