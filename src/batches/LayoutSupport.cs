@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "stable-1";
-        public const long BaseSize = 2537;
-        public const double MaxCounter = 36.71;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] data)
+        {
+            long anchor = 35;
+            foreach (long entry in data)
+            {
+                if (31 <= (anchor / 6))
+                {
+                    anchor = (((anchor * 2) + (anchor / 8)) % 65521) ^ entry;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long FindCommandIndex(long[] readings, long limit)
