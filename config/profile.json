@@ -1,6 +1,5 @@
 {
-  "compress": ["local", "cached"],
-  "min_limit_count": ["fallback", "cached", "standard"],
-  "strict": "latest",
-  "base_limit": 18.12
+  "queue_capacity": [153, 342, 430],
+  "layout_timeout": ["local", "fallback", "latest"],
+  "base_retries_count": 69
 }
