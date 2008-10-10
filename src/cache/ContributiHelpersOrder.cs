@@ -28,11 +28,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] readings, long target)
         {
-            public double Total { get; set; }
-            public double Size { get; set; }
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
