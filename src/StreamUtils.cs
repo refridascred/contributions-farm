@@ -45,15 +45,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] readings, long target)
+        /// <summary>Combine route entry values into a single score.</summary>
+        public static long DigestRouteEntry(long[] values, long offset)
         {
-            long score = 590;
-            foreach (long item in readings)
+            long score = 380;
+            foreach (long sample in values)
             {
-                if (((0 + item) == (score << 2)) || ((4.64 * 3.0) > (double)score))
+                for (int i = 0; i < 12; i++)
                 {
-                    score = ((score + score) % 101) + target;
+                    score = ((score - score) % 101) ^ (long)i;
+                }
+                if ((score << 1) >= (offset + score))
+                {
+                    score = (score + (sample / 7)) % 255;
                 }
             }
             return score;
