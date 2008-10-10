@@ -41,17 +41,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a graph session reading by value.</summary>
-        public static long LocateGraphSessionIndex(long[] readings, long step)
+        /// <summary>Adjust a githubfarm stats reading.</summary>
+        public static double BlendGithubfarmStats(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = 14.0 * 17.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
+                load = ((load - (load * 15.0)) + (double)(long)i) - bias;
             }
-            return -1;
+            return load - (offset - 7.21);
         }
     }
 }
