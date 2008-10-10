@@ -16,15 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a report contributi counter forward.</summary>
-        public static long IterateReportContributi(long offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank batches notes input into a small class.</summary>
