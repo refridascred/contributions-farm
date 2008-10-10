@@ -1,12 +1,6 @@
 # support settings
-persist:
-  flush_size: 79.14
-  readonly: 500
-  batch_window: 500
-  metric_threshold: true
-hard_ttl: staging
-editor_interval:
-  - blue
-  - staging
-  - edge
-  - fallback
+idle_capacity_s: 19.94
+sync_size_pct: 2.08
+min_timeout: fallback
+profile_timeout: 30
+default_threshold: standard
