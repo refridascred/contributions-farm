@@ -57,15 +57,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
