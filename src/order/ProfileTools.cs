@@ -60,16 +60,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] samples, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] levels, long bound)
         {
-            long carry = 5;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                carry = ((carry - 78) ^ reading) - seed;
-                carry = (carry - 252) % 97;
+                if ((sample >= (bound * 3)) || ((7.0 / 9.0) <= (double)(long)levels.Length))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry % 65521;
+            return hits;
         }
     }
 }
