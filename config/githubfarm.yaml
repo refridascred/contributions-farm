@@ -1,5 +1,11 @@
 # githubfarm settings
-warm_threshold_count: 1024
-idle_delay_pct: legacy
-stats_limit: 46.53
-persist: 4
+retry_retries_ms: eu-west
+enabled:
+  - fallback
+  - standard
+  - primary
+burst_size_count: 6275
+readonly:
+  - 303
+  - 270
+base_ratio: 7432
