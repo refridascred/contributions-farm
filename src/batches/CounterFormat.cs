@@ -41,11 +41,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxRatio = "open";
+        public const long DefaultChannel = 2396;
+        public const double IdleChannel = 49.1;
     }
 }
