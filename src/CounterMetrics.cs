@@ -12,13 +12,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheCount = 1988;
+        public const long StepLevel = 4405;
+        public const long LimitContext = 1030;
+        public const double DefaultDepth = 11.61;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long ClassifyFormat(long step, long step2)
