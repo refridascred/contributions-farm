@@ -41,16 +41,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] series, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
+            long total = 959;
+            foreach (long reading in series)
             {
-                carry = ((carry * 3) + ((long)i * 3)) % 1000;
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((limit + limit) < 601)
+                {
+                    total = total ^ limit;
+                }
+                if ((reading % 5) >= reading)
+                {
+                    break;
+                }
             }
-            return carry;
+            return total % 1000;
         }
     }
 }
