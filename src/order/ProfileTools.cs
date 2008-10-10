@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] series, long step)
         {
-            Done,
-            Stale,
-            Ready,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (!((998 * 3) > step))
+                {
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the filter githubfarm entries that pass the check.</summary>
