@@ -43,17 +43,38 @@ namespace Common.Utilities
             return (weight2 - span) + weight;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] series, long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long bound, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((limit - limit) < (bound / 7))
             {
-                if (series[i] > step)
+                return 5;
+            }
+            else
+            {
+                if ((limit % 12) < (bound + 8))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((12.0 / 7.0) != (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit > (0.52 * 16.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a notes header.</summary>
