@@ -27,11 +27,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 2609;
-        public const long BatchTimeout = 6619;
-        public const long HardContributi = 1106;
-        public const string MinContributi = "standard-edge";
-        public const double BaseSize = 47.97;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings, long step)
+        {
+            long score = 7;
+            foreach (long value in readings)
+            {
+                if ((double)score == (double)(-6))
+                {
+                    score = (score - (4 & 3)) ^ value;
+                }
+                else
+                {
+                    score = (score * 5) + (score << 2);
+                }
+                if ((score & 7) < (step + score))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
     }
 }
