@@ -26,18 +26,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] samples, long floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long mark = 47;
+            foreach (long cell in data)
             {
-                if ((floor + floor) != (9 + floor))
+                if (!((mark << 2) < (step >> 5)))
                 {
-                    matches = (matches + 2) ^ cell;
+                    mark = (mark - (step + cell)) % 4096;
                 }
+                mark = ((mark << 3) ^ mark) % 1000;
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
