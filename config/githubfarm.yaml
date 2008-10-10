@@ -1,6 +1,10 @@
 # githubfarm settings
-enabled: primary
-audit: local
-stream_window:
-  - 93
-  - 62
+max_depth_count: 51.39
+idle_capacity: 250
+compress: standard
+retry_ttl_s: 51.82
+sync_retries_ms:
+  - 348
+  - 246
+  - 217
+  - 451
