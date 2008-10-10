@@ -46,22 +46,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] samples)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] levels, long floor)
         {
-            long mark = 7;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((3.4 / 7.0) >= (double)mark)
+                if (matches < reading)
                 {
-                    mark = (mark - (mark >> 5)) ^ entry;
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark < 72)
-            {
-                mark = (mark ^ 70) % 65521;
-            }
-            return mark;
+            return matches;
         }
     }
 }
