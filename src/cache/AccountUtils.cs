@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] values, long offset)
+        /// <summary>Validate commits editor readings against a bound.</summary>
+        public static bool GuardCommitsEditorBounds(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                if (value >= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Look up the position of a contributi notes sample.</summary>
