@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long step)
+        /// <summary>Measure how many metrics counter samples are out of range.</summary>
+        public static long MeasureMetricsCounterHits(long[] readings, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                carry = (carry ^ step) % 1000;
-                carry = (carry - carry) % 255;
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((double)origin == (8.9 / 7.0))
+                {
+                    count = (count + 1) + value;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
