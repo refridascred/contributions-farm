@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] series, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((cell & 255) == (hits + 3))
-                {
-                    hits = (hits + 2) - bound;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
