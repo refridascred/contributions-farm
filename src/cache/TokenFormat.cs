@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit route contributi readings against a rule.</summary>
-        public static long TallyRouteContributiGaps(long[] data, long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (((step & 15) == (step - count)) && ((865 * 4) < (step - datum)))
+                if (item > offset)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count the route format entries that pass the check.</summary>
