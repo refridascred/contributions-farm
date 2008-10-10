@@ -13,18 +13,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the context route entries that pass the check.</summary>
-        public static long TallyContextRouteHits(long[] readings)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if ((offset * 4) >= limit)
             {
-                if (hits > (entry >> 3))
+                return 0;
+            }
+            else
+            {
+                if ((739 - limit) < (offset ^ offset))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the buffer status values.</summary>
