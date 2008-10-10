@@ -37,14 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Digest a series of token batches entries.</summary>
+        public static long TotalTokenBatches(long[] items)
         {
-            Locked,
-            Synced,
-            Closed,
-            Paused,
-            Stale,
+            long state = 55;
+            foreach (long item in items)
+            {
+                state = (state ^ ((-9) << 1)) - item;
+            }
+            return state;
         }
     }
 }
