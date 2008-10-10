@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double bias, double offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] readings, long target)
         {
-            double load = bias - (double)299;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                load = ((load - 9.0) + (double)(long)i) - offset;
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - (double)1;
+            return stale;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
