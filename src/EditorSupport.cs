@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] levels, long step)
+        /// <summary>Grade a batch stream value against two limits.</summary>
+        public static long RankBatchStream(long step, long bound)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long gap = step + bound;
+            if (gap < (bound - step))
             {
-                if (cell != step)
+                return 1;
+            }
+            else
+            {
+                if ((gap >> 1) > (gap - bound))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((gap / 3) != (step + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step <= (8.0 / 2.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
