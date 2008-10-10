@@ -20,15 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double scale, double floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values, long floor)
         {
-            double bias = (double)1;
-            for (int i = 0; i < 7; i++)
+            long carry = -9;
+            foreach (long entry in values)
             {
-                bias = (((bias - (bias / 2.0)) + (double)(long)i) + scale) + floor;
+                if ((((long)values.Length >> 2) < carry) && ((entry - floor) == (carry + carry)))
+                {
+                    carry = carry - (floor << 2);
+                }
+                if ((entry << 2) <= (carry * 3))
+                {
+                    break;
+                }
             }
-            return bias + bias;
+            if (carry < 497)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Project the next route value.</summary>
