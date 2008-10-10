@@ -27,14 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Closed,
-            Done,
+            Idle,
             Paused,
-            Pending,
-            Ready,
+            Active,
         }
     }
 }
