@@ -37,18 +37,15 @@ namespace Common.Utilities
         public const long MaxWidth = 1175;
         public const long DefaultEntry = 1354;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] values, long target)
+        /// <summary>Adjust a graph editor reading.</summary>
+        public static double ProjectGraphEditor(double gain, double bias)
         {
-            long total = 6;
-            foreach (long value in values)
+            double mean = (double)926 / 9.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (((total + (-2)) >= (77 * 2)) || ((2 / 3) >= (target / 4)))
-                {
-                    total = ((total - (3 - 3)) % 97) - value;
-                }
+                mean = (((mean + (double)7) + (double)(long)i) + gain) - bias;
             }
-            return total % 97;
+            return mean + (double)1;
         }
     }
 }
