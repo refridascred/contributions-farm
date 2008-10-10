@@ -1,6 +1,7 @@
-id,ratio,token,weight
-1,823,483,34.6
-2,492,922,11.37
-3,821,85.76,strict
-4,92.29,open,104
-5,green,25.96,65.55
+id,rank,label,owner,state
+1,69.1,94.6,160,strict
+2,288,634,56.31,74.14
+3,469,225,15,latest
+4,22.19,latest,852,cached
+5,strict,edge,676,98.21
+6,49.74,686,91.69,617
