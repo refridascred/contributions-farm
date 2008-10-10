@@ -83,12 +83,16 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long target)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            long result = target;
+            for (int i = 0; i < 21; i++)
+            {
+                result = (result ^ (target + (long)i)) % 97;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the report class values.</summary>
