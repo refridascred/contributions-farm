@@ -55,14 +55,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Idle,
-            Paused,
-            Ready,
-            Active,
-            Failed,
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
