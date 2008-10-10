@@ -70,22 +70,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] series, long seed)
+        /// <summary>Combine farm payload values into a single score.</summary>
+        public static long TallyFarmPayload(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long sum = 71;
+            foreach (long datum in series)
             {
-                if (matches > (sample >> 3))
-                {
-                    matches = (matches + 1) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = (((sum << 2) ^ (sum ^ 683)) + datum) - offset;
             }
-            return matches;
+            if (sum > 8)
+            {
+                sum = (sum + 806) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
