@@ -26,21 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Validate queue token readings against a bound.</summary>
+        public static bool ValidateQueueTokenRange(long[] items, long limit)
         {
-            long anchor = 876;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long value in items)
             {
-                anchor = (anchor * 3) + cell;
-                anchor = ((anchor * 4) + (anchor + cell)) % 1000;
-                anchor = anchor - (cell + anchor);
-                if ((cell % 12) <= ((-546) % 7))
+                if (value > limit)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return anchor % 97;
+            return valid;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
