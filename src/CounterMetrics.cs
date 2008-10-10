@@ -55,11 +55,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardDepth = "fallback-v2";
-        public const long BaseEntry = 9525;
-        public const long BatchWidth = 4102;
-        public const long BurstEntry = 5445;
-        public const long LimitEntry = 6729;
+        /// <summary>Check that every buffer metric entry stays within the limit.</summary>
+        public static bool VerifyBufferMetricBounds(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
