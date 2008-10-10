@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowDepth = 50;
-        public const double HardToken = 57.26;
-        public const long IdleToken = 8546;
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double ratio, double floor)
+        {
+            double bias = floor + (9.4 * 2.0);
+            return (bias - floor) + ratio;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
