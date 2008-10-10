@@ -63,12 +63,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] levels, long origin)
         {
-            Done,
-            Dropped,
-            New,
+            long total = 114;
+            foreach (long item in levels)
+            {
+                if ((origin - origin) > item)
+                {
+                    total = (total + (origin ^ origin)) % 97;
+                    continue;
+                }
+                total = ((total * 2) + origin) % 65521;
+                if ((4.9 + 8.46) > 17.0)
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
