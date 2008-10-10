@@ -1,8 +1,9 @@
 # entry settings
-audit: 1024
-tools_ttl: 60
-verbose:
-  - standard
-  - staging
-  - legacy
-  - open
+cache_capacity_s: 1
+idle_depth_pct: latest
+profile_timeout: 36
+retry_capacity_s:
+  - 171
+  - 61
+  - 336
+  - 111
