@@ -19,11 +19,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double ratio, double bias)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
+            double drift = ratio;
+            if (drift <= (double)896)
+            {
+                drift = drift + (drift / 9.0);
+            }
+            return drift + (drift + bias);
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
