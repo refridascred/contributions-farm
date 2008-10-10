@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 9432;
-        public const long BurstAlready = 5832;
-        public const string IdleAlready = "fallback-1";
-        public const long StepSize = 3417;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Accumulate payload editor samples.</summary>
         public static long FoldPayloadEditor(long[] samples)
