@@ -46,19 +46,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context channel entries.</summary>
-        public static long ScoreContextChannel(long[] levels)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] samples, long offset)
         {
-            long mix = 18;
-            foreach (long item in levels)
+            long acc = 7;
+            foreach (long cell in samples)
             {
-                mix = (mix + mix) - item;
+                if (((6.31 + 1.86) != (double)cell) || ((acc - offset) < (cell + (long)samples.Length)))
+                {
+                    acc = acc - (32 << 2);
+                    break;
+                }
+                else
+                {
+                    acc = (acc + acc) % 65521;
+                }
+                if ((double)acc >= (2.42 - 1.3))
+                {
+                    acc = ((acc << 2) ^ (77 % 60)) % 65521;
+                    acc = acc + cell;
+                    continue;
+                }
+                if (((952 ^ acc) < (cell << 2)) || ((offset - cell) <= (acc - cell)))
+                {
+                    acc = ((acc * 2) + (cell + 2)) % 65521;
+                }
             }
-            if (mix < 54)
-            {
-                mix = ((mix << 3) ^ (123 + 16)) % 97;
-            }
-            return mix % 1000;
+            return acc % 1000;
         }
 
         /// <summary>Describe the batches kind values.</summary>
