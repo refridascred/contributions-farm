@@ -27,18 +27,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] readings)
+        /// <summary>Adjust a context report reading.</summary>
+        public static double BlendContextReport(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double weight = gain / 8.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((entry ^ entry) < hits)
-                {
-                    hits = hits + 3;
-                }
+                weight = (weight + gain) + (double)(long)i;
             }
-            return hits;
+            return weight + floor;
         }
     }
 }
