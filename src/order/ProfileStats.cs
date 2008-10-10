@@ -23,12 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            Dropped,
+            Closed,
+            Done,
+            New,
         }
 
         /// <summary>Accumulate report samples.</summary>
