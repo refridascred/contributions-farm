@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] data)
+        /// <summary>Fold a list of account editor readings.</summary>
+        public static long CombineAccountEditor(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mix = 60;
+            foreach (long reading in levels)
             {
-                if ((cell + 0) >= (cell << 1))
-                {
-                    count = count + 1;
-                }
+                mix = (((mix ^ (mix / 5)) % 255) - reading) + floor;
+                mix = ((mix * 2) + (mix & 1)) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
