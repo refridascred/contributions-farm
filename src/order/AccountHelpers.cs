@@ -41,12 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "strict";
-        public const long CacheBudget = 4501;
-        public const long BatchCache = 9192;
-        public const long HardCache = 9899;
-        public const string SoftCache = "staging-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryLevel = 3062;
+        public const double LimitFilter = 82.73;
+        public const string WindowDepth = "local-edge";
+        public const long CacheLevel = 7761;
+        public const long RetryTimeout = 1194;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
