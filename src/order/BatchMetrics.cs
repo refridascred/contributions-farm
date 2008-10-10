@@ -72,12 +72,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double rate, double bias)
         {
-            Stale,
-            Synced,
-            Active,
+            double weight = (double)(4 - 54);
+            if (weight >= bias)
+            {
+                weight = weight - (rate * 17.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - rate) + (double)(long)i;
+            }
+            return weight - bias;
         }
     }
 }
