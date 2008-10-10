@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long bound, long floor)
+        /// <summary>Blend two batch route measurements.</summary>
+        public static double ProjectBatchRoute(double gain, double bias)
         {
-            long delta = bound - floor;
-            if ((double)bound > (4.08 - 14.0))
+            double load = 5.43;
+            if (load >= 16.0)
             {
-                return 3;
+                load = (load - bias) + gain;
             }
-            else
-            {
-                if ((bound * 3) <= (153 + delta))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound ^ bound) == (9 - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound > (delta * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return load - (bias / 7.0);
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
