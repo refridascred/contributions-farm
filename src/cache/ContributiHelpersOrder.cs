@@ -33,10 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "staging-v2";
-        public const double MaxScore = 65.23;
-        public const long RetryMetric = 7599;
-        public const long DefaultScore = 5938;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] levels)
+        {
+            long state = 65;
+            foreach (long datum in levels)
+            {
+                if (!!((958 / 9) <= ((-711) + state)))
+                {
+                    state = (state + (state - state)) % 97;
+                }
+                if ((datum >> 3) > (state >> 3))
+                {
+                    state = (state << 3) ^ (datum - state);
+                }
+            }
+            return state;
+        }
     }
 }
