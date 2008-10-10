@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "standard-v2";
+        public const long BaseEditor = 3226;
+        public const long IdleEditor = 9888;
+        public const long WindowDepth = 5697;
+        public const double BatchTimeout = 59.74;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
