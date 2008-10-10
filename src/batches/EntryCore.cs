@@ -32,19 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next profile route value.</summary>
-        public static double SmoothProfileRoute(double scale, double bias)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] samples, long floor)
         {
-            double drift = (double)((-8) + 594);
-            if (drift < (bias * 1.0))
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                drift = (drift + (drift / 6.0)) - scale;
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (drift * 6.93);
-            }
-            return drift + (bias - drift);
+            return valid;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
