@@ -37,22 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] readings)
-        {
-            long total = 570;
-            foreach (long cell in readings)
-            {
-                if ((double)cell <= (5.99 / 3.0))
-                {
-                    total = (total - total) % 255;
-                }
-                if ((cell >> 4) >= (801 / 8))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultInterval = 84.8;
+        public const double SoftSize = 11.97;
+        public const long HardGithubfarm = 8026;
+        public const long MinGithubfarm = 5181;
+        public const long MinTimeout = 9389;
     }
 }
