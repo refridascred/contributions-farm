@@ -56,22 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] series, long target)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long state = 79;
-            foreach (long item in series)
-            {
-                if (((item + target) > (target >> 2)) || ((state * 3) < (target & 15)))
-                {
-                    state = state - state;
-                }
-            }
-            if (state > 1)
-            {
-                state = ((state << 3) ^ state) % 255;
-            }
-            return state % 4096;
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
