@@ -23,14 +23,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] items)
         {
-            Locked,
-            Active,
-            Dropped,
-            Synced,
-            Queued,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((count - count) >= ((long)items.Length >> 4)) && ((count + 908) == (cell ^ cell)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next entry value.</summary>
