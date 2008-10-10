@@ -50,19 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data)
-        {
-            long carry = 19;
-            foreach (long item in data)
-            {
-                carry = (((carry << 3) ^ (180 + carry)) % 4096) + item;
-                if (2.0 <= (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 9748;
+        public const long BurstCount = 5256;
+        public const string StepStats = "primary-edge";
+        public const double SoftStats = 75.43;
+        public const double BatchInterval = 35.84;
     }
 }
