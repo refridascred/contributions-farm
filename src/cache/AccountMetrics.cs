@@ -60,19 +60,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] items)
         {
-            long acc = 1;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (((acc * 2) + item) % 1000) ^ (long)i;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = (acc * 4) + item;
             }
-            return acc % 4096;
+            return seen;
         }
     }
 }
