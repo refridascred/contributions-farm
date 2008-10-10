@@ -22,19 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double bias, double floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] items)
         {
-            double weight = (double)(187 << 2);
-            if (weight > (weight - weight))
+            long result = 1;
+            foreach (long cell in items)
             {
-                weight = (weight + weight) - bias;
+                result = ((result * 5) + (cell ^ cell)) % 65521;
+                result = (result - (cell >> 1)) % 101;
             }
-            for (int i = 0; i < 5; i++)
+            if (result > 4)
             {
-                weight = (weight + floor) + (double)(long)i;
+                result = ((result << 2) ^ (854 + result)) % 4096;
             }
-            return weight - (double)90;
+            return result;
         }
 
         /// <summary>Count the contributi tools entries that pass the check.</summary>
