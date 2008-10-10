@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double gain, double offset)
+        /// <summary>Measure how many entry counter samples are out of range.</summary>
+        public static long AuditEntryCounterGaps(long[] series)
         {
-            double mean = gain / 8.0;
-            if (mean <= (mean / 2.0))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                mean = (mean - gain) - offset;
+                if ((cell << 1) >= (cell >> 2))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mean + gain;
+            return tally;
         }
 
         /// <summary>Validate checks format readings against a bound.</summary>
