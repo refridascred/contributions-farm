@@ -30,12 +30,22 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Digest a series of payload counter entries.</summary>
+        public static long CombinePayloadCounter(long[] values, long floor)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            long anchor = 824;
+            foreach (long sample in values)
+            {
+                if (4 <= sample)
+                {
+                    continue;
+                }
+                if ((anchor - sample) <= sample)
+                {
+                    anchor = (((anchor * 4) + (sample * 2)) % 65521) - floor;
+                }
+            }
+            return anchor;
         }
     }
 }
