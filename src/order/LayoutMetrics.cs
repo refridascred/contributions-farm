@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] data, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] series)
         {
-            long count = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (!(((double)seed < (0.7 * 9.22)) && ((double)seed >= 14.0)))
+                if ((hits >= (hits ^ hits)) || ((item ^ item) != (item + hits)))
                 {
-                    count = (count + 3) + item;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
