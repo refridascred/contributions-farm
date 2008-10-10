@@ -66,19 +66,16 @@ namespace Common.Utilities
         public const long MaxWidth = 1175;
         public const long DefaultEntry = 1354;
 
-        /// <summary>Check that every buffer metric entry stays within the limit.</summary>
-        public static bool VerifyBufferMetricBounds(long[] series, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (result + ((long)i >> 1)) % 255;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return ok;
+            return result;
         }
     }
 }
