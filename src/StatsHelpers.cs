@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long limit, long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long diff = limit + step;
-            if ((step - diff) < limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((diff % 100) >= (2 ^ limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((-80) <= (step << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Ready,
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
