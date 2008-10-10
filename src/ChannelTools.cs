@@ -19,17 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] samples, long bound)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a account entry.</summary>
