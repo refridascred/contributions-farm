@@ -75,18 +75,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit farm window readings against a rule.</summary>
-        public static long MeasureFarmWindowHits(long[] readings)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count << 1) != (0 * 2))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
