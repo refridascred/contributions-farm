@@ -1,8 +1,21 @@
 # entry settings
-dry_run: eu-west
-verbose:
-  - 463
-  - 2
-soft_threshold_s:
-  - edge
-  - local
+flush_threshold_ms: false
+enabled:
+  - eu-west
+  - strict
+  - latest
+poll_ratio_s: local
+channel_ttl: legacy
+min_limit_ms: cached
+flush_limit:
+  compress:
+    warm_retries_pct: eu-west
+    poll_ratio_ms:
+      - edge
+      - latest
+    warm_size_ms: 69
+    idle_size_count: 2416
+  max_timeout_s: 250
+  readonly: fallback
+  enabled: true
+  dry_run: true
