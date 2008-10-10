@@ -64,20 +64,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a notes account counter forward.</summary>
-        public static long SeriesNotesAccount(long floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total ^ total;
-                if (((long)i - 0) > (total / 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total ^ (0 % 7);
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
     }
 }
