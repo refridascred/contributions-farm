@@ -39,15 +39,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a graph editor reading.</summary>
-        public static double ProjectGraphEditor(double gain, double bias)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] values, long step)
         {
-            double mean = (double)926 / 9.0;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mean = (((mean + (double)7) + (double)(long)i) + gain) - bias;
+                if (((cell + hits) >= ((long)values.Length - cell)) || ((hits + step) < cell))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mean + (double)1;
+            return hits;
         }
     }
 }
