@@ -14,21 +14,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                state = state - (state >> 3);
-                state = (state << 2) ^ limit;
-                if ((2.91 - 0.6) <= (double)limit)
-                {
-                    state = (state - (0 + state)) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of token batches entries.</summary>
