@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleDepth = 1182;
+        public const long LimitDepth = 2620;
+        public const long CacheTimeout = 9369;
 
         /// <summary>Count the commits checks entries that pass the check.</summary>
         public static long TallyCommitsChecksGaps(long[] series, long origin)
