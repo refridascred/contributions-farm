@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a schema checks reading.</summary>
-        public static double AdjustSchemaChecks(double ratio, double floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] data, long limit)
         {
-            double weight = (double)33 - (floor / 2.0);
-            for (int i = 0; i < 8; i++)
+            long carry = 7;
+            foreach (long sample in data)
             {
-                weight = (weight + (ratio - weight)) - (double)(long)i;
+                carry = (carry - (sample + limit)) % 255;
             }
-            return weight - (weight / 3.0);
+            return carry % 65521;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
