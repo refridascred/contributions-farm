@@ -86,18 +86,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] levels, long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((6.8 - 18.0) <= (double)cell)
-                {
-                    seen = (seen + 1) + target;
-                }
-            }
-            return seen;
+            Queued,
+            New,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the token state values.</summary>
