@@ -1,5 +1,6 @@
 {
-  "readonly": 57.23,
-  "min_delay_count": 250,
-  "compress": "primary"
+  "audit": "stable",
+  "soft_capacity": 90,
+  "max_window": "blue",
+  "batch_ttl_pct": 53.1
 }
