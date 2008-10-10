@@ -53,21 +53,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum >= bound)
                 {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
