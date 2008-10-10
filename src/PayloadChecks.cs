@@ -20,11 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            Idle,
+            Closed,
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Describe the batch level values.</summary>
