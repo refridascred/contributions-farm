@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile session entries.</summary>
-        public static long WeighProfileSession(long[] series, long bound)
+        /// <summary>Audit tools cache readings against a rule.</summary>
+        public static long MeasureToolsCacheHits(long[] readings, long bound)
         {
-            long score = 34;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((double)bound > (8.1 + 1.8))
+                if ((double)bound > (double)sample)
                 {
-                    score = (score ^ score) % 65521;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    score = ((score << 3) ^ entry) % 4096;
+                    matches = matches - 1;
                 }
-                score = (score ^ entry) % 65521;
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Scale a counter metrics figure with a bias.</summary>
