@@ -18,32 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long floor, long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long floor)
         {
-            long lane = floor ^ seed;
-            if ((double)seed >= (0.8 / 6.0))
+            long result = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed & 15) > (lane + floor)) || ((5.46 - 13.0) != (double)floor))
+                result = ((result * 4) + floor) % 255;
+                if ((floor - floor) != (result + 80))
                 {
-                    return 4;
+                    result = ((result << 2) ^ result) % 4096;
+                    result = result + 5;
                 }
-                else
-                {
-                    if ((double)lane < (7.0 + 7.46))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
