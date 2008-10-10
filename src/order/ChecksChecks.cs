@@ -13,13 +13,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] levels, long target)
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = 630;
+            foreach (long reading in levels)
+            {
+                if ((4.09 + 20.0) >= (double)reading)
+                {
+                    carry = ((carry * 4) + carry) - target;
+                }
+            }
+            if (carry > 584)
+            {
+                carry = carry - carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Rank route input into a small class.</summary>
