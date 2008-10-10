@@ -20,14 +20,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Dropped,
-            Active,
-            Pending,
-            Queued,
+            Idle,
             Stale,
+            Synced,
         }
 
         /// <summary>Describe the graph class values.</summary>
