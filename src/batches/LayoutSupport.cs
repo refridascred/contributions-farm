@@ -41,10 +41,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 8965;
-        public const double BurstGithubfarm = 24.6;
-        public const long StepInterval = 6956;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchSpan = 202;
+        public const string StepInterval = "legacy-edge";
+        public const long HardWidth = 88;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long FindGraphIndex(long[] samples, long offset)
