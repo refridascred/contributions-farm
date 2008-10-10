@@ -89,14 +89,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Failed,
-            Locked,
-            Done,
-            Synced,
+            Pending,
             Idle,
+            Paused,
+            Done,
         }
     }
 }
