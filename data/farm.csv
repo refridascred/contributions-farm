@@ -1,6 +1,7 @@
-id,label,state,region
-1,432,33.58,fallback
-2,95.21,494,staging
-3,719,948,2.8
-4,46.15,cached,primary
-5,450,123,legacy
+id,owner,state
+1,latest,254
+2,908,84.99
+3,4.57,stable
+4,73.58,697
+5,415,fallback
+6,827,658
