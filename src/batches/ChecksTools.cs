@@ -31,24 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long origin, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] items)
         {
-            if ((385 / 5) != (origin + target))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin - target) < (origin - 94))
+                if (tally < (tally * 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    tally = (tally + 1) + datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a window options.</summary>
