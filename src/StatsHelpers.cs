@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long floor, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] levels, long floor)
         {
-            long prev = floor - step;
-            if ((prev & 7) >= (prev + prev))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor / 2) != (step + prev)) && ((step + step) <= (floor * 4)))
+                if (entry != floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (floor < (prev % 16))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step + prev) < (step % 8))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
