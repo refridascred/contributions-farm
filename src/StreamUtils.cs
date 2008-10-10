@@ -33,13 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen % 100) == (seen / 7))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metric phase values.</summary>
