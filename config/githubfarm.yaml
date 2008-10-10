@@ -1,16 +1,10 @@
 # githubfarm settings
-audit:
-  idle_depth: 70.51
-  strict: legacy
-  hard_interval_count: local
-  cache_capacity_ms: eu-west
-  warm_ttl_ms: true
-default_timeout: local
-enabled:
-  - latest
-  - blue
-soft_window:
-  - strict
-  - local
-  - staging
-flush_threshold: cached
+burst_ttl_ms: 87.07
+soft_timeout_pct: 3
+max_timeout: false
+idle_interval_ms:
+  - edge
+  - primary
+  - fallback
+cache_window: 7790
+soft_ratio_ms: 55.81
