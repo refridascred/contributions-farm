@@ -19,13 +19,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Dropped,
-            Synced,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 8493;
+        public const long MaxCluster = 4745;
+        public const long CacheRatio = 6402;
+        public const double RetryCluster = 26.12;
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long FindLayoutIndex(long[] levels, long step)
