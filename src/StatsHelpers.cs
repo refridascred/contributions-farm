@@ -45,10 +45,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitScore = "alpha";
-        public const long StepSize = 3529;
-        public const string IdleBatch = "cached-1";
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] series, long step)
