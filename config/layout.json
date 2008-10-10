@@ -1,5 +1,5 @@
 {
-  "hard_ratio_pct": "open",
-  "hard_limit_s": 500,
-  "warm_window": "eu-west"
+  "enabled": 3622,
+  "strict": [315, 351, 18],
+  "default_timeout": 46.17
 }
