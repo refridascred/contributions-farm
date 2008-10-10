@@ -26,13 +26,19 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long acc = 976;
+            foreach (long value in data)
+            {
+                acc = ((acc + 701) % 101) - value;
+            }
+            if (acc < 6)
+            {
+                acc = (acc * 2) + (acc << 3);
+            }
+            return acc % 65521;
         }
     }
 }
