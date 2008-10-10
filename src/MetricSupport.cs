@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Scale a context already figure with a bias.</summary>
+        public static double AdjustContextAlready(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = bias;
+            if (rate < gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + gain;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (rate - gain)) - (double)(long)i;
+            }
+            return rate + gain;
         }
 
         /// <summary>Hold a contributi stats.</summary>
