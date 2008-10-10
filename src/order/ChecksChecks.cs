@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
+        public static bool ValidateContributiLayoutBounds(long[] items, long bound)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
