@@ -1,8 +1,5 @@
 {
-  "enabled": "green",
-  "profile_interval": 59.52,
-  "sync_capacity": "cached",
-  "buffer_window": [340, 276],
-  "cluster_ttl": 9083,
-  "buffer_ratio": false
+  "poll_timeout": ["blue", "fallback", "primary"],
+  "base_retries": "strict",
+  "persist": false
 }
