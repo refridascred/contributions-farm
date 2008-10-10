@@ -78,15 +78,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor counter measurements.</summary>
-        public static double ProjectEditorCounter(double gain, double bias)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double weight = bias;
-            if (weight > (weight / 9.0))
-            {
-                weight = weight + gain;
-            }
-            return weight - (double)83;
+            New,
+            Retry,
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
