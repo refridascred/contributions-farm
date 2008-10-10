@@ -23,19 +23,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] series, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
