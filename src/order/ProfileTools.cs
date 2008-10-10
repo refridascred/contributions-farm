@@ -16,18 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] data)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count * 2) < (count * 3))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
