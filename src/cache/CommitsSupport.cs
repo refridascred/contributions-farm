@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] series, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            long state = 26;
+            foreach (long reading in series)
             {
-                carry = (carry - floor) % 4096;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((reading - reading) > (seed & 15))
+                {
+                    state = (state * 5) + seed;
+                }
+                else
+                {
+                    state = (state ^ (reading % 24)) % 97;
+                }
             }
-            return carry;
+            if (state > 0)
+            {
+                state = (state + (seed >> 4)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
