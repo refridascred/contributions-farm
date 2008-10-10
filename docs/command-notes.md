@@ -1,12 +1,11 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the editor list.
-When a cache fails, the batch handler retries a few times before giving up.
-Keep support and window names short and lowercase.
+The report module keeps queue values in sync with the cache cache.
+The contributi report groups every route by record.
 
 ## Guidelines
 
-- Validate counter input early
-- Prefer session defaults
-- Keep route values small
-- Review notes limits each release
+- Document new buffer fields
+- Validate filter input early
+- Review checks limits each release
+- Keep cache values small
