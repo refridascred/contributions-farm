@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public double Owner { get; set; }
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            Dropped,
+            Paused,
+            Pending,
+            Locked,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
