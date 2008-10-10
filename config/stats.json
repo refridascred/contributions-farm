@@ -1,12 +1,20 @@
 {
-  "soft_window_pct": 5.51,
-  "persist": "local",
-  "poll_ratio_ms": 5611,
-  "channel_capacity": {
-    "min_window_ms": "edge",
-    "format_ttl": 15.35,
-    "min_ttl": "standard",
-    "cache_limit": 3124,
-    "compress": 24.56
-  }
+  "sync_depth": {
+    "dry_run": {
+      "strict": false,
+      "soft_delay_count": ["blue", "latest", "cached", "green"],
+      "schema_ttl": 1.23,
+      "dry_run": "cached",
+      "soft_threshold_ms": false,
+      "entry_depth": "fallback"
+    },
+    "route_retries": "staging",
+    "compress": 38.14,
+    "route_interval": 416,
+    "warm_retries_count": 6.44
+  },
+  "enabled": 30,
+  "cache_capacity_count": false,
+  "default_window_s": false,
+  "batch_timeout": 56.84
 }
