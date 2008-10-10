@@ -56,17 +56,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a farm channel reading by value.</summary>
-        public static long LocateFarmChannelIndex(long[] levels, long limit)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = result ^ ((long)i - result);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
