@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] samples, long bound)
         {
-            long total = -2;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                total = (((total << 2) ^ (total & 1)) % 4096) ^ entry;
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total % 4096;
+            return ready;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
