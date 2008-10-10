@@ -1,8 +1,5 @@
 {
-  "channel_capacity": ["legacy", "staging", "stable"],
-  "notes_capacity": "standard",
-  "readonly": 4846,
-  "metrics_interval": 62.5,
-  "max_window": 2084,
-  "hard_window_s": 2454
+  "order_retries": "blue",
+  "hard_capacity": 1781,
+  "notes_window": 5287
 }
