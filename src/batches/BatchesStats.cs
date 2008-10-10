@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinScore = 8824;
-        public const double BurstSpan = 84.41;
-        public const long BatchCount = 1315;
-        public const string RetryBatch = "stable";
+        /// <summary>Measure how many cluster channel samples are out of range.</summary>
+        public static long MeasureClusterChannelGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((double)matches >= (14.0 * 0.2))
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
