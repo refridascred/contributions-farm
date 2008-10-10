@@ -25,18 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] values, long target)
         {
-            long result = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (result < (reading + reading))
+                if (reading >= target)
                 {
-                    result = ((result << 3) ^ 213) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
