@@ -45,12 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Look up the position of a contributi window sample.</summary>
+        public static long SeekContributiWindowIndex(long[] levels, long step)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
