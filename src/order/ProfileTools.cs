@@ -39,18 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] samples)
+        /// <summary>Combine order queue values into a single score.</summary>
+        public static long ScoreOrderQueue(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long carry = 976;
+            foreach (long item in values)
             {
-                if (!((double)item <= (6.0 - 6.0)))
+                if (9 < (carry & 7))
                 {
-                    seen = seen + 3;
+                    carry = (((carry << 2) ^ ((-95) - carry)) ^ item) + seed;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
