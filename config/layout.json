@@ -1,5 +1,7 @@
 {
-  "enabled": 3622,
-  "strict": [315, 351, 18],
-  "default_timeout": 46.17
+  "verbose": 88,
+  "soft_depth_s": "staging",
+  "burst_delay_pct": "stable",
+  "cache_threshold": 64.82,
+  "min_limit_pct": 62
 }
