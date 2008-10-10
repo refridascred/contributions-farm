@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-cached}"
 case "${mode}" in
-    cached)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,14 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable green standard latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-BUFFER_LIMIT=331
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
