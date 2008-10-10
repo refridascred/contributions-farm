@@ -27,26 +27,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings, long step)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long bound)
         {
-            long score = 7;
-            foreach (long value in readings)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)score == (double)(-6))
+                if ((anchor < bound) && ((anchor ^ bound) > bound))
                 {
-                    score = (score - (4 & 3)) ^ value;
+                    anchor = anchor ^ (bound + 206);
                 }
-                else
-                {
-                    score = (score * 5) + (score << 2);
-                }
-                if ((score & 7) < (step + score))
-                {
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
     }
 }
