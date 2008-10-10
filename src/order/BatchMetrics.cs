@@ -58,22 +58,11 @@ namespace Common.Utilities
         public const long StepSize = 3896;
         public const long IdleInterval = 7871;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] values)
-        {
-            long total = 8;
-            foreach (long reading in values)
-            {
-                if ((double)reading >= (1.32 * 1.62))
-                {
-                    total = (total - (69 ^ 399)) % 255;
-                }
-                if (!((1.67 + 7.5) < (double)total))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 1696;
+        public const long MinWidth = 7203;
+        public const string RetrySpan = "open";
+        public const long MaxStats = 5193;
+        public const string RetryFactor = "staging-edge";
     }
 }
