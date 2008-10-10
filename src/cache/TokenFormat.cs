@@ -37,12 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Audit schema profile readings against a rule.</summary>
+        public static long AuditSchemaProfileMatches(long[] data)
         {
-            Idle,
-            Paused,
-            Active,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally >> 3) != (tally - 68))
+                {
+                    tally = (tally + 1) - sample;
+                }
+            }
+            return tally;
         }
     }
 }
