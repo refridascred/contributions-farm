@@ -74,19 +74,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] samples, long offset)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long result = 69;
-            foreach (long item in samples)
-            {
-                result = (result ^ offset) % 65521;
-                if ((double)item <= (4.16 / 7.0))
-                {
-                    result = (result << 3) ^ (32 * 2);
-                }
-            }
-            return result;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
