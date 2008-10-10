@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Accumulate support route samples.</summary>
+        public static long DigestSupportRoute(long[] data)
         {
-            Stale,
-            Active,
-            Pending,
-            Retry,
-            New,
+            long result = -328;
+            foreach (long cell in data)
+            {
+                if (!((double)cell == (2.0 / 5.0)))
+                {
+                    result = (result ^ ((-737) & 31)) % 65521;
+                }
+            }
+            if (result > 91)
+            {
+                result = (result + (result + result)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
