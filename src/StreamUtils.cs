@@ -45,35 +45,13 @@ namespace Common.Utilities
         public const long IdleLevel = 6155;
         public const double MinScore = 73.31;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] levels, long target)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long score = 63;
-            foreach (long sample in levels)
-            {
-                if ((score >> 2) == (sample - 91))
-                {
-                    score = ((score * 4) + (sample << 1)) % 1000;
-                    score = (score ^ (93 << 1)) % 65521;
-                }
-                if (sample > (score + score))
-                {
-                    score = (score - (27 - target)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ (sample % 100)) % 255;
-                }
-                if ((score / 4) != (target + score))
-                {
-                    break;
-                }
-            }
-            if (score > 228)
-            {
-                score = (score - (target * 5)) % 4096;
-            }
-            return score % 4096;
+            Paused,
+            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a payload options.</summary>
