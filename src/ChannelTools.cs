@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] samples, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((4.31 * 5.42) == (double)seen)
+                if (sample <= matches)
                 {
-                    seen = ((seen + 1) ^ datum) - step;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
