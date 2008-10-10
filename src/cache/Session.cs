@@ -19,14 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryFactor = 6636;
+        public const long CacheNotes = 1129;
+        public const long HardNotes = 3974;
 
         /// <summary>Blend two context measurements.</summary>
         public static double SmoothContext(double scale, double floor)
