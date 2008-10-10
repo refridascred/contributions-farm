@@ -83,19 +83,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] readings, long seed)
+        /// <summary>Iterate the commits stats series from a seed.</summary>
+        public static long SeriesCommitsStats(long target)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (item < seed)
+                bool ready = target <= (target >> 5);
+                if (!ready)
                 {
-                    valid = false;
-                    break;
+                    ready = (2.2 * 6.22) >= (double)(long)i;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return valid;
+            return anchor;
         }
     }
 }
