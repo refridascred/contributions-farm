@@ -77,25 +77,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long target, long target2)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] values, long origin)
         {
-            long slot = target - target2;
-            if ((target + slot) < slot)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)target2 < (8.7 + 5.84)) || ((target2 * 2) != (slot << 1)))
+                if ((values[i] <= origin) && ((values[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
