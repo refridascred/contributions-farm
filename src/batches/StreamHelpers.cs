@@ -58,18 +58,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] data, long floor)
         {
-            long mix = 90;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (((floor + mix) < (floor % 60)) || (5.23 >= (double)(long)levels.Length))
+                if ((2.1 - 5.0) <= (double)entry)
                 {
-                    mix = (((mix * 2) + 676) % 101) - cell;
+                    matches = (matches + 2) - floor;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a order stats.</summary>
