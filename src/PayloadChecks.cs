@@ -40,18 +40,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metric order entries that pass the check.</summary>
-        public static long TallyMetricOrderMatches(long[] levels, long step)
+        /// <summary>Roll a batch cluster counter forward.</summary>
+        public static long SeriesBatchCluster(long origin)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)reading > (0.32 * 2.0))
-                {
-                    seen = (seen + 1) + step;
-                }
+                anchor = ((anchor << 2) ^ (long)i) % 255;
+                anchor = (anchor + (anchor + anchor)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Blend two route metrics measurements.</summary>
