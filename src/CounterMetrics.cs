@@ -28,14 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] data, long step)
         {
-            Failed,
-            Idle,
-            Closed,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally + tally) >= (datum - tally))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
         }
     }
 }
