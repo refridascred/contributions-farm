@@ -1,10 +1,8 @@
 # entry settings
-dry_run: edge
-flush_interval_ms:
-  commits_capacity: 250
-  max_interval_ms: 24
-  dry_run: false
-batches_depth: 6725
-idle_retries: true
-layout_limit: edge
-max_ttl_ms: 96.02
+record_threshold:
+  - 199
+  - 307
+  - 207
+flush_window_pct: 60
+hard_ttl_ms: 9214
+audit: 60
