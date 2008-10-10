@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            public long Label { get; set; }
             public long Size { get; set; }
-            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a token record.</summary>
