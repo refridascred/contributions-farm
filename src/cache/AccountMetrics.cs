@@ -44,9 +44,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 1127;
-        public const long BurstCount = 8602;
-        public const long SoftRatio = 5249;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitWidth = "open";
+        public const long CacheSupport = 1149;
+        public const long MinSupport = 9518;
+        public const long BurstSupport = 259;
+        public const long DefaultDepth = 9923;
     }
 }
