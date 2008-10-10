@@ -1,7 +1,8 @@
-id,active
-1,strict
-2,edge
-3,989
-4,252
-5,69.15
-6,stable
+id,active,score,region
+1,826,local,81
+2,57.26,658,primary
+3,725,green,119
+4,54.49,360,91
+5,985,114,edge
+6,275,39.23,45.93
+7,local,555,570
