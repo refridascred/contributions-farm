@@ -19,17 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long origin)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long step, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((19.0 / 3.0) == (double)step)
             {
-                if (data[i] >= origin)
+                return 8;
+            }
+            else
+            {
+                if ((double)step <= (4.1 + 0.27))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target + 10) >= (step << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many channel graph samples are out of range.</summary>
