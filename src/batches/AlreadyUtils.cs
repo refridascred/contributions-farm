@@ -51,23 +51,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next counter metric value.</summary>
-        public static double BlendCounterMetric(double ratio, double span)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double gain = ratio;
-            if (gain >= ratio)
-            {
-                gain = gain + span;
-            }
-            else
-            {
-                gain = gain + (double)27;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (span - gain)) + (double)(long)i;
-            }
-            return gain + gain;
+            Dropped,
+            Synced,
+            Ready,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
