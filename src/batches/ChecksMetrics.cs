@@ -12,18 +12,38 @@ namespace Common.Utilities
         public const string CacheToken = "cached-1";
         public const long MinScore = 9891;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] readings, long offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            if (bound < seed)
             {
-                if ((double)item >= 13.0)
+                return 7;
+            }
+            else
+            {
+                if (((seed - seed) <= (bound ^ seed)) && ((seed ^ bound) >= (bound + 795)))
                 {
-                    hits = (hits + 1) + offset;
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound - 4) >= (bound << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed / 4) != (seed ^ 8))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
