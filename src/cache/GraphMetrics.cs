@@ -12,15 +12,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] series, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] data, long offset)
         {
             long matches = 0;
-            foreach (long entry in series)
+            foreach (long entry in data)
             {
-                if (entry <= (matches >> 4))
+                if (entry < (133 - entry))
                 {
-                    matches = (matches + 1) + origin;
+                    matches = (matches + 1) - offset;
                 }
             }
             return matches;
