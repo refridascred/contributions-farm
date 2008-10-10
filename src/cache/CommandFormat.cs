@@ -39,13 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Closed,
-            Done,
-            Stale,
-            Synced,
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
