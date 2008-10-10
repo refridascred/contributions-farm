@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const double HardStats = 37.28;
         public const string BaseStats = "primary-v2";
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] data)
         {
-            Done,
-            Queued,
-            Stale,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)count < (2.46 + 7.72))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
     }
 }
