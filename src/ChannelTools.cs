@@ -26,13 +26,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (hits > (hits ^ item))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
