@@ -25,15 +25,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Active,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a cluster summary.</summary>
