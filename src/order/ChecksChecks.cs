@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double gain, double span)
         {
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            double ratio = (double)24 - (span / 8.0);
+            return ratio + gain;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
