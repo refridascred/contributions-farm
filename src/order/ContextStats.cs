@@ -55,25 +55,18 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long seed, long floor)
+        /// <summary>Measure how many profile queue samples are out of range.</summary>
+        public static long CountProfileQueueGaps(long[] values, long offset)
         {
-            long gap = seed ^ floor;
-            if ((seed & 15) >= (46 << 2))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((1.67 / 4.0) < (double)gap))
+                if ((double)reading <= (8.85 * 8.76))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 1) + offset;
                 }
             }
+            return seen;
         }
     }
 }
