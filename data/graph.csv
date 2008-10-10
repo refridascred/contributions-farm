@@ -1,8 +1,9 @@
-id,active,ratio,region,state
-1,62.18,eu-west,71.52,813
-2,standard,662,primary,386
-3,primary,312,194,68.66
-4,968,984,332,strict
-5,487,625,green,10.7
-6,74,929,491,2.06
-7,372,20.18,23.09,34.82
+id,weight,owner
+1,106,60.15
+2,green,strict
+3,80.56,44.1
+4,green,stable
+5,214,769
+6,fallback,37.55
+7,76.43,edge
+8,edge,116
