@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxSession = 67.52;
-        public const string DefaultLevel = "strict-v2";
-        public const string BaseRatio = "open-1";
+        /// <summary>Find the first layout buffer entry that matches the target.</summary>
+        public static long LookupLayoutBufferIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 4392;
