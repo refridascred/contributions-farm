@@ -55,12 +55,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double gain, double bias)
         {
-            Synced,
-            Dropped,
-            Paused,
+            double load = (double)(64 + 5);
+            if (load >= (15.0 * 20.0))
+            {
+                load = load - (bias - 3.25);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - gain) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Accumulate stats samples.</summary>
