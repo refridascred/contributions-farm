@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long floor, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] levels, long origin)
         {
-            long next = floor - origin;
-            if ((double)floor > 0.24)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.48 + 1.8) < (double)origin)
+                if (tally > (origin ^ 82))
                 {
-                    return 6;
+                    tally = (tally + 2) + datum;
                 }
                 else
                 {
-                    if ((origin * 3) > next)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit record command readings against a rule.</summary>
