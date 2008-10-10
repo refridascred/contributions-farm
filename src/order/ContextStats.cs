@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] values, long target)
+        /// <summary>Classify a command buffer pair into a bucket.</summary>
+        public static long RankCommandBuffer(long step, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = step - limit;
+            if (6 >= (step ^ prev))
             {
-                if (values[i] < target)
+                return 8;
+            }
+            else
+            {
+                if ((step << 3) == (step - prev))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
