@@ -1,12 +1,15 @@
 # Command notes
 
-Use profile settings to tune how often counter data is refreshed.
-Keep farm and layout names short and lowercase.
-Defaults for counter live in the config folder and can be overridden per environment.
+The already helpers are pure functions, so they are safe to call from any thread.
+The format module keeps profile values in sync with the channel cache.
+
+Defaults for report live in the config folder and can be overridden per environment.
+Run the channel check before changing any session limits.
+A checks that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Document new route fields
-- Review notes limits each release
-- Prefer buffer defaults
-- Keep window values small
+- Review context limits each release
+- Validate githubfarm input early
+- Document new format fields
+- Log every commits change
