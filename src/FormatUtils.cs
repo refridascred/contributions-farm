@@ -53,18 +53,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit queue commits readings against a rule.</summary>
-        public static long TallyQueueCommitsGaps(long[] levels)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample >> 3) == (seen % 64))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
