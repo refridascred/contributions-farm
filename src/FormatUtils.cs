@@ -47,21 +47,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry > bound)
                 {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
