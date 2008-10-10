@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 89;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state << 3) ^ (reading ^ state)) % 97;
             }
-            return count;
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
