@@ -29,22 +29,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] data)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading >> 3) >= (reading - reading))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
