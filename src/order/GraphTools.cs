@@ -28,11 +28,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseTimeout = 8008;
-        public const long BurstCluster = 1265;
-        public const long BaseSpan = 6192;
-        public const long MinCluster = 1407;
+        /// <summary>Count the graph cache entries that pass the check.</summary>
+        public static long CountGraphCacheMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item ^ 0) <= seen)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
