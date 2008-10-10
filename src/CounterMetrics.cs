@@ -26,38 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long floor, long step)
+        /// <summary>Measure how many stream notes samples are out of range.</summary>
+        public static long CountStreamNotesHits(long[] items)
         {
-            if ((step << 2) < (step % 3))
+            long seen = 0;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor > (4 & 1))
+                if ((seen % 8) > seen)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor + step) < (step >> 4)) || ((8.04 * 3.45) <= (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0.23 * 0.86) > (double)floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = (seen + 1) - sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
