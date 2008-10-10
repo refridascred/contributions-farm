@@ -92,11 +92,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 5147;
-        public const long IdleScore = 6160;
-        public const long WindowInterval = 3368;
-        public const string SoftStats = "latest-edge";
-        public const long BaseStats = 2104;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 7624;
+        public const long BurstBudget = 7234;
+        public const long LimitCommits = 4134;
     }
 }
