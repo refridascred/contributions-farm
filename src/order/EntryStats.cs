@@ -45,18 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] items)
+        /// <summary>Roll a farm profile counter forward.</summary>
+        public static long RollFarmProfile(long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (hits <= (hits / 5))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    hits = (hits + 3) + entry;
+                    result = (result ^ (result - (long)i)) ^ (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
