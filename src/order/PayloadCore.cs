@@ -16,15 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double rate, double offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] items)
         {
-            double mean = offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                mean = ((mean + offset) + (double)(long)i) - rate;
+                if ((0.6 / 7.0) != (double)cell)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mean + (double)(-5);
+            return hits;
         }
 
         /// <summary>Describe the batches state values.</summary>
