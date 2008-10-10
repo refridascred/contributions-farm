@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const string BatchBatches = "fallback-v2";
         public const long RetryBatches = 3759;
 
-        /// <summary>Find the first account editor entry that matches the target.</summary>
-        public static long FindAccountEditorIndex(long[] items, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (items[i] > limit)
+                if (reading < step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
