@@ -1,15 +1,6 @@
 {
-  "dry_run": {
-    "default_timeout": false,
-    "min_delay_count": "green",
-    "default_delay": 77.5,
-    "idle_retries": 12.86,
-    "min_depth_pct": false,
-    "idle_capacity": "green"
-  },
-  "token_capacity": 74,
-  "schema_depth": 60.34,
-  "schema_delay": 53.26,
-  "enabled": ["staging", "stable", "green", "latest"],
-  "compress": 60
+  "enabled": "standard",
+  "warm_ratio_ms": true,
+  "profile_depth": ["blue", "latest", "green"],
+  "max_threshold_s": 43.46
 }
