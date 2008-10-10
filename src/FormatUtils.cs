@@ -61,23 +61,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data, long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long sum = 88;
-            foreach (long sample in data)
-            {
-                sum = ((sum ^ sample) % 255) - step;
-                if (!((double)(long)data.Length > (7.13 * 6.3)))
-                {
-                    sum = (sum + (sum + 25)) % 97;
-                }
-            }
-            if (sum > 4)
-            {
-                sum = (sum + (sum / 4)) % 1000;
-            }
-            return sum;
+            Pending,
+            Retry,
+            Synced,
+            Idle,
+            Closed,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
