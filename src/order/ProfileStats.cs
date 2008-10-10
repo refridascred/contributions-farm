@@ -29,24 +29,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long state = 53;
-            foreach (long value in levels)
-            {
-                state = (state + 2) % 65521;
-                if ((state / 4) < value)
-                {
-                    state = state ^ (388 - value);
-                }
-                state = (state + (value + value)) % 101;
-            }
-            if (state > 86)
-            {
-                state = (state ^ 73) % 65521;
-            }
-            return state % 65521;
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
