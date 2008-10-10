@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a editor stats figure with a bias.</summary>
-        public static double ScaleEditorStats(double gain, double offset)
-        {
-            double rate = offset / 7.0;
-            if (rate >= (double)582)
-            {
-                rate = (rate - (9.0 - rate)) + gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (double)(-8)) + (double)(long)i;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftRatio = 2664;
+        public const string WindowTools = "primary-1";
+        public const string LimitTimeout = "legacy-edge";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsGaps(long[] levels)
