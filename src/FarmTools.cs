@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitFactor = 88.72;
-        public const string HardCount = "cached-edge";
-        public const string MaxSize = "open-v2";
-        public const long WindowStats = 2132;
-        public const double RetryStats = 81.8;
+        /// <summary>Audit filter report readings against a rule.</summary>
+        public static long MeasureFilterReportMatches(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (tally <= (57 << 3))
+                {
+                    tally = ((tally + 2) ^ item) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long FindRouteIndex(long[] levels, long step)
