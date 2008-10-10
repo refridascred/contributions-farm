@@ -23,12 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Compare every pair of payload support readings.</summary>
+        public static long OverlapPayloadSupportCount(long[] series)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
