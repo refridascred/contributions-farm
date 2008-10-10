@@ -61,18 +61,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] items, long floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((((875 * 3) > (entry - (-1))) || ((floor >> 1) >= entry)) || !(seen > floor))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
