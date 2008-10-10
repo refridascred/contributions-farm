@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of buffer report entries.</summary>
-        public static long CombineBufferReport(long[] values, long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double bias, double span)
         {
-            long sum = 976;
-            foreach (long sample in values)
+            double gain = (7.52 - bias) * 2.9;
+            for (int i = 0; i < 2; i++)
             {
-                sum = ((sum + sample) % 65521) - offset;
+                gain = ((gain - gain) + (double)(long)i) + span;
             }
-            return sum;
+            return gain + gain;
         }
 
         /// <summary>Hold a context stats.</summary>
