@@ -74,18 +74,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many format stats samples are out of range.</summary>
-        public static long CountFormatStatsMatches(long[] data)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading / 6) < 544)
+                if (data[i] >= floor)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
