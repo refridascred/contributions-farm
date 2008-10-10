@@ -53,38 +53,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long step, long step2)
-        {
-            if ((0.32 + 3.0) < (double)step2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((19.0 + 20.0) > (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (6.63 >= (double)step2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step2 + step2) != (step2 - step2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 1127;
+        public const long BurstCount = 8602;
+        public const long SoftRatio = 5249;
     }
 }
