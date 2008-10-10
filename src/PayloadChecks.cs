@@ -20,32 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long bound, long origin)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long diff = bound ^ origin;
-            if ((origin >> 1) > bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin / 6) >= (origin - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + bound) > (diff + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the batch level values.</summary>
