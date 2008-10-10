@@ -1,10 +1,10 @@
 {
-  "persist": true,
-  "max_size": [251, 41, 97, 303],
-  "soft_delay_pct": [100, 440],
-  "session_retries": {
-    "verbose": [235, 496, 411],
-    "hard_ttl_count": 62,
-    "retry_delay": "local"
-  }
+  "notes_threshold": 7,
+  "warm_interval_s": 3228,
+  "channel_ttl": {
+    "idle_limit": true,
+    "enabled": 250,
+    "compress": [350, 125, 199]
+  },
+  "batches_ratio": 60
 }
