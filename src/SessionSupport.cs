@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const long BatchSize = 6215;
         public const string SoftWidth = "staging-1";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] series, long floor)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double ratio = (double)(71 - 810);
+            if (ratio > (bias * 5.0))
             {
-                if ((double)floor < (1.0 - 9.0))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ratio - (double)9;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - bias2) + (double)(long)i;
+            }
+            return ratio + (double)6;
         }
     }
 }
