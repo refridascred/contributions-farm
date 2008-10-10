@@ -16,12 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 9616;
+        public const long SoftQueue = 1766;
+        public const long IdleFactor = 5061;
+        public const long IdleBudget = 6130;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long SortEntry(long limit, long limit2)
