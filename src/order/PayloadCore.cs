@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            Retry,
+            Ready,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the tools state values.</summary>
