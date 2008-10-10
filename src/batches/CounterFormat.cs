@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((mark - 3) > origin)
-                {
-                    mark = ((mark * 2) + (long)i) % 101;
-                }
-                else
-                {
-                    mark = mark ^ (360 % 7);
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Closed,
+            Idle,
+            Dropped,
+            Locked,
+            Ready,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
