@@ -80,13 +80,38 @@ namespace Common.Utilities
             return bias + (double)9;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long limit, long step)
         {
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            if ((limit - limit) >= (step << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (8.3 < (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + step) != (step - step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((454 - step) < 5)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
