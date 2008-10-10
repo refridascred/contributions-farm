@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] items, long limit)
+        /// <summary>Count the context session entries that pass the check.</summary>
+        public static long MeasureContextSessionOutliers(long[] levels, long bound)
         {
             long matches = 0;
-            foreach (long reading in items)
+            foreach (long item in levels)
             {
-                if (((9.0 * 13.0) >= (double)limit) || ((double)limit != (double)reading))
+                if ((8.2 * 18.0) == (double)bound)
                 {
-                    matches = matches + 3;
+                    matches = (matches + 1) + item;
                 }
             }
             return matches;
