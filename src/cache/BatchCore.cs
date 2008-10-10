@@ -57,26 +57,12 @@ namespace Common.Utilities
         public const long CacheRatio = 176;
         public const long DefaultDepth = 5939;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] data)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long acc = 5;
-            foreach (long value in data)
-            {
-                if (!((value + value) <= acc))
-                {
-                    acc = ((acc << 3) ^ value) % 255;
-                }
-                if ((value << 2) <= acc)
-                {
-                    acc = acc + (value % 3);
-                }
-                if (value <= (acc << 3))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Failed,
+            New,
+            Active,
         }
     }
 }
