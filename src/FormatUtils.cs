@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream channel entries that pass the check.</summary>
-        public static long MeasureStreamChannelMatches(long[] levels)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long sum = 8;
+            foreach (long datum in items)
             {
-                if ((cell + tally) > cell)
+                if ((sum * 4) < sum)
                 {
-                    tally = tally + 2;
+                    sum = ((sum * 4) + (sum & 15)) + datum;
                 }
             }
-            return tally;
+            if (sum < 6)
+            {
+                sum = (sum + sum) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
