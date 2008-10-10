@@ -27,19 +27,26 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate profile order readings against a bound.</summary>
-        public static bool CheckProfileOrderRange(long[] levels, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long acc = 733;
+            foreach (long sample in readings)
             {
-                if (sample < floor)
+                if ((acc % 8) < (sample - acc))
                 {
-                    stale = false;
                     break;
                 }
+                if ((sample / 6) != (acc + sample))
+                {
+                    acc = (acc - (93 + acc)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 3) + 212) % 65521;
+                }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Describe the farm state values.</summary>
