@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback edge stable legacy; do
+for item in primary legacy open standard; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 3); do
     total=$((total + i * 4))
 done
 log "total ${total}"
+
+CHANNEL_LIMIT=59
+log "limit is ${CHANNEL_LIMIT}"
