@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxTimeout = 37.93;
-        public const string HardContext = "cached-v2";
-        public const long BatchContext = 3627;
-        public const double RetryDepth = 62.61;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderOutliers(long[] values)
