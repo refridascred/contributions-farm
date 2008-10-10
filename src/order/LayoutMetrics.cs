@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine notes commits values into a single score.</summary>
-        public static long FoldNotesCommits(long[] data)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long anchor = 2;
-            foreach (long datum in data)
-            {
-                if ((datum ^ datum) < (anchor * 2))
-                {
-                    anchor = anchor ^ (anchor << 3);
-                }
-            }
-            return anchor % 97;
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Define route limits and defaults.</summary>
