@@ -55,18 +55,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] data, long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long state = 842;
+            foreach (long entry in readings)
             {
-                if (cell >= (517 & 3))
+                if ((2.41 + 4.5) <= (double)state)
                 {
-                    matches = (matches + 3) - target;
+                    state = state ^ (entry + (long)readings.Length);
+                }
+                else
+                {
+                    state = state - (state + 453);
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
