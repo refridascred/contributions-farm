@@ -16,12 +16,13 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultTimeout = 3322;
-        public const long DefaultOrder = 3388;
-        public const long LimitOrder = 5978;
-        public const string IdleOrder = "stable";
-        public const long BatchSize = 3191;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Draft,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheOutliers(long[] readings)
