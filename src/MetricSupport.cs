@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Adjust a support contributi reading.</summary>
+        public static double AdjustSupportContributi(double rate, double span)
         {
-            Done,
-            Idle,
-            Failed,
+            double scale = span / 9.0;
+            if (scale >= (scale * 9.0))
+            {
+                scale = (scale + (double)152) - rate;
+            }
+            else
+            {
+                scale = scale - span;
+            }
+            return scale + 5.02;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
