@@ -42,17 +42,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] samples, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
