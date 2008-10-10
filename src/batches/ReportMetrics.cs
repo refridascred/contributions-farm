@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const double RetryReport = 35.11;
         public const long MaxLevel = 3537;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a cluster payload reading by value.</summary>
