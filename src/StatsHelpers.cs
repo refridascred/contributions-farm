@@ -15,17 +15,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first batches batch entry that matches the target.</summary>
-        public static long FindBatchesBatchIndex(long[] items, long step)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long next = bound + seed;
+            if (!((double)seed < 0.4))
             {
-                if ((items[i] <= step) && ((items[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((bound * 2) != (seed ^ next))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((4.0 * 3.93) < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed > (next % 24))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
