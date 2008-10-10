@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank filter commits input into a small class.</summary>
-        public static long GradeFilterCommits(long floor, long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long target, long seed)
         {
-            if ((68 + floor) < floor)
+            long lane = target + seed;
+            if (target <= (lane >> 2))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((step + 7) > (floor + floor))
+                if ((seed / 5) > target)
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    if (((lane ^ target) != (49 * 3)) || (49 >= (lane ^ lane)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
