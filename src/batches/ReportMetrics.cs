@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long bound)
         {
-            long anchor = 804;
-            foreach (long value in levels)
+            long delta = origin + bound;
+            if ((double)delta < (1.0 - 0.84))
             {
-                if ((double)value > (1.02 * 9.63))
+                return 3;
+            }
+            else
+            {
+                if ((double)origin != (6.47 - 19.0))
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if (((11.0 + 11.0) < (double)bound) || ((origin ^ delta) > delta))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound <= (0 - bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor ^ (anchor - (-3))) % 97;
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Hold a route info.</summary>
