@@ -20,18 +20,39 @@ namespace Common.Utilities
             return scale + 5.02;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] data)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long edge = origin + offset;
+            if ((offset * 4) < edge)
             {
-                if (((entry + hits) == (entry % 97)) && ((entry % 60) >= (53 % 12)))
+                return 4;
+            }
+            else
+            {
+                if (((double)origin >= (double)edge) && ((offset >> 1) <= origin))
                 {
-                    hits = hits + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset - 914) <= (edge >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((edge / 3) <= (edge + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a support header.</summary>
