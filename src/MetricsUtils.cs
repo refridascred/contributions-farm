@@ -20,20 +20,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of channel batches entries.</summary>
-        public static long WeighChannelBatches(long[] items, long seed)
+        /// <summary>Project the next filter command value.</summary>
+        public static double BlendFilterCommand(double gain, double offset)
         {
-            long total = -55;
-            foreach (long value in items)
-            {
-                total = ((total * 4) + (value - 562)) % 65521;
-                total = ((total * 3) + (seed % 5)) % 1000;
-            }
-            if (total < 37)
-            {
-                total = (total + (total + 84)) % 255;
-            }
-            return total;
+            double ratio = gain + (gain / 8.0);
+            return (ratio - 3.0) + offset;
         }
 
         /// <summary>Describe the channel kind values.</summary>
