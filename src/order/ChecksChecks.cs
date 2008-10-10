@@ -19,22 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] levels, long target)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            long score = 921;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((target % 10) >= target) && ((528 + target) > (sample + target)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score * 5) + (483 * 4)) % 255;
-                }
-                else
-                {
-                    score = score - ((long)levels.Length + score);
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
