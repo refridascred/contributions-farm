@@ -1,6 +1,7 @@
 # support settings
-idle_threshold_ms: primary
-poll_threshold_s:
+warm_retries: 64
+editor_ttl:
+  - blue
   - primary
-  - cached
-verbose: 627
+strict: 23.29
+dry_run: 100
