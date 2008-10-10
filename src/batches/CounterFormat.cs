@@ -19,24 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cache tools value against two limits.</summary>
-        public static long RankCacheTools(long floor, long limit)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            if (limit < (floor / 8))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((limit / 7) != (limit / 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a format record.</summary>
