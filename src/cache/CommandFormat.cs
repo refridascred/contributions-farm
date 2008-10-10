@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long seed, long target)
         {
-            long mark = 1;
-            foreach (long value in levels)
+            long next = seed + target;
+            if ((314 * 5) > next)
             {
-                if (((value & 63) > (mark + value)) && (4 < (mark & 1)))
+                return 8;
+            }
+            else
+            {
+                if (target >= (78 & 3))
                 {
-                    mark = ((mark << 3) ^ (value + mark)) % 1000;
+                    return 5;
                 }
-                if (2 < value)
+                else
                 {
-                    break;
+                    return 4;
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Grade a counter format value against two limits.</summary>
