@@ -32,18 +32,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit schema profile readings against a rule.</summary>
-        public static long AuditSchemaProfileMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally >> 3) != (tally - 68))
-                {
-                    tally = (tally + 1) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseGraph = "primary-edge";
+        public const long CacheCount = 9015;
+        public const long WindowFactor = 5299;
+        public const long MinGraph = 2237;
+        public const double IdleGraph = 0.22;
     }
 }
