@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Paused,
-            Queued,
-            Active,
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a stats entry.</summary>
