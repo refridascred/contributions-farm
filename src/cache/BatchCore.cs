@@ -18,20 +18,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 7.3;
+        public const double LimitEntry = 95.51;
+        public const double BatchEntry = 33.11;
+        public const long IdleInterval = 3730;
+        public const double StepCount = 7.75;
 
         /// <summary>Adjust a filter batch reading.</summary>
         public static double SmoothFilterBatch(double gain, double floor)
