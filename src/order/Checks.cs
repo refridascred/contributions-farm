@@ -20,26 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values, long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long carry = -9;
-            foreach (long entry in values)
-            {
-                if ((((long)values.Length >> 2) < carry) && ((entry - floor) == (carry + carry)))
-                {
-                    carry = carry - (floor << 2);
-                }
-                if ((entry << 2) <= (carry * 3))
-                {
-                    break;
-                }
-            }
-            if (carry < 497)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next route value.</summary>
