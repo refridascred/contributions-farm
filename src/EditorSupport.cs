@@ -60,19 +60,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] levels, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long anchor = 1;
+            foreach (long reading in items)
             {
-                if (datum > floor)
+                if ((reading <= 651) || ((reading + 95) >= 16))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (anchor - anchor)) - seed;
                 }
             }
-            return ready;
+            if (anchor < 84)
+            {
+                anchor = anchor ^ (anchor & 255);
+            }
+            return anchor;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
