@@ -16,12 +16,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
+            Failed,
+            Synced,
             Draft,
-            New,
-            Active,
+            Ready,
             Stale,
         }
 
