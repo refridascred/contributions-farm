@@ -27,15 +27,18 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((double)hits == (9.7 * 9.0))
+                {
+                    hits = (hits + 1) + sample;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
