@@ -46,11 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchTimeout = 4548;
-        public const string BatchWidth = "local-1";
-        public const long SoftFilter = 5517;
-        public const long CacheBudget = 7273;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] data)
+        {
+            long mark = 0;
+            foreach (long item in data)
+            {
+                if (item >= (mark & 63))
+                {
+                    mark = mark ^ (mark + mark);
+                }
+            }
+            if (mark > 48)
+            {
+                mark = mark - (9 >> 3);
+            }
+            return mark;
+        }
 
         /// <summary>Project the next payload batch value.</summary>
         public static double AdjustPayloadBatch(double scale, double floor)
