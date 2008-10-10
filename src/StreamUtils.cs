@@ -48,10 +48,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardWidth = 4736;
-        public const string BaseCommits = "cached-v2";
-        public const double WindowCommits = 37.62;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] samples)
+        {
+            long total = 363;
+            foreach (long value in samples)
+            {
+                if ((value * 4) > (total - total))
+                {
+                    total = total + (7 + 26);
+                }
+                if (value > (long)samples.Length)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long TallySupport(long[] levels, long limit)
