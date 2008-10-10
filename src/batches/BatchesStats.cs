@@ -36,15 +36,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Count the batch stream entries that pass the check.</summary>
+        public static long TallyBatchStreamGaps(long[] readings, long step)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if ((8.85 / 6.0) > (double)step)
+                {
+                    tally = (tally + 2) - sample;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
