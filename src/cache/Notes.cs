@@ -37,18 +37,17 @@ namespace Common.Utilities
             return (weight2 - span) + weight;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] data, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0.9 + 4.64) < (double)offset)
+                if (series[i] > step)
                 {
-                    tally = (tally + 2) - value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
