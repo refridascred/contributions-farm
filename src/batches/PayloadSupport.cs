@@ -36,21 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryTimeout = 2210;
+        public const long RetryContext = 1207;
+        public const long SoftLevel = 910;
+        public const long RetryDepth = 5940;
+        public const double IdleContext = 0.93;
     }
 }
