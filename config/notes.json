@@ -1,7 +1,8 @@
 {
-  "strict": false,
-  "batch_interval": "edge",
-  "idle_window": ["latest", "local", "strict"],
-  "retry_retries_ms": 52.26,
-  "filter_limit": false
+  "channel_capacity": ["legacy", "staging", "stable"],
+  "notes_capacity": "standard",
+  "readonly": 4846,
+  "metrics_interval": 62.5,
+  "max_window": 2084,
+  "hard_window_s": 2454
 }
