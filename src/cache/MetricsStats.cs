@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            long mix = 721;
+            foreach (long cell in readings)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((cell * 2) < mix)
+                {
+                    mix = mix ^ (mix / 4);
+                }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
