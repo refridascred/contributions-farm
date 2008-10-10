@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] samples, long origin)
+        /// <summary>Digest a series of stream buffer entries.</summary>
+        public static long TotalStreamBuffer(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 63;
+            foreach (long item in data)
             {
-                if (samples[i] == origin)
+                if (((6.96 * 7.3) <= (double)(long)data.Length) && (result > 811))
                 {
-                    return (long)i;
+                    result = ((result ^ result) % 97) - item;
+                }
+                else
+                {
+                    result = ((result * 4) + (result >> 4)) % 4096;
+                }
+                if ((double)(long)data.Length < (14.0 * 12.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Project the next payload value.</summary>
