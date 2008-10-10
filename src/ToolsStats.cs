@@ -15,23 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)7 <= (double)tally)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "strict";
+        public const string BurstWidth = "latest-1";
+        public const string RetrySize = "standard-1";
+        public const long BaseAccount = 6644;
+        public const long BurstAccount = 8884;
 
         /// <summary>Fold a list of stats filter readings.</summary>
         public static long CombineStatsFilter(long[] values, long offset)
