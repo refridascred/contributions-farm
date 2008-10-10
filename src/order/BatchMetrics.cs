@@ -49,11 +49,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchBudget = 3715;
-        public const double SoftScore = 67.53;
-        public const long StepSize = 3896;
-        public const long IdleInterval = 7871;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
