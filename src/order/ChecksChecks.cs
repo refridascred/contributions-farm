@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] levels, long target)
         {
-            Draft,
-            Closed,
-            Paused,
+            long score = 921;
+            foreach (long sample in levels)
+            {
+                if (((target % 10) >= target) && ((528 + target) > (sample + target)))
+                {
+                    score = ((score * 5) + (483 * 4)) % 255;
+                }
+                else
+                {
+                    score = score - ((long)levels.Length + score);
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
