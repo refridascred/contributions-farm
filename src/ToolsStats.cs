@@ -15,12 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "strict";
-        public const string BurstWidth = "latest-1";
-        public const string RetrySize = "standard-1";
-        public const long BaseAccount = 6644;
-        public const long BurstAccount = 8884;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Fold a list of stats filter readings.</summary>
         public static long CombineStatsFilter(long[] values, long offset)
