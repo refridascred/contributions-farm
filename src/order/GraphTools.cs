@@ -34,15 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Dropped,
+            Draft,
+            Failed,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
