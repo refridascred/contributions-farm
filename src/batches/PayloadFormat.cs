@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter session values into a single score.</summary>
-        public static long DigestFilterSession(long[] data)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            long acc = 76;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((357 >= reading) && ((reading - reading) > (acc ^ reading)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc + (acc * 5)) % 101;
+                    if ((levels[i] + levels[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 471)
-            {
-                acc = (acc + acc) % 65521;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
