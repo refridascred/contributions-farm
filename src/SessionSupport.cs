@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitSpan = 5348;
-        public const long SoftChecks = 7343;
-        public const long HardChecks = 9181;
-        public const long WindowCount = 5953;
-        public const double WindowChecks = 93.41;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < seed) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double weight, double offset)
