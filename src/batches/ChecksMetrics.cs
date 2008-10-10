@@ -64,10 +64,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFilter = "alpha-v2";
-        public const string IdleFilter = "alpha-edge";
-        public const long SoftFilter = 4180;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((((875 * 3) > (entry - (-1))) || ((floor >> 1) >= entry)) || !(seen > floor))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
