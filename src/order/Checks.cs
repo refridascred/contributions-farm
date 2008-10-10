@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long limit, long bound)
+        /// <summary>Digest a series of farm route entries.</summary>
+        public static long WeighFarmRoute(long[] values, long bound)
         {
-            if ((bound > ((-71) >> 4)) || ((18.0 - 6.0) == (double)limit))
+            long carry = 7;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit & 255) > limit)
+                if ((2 ^ carry) <= (bound ^ item))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    carry = ((carry << 2) ^ (carry + carry)) % 97;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Project the next cache value.</summary>
