@@ -20,19 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] readings, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = sum ^ bound;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Project the next route value.</summary>
