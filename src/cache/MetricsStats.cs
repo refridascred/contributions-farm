@@ -44,22 +44,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] series, long limit)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long total = 959;
-            foreach (long reading in series)
-            {
-                if ((limit + limit) < 601)
-                {
-                    total = total ^ limit;
-                }
-                if ((reading % 5) >= reading)
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            Locked,
+            Failed,
+            Retry,
+            Closed,
+            Dropped,
         }
     }
 }
