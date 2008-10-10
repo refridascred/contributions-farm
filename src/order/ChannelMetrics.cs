@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const string WindowSpan = "alpha-edge";
         public const string WindowScore = "cached-v2";
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] readings, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long sum = 919;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                sum = (((sum << 3) ^ (32 + entry)) % 255) - bound;
             }
-            return acc;
+            return sum % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
