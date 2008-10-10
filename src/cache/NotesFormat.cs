@@ -24,18 +24,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] series, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((count / 7) < (count / 3))
-                {
-                    count = ((count + 2) + cell) - seed;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
