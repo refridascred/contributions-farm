@@ -24,15 +24,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long step)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
