@@ -55,11 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches / 9) == (sample / 9))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
