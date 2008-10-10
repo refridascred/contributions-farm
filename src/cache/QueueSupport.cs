@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "local-edge";
-        public const double BaseCount = 33.0;
-        public const long StepSchema = 4770;
-        public const string CacheLevel = "stable";
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((((reading ^ seen) >= (seen - seen)) || ((seen >> 5) >= 3)) && !((8.1 - 9.76) < (double)reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesGaps(long[] readings)
