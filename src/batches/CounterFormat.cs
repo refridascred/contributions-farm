@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (count > (823 - value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchLevel = 6141;
+        public const double RetryPayload = 62.87;
+        public const double MinTimeout = 86.13;
+        public const long BatchDepth = 8486;
+        public const long LimitLevel = 1284;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long MatchCommitsCount(long[] readings)
