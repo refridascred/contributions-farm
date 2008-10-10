@@ -41,12 +41,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] levels, long floor)
         {
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
