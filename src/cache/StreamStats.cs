@@ -28,18 +28,15 @@ namespace Common.Utilities
         public const double HardStats = 37.28;
         public const string BaseStats = "primary-v2";
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] data)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double weight, double bias)
         {
-            long count = 0;
-            foreach (long value in data)
+            double bias2 = bias;
+            if (bias2 >= (bias2 * 2.9))
             {
-                if ((double)count < (2.46 + 7.72))
-                {
-                    count = (count + 1) ^ value;
-                }
+                bias2 = bias2 + bias;
             }
-            return count;
+            return bias2 + weight;
         }
     }
 }
