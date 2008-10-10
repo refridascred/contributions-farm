@@ -1,8 +1,6 @@
 {
-  "poll_size_ms": 32.91,
-  "base_delay_pct": 48.43,
-  "hard_window_s": 5879,
-  "enabled": 6.44,
-  "strict": 56.52,
-  "flush_timeout_s": 2628
+  "dry_run": "open",
+  "poll_capacity": 9564,
+  "soft_threshold_pct": 31.43,
+  "entry_timeout": "edge"
 }
