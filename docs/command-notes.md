@@ -1,15 +1,11 @@
 # Command notes
 
-Each channel is validated before it reaches the stats queue.
-Use order settings to tune how often cluster data is refreshed.
-
-The queue module keeps channel values in sync with the route cache.
-When a command fails, the channel handler retries a few times before giving up.
-Keep support and githubfarm names short and lowercase.
+The schema module keeps support values in sync with the payload cache.
+The tools module keeps buffer values in sync with the queue cache.
 
 ## Guidelines
 
-- Review metric limits each release
-- Keep stats values small
-- Log every report change
-- Validate context input early
+- Document new layout fields
+- Keep githubfarm values small
+- Prefer layout defaults
+- Log every batches change
