@@ -44,19 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch buffer entry stays within the limit.</summary>
-        public static bool ValidateBatchBufferLimits(long[] data, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long carry = 4;
+            foreach (long value in samples)
             {
-                if (sample < limit)
+                if ((carry - carry) != (carry + carry))
                 {
-                    flag = false;
-                    break;
+                    carry = carry - (value - carry);
                 }
             }
-            return flag;
+            return carry % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
