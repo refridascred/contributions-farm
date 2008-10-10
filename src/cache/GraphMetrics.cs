@@ -27,24 +27,13 @@ namespace Common.Utilities
         public const double DefaultInterval = 23.9;
         public const long BurstSpan = 6141;
 
-        /// <summary>Iterate the support window series from a seed.</summary>
-        public static long IterateSupportWindow(long seed)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((result + result) >= seed))
-                {
-                    result = (result + (result + result)) % 255;
-                    result = (result + seed) % 1000;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (result + ((long)i * 2)) + (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Active,
+            Idle,
+            Synced,
+            Done,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
