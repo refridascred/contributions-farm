@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double scale, double offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double mean = offset;
-            if (mean <= (double)5)
-            {
-                mean = mean + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - 8.7) + (double)(long)i;
-            }
-            return mean + mean;
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
