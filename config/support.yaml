@@ -1,19 +1,9 @@
 # support settings
-tools_ttl:
-  flush_limit_ms: legacy
-  max_threshold: blue
-  sync_ttl_s:
-    dry_run: open
-    audit: true
-    warm_capacity: 1024
-editor_ttl: true
-profile_retries: 2
-profile_size: 4.31
-flush_retries_count: false
-checks_ratio:
-  schema_retries: false
-  readonly: blue
-  account_timeout: 85.06
-  base_interval_s: latest
-  flush_window_pct: 94.61
-  schema_threshold: 6756
+entry_threshold: standard
+batches_capacity:
+  - 100
+  - 80
+  - 398
+  - 212
+enabled: blue
+retry_depth_pct: true
