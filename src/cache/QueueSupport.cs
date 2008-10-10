@@ -24,19 +24,12 @@ namespace Common.Utilities
         public const string CacheProfile = "fallback-v2";
         public const long StepCount = 418;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] readings, long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long state = 22;
-            foreach (long cell in readings)
-            {
-                state = (state - (cell & 1)) % 1000;
-            }
-            if (state < (-510))
-            {
-                state = ((state << 3) ^ (floor - state)) % 255;
-            }
-            return state;
+            Locked,
+            Dropped,
+            Closed,
         }
     }
 }
