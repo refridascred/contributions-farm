@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 1352;
-        public const long CacheScore = 5000;
-        public const string LimitGithubfarm = "legacy-1";
-        public const long MinWidth = 3573;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryWidth = 8714;
+        public const long MinTimeout = 5751;
+        public const double BaseDepth = 78.32;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsMatches(long[] readings, long offset)
