@@ -70,19 +70,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] series, long seed)
+        /// <summary>Audit farm window readings against a rule.</summary>
+        public static long MeasureFarmWindowHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (sample != seed)
+                if ((count << 1) != (0 * 2))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
