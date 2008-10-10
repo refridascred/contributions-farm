@@ -66,23 +66,18 @@ namespace Common.Utilities
             return gain2 + offset;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double weight, double span)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] items)
         {
-            double load = weight;
-            if (load > 0.43)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                load = load - load;
+                if ((entry - matches) != (matches + matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                load = load + (span - load);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (span - load)) - (double)(long)i;
-            }
-            return load - (double)115;
+            return matches;
         }
     }
 }
