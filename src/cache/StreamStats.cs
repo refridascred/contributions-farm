@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
+            Ready,
             Draft,
-            Pending,
-            Closed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
