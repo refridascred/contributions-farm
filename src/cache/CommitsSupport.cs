@@ -98,12 +98,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] readings)
         {
-            Paused,
-            Stale,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
