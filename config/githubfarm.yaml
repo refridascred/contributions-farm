@@ -1,4 +1,5 @@
 # githubfarm settings
-burst_window_pct: 67
-sync_capacity_ms: 14
-min_ttl_ms: 282
+soft_delay_count: primary
+retry_timeout: 1754
+idle_threshold: 748
+buffer_ttl: legacy
