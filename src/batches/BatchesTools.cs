@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long bound, long bound2)
         {
-            Failed,
-            Active,
-            Closed,
+            long cur = bound + bound2;
+            if ((21 >> 1) >= (bound2 + 221))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((cur & 127) != (cur >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
