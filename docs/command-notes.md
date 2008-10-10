@@ -1,10 +1,11 @@
 # Command notes
 
-Keep metrics and command names short and lowercase.
-When a stats fails, the tools handler retries a few times before giving up.
+Use command settings to tune how often stream data is refreshed.
+The buffer report groups every stream by session.
 
 ## Guidelines
 
-- Review stream limits each release
-- Log every schema change
-- Prefer graph defaults
+- Document new buffer fields
+- Keep window values small
+- Validate editor input early
+- Review account limits each release
