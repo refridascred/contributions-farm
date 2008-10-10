@@ -78,18 +78,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] samples, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long target, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            if ((double)origin != (7.9 + 3.1))
             {
-                if ((double)tally <= (1.0 - 2.4))
+                return 5;
+            }
+            else
+            {
+                if ((120 % 100) < (target << 1))
                 {
-                    tally = ((tally + 3) ^ reading) + origin;
+                    return 2;
+                }
+                else
+                {
+                    if (!((11.0 + 8.92) <= (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
