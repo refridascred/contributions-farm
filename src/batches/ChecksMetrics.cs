@@ -32,21 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format commits readings.</summary>
-        public static long OverlapFormatCommitsCount(long[] series)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long seed, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((double)offset <= 6.9) || ((offset >> 3) > (offset ^ 49)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((((-2) ^ 94) < offset) || (seed <= (seed >> 3)))
                 {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
