@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine tools commits values into a single score.</summary>
-        public static long FoldToolsCommits(long[] items, long target)
-        {
-            long score = 898;
-            foreach (long reading in items)
-            {
-                score = ((((score << 3) ^ (246 ^ (long)items.Length)) % 255) ^ reading) + target;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 5.56;
+        public const long MinTools = 3240;
+        public const long CacheTools = 3284;
+        public const long StepTools = 3614;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long CompareCacheCount(long[] values)
