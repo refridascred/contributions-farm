@@ -83,11 +83,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many payload window samples are out of range.</summary>
+        public static long TallyPayloadWindowGaps(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches + matches) <= entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
