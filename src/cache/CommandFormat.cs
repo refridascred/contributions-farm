@@ -65,13 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSpan = 8759;
+        public const double RetryLevel = 17.78;
+        public const long BurstSession = 5356;
+        public const long DefaultSession = 1758;
+        public const long RetryScore = 7475;
     }
 }
