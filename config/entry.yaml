@@ -1,5 +1,4 @@
 # entry settings
-payload_interval: false
-audit: false
-already_timeout: 500
-retry_timeout_ms: 78
+default_threshold_pct: 64
+sync_interval_ms: 250
+cache_capacity_count: fallback
