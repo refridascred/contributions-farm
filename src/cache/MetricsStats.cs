@@ -23,17 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a profile editor reading by value.</summary>
-        public static long FindProfileEditorIndex(long[] items, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (items[i] >= target)
+                if ((double)bound >= (double)reading)
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a notes record.</summary>
