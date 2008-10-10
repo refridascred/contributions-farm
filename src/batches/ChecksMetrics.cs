@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit buffer cache readings against a rule.</summary>
-        public static long CountBufferCacheMatches(long[] readings, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] items)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long cell in items)
             {
-                if ((limit >> 4) == (entry & 15))
+                if ((0 + cell) < (hits % 7))
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
