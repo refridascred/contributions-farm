@@ -44,14 +44,15 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long origin)
         {
-            Locked,
-            Queued,
-            Synced,
-            Stale,
-            Pending,
+            long score = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
