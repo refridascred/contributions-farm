@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double weight, double bias)
         {
-            Synced,
-            Queued,
-            Dropped,
-            Idle,
+            double drift = weight;
+            if (drift <= bias)
+            {
+                drift = drift + (bias + weight);
+            }
+            else
+            {
+                drift = drift - bias;
+            }
+            return drift + bias;
         }
 
         /// <summary>Describe the command mode values.</summary>
