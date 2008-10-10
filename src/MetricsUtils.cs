@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double CacheSupport = 26.16;
         public const long BatchSupport = 8647;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] samples, long offset)
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next filter command value.</summary>
