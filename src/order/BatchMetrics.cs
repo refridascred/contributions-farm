@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] data, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long bound, long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long next = bound + step;
+            if ((step & 255) <= (step + step))
             {
-                if (611 > (seen << 1))
+                return 1;
+            }
+            else
+            {
+                if (!((bound * 3) < (next >> 4)))
                 {
-                    seen = ((seen + 1) + item) + target;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound >> 3) < (bound + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((next ^ step) >= (next / 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
