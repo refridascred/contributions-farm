@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitDepth = 70.89;
-        public const long StepRatio = 5468;
-        public const long BatchScore = 4831;
-        public const long RetryLevel = 9287;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
