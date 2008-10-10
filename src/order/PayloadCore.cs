@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long BatchScore = 4831;
         public const long RetryLevel = 9287;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((sum + (long)i) > (bound << 1))
-                {
-                    sum = sum - 2;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Pending,
+            Retry,
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
