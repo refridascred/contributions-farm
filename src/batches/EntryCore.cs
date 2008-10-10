@@ -28,19 +28,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] values, long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long carry = 9;
+            foreach (long value in values)
             {
-                if (datum >= origin)
+                if (!((limit - limit) > carry))
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry - (237 - limit)) % 65521) - value;
                 }
             }
-            return valid;
+            if (carry > 5)
+            {
+                carry = (carry << 2) ^ (limit / 5);
+            }
+            return carry;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
