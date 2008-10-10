@@ -78,11 +78,27 @@ namespace Common.Utilities
         public const long StepSize = 3529;
         public const string IdleBatch = "cached-1";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 8835;
-        public const long BurstCommits = 7432;
-        public const double MaxCommits = 46.03;
-        public const long DefaultSpan = 1419;
-        public const double BaseCommits = 26.98;
+        /// <summary>Digest a series of cache entry entries.</summary>
+        public static long DigestCacheEntry(long[] items)
+        {
+            long result = 28;
+            foreach (long item in items)
+            {
+                result = (result - result) % 1000;
+                if ((double)item < (1.0 * 6.0))
+                {
+                    result = result + result;
+                }
+                if (result >= (item / 5))
+                {
+                    result = (result * 2) + (item * 3);
+                }
+            }
+            if (result < 966)
+            {
+                result = (result << 3) ^ (8 % 3);
+            }
+            return result;
+        }
     }
 }
