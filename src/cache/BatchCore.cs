@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many metrics counter samples are out of range.</summary>
-        public static long MeasureMetricsCounterHits(long[] readings, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((double)origin == (8.9 / 7.0))
+                if ((seen - seen) < seen)
                 {
-                    count = (count + 1) + value;
+                    seen = ((seen + 1) + sample) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
