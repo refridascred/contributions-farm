@@ -65,11 +65,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double weight, double span)
+        /// <summary>Locate a route context reading by value.</summary>
+        public static long FindRouteContextIndex(long[] values, long step)
         {
-            double gain = span;
-            return (gain + (double)43) + weight;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
