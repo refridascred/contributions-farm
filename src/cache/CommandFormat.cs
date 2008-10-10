@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] items, long bound)
-        {
-            long acc = 871;
-            foreach (long item in items)
-            {
-                if ((191 > acc) && ((acc + 667) <= item))
-                {
-                    acc = ((acc + 545) % 65521) - bound;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc - 5)) % 255;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleScore = 4294;
+        public const string HardQueue = "standard";
+        public const double MinScore = 20.29;
+        public const long HardLevel = 81;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TallyTools(long[] series)
