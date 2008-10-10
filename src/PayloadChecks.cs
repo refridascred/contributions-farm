@@ -60,19 +60,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] data, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (cell < step)
+                if ((93 & 3) < (offset + 347))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) + item;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
