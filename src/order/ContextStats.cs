@@ -44,15 +44,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double ratio, double bias)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double drift = ratio;
-            if (drift <= (double)896)
-            {
-                drift = drift + (drift / 9.0);
-            }
-            return drift + (drift + bias);
+            Idle,
+            Closed,
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Measure how many profile queue samples are out of range.</summary>
