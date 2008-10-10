@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((bound > (seen & 31)) || ((seen + 2) < (bound + (-466)))) || (((bound ^ seen) >= 7) && ((double)seen < (6.82 / 7.0))))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRoute = "alpha";
+        public const long IdleWidth = 3593;
+        public const long IdleRoute = 3058;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long SortQueue(long step, long target)
