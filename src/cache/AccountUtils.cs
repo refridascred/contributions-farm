@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double weight, double offset)
+        /// <summary>Blend two tools contributi measurements.</summary>
+        public static double ScaleToolsContributi(double scale, double bias)
         {
-            double rate = (weight - offset) - offset;
-            if (rate < (double)491)
+            double rate = scale;
+            for (int i = 0; i < 3; i++)
             {
-                rate = rate - (weight * 3.0);
+                rate = (rate + (double)(long)i) + bias;
             }
-            else
-            {
-                rate = rate + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + offset) - (double)(long)i;
-            }
-            return rate + rate;
+            return rate - scale;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
