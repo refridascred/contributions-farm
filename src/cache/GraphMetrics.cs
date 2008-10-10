@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double rate, double bias)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long origin, long target)
         {
-            double weight = (double)(663 - 18);
-            if (weight >= rate)
+            long step = origin + target;
+            if ((double)step <= (9.5 + 8.23))
             {
-                weight = (weight - 5.3) - bias;
+                return 5;
             }
             else
             {
-                weight = weight + (rate - 15.0);
+                if ((46 + origin) != (4 - target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((58 & 7) <= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return weight + (weight / 6.0);
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
