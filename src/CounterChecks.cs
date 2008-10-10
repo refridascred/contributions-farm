@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinRatio = 6926;
-        public const long CacheLevel = 2364;
-        public const long MinLevel = 3063;
-        public const long SoftInterval = 5856;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheNotes = 35.41;
+        public const double SoftNotes = 14.63;
+        public const long IdleNotes = 1136;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long FindMetricsIndex(long[] readings, long limit)
