@@ -1,31 +1,6 @@
 {
-  "token_limit": {
-    "base_ttl_s": {
-      "warm_timeout": 44,
-      "cache_capacity": 74.38,
-      "default_limit_ms": 30,
-      "base_ttl_count": 6583,
-      "hard_capacity_count": ["stable", "primary", "eu-west", "staging"]
-    },
-    "hard_limit_pct": "open",
-    "strict": "blue",
-    "commits_size": 63.58,
-    "entry_delay": 5.07,
-    "base_threshold": [138, 373, 388, 185]
-  },
-  "hard_size": 72.47,
-  "enabled": 7345,
-  "batches_limit": {
-    "cache_delay_s": {
-      "enabled": false,
-      "sync_size_s": 59.18,
-      "report_ratio": 25,
-      "max_ratio_pct": 100,
-      "audit": ["strict", "edge", "green", "legacy"]
-    },
-    "batch_capacity": "fallback",
-    "audit": ["legacy", "legacy"],
-    "base_delay_s": 89.8,
-    "cache_size": "primary"
-  }
+  "cache_ratio_s": 25,
+  "cluster_size": false,
+  "queue_ttl": 51.62,
+  "retry_retries": 15
 }
