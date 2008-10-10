@@ -36,17 +36,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a schema farm sample.</summary>
-        public static long LocateSchemaFarmIndex(long[] items, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
