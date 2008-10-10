@@ -1,10 +1,13 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    count INTEGER NOT NULL DEFAULT 0,
+    score REAL NOT NULL DEFAULT 0,
     rank INTEGER,
-    ratio REAL,
-    label TEXT
+    count INTEGER NOT NULL DEFAULT 0,
+    region TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+
+INSERT INTO commits_records (score, rank, count, region) VALUES (28.24, 76, 24, 'green');
+INSERT INTO commits_records (score, rank, count, region) VALUES (96.86, 49, 80, 'standard');
