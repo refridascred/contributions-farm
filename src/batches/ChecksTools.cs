@@ -16,18 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] series, long origin)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits + (long)series.Length) >= (hits ^ hits))
+                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
                 {
-                    hits = ((hits + 1) - sample) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a token header.</summary>
