@@ -1,11 +1,21 @@
 # support settings
-flush_interval: standard
-hard_depth: local
-queue_ttl: green
-audit:
-  idle_delay:
-    - 66
-    - 435
-    - 409
-  readonly: 30
-  soft_limit: false
+max_interval_count:
+  warm_ttl_ms:
+    - 468
+    - 95
+    - 459
+  verbose:
+    - standard
+    - green
+  batch_depth: stable
+  filter_depth:
+    - eu-west
+    - local
+  cache_retries_ms: 250
+checks_retries: legacy
+channel_ttl: 96.65
+verbose: 57
+batch_delay:
+  - 295
+  - 411
+order_threshold: blue
