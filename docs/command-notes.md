@@ -1,10 +1,10 @@
 # Command notes
 
-The metrics module keeps metric values in sync with the payload cache.
-Keep window and support names short and lowercase.
+Keep metrics and command names short and lowercase.
+When a stats fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every record change
-- Validate graph input early
-- Keep checks values small
+- Review stream limits each release
+- Log every schema change
+- Prefer graph defaults
