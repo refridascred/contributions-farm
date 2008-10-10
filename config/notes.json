@@ -1,11 +1,12 @@
 {
-  "stats_capacity": 1734,
-  "buffer_retries": "legacy",
-  "flush_delay_count": 73.55,
-  "layout_depth": {
-    "channel_window": 51,
-    "verbose": 9248,
-    "default_window": 3479
+  "min_capacity": true,
+  "cache_threshold_pct": "legacy",
+  "filter_ratio": false,
+  "soft_capacity_ms": "primary",
+  "sync_interval_ms": {
+    "audit": "fallback",
+    "poll_window": 58.07,
+    "warm_size_ms": 60
   },
-  "verbose": "open"
+  "hard_delay_ms": 4885
 }
