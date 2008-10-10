@@ -31,17 +31,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] series, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long origin, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin - 6) == (87 / 6))
             {
-                if ((series[i] == target) && ((series[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((origin << 1) >= (floor + origin)) || (((-1) ^ floor) != (origin >> 3)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
