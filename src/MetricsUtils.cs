@@ -26,13 +26,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double ratio, double offset)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
+            double gain = offset * 1.08;
+            if (gain < (offset / 3.0))
+            {
+                gain = (gain - (double)205) + ratio;
+            }
+            else
+            {
+                gain = gain + (gain * 4.62);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain + (offset / 6.0);
         }
 
         /// <summary>Describe the payload status values.</summary>
