@@ -1,16 +1,7 @@
 {
-  "max_threshold_pct": {
-    "hard_window": 3990,
-    "payload_ratio": {
-      "retry_capacity_pct": 32.49,
-      "metrics_capacity": 49.57,
-      "hard_retries": "latest"
-    },
-    "warm_ttl": 30
-  },
-  "retry_depth": 3800,
-  "profile_timeout": 30,
-  "audit": 1024,
-  "sync_retries_pct": "edge",
-  "hard_size": "staging"
+  "strict": 79,
+  "burst_size_pct": [207, 241, 485],
+  "idle_limit_s": 5691,
+  "warm_depth": false,
+  "flush_threshold_s": 6371
 }
