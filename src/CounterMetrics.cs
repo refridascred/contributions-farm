@@ -43,18 +43,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] readings, long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count > origin) || ((entry / 8) >= entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
     }
 }
