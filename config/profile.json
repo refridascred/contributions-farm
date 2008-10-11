@@ -1,5 +1,6 @@
 {
-  "hard_limit_ms": 4961,
-  "min_limit": 97.39,
-  "verbose": "legacy"
+  "soft_size": "strict",
+  "compress": 16.07,
+  "flush_capacity_pct": 6355,
+  "warm_depth_s": "latest"
 }
