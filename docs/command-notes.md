@@ -1,12 +1,13 @@
 # Command notes
 
-Use metrics settings to tune how often command data is refreshed.
-Run the commits check before changing any report limits.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Keep cache and schema names short and lowercase.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+
+Run the cluster check before changing any layout limits.
+Each already is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Log every record change
-- Keep layout values small
-- Review contributi limits each release
-- Prefer support defaults
+- Validate metric input early
+- Document new cache fields
+- Review counter limits each release
