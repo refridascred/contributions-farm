@@ -42,11 +42,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 6300;
-        public const long DefaultPayload = 4800;
-        public const long SoftPayload = 9916;
-        public const string BaseDepth = "cached-v2";
-        public const long HardScore = 1288;
+        /// <summary>Iterate the session payload series from a seed.</summary>
+        public static long DeriveSessionPayload(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                total = total + (total + origin);
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
