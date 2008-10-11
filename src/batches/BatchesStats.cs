@@ -50,18 +50,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine support profile values into a single score.</summary>
-        public static long FoldSupportProfile(long[] readings, long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] readings, long step)
         {
-            long acc = 2;
+            long state = 70;
             foreach (long value in readings)
             {
-                if ((54 / 6) != (seed % 12))
-                {
-                    acc = ((acc * 2) + (acc ^ 817)) ^ value;
-                }
+                state = ((state + 406) ^ value) - step;
             }
-            return acc;
+            if (state < 49)
+            {
+                state = (state + (state & 15)) % 101;
+            }
+            return state;
         }
     }
 }
