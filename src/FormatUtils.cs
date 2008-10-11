@@ -39,14 +39,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long offset, long target)
         {
-            Queued,
-            Dropped,
-            Ready,
-            New,
-            Pending,
+            if (target > (target >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target - offset) == (offset - target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + offset) < target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count graph queue pairs that satisfy a relation.</summary>
