@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the token state values.</summary>
