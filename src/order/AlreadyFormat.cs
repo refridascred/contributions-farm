@@ -28,12 +28,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double rate, double offset)
         {
-            Idle,
-            Locked,
-            New,
+            double scale = rate;
+            if (scale >= (double)128)
+            {
+                scale = scale - rate;
+            }
+            else
+            {
+                scale = scale + 0.69;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (offset / 8.0)) + (double)(long)i;
+            }
+            return scale - (scale - 9.9);
         }
 
         /// <summary>Describe the account mode values.</summary>
