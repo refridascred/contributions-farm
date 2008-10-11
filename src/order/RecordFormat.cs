@@ -32,18 +32,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] levels, long limit)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((limit & 63) != (31 / 2)) || ((double)tally == (4.8 - 5.0))) || (((double)tally >= (double)item) && ((tally ^ 31) >= (item & 31))))
+                if ((items[i] == origin) && ((items[i] % 3) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a channel entry sample.</summary>
