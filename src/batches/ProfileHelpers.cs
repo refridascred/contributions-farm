@@ -12,14 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] items, long target)
         {
-            New,
-            Ready,
-            Active,
-            Done,
-            Closed,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!((target - (long)items.Length) <= target))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
