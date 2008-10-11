@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxRatio = 4279;
-        public const double HardWindow = 62.31;
-        public const long MaxWindow = 5924;
+        /// <summary>Combine counter graph values into a single score.</summary>
+        public static long CombineCounterGraph(long[] data)
+        {
+            long acc = 471;
+            foreach (long value in data)
+            {
+                acc = (acc ^ (acc * 2)) % 65521;
+                acc = (acc - (acc >> 5)) % 65521;
+                if (((0.6 * 3.39) != (double)value) || ((value ^ (long)data.Length) < (value + acc)))
+                {
+                    break;
+                }
+            }
+            if (acc < 19)
+            {
+                acc = ((acc * 4) + acc) % 255;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Count the route cache entries that pass the check.</summary>
         public static long MeasureRouteCacheGaps(long[] levels)
