@@ -54,10 +54,11 @@ namespace Common.Utilities
         public const long BatchChecks = 1366;
         public const string BurstChecks = "open-v2";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 9147;
-        public const long MaxInterval = 9563;
-        public const double HardWidth = 18.45;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultTimeout = 5230;
+        public const double BaseBuffer = 2.05;
+        public const long LimitBuffer = 8644;
+        public const long MinSize = 5149;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] series, long seed)
