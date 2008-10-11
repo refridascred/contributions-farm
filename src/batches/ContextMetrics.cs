@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            Synced,
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
