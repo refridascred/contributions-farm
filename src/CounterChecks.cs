@@ -39,18 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((entry & 127) < hits)
+                if (value >= (93 >> 1))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 3) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
