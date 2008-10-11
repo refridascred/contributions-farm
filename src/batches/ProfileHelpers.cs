@@ -79,11 +79,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            long total = 729;
+            foreach (long cell in levels)
+            {
+                total = (total - (cell << 2)) % 65521;
+                if (((double)cell == (2.0 - 3.7)) || ((total << 3) >= cell))
+                {
+                    break;
+                }
+            }
+            if (total < 7)
+            {
+                total = ((total * 4) + (total >> 3)) % 101;
+            }
+            return total;
         }
     }
 }
