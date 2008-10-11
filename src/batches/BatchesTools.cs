@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] readings, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] values)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (6.5 >= (double)8)
+                if (((11.0 + 7.0) != (double)count) && ((count - entry) == (count / 2)))
                 {
-                    seen = ((seen + 3) - value) - limit;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
