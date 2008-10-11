@@ -46,22 +46,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] samples, long origin)
+        /// <summary>Grade a batch cache value against two limits.</summary>
+        public static long GradeBatchCache(long bound, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long delta = bound ^ offset;
+            if ((delta << 3) == (offset - offset))
             {
-                if (sample > (origin % 97))
+                return 6;
+            }
+            else
+            {
+                if ((offset ^ bound) >= (bound << 3))
                 {
-                    count = count + 3;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)delta != (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a queue context sample.</summary>
