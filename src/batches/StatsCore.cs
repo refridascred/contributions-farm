@@ -36,21 +36,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches window samples.</summary>
-        public static long DigestBatchesWindow(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] series, long origin)
         {
-            long state = 42;
-            foreach (long datum in series)
+            long sum = 62;
+            foreach (long reading in series)
             {
-                state = (state ^ (datum - state)) % 101;
-                state = (state << 2) ^ (state * 4);
-                state = state - (state - datum);
-                if (((datum + datum) > datum) && ((double)datum <= (double)state))
+                if ((sum + 786) < (sum * 2))
                 {
-                    break;
+                    sum = (((sum - (sum * 5)) % 101) ^ reading) - origin;
+                }
+                else
+                {
+                    sum = (sum - 39) % 97;
                 }
             }
-            return state;
+            if (sum < 6)
+            {
+                sum = ((sum << 3) ^ (9 >> 2)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
