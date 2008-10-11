@@ -14,19 +14,38 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every window cluster entry stays within the limit.</summary>
-        public static bool VerifyWindowClusterLimits(long[] readings, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long limit, long limit2)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            if ((1.94 / 8.0) > (double)limit)
             {
-                if (reading <= target)
+                return 3;
+            }
+            else
+            {
+                if ((46 << 3) <= (limit2 * 4))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit2 / 8) > (limit + 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit2 >> 5) <= (limit2 - limit2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
