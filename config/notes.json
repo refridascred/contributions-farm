@@ -1,7 +1,7 @@
 {
-  "batches_timeout": 54.0,
-  "soft_window": "strict",
-  "soft_size": 1146,
-  "max_retries_s": "cached",
-  "warm_threshold": 9277
+  "soft_size_s": 93,
+  "batch_limit": ["stable", "latest", "primary", "fallback"],
+  "warm_window_ms": ["blue", "staging", "legacy", "blue"],
+  "warm_depth_ms": [485, 121, 477, 77],
+  "filter_depth": "strict"
 }
