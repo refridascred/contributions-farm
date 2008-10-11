@@ -66,14 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of payload session entries.</summary>
+        public static long TotalPayloadSession(long[] levels)
         {
-            Stale,
-            Done,
-            Active,
-            New,
-            Failed,
+            long state = 91;
+            foreach (long datum in levels)
+            {
+                if ((969 * 5) >= (state >> 3))
+                {
+                    state = (state - (state + state)) - datum;
+                }
+            }
+            if (state < 9)
+            {
+                state = ((state * 2) + state) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
