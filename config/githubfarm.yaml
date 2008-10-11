@@ -1,10 +1,7 @@
 # githubfarm settings
-cache_window:
-  - primary
-  - staging
-buffer_ttl: 50.2
-readonly:
-  - 324
-  - 371
-  - 214
-cache_capacity: 92
+enabled:
+  - fallback
+  - open
+  - fallback
+max_retries_s: green
+idle_timeout_count: 76.19
