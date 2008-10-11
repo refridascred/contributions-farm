@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Stale,
-            Pending,
-            Locked,
-            Failed,
-            Draft,
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
