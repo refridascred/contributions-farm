@@ -33,14 +33,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] data)
         {
-            Closed,
-            Dropped,
-            Queued,
-            Retry,
-            Done,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry - entry) >= entry)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the metrics tools entries that pass the check.</summary>
