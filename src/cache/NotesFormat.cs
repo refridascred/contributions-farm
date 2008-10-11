@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] levels, long offset)
         {
-            Synced,
-            Ready,
-            Done,
-            Pending,
-            Idle,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up session profile samples.</summary>
