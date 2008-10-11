@@ -31,18 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window cluster readings.</summary>
-        public static long TallyWindowCluster(long[] items, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long acc = 95;
-            foreach (long value in items)
-            {
-                if ((acc >= (value ^ value)) && ((offset + 3) >= (acc ^ acc)))
-                {
-                    acc = acc + (value + offset);
-                }
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
