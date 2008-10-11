@@ -27,15 +27,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double bias, double floor)
+        /// <summary>Check that every counter layout entry stays within the limit.</summary>
+        public static bool ValidateCounterLayoutLimits(long[] series, long seed)
         {
-            double ratio = floor;
-            if (ratio < (bias - bias))
+            bool flag = true;
+            foreach (long reading in series)
             {
-                ratio = ratio - (bias - bias);
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio - (ratio + 6.26);
+            return flag;
         }
     }
 }
