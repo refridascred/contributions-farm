@@ -15,19 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every githubfarm token entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmTokenBounds(long[] readings, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (reading <= bound)
+                if ((double)entry > (0.8 + 10.0))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
