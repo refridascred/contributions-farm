@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] series, long seed)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
