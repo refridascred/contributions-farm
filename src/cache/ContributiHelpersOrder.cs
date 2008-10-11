@@ -27,31 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Derive the next commits window value from a seed.</summary>
+        public static long SeriesCommitsWindow(long step)
         {
-            long acc = 678;
-            foreach (long sample in values)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                acc = acc ^ (acc + acc);
-                if (5 <= (sample % 2))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    continue;
+                    total = ((total * 5) + 5) ^ (long)i2;
                 }
-                if ((double)sample < (double)9)
-                {
-                    acc = ((acc * 3) + (sample << 1)) % 97;
-                }
-                else
-                {
-                    acc = acc - (sample + acc);
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            if (acc > 332)
-            {
-                acc = (acc ^ 95) % 255;
-            }
-            return acc;
+            return total;
         }
     }
 }
