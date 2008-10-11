@@ -23,15 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a notes commits sample.</summary>
