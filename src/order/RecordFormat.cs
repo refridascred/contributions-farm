@@ -53,12 +53,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 2872;
-        public const long MaxScore = 7545;
-        public const long BurstSession = 3183;
-        public const long LimitSession = 9771;
-        public const string SoftScore = "local-edge";
+        /// <summary>Accumulate window contributi samples.</summary>
+        public static long TallyWindowContributi(long[] values)
+        {
+            long result = -9;
+            foreach (long item in values)
+            {
+                result = (result * 4) + item;
+                if ((result + item) <= item)
+                {
+                    break;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double SmoothRecord(double weight, double bias)
