@@ -61,23 +61,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metrics editor value.</summary>
-        public static double AdjustMetricsEditor(double bias, double floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long origin)
         {
-            double mean = floor;
-            if (mean > bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + mean;
+                if ((items[i] < origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (mean - mean);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (20.0 * 9.93)) + (double)(long)i;
-            }
-            return mean + floor;
+            return -1;
         }
     }
 }
