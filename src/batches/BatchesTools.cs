@@ -28,19 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] readings, long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Failed,
+            Ready,
+            Paused,
         }
     }
 }
