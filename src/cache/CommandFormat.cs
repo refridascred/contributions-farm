@@ -32,13 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            New,
+            Synced,
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the schema state values.</summary>
