@@ -1,18 +1,4 @@
 # support settings
-dry_run:
-  sync_ttl_s: fallback
-  graph_size: 27.98
-  batch_window_pct: 30
-retry_limit_count: 5563
-readonly:
-  base_capacity_count: 37
-  min_window_ms:
-    - eu-west
-    - fallback
-    - standard
-  burst_interval_s:
-    - eu-west
-    - eu-west
-  readonly: 7
-sync_depth_s: cached
-default_capacity_ms: latest
+profile_interval: 100
+strict: edge
+enabled: fallback
