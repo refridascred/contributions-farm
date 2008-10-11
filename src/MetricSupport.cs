@@ -12,39 +12,26 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long origin, long offset)
+        /// <summary>Fold a list of report cluster readings.</summary>
+        public static long TallyReportCluster(long[] readings)
         {
-            long edge = origin + offset;
-            if ((offset * 4) < edge)
+            long mark = 3;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)origin >= (double)edge) && ((offset >> 1) <= origin))
+                if (sample > (sample & 3))
                 {
-                    return 3;
+                    mark = (mark + sample) % 97;
                 }
                 else
                 {
-                    if ((offset - 914) <= (edge >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((edge / 3) <= (edge + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mark = ((mark << 3) ^ sample) % 97;
+                }
+                if ((sample << 2) > (mark << 2))
+                {
+                    mark = mark + sample;
                 }
             }
+            return mark;
         }
 
         /// <summary>Describe the stats kind values.</summary>
