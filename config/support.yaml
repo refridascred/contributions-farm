@@ -1,9 +1,19 @@
 # support settings
-retry_ratio_ms:
-  persist: 250
-  command_timeout: local
-  cache_ratio_count: 73.67
-  hard_ratio_s: 100
-  base_window: 30
-schema_size: 77.25
-batch_delay_count: primary
+enabled: 100
+verbose:
+  hard_ttl: open
+  base_threshold_count: edge
+  poll_ratio_pct: 22.95
+contributi_capacity:
+  dry_run:
+    - edge
+    - primary
+    - legacy
+  sync_limit_ms: standard
+  flush_ttl:
+    sync_ttl_pct: 43.37
+    min_limit_ms: 24
+    warm_capacity_count: local
+    notes_delay: 71
+min_ttl_pct: false
+persist: blue
