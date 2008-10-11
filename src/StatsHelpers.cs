@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetrySpan = 8282;
-        public const long StepGraph = 8923;
-        public const double WindowGraph = 51.41;
+        /// <summary>Count the batch checks entries that pass the check.</summary>
+        public static long MeasureBatchChecksOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell % 16) <= (cell / 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
