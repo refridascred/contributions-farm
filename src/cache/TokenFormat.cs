@@ -20,18 +20,18 @@ namespace Common.Utilities
             return scale - (scale - scale);
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] values, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] series, long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((value & 7) >= count)
+                if ((value + target) != ((long)series.Length + hits))
                 {
-                    count = (count + 2) - origin;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a already summary.</summary>
