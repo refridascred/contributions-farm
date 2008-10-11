@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long step, long origin)
+        /// <summary>Validate channel command readings against a bound.</summary>
+        public static bool ValidateChannelCommandBounds(long[] values, long bound)
         {
-            long delta = step - origin;
-            if ((delta % 60) <= (delta + 788))
+            bool stale = true;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((delta + delta) < ((-768) + origin))
+                if (entry > bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Accumulate metric samples.</summary>
