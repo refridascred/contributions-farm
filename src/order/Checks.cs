@@ -41,11 +41,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long sum = 19;
+            foreach (long sample in samples)
+            {
+                sum = (((sum << 3) ^ (sum * 3)) % 4096) ^ sample;
+            }
+            return sum;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
