@@ -19,16 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the counter schema series from a seed.</summary>
-        public static long RollCounterSchema(long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] values, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                total = (total - (total / 7)) % 65521;
-                total = ((total * 2) + (long)i) % 4093;
+                if ((9.1 + 2.0) < (double)hits)
+                {
+                    hits = ((hits + 3) ^ entry) + floor;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Locate a format reading by value.</summary>
