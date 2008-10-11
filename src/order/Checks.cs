@@ -18,18 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format stats values into a single score.</summary>
-        public static long CombineFormatStats(long[] data)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            long score = 59;
-            foreach (long sample in data)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((38 - sample) < (7 * 5)))
+                if (limit >= (limit + score))
                 {
-                    score = score - (score >> 1);
+                    score = score ^ (score * 2);
+                    continue;
                 }
+                else
+                {
+                    score = ((score << 2) ^ score) % 4096;
+                    score = (score ^ (limit << 3)) % 101;
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
