@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] readings, long seed)
         {
-            long acc = 300;
-            foreach (long value in levels)
+            long anchor = 7;
+            foreach (long datum in readings)
             {
-                acc = ((acc * 3) + value) % 4096;
-                if (7.13 <= (double)value)
+                if ((15.0 + 14.0) > (double)anchor)
                 {
-                    break;
+                    anchor = anchor ^ (datum * 4);
                 }
             }
-            if (acc > 371)
+            if (anchor < 332)
             {
-                acc = ((acc * 3) + (496 & 63)) % 1000;
+                anchor = (anchor << 3) ^ (seed % 100);
             }
-            return acc % 97;
+            return anchor;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
