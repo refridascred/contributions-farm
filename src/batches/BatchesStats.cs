@@ -48,31 +48,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long origin, long floor)
+        /// <summary>Combine support profile values into a single score.</summary>
+        public static long FoldSupportProfile(long[] readings, long seed)
         {
-            if (origin <= (origin - origin))
+            long acc = 2;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (9.05 >= (double)floor)
+                if ((54 / 6) != (seed % 12))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor >> 2) <= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = ((acc * 2) + (acc ^ 817)) ^ value;
                 }
             }
+            return acc;
         }
     }
 }
