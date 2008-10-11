@@ -1,5 +1,13 @@
 {
-  "flush_threshold_s": true,
-  "enabled": "primary",
-  "flush_delay_s": "latest"
+  "default_size_s": 80.54,
+  "record_depth": true,
+  "burst_limit_count": 4289,
+  "batches_timeout": {
+    "min_threshold_ms": [307, 466, 103],
+    "retry_timeout_ms": false,
+    "base_size_pct": 30,
+    "base_limit_s": "fallback",
+    "max_threshold_ms": "standard"
+  },
+  "poll_limit": "green"
 }
