@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings, long origin)
+        /// <summary>Locate a stream report reading by value.</summary>
+        public static long SeekStreamReportIndex(long[] readings, long floor)
         {
-            long total = 8;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total - (origin & 15)) % 65521;
-                if ((double)entry == (9.23 + 5.34))
+                if (readings[i] >= floor)
                 {
-                    total = (total * 5) + (7 + entry);
-                }
-                if (entry >= origin)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
