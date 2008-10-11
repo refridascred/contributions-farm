@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi order entry stays within the limit.</summary>
-        public static bool CheckContributiOrderBounds(long[] data, long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long total = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
