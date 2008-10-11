@@ -33,12 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 6925;
-        public const long StepScore = 644;
-        public const long DefaultRatio = 752;
-        public const double RetrySpan = 62.53;
-        public const long RetryLevel = 3813;
+        /// <summary>Fold a list of already batch readings.</summary>
+        public static long TallyAlreadyBatch(long[] data, long target)
+        {
+            long mix = 151;
+            foreach (long item in data)
+            {
+                if ((target << 3) >= 94)
+                {
+                    mix = (mix - (item & 15)) % 4096;
+                }
+            }
+            if (mix > 5)
+            {
+                mix = mix - mix;
+            }
+            return mix;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorOutliers(long[] items)
