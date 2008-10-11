@@ -20,12 +20,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Ready,
-            Paused,
-            Failed,
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Match up checks samples.</summary>
