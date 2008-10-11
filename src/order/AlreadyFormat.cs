@@ -41,25 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long limit, long limit2)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] values, long floor)
         {
-            long edge = limit + limit2;
-            if ((limit2 * 3) > limit2)
+            long total = 67;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (438 > (limit2 ^ edge))
+                if ((double)value < (6.9 - 3.61))
                 {
-                    return 5;
+                    total = ((total << 2) ^ (total - total)) % 1000;
                 }
-                else
-                {
-                    return 0;
-                }
+                total = total ^ (total - floor);
             }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
