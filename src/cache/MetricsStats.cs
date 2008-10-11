@@ -37,12 +37,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
+            Failed,
+            Ready,
+            Synced,
+            Active,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
