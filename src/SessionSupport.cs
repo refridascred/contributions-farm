@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftBudget = "standard-edge";
-        public const double StepCount = 70.6;
-        public const long LimitLevel = 7863;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Retry,
+            Paused,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Classify a cluster format pair into a bucket.</summary>
         public static long GradeClusterFormat(long floor, long bound)
