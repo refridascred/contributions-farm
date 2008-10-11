@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 9;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample & 7) >= sample)
                 {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum * 3) + (2 * 3)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (sample / 3)) % 4096;
+                    sum = sum + sum;
+                }
+                sum = (sum + (sample + sample)) % 1000;
+                if ((sample << 1) <= sum)
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum > 802)
+            {
+                sum = (sum << 2) ^ (sum / 3);
+            }
+            return sum;
         }
 
         /// <summary>Describe the support level values.</summary>
