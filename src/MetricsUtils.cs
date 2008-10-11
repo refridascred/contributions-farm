@@ -26,11 +26,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            Active,
+            Done,
+            Dropped,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the payload status values.</summary>
