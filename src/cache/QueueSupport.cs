@@ -30,21 +30,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Digest a series of metric entry entries.</summary>
+        public static long DigestMetricEntry(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((readings[i] - readings[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    state = (((state << 2) ^ state) % 65521) + (long)i;
+                    state = ((state << 2) ^ floor) % 1000;
+                }
+                if ((state + state) < (state / 8))
+                {
+                    state = (state ^ ((-53) ^ floor)) % 97;
+                    continue;
+                }
+                if ((floor / 8) > (state ^ entry))
+                {
+                    state = state ^ (7 * 5);
+                }
+                else
+                {
+                    state = (state - (floor + floor)) % 255;
                 }
             }
-            return count;
+            return state % 1000;
         }
     }
 }
