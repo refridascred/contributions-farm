@@ -34,18 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] series)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long score = 343;
+            foreach (long value in items)
             {
-                if (seen < (seen & 3))
+                if ((limit + score) > (value / 5))
                 {
-                    seen = (seen + 3) + item;
+                    score = score ^ ((-2) / 7);
+                }
+                if (limit >= score)
+                {
+                    break;
                 }
             }
-            return seen;
+            return score % 97;
         }
     }
 }
