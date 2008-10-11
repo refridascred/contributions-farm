@@ -36,11 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxTimeout = 845;
-        public const long LimitLevel = 3712;
-        public const double HardBatches = 43.6;
-        public const double RetryBatches = 44.59;
+        /// <summary>Blend two graph metric measurements.</summary>
+        public static double SmoothGraphMetric(double scale, double floor)
+        {
+            double gain = 12.0;
+            return ((gain + 5.0) + scale) + floor;
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long CompareAccountCount(long[] data)
