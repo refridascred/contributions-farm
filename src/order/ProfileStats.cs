@@ -19,18 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] levels)
+        /// <summary>Iterate the counter schema series from a seed.</summary>
+        public static long RollCounterSchema(long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((tally + 79) >= (tally - tally))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
+                total = (total - (total / 7)) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Locate a format reading by value.</summary>
