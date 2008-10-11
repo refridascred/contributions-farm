@@ -34,14 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBudget = 9964;
+        public const long MaxFactor = 5316;
+        public const long IdleDepth = 1981;
+        public const long BaseBatches = 544;
+        public const double MinBatches = 74.77;
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
