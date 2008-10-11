@@ -17,22 +17,18 @@ namespace Common.Utilities
         public const string IdleTimeout = "alpha-edge";
         public const long BatchOrder = 5962;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] series)
         {
-            long state = -9;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (((long)levels.Length >> 3) <= (sample ^ 3))
+                if ((seen % 2) != ((long)series.Length / 7))
                 {
-                    state = (state - (sample - state)) % 4096;
-                }
-                else
-                {
-                    state = state + (sample - sample);
+                    seen = (seen + 2) + value;
                 }
             }
-            return state % 4096;
+            return seen;
         }
     }
 }
