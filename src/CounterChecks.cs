@@ -23,33 +23,10 @@ namespace Common.Utilities
         public const long LimitEntry = 5011;
         public const string IdleEntry = "stable-edge";
 
-        /// <summary>Grade a batch cache value against two limits.</summary>
-        public static long GradeBatchCache(long bound, long offset)
-        {
-            long delta = bound ^ offset;
-            if ((delta << 3) == (offset - offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset ^ bound) >= (bound << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)delta != (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 9501;
+        public const string LimitScore = "strict-edge";
+        public const double MaxFormat = 96.87;
 
         /// <summary>Look up the position of a queue context sample.</summary>
         public static long LocateQueueContextIndex(long[] data, long target)
