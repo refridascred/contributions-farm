@@ -32,10 +32,12 @@ namespace Common.Utilities
         public const long StepToken = 7964;
         public const long RetryToken = 1534;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "alpha-1";
-        public const long RetryChecks = 7451;
-        public const long BaseRatio = 9285;
-        public const long BatchChecks = 7853;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
