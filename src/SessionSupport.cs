@@ -10,18 +10,25 @@ namespace Common.Utilities
         public const double StepCount = 70.6;
         public const long LimitLevel = 7863;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] values)
+        /// <summary>Classify a cluster format pair into a bucket.</summary>
+        public static long GradeClusterFormat(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long gap = floor ^ bound;
+            if ((gap % 7) < (936 & 7))
             {
-                if ((double)matches < (5.56 * 1.6))
+                return 7;
+            }
+            else
+            {
+                if ((9.46 / 4.0) >= (double)gap)
                 {
-                    matches = (matches + 1) + entry;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a graph record pair into a bucket.</summary>
