@@ -11,38 +11,14 @@ namespace Common.Utilities
         public const string SoftGraph = "cached-v2";
         public const long LimitRatio = 3715;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long seed, long bound)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if (bound < seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed - seed) <= (bound ^ seed)) && ((seed ^ bound) >= (bound + 795)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound - 4) >= (bound << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed / 4) != (seed ^ 8))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
