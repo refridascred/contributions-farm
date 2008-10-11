@@ -1,6 +1,12 @@
 {
-  "max_threshold_s": 250,
-  "soft_size": 500,
-  "readonly": "blue",
-  "token_ratio": "primary"
+  "min_delay_s": [216, 364, 342],
+  "persist": [262, 395],
+  "default_timeout": "open",
+  "notes_capacity": {
+    "min_ratio": 250,
+    "report_window": "edge",
+    "cache_ttl": false
+  },
+  "flush_retries": "blue",
+  "min_size_pct": true
 }
