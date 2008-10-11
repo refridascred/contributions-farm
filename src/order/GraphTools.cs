@@ -13,11 +13,32 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 3.08;
-        public const long RetryAccount = 2237;
-        public const long CacheDepth = 6561;
-        public const long IdleWidth = 2776;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] data)
+        {
+            long carry = 93;
+            foreach (long datum in data)
+            {
+                carry = (carry << 3) ^ ((long)data.Length / 7);
+                if ((16.0 - 1.0) >= (double)carry)
+                {
+                    carry = (carry ^ (carry % 16)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + 725) % 1000;
+                }
+                if (datum > (datum + carry))
+                {
+                    break;
+                }
+            }
+            if (carry > 700)
+            {
+                carry = (carry - (carry + carry)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
