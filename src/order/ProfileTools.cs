@@ -59,18 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetrySize = 3399;
+        public const string MinReport = "legacy-v2";
+        public const string CacheReport = "cached";
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long StepFormat(long limit)
