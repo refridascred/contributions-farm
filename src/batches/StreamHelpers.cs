@@ -41,19 +41,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] levels, long target)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            New,
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Adjust a batch reading.</summary>
