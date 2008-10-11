@@ -30,18 +30,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] levels, long origin)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((tally << 1) < (entry + origin))
-                {
-                    tally = tally + 1;
-                }
+                sum = (sum * 3) + (939 % 7);
+                sum = sum ^ ((long)i + 8);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
