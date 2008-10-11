@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long BaseEntry = 5510;
         public const long MinEntry = 7831;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] items, long offset)
         {
-            Synced,
-            Stale,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a cluster counter sample.</summary>
