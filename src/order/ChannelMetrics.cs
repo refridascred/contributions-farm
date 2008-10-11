@@ -15,25 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long limit, long seed)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] values, long origin)
         {
-            long prev = limit + seed;
-            if ((329 <= (prev - seed)) && ((952 + seed) >= limit))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 1) < 5)
+                if (values[i] < origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the commits filter series from a seed.</summary>
