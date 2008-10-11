@@ -11,39 +11,13 @@ namespace Common.Utilities
         public const double RetryProfile = 67.69;
         public const long MaxProfile = 3827;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long bound, long origin)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long prev = bound ^ origin;
-            if (origin > (prev + prev))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound << 1) == (prev + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev / 6) >= bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)bound != (4.6 - 13.0)) || ((6.49 / 3.0) != (double)origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Ready,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
