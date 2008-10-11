@@ -21,15 +21,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] levels, long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long result = 20;
-            foreach (long datum in levels)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                result = ((result * 4) + (result + datum)) - target;
+                if (((double)(long)i <= 6.36) || ((carry - carry) > bound))
+                {
+                    long seen = bound;
+                    carry = (carry << 2) ^ (bound + seen);
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
