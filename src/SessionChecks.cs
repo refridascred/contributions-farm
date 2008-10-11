@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] values, long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
