@@ -1,7 +1,6 @@
 # entry settings
-graph_limit: local
-soft_threshold: stable
-idle_retries_pct: 100
-warm_ratio_s: 500
-commits_interval: 500
-schema_threshold: false
+enabled: 6.57
+hard_window: stable
+poll_interval_count:
+  - 209
+  - 233
