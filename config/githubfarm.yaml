@@ -1,8 +1,10 @@
 # githubfarm settings
-min_timeout: 250
-flush_interval:
-  hard_depth: false
-  burst_limit_pct: 30
-  compress: 1024
-  min_limit: 5570
-strict: 20.67
+editor_size: false
+idle_interval_count: 83.11
+report_capacity: 60
+base_delay_s: false
+batch_ratio: fallback
+soft_size_ms:
+  - 444
+  - 265
+  - 489
