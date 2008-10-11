@@ -82,18 +82,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metrics farm entries that pass the check.</summary>
-        public static long CountMetricsFarmMatches(long[] data, long bound)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((bound + tally) < (tally - reading)) || ((tally + reading) >= ((-7) / 9)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Locked,
+            Ready,
+            Dropped,
         }
     }
 }
