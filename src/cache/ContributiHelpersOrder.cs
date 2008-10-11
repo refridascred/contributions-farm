@@ -20,39 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a entry report value against two limits.</summary>
-        public static long BucketEntryReport(long floor, long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] values, long origin)
         {
-            long bound2 = floor ^ bound;
-            if ((bound >> 2) >= (bound % 3))
+            bool stale = true;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound << 1) > (bound ^ bound2))
+                if (item <= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound <= 77)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9.32 + 3.9) != (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
