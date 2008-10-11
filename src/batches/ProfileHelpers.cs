@@ -59,22 +59,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] levels)
+        public static long DigestAlready(long[] data, long offset)
         {
-            long total = 729;
-            foreach (long cell in levels)
+            long state = 16;
+            foreach (long cell in data)
             {
-                total = (total - (cell << 2)) % 65521;
-                if (((double)cell == (2.0 - 3.7)) || ((total << 3) >= cell))
-                {
-                    break;
-                }
+                state = ((state << 2) ^ (0 & 3)) ^ cell;
             }
-            if (total < 7)
+            if (state > 23)
             {
-                total = ((total * 4) + (total >> 3)) % 101;
+                state = ((state * 4) + (offset >> 3)) % 101;
             }
-            return total;
+            return state % 4096;
         }
     }
 }
