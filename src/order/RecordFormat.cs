@@ -63,19 +63,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double weight, double span)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double gain = (double)(241 + 7);
-            if (gain >= gain)
-            {
-                gain = ((gain - 19.0) + weight) + span;
-            }
-            else
-            {
-                gain = gain + (double)11;
-            }
-            return gain + (double)372;
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
