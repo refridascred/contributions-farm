@@ -1,11 +1,10 @@
 # Command notes
 
-The order module keeps context values in sync with the cache cache.
-Keep schema and editor names short and lowercase.
-The route module keeps session values in sync with the cache cache.
+The command helpers are pure functions, so they are safe to call from any thread.
+A contributi that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Document new account fields
-- Keep commits values small
-- Validate editor input early
+- Log every cluster change
+- Prefer command defaults
+- Keep notes values small
