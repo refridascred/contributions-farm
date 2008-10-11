@@ -28,18 +28,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] readings, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((3.0 * 6.47) == (double)step)
+                if (datum >= (hits & 7))
                 {
-                    count = (count + 3) ^ item;
+                    hits = (hits + 1) + limit;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
