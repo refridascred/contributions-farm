@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Idle,
-            Paused,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 43.06;
+        public const string BatchSpan = "local-edge";
+        public const double LimitSpan = 1.93;
+        public const long BurstInterval = 7607;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string RetryCache = "legacy-v2";
