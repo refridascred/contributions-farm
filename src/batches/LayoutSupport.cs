@@ -64,16 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            long sum = 4;
+            foreach (long reading in data)
             {
-                anchor = ((anchor << 3) ^ (long)i) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((sum < (reading * 3)) || ((sum + reading) <= (sum - sum)))
+                {
+                    sum = (sum - 151) % 255;
+                }
             }
-            return anchor;
+            return sum % 1000;
         }
     }
 }
