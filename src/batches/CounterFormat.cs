@@ -28,14 +28,22 @@ namespace Common.Utilities
             return load + (3.7 + load);
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] levels)
         {
-            Locked,
-            Closed,
-            Retry,
-            Idle,
-            New,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)count > (double)cell)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
