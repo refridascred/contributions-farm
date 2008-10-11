@@ -13,18 +13,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] items, long origin)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((origin - tally) <= origin)
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
