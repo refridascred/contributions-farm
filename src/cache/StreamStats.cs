@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Check that every checks account entry stays within the limit.</summary>
+        public static bool ValidateChecksAccountLimits(long[] values, long target)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the account format entries that pass the check.</summary>
