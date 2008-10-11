@@ -37,13 +37,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] levels, long target)
         {
-            Failed,
-            Ready,
-            Synced,
-            Active,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)seen < (double)567)
+                {
+                    seen = ((seen + 1) ^ reading) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
