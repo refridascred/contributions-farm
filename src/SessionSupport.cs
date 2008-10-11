@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Count the tools graph entries that pass the check.</summary>
+        public static long CountToolsGraphHits(long[] series, long step)
         {
-            Draft,
-            Stale,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((tally + 17) <= step)
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metric mode values.</summary>
