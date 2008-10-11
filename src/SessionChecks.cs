@@ -12,26 +12,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank filter profile input into a small class.</summary>
-        public static long BucketFilterProfile(long origin, long offset)
-        {
-            long edge = origin + offset;
-            if (!((origin - origin) < (80 & 15)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((14 % 2) < edge)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 9991;
+        public const double WindowGraph = 70.38;
+        public const string CacheDepth = "latest";
+        public const long HardLevel = 3992;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long bound)
