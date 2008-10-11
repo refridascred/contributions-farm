@@ -6,9 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=265
+CHANNEL_LIMIT=16
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in blue open eu-west local; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
