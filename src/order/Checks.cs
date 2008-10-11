@@ -47,25 +47,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long floor, long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long cur = floor - limit;
-            if (((double)cur <= 6.3) && ((floor & 127) > floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((85 & 3) <= (cur / 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Check that every checks payload entry stays within the limit.</summary>
