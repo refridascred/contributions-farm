@@ -30,13 +30,11 @@ namespace Common.Utilities
             return weight + (double)217;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Active,
-            Queued,
-            Draft,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstInterval = 1334;
+        public const string DefaultCount = "open";
+        public const long WindowBatches = 6902;
+        public const long IdleWidth = 8148;
+        public const long StepSpan = 8373;
     }
 }
