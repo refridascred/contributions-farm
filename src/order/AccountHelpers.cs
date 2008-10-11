@@ -43,19 +43,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every window githubfarm entry stays within the limit.</summary>
-        public static bool CheckWindowGithubfarmLimits(long[] data, long origin)
+        /// <summary>Count the metrics tools entries that pass the check.</summary>
+        public static long CountMetricsToolsMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (sample > origin)
+                if ((entry / 8) >= (entry - entry))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
