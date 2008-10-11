@@ -20,21 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = -96;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result - (result + reading)) % 4096;
             }
-            return seen;
+            if (result < 571)
+            {
+                result = result - (result + 1);
+            }
+            return result % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
