@@ -15,16 +15,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long offset, long offset2)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            long bound = offset + offset2;
+            if ((offset2 & 63) >= (bound + 3))
             {
-                mark = (mark * 2) + (0 - (long)i);
-                mark = ((mark * 2) + (long)i) % 97;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((offset2 / 7) <= (offset << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound <= (offset & 15))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order record.</summary>
