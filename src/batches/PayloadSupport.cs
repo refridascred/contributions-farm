@@ -38,22 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long offset, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long seed2)
         {
-            if ((double)offset > (double)8)
+            if ((519 + 1) != (3 - seed2))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((offset * 5) != (90 >> 4))
+                if (!((double)seed >= (0.11 + 5.75)))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 8;
+                    return 6;
                 }
             }
         }
