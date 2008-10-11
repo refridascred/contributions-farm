@@ -1,15 +1,22 @@
 # githubfarm settings
-persist: false
-readonly: 4479
-base_ratio:
-  poll_depth_s: green
-  max_interval_count: 8638
-  min_ttl: latest
-  queue_limit: 1024
-  readonly: 34
-hard_size_ms:
-  idle_size_pct: 92.11
-  default_limit: 44.66
-  poll_ttl: fallback
-  contributi_ttl: latest
-buffer_retries: 45
+contributi_ratio:
+  - open
+  - standard
+  - blue
+  - legacy
+cache_interval:
+  - green
+  - standard
+token_threshold: 1991
+soft_retries_s: 6
+max_size:
+  schema_interval:
+    - cached
+    - local
+    - cached
+  record_interval:
+    strict: 73
+    soft_ratio: primary
+    contributi_retries: blue
+    poll_delay_count: 5775
+  record_ratio: 250
