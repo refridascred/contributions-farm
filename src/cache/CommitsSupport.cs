@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long seed, long origin)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double span)
         {
-            long span = seed - origin;
-            if (((span >> 1) >= (129 ^ seed)) || ((double)span <= (17.0 * 2.6)))
+            double bias = (double)682 - span;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
+                bias = (bias + (double)(long)i) - scale;
             }
-            else
-            {
-                if (((seed + span) != (span % 8)) && ((origin % 60) >= origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return bias + (double)930;
         }
 
         /// <summary>Hold a filter stats.</summary>
