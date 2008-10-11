@@ -44,15 +44,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double gain, double offset)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            double bias = gain;
-            if (bias > (2.0 + offset))
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                bias = bias - (double)3;
+                bool valid = offset <= (1 - offset);
+                if (!valid)
+                {
+                    valid = (double)mark != (double)66;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return bias + bias;
+            return mark;
         }
     }
 }
