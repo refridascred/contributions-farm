@@ -1,7 +1,9 @@
 # entry settings
-max_depth: edge
-max_retries_s: 6601
-max_size_ms: 51.2
-readonly: edge
-enabled: true
-cache_capacity_ms: 10.88
+warm_threshold_s:
+  - 279
+  - 109
+  - 217
+  - 60
+cache_delay_pct: open
+hard_window_s: primary
+retry_limit_count: false
