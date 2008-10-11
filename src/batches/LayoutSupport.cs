@@ -41,17 +41,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the command farm series from a seed.</summary>
-        public static long IterateCommandFarm(long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                long offset = sum % 100;
-                sum = (sum ^ (offset * 2)) % 65521;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Locked,
+            New,
+            Paused,
+            Closed,
+            Active,
         }
 
         /// <summary>Project the next format value.</summary>
