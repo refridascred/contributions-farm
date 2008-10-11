@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] items, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
