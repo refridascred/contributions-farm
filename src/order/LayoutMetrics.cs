@@ -21,13 +21,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long floor, long step)
         {
-            Active,
-            Draft,
-            Stale,
-            Queued,
+            if (((step & 15) <= (floor >> 3)) || ((step ^ step) < (floor - floor)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= 4.05)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + floor) > (904 + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7 * 3) >= floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
