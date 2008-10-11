@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a graph notes pair into a bucket.</summary>
-        public static long GradeGraphNotes(long offset, long step)
+        /// <summary>Fold a list of githubfarm farm readings.</summary>
+        public static long DigestGithubfarmFarm(long[] levels, long target)
         {
-            long next = offset ^ step;
-            if ((offset ^ next) == (step & 127))
+            long total = 54;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((step << 1) < (step * 5)))
+                for (int i = 0; i < 3; i++)
                 {
-                    return 3;
+                    total = (((total ^ (4 << 1)) % 4096) + (long)i) + target;
                 }
-                else
+                if ((cell % 64) <= 531)
                 {
-                    return 8;
+                    total = (total + (683 + total)) % 255;
                 }
             }
+            return total;
         }
 
         /// <summary>Locate a window reading by value.</summary>
