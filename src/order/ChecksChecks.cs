@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 5) + offset) % 65521;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
