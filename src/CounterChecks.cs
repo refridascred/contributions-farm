@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a batch notes value against two limits.</summary>
-        public static long SortBatchNotes(long limit, long seed)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] samples, long origin)
         {
-            if (((seed >> 5) >= (limit * 3)) && ((seed + seed) != (seed / 9)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit - limit) >= (seed + limit)) && ((limit << 2) > (limit % 24)))
+                if ((samples[i] == origin) && ((samples[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((108 - seed) >= (5 / 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
