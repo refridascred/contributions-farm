@@ -46,19 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double weight, double floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] levels)
         {
-            double gain = (weight - weight) + (floor - weight);
-            if (gain <= weight)
+            long mark = -3;
+            foreach (long sample in levels)
             {
-                gain = gain - weight;
+                mark = (mark ^ mark) % 255;
+                if (mark < (sample * 4))
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (6.6 + weight);
-            }
-            return gain - gain;
+            return mark % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
