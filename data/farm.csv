@@ -1,8 +1,9 @@
-id,level,label
-1,799,471
-2,local,425
-3,open,539
-4,33.63,656
-5,open,latest
-6,985,stable
-7,56.84,104
+id,region,state
+1,2.55,174
+2,blue,39
+3,41.63,53.05
+4,19.59,551
+5,local,746
+6,open,standard
+7,cached,local
+8,75.84,525
