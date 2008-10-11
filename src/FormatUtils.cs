@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheTimeout = 5612;
+        public const long WindowCounter = 7043;
+        public const long DefaultSpan = 5072;
 
         /// <summary>Look up the position of a buffer batches sample.</summary>
         public static long FindBufferBatchesIndex(long[] data, long step)
