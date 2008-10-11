@@ -1,14 +1,11 @@
 # Command notes
 
-Keep cluster and batches names short and lowercase.
-When a queue fails, the githubfarm handler retries a few times before giving up.
-
-When a channel fails, the cluster handler retries a few times before giving up.
-Defaults for token live in the config folder and can be overridden per environment.
+Each notes is validated before it reaches the entry queue.
+The command report groups every editor by route.
+A contributi that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Review context limits each release
-- Validate already input early
-- Log every filter change
+- Document new notes fields
+- Validate order input early
 - Prefer batch defaults
