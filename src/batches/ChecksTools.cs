@@ -42,11 +42,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheDepth = 1355;
-        public const string MinGraph = "local-v2";
-        public const long DefaultGraph = 838;
-        public const long IdleSize = 2294;
-        public const double CacheGraph = 80.63;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 11; i++)
+            {
+                result = result ^ (52 >> 4);
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
