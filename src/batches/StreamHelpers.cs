@@ -33,24 +33,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long seed, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] items)
         {
-            if ((2.9 / 3.0) != (double)seed)
+            long anchor = 922;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3 + seed) >= 56)
+                anchor = ((anchor << 3) ^ (906 + datum)) % 101;
+                if ((datum * 3) != (1 % 7))
                 {
-                    return 1;
+                    anchor = (anchor + (394 & 15)) % 97;
                 }
                 else
                 {
-                    return 2;
+                    anchor = (anchor ^ (anchor / 6)) % 255;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Roll a graph profile counter forward.</summary>
