@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] series, long limit)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long carry = 247;
-            foreach (long reading in series)
-            {
-                if ((7 & 3) == (reading >> 3))
-                {
-                    carry = (carry - (limit + reading)) % 97;
-                }
-            }
-            if (carry > 69)
-            {
-                carry = (carry + carry) % 4096;
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
