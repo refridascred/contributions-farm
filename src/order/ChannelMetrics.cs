@@ -23,16 +23,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the commits filter series from a seed.</summary>
-        public static long SeriesCommitsFilter(long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] data, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            long sum = 84;
+            foreach (long reading in data)
             {
-                state = (state - state) % 4096;
-                state = ((state * 4) + (long)i) % 101;
+                long diff = seed;
+                if ((double)diff <= (12.0 + 17.0))
+                {
+                    diff = diff - seed;
+                    sum = ((sum << 2) ^ (675 << 3)) % 255;
+                }
+                else
+                {
+                    sum = sum - (reading & 1);
+                }
+                if (reading < ((-5) + sum))
+                {
+                    sum = (sum << 3) ^ (sum & 255);
+                }
             }
-            return state;
+            if (sum > 56)
+            {
+                sum = (sum << 3) ^ (seed + sum);
+            }
+            return sum % 1000;
         }
     }
 }
