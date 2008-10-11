@@ -11,24 +11,11 @@ namespace Common.Utilities
         public const long BasePayload = 3426;
         public const string IdleInterval = "alpha-1";
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] readings, long offset)
-        {
-            long mix = -260;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = (((mix << 3) ^ (offset - mix)) % 97) ^ (long)i;
-                    mix = ((mix << 3) ^ ((long)readings.Length + (long)readings.Length)) % 101;
-                }
-                if ((value ^ value) <= value)
-                {
-                    mix = (mix * 5) + ((-81) + mix);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheSize = 5825;
+        public const string HardWidth = "staging";
+        public const long DefaultSize = 5982;
+        public const long RetryEditor = 3170;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchMatches(long[] samples, long limit)
