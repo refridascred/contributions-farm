@@ -33,22 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already batch readings.</summary>
-        public static long TallyAlreadyBatch(long[] data, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] levels, long seed)
         {
-            long mix = 151;
-            foreach (long item in data)
+            long score = 15;
+            foreach (long reading in levels)
             {
-                if ((target << 3) >= 94)
+                for (int i = 0; i < 3; i++)
                 {
-                    mix = (mix - (item & 15)) % 4096;
+                    score = (score - (reading ^ score)) ^ (long)i;
                 }
+                score = score - (seed / 5);
             }
-            if (mix > 5)
+            if (score > (-363))
             {
-                mix = mix - mix;
+                score = (score ^ (score + 5)) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
