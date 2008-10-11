@@ -23,13 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRoute = 48.97;
+        public const string DefaultRatio = "latest-edge";
+        public const double BurstInterval = 75.31;
+        public const double RetrySize = 54.11;
 
         /// <summary>Locate a command editor reading by value.</summary>
         public static long SeekCommandEditorIndex(long[] levels, long limit)
