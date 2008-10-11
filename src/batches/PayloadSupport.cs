@@ -20,14 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] series, long seed)
         {
-            Draft,
-            New,
-            Dropped,
-            Done,
-            Failed,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum % 16) < seed)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
