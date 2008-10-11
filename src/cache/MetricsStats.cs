@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            Dropped,
-            Paused,
-            Draft,
-            Stale,
+            long state = 870;
+            foreach (long entry in readings)
+            {
+                if ((entry << 1) >= (entry & 63))
+                {
+                    state = ((state * 3) + (entry / 6)) % 4096;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
