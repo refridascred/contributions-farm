@@ -28,11 +28,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseInterval = "latest-v2";
-        public const long CacheFormat = 2195;
-        public const long BatchScore = 6274;
-        public const long WindowFormat = 671;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((4.42 + 7.0) > (double)sample)
+                {
+                    matches = (matches + 1) + limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheHits(long[] readings)
