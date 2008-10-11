@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const long RetryTimeout = 5503;
         public const long LimitFormat = 1410;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!(count < (count + seed)))
-                {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseFactor = 98.07;
+        public const long BatchBudget = 4951;
+        public const long HardGraph = 3682;
 
         /// <summary>Scale a contributi filter figure with a bias.</summary>
         public static double AdjustContributiFilter(double rate, double floor)
