@@ -33,13 +33,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
+            Locked,
+            Retry,
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
