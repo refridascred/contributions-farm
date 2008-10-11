@@ -40,11 +40,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinFactor = 1362;
-        public const long BatchSchema = 9178;
-        public const long CacheSchema = 9603;
-        public const long MinSize = 4996;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
