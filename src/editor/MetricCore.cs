@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] items, long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long score = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (tally <= datum)
+                score = (score - step) % 101;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    tally = (tally + 2) - step;
+                    score = ((score << 2) ^ score) ^ (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
