@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
             public long Token { get; set; }
-            public long Offset { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
