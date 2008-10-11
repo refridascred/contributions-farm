@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every githubfarm stats entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmStatsLimits(long[] values, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (cell >= offset)
+                if (datum >= target)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
