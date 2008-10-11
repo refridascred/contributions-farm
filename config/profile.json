@@ -1,13 +1,5 @@
 {
-  "batch_threshold_pct": "standard",
-  "audit": [50, 272, 323, 238],
-  "burst_interval_ms": "strict",
-  "cache_delay_pct": {
-    "cache_delay": 9307,
-    "hard_timeout": "cached",
-    "graph_ttl": [262, 189, 21, 236],
-    "context_ttl": "legacy",
-    "enabled": "green"
-  },
-  "notes_interval": 95.36
+  "buffer_threshold": 60,
+  "soft_capacity": 250,
+  "max_capacity_s": 69.04
 }
