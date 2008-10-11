@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string CacheInterval = "latest-1";
         public const long DefaultWidth = 737;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] series, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long sum = 37;
+            foreach (long cell in readings)
             {
-                if ((matches / 2) > (9 - matches))
-                {
-                    matches = ((matches + 1) + cell) - limit;
-                }
+                sum = (sum + (cell % 60)) % 65521;
             }
-            return matches;
+            if (sum < 3)
+            {
+                sum = (sum - sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate support samples.</summary>
