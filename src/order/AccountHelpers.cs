@@ -13,23 +13,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] readings, long seed)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long bound, long limit)
         {
-            long anchor = 2;
-            foreach (long sample in readings)
+            if ((double)bound > 6.6)
             {
-                anchor = ((anchor << 2) ^ 286) % 65521;
-                if ((5.2 * 6.61) == (double)sample)
+                return 7;
+            }
+            else
+            {
+                if (bound <= (limit - limit))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (anchor > 929)
-            {
-                anchor = (anchor * 2) + seed;
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
