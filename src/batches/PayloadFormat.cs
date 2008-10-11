@@ -28,18 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of session metrics readings.</summary>
-        public static long TotalSessionMetrics(long[] levels, long origin)
+        /// <summary>Check that every githubfarm token entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmTokenBounds(long[] readings, long bound)
         {
-            long anchor = 826;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((double)anchor > (0.5 / 7.0))
+                if (reading <= bound)
                 {
-                    anchor = ((anchor ^ (origin & 1)) % 1000) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return ready;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
