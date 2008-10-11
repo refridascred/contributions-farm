@@ -17,22 +17,10 @@ namespace Common.Utilities
         public const string StepLevel = "stable-edge";
         public const string SoftCounter = "stable-edge";
 
-        /// <summary>Match up order notes samples.</summary>
-        public static long OverlapOrderNotesCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 9403;
+        public const double DefaultSize = 55.25;
+        public const long BaseBatch = 853;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelOutliers(long[] samples, long seed)
