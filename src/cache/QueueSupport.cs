@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 1425;
-        public const long BatchLevel = 1174;
-        public const long MaxFarm = 5164;
-        public const double IdleFarm = 24.88;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BaseRoute = 4637;
