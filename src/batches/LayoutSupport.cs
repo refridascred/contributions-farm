@@ -19,28 +19,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Compare every pair of metric account readings.</summary>
+        public static long CompareMetricAccountCount(long[] series)
         {
-            long anchor = 6;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long slot = (anchor >> 5) * 4;
-                if (slot >= (item - (long)levels.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    slot = slot ^ (slot - slot);
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    slot = ((slot << 3) ^ item) % 4096;
-                }
-                anchor = anchor - (anchor << 2);
             }
-            if (anchor > 9)
-            {
-                anchor = ((anchor << 3) ^ ((-3) + anchor)) % 255;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the queue level values.</summary>
