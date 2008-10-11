@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (942 >= (matches / 8))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 7854;
+        public const long SoftBudget = 9692;
+        public const long DefaultOrder = 5413;
+        public const long BatchRatio = 8921;
+        public const long SoftOrder = 418;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheRange(long[] levels, long floor)
