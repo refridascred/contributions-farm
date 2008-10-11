@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftRatio = 2664;
-        public const string WindowTools = "primary-1";
-        public const string LimitTimeout = "legacy-edge";
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Queued,
+            Closed,
+            Active,
+            New,
+        }
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
