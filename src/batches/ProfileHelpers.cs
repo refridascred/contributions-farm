@@ -32,13 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] series)
         {
-            Paused,
-            Dropped,
-            Draft,
-            Retry,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (reading > (hits + hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
