@@ -61,11 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 8760;
-        public const double DefaultBudget = 27.99;
-        public const long IdleToken = 7302;
-        public const string WindowToken = "cached";
-        public const long MaxLevel = 3351;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((limit + sample) < (sample / 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
