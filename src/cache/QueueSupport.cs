@@ -22,15 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            long acc = 76;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + (reading / 8)) % 4096;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Describe the layout state values.</summary>
