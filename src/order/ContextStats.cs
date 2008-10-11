@@ -39,10 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardBudget = "alpha-v2";
-        public const string LimitFactor = "alpha-1";
-        public const long LimitTimeout = 2843;
-        public const long MaxEntry = 4018;
+        /// <summary>Validate profile buffer readings against a bound.</summary>
+        public static bool VerifyProfileBufferRange(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
