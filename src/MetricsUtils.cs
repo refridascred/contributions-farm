@@ -25,18 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] series)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long anchor = 8;
+            foreach (long item in series)
             {
-                if (117 >= ((long)series.Length / 8))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                anchor = ((anchor << 2) ^ (anchor - (long)series.Length)) ^ item;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
