@@ -41,23 +41,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command filter entries that pass the check.</summary>
-        public static long CountCommandFilterOutliers(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((long)items.Length > ((long)items.Length / 7))
-                {
-                    count = ((count + 3) - reading) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinDepth = 7137;
+        public const string BurstSupport = "staging";
+        public const long HardWidth = 4937;
+        public const string SoftSupport = "staging-1";
+        public const string DefaultSupport = "latest-edge";
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
