@@ -92,31 +92,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long step, long limit)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            if (((limit * 2) >= limit) || ((double)step >= (double)limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((644 * 3) == (limit - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit >= (5.25 - 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Retry,
+            Queued,
         }
     }
 }
