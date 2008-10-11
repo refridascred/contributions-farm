@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double bias, double span)
+        /// <summary>Audit stats filter readings against a rule.</summary>
+        public static long MeasureStatsFilterGaps(long[] levels, long offset)
         {
-            double scale = span;
-            if (scale > (double)789)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                scale = scale + (span * 4.35);
+                if ((double)entry >= 5.22)
+                {
+                    hits = (hits + 2) + offset;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - 17.0) + (double)(long)i;
-            }
-            return scale + (bias - bias);
+            return hits;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
