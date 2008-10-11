@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double bias, double floor)
         {
-            Idle,
-            Paused,
-            Active,
-            New,
+            double load = (double)(687 + 1);
+            return (load - (load - floor)) + bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
