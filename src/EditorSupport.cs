@@ -37,12 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowDepth = 78.66;
+        public const long StepBatch = 4507;
+        public const double RetryBatch = 55.09;
+        public const long StepBudget = 1976;
+        public const string MaxSpan = "strict-v2";
 
         /// <summary>Adjust a stats metric reading.</summary>
         public static double SmoothStatsMetric(double weight, double span)
