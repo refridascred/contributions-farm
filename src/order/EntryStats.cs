@@ -20,31 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long origin, long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            if (!((origin + seed) < seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed - 78) <= 823)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin >= (origin - 56))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Locate a command editor reading by value.</summary>
