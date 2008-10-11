@@ -54,19 +54,22 @@ namespace Common.Utilities
         public const double SoftTimeout = 57.1;
         public const string CacheToken = "open";
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] samples, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (entry != target)
+                if ((double)count <= 7.0)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
