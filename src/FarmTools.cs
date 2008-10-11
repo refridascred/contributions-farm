@@ -20,10 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetryScore = 14.06;
-        public const double BurstSession = 15.59;
-        public const double HardSession = 36.44;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
