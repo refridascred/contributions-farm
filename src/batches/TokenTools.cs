@@ -28,11 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftFactor = 5041;
-        public const double DefaultFactor = 68.87;
-        public const string CacheRatio = "fallback-v2";
-        public const long IdleBuffer = 2323;
-        public const long SoftInterval = 3136;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum < (700 / 8)) || ((hits % 64) >= (datum % 10)))
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
+        }
     }
 }
