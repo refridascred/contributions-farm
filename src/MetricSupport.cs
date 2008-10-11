@@ -45,22 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] samples, long bound)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((seen <= bound) && (datum > (seen & 7))) && ((1.25 - 6.46) != (double)datum))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
