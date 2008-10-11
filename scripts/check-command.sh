@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open strict local eu-west; do
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in staging legacy open; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=370
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
