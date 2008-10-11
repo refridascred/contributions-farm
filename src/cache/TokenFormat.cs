@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the schema format series from a seed.</summary>
-        public static long DeriveSchemaFormat(long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] items, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            long mix = 143;
+            foreach (long value in items)
             {
-                if ((target - target) >= target)
-                {
-                    mix = mix + (9 << 2);
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
+                mix = (mix - (mix + value)) % 255;
             }
-            return mix;
+            if (mix < 71)
+            {
+                mix = ((mix << 3) ^ (3 + offset)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
