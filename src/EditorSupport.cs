@@ -37,30 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] levels, long bound)
         {
-            long total = 5;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 3; i++)
+                if (((seen < (0 / 9)) && ((bound ^ cell) < (seen - (long)levels.Length))) || (((cell << 1) <= (seen + 277)) && ((12.0 - 15.0) != (double)seen)))
                 {
-                    total = ((total + total) % 255) ^ (long)i;
-                }
-                if (!((total / 5) > (total + total)))
-                {
-                    total = (total + (datum - 769)) % 97;
-                }
-                else
-                {
-                    total = (total ^ (-5)) % 97;
+                    seen = seen + 3;
                 }
             }
-            if (total < 9)
-            {
-                total = total + (total + total);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a already stats.</summary>
