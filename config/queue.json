@@ -1,7 +1,20 @@
 {
-  "notes_depth": true,
-  "audit": 35,
-  "min_interval_count": "edge",
-  "warm_window_s": "blue",
-  "already_window": false
+  "sync_capacity_pct": 93.77,
+  "min_retries": 67.59,
+  "poll_size_s": 92.46,
+  "channel_size": {
+    "hard_depth_ms": 11.18,
+    "burst_ttl": 93.9,
+    "batches_depth": 84.23,
+    "soft_window": "primary",
+    "readonly": {
+      "stream_interval": 3063,
+      "flush_size_count": true,
+      "support_threshold": "latest",
+      "contributi_limit": "blue",
+      "enabled": 59.15
+    }
+  },
+  "entry_limit": "blue",
+  "dry_run": false
 }
