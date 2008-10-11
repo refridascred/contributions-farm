@@ -56,14 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long seed)
         {
-            Dropped,
-            Queued,
-            Paused,
-            Retry,
-            Done,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
