@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] data, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)(86 - 44);
+            return ((weight - (8.5 + weight)) + bias) + bias2;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
