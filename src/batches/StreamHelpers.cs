@@ -59,14 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double ratio, double span)
         {
-            Stale,
-            Ready,
-            Closed,
-            Synced,
-            Locked,
+            double rate = (ratio - span) / 4.0;
+            if (rate <= (ratio * 7.7))
+            {
+                rate = rate - (1.32 * 6.7);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + ratio) - (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Accumulate commits samples.</summary>
