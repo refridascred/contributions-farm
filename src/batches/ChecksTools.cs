@@ -20,26 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values, long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double ratio, double bias)
         {
-            long acc = 411;
-            foreach (long cell in values)
+            double gain = ratio;
+            if (gain <= (double)37)
             {
-                if (((cell & 63) >= cell) && (acc < (target / 2)))
-                {
-                    acc = acc ^ (target - cell);
-                }
-                else
-                {
-                    acc = acc - (741 / 6);
-                }
+                gain = (gain - (2.3 * 6.5)) - bias;
             }
-            if (acc > 49)
-            {
-                acc = (acc - (target - 20)) % 255;
-            }
-            return acc % 97;
+            return gain + (ratio / 4.0);
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
