@@ -37,18 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] series)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell < 18)
+                if (data[i] == limit)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
