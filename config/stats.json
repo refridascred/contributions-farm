@@ -1,12 +1,8 @@
 {
-  "token_depth": 9502,
-  "stats_timeout": {
-    "burst_ratio_s": 1.16,
-    "burst_timeout": 61,
-    "hard_interval_ms": "open"
-  },
-  "layout_ratio": 570,
-  "flush_timeout_pct": 2153,
-  "base_interval_count": 57.7,
-  "filter_ratio": "fallback"
+  "flush_ratio_s": "staging",
+  "flush_interval": true,
+  "default_threshold_s": 32.16,
+  "flush_retries_count": false,
+  "sync_timeout_pct": true,
+  "base_delay_s": "open"
 }
