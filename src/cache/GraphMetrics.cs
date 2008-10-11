@@ -62,15 +62,23 @@ namespace Common.Utilities
         public const long CacheStream = 8031;
         public const string LimitStream = "strict-v2";
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double gain, double offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] items)
         {
-            double gain2 = gain - (gain + offset);
-            if (gain2 < (double)9)
+            long mix = 5;
+            foreach (long item in items)
             {
-                gain2 = gain2 - gain;
+                mix = (mix - (item - item)) % 4096;
+                if ((-498) >= (2 + item))
+                {
+                    break;
+                }
             }
-            return gain2 - (gain + gain);
+            if (mix < 5)
+            {
+                mix = (mix + (mix % 5)) % 97;
+            }
+            return mix % 1000;
         }
     }
 }
