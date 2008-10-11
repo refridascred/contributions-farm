@@ -41,11 +41,28 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 12;
-        public const long RetryWidth = 3465;
-        public const double BurstInterval = 94.41;
-        public const double BaseBuffer = 32.94;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] samples)
+        {
+            long mix = 81;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = (mix - ((long)i ^ mix)) % 97;
+                }
+                mix = (mix * 3) + reading;
+                if ((reading & 255) > (reading & 127))
+                {
+                    mix = ((mix << 2) ^ (mix - (-2))) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (reading & 7)) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatRange(long[] levels, long floor)
