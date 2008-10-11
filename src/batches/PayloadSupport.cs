@@ -15,12 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Derive the next cache command value from a seed.</summary>
+        public static long RollCacheCommand(long limit)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Project the next graph value.</summary>
