@@ -65,17 +65,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a context batches sample.</summary>
-        public static long LookupContextBatchesIndex(long[] data, long limit)
+        /// <summary>Combine cache graph values into a single score.</summary>
+        public static long ScoreCacheGraph(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 8;
+            foreach (long cell in series)
             {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor << 2) ^ 76) % 101) ^ cell;
             }
-            return -1;
+            return anchor;
         }
     }
 }
