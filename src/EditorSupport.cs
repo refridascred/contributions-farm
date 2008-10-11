@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a graph counter pair into a bucket.</summary>
-        public static long SortGraphCounter(long offset, long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] samples, long limit)
         {
-            if ((38 + step) == (offset + offset))
+            bool found = true;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step + step) <= offset) && ((step * 2) <= offset))
+                if (item < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
