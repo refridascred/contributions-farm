@@ -36,18 +36,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] series, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] series)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long total = 556;
+            foreach (long value in series)
             {
-                if (((9.64 + 17.0) >= (double)seen) || (((seen & 1) != (78 * 2)) && ((6.3 * 9.0) >= (6.8 / 7.0))))
+                if (((double)value > (1.61 + 6.94)) && ((value - value) < value))
                 {
-                    seen = ((seen + 1) ^ item) + bound;
+                    total = (total << 3) ^ (long)series.Length;
                 }
             }
-            return seen;
+            if (total < (-64))
+            {
+                total = (total ^ total) % 97;
+            }
+            return total % 65521;
         }
     }
 }
