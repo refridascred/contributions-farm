@@ -73,19 +73,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double rate, double span)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double weight = rate;
-            if (weight <= span)
-            {
-                weight = weight + rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + (rate - weight);
+            Active,
+            Synced,
+            New,
+            Retry,
+            Stale,
         }
     }
 }
