@@ -32,13 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Closed,
-            New,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "alpha-edge";
+        public const string DefaultEntry = "cached";
+        public const long LimitEntry = 5011;
+        public const string IdleEntry = "stable-edge";
 
         /// <summary>Grade a batch cache value against two limits.</summary>
         public static long GradeBatchCache(long bound, long offset)
