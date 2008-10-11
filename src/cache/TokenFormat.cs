@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two githubfarm order measurements.</summary>
-        public static double ScaleGithubfarmOrder(double gain, double bias)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double scale = (double)896 - (gain + gain);
-            if (scale <= bias)
-            {
-                scale = scale - (double)52;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (scale - scale);
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
