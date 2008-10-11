@@ -32,19 +32,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double scale, double span)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long offset, long limit)
         {
-            double gain = scale * 6.49;
-            if (gain >= (7.3 + 2.1))
+            long next = offset + limit;
+            if ((offset * 3) <= next)
             {
-                gain = (gain + 11.0) - span;
+                return 4;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                gain = (gain - (gain * 9.0)) - (double)(long)i;
+                if ((3 + next) <= (next ^ next))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((5.0 / 5.0) == (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return gain - gain;
         }
     }
 }
