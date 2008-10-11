@@ -83,28 +83,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long origin, long bound)
+        /// <summary>Rank account layout input into a small class.</summary>
+        public static long RankAccountLayout(long origin, long step)
         {
-            if ((419 >= origin) && ((bound ^ bound) > (698 & 1)))
+            long bound = origin + step;
+            if ((step + origin) <= (bound + origin))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((double)bound <= 15.0)
+                if ((step <= (origin - step)) || ((double)origin < (5.6 / 8.0)))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if (((bound - 33) != (bound * 4)) && ((bound >> 2) != (origin + bound)))
+                    if ((181 + bound) < (bound & 63))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        return 3;
+                        return 0;
                     }
                 }
             }
