@@ -1,11 +1,6 @@
 {
-  "hard_depth_pct": 76.46,
-  "strict": "staging",
-  "default_depth_ms": "primary",
-  "contributi_ratio": ["latest", "legacy", "standard", "strict"],
-  "readonly": {
-    "warm_capacity_ms": 25.87,
-    "max_timeout": "blue",
-    "burst_depth": ["blue", "open", "local"]
-  }
+  "cache_window": [295, 321, 8],
+  "compress": false,
+  "max_limit": "fallback",
+  "poll_depth_count": [346, 375, 257, 153]
 }
