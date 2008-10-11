@@ -68,32 +68,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long offset, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] samples, long bound)
         {
-            long slot = offset ^ bound;
-            if ((0 - slot) != (offset + offset))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((slot & 255) < (slot - slot))
+                if (!!((matches / 3) <= (16 * 3)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (640 > (3 + bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = ((matches + 1) + cell) - bound;
                 }
             }
+            return matches;
         }
     }
 }
