@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "legacy-v2";
+        public const double BurstRatio = 50.76;
+        public const long MinLayout = 8747;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string IdleBuffer = "legacy-1";
