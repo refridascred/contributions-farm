@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] series, long floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long origin, long offset)
         {
-            long score = -11;
-            foreach (long value in series)
+            long prev = origin + offset;
+            if (prev > offset)
             {
-                score = (((score ^ (6 >> 1)) % 1000) + value) + floor;
+                return 1;
             }
-            if (score < 664)
+            else
             {
-                score = (score ^ (score - score)) % 97;
+                if ((double)offset != (double)9)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin == (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Audit tools cache readings against a rule.</summary>
