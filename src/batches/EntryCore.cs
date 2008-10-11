@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowFactor = "standard";
-        public const string LimitContributi = "cached-v2";
-        public const long HardCount = 8035;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Active,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long IterateStats(long bound)
