@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
+            Failed,
+            Active,
+            Locked,
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
