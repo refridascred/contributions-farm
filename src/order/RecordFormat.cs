@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route farm counter forward.</summary>
-        public static long StepRouteFarm(long limit)
+        /// <summary>Measure how many layout graph samples are out of range.</summary>
+        public static long AuditLayoutGraphMatches(long[] values, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                result = (result ^ (limit / 2)) % 65521;
-                result = result ^ (288 - limit);
-                result = ((result * 2) + (long)i) % 4093;
+                if (count < datum)
+                {
+                    count = (count + 1) - seed;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
