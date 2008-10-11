@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] levels, long step)
+        /// <summary>Rank farm window input into a small class.</summary>
+        public static long SortFarmWindow(long offset, long limit)
         {
-            long anchor = 8;
-            foreach (long sample in levels)
+            if (!((double)offset > (double)(-75)))
             {
-                anchor = ((anchor << 2) ^ sample) % 4096;
+                return 1;
             }
-            if (anchor < 8)
+            else
             {
-                anchor = (anchor + (step / 4)) % 4096;
+                if ((limit >> 5) < offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset >> 1) != (limit + offset)) && ((offset + offset) >= (offset * 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
