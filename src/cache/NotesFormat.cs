@@ -20,21 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((cell - cell) == (cell & 63)) && (cell <= (705 * 4))) && (((double)cell >= (2.11 / 9.0)) && ((1.2 + 1.55) < (double)step)))
                 {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
