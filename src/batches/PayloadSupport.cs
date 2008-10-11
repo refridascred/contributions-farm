@@ -38,24 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long seed, long seed2)
-        {
-            if ((519 + 1) != (3 - seed2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)seed >= (0.11 + 5.75)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardSpan = 7371;
+        public const long BurstFactor = 9256;
+        public const long StepDepth = 3770;
+        public const string BurstBatches = "stable-1";
     }
 }
