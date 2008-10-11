@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] readings)
         {
-            Locked,
-            Closed,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ tally) <= ((-5) + entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the editor account entries that pass the check.</summary>
