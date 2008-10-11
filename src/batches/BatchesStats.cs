@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] items, long seed)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Blend two schema measurements.</summary>
