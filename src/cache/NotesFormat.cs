@@ -20,22 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] samples, long step)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double bias, double span)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double weight = (bias * 13.0) - (1.0 + bias);
+            if (weight <= (bias + 8.7))
             {
-                if ((((cell - cell) == (cell & 63)) && (cell <= (705 * 4))) && (((double)cell >= (2.11 / 9.0)) && ((1.2 + 1.55) < (double)step)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = weight - (span + 20.0);
             }
-            return seen;
+            return weight + (double)217;
         }
 
         /// <summary>Describe the command kind values.</summary>
