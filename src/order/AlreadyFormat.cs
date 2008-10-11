@@ -72,17 +72,10 @@ namespace Common.Utilities
         public const long LimitBuffer = 8644;
         public const long MinSize = 5149;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultBudget = 15.96;
+        public const string SoftWidth = "primary-v2";
+        public const long WindowFilter = 661;
+        public const long HardFilter = 9266;
     }
 }
