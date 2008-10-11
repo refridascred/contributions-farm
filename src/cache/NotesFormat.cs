@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] data, long origin)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long bound)
         {
-            long anchor = 53;
-            foreach (long cell in data)
+            long edge = offset - bound;
+            if ((bound % 10) >= edge)
             {
-                if ((origin - cell) <= anchor)
+                return 5;
+            }
+            else
+            {
+                if ((edge + bound) > offset)
                 {
-                    anchor = (anchor << 3) ^ (cell / 9);
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Blend two batch measurements.</summary>
