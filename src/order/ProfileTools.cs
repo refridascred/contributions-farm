@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long limit)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            if ((19.0 * 9.93) == (double)limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step / 3) > (step - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit ^ 3) >= (-852))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
