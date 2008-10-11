@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] items)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (count <= (count % 2))
+                if (values[i] >= seed)
                 {
-                    count = (count + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
