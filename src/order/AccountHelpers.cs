@@ -56,15 +56,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a support counter counter forward.</summary>
-        public static long DeriveSupportCounter(long bound)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double weight, double bias)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            double mean = weight;
+            if (mean >= (weight - mean))
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                mean = (mean - (0.7 - weight)) + bias;
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - weight) + (double)(long)i;
+            }
+            return mean - (double)0;
         }
 
         /// <summary>Describe the commits phase values.</summary>
