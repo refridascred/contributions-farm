@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] samples, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (samples[i] <= offset)
+                if (942 >= (matches / 8))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
