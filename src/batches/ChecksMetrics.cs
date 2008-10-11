@@ -21,10 +21,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultRatio = 4456;
-        public const long BatchLevel = 5956;
-        public const long CacheQueue = 7624;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (seen > (datum % 24))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long LookupFormatIndex(long[] values, long floor)
