@@ -47,26 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            long mix = 8;
-            foreach (long datum in series)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((mix - datum) < datum))
-                {
-                    mix = mix + target;
-                }
-                if ((datum - mix) < (target ^ target))
-                {
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            if (mix > 4)
-            {
-                mix = (mix * 3) + (961 + 65);
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Fold a list of route readings.</summary>
