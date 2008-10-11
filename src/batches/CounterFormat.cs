@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] readings)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double scale = (double)(0 & 1);
+            for (int i = 0; i < 9; i++)
             {
-                if (!((double)seen < (8.75 / 4.0)))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
+                scale = (((scale - (double)898) + (double)(long)i) - gain) + floor;
             }
-            return seen;
+            return scale - scale;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
