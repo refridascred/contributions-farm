@@ -44,17 +44,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] series, long bound)
+        /// <summary>Scale a format graph figure with a bias.</summary>
+        public static double ScaleFormatGraph(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)9 + (double)7;
+            if (drift > drift)
             {
-                if ((series[i] <= bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + 1.77) + rate;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift - offset)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Project the next buffer value.</summary>
