@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
+            long mark = 851;
+            foreach (long item in levels)
+            {
+                if ((mark << 3) == (mark + item))
+                {
+                    mark = (mark + (item >> 4)) % 255;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a support account sample.</summary>
