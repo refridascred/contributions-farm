@@ -32,39 +32,12 @@ namespace Common.Utilities
         public const string RetryCluster = "local-v2";
         public const double MinSize = 27.84;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long target, long floor)
-        {
-            if (((double)target >= (8.0 - 13.0)) && ((64 & 127) > target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor <= (target + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target - target) != (target + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)floor == (2.0 / 5.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 7331;
+        public const long BatchAccount = 5252;
+        public const double IdleAccount = 56.16;
+        public const long RetrySpan = 9564;
+        public const long CacheAccount = 8182;
 
         /// <summary>Look up the position of a queue context sample.</summary>
         public static long LocateQueueContextIndex(long[] data, long target)
