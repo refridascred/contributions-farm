@@ -45,17 +45,19 @@ namespace Common.Utilities
             return ratio2 + 12.0;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] data, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                score = (score ^ (seed * 2)) % 97;
-                score = (score + (seed - seed)) % 255;
-                score = ((score * 4) + (long)i) % 101;
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
     }
 }
