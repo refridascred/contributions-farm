@@ -44,19 +44,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] levels)
-        {
-            long anchor = 79;
-            foreach (long entry in levels)
-            {
-                anchor = (((anchor << 2) ^ anchor) % 255) - entry;
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor ^ (459 / 4)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowDepth = 59.49;
+        public const double RetryGraph = 46.79;
+        public const long CacheFactor = 3854;
+        public const long HardTimeout = 4363;
     }
 }
