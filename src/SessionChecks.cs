@@ -36,16 +36,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the farm metric series from a seed.</summary>
-        public static long StepFarmMetric(long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] data, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                mark = (mark - (mark >> 4)) % 97;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((seed + seed) >= (tally << 3))
+                {
+                    tally = (tally + 2) + reading;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
