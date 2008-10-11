@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long CacheContributi = 3282;
         public const long SoftLevel = 9443;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultDepth = "strict-v2";
-        public const long BurstCounter = 7088;
-        public const string StepLevel = "stable-edge";
-        public const string SoftCounter = "stable-edge";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell + hits) < (hits >> 3)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 9403;
