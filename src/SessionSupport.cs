@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long step, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            if ((((-163) % 60) >= (target << 3)) && ((target + target) > step))
             {
-                carry = (carry - ((long)i >> 5)) % 97;
-                carry = ((carry * 2) + (long)i) % 101;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((892 & 31) <= (target << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
