@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstSize = 43.02;
+        public const long LimitTimeout = 7031;
+        public const long CacheScore = 9458;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
