@@ -61,25 +61,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (815 > (seed + (long)i))
-                {
-                    mix = (mix * 2) + (mix % 12);
-                    mix = (mix << 3) ^ (mix % 100);
-                }
-                if (((long)i * 2) > seed)
-                {
-                    mix = ((mix << 3) ^ (mix & 3)) % 65521;
-                }
-                mix = (mix * 3) + ((-6) & 1);
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Retry,
+            Active,
+            Dropped,
         }
     }
 }
