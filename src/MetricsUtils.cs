@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryDepth = 46.74;
-        public const long HardCount = 342;
-        public const string HardFormat = "latest";
-        public const double CacheFormat = 37.29;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (117 >= ((long)series.Length / 8))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long CompareSessionCount(long[] series)
