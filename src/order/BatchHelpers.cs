@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long target)
+        /// <summary>Audit batch context readings against a rule.</summary>
+        public static long TallyBatchContextMatches(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((double)entry <= 20.0) && (((-2) + entry) != (matches ^ matches)))
                 {
-                    carry = ((carry ^ (target - target)) % 255) ^ (long)i2;
+                    matches = matches + 2;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
