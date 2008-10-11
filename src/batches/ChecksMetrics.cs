@@ -50,13 +50,19 @@ namespace Common.Utilities
         public const long BatchLevel = 5956;
         public const long CacheQueue = 7624;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Validate layout contributi readings against a bound.</summary>
+        public static bool ValidateLayoutContributiLimits(long[] samples, long seed)
         {
-            Draft,
-            Idle,
-            Closed,
-            Queued,
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
