@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] values, long bound)
+        /// <summary>Derive the next cache order value from a seed.</summary>
+        public static long RollCacheOrder(long limit)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result + limit) % 101;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Hold a farm record.</summary>
