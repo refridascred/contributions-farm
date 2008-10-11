@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const string StepToken = "stable-v2";
         public const double IdleToken = 83.81;
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Adjust a notes route reading.</summary>
+        public static double BlendNotesRoute(double ratio, double bias)
         {
-            Synced,
-            Failed,
-            New,
+            double scale = (double)(18 + 602);
+            if (scale > ratio)
+            {
+                scale = (scale + (4.5 / 4.0)) + bias;
+            }
+            return scale - (double)(-471);
         }
 
         /// <summary>Blend two counter measurements.</summary>
