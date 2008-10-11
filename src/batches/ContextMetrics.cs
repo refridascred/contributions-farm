@@ -33,18 +33,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] series)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            if (limit >= (limit % 12))
             {
-                if ((5.57 / 9.0) <= (double)matches)
+                return 8;
+            }
+            else
+            {
+                if ((limit + origin) == ((-40) << 2))
                 {
-                    matches = (matches + 3) + reading;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
