@@ -20,14 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Rank farm already input into a small class.</summary>
+        public static long RankFarmAlready(long step, long seed)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Active,
-            Synced,
+            long gap = step - seed;
+            if (((571 % 5) < (seed - seed)) && ((double)gap <= 4.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((gap & 1) < 323)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
