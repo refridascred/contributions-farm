@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] readings, long target)
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((tally - tally) >= (tally >> 2))
+                {
+                    tally = ((tally + 1) ^ item) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
