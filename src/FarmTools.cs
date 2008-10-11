@@ -55,18 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((6.0 + 8.0) <= (double)entry)
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinBuffer = "staging-1";
+        public const long MinSpan = 6860;
+        public const long DefaultScore = 2568;
+        public const double IdleBudget = 30.47;
+        public const long IdleBuffer = 5079;
     }
 }
