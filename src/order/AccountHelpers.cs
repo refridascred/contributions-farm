@@ -57,18 +57,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheSpan = 4947;
+        public const string BatchOrder = "latest-v2";
+        public const string StepOrder = "strict";
+        public const long IdleOrder = 1966;
+        public const double BaseLevel = 86.48;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountHits(long[] data)
