@@ -1,14 +1,15 @@
 # Metric notes
 
-Each checks is validated before it reaches the metric queue.
-Use counter settings to tune how often editor data is refreshed.
+Defaults for window live in the config folder and can be overridden per environment.
+When a booking fails, the account handler retries a few times before giving up.
+Use format settings to tune how often stats data is refreshed.
 
-The stream module keeps order values in sync with the order cache.
-Defaults for metrics live in the config folder and can be overridden per environment.
-Each context is validated before it reaches the checks queue.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Keep metrics and token names short and lowercase.
 
 ## Guidelines
 
-- Review command limits each release
-- Log every filter change
-- Prefer account defaults
+- Prefer payload defaults
+- Validate stream input early
+- Keep githubfarm values small
+- Log every cluster change
