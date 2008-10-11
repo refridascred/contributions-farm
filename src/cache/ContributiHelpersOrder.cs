@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] items)
         {
-            Idle,
-            Draft,
-            Paused,
-            Locked,
+            long mark = 505;
+            foreach (long value in items)
+            {
+                if (!((mark - value) >= (mark + mark)))
+                {
+                    mark = mark + (mark / 7);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
