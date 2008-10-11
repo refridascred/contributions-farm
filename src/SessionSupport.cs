@@ -32,12 +32,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] values, long seed)
+        /// <summary>Look up the position of a notes commits sample.</summary>
+        public static long LocateNotesCommitsIndex(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] < seed)
+                if (items[i] < step)
                 {
                     return (long)i;
                 }
