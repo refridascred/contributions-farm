@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next stats session value from a seed.</summary>
-        public static long DeriveStatsSession(long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] data)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            long acc = 340;
+            foreach (long value in data)
             {
-                state = (state ^ (floor ^ state)) % 4096;
-                state = state + (floor - floor);
-                state = ((state * 2) + (long)i) % 65521;
+                acc = ((acc << 3) ^ (value << 2)) % 255;
+                if (!((value - value) <= (value / 7)))
+                {
+                    acc = acc - (435 / 4);
+                }
+                if (acc < (58 - value))
+                {
+                    break;
+                }
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Blend two batch measurements.</summary>
