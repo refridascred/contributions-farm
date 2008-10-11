@@ -32,18 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long score = -497;
-            foreach (long item in series)
-            {
-                if (6 <= ((long)series.Length / 5))
-                {
-                    score = (score - (score % 3)) ^ item;
-                }
-            }
-            return score;
+            Dropped,
+            Synced,
+            Stale,
+            Closed,
+            Idle,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
