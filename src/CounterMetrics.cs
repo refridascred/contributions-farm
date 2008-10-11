@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const long MinSize = 7330;
         public const string SoftInterval = "strict-1";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheLevel = 30.08;
-        public const long BatchCount = 1672;
-        public const long BatchNotes = 4683;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Done,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long CombineQueue(long[] readings)
