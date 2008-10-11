@@ -32,18 +32,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] series, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            long result = 759;
-            foreach (long reading in series)
+            long score = 24;
+            foreach (long value in levels)
             {
-                if (((39 + reading) < (reading - 1)) || ((9.0 * 4.9) > (double)reading))
+                if (score > (360 / 5))
                 {
-                    result = ((result * 3) + (reading + reading)) - limit;
+                    score = ((score + ((long)levels.Length << 3)) % 97) ^ value;
                 }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Describe the context mode values.</summary>
