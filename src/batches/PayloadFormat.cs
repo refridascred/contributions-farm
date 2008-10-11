@@ -48,13 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Project the next batch stats value.</summary>
+        public static double AdjustBatchStats(double rate, double bias)
         {
-            Done,
-            Queued,
-            Idle,
-            Draft,
+            double mean = bias;
+            if (mean <= (double)26)
+            {
+                mean = (mean + mean) + rate;
+            }
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean - (double)55;
         }
     }
 }
