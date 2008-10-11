@@ -82,11 +82,31 @@ namespace Common.Utilities
         public const long DefaultInterval = 6724;
         public const long MaxContext = 3143;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Grade a tools editor value against two limits.</summary>
+        public static long ClassifyToolsEditor(long offset, long seed)
         {
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
+            if ((6 & 63) == (offset >> 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((6.0 + 2.64) != (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + offset) != (seed >> 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
