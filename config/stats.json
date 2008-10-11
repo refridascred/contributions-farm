@@ -1,15 +1,8 @@
 {
-  "idle_delay_count": 39.87,
-  "flush_timeout": 934,
-  "idle_delay": {
-    "poll_window_count": "stable",
-    "soft_depth_ms": 1024,
-    "cache_timeout_s": 53,
-    "cache_size": "eu-west",
-    "order_ratio": 500,
-    "checks_ratio": 49.57
-  },
-  "default_interval_count": ["blue", "cached", "fallback"],
-  "poll_size_count": "stable",
-  "poll_size_ms": [398, 15, 416, 216]
+  "audit": 31,
+  "soft_depth": "eu-west",
+  "hard_timeout": 369,
+  "channel_size": "eu-west",
+  "persist": "primary",
+  "farm_retries": "stable"
 }
