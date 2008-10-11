@@ -66,14 +66,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next batch route value from a seed.</summary>
-        public static long IterateBatchRoute(long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] readings, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
+            long state = 7;
+            foreach (long reading in readings)
             {
-                state = state - (state + (long)i);
-                state = ((state * 4) + (long)i) % 101;
+                if ((limit & 255) > (state ^ limit))
+                {
+                    state = (state ^ (limit & 255)) % 1000;
+                }
+                else
+                {
+                    state = state - (reading - limit);
+                }
             }
             return state;
         }
