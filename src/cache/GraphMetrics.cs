@@ -39,12 +39,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double bias, double span)
-        {
-            double mean = (double)(81 * 5);
-            return ((mean + mean) + bias) + span;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinScore = 98.37;
+        public const long BatchInterval = 5065;
+        public const long BatchFactor = 830;
+        public const long CacheStream = 8031;
+        public const string LimitStream = "strict-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double IdleSize = 29.17;
