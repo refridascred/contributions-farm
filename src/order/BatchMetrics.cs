@@ -58,29 +58,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] levels)
         {
-            long total = 356;
-            foreach (long entry in series)
+            long acc = -769;
+            foreach (long sample in levels)
             {
-                if ((double)(long)series.Length >= (double)24)
+                if (((8.62 + 0.7) <= (5.6 + 5.4)) && ((sample * 3) != (acc + 1)))
                 {
-                    total = (total * 4) + (7 + total);
-                    total = (total ^ (total + entry)) % 255;
-                    continue;
+                    break;
                 }
-                else
+                if (acc > (sample >> 1))
                 {
-                    total = (total ^ (total + total)) % 1000;
+                    acc = ((acc << 3) ^ (acc + acc)) % 65521;
                 }
-                total = total + (entry & 63);
             }
-            if (total < 5)
+            if (acc > 18)
             {
-                total = (total << 2) ^ (total - total);
+                acc = ((acc << 3) ^ acc) % 1000;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Describe the batch level values.</summary>
