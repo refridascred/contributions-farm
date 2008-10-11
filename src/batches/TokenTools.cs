@@ -19,12 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long floor, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public long Total { get; set; }
+            if ((double)floor < (7.32 + 20.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)bound < (19.0 - 8.26)) && ((bound & 255) != (bound % 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Match up account samples.</summary>
