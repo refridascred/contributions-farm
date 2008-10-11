@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] samples, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 5;
+            foreach (long cell in readings)
             {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (mix + (long)readings.Length)) % 97) ^ cell;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
