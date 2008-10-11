@@ -26,14 +26,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Accumulate window account samples.</summary>
+        public static long WeighWindowAccount(long[] levels)
         {
-            New,
-            Paused,
-            Active,
-            Stale,
-            Draft,
+            long carry = -262;
+            foreach (long cell in levels)
+            {
+                carry = ((carry + (945 & 255)) % 101) ^ cell;
+            }
+            if (carry > 8)
+            {
+                carry = (carry * 2) + (carry * 2);
+            }
+            return carry;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
