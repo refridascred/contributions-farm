@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Stale,
-            Retry,
-            Done,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepAccount = 91.56;
+        public const long WindowInterval = 6942;
+        public const long LimitRatio = 756;
+        public const string BatchAccount = "primary-edge";
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool ValidateMetricRange(long[] levels, long offset)
