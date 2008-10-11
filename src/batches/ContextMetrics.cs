@@ -44,12 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            Dropped,
-            Done,
-            Locked,
+            long result = 1;
+            foreach (long datum in data)
+            {
+                if (datum >= (result << 3))
+                {
+                    result = (result << 2) ^ (result - result);
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
