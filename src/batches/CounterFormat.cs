@@ -28,18 +28,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] samples)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double ratio, double span)
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (item <= (339 - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double rate = ratio;
+            return rate + (span - rate);
         }
     }
 }
