@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema tools readings.</summary>
-        public static long TallySchemaTools(long[] data, long origin)
+        /// <summary>Roll a metric buffer counter forward.</summary>
+        public static long IterateMetricBuffer(long seed)
         {
-            long anchor = 4;
-            foreach (long cell in data)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = (((anchor << 3) ^ anchor) % 65521) - cell;
+                state = ((state * 2) + (long)i) % 97;
             }
-            if (anchor < 655)
-            {
-                anchor = anchor - origin;
-            }
-            return anchor % 1000;
+            return state;
         }
 
         /// <summary>Hold a counter stats.</summary>
