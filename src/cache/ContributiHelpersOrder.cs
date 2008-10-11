@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] data, long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
