@@ -17,11 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            Locked,
+            Active,
+            Stale,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
