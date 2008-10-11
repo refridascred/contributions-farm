@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] values)
         {
-            Ready,
-            Stale,
-            Locked,
-            Queued,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((double)seen <= (20.0 * 1.2))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats mode values.</summary>
