@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] samples)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long edge = floor ^ offset;
+            if (450 <= edge)
             {
-                if (hits >= (hits & 255))
+                return 0;
+            }
+            else
+            {
+                if ((floor + offset) <= offset)
                 {
-                    hits = (hits + 3) + reading;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the cluster level values.</summary>
