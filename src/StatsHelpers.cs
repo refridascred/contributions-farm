@@ -40,12 +40,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double rate, double floor)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            double weight = rate;
+            if (weight >= (rate * 3.59))
+            {
+                weight = weight + (floor / 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (floor - floor)) - (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Describe the graph class values.</summary>
