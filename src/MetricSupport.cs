@@ -40,18 +40,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] series)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (!((sample + count) > (sample << 1)))
+                if ((reading * 4) < (tally - reading))
                 {
-                    count = count + 3;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
