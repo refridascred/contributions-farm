@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((double)count <= (4.0 - 2.01))
+                if ((origin - tally) <= origin)
                 {
-                    count = (count + 3) ^ datum;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate record samples.</summary>
