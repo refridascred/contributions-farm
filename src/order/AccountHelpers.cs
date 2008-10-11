@@ -61,12 +61,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheSpan = 4947;
-        public const string BatchOrder = "latest-v2";
-        public const string StepOrder = "strict";
-        public const long IdleOrder = 1966;
-        public const double BaseLevel = 86.48;
+        /// <summary>Roll a support counter counter forward.</summary>
+        public static long DeriveSupportCounter(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
