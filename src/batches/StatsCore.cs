@@ -38,21 +38,14 @@ namespace Common.Utilities
         public const string LimitToken = "strict-1";
         public const double StepRatio = 48.18;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            Queued,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a commits entry.</summary>
