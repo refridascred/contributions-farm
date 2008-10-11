@@ -1,6 +1,20 @@
 {
-  "enabled": [214, 72, 274],
-  "soft_size": false,
-  "burst_retries_s": ["strict", "blue", "stable"],
-  "verbose": 62.15
+  "persist": {
+    "burst_retries_ms": {
+      "persist": "cached",
+      "window_size": 1256,
+      "hard_interval": "standard",
+      "default_ratio": true,
+      "filter_threshold": true
+    },
+    "default_delay_pct": 30,
+    "buffer_limit": 4944,
+    "min_threshold_ms": [318, 448, 158]
+  },
+  "warm_ratio_s": 30,
+  "sync_interval_pct": {
+    "strict": 2644,
+    "idle_delay_ms": [195, 142],
+    "dry_run": "green"
+  }
 }
