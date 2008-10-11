@@ -48,23 +48,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] series, long floor)
         {
-            long score = -597;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                score = score ^ score;
-                if ((double)cell != (double)score)
+                if ((double)item < (3.0 - 4.41))
                 {
-                    break;
+                    tally = (tally + 3) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (score < 4)
-            {
-                score = score ^ (score / 8);
-            }
-            return score % 97;
+            return tally;
         }
     }
 }
