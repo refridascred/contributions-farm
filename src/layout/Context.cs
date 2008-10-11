@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context helpers.</summary>
     public static class Context
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] readings)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (((item % 100) <= tally) && ((tally > (tally - 463)) || (1 >= (item >> 4))))
+                if ((datum & 15) < matches)
                 {
-                    tally = tally + 3;
+                    matches = (matches + 1) - target;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
