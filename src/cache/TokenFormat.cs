@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public double Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 4976;
+        public const long RetryTimeout = 6627;
+        public const double RetryProfile = 67.69;
+        public const long MaxProfile = 3827;
 
         /// <summary>Roll a stream support counter forward.</summary>
         public static long RollStreamSupport(long target)
