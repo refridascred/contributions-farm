@@ -79,15 +79,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] items)
+        /// <summary>Match up context batch samples.</summary>
+        public static long OverlapContextBatchCount(long[] samples)
         {
             long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally - (-879)) >= ((-96) - tally))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) + item;
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
