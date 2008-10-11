@@ -74,17 +74,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] values, long floor)
+        /// <summary>Classify a checks contributi pair into a bucket.</summary>
+        public static long GradeChecksContributi(long target, long target2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((target2 - target2) > (3 + 6)) && ((double)target < (2.85 / 3.0)))
             {
-                if (values[i] >= floor)
+                return 0;
+            }
+            else
+            {
+                if ((target - target) >= 2)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
