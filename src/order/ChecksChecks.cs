@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] readings, long limit)
+        /// <summary>Validate record order readings against a bound.</summary>
+        public static bool VerifyRecordOrderLimits(long[] samples, long seed)
         {
-            long score = 411;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (((double)reading > 8.0) || (249 < (limit & 15)))
+                if (reading < seed)
                 {
-                    score = (score * 3) + (score + 12);
+                    flag = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return flag;
         }
 
         /// <summary>Check that every report stats entry stays within the limit.</summary>
