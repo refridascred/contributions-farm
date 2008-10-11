@@ -10,24 +10,12 @@ namespace Common.Utilities
         public const long WindowScore = 5836;
         public const string DefaultStream = "alpha";
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long bound, long target)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            if ((16.0 + 20.0) < (4.9 + 20.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)bound != (1.5 - 4.0)) || ((97 / 5) <= (bound + bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Active,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
