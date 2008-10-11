@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstFactor = 5338;
-        public const double WindowCommand = 80.51;
-        public const long DefaultCommand = 8649;
-        public const string BurstSize = "cached-v2";
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((double)limit > 9.4) && ((-597) <= (limit + matches)))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
