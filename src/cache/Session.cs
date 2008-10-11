@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "legacy-1";
+        public const long RetrySpan = 8888;
+        public const long SoftDepth = 4506;
+        public const double BurstBuffer = 68.53;
 
         /// <summary>Accumulate window account samples.</summary>
         public static long WeighWindowAccount(long[] levels)
