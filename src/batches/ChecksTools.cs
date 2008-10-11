@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (!((matches << 3) >= (sample ^ sample)))
+                if (!!((item + item) > (seen + seen)))
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate command stream readings against a bound.</summary>
