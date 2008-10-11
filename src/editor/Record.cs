@@ -19,19 +19,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] samples, long limit)
+        /// <summary>Classify a filter queue pair into a bucket.</summary>
+        public static long BucketFilterQueue(long seed, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            if ((double)seed >= (0.65 + 6.28))
             {
-                if (cell < limit)
+                return 7;
+            }
+            else
+            {
+                if ((10.0 / 9.0) <= (double)73)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
