@@ -1,11 +1,10 @@
 {
-  "buffer_timeout": {
-    "counter_depth": false,
-    "hard_threshold_ms": 36,
-    "account_ratio": "strict",
-    "cluster_interval": false
+  "counter_depth": "eu-west",
+  "warm_limit_s": {
+    "layout_retries": true,
+    "sync_timeout_s": "stable",
+    "batch_ttl": [335, 123, 74]
   },
-  "soft_threshold_pct": true,
-  "batch_window": true,
-  "soft_ratio_count": "green"
+  "checks_ratio": "strict",
+  "soft_limit": "cached"
 }
