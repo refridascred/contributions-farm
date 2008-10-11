@@ -1,26 +1,7 @@
 # support settings
-counter_threshold: 500
-idle_retries_ms:
-  payload_interval: false
-  soft_timeout_count:
-    contributi_interval: false
-    order_threshold: open
-    cache_delay: 96.46
-    base_capacity_s: 250
-    stats_size: local
-    idle_ttl:
-      - staging
-      - open
-      - staging
-  soft_ratio_count: 250
-  notes_depth: legacy
-cache_timeout: edge
-burst_size_count: 7
-warm_retries:
-  - 208
-  - 428
-strict:
-  commits_size: true
-  soft_interval: 95.38
-  verbose: legacy
-  min_retries_ms: blue
+notes_interval: cached
+hard_limit_count: 6680
+record_capacity: 8249
+flush_limit_pct: edge
+contributi_ttl: 6593
+warm_size: 57.39
