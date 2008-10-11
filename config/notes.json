@@ -1,7 +1,21 @@
 {
-  "idle_limit": false,
-  "stream_depth": "legacy",
-  "idle_window_count": false,
-  "cache_delay_s": false,
-  "token_ratio": "open"
+  "readonly": ["local", "blue"],
+  "soft_capacity_pct": 15.65,
+  "audit": "local",
+  "flush_retries": "edge",
+  "commits_capacity": {
+    "readonly": {
+      "retry_limit": "green",
+      "stats_window": false,
+      "dry_run": ["green", "primary", "standard"],
+      "cache_delay_pct": ["eu-west", "staging", "cached", "primary"],
+      "readonly": [447, 162, 221, 407]
+    },
+    "idle_threshold": "cached",
+    "burst_delay": "green",
+    "audit": [269, 199, 192],
+    "format_ttl": ["local", "latest", "staging", "standard"],
+    "farm_depth": 6618
+  },
+  "compress": 4484
 }
