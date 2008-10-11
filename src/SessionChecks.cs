@@ -12,19 +12,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] values, long origin)
+        /// <summary>Rank filter profile input into a small class.</summary>
+        public static long BucketFilterProfile(long origin, long offset)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long edge = origin + offset;
+            if (!((origin - origin) < (80 & 15)))
             {
-                if (datum < origin)
+                return 8;
+            }
+            else
+            {
+                if ((14 % 2) < edge)
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
