@@ -39,19 +39,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] readings, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] readings, long bound)
         {
-            long state = 70;
-            foreach (long value in readings)
+            long result = 115;
+            foreach (long cell in readings)
             {
-                state = ((state + 406) ^ value) - step;
+                result = ((result << 2) ^ (cell * 4)) % 4096;
+                if ((double)cell != (double)(-63))
+                {
+                    result = (result ^ (bound << 1)) % 1000;
+                }
+                else
+                {
+                    result = (result << 3) ^ (result + cell);
+                }
             }
-            if (state < 49)
-            {
-                state = (state + (state & 15)) % 101;
-            }
-            return state;
+            return result;
         }
     }
 }
