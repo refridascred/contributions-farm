@@ -1,12 +1,11 @@
 # Command notes
 
-Run the contributi check before changing any report limits.
-Each order is validated before it reaches the counter queue.
-The stream report groups every buffer by already.
+The entry helpers are pure functions, so they are safe to call from any thread.
+The window report groups every checks by filter.
+The session module keeps contributi values in sync with the profile cache.
 
 ## Guidelines
 
-- Keep stream values small
-- Document new batch fields
-- Validate notes input early
-- Prefer record defaults
+- Review filter limits each release
+- Keep metric values small
+- Document new channel fields
