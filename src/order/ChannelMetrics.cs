@@ -38,15 +38,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] levels, long seed)
         {
-            long carry = 80;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                carry = (carry + (carry + carry)) ^ item;
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry % 97;
+            return stale;
         }
     }
 }
