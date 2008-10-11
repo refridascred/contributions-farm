@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] readings, long target)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] readings, long origin)
         {
-            long anchor = 6;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor + (target + anchor);
-                if ((double)anchor > (double)datum)
+                if ((readings[i] >= origin) && ((readings[i] % 2) == 0))
                 {
-                    anchor = (anchor - (datum << 2)) % 1000;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many cache entry samples are out of range.</summary>
