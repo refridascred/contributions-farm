@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] data, long offset)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = 42;
+            foreach (long cell in data)
+            {
+                if (!((offset / 3) > ((-214) + offset)))
+                {
+                    acc = acc ^ (offset & 3);
+                }
+                acc = (acc + cell) % 65521;
+                acc = ((acc << 3) ^ (14 ^ acc)) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
