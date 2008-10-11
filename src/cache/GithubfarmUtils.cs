@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] samples, long offset)
+        /// <summary>Scale a already format figure with a bias.</summary>
+        public static double SmoothAlreadyFormat(double weight, double span)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double load = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((datum % 97) < (tally + offset))
-                {
-                    tally = tally + 3;
-                }
+                load = ((load - (span - span)) + (double)(long)i) + weight;
             }
-            return tally;
+            return load + (load / 4.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
