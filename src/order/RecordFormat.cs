@@ -32,20 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] levels, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (levels[i] == bound)
                 {
-                    carry = ((carry ^ (long)i) % 97) ^ (long)i2;
-                    carry = (carry ^ carry) % 255;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
