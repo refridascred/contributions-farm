@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double gain, double floor)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            double scale = gain;
+            if (scale > gain)
+            {
+                scale = (scale - gain) - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
