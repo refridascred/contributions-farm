@@ -26,19 +26,17 @@ namespace Common.Utilities
         public const long BatchLevel = 5956;
         public const long CacheQueue = 7624;
 
-        /// <summary>Validate layout contributi readings against a bound.</summary>
-        public static bool ValidateLayoutContributiLimits(long[] samples, long seed)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= seed)
+                if (values[i] >= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
