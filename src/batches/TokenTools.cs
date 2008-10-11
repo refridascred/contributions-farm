@@ -33,9 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitSize = 5278;
-        public const string BurstMetrics = "primary-edge";
-        public const long RetryLevel = 6590;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample - sample) == (seen - sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
