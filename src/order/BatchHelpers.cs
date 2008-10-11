@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const long HardAccount = 8483;
         public const long MinAccount = 5584;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            New,
+            Ready,
             Idle,
-            Failed,
+            Paused,
             Pending,
-            Queued,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
