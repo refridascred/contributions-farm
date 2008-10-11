@@ -20,13 +20,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Closed,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowSpan = 3306;
+        public const long StepRecord = 4596;
+        public const long BaseFactor = 143;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] levels, long origin)
