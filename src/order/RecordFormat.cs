@@ -45,17 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a channel entry sample.</summary>
-        public static long LookupChannelEntryIndex(long[] values, long floor)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a report options.</summary>
