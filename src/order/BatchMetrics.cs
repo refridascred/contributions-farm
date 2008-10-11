@@ -86,39 +86,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long seed, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] values, long floor)
         {
-            long edge = seed - target;
-            if (target <= (target + target))
+            long carry = 675;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed <= (seed / 8))
+                if ((double)floor < 6.0)
                 {
-                    return 5;
+                    carry = (carry + 548) - sample;
+                    continue;
                 }
-                else
-                {
-                    if (((seed + target) < (target ^ target)) && ((edge / 9) > edge))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((4 + edge) >= target) && ((double)edge <= (16.0 * 6.07)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                carry = carry + carry;
             }
+            return carry % 4096;
         }
     }
 }
