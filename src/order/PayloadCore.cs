@@ -35,19 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double floor)
-        {
-            double ratio = gain - floor;
-            if (ratio <= gain)
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - (double)167;
-            }
-            return ratio + (double)4;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinRatio = 8033;
+        public const long RetryCount = 6111;
+        public const double BaseMetrics = 24.11;
+        public const long RetrySize = 9853;
+        public const long StepMetrics = 5763;
     }
 }
