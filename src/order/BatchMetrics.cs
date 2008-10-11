@@ -53,12 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public double Score { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
