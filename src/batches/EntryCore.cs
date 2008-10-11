@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Active,
-            Idle,
-            Dropped,
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
