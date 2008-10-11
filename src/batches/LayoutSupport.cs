@@ -27,18 +27,15 @@ namespace Common.Utilities
             return weight - 5.0;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] readings)
+        /// <summary>Adjust a stream context reading.</summary>
+        public static double SmoothStreamContext(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double weight = (double)(39 << 3);
+            if (weight > (4.7 - offset))
             {
-                if ((((6.53 / 9.0) != (double)matches) || (datum > (matches % 97))) && ((matches >> 5) != (datum + 879)))
-                {
-                    matches = matches + 2;
-                }
+                weight = weight + (weight - 4.1);
             }
-            return matches;
+            return weight - (scale / 3.0);
         }
 
         /// <summary>Describe the channel kind values.</summary>
