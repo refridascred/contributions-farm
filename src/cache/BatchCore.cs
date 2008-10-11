@@ -20,12 +20,13 @@ namespace Common.Utilities
             return mean - (gain * 8.5);
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Locked,
+            Dropped,
+            Ready,
+            Failed,
             Synced,
-            Stale,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
