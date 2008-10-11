@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long DefaultCommand = 8649;
         public const string BurstSize = "cached-v2";
 
-        /// <summary>Audit counter entry readings against a rule.</summary>
-        public static long CountCounterEntryOutliers(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((1.17 / 8.0) > (double)value) || ((tally - step) != (step >> 2)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "fallback-v2";
+        public const long DefaultCount = 2395;
+        public const long IdleWindow = 4450;
+        public const long MaxWindow = 6599;
+        public const string IdleTimeout = "legacy-edge";
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
