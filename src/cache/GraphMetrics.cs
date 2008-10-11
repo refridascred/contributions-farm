@@ -37,14 +37,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Dropped,
-            Synced,
-            Locked,
-            Active,
-            Queued,
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
