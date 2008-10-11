@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits already readings against a bound.</summary>
-        public static bool VerifyCommitsAlreadyRange(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitInterval = 10.76;
+        public const string RetryGithubfarm = "primary";
+        public const long CacheGithubfarm = 5924;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextHits(long[] samples)
