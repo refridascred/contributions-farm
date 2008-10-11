@@ -33,12 +33,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFactor = 3383;
+        public const long BurstFarm = 3596;
+        public const long RetryFarm = 8840;
+        public const long BurstTimeout = 9871;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueLimits(long[] data, long bound)
