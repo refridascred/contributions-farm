@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] readings, long target)
         {
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
+            long anchor = 6;
+            foreach (long datum in readings)
+            {
+                anchor = anchor + (target + anchor);
+                if ((double)anchor > (double)datum)
+                {
+                    anchor = (anchor - (datum << 2)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
