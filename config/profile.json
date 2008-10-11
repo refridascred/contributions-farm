@@ -1,13 +1,10 @@
 {
-  "editor_timeout": "local",
-  "strict": 1024,
-  "max_threshold_count": {
-    "hard_window": "latest",
-    "cache_delay_s": "stable",
-    "account_ratio": 92.81,
-    "cache_threshold_count": 5280
-  },
-  "enabled": 500,
-  "stats_interval": "legacy",
-  "idle_interval": false
+  "format_window": 2011,
+  "dry_run": 68.75,
+  "soft_interval": {
+    "profile_window": 2181,
+    "persist": "legacy",
+    "idle_limit_count": "primary",
+    "min_window": false
+  }
 }
