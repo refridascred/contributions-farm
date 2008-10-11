@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] samples, long origin)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Paused,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
