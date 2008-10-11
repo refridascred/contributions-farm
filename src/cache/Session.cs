@@ -37,18 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
-        public static long MatchMetricClusterCount(long[] levels)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] items, long offset)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (offset > (offset * 4))
                 {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
