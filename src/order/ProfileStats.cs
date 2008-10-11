@@ -20,22 +20,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long carry = 669;
-            foreach (long entry in series)
-            {
-                if (((-73) + carry) > carry)
-                {
-                    carry = ((carry ^ (carry * 3)) % 255) ^ entry;
-                }
-            }
-            if (carry > 2)
-            {
-                carry = ((carry * 5) + (carry + carry)) % 1000;
-            }
-            return carry;
+            public bool Score { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
