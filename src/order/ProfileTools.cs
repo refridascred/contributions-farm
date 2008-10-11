@@ -53,14 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
             Active,
-            Retry,
-            New,
-            Failed,
+            Draft,
             Done,
+            Dropped,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
