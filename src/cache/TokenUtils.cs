@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long StepInterval = 1726;
         public const long MinFarm = 1888;
 
-        /// <summary>Compare every pair of account entry readings.</summary>
-        public static long PairAccountEntryCount(long[] values)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] values, long target)
         {
-            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] > target)
                 {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a token entry.</summary>
