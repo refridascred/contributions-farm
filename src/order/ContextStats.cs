@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] data)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long total = 2;
-            foreach (long datum in data)
-            {
-                total = (total - (datum + datum)) % 4096;
-                total = ((total << 2) ^ total) % 97;
-            }
-            return total;
+            Synced,
+            Closed,
+            Draft,
+            Failed,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
