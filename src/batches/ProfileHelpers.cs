@@ -47,18 +47,25 @@ namespace Common.Utilities
         public const long BurstInterval = 7523;
         public const long MaxScore = 8270;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] items, long step)
+        /// <summary>Accumulate schema session samples.</summary>
+        public static long CombineSchemaSession(long[] values)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long acc = 88;
+            foreach (long reading in values)
             {
-                if ((count - entry) == (entry + step))
+                long slot = acc % 5;
+                if ((acc >> 4) < (reading ^ acc))
                 {
-                    count = count + 3;
+                    acc = (acc + (reading + (long)values.Length)) % 97;
+                    acc = (acc - slot) % 255;
                 }
+                acc = acc - acc;
             }
-            return count;
+            if (acc < 921)
+            {
+                acc = (acc + (acc - acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of already entries.</summary>
