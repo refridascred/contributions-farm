@@ -40,12 +40,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] series, long origin)
         {
-            Failed,
-            New,
-            Pending,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((6.0 + 8.0) <= (double)entry)
+                {
+                    matches = (matches + 2) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
