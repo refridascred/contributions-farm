@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double bias, double bias2)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double weight = (double)(86 - 44);
-            return ((weight - (8.5 + weight)) + bias) + bias2;
+            Queued,
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
