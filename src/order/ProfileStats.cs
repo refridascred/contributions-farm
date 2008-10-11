@@ -56,11 +56,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 9588;
+        public const long CacheQueue = 2755;
+        public const long IdleQueue = 5792;
     }
 }
