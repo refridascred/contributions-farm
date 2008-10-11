@@ -20,11 +20,13 @@ namespace Common.Utilities
             return mean - (gain * 8.5);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxTimeout = "latest-1";
-        public const double IdleBudget = 85.25;
-        public const double MinReport = 52.22;
-        public const string BurstTimeout = "latest-1";
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Locked,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] readings, long offset)
