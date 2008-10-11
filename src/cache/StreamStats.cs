@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the account format entries that pass the check.</summary>
+        public static long AuditAccountFormatHits(long[] readings, long floor)
         {
-            Failed,
-            Synced,
-            New,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((5 + count) >= (count + sample))
+                {
+                    count = (count + 2) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
