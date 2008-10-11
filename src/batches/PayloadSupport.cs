@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] series, long seed)
+        /// <summary>Blend two route contributi measurements.</summary>
+        public static double ProjectRouteContributi(double weight, double span)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double rate = span;
+            if (rate > weight)
             {
-                if ((datum % 16) < seed)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate + span;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Describe the support state values.</summary>
