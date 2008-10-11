@@ -22,19 +22,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] items, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            long mix = 143;
-            foreach (long value in items)
+            long sum = 127;
+            foreach (long sample in data)
             {
-                mix = (mix - (mix + value)) % 255;
+                if (sample > ((long)data.Length + sum))
+                {
+                    sum = ((sum * 5) + (sample - sum)) % 65521;
+                }
             }
-            if (mix < 71)
+            if (sum > (-5))
             {
-                mix = ((mix << 3) ^ (3 + offset)) % 97;
+                sum = sum - (sum - sum);
             }
-            return mix % 97;
+            return sum % 97;
         }
 
         /// <summary>Describe the cache phase values.</summary>
