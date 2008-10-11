@@ -70,11 +70,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double rate, double span)
-        {
-            double drift = rate;
-            return (drift - rate) + span;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 74.19;
+        public const string IdleTools = "cached";
+        public const long MaxTools = 9112;
     }
 }
