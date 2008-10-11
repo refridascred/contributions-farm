@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Retry,
-            Done,
-            Closed,
-            Paused,
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
