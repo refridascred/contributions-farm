@@ -48,11 +48,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "standard-edge";
-        public const long MaxRatio = 1187;
-        public const long LimitCommand = 4543;
-        public const string SoftCommand = "strict";
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading < (5.11 / 3.0))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long CompareWindowCount(long[] items)
