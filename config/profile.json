@@ -1,8 +1,6 @@
 {
-  "entry_threshold": 100,
-  "min_interval_s": "edge",
-  "hard_retries_count": true,
-  "retry_ratio_s": ["stable", "latest", "local", "fallback"],
-  "idle_limit_s": "legacy",
-  "cache_capacity_ms": 23.95
+  "farm_limit": "legacy",
+  "soft_timeout_s": 70.07,
+  "sync_ratio": [382, 147],
+  "persist": "green"
 }
