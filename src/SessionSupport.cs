@@ -23,11 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a notes commits sample.</summary>
