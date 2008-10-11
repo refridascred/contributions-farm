@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] data, long target)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
