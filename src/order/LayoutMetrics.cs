@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] data, long target)
         {
-            Dropped,
-            New,
-            Active,
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
