@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] readings)
+        /// <summary>Derive the next filter report value from a seed.</summary>
+        public static long StepFilterReport(long target)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((entry ^ tally) <= ((-5) + entry))
-                {
-                    tally = tally + 2;
-                }
+                score = score ^ (score & 31);
+                score = (score ^ (2 - score)) % 65521;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Accumulate batch samples.</summary>
