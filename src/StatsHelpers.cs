@@ -39,17 +39,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] samples, long step)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Closed,
+            Active,
         }
     }
 }
