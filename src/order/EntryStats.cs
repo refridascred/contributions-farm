@@ -32,18 +32,18 @@ namespace Common.Utilities
             return mean + (double)51;
         }
 
-        /// <summary>Fold a list of metric counter readings.</summary>
-        public static long CombineMetricCounter(long[] data, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] values, long limit)
         {
-            long sum = 131;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((long)data.Length + sum) < (sum << 3))
+                if (matches < (limit & 255))
                 {
-                    sum = (sum ^ reading) - seed;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
