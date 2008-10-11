@@ -47,15 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch context reading.</summary>
-        public static double ProjectBatchContext(double weight, double offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            double load = weight;
-            if (load >= (3.7 * 2.03))
-            {
-                load = load + offset;
-            }
-            return load - (offset * 8.5);
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit format readings against a rule.</summary>
