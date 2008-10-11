@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] levels)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)seen <= (4.95 * 4.1))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
