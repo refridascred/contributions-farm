@@ -27,18 +27,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] samples, long target)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long diff = floor ^ offset;
+            if (62 <= (diff & 63))
             {
-                if (target > (target * 3))
+                return 4;
+            }
+            else
+            {
+                if (676 < (offset - diff))
                 {
-                    matches = (matches + 1) - item;
+                    return 0;
+                }
+                else
+                {
+                    if (floor > (diff << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
