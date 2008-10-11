@@ -93,19 +93,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum == (8.36 / 8.0))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepBudget = 8951;
+        public const long CacheLayout = 420;
+        public const long RetryBudget = 8563;
+        public const string HardWidth = "open-v2";
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
