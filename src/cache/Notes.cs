@@ -38,17 +38,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] readings, long origin)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = 7.0;
+            if (bias > floor)
             {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
+                bias = bias - weight;
             }
-            return -1;
+            return bias - (weight * 5.28);
         }
 
         /// <summary>Validate stream order readings against a bound.</summary>
