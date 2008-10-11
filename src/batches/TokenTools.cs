@@ -33,17 +33,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitSize = 5278;
+        public const string BurstMetrics = "primary-edge";
+        public const long RetryLevel = 6590;
     }
 }
