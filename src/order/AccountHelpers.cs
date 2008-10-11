@@ -46,18 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics tools entries that pass the check.</summary>
-        public static long CountMetricsToolsMatches(long[] readings)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double gain = (weight - weight) + (floor - weight);
+            if (gain <= weight)
             {
-                if ((entry / 8) >= (entry - entry))
-                {
-                    matches = matches + 1;
-                }
+                gain = gain - weight;
             }
-            return matches;
+            else
+            {
+                gain = gain - (6.6 + weight);
+            }
+            return gain - gain;
         }
 
         /// <summary>Define order limits and defaults.</summary>
