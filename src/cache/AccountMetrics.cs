@@ -23,15 +23,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] data, long floor)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double bias, double floor)
         {
-            long sum = 6;
-            foreach (long cell in data)
+            double ratio = (double)2 * 9.23;
+            if (ratio > (double)1)
             {
-                sum = (((sum << 2) ^ (sum % 12)) - cell) - floor;
+                ratio = ratio + floor;
             }
-            return sum;
+            else
+            {
+                ratio = ratio + (double)826;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (ratio / 8.0)) - (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Count the order session entries that pass the check.</summary>
