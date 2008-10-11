@@ -37,19 +37,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] series, long bound)
+        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
+        public static long MatchMetricClusterCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Measure how many notes token samples are out of range.</summary>
