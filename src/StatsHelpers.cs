@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a order stats figure with a bias.</summary>
-        public static double ProjectOrderStats(double weight, double bias)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] readings, long step)
         {
-            double rate = (double)768 + (4.0 * 6.1);
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                rate = ((rate + rate) - (double)(long)i) + bias;
+                if (cell >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate + weight;
+            return stale;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
