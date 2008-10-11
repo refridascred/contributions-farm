@@ -38,13 +38,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long offset, long step)
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
+            if ((double)offset > (double)8)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset * 5) != (90 >> 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
