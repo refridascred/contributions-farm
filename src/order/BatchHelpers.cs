@@ -19,10 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 3.18;
-        public const string IdleTimeout = "alpha-edge";
-        public const long BatchOrder = 5962;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public double Offset { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
