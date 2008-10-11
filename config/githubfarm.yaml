@@ -1,7 +1,5 @@
 # githubfarm settings
-flush_retries_ms: 64
-max_ratio_s: 84.04
-sync_size_ms: 87.06
-persist: true
-batch_ttl: fallback
-warm_window_ms: 54
+sync_threshold_count: 1357
+readonly: local
+soft_limit_pct: 57.61
+retry_threshold_pct: false
