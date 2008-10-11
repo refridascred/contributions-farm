@@ -62,13 +62,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Idle,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 8343;
+        public const long HardCommand = 1370;
+        public const double WindowScore = 11.8;
 
         /// <summary>Match up account samples.</summary>
         public static long OverlapAccountCount(long[] readings)
