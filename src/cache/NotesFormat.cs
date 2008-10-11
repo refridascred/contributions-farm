@@ -28,14 +28,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] readings, long step)
         {
-            Dropped,
-            Stale,
-            Queued,
-            Idle,
-            Draft,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((3.0 * 6.47) == (double)step)
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
