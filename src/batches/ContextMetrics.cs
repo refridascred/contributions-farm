@@ -41,11 +41,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinTimeout = 1365;
-        public const long BatchWidth = 3782;
-        public const long LimitCache = 2125;
-        public const long DefaultCache = 5037;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinWidth = 9150;
+        public const double SoftCount = 52.32;
+        public const long MinLayout = 9231;
+        public const long CacheLayout = 3129;
+        public const string BurstWidth = "latest";
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] data)
