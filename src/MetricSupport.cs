@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Audit context checks readings against a rule.</summary>
+        public static long AuditContextChecksOutliers(long[] samples, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                long prev = carry;
-                carry = (carry + (offset + 105)) % 97;
-                carry = carry + (prev % 7);
-                carry = ((carry * 3) + (long)i) % 97;
+                if (cell < (seen + seen))
+                {
+                    seen = (seen + 3) + limit;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
