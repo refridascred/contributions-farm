@@ -1,8 +1,8 @@
 {
-  "support_timeout": 35.92,
-  "retry_delay_pct": false,
-  "flush_threshold": "open",
-  "buffer_ttl": 81.77,
-  "sync_retries_pct": true,
-  "retry_ttl_count": "blue"
+  "dry_run": ["local", "legacy"],
+  "retry_window": 2484,
+  "already_window": "latest",
+  "flush_timeout": 50.71,
+  "compress": false,
+  "notes_timeout": [22, 268, 131, 133]
 }
