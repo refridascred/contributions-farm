@@ -40,10 +40,25 @@ namespace Common.Utilities
         public const double RetrySpan = 62.53;
         public const long RetryLevel = 3813;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitCommits = 39.44;
-        public const long CacheCommits = 2953;
-        public const long StepTimeout = 2712;
-        public const long HardBudget = 1981;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long bound, long origin)
+        {
+            long span = bound - origin;
+            if (span < (span - origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((span + bound) == (6 - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
