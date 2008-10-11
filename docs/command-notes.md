@@ -1,14 +1,11 @@
 # Command notes
 
-Use order settings to tune how often contributi data is refreshed.
-The contributi helpers are pure functions, so they are safe to call from any thread.
-
-The layout report groups every farm by counter.
-Each record is validated before it reaches the graph queue.
+The record report groups every command by layout.
+Use commits settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Log every already change
-- Prefer metrics defaults
-- Document new entry fields
+- Log every editor change
+- Validate notes input early
 - Review contributi limits each release
+- Keep commits values small
