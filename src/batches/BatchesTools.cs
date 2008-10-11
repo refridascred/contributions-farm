@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Iterate the editor githubfarm series from a seed.</summary>
+        public static long SeriesEditorGithubfarm(long limit)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the profile state values.</summary>
