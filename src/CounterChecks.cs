@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Digest a series of farm profile entries.</summary>
+        public static long ScoreFarmProfile(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long mix = 8;
+            foreach (long value in series)
             {
-                mark = (mark - (87 >> 1)) % 65521;
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((53 + value) < mix)
+                {
+                    mix = ((mix * 4) + value) % 1000;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix + value);
+                }
             }
-            return mark;
+            if (mix > 1)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
