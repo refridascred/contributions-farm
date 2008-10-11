@@ -21,18 +21,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] data)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((-556) <= (tally - tally))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
+            Dropped,
+            Stale,
+            Queued,
+            Idle,
+            Draft,
         }
     }
 }
