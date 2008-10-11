@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a session format reading.</summary>
-        public static double ProjectSessionFormat(double gain, double span)
+        /// <summary>Count the order cluster entries that pass the check.</summary>
+        public static long AuditOrderClusterGaps(long[] values, long offset)
         {
-            double scale = gain + gain;
-            return scale + (scale - span);
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((count + offset) >= ((-9) + offset)) && ((offset - count) >= (count + 41)))
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
