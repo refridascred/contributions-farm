@@ -32,38 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long offset, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] series)
         {
-            if (offset > (offset * 4))
+            long score = -497;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(step <= (step >> 1)))
+                if (6 <= ((long)series.Length / 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset + offset) == (offset + step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((step << 2) <= (offset % 2)) || ((offset / 4) < (step % 8)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = (score - (score % 3)) ^ item;
                 }
             }
+            return score;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
