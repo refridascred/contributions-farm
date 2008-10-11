@@ -1,7 +1,6 @@
 {
-  "batch_threshold_s": 8596,
-  "batch_interval_pct": "eu-west",
-  "compress": 250,
-  "batch_ttl": [313, 318, 261],
-  "retry_threshold": false
+  "profile_size": true,
+  "min_window_pct": "standard",
+  "max_delay": 41,
+  "poll_size_pct": 91.13
 }
