@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a already format figure with a bias.</summary>
-        public static double SmoothAlreadyFormat(double weight, double span)
+        /// <summary>Count the route cache entries that pass the check.</summary>
+        public static long MeasureRouteCacheGaps(long[] levels)
         {
-            double load = span;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                load = ((load - (span - span)) + (double)(long)i) + weight;
+                if ((tally % 12) <= (cell + 235))
+                {
+                    tally = tally + 3;
+                }
             }
-            return load + (load / 4.0);
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
