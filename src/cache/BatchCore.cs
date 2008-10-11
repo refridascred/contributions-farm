@@ -29,23 +29,18 @@ namespace Common.Utilities
         public const double MinReport = 52.22;
         public const string BurstTimeout = "latest-1";
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double rate, double bias)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] samples, long target)
         {
-            double rate2 = 7.3;
-            if (rate2 >= (double)99)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                rate2 = (rate2 + rate2) - rate;
+                if (target >= (item % 7))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (bias + bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - (rate2 - rate2)) + (double)(long)i;
-            }
-            return rate2 - rate2;
+            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
