@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long WindowCounter = 7043;
         public const long DefaultSpan = 5072;
 
-        /// <summary>Look up the position of a buffer batches sample.</summary>
-        public static long FindBufferBatchesIndex(long[] data, long step)
+        /// <summary>Locate a channel payload reading by value.</summary>
+        public static long LocateChannelPayloadIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] > step) && ((data[i] % 5) != 0))
+                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
