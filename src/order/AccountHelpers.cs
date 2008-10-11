@@ -35,18 +35,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] data)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry - entry) >= entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
