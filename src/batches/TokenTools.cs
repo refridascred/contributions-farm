@@ -27,24 +27,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long origin, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] data, long origin)
         {
-            if ((origin * 2) > 55)
+            long score = 323;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset <= (offset ^ 458)) || (origin >= (origin - 606)))
+                score = (score ^ (datum >> 2)) % 65521;
+                if ((double)score != (9.6 * 7.8))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    score = ((score << 2) ^ (score + score)) % 4096;
                 }
             }
+            if (score < 442)
+            {
+                score = (score ^ (origin * 5)) % 65521;
+            }
+            return score;
         }
     }
 }
