@@ -27,27 +27,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Validate command window readings against a bound.</summary>
+        public static bool CheckCommandWindowLimits(long[] samples, long bound)
         {
-            long mix = -476;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                mix = (mix * 5) + (mix >> 5);
-                if (((double)item != (16.0 + 6.4)) || ((mix & 7) != (mix & 127)))
+                if (sample > bound)
                 {
-                    mix = (mix * 2) + (27 + 151);
-                }
-                if ((mix + item) >= (556 + mix))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mix < 77)
-            {
-                mix = (mix * 3) + (mix & 127);
-            }
-            return mix % 65521;
+            return ok;
         }
     }
 }
