@@ -20,12 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long bound)
         {
-            Retry,
-            Failed,
-            Queued,
+            long result = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a token record.</summary>
