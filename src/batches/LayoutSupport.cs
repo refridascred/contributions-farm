@@ -51,17 +51,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Pending,
+            Done,
+            Active,
+            Closed,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
