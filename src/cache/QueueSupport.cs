@@ -55,32 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session format input into a small class.</summary>
-        public static long SortSessionFormat(long bound, long origin)
-        {
-            long edge = bound - origin;
-            if (edge >= (bound + 26))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin >= ((-147) ^ origin)) && ((origin ^ origin) < (bound / 6)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + edge) > (bound - 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 3343;
+        public const long RetryMetric = 8492;
+        public const string HardCount = "strict-v2";
+        public const long MaxMetric = 592;
+        public const long WindowCount = 5098;
     }
 }
