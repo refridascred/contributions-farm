@@ -37,17 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] data, long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
