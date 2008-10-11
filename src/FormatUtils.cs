@@ -26,25 +26,19 @@ namespace Common.Utilities
         public const double WindowScore = 37.33;
         public const string WindowBuffer = "stable-v2";
 
-        /// <summary>Grade a batches schema value against two limits.</summary>
-        public static long GradeBatchesSchema(long bound, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double gain, double floor)
         {
-            long lane = bound - step;
-            if ((bound + lane) < (step << 2))
+            double ratio = (double)(95 * 3);
+            if (ratio >= floor)
             {
-                return 2;
+                ratio = (ratio + (floor * 7.6)) - gain;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((-52) < step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
+                ratio = (ratio + floor) - (double)(long)i;
             }
+            return ratio + (ratio + floor);
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
