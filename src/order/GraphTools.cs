@@ -41,12 +41,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Locked,
-            Dropped,
-            Synced,
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a layout stats.</summary>
