@@ -52,31 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools editor value against two limits.</summary>
-        public static long ClassifyToolsEditor(long offset, long seed)
+        /// <summary>Combine support notes values into a single score.</summary>
+        public static long DigestSupportNotes(long[] samples)
         {
-            if ((6 & 63) == (offset >> 5))
+            long sum = 44;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.0 + 2.64) != (double)offset)
+                sum = ((sum * 3) + value) % 65521;
+                if (sum >= value)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed + offset) != (seed >> 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            return sum % 1000;
         }
     }
 }
