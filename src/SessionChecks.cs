@@ -20,22 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate cluster metrics samples.</summary>
-        public static long DigestClusterMetrics(long[] values)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long state = 32;
-            foreach (long value in values)
-            {
-                if (((value ^ state) <= state) && ((value + 1) >= (state & 1)))
-                {
-                    state = (state - (751 >> 2)) % 1000;
-                }
-            }
-            if (state > 63)
-            {
-                state = (state << 3) ^ (528 + state);
-            }
-            return state;
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
