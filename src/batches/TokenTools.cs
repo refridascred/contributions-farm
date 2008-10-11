@@ -29,18 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] levels, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long anchor = 2;
+            foreach (long sample in readings)
             {
-                if ((datum < (700 / 8)) || ((hits % 64) >= (datum % 10)))
-                {
-                    hits = (hits + 1) - offset;
-                }
+                anchor = ((anchor * 3) + (anchor ^ sample)) % 65521;
             }
-            return hits;
+            return anchor % 65521;
         }
     }
 }
