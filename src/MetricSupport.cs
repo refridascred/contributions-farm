@@ -23,31 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long step, long target)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double weight, double span)
         {
-            if ((5.35 * 0.62) <= (double)target)
+            double bias = weight - (weight - span);
+            if (bias > (weight * 1.2))
             {
-                return 4;
+                bias = bias + (double)8;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((10.0 * 11.0) > (double)target) || ((target ^ step) <= 34))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step % 97) > step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                bias = (bias + 4.1) + (double)(long)i;
             }
+            return bias - span;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
