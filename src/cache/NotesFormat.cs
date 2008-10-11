@@ -24,15 +24,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double bias, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] readings)
         {
-            double weight = (bias * 13.0) - (1.0 + bias);
-            if (weight <= (bias + 8.7))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                weight = weight - (span + 20.0);
+                if ((datum >= (seen + seen)) && ((seen / 9) < (92 + datum)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return weight + (double)217;
+            return seen;
         }
 
         /// <summary>Combine window filter values into a single score.</summary>
