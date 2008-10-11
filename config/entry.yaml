@@ -1,5 +1,5 @@
 # entry settings
-poll_retries: 400
-poll_depth_count: true
-soft_limit_ms: false
-command_retries: 61.3
+default_delay: true
+verbose: 1024
+persist: 60
+tools_retries: 6692
