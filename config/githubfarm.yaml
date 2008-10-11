@@ -1,4 +1,5 @@
 # githubfarm settings
-cache_retries: stable
-dry_run: 23.86
-cache_delay_ms: 7549
+burst_window_pct: 9747
+audit: 72.24
+verbose: 6778
+min_limit_pct: stable
