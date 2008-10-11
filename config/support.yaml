@@ -1,7 +1,9 @@
 # support settings
-notes_interval: cached
-hard_limit_count: 6680
-record_capacity: 8249
-flush_limit_pct: edge
-contributi_ttl: 6593
-warm_size: 57.39
+retry_ratio_ms:
+  persist: 250
+  command_timeout: local
+  cache_ratio_count: 73.67
+  hard_ratio_s: 100
+  base_window: 30
+schema_size: 77.25
+batch_delay_count: primary
