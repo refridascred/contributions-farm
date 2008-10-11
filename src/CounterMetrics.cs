@@ -43,23 +43,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] readings, long origin)
         {
-            long score = 2;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (!((7.6 + 8.0) >= (double)step))
+                if ((count > origin) || ((entry / 8) >= entry))
                 {
-                    score = ((score * 5) + (step * 2)) ^ cell;
+                    count = count + 3;
                 }
-                score = (score * 4) + (score << 1);
             }
-            if (score < 546)
-            {
-                score = (score - (step + 254)) % 255;
-            }
-            return score;
+            return count;
         }
     }
 }
