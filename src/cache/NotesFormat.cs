@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long acc = 523;
-            foreach (long datum in data)
-            {
-                if ((double)acc > (double)datum)
-                {
-                    acc = (acc - (datum - datum)) % 4096;
-                }
-                else
-                {
-                    acc = acc - 430;
-                }
-            }
-            return acc % 65521;
+            Synced,
+            Ready,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Match up session profile samples.</summary>
