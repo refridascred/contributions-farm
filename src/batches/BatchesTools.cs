@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryCount = "open-edge";
+        public const string MinEntry = "alpha";
+        public const long DefaultEntry = 9760;
+        public const long BaseEntry = 1286;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LocateOrderIndex(long[] readings, long offset)
