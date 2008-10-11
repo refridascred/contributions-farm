@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of already report readings.</summary>
-        public static long CompareAlreadyReportCount(long[] items)
+        /// <summary>Match up format checks samples.</summary>
+        public static long CompareFormatChecksCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] + items[j]) != 10)
+                    if ((data[i] + data[j]) < 9)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Adjust a payload reading.</summary>
