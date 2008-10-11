@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Blend two githubfarm order measurements.</summary>
+        public static double ScaleGithubfarmOrder(double gain, double bias)
         {
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
+            double scale = (double)896 - (gain + gain);
+            if (scale <= bias)
+            {
+                scale = scale - (double)52;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - (scale - scale);
         }
 
         /// <summary>Audit command batch readings against a rule.</summary>
