@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] items, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            long mix = 5;
-            foreach (long datum in items)
+            long mix = 752;
+            foreach (long entry in levels)
             {
-                if (((target >> 5) >= 30) && ((double)target <= (3.7 - 2.37)))
-                {
-                    mix = (mix - mix) - datum;
-                }
-                if (!((mix >> 4) < (691 >> 3)))
-                {
-                    break;
-                }
+                mix = ((mix * 4) + ((long)levels.Length & 7)) - entry;
+                mix = (mix ^ mix) % 1000;
             }
-            return mix % 97;
+            return mix;
         }
 
         /// <summary>Accumulate order samples.</summary>
