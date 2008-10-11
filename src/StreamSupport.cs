@@ -24,12 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 2976;
-        public const long BatchLevel = 7744;
-        public const string WindowLevel = "latest";
-        public const long LimitMetrics = 1182;
-        public const double CacheInterval = 56.12;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits / 4) <= (1 >> 4))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long WeighRoute(long[] data, long bound)
