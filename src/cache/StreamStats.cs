@@ -35,19 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] readings)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] samples, long bound)
         {
-            long state = 500;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                state = state - 65;
-                if (!((item & 127) > state))
+                if (reading <= bound)
                 {
-                    state = (state - (item & 127)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
     }
 }
