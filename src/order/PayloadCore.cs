@@ -28,19 +28,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] data, long offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Project the next batches record value.</summary>
