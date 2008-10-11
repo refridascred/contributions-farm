@@ -35,19 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultInterval = "legacy";
+        public const long BaseEditor = 9973;
+        public const long SoftEditor = 5502;
+        public const long BatchTimeout = 6379;
+        public const double MaxCount = 23.91;
     }
 }
