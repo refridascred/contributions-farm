@@ -41,16 +41,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Locate a checks layout reading by value.</summary>
+        public static long FindChecksLayoutIndex(long[] levels, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result ^ (52 >> 4);
-                result = ((result * 5) + (long)i) % 65521;
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
