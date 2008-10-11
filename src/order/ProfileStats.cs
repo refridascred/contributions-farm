@@ -57,11 +57,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowFactor = 41.04;
-        public const long BatchInterval = 511;
-        public const long SoftSupport = 1341;
-        public const long HardTimeout = 6540;
-        public const long MaxSupport = 6349;
+        /// <summary>Rank profile stream input into a small class.</summary>
+        public static long GradeProfileStream(long seed, long limit)
+        {
+            if ((seed < limit) && (seed > 907))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((seed ^ 5) > (28 % 24)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (4.0 >= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
