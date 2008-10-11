@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mix = 38;
-            foreach (long item in items)
-            {
-                mix = ((mix << 2) ^ (item - mix)) % 4096;
-            }
-            return mix;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
