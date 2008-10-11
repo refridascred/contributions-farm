@@ -1,7 +1,4 @@
 # githubfarm settings
-verbose: open
-soft_interval: strict
-metric_depth: 7876
-batches_window: cached
-batch_threshold: true
-flush_timeout_pct: false
+poll_interval: true
+min_depth_ms: true
+cache_limit_count: 8175
