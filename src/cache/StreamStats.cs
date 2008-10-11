@@ -53,13 +53,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] samples)
         {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally ^ sample) == (tally - tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
