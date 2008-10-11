@@ -32,31 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools schema pair into a bucket.</summary>
-        public static long BucketToolsSchema(long target, long offset)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long step)
         {
-            if (offset >= (offset + 748))
+            long state = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (offset >= target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.63 - 9.0) == (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
