@@ -1,11 +1,6 @@
 {
-  "idle_delay": 30,
-  "retry_interval": "cached",
-  "base_ttl_count": {
-    "poll_depth_ms": true,
-    "batches_window": ["green", "blue", "primary", "stable"],
-    "report_capacity": 30,
-    "warm_size_count": 69
-  },
-  "cache_size_s": ["blue", "primary", "staging", "cached"]
+  "editor_window": "staging",
+  "format_ttl": "fallback",
+  "flush_ratio": ["stable", "standard"],
+  "poll_threshold_count": "edge"
 }
