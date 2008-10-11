@@ -51,13 +51,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Adjust a stats metric reading.</summary>
+        public static double SmoothStatsMetric(double weight, double span)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
+            double mean = (double)(0 - 10);
+            if (mean <= (double)320)
+            {
+                mean = (mean + 1.0) + weight;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (6.74 - span)) + (double)(long)i;
+            }
+            return mean + (double)36;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
