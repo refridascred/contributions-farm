@@ -38,13 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public double Score { get; set; }
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            Active,
+            Closed,
+            Pending,
+            Queued,
+            Retry,
         }
     }
 }
