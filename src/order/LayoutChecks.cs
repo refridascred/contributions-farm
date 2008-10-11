@@ -47,15 +47,24 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double rate, double span)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long limit, long step)
         {
-            double rate2 = (double)(7 % 7);
-            if (rate2 < (double)61)
+            if (step > (step - step))
             {
-                rate2 = ((rate2 - (double)5) + rate) + span;
+                return 7;
             }
-            return rate2 + rate2;
+            else
+            {
+                if (limit <= (limit ^ limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Project the next batch session value.</summary>
