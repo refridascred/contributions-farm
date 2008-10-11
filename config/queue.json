@@ -1,13 +1,12 @@
 {
-  "soft_window": true,
-  "stats_timeout": ["latest", "edge"],
-  "warm_window": ["blue", "latest", "green"],
-  "idle_window": {
-    "default_window_count": [197, 411],
-    "enabled": "cached",
-    "idle_depth": "cached",
-    "editor_delay": false,
-    "token_window": 1024
+  "report_depth": {
+    "poll_capacity": true,
+    "idle_ttl_s": "strict",
+    "readonly": "standard",
+    "enabled": false,
+    "verbose": "local"
   },
-  "compress": 45.8
+  "idle_ttl_pct": 27,
+  "batch_ratio_count": 77,
+  "schema_retries": 95.27
 }
