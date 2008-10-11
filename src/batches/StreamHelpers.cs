@@ -45,14 +45,13 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Queued,
-            Stale,
-            Paused,
-            Active,
-            New,
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
