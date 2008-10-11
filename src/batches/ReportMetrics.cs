@@ -17,11 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 9586;
-        public const string DefaultRatio = "standard-edge";
-        public const double HardSize = 52.73;
-        public const double MaxWidth = 94.77;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long TallyFarm(long[] samples)
