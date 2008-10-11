@@ -13,20 +13,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long bound, long bound2)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            long cur = bound + bound2;
+            if (bound < (cur - bound2))
             {
-                if (!(bound > (bound * 4)))
-                {
-                    anchor = (anchor + anchor) % 65521;
-                }
-                anchor = anchor - ((long)i % 97);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((bound >> 2) < 1)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound <= 28) && ((bound + bound) == (cur * 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
