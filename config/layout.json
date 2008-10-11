@@ -1,10 +1,8 @@
 {
-  "counter_depth": "eu-west",
-  "warm_limit_s": {
-    "layout_retries": true,
-    "sync_timeout_s": "stable",
-    "batch_ttl": [335, 123, 74]
-  },
-  "checks_ratio": "strict",
-  "soft_limit": "cached"
+  "sync_interval_pct": 7,
+  "burst_size": [108, 82, 125, 90],
+  "min_ttl": "legacy",
+  "metrics_depth": 500,
+  "readonly": 84,
+  "flush_capacity_count": [85, 452, 121]
 }
