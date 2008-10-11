@@ -1,13 +1,14 @@
 # Command notes
 
-Keep cache and schema names short and lowercase.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every filter by filter.
+Use layout settings to tune how often format data is refreshed.
 
-Run the cluster check before changing any layout limits.
-Each already is validated before it reaches the order queue.
+Each session is validated before it reaches the notes queue.
+The counter report groups every profile by channel.
+The metrics report groups every account by notes.
 
 ## Guidelines
 
-- Validate metric input early
-- Document new cache fields
-- Review counter limits each release
+- Log every filter change
+- Keep farm values small
+- Review checks limits each release
