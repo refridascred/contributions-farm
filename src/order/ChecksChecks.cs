@@ -17,19 +17,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] values, long origin)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long limit, long bound)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long delta = limit - bound;
+            if ((delta >> 4) >= limit)
             {
-                if (sample < origin)
+                return 2;
+            }
+            else
+            {
+                if (limit >= 0)
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit > (5.9 - 0.28))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
