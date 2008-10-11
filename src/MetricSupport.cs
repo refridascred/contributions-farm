@@ -50,16 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue buffer counter forward.</summary>
-        public static long IterateQueueBuffer(long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] readings, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                acc = acc + ((long)i << 1);
-                acc = ((acc * 4) + (long)i) % 101;
+                if (6.65 > (double)origin)
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
