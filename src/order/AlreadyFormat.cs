@@ -40,10 +40,19 @@ namespace Common.Utilities
         public const long LimitBuffer = 8644;
         public const long MinSize = 5149;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultBudget = 15.96;
-        public const string SoftWidth = "primary-v2";
-        public const long WindowFilter = 661;
-        public const long HardFilter = 9266;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
