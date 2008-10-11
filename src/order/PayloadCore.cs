@@ -35,10 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseInterval = 8.97;
-        public const double HardInterval = 33.54;
-        public const double DefaultCount = 25.4;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (((double)tally > (8.27 * 2.7)) && (((2 + tally) >= (tally / 2)) || ((item >> 5) < tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] values, long offset)
