@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 2272;
+        public const long MinLevel = 379;
+        public const long StepMetric = 8282;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long PairNotesCount(long[] values)
