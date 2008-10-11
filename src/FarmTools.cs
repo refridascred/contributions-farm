@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long limit, long offset)
+        /// <summary>Fold a list of cache route readings.</summary>
+        public static long ScoreCacheRoute(long[] samples)
         {
-            if ((double)offset <= (11.0 / 3.0))
+            long acc = 45;
+            foreach (long datum in samples)
             {
-                return 6;
+                acc = (acc - datum) % 4096;
             }
-            else
+            if (acc > 5)
             {
-                if (!((limit >> 4) <= (6 - 9)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(limit > (offset >> 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                acc = ((acc << 3) ^ (acc + acc)) % 255;
             }
+            return acc;
         }
 
         /// <summary>Describe the route level values.</summary>
