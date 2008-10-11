@@ -50,12 +50,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 76.71;
-        public const double BatchSize = 49.67;
-        public const long BaseLevel = 6891;
-        public const long LimitSupport = 9469;
-        public const long HardSupport = 5365;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Count farm report pairs that satisfy a relation.</summary>
         public static long PairFarmReportCount(long[] values)
