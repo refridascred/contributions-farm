@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next contributi format value from a seed.</summary>
-        public static long RollContributiFormat(long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mark = (mark - ((-63) + mark)) % 65521;
-                mark = (mark ^ (mark / 4)) % 101;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((double)matches < (5.56 * 1.6))
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Classify a graph record pair into a bucket.</summary>
