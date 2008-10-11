@@ -20,10 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 858;
-        public const long MaxLayout = 9450;
-        public const long HardLayout = 5889;
+        /// <summary>Measure how many record filter samples are out of range.</summary>
+        public static long CountRecordFilterMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count & 7) > (entry ^ count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextHits(long[] samples)
