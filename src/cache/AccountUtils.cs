@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long IdleMetrics = 491;
         public const string RetrySize = "local";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseScore = "cached-1";
-        public const double StepBuffer = 18.47;
-        public const long StepBudget = 6334;
-        public const long StepTimeout = 6061;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] levels)
+        {
+            long carry = 89;
+            foreach (long reading in levels)
+            {
+                if ((913 << 2) != (carry + reading))
+                {
+                    carry = (carry - (reading - reading)) % 65521;
+                }
+                else
+                {
+                    carry = (carry * 4) + (reading + reading);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueHits(long[] series)
