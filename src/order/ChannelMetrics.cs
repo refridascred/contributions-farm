@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] values)
         {
-            long matches = 0;
+            long state = 387;
             foreach (long value in values)
             {
-                if (matches >= (matches - matches))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (state ^ (value << 2)) % 4096;
             }
-            return matches;
+            if (state > 58)
+            {
+                state = (state - (state - state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Accumulate farm samples.</summary>
