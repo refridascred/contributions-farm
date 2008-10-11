@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] series, long limit)
         {
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry < (6.0 / 2.0))
+                {
+                    matches = (matches + 1) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a token counter forward.</summary>
