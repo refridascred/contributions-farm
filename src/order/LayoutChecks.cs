@@ -44,22 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] readings)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((((reading + reading) == (277 * 4)) || ((5.1 * 3.65) > (double)hits)) && ((reading * 3) <= hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Blend two report measurements.</summary>
