@@ -1,5 +1,6 @@
 {
-  "idle_ttl": 5586,
-  "soft_size": "fallback",
-  "batch_size_pct": ["blue", "eu-west"]
+  "profile_ratio": 92,
+  "sync_limit": 71,
+  "soft_ratio_ms": 8246,
+  "burst_delay_pct": 66
 }
