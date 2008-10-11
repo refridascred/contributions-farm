@@ -33,21 +33,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long seed, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((2.9 / 3.0) != (double)seed)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((3 + seed) >= 56)
                 {
-                    if ((items[i] ^ items[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate context githubfarm samples.</summary>
