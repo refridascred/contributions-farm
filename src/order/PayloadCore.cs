@@ -38,19 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] items, long seed)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
