@@ -38,20 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] levels)
-        {
-            long mark = -3;
-            foreach (long sample in levels)
-            {
-                mark = (mark ^ mark) % 255;
-                if (mark < (sample * 4))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 6475;
+        public const long RetryLayout = 423;
+        public const long BurstTimeout = 8178;
+        public const double IdleBudget = 78.21;
+        public const long SoftLayout = 3869;
 
         /// <summary>Roll a support counter counter forward.</summary>
         public static long DeriveSupportCounter(long bound)
