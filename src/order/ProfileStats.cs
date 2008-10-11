@@ -20,12 +20,25 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long step, long bound)
         {
-            public bool Score { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
+            long lane = step - bound;
+            if ((11.0 + 1.0) != (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((lane + lane) == (bound - lane))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
