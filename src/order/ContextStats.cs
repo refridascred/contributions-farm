@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitSpan = 6415;
-        public const double MinToken = 28.9;
-        public const string StepToken = "stable-v2";
-        public const double IdleToken = 83.81;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Accumulate payload command samples.</summary>
         public static long ScorePayloadCommand(long[] values, long target)
