@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of support account entries.</summary>
-        public static long FoldSupportAccount(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long limit)
         {
-            long result = 67;
-            foreach (long cell in readings)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                result = result + (cell + result);
+                if ((259 - (long)i) >= (limit / 4))
+                {
+                    acc = (acc - (long)i) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
