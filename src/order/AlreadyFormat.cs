@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
-            public double Level { get; set; }
+            Idle,
+            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
