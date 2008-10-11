@@ -1,8 +1,5 @@
 {
-  "cache_capacity_pct": true,
-  "stream_window": "cached",
-  "dry_run": 60,
-  "notes_depth": "strict",
-  "base_depth_count": true,
-  "base_capacity_pct": "fallback"
+  "audit": true,
+  "burst_depth_pct": [18, 195, 389],
+  "sync_timeout_s": "eu-west"
 }
