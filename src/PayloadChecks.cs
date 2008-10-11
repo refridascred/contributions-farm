@@ -71,20 +71,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine queue commits values into a single score.</summary>
-        public static long WeighQueueCommits(long[] readings)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double ratio, double offset)
         {
-            long mix = 56;
-            foreach (long datum in readings)
+            double load = 8.24 / 8.0;
+            if (load < (18.0 / 8.0))
             {
-                mix = ((mix << 3) ^ (mix & 63)) % 255;
-                mix = (mix << 3) ^ mix;
-                if ((datum << 2) == (datum >> 3))
-                {
-                    mix = ((mix << 3) ^ datum) % 1000;
-                }
+                load = load + (offset + load);
             }
-            return mix % 97;
+            else
+            {
+                load = load - ratio;
+            }
+            return load - load;
         }
     }
 }
