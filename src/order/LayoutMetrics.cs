@@ -13,18 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] levels, long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((step & 3) <= (matches % 8))
+                if (entry <= origin)
                 {
-                    matches = (matches + 1) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Find the first farm window entry that matches the target.</summary>
