@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long step, long limit)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            if (!((step % 64) >= (step / 6)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (6.13 >= (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((8 * 5) >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit >> 2) < step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the filter state values.</summary>
