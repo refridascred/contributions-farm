@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] items, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long sum = 270;
+            foreach (long value in items)
             {
-                if (datum > bound)
+                if (step > (value + value))
                 {
-                    ready = false;
-                    break;
+                    sum = sum + 33;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Project the next counter value.</summary>
