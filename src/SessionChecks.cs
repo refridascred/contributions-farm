@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] levels, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] values, long limit)
         {
-            long state = 66;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((((-9) >> 3) >= (offset & 3)) || ((value + state) <= offset))
+                if ((double)tally < (double)681)
                 {
-                    state = (state << 2) ^ (offset >> 4);
-                }
-                else
-                {
-                    state = state + 141;
+                    tally = ((tally + 1) + value) - limit;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Project the next window value.</summary>
