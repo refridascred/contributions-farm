@@ -1,8 +1,5 @@
 {
-  "enabled": 2918,
-  "idle_limit": "fallback",
-  "batch_ratio_pct": 93.03,
-  "dry_run": 317,
-  "farm_interval": "standard",
-  "audit": ["stable", "blue", "cached", "green"]
+  "already_limit": [268, 28, 331, 24],
+  "max_window_count": ["staging", "open", "standard", "standard"],
+  "hard_interval_pct": 30
 }
