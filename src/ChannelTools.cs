@@ -28,10 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 8800;
-        public const string BurstSize = "cached";
-        public const long WindowSession = 951;
-        public const long BurstCount = 5536;
+        /// <summary>Accumulate window schema samples.</summary>
+        public static long TallyWindowSchema(long[] series, long target)
+        {
+            long carry = 58;
+            foreach (long cell in series)
+            {
+                if ((cell * 3) != (carry & 255))
+                {
+                    carry = (carry << 3) ^ (target << 3);
+                }
+            }
+            return carry % 97;
+        }
     }
 }
