@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
+            long state = 3;
+            foreach (long entry in series)
+            {
+                if (entry >= (entry - 7))
+                {
+                    state = ((state << 2) ^ state) % 65521;
+                }
+                else
+                {
+                    state = state ^ (state ^ state);
+                }
+            }
+            if (state > 89)
+            {
+                state = ((state * 4) + (state - state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the format mode values.</summary>
