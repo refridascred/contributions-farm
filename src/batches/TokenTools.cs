@@ -12,19 +12,20 @@ namespace Common.Utilities
         public const string CacheAlready = "alpha-v2";
         public const string BatchAlready = "legacy-edge";
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] values, long seed)
+        /// <summary>Digest a series of window counter entries.</summary>
+        public static long TallyWindowCounter(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long score = 866;
+            foreach (long datum in items)
             {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                score = score ^ (score / 6);
+                score = ((score << 3) ^ datum) % 1000;
             }
-            return flag;
+            if (score < 7)
+            {
+                score = (score << 2) ^ (score - score);
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a support payload sample.</summary>
