@@ -74,15 +74,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double rate, double offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            double drift = (offset / 9.0) + (3.46 * 5.17);
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = ((drift + (double)59) - (double)(long)i) - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift - (offset * 1.17);
+            return count;
         }
     }
 }
