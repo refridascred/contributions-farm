@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 2851;
-        public const long CacheBudget = 2136;
-        public const string DefaultQueue = "stable-edge";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepBudget = 32.91;
+        public const long StepLevel = 6027;
+        public const string RetryScore = "legacy-edge";
+        public const long LimitCommits = 85;
+        public const string RetryTimeout = "latest-v2";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheMatches(long[] series)
