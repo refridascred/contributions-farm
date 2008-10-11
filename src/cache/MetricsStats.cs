@@ -67,19 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double ratio, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] items)
         {
-            double drift = span + span;
-            if (drift <= span)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                drift = (drift - (double)(-34)) + ratio;
+                if ((82 + hits) < 2)
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)(-3)) - (double)(long)i;
-            }
-            return drift - (7.87 + 3.6);
+            return hits;
         }
     }
 }
