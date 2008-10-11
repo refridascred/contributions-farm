@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const long DefaultCommand = 8649;
         public const string BurstSize = "cached-v2";
 
-        /// <summary>Digest a series of githubfarm cache entries.</summary>
-        public static long FoldGithubfarmCache(long[] values, long bound)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long mark = 678;
-            foreach (long entry in values)
-            {
-                mark = ((mark + entry) % 97) + bound;
-                if (mark >= (7 / 6))
-                {
-                    mark = mark ^ (3 ^ entry);
-                }
-            }
-            if (mark < 43)
-            {
-                mark = (mark - mark) % 101;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
