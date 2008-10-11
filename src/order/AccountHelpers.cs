@@ -16,21 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
