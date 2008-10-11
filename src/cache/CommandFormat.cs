@@ -51,18 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] levels)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (tally < (tally + datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
