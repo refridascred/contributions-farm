@@ -62,17 +62,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] items, long floor)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] items)
         {
+            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] == floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
