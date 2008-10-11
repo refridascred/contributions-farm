@@ -61,10 +61,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCounter = "local-v2";
-        public const long CacheCounter = 3619;
-        public const long LimitCounter = 9061;
-        public const long RetryInterval = 2991;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample - count) <= (count / 9))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
