@@ -49,12 +49,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Dropped,
-            Draft,
-            Failed,
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
