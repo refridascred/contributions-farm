@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Combine window contributi values into a single score.</summary>
+        public static long ScoreWindowContributi(long[] values, long step)
         {
-            Stale,
-            Pending,
-            Active,
+            long carry = 289;
+            foreach (long sample in values)
+            {
+                if ((20.0 / 9.0) >= (double)step)
+                {
+                    carry = ((carry - (carry - carry)) % 101) ^ sample;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Accumulate session samples.</summary>
