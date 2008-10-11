@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Format stats helpers.</summary>
     public static class FormatStats
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] levels, long offset)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (tally >= (tally & 7))
+                {
+                    tally = ((tally + 3) + cell) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next order value.</summary>
