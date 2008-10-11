@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] samples, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                result = result ^ result;
-                result = (result ^ result) % 97;
-                result = ((result * 3) + (long)i) % 97;
+                if ((datum <= (origin + tally)) && ((long)samples.Length <= origin))
+                {
+                    tally = tally + 3;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
