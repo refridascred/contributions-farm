@@ -70,18 +70,15 @@ namespace Common.Utilities
             return mean + (double)36;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] values)
+        /// <summary>Iterate the support session series from a seed.</summary>
+        public static long StepSupportSession(long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)8 >= (double)hits)
-                {
-                    hits = (hits + 2) ^ item;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
