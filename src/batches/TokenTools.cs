@@ -26,32 +26,24 @@ namespace Common.Utilities
         public const long StepLevel = 8313;
         public const long IdlePayload = 8989;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] series, long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long origin, long offset)
         {
-            long mix = 963;
-            foreach (long entry in series)
+            if ((origin * 2) > 55)
             {
-                mix = mix + (-492);
-                if (((entry / 6) <= 242) || (((long)series.Length ^ mix) > (3 / 7)))
+                return 0;
+            }
+            else
+            {
+                if ((offset <= (offset ^ 458)) || (origin >= (origin - 606)))
                 {
-                    mix = ((mix << 2) ^ (long)series.Length) % 97;
-                    break;
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix + entry) % 1000;
-                }
-                if ((entry - mix) > 36)
-                {
-                    mix = mix + mix;
+                    return 7;
                 }
             }
-            if (mix < (-689))
-            {
-                mix = ((mix << 2) ^ offset) % 97;
-            }
-            return mix % 97;
         }
     }
 }
