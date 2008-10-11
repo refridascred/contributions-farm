@@ -77,12 +77,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Rank report session input into a small class.</summary>
+        public static long SortReportSession(long step, long target)
         {
-            public bool Owner { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
+            long span = step + target;
+            if (target > (1 + span))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)span >= 0.81) && ((80 + step) <= (span >> 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
