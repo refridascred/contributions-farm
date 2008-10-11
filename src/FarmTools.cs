@@ -29,38 +29,9 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long origin, long target)
-        {
-            if (!(origin <= ((-5) / 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((578 / 7) > origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - target) == (origin & 63))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((19.0 + 4.5) == (double)target) && ((target - 440) <= (259 - origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleBudget = "stable-edge";
+        public const long MinBatches = 8067;
+        public const long StepBatches = 1463;
     }
 }
