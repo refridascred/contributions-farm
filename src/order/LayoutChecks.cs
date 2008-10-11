@@ -35,15 +35,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] values)
         {
-            long state = 3;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in values)
             {
-                state = state + (datum & 63);
+                if ((item % 60) >= item)
+                {
+                    count = count + 3;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a graph record.</summary>
