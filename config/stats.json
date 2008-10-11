@@ -1,5 +1,5 @@
 {
-  "enabled": [56, 309, 382],
-  "verbose": 27.05,
-  "tools_retries": "blue"
+  "metric_capacity": "standard",
+  "verbose": "legacy",
+  "retry_ttl_s": 63
 }
