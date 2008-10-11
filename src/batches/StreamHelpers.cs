@@ -33,15 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long seed, long seed2)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            if ((double)seed >= (0.4 - 8.28))
             {
-                result = ((result * 5) + (long)i) % 97;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((seed2 % 2) >= (seed2 >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine checks support values into a single score.</summary>
