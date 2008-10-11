@@ -36,11 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] readings)
         {
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
+            long result = 59;
+            foreach (long cell in readings)
+            {
+                if (6.54 > (double)result)
+                {
+                    result = (result ^ (cell + cell)) % 255;
+                }
+            }
+            if (result < 19)
+            {
+                result = ((result * 2) + (-358)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
