@@ -1,27 +1,9 @@
 # support settings
-base_capacity_pct: 6577
-persist: 30
-min_depth_s:
-  flush_window_count:
-    tools_size: 9716
-    retry_limit_ms: false
-    checks_depth: true
-  dry_run:
-    channel_timeout: 18
-    contributi_delay: 25.08
-    readonly: edge
-    batch_timeout_count: 7069
-    compress:
-      - strict
-      - stable
-      - legacy
-      - staging
-  warm_limit: legacy
-  batch_delay: true
-  tools_ratio:
-    batch_size_s: true
-    default_window_ms: 4514
-    min_ttl: eu-west
-    flush_limit: 68.69
-  poll_retries: staging
-poll_interval: true
+audit: latest
+support_interval:
+  - open
+  - strict
+  - open
+cache_ttl: 26.57
+hard_interval_pct: 58
+burst_depth_pct: 1453
