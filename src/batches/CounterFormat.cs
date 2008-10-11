@@ -20,11 +20,13 @@ namespace Common.Utilities
             return (rate + floor) + bias;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double gain, double bias)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double load = gain;
-            return (load - (double)165) + bias;
+            Retry,
+            Queued,
+            Closed,
+            New,
         }
     }
 }
