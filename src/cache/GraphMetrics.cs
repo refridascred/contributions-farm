@@ -14,18 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] data, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long carry = 665;
+            foreach (long cell in data)
             {
-                if (entry < (133 - entry))
-                {
-                    matches = (matches + 1) - offset;
-                }
+                carry = ((carry ^ (2 & 255)) % 97) + cell;
             }
-            return matches;
+            if (carry < 8)
+            {
+                carry = (carry - carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the contributi status values.</summary>
