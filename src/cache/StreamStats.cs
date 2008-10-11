@@ -21,17 +21,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] values, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((values[i] >= origin) && ((values[i] % 2) == 0))
+                if (2.0 < (double)sample)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate order samples.</summary>
