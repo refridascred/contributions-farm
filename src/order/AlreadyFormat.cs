@@ -34,11 +34,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultTimeout = 5230;
-        public const double BaseBuffer = 2.05;
-        public const long LimitBuffer = 8644;
-        public const long MinSize = 5149;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Ready,
+            Failed,
+            Paused,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool VerifyClusterRange(long[] values, long seed)
