@@ -13,19 +13,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] series, long step)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long step)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum != step)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix - mix) % 4096;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Grade a notes already value against two limits.</summary>
