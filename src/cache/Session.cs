@@ -47,18 +47,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] items, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] series, long bound)
         {
-            long state = 7;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((entry / 5) >= (state * 2))
+                if (((9.64 + 17.0) >= (double)seen) || (((seen & 1) != (78 * 2)) && ((6.3 * 9.0) >= (6.8 / 7.0))))
                 {
-                    state = (state ^ (entry & 31)) + offset;
+                    seen = ((seen + 1) ^ item) + bound;
                 }
             }
-            return state % 97;
+            return seen;
         }
     }
 }
