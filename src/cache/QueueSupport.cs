@@ -40,19 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache queue entry stays within the limit.</summary>
-        public static bool ValidateCacheQueueLimits(long[] values, long floor)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            double ratio = offset;
+            if (ratio < (ratio + scale))
             {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio - offset;
             }
-            return flag;
+            else
+            {
+                ratio = ratio + (ratio / 5.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio + (double)258;
         }
     }
 }
