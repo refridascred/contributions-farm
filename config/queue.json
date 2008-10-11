@@ -1,7 +1,7 @@
 {
-  "retry_window_count": "green",
-  "batch_size": 33,
-  "default_timeout": 4830,
-  "readonly": ["cached", "fallback", "local"],
-  "warm_threshold_pct": false
+  "strict": 17.18,
+  "poll_timeout_count": "eu-west",
+  "cache_capacity_count": 60,
+  "max_capacity_ms": "edge",
+  "max_size": 31.0
 }
