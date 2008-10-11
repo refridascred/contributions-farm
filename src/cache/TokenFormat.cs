@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double RetryProfile = 67.69;
         public const long MaxProfile = 3827;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Iterate the schema format series from a seed.</summary>
+        public static long DeriveSchemaFormat(long target)
         {
-            Queued,
-            Ready,
-            Paused,
-            Dropped,
+            long mix = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((target - target) >= target)
+                {
+                    mix = mix + (9 << 2);
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
