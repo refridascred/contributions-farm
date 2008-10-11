@@ -58,19 +58,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry support values into a single score.</summary>
-        public static long TallyEntrySupport(long[] samples, long floor)
+        /// <summary>Count graph queue pairs that satisfy a relation.</summary>
+        public static long OverlapGraphQueueCount(long[] levels)
         {
-            long carry = 819;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry + datum) % 255) - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (carry > 24)
-            {
-                carry = ((carry << 2) ^ (carry - 29)) % 4096;
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Describe the notes class values.</summary>
