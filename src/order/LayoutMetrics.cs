@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a stream report reading by value.</summary>
-        public static long SeekStreamReportIndex(long[] readings, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 261;
+            foreach (long reading in values)
             {
-                if (readings[i] >= floor)
+                if ((seed ^ reading) > (seed / 4))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (4 + seed);
+                }
+                else
+                {
+                    score = score - reading;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the window status values.</summary>
