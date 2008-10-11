@@ -34,17 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] items, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
