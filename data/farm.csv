@@ -1,7 +1,6 @@
-id,token,owner,ratio,rank
-1,827,507,920,909
-2,latest,stable,28.09,80
-3,standard,primary,553,blue
-4,743,119,47.3,525
-5,blue,706,474,fallback
-6,latest,679,46.11,93.3
+id,active,count,label,ratio
+1,fallback,staging,383,green
+2,425,69.33,12.31,206
+3,705,21.61,standard,fallback
+4,46.94,40.9,standard,293
+5,195,stable,694,190
