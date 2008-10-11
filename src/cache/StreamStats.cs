@@ -53,24 +53,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long anchor = 21;
-            foreach (long item in data)
-            {
-                if (item > (anchor - item))
-                {
-                    anchor = (anchor ^ (item & 1)) % 1000;
-                    anchor = (anchor * 5) + (item << 1);
-                }
-                if (14 <= (anchor % 10))
-                {
-                    anchor = (anchor ^ (item >> 5)) % 65521;
-                }
-                anchor = anchor - item;
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
