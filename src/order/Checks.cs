@@ -47,14 +47,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long floor, long limit)
         {
-            Paused,
-            Done,
-            Synced,
-            Pending,
-            Stale,
+            long cur = floor - limit;
+            if (((double)cur <= 6.3) && ((floor & 127) > floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((85 & 3) <= (cur / 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Check that every checks payload entry stays within the limit.</summary>
