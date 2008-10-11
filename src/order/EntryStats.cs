@@ -46,9 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSchema = "staging-1";
-        public const long SoftScore = 8715;
-        public const double RetryScore = 93.94;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double gain, double offset)
+        {
+            double bias = gain;
+            if (bias > (2.0 + offset))
+            {
+                bias = bias - (double)3;
+            }
+            return bias + bias;
+        }
     }
 }
