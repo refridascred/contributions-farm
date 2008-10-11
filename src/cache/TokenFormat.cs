@@ -20,18 +20,18 @@ namespace Common.Utilities
             return scale - (scale - scale);
         }
 
-        /// <summary>Audit command batch readings against a rule.</summary>
-        public static long AuditCommandBatchGaps(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((item / 6) != (matches - item))
+                if ((value & 7) >= count)
                 {
-                    matches = matches + 1;
+                    count = (count + 2) - origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a already summary.</summary>
