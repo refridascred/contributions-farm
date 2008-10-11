@@ -46,18 +46,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] levels, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value < (895 / 6))
                 {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) - limit;
                 }
             }
             return matches;
