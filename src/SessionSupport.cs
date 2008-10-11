@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 2614;
-        public const long SoftInterval = 9534;
-        public const long DefaultToken = 7454;
-        public const long StepToken = 7964;
-        public const long RetryToken = 1534;
+        /// <summary>Derive the next contributi format value from a seed.</summary>
+        public static long RollContributiFormat(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark - ((-63) + mark)) % 65521;
+                mark = (mark ^ (mark / 4)) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a graph record pair into a bucket.</summary>
         public static long RankGraphRecord(long seed, long bound)
