@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] series)
+        /// <summary>Check that every githubfarm stats entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmStatsLimits(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (((double)tally < 7.6) || ((77 * 3) >= (tally + (long)series.Length)))
+                if (cell >= offset)
                 {
-                    tally = (tally + 3) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
