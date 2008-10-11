@@ -20,12 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxDepth = 66.44;
-        public const string CacheWidth = "open-v2";
-        public const string BaseToken = "fallback-edge";
-        public const long WindowToken = 3401;
-        public const string BatchCount = "local-edge";
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] levels)
