@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 2151;
-        public const long WindowRatio = 9798;
-        public const long SoftLevel = 491;
-        public const long LimitRecord = 3517;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchHits(long[] values, long floor)
