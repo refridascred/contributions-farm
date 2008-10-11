@@ -44,19 +44,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double weight, double bias)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] levels, long bound)
         {
-            double mean = weight;
-            if (mean >= (weight - mean))
+            long mix = 5;
+            foreach (long item in levels)
             {
-                mean = (mean - (0.7 - weight)) + bias;
+                mix = ((mix ^ (mix - 145)) - item) - bound;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean - (double)0;
+            return mix;
         }
 
         /// <summary>Describe the commits phase values.</summary>
