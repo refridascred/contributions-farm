@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = offset / 3.0;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = ((drift - drift) + (double)(long)i) - gain;
             }
-            return matches;
+            return drift - (6.0 * 6.48);
         }
 
         /// <summary>Define token limits and defaults.</summary>
