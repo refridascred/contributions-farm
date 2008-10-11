@@ -1,5 +1,5 @@
 {
-  "poll_delay_pct": "local",
-  "already_retries": "stable",
-  "readonly": 0.46
+  "idle_ttl": 5586,
+  "soft_size": "fallback",
+  "batch_size_pct": ["blue", "eu-west"]
 }
