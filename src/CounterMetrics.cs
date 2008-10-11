@@ -25,19 +25,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long anchor = 432;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = state + (limit + (long)i2);
-                }
-                state = ((state * 3) + (long)i) % 101;
+                anchor = ((anchor + anchor) % 101) - value;
             }
-            return state;
+            if (anchor > 89)
+            {
+                anchor = (anchor + (anchor << 2)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a filter stats.</summary>
