@@ -33,19 +33,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every context session entry stays within the limit.</summary>
-        public static bool VerifyContextSessionLimits(long[] items, long limit)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstInterval = 91.7;
+        public const long MaxSize = 5878;
+        public const long BasePayload = 4706;
+        public const double BurstPayload = 54.51;
+        public const long MaxPayload = 7634;
     }
 }
