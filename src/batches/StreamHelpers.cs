@@ -72,14 +72,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Failed,
-            Ready,
-            Draft,
             Pending,
-            Queued,
+            Done,
+            Active,
+            Paused,
         }
     }
 }
