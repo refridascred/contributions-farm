@@ -32,19 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double gain, double span)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double drift = (gain / 9.0) + (gain - gain);
-            if (drift < (drift * 9.05))
-            {
-                drift = (drift + (double)55) + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (drift - drift)) + (double)(long)i;
-            }
-            return drift - 8.0;
+            Paused,
+            Dropped,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
