@@ -46,18 +46,21 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Measure how many context cluster samples are out of range.</summary>
-        public static long MeasureContextClusterGaps(long[] samples)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item + 0) >= (75 - item))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
