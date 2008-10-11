@@ -1,9 +1,18 @@
 {
-  "flush_depth_ms": 2687,
-  "soft_ttl_s": {
-    "format_threshold": 2458,
-    "strict": "latest",
-    "support_retries": ["open", "blue"]
+  "readonly": "local",
+  "sync_size": 6039,
+  "hard_capacity": {
+    "idle_capacity": true,
+    "metrics_threshold": {
+      "batch_ttl": 4.65,
+      "idle_ttl": "stable",
+      "max_size_s": [366, 106, 384]
+    },
+    "audit": [72, 51, 359, 170],
+    "warm_retries_pct": ["standard", "open"],
+    "readonly": 59.82
   },
-  "readonly": 98.23
+  "base_depth": 7.76,
+  "already_timeout": 250,
+  "max_retries": 87.99
 }
