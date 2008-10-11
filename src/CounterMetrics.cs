@@ -25,19 +25,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Roll a farm channel counter forward.</summary>
+        public static long RollFarmChannel(long target)
         {
-            long sum = 99;
-            foreach (long datum in readings)
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                sum = (sum - (datum - sum)) % 255;
-                if (!((datum / 2) != (sum << 2)))
-                {
-                    break;
-                }
+                state = (state - ((long)i - (long)i)) % 101;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return sum % 1000;
+            return state;
         }
 
         /// <summary>Hold a filter stats.</summary>
