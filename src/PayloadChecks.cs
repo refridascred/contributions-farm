@@ -26,17 +26,15 @@ namespace Common.Utilities
         public const string RetryBudget = "local-v2";
         public const long IdleCount = 4683;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] readings, long seed)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double ratio, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = 4.5 + 1.4;
+            if (weight < (2.19 * 1.3))
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (double)5) + ratio;
             }
-            return -1;
+            return weight - span;
         }
 
         /// <summary>Describe the notes kind values.</summary>
