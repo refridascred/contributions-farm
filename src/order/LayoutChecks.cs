@@ -59,13 +59,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBudget = 3526;
+        public const long BaseFactor = 9787;
+        public const long DefaultLevel = 9708;
+        public const double DefaultBuffer = 81.16;
+        public const long MinScore = 9629;
     }
 }
