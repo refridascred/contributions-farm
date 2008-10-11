@@ -1,10 +1,10 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-A contributi that stays idle for too long is moved to the graph list.
+Run the payload check before changing any report limits.
+The checks module keeps schema values in sync with the editor cache.
 
 ## Guidelines
 
-- Log every cluster change
-- Prefer command defaults
-- Keep notes values small
+- Prefer metric defaults
+- Validate queue input early
+- Keep account values small
