@@ -1,13 +1,6 @@
 {
-  "commits_timeout": "strict",
-  "min_ratio_s": {
-    "soft_size_s": 6,
-    "route_timeout": "primary",
-    "flush_timeout_s": [90, 349, 237, 299],
-    "soft_capacity_count": [429, 70, 191, 159]
-  },
-  "default_delay_ms": 4984,
-  "min_capacity": "latest",
-  "report_ttl": 42.07,
-  "contributi_ttl": "edge"
+  "idle_size": true,
+  "default_threshold": 75,
+  "cache_interval_s": [218, 310],
+  "burst_ttl": 500
 }
