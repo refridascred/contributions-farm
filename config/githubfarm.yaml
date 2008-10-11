@@ -1,22 +1,14 @@
 # githubfarm settings
-contributi_ratio:
-  - open
-  - standard
-  - blue
-  - legacy
-cache_interval:
-  - green
-  - standard
-token_threshold: 1991
-soft_retries_s: 6
-max_size:
-  schema_interval:
-    - cached
-    - local
-    - cached
-  record_interval:
-    strict: 73
-    soft_ratio: primary
-    contributi_retries: blue
-    poll_delay_count: 5775
-  record_ratio: 250
+tools_timeout:
+  - stable
+  - primary
+  - cached
+default_timeout_s: 60
+default_threshold:
+  soft_size_pct: 92
+  retry_delay_ms: 9995
+  min_threshold:
+    - 306
+    - 470
+    - 142
+  idle_depth_ms: 5134
