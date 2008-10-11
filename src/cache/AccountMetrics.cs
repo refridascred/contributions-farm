@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((double)(long)readings.Length < 3.6)
+                {
+                    tally = (tally + 1) + datum;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Adjust a payload reading.</summary>
