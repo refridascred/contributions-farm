@@ -13,38 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long floor, long bound)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            if ((bound - 597) >= (bound * 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor - floor) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound ^ bound) < (floor / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((floor * 3) < 547))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a account layout value against two limits.</summary>
