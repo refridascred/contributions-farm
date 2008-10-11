@@ -21,18 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] samples, long floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((11 + tally) < (tally << 2))
-                {
-                    tally = ((tally + 1) - datum) - floor;
-                }
-            }
-            return tally;
+            Active,
+            Draft,
+            Stale,
+            Queued,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
