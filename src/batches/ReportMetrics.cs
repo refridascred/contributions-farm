@@ -17,12 +17,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Dropped,
+            Closed,
+            Idle,
+            Active,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
