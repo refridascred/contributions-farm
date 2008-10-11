@@ -46,25 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long seed, long offset)
-        {
-            if (((double)offset <= 6.9) || ((offset >> 3) > (offset ^ 49)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((((-2) ^ 94) < offset) || (seed <= (seed >> 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultRatio = 4456;
+        public const long BatchLevel = 5956;
+        public const long CacheQueue = 7624;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
