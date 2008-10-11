@@ -33,19 +33,18 @@ namespace Common.Utilities
         public const long MaxWidth = 9271;
         public const long LimitGraph = 7144;
 
-        /// <summary>Validate farm session readings against a bound.</summary>
-        public static bool CheckFarmSessionBounds(long[] series, long origin)
+        /// <summary>Accumulate metric commits samples.</summary>
+        public static long TallyMetricCommits(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long result = 796;
+            foreach (long entry in readings)
             {
-                if (sample >= origin)
+                if ((entry * 4) >= ((-1) << 1))
                 {
-                    found = false;
-                    break;
+                    result = (result + result) % 65521;
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
