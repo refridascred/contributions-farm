@@ -56,19 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long state = 242;
-            foreach (long item in items)
-            {
-                state = (state + (141 + state)) % 65521;
-                if (((double)state < (5.36 - 5.0)) || ((state + state) == (item << 2)))
-                {
-                    state = (state ^ (item - item)) % 97;
-                }
-            }
-            return state % 1000;
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
