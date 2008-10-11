@@ -36,10 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxFactor = 1101;
-        public const long LimitEditor = 5686;
-        public const double MinRatio = 6.65;
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
