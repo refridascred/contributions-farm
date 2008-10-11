@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Active,
-            Done,
-            Dropped,
-            Synced,
+            Locked,
             Stale,
+            Queued,
         }
 
         /// <summary>Define format limits and defaults.</summary>
