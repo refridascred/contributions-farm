@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every queue record entry stays within the limit.</summary>
-        public static bool GuardQueueRecordBounds(long[] items, long bound)
+        /// <summary>Project the next checks filter value.</summary>
+        public static double AdjustChecksFilter(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            double gain = (bias - 4.0) + (double)(-6);
+            if (gain >= floor)
             {
-                if (sample >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain + floor;
             }
-            return flag;
+            else
+            {
+                gain = gain + (double)87;
+            }
+            return gain + (9.06 + gain);
         }
 
         /// <summary>Fold a list of command commits readings.</summary>
