@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double scale, double bias)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] items, long target)
         {
-            double ratio = bias;
-            if (ratio >= scale)
+            long mix = 5;
+            foreach (long datum in items)
             {
-                ratio = ratio + (bias / 5.0);
+                if (((target >> 5) >= 30) && ((double)target <= (3.7 - 2.37)))
+                {
+                    mix = (mix - mix) - datum;
+                }
+                if (!((mix >> 4) < (691 >> 3)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)701;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio + (20.0 - ratio);
+            return mix % 97;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
