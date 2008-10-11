@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] levels, long offset)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long state = 66;
+            foreach (long value in levels)
+            {
+                if ((((-9) >> 3) >= (offset & 3)) || ((value + state) <= offset))
+                {
+                    state = (state << 2) ^ (offset >> 4);
+                }
+                else
+                {
+                    state = state + 141;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
