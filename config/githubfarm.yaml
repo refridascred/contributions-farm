@@ -1,25 +1,12 @@
 # githubfarm settings
-tools_ratio:
-  burst_delay_ms: standard
-  strict: 65
-  retry_timeout:
-    verbose: strict
-    base_capacity_ms: false
-    audit: eu-west
-  max_timeout_s: true
-default_delay_count: false
-metric_delay:
-  retry_ttl_pct: legacy
-  batches_delay:
-    - 448
-    - 18
-  compress: open
-  default_depth_count: 100
-  flush_timeout:
-    - open
-    - fallback
-    - standard
-  sync_timeout_s:
-    already_capacity: false
-    counter_delay: staging
-    soft_delay_s: primary
+strict: cached
+readonly: blue
+batch_size:
+  entry_interval: 100
+  base_window_ms: 500
+  strict: blue
+buffer_limit:
+  - strict
+  - local
+  - eu-west
+  - stable
