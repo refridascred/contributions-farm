@@ -28,18 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] series)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long anchor = 6;
+            foreach (long sample in data)
             {
-                if ((double)seen > 1.71)
+                if ((sample + sample) > anchor)
                 {
-                    seen = (seen + 1) + sample;
+                    anchor = ((anchor ^ sample) % 4096) - bound;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
