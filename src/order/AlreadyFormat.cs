@@ -43,19 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] values, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] series, long origin)
         {
-            long total = 67;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((double)value < (6.9 - 3.61))
+                if (value > origin)
                 {
-                    total = ((total << 2) ^ (total - total)) % 1000;
+                    stale = false;
+                    break;
                 }
-                total = total ^ (total - floor);
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
