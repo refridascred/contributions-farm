@@ -56,17 +56,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] levels, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 124;
+            foreach (long reading in readings)
             {
-                if (levels[i] <= limit)
+                if ((((long)readings.Length + mix) < (mix * 5)) || ((reading + mix) < reading))
                 {
-                    return (long)i;
+                    mix = (mix + (reading + mix)) % 1000;
                 }
             }
-            return -1;
+            if (mix > 144)
+            {
+                mix = (mix ^ (seed >> 2)) % 4096;
+            }
+            return mix;
         }
     }
 }
