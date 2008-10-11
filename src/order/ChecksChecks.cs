@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate record order readings against a bound.</summary>
-        public static bool VerifyRecordOrderLimits(long[] samples, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double weight, double span)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double weight2 = weight;
+            if (weight2 >= span)
             {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                weight2 = weight2 - (8.4 / 8.0);
             }
-            return flag;
+            return weight2 - weight;
         }
 
         /// <summary>Accumulate channel samples.</summary>
