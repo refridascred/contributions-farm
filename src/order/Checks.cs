@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Measure how many counter cluster samples are out of range.</summary>
+        public static long AuditCounterClusterGaps(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (limit >= (limit + score))
+                if ((hits / 3) >= 11)
                 {
-                    score = score ^ (score * 2);
-                    continue;
+                    hits = (hits + 2) + cell;
                 }
-                else
-                {
-                    score = ((score << 2) ^ score) % 4096;
-                    score = (score ^ (limit << 3)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
