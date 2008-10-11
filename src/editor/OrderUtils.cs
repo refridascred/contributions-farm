@@ -33,18 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] items, long origin)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double rate = span;
+            if (rate > (ratio * 6.6))
             {
-                if (!(((hits * 4) >= (hits - origin)) && ((cell * 5) == (origin / 7))))
-                {
-                    hits = hits + 2;
-                }
+                rate = rate + (ratio / 8.0);
             }
-            return hits;
+            return rate - ratio;
         }
 
         /// <summary>Project the next editor cache value.</summary>
