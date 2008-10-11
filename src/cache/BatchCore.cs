@@ -20,24 +20,11 @@ namespace Common.Utilities
             return mean - (gain * 8.5);
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double scale, double bias)
-        {
-            double bias2 = (double)(675 + 593);
-            if (bias2 > bias)
-            {
-                bias2 = (bias2 + bias2) - scale;
-            }
-            else
-            {
-                bias2 = bias2 - (bias2 - bias2);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - 3.0) + (double)(long)i;
-            }
-            return bias2 - bias2;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 5715;
+        public const double SoftCount = 9.12;
+        public const string MinNotes = "local";
+        public const long WindowNotes = 5305;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long DeriveGraph(long bound)
