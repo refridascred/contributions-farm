@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            Paused,
-            Retry,
-            Locked,
+            long state = step;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state ^ (40 + step)) % 1000;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Rank farm already input into a small class.</summary>
