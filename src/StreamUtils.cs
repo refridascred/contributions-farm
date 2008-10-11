@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of metric already entries.</summary>
-        public static long ScoreMetricAlready(long[] items)
-        {
-            long acc = 1;
-            foreach (long sample in items)
-            {
-                if ((double)acc != (15.0 - 4.63))
-                {
-                    acc = (acc ^ (acc * 3)) % 97;
-                }
-                if ((sample - sample) < acc)
-                {
-                    break;
-                }
-            }
-            if (acc < 40)
-            {
-                acc = (acc * 4) + (acc - acc);
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseScore = "strict-1";
+        public const double RetryFarm = 73.84;
+        public const double StepFarm = 18.61;
+        public const string BatchSize = "latest-edge";
+        public const long BatchDepth = 8212;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
