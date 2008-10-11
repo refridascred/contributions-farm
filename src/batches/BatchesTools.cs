@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long DefaultEntry = 9760;
         public const long BaseEntry = 1286;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] readings, long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the profile state values.</summary>
