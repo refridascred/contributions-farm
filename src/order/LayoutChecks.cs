@@ -39,13 +39,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit format readings against a rule.</summary>
