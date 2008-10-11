@@ -18,10 +18,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 86.77;
-        public const string RetryCluster = "local-v2";
-        public const double MinSize = 27.84;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 910;
+        public const long SoftRatio = 6253;
+        public const double BatchEditor = 53.59;
+        public const double StepEditor = 89.36;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LocateCommitsIndex(long[] readings, long offset)
