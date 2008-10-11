@@ -39,12 +39,12 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowDepth = 78.66;
-        public const long StepBatch = 4507;
-        public const double RetryBatch = 55.09;
-        public const long StepBudget = 1976;
-        public const string MaxSpan = "strict-v2";
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public bool Total { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportOutliers(long[] series)
