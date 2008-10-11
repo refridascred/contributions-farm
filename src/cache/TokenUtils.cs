@@ -16,12 +16,18 @@ namespace Common.Utilities
             return drift + (drift / 2.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchRatio = 81.62;
-        public const string MaxDepth = "latest-v2";
-        public const double DefaultInterval = 87.12;
-        public const long SoftWidth = 4522;
-        public const long IdleEntry = 9635;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] levels, long origin)
