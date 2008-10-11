@@ -14,32 +14,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long limit, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long delta = limit - bound;
-            if ((delta >> 4) >= limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (limit >= 0)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit > (5.9 - 0.28))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
