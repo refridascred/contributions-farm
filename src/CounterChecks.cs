@@ -76,22 +76,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] data, long bound)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long state = -5;
-            foreach (long entry in data)
-            {
-                if (!((entry + entry) == (state ^ entry)))
-                {
-                    state = ((state << 2) ^ (41 + entry)) + bound;
-                }
-                else
-                {
-                    state = state - (9 - entry);
-                }
-            }
-            return state;
+            Stale,
+            Dropped,
+            Queued,
+            Ready,
+            Done,
         }
     }
 }
