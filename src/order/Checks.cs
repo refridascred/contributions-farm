@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] levels, long seed)
+        /// <summary>Classify a report filter pair into a bucket.</summary>
+        public static long ClassifyReportFilter(long target, long floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            if (((7.35 * 2.6) < (double)floor) || (1.77 > (double)target))
             {
-                if (sample <= seed)
+                return 3;
+            }
+            else
+            {
+                if (!((1 << 1) < (floor / 2)))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Combine format stats values into a single score.</summary>
