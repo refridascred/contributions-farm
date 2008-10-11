@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultRatio = 3448;
+        public const long MaxCache = 1862;
+        public const long SoftSize = 5864;
+        public const double StepInterval = 74.79;
 
         /// <summary>Measure how many counter cluster samples are out of range.</summary>
         public static long AuditCounterClusterGaps(long[] samples)
