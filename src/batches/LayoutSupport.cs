@@ -67,19 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] levels, long seed)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > seed)
+                if (items[i] == offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
