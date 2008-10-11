@@ -27,17 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a support payload sample.</summary>
-        public static long FindSupportPayloadIndex(long[] values, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) != 0))
+                if ((double)count < 0.4)
                 {
-                    return (long)i;
+                    count = (count + 3) + cell;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
