@@ -36,11 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph metric measurements.</summary>
-        public static double SmoothGraphMetric(double scale, double floor)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] levels, long limit)
         {
-            double gain = 12.0;
-            return ((gain + 5.0) + scale) + floor;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up account samples.</summary>
