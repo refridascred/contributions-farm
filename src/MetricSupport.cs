@@ -46,18 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] series)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((reading * 4) < (tally - reading))
+                if (((seen <= bound) && (datum > (seen & 7))) && ((1.25 - 6.46) != (double)datum))
                 {
-                    tally = tally + 3;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
