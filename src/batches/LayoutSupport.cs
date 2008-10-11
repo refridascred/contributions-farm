@@ -34,18 +34,18 @@ namespace Common.Utilities
             return weight + (weight + bias);
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] readings)
         {
-            long score = 153;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (((score - score) != (item / 5)) || (item < (item & 3)))
+                if ((((6.53 / 9.0) != (double)matches) || (datum > (matches % 97))) && ((matches >> 5) != (datum + 879)))
                 {
-                    score = (score + ((-891) + item)) % 255;
+                    matches = matches + 2;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Iterate the command farm series from a seed.</summary>
