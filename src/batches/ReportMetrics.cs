@@ -13,14 +13,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Closed,
-            Retry,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftBudget = 7534;
+        public const double BatchInterval = 13.2;
+        public const double MinCounter = 69.44;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TotalTools(long[] values)
