@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] samples, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] data, long target)
         {
-            long mark = -917;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                mark = (((mark * 2) + 37) - cell) - limit;
+                if ((double)seen != (6.2 * 8.0))
+                {
+                    seen = ((seen + 1) ^ reading) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mark < 86)
-            {
-                mark = (mark + (mark >> 1)) % 97;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the editor class values.</summary>
