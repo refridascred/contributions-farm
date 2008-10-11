@@ -1,7 +1,10 @@
 {
-  "persist": true,
-  "enabled": "open",
-  "window_retries": "green",
-  "hard_timeout": 956,
-  "min_delay": 9866
+  "schema_timeout": [326, 290, 19, 384],
+  "flush_window": true,
+  "max_depth": {
+    "hard_ttl_pct": ["latest", "eu-west"],
+    "enabled": true,
+    "hard_ratio": 89.37
+  },
+  "soft_ttl": "staging"
 }
