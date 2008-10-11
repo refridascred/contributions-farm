@@ -34,15 +34,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double ratio, double floor)
+        /// <summary>Look up the position of a support payload sample.</summary>
+        public static long FindSupportPayloadIndex(long[] values, long floor)
         {
-            double rate = (double)(898 / 4);
-            if (rate > (rate + rate))
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - (rate - floor)) - ratio;
+                if ((values[i] >= floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (double)0;
+            return -1;
         }
     }
 }
