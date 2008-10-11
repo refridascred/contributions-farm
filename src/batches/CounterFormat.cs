@@ -34,12 +34,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Grade a order contributi value against two limits.</summary>
+        public static long ClassifyOrderContributi(long step, long limit)
         {
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            long next = step - limit;
+            if (next > (9 + step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((step >> 3) != (2 - step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit - limit) != ((-69) << 2)) || ((double)9 <= (double)next))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
