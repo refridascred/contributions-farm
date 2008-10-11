@@ -32,16 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks cache counter forward.</summary>
-        public static long DeriveChecksCache(long offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 4) + (offset + offset)) % 97;
-                state = ((state * 4) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
