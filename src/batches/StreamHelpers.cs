@@ -33,14 +33,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Locked,
-            Retry,
-            Queued,
-            Dropped,
-            Active,
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
