@@ -63,15 +63,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the queue schema series from a seed.</summary>
-        public static long DeriveQueueSchema(long limit)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
