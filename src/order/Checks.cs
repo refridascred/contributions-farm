@@ -29,19 +29,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double scale, double offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long floor)
         {
-            double drift = 9.36;
-            if (drift > offset)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                drift = drift + scale;
+                score = ((score * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - scale;
+            return score;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
