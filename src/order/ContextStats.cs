@@ -33,11 +33,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstInterval = 91.7;
-        public const long MaxSize = 5878;
-        public const long BasePayload = 4706;
-        public const double BurstPayload = 54.51;
-        public const long MaxPayload = 7634;
+        /// <summary>Measure how many context cluster samples are out of range.</summary>
+        public static long MeasureContextClusterGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((item + 0) >= (75 - item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
