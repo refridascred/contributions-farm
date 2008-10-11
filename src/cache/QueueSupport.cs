@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a farm buffer value against two limits.</summary>
+        public static long BucketFarmBuffer(long floor, long floor2)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            if ((floor2 / 6) >= (floor + floor2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor / 3) == (38 % 12)) && ((4 >> 4) == (floor2 ^ floor2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
