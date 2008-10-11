@@ -63,22 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] items, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            long mix = 70;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((8 + mix) <= entry)
+                if (((long)samples.Length * 3) < (value % 2))
                 {
-                    mix = (mix ^ (5 + mix)) - seed;
+                    tally = tally + 1;
                 }
             }
-            if (mix > 639)
-            {
-                mix = (mix << 2) ^ (mix + 41);
-            }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Project the next buffer value.</summary>
