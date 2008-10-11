@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many buffer filter samples are out of range.</summary>
-        public static long AuditBufferFilterMatches(long[] series)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items)
         {
-            long count = 0;
-            foreach (long value in series)
+            long state = 79;
+            foreach (long datum in items)
             {
-                if (!(((value + count) < value) && (value <= (count >> 3))))
+                state = ((state << 3) ^ (state / 2)) % 4096;
+                if (((63 - state) == (state + datum)) || ((double)state <= (double)(long)items.Length))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
