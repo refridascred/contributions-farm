@@ -35,19 +35,31 @@ namespace Common.Utilities
         public const double BurstInterval = 94.41;
         public const double BaseBuffer = 32.94;
 
-        /// <summary>Project the next batch stats value.</summary>
-        public static double AdjustBatchStats(double rate, double bias)
+        /// <summary>Grade a account profile value against two limits.</summary>
+        public static long BucketAccountProfile(long target, long limit)
         {
-            double mean = bias;
-            if (mean <= (double)26)
+            if (target >= (target ^ target))
             {
-                mean = (mean + mean) + rate;
+                return 1;
             }
             else
             {
-                mean = mean - bias;
+                if ((4.5 / 8.0) > (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((14 % 64) < (limit + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return mean - (double)55;
         }
     }
 }
