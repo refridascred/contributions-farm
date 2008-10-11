@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double bias, double span)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            double scale = span;
+            if (scale > (double)789)
             {
-                if ((double)sum > (20.0 + 5.0))
-                {
-                    sum = sum + (sum & 7);
-                }
-                sum = ((sum << 3) ^ (sum + (long)i)) % 255;
-                sum = ((sum * 2) + (long)i) % 65521;
+                scale = scale + (span * 4.35);
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - 17.0) + (double)(long)i;
+            }
+            return scale + (bias - bias);
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
