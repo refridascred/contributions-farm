@@ -1,15 +1,8 @@
 # githubfarm settings
-burst_delay_pct: local
-poll_threshold_count: fallback
-min_depth_pct: 56
-batch_retries:
-  hard_limit_ms: 3.95
-  stats_interval:
-    - eu-west
-    - cached
-    - cached
-  readonly: 21
-  burst_threshold_count: legacy
-  poll_ratio: 7998
-  window_ratio: 2967
-queue_capacity: 79
+default_window_ms: open
+persist:
+  - blue
+  - open
+  - green
+retry_delay_count: 66
+checks_limit: 70.01
