@@ -1,4 +1,14 @@
 # githubfarm settings
-poll_interval: true
-min_depth_ms: true
-cache_limit_count: 8175
+sync_ratio:
+  max_limit_pct: true
+  poll_size_count:
+    - 48
+    - 293
+    - 119
+    - 491
+  poll_capacity:
+    - staging
+    - stable
+    - local
+default_timeout: latest
+checks_window: 1.21
