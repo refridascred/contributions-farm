@@ -34,22 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many channel graph samples are out of range.</summary>
-        public static long MeasureChannelGraphHits(long[] levels)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value > (matches + 0))
+                if (series[i] >= target)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank counter schema input into a small class.</summary>
