@@ -1,22 +1,7 @@
 # githubfarm settings
-compress: 14.17
-persist: 89
-soft_ttl:
-  default_interval_s:
-    hard_ratio_s: strict
-    persist: 100
-    batch_ttl_pct: 55.4
-    profile_ratio: 48.72
-  retry_timeout: 46.87
-  max_capacity_ms:
-    - 429
-    - 295
-  enabled: true
-  poll_limit: 100
-  soft_threshold_s:
-    - 28
-    - 171
-    - 230
-    - 274
-default_retries_count: 14
-enabled: true
+enabled: cached
+hard_retries_s: standard
+hard_capacity: false
+githubfarm_ratio: 9.72
+stream_timeout: edge
+readonly: 100
