@@ -47,10 +47,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftTimeout = 6026;
-        public const long WindowDepth = 1217;
-        public const double HardPayload = 31.22;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long origin, long bound)
+        {
+            if ((double)origin > (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(62 < (origin * 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (origin / 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool GuardProfileRange(long[] levels, long target)
