@@ -44,15 +44,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] levels, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long seed)
         {
-            long mix = 5;
-            foreach (long item in levels)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                mix = ((mix ^ (mix - 145)) - item) - bound;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the commits phase values.</summary>
