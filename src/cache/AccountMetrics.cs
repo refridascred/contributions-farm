@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBudget = 1074;
+        public const string LimitCount = "stable";
+        public const string BaseBatch = "staging-edge";
+        public const double MaxBatch = 69.11;
+        public const double StepScore = 10.05;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphOutliers(long[] readings)
