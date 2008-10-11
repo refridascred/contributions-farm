@@ -73,18 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] series, long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((limit + sample) < (sample / 4))
+                if (reading != bound)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
