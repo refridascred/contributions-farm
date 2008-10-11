@@ -70,12 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] data, long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] > seed) && ((data[i] % 2) == 0))
+                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
