@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Iterate the batches session series from a seed.</summary>
+        public static long SeriesBatchesSession(long floor)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
