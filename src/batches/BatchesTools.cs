@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] values, long origin)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + matches) < (origin * 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Retry,
+            Paused,
+            Closed,
+            Ready,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
