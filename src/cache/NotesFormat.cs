@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long bound)
-        {
-            long edge = offset - bound;
-            if ((bound % 10) >= edge)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((edge + bound) > offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "cached";
+        public const long BatchSpan = 324;
+        public const long LimitInterval = 2680;
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ProjectBatch(double bias, double span)
