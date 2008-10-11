@@ -82,11 +82,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 382;
-        public const long DefaultStream = 9468;
-        public const long RetryStream = 7761;
-        public const long WindowStream = 1550;
-        public const string BurstDepth = "stable-edge";
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor << 3) ^ (long)i) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
