@@ -32,22 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] readings)
+        /// <summary>Adjust a account batches reading.</summary>
+        public static double SmoothAccountBatches(double ratio, double floor)
         {
-            long result = 59;
-            foreach (long cell in readings)
+            double gain = (double)(93 ^ 0);
+            if (gain > ratio)
             {
-                if (6.54 > (double)result)
-                {
-                    result = (result ^ (cell + cell)) % 255;
-                }
+                gain = gain + (floor * 9.14);
             }
-            if (result < 19)
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result * 2) + (-358)) % 97;
+                gain = (gain - 4.07) - (double)(long)i;
             }
-            return result % 65521;
+            return gain - (15.0 * 3.9);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
