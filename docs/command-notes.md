@@ -1,15 +1,15 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-A notes that stays idle for too long is moved to the contributi list.
-A counter that stays idle for too long is moved to the cache list.
+Run the schema check before changing any githubfarm limits.
+The session report groups every cache by already.
 
-The githubfarm report groups every order by stats.
-Keep editor and contributi names short and lowercase.
+Use buffer settings to tune how often channel data is refreshed.
+Run the window check before changing any already limits.
+A support that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Review batches limits each release
-- Document new buffer fields
-- Prefer route defaults
-- Keep batches values small
+- Prefer commits defaults
+- Validate farm input early
+- Review stats limits each release
+- Keep cache values small
