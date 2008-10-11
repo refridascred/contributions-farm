@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] values, long bound)
+        /// <summary>Count profile tools pairs that satisfy a relation.</summary>
+        public static long OverlapProfileToolsCount(long[] series)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Rank farm already input into a small class.</summary>
