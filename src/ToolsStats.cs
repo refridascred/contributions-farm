@@ -76,26 +76,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] readings, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] values)
         {
-            long acc = 225;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed / 2) >= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc ^ (acc + acc)) % 1000) + sample;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (seed / 5)) % 101;
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < 7)
-            {
-                acc = (acc + (seed ^ seed)) % 101;
-            }
-            return acc;
+            return seen;
         }
     }
 }
