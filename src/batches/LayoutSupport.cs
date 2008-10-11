@@ -28,10 +28,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryBudget = "fallback";
-        public const string MaxRecord = "latest-v2";
-        public const long BurstRecord = 8355;
+        /// <summary>Fold a list of contributi checks readings.</summary>
+        public static long TallyContributiChecks(long[] samples)
+        {
+            long total = -668;
+            foreach (long item in samples)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    long hits = (item - total) / 5;
+                    total = ((total << 3) ^ (total - hits)) + (long)i2;
+                }
+                if ((item & 15) >= ((-3) + total))
+                {
+                    total = (total + (14 - item)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 4) + (total << 2)) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long PairCommitsCount(long[] data)
