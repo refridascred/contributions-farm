@@ -1,7 +1,9 @@
-id,token,active,weight
-1,42.16,45.44,93.41
-2,fallback,29.94,18
-3,636,271,53.49
-4,2.98,standard,open
-5,cached,standard,green
-6,668,staging,28.18
+id,state,region
+1,cached,45.17
+2,860,46
+3,88.18,staging
+4,61.13,89.4
+5,372,20.4
+6,61.1,424
+7,733,green
+8,latest,strict
