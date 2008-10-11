@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of report metrics readings.</summary>
-        public static long OverlapReportMetricsCount(long[] samples)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (items[i] <= limit)
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of session metrics readings.</summary>
