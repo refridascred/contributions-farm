@@ -1,6 +1,9 @@
-id,active,count,label,ratio
-1,fallback,staging,383,green
-2,425,69.33,12.31,206
-3,705,21.61,standard,fallback
-4,46.94,40.9,standard,293
-5,195,stable,694,190
+id,owner,count
+1,69.95,strict
+2,82.08,edge
+3,445,90.88
+4,851,legacy
+5,469,456
+6,494,5.67
+7,79.34,920
+8,533,37.68
