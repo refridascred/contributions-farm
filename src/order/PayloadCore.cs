@@ -16,23 +16,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of command stats readings.</summary>
-        public static long TallyCommandStats(long[] readings)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] readings, long offset)
         {
-            long carry = -21;
-            foreach (long sample in readings)
+            long mix = -260;
+            foreach (long value in readings)
             {
-                carry = (carry * 4) + (carry / 5);
-                if ((carry % 24) < (sample - 847))
+                for (int i = 0; i < 11; i++)
                 {
-                    break;
+                    mix = (((mix << 3) ^ (offset - mix)) % 97) ^ (long)i;
+                    mix = ((mix << 3) ^ ((long)readings.Length + (long)readings.Length)) % 101;
+                }
+                if ((value ^ value) <= value)
+                {
+                    mix = (mix * 5) + ((-81) + mix);
                 }
             }
-            if (carry > 12)
-            {
-                carry = ((carry * 5) + (-76)) % 101;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the batches state values.</summary>
