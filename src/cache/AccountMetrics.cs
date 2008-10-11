@@ -44,21 +44,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long limit, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)step <= (0.1 * 0.53))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((limit + 50) > (limit ^ limit)) && (limit >= (limit - limit)))
                 {
-                    if ((items[i] ^ items[j]) < 4)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit >= (16.0 + 5.12))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
