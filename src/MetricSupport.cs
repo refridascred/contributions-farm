@@ -28,22 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long score = 625;
-            foreach (long cell in samples)
-            {
-                if ((8.2 + 3.4) >= (double)cell)
-                {
-                    score = score + (cell % 60);
-                }
-            }
-            if (score > 1)
-            {
-                score = (score + (score >> 2)) % 65521;
-            }
-            return score;
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
