@@ -1,5 +1,13 @@
 {
-  "batch_threshold_s": 250,
-  "cache_interval": "local",
-  "min_interval_pct": ["edge", "local"]
+  "session_limit": {
+    "graph_timeout": 75.62,
+    "max_depth_count": "cached",
+    "burst_capacity_ms": 2183,
+    "support_limit": true,
+    "commits_depth": "edge"
+  },
+  "cache_timeout_count": "staging",
+  "context_interval": "open",
+  "max_depth_pct": "eu-west",
+  "persist": 6058
 }
