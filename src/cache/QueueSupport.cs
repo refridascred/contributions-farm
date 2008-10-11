@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine token session values into a single score.</summary>
-        public static long CombineTokenSession(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] readings, long step)
         {
-            long total = 678;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 4; i++)
+                if (entry != step)
                 {
-                    total = ((total + (total - (long)series.Length)) % 1000) ^ (long)i;
-                }
-                if (((total ^ total) >= ((-442) & 127)) && ((datum ^ total) <= (total >> 3)))
-                {
-                    total = ((total << 2) ^ total) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
