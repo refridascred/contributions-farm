@@ -1,20 +1,15 @@
 {
-  "verbose": {
-    "dry_run": {
-      "poll_depth_s": 49.92,
-      "poll_timeout_count": "standard",
-      "retry_depth_pct": "open",
-      "max_window_count": 500
-    },
-    "buffer_retries": 60,
-    "verbose": {
-      "soft_ttl": [250, 30],
-      "batch_ratio": 30,
-      "notes_retries": "stable",
-      "cluster_timeout": 9036
-    }
+  "hard_depth_count": 79.34,
+  "enabled": [498, 19, 47],
+  "already_ratio": ["fallback", "fallback", "green"],
+  "idle_timeout_s": 26.77,
+  "hard_timeout_count": {
+    "default_depth_pct": ["standard", "cached"],
+    "poll_delay_count": true,
+    "batch_ratio_s": "staging",
+    "format_limit": 48,
+    "commits_ttl": 9.96,
+    "retry_interval_ms": 2.23
   },
-  "session_capacity": "primary",
-  "strict": ["green", "edge", "open", "eu-west"],
-  "hard_ratio": 1024
+  "persist": 48
 }
