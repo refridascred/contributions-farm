@@ -31,12 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Look up the position of a stats filter sample.</summary>
+        public static long LookupStatsFilterIndex(long[] series, long origin)
         {
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
