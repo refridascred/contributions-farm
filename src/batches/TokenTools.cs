@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] levels, long target)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            double rate = (double)(898 / 4);
+            if (rate > (rate + rate))
             {
-                if (cell < target)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = (rate - (rate - floor)) - ratio;
             }
-            return flag;
+            return rate - (double)0;
         }
     }
 }
