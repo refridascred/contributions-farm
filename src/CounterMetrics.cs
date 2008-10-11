@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 5154;
-        public const double WindowScore = 12.19;
-        public const long MinSize = 7330;
-        public const string SoftInterval = "strict-1";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "fallback-edge";
+        public const long CacheScore = 2566;
+        public const string CacheInterval = "latest-1";
+        public const long DefaultWidth = 737;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteHits(long[] series, long limit)
