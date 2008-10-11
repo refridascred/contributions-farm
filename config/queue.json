@@ -1,6 +1,5 @@
 {
-  "batch_depth_count": 40,
-  "idle_capacity_ms": 54.77,
-  "readonly": true,
-  "batch_depth": "legacy"
+  "hard_retries": "open",
+  "command_capacity": 1024,
+  "flush_limit_s": 69
 }
