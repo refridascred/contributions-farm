@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate stats command samples.</summary>
-        public static long FoldStatsCommand(long[] data, long seed)
-        {
-            long anchor = 612;
-            foreach (long reading in data)
-            {
-                anchor = ((anchor ^ (anchor % 7)) - reading) + seed;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 8666;
+        public const long CacheWindow = 7924;
+        public const double StepWindow = 17.53;
+        public const long SoftLevel = 9746;
+        public const double WindowSpan = 37.45;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
