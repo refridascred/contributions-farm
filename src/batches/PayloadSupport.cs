@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
-            {
-                state = state ^ ((long)i & 15);
-                if ((target <= ((long)i - target)) || ((state + target) < state))
-                {
-                    state = (state * 4) + target;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Draft,
+            Queued,
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
