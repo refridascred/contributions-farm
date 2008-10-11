@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((long)i << 2) > (seed << 3))
-                {
-                    anchor = (anchor ^ (anchor / 4)) % 65521;
-                    anchor = (anchor ^ ((long)i - 31)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor + seed;
-                }
-                anchor = (anchor ^ (anchor + (long)i)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Draft,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a order snapshot.</summary>
