@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double scale, double span)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] values, long bound)
         {
-            double bias = (double)682 - span;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                bias = (bias + (double)(long)i) - scale;
+                if (value != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias + (double)930;
+            return flag;
         }
 
         /// <summary>Hold a filter stats.</summary>
