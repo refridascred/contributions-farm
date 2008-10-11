@@ -58,12 +58,19 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Project the next batch session value.</summary>
+        public static double AdjustBatchSession(double weight, double offset)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            double load = weight + weight;
+            if (load > (double)100)
+            {
+                load = (load + load) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + 5.5) - (double)(long)i;
+            }
+            return load + (weight + load);
         }
     }
 }
