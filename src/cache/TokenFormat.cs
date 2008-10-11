@@ -28,10 +28,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepInterval = "latest";
-        public const string CacheSpan = "staging-v2";
-        public const long DefaultNotes = 656;
-        public const long HardDepth = 1188;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 2901;
+        public const double WindowBudget = 87.4;
+        public const long SoftFactor = 5307;
+        public const string SoftFarm = "local-1";
     }
 }
