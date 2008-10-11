@@ -24,13 +24,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long seed, long floor)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Count { get; set; }
+            long cur = seed + floor;
+            if (cur > (cur + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor + 35) < (cur - cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
