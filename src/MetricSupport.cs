@@ -14,26 +14,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of report cluster readings.</summary>
-        public static long TallyReportCluster(long[] readings)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long step, long target)
         {
-            long mark = 3;
-            foreach (long sample in readings)
+            if ((5.35 * 0.62) <= (double)target)
             {
-                if (sample > (sample & 3))
+                return 4;
+            }
+            else
+            {
+                if (((10.0 * 11.0) > (double)target) || ((target ^ step) <= 34))
                 {
-                    mark = (mark + sample) % 97;
+                    return 5;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ sample) % 97;
-                }
-                if ((sample << 2) > (mark << 2))
-                {
-                    mark = mark + sample;
+                    if ((step % 97) > step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
