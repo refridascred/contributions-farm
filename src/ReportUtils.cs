@@ -20,18 +20,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] levels, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long step)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((1 & 255) <= (seen ^ seed))
+                carry = (carry ^ step) % 97;
+                if ((7.04 / 7.0) == (double)(long)i)
                 {
-                    seen = (seen + 2) + entry;
+                    continue;
                 }
+                else
+                {
+                    carry = carry ^ carry;
+                }
+                carry = (carry - (step & 15)) % 4096;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the cache phase values.</summary>
