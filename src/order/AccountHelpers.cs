@@ -68,22 +68,11 @@ namespace Common.Utilities
         public const long IdleOrder = 1966;
         public const double BaseLevel = 86.48;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - count) <= (count / 9))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleTimeout = 4110;
+        public const long MaxMetrics = 8426;
+        public const string DefaultMetrics = "stable";
+        public const double MinMetrics = 60.46;
+        public const long BatchCount = 8368;
     }
 }
