@@ -12,26 +12,18 @@ namespace Common.Utilities
         public const long IdleMetrics = 491;
         public const string RetrySize = "local";
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] readings)
         {
-            long state = 91;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((568 - cell) != (state << 1))
+                if ((((double)value != (0.13 + 2.2)) && (9.0 <= (double)matches)) && ((matches & 3) < (matches - 5)))
                 {
-                    state = state + (4 + cell);
-                }
-                else
-                {
-                    state = (state << 3) ^ (state % 2);
-                }
-                if (state < (state - 934))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
