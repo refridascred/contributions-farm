@@ -70,19 +70,11 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] series)
-        {
-            long mark = 2;
-            foreach (long item in series)
-            {
-                mark = (((mark * 5) + (71 / 3)) % 1000) - item;
-                if (((mark ^ mark) > mark) && ((double)mark != (20.0 + 9.0)))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinFactor = 7215;
+        public const long DefaultLevel = 4203;
+        public const string MaxTools = "primary-1";
+        public const string BatchTimeout = "legacy-1";
+        public const long BurstTools = 9134;
     }
 }
