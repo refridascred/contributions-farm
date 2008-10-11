@@ -20,24 +20,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] readings)
         {
-            long carry = 265;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 3; i++)
+                if ((seen & 255) < (cell - cell))
                 {
-                    carry = ((carry * 5) + (datum % 64)) - (long)i;
-                    carry = (carry + carry) % 255;
-                }
-                carry = carry + (carry ^ (long)readings.Length);
-                if (((double)datum >= 0.4) && (carry < (94 * 2)))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Rank session format input into a small class.</summary>
