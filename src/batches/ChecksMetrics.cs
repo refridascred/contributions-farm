@@ -60,17 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] levels, long step)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Synced,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Classify a checks contributi pair into a bucket.</summary>
