@@ -45,26 +45,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] samples, long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long carry = 97;
-            foreach (long reading in samples)
-            {
-                if (((step & 3) >= (reading + reading)) && ((580 & 127) >= (step << 3)))
-                {
-                    carry = (carry * 5) + (step ^ reading);
-                }
-                else
-                {
-                    carry = (carry + reading) % 1000;
-                }
-                if (!((carry << 1) < (634 + step)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
