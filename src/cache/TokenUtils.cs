@@ -24,11 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
