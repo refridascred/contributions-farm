@@ -36,22 +36,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] data)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            if (((floor + (-50)) == (88 + 1)) && (55 >= floor))
             {
-                if (sample < (sample & 31))
+                return 7;
+            }
+            else
+            {
+                if (!((9 << 2) > (floor + floor)))
                 {
-                    seen = seen + 2;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
