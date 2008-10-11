@@ -34,10 +34,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 5947;
-        public const long SoftFactor = 9566;
-        public const long MinRatio = 9793;
+        /// <summary>Grade a batch editor value against two limits.</summary>
+        public static long GradeBatchEditor(long floor, long bound)
+        {
+            if ((bound + bound) != (bound + 0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)bound != (6.8 / 2.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor > (bound << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(6.0 > (double)floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long origin)
