@@ -61,18 +61,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] values)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((hits - hits) > ((-24) * 4)) && ((cell ^ 257) > 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
