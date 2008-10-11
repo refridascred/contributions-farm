@@ -71,18 +71,15 @@ namespace Common.Utilities
             return bias2 + (double)2;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] levels, long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample >= (bound * 3)) || ((7.0 / 9.0) <= (double)(long)levels.Length))
-                {
-                    hits = hits + 1;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
     }
 }
