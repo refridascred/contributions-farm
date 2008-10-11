@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 7214;
-        public const long LimitScore = 6693;
-        public const double WindowScore = 37.33;
-        public const string WindowBuffer = "stable-v2";
+        /// <summary>Count graph githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGraphGithubfarmCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double DefaultWindow = 28.5;
