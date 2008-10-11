@@ -1,16 +1,8 @@
 {
-  "soft_ttl_count": {
-    "profile_retries": "blue",
-    "format_capacity": 5668,
-    "warm_capacity_s": [303, 169, 253, 218]
-  },
-  "idle_ttl_s": [4, 292, 416],
-  "metric_size": false,
-  "min_size_s": 52,
-  "poll_timeout_s": {
-    "persist": 61.5,
-    "dry_run": "latest",
-    "retry_retries_pct": "legacy",
-    "graph_ratio": 30
-  }
+  "persist": 100,
+  "burst_ttl": 5514,
+  "default_limit_s": false,
+  "readonly": 9070,
+  "schema_timeout": 3585,
+  "retry_timeout_s": "local"
 }
