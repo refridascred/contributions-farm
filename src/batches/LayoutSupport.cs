@@ -51,19 +51,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double weight, double floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long bound, long floor)
         {
-            double ratio = (1.3 / 6.0) - weight;
-            if (ratio > (4.0 * 8.9))
+            if (floor < (floor / 2))
             {
-                ratio = ratio - weight;
+                return 5;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                ratio = (ratio + (floor - floor)) + (double)(long)i;
+                if ((floor >= (4 ^ floor)) && ((914 & 7) != (floor - bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return ratio - 2.41;
         }
     }
 }
