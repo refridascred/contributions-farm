@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit account contributi readings against a rule.</summary>
+        public static long AuditAccountContributiOutliers(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample - tally) < (tally ^ sample))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
