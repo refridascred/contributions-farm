@@ -53,18 +53,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] samples)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((tally ^ sample) == (tally - tally))
-                {
-                    tally = tally + 3;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
