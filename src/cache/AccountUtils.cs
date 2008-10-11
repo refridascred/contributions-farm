@@ -20,17 +20,24 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] levels, long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long offset, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset + 974) == (3 + offset))
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((3.2 * 19.0) > (double)offset)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a filter info.</summary>
