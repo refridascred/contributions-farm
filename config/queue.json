@@ -1,8 +1,5 @@
 {
-  "record_threshold": ["stable", "latest"],
-  "record_capacity": 12.41,
-  "max_timeout": 500,
-  "support_ttl": 20.93,
-  "flush_delay_count": "stable",
-  "token_threshold": 40.96
+  "cache_threshold": true,
+  "queue_threshold": [40, 345, 186],
+  "layout_retries": 26
 }
