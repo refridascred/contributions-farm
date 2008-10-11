@@ -1,11 +1,6 @@
 {
-  "min_size_ms": 500,
-  "audit": 54.46,
-  "retry_capacity": false,
-  "metric_window": "local",
-  "strict": {
-    "batch_capacity_s": "fallback",
-    "max_limit_pct": 500,
-    "compress": 6617
-  }
+  "batch_retries_ms": true,
+  "metric_timeout": "staging",
+  "cache_delay_count": false,
+  "verbose": false
 }
