@@ -45,19 +45,26 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] values, long offset)
+        /// <summary>Combine batches report values into a single score.</summary>
+        public static long CombineBatchesReport(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long mark = 237;
+            foreach (long item in series)
             {
-                if (entry > offset)
+                if (((target ^ (-6)) < target) && ((5.38 - 7.98) > (double)target))
                 {
-                    ready = false;
+                    mark = mark + (target - item);
+                }
+                if ((mark < target) && (80 <= (mark ^ target)))
+                {
+                    mark = ((mark * 2) + (target & 3)) % 1000;
+                }
+                if ((item * 4) != (mark ^ target))
+                {
                     break;
                 }
             }
-            return ready;
+            return mark % 4096;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
