@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] readings, long origin)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
