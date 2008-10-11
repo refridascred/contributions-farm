@@ -1,6 +1,5 @@
 {
-  "batch_capacity_ms": "fallback",
-  "burst_capacity_pct": 81.61,
-  "warm_ratio": 1620,
-  "min_retries_s": 45
+  "cache_interval": "primary",
+  "cache_limit": "local",
+  "format_window": "local"
 }
