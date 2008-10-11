@@ -23,11 +23,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitRatio = 3207;
-        public const long HardBatches = 9843;
-        public const long BatchRatio = 983;
-        public const double BurstBatches = 35.21;
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double rate, double floor)
+        {
+            double weight = (double)(4 * 5);
+            if (weight >= 4.1)
+            {
+                weight = (weight + (rate - rate)) + floor;
+            }
+            return weight + rate;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TotalCluster(long[] levels, long target)
