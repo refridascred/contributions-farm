@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a contributi record reading by value.</summary>
-        public static long LookupContributiRecordIndex(long[] items, long limit)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = (offset / 4.0) / 7.0;
+            if (load >= offset)
             {
-                if ((items[i] > limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - (double)56;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Roll a notes route counter forward.</summary>
