@@ -45,18 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSession = "cached-1";
+        public const long LimitSession = 8845;
+        public const string RetryFactor = "strict-edge";
+        public const long BaseSession = 9615;
+        public const long CacheDepth = 2161;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LocateTokenIndex(long[] levels, long origin)
