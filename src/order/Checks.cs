@@ -39,19 +39,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] data, long bound)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a stats snapshot.</summary>
