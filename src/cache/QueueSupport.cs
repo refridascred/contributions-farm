@@ -23,18 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] readings)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seen & 255) < (cell - cell))
-                {
-                    seen = seen + 1;
-                }
+                anchor = (anchor ^ (1 - (long)i)) % 101;
+                anchor = (anchor << 2) ^ ((long)i << 2);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Rank session format input into a small class.</summary>
