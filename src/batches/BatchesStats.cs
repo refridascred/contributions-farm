@@ -34,19 +34,12 @@ namespace Common.Utilities
             return (mean - (mean - 7.07)) + offset;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (count > (count - 240))
-                {
-                    count = ((count + 2) + sample) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 8268;
+        public const long IdleBudget = 5197;
+        public const long LimitFactor = 9909;
+        public const long RetryDepth = 8911;
+        public const long MinFactor = 4841;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long SoftSize = 3868;
