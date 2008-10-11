@@ -56,21 +56,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheScore = 64.36;
+        public const long StepGraph = 7374;
+        public const long WindowGraph = 6245;
     }
 }
