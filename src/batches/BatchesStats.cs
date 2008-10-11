@@ -30,19 +30,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double span)
         {
-            long anchor = 0;
-            foreach (long sample in data)
+            double rate = (double)(9 - 3);
+            if (rate >= bias)
             {
-                anchor = (((anchor ^ anchor) % 65521) ^ sample) - limit;
+                rate = rate + (double)(-4);
             }
-            if (anchor > 85)
+            for (int i = 0; i < 4; i++)
             {
-                anchor = anchor ^ (anchor / 8);
+                rate = (rate - (bias - rate)) + (double)(long)i;
             }
-            return anchor % 97;
+            return rate + span;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
