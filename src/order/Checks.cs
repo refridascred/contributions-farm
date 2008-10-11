@@ -41,12 +41,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] readings, long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                if (data[i] > floor)
                 {
                     return (long)i;
                 }
