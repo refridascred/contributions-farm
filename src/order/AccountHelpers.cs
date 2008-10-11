@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long SoftLevel = 9746;
         public const double WindowSpan = 37.45;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the order graph entries that pass the check.</summary>
+        public static long AuditOrderGraphOutliers(long[] samples, long bound)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((18.0 + 3.9) > (double)value))
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a token summary.</summary>
