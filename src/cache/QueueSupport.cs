@@ -49,22 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] series, long target)
+        /// <summary>Fold a list of notes editor readings.</summary>
+        public static long ScoreNotesEditor(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = 4;
+            foreach (long reading in data)
             {
-                if ((((sample << 2) != (sample ^ tally)) && ((1 + sample) <= (sample + target))) || (((long)series.Length % 5) >= (sample - tally)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score << 3) ^ (59 - reading);
             }
-            return tally;
+            if (score > 0)
+            {
+                score = (score - target) % 255;
+            }
+            return score % 97;
         }
     }
 }
