@@ -48,18 +48,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] series)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((741 ^ reading) != (reading - reading))
+                if (reading <= bound)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Combine commits entry values into a single score.</summary>
