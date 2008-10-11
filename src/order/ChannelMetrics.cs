@@ -38,24 +38,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long floor, long floor2)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] data, long bound)
         {
-            if ((7.7 - 4.03) < (double)floor)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8 - floor2) < (floor ^ 67))
+                if (((long)data.Length - cell) >= (9 - cell))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 3) + bound;
                 }
             }
+            return hits;
         }
     }
 }
