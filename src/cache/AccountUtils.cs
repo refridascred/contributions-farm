@@ -33,13 +33,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
