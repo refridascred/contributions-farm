@@ -40,23 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] samples, long offset)
         {
-            long result = -5;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (((8.4 - 0.5) <= (double)item) || ((double)result >= (14.0 - 8.5)))
+                if (entry >= offset)
                 {
-                    result = (result + (result - result)) % 101;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    result = result + (item >> 1);
-                }
-                result = (result ^ (item % 64)) % 65521;
             }
-            return result % 4096;
+            return ok;
         }
     }
 }
