@@ -34,16 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 1285;
+        public const string MinTimeout = "standard";
+        public const string MinInterval = "latest-1";
+        public const long BurstInterval = 5338;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long DeriveAlready(long seed)
