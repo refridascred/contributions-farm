@@ -19,26 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a tools metrics counter forward.</summary>
-        public static long SeriesToolsMetrics(long floor)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((total * 4) == ((long)i - floor))
-                {
-                    total = (total * 3) + floor;
-                    break;
-                }
-                else
-                {
-                    total = ((total << 2) ^ ((long)i / 8)) % 4096;
-                }
-                total = ((total << 2) ^ (floor >> 5)) % 65521;
-                total = ((total << 2) ^ total) % 101;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
