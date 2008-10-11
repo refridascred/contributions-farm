@@ -19,25 +19,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long seed, long limit)
+        /// <summary>Find the first support metrics entry that matches the target.</summary>
+        public static long SeekSupportMetricsIndex(long[] levels, long bound)
         {
-            long next = seed + limit;
-            if ((limit + next) >= 34)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-54) * 5) != (limit * 5))
+                if ((levels[i] >= bound) && ((levels[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
