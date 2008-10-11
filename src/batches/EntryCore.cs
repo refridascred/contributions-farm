@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double weight, double offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] items, long step)
         {
-            double mean = (double)(486 << 1);
-            if (mean >= (mean / 7.0))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                mean = (mean + (mean / 6.0)) + offset;
+                if (851 > (long)items.Length)
+                {
+                    tally = ((tally + 1) + entry) - step;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (mean + weight)) + (double)(long)i;
-            }
-            return mean + mean;
+            return tally;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
