@@ -1,6 +1,10 @@
-id,weight,ratio,state,count
-1,12.16,green,open,latest
-2,986,eu-west,green,staging
-3,edge,811,75.16,legacy
-4,417,latest,standard,eu-west
-5,30.7,67.73,339,69
+id,ratio,token
+1,636,655
+2,eu-west,144
+3,standard,575
+4,strict,81.52
+5,286,95.86
+6,stable,33.86
+7,725,standard
+8,529,887
+9,cached,632
