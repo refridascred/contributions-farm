@@ -31,17 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] samples, long floor)
+        /// <summary>Audit record tools readings against a rule.</summary>
+        public static long MeasureRecordToolsHits(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (samples[i] < floor)
+                if ((((double)target < (5.7 - 8.16)) || ((tally - tally) >= tally)) || (tally <= (target % 10)))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
