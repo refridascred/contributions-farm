@@ -19,17 +19,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first support metrics entry that matches the target.</summary>
-        public static long SeekSupportMetricsIndex(long[] levels, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 6;
+            foreach (long item in levels)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 3) != 0))
+                long slot = (anchor >> 5) * 4;
+                if (slot >= (item - (long)levels.Length))
                 {
-                    return (long)i;
+                    slot = slot ^ (slot - slot);
                 }
+                else
+                {
+                    slot = ((slot << 3) ^ item) % 4096;
+                }
+                anchor = anchor - (anchor << 2);
             }
-            return -1;
+            if (anchor > 9)
+            {
+                anchor = ((anchor << 3) ^ ((-3) + anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the queue level values.</summary>
