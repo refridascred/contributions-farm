@@ -13,11 +13,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Look up the position of a report sample.</summary>
