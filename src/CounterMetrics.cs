@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const string CacheInterval = "latest-1";
         public const long DefaultWidth = 737;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] data, long offset)
         {
-            long sum = 37;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum + (cell % 60)) % 65521;
+                if ((data[i] < offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 3)
-            {
-                sum = (sum - sum) % 65521;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
