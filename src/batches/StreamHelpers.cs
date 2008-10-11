@@ -64,19 +64,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double ratio, double span)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] series, long origin)
         {
-            double rate = (ratio - span) / 4.0;
-            if (rate <= (ratio * 7.7))
+            bool stale = true;
+            foreach (long sample in series)
             {
-                rate = rate - (1.32 * 6.7);
+                if (sample > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + ratio) - (double)(long)i;
-            }
-            return rate - span;
+            return stale;
         }
 
         /// <summary>Describe the buffer status values.</summary>
