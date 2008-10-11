@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Check that every window cluster entry stays within the limit.</summary>
+        public static bool VerifyWindowClusterLimits(long[] readings, long target)
         {
-            long sum = 127;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (sample > ((long)data.Length + sum))
+                if (reading <= target)
                 {
-                    sum = ((sum * 5) + (sample - sum)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum > (-5))
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Describe the cache phase values.</summary>
