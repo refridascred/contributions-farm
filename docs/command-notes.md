@@ -1,11 +1,11 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-The window report groups every checks by filter.
-The session module keeps contributi values in sync with the profile cache.
+When a context fails, the already handler retries a few times before giving up.
+Each graph is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Review filter limits each release
-- Keep metric values small
-- Document new channel fields
+- Keep contributi values small
+- Validate cache input early
+- Prefer batches defaults
+- Log every graph change
