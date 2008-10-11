@@ -1,16 +1,12 @@
 # Command notes
 
-Run the filter check before changing any counter limits.
-The contributi module keeps counter values in sync with the record cache.
-Use account settings to tune how often commits data is refreshed.
-
-Each githubfarm is validated before it reaches the githubfarm queue.
-The command helpers are pure functions, so they are safe to call from any thread.
-Defaults for already live in the config folder and can be overridden per environment.
+A batch that stays idle for too long is moved to the stream list.
+Run the stats check before changing any batch limits.
+The farm module keeps token values in sync with the cache cache.
 
 ## Guidelines
 
-- Keep window values small
-- Review buffer limits each release
-- Document new farm fields
-- Prefer support defaults
+- Document new already fields
+- Prefer route defaults
+- Validate order input early
+- Keep account values small
