@@ -57,18 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] samples)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (((long)samples.Length * 3) < (value % 2))
+                anchor = (anchor ^ anchor) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = tally + 1;
+                    anchor = ((anchor << 3) ^ (step + anchor)) - (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
