@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstFactor = 5338;
+        public const double WindowCommand = 80.51;
+        public const long DefaultCommand = 8649;
+        public const string BurstSize = "cached-v2";
 
         /// <summary>Audit counter entry readings against a rule.</summary>
         public static long CountCounterEntryOutliers(long[] readings, long step)
