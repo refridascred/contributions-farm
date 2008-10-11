@@ -1,18 +1,18 @@
 # support settings
-base_depth_s: 8832
-queue_limit: false
-poll_capacity_s:
-  base_ttl_ms: 100
-  idle_capacity_count: 16.24
-  min_ttl_s: true
-  base_size_count:
-    persist: strict
-    burst_timeout_s: 86.33
-    route_threshold: true
-  sync_timeout: 2431
-  idle_depth: true
-format_retries:
-  - latest
-  - eu-west
-audit: 9239
-readonly: standard
+dry_run:
+  sync_ttl_s: fallback
+  graph_size: 27.98
+  batch_window_pct: 30
+retry_limit_count: 5563
+readonly:
+  base_capacity_count: 37
+  min_window_ms:
+    - eu-west
+    - fallback
+    - standard
+  burst_interval_s:
+    - eu-west
+    - eu-west
+  readonly: 7
+sync_depth_s: cached
+default_capacity_ms: latest
