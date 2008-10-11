@@ -53,12 +53,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
