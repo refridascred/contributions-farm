@@ -20,10 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitInterval = 10.76;
-        public const string RetryGithubfarm = "primary";
-        public const long CacheGithubfarm = 5924;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 858;
+        public const long MaxLayout = 9450;
+        public const long HardLayout = 5889;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextHits(long[] samples)
