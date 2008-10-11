@@ -29,12 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Scale a channel buffer figure with a bias.</summary>
+        public static double AdjustChannelBuffer(double weight, double offset)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            double bias = weight;
+            return (bias + (weight * 20.0)) + offset;
         }
 
         /// <summary>Hold a commits options.</summary>
