@@ -48,21 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
