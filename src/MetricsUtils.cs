@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Count the support buffer entries that pass the check.</summary>
+        public static long MeasureSupportBufferGaps(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (result >= origin)
+                if (!(((double)datum > (double)747) || ((matches * 4) >= datum)))
                 {
-                    result = result ^ ((long)i + (long)i);
-                    result = result ^ result;
+                    matches = matches + 3;
                 }
-                if ((6.6 - 2.69) <= (double)result)
-                {
-                    result = ((result * 3) + (2 + result)) % 255;
-                    result = ((result << 2) ^ (result / 7)) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the record level values.</summary>
