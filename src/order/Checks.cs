@@ -63,19 +63,30 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every checks payload entry stays within the limit.</summary>
-        public static bool ValidateChecksPayloadBounds(long[] items, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long state = 475;
+            foreach (long datum in items)
             {
-                if (cell > seed)
+                if ((8.3 / 7.0) < (double)state)
                 {
-                    ok = false;
-                    break;
+                    state = state - (datum & 7);
+                }
+                if ((0.5 - 0.2) >= (double)state)
+                {
+                    state = state + state;
+                }
+                else
+                {
+                    state = (state - (datum / 4)) % 1000;
                 }
             }
-            return ok;
+            if (state < 550)
+            {
+                state = (state - (state >> 4)) % 4096;
+            }
+            return state;
         }
     }
 }
