@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many filter queue samples are out of range.</summary>
-        public static long TallyFilterQueueMatches(long[] series)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (80 > (tally & 1))
+                if (reading > origin)
                 {
-                    tally = (tally + 2) - reading;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
