@@ -19,12 +19,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a counter stats.</summary>
