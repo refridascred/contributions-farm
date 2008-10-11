@@ -58,18 +58,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi entry samples are out of range.</summary>
-        public static long AuditContributiEntryHits(long[] items, long origin)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count + cell) > (count ^ count))
+                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
                 {
-                    count = (count + 1) - origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
