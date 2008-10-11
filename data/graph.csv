@@ -1,11 +1,6 @@
-id,level,weight,active
-1,940,strict,fallback
-2,780,335,339
-3,565,700,11.49
-4,552,208,884
-5,50.6,846,466
-6,edge,5.63,66.64
-7,72,legacy,31.11
-8,32.83,83.34,591
-9,fallback,fallback,fallback
-10,404,fallback,672
+id,weight,active
+1,140,primary
+2,932,standard
+3,605,412
+4,blue,263
+5,eu-west,20.67
