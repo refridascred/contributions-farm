@@ -21,19 +21,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 5714;
+        public const double LimitTimeout = 58.19;
+        public const string StepScore = "legacy";
+        public const string SoftPayload = "primary-v2";
+        public const long BatchPayload = 3061;
     }
 }
