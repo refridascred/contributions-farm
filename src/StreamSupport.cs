@@ -42,18 +42,14 @@ namespace Common.Utilities
             return mean - 0.78;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] data, long target)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)(long)data.Length <= (double)target)
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
+            Draft,
+            Dropped,
+            New,
+            Stale,
+            Queued,
         }
     }
 }
