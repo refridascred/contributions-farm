@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long MinPayload = 9939;
         public const long CachePayload = 1238;
 
-        /// <summary>Locate a report commits reading by value.</summary>
-        public static long FindReportCommitsIndex(long[] items, long seed)
+        /// <summary>Blend two command channel measurements.</summary>
+        public static double ScaleCommandChannel(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = weight;
+            if (drift < weight)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                drift = drift - (weight + span);
             }
-            return -1;
+            return drift + 0.55;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
