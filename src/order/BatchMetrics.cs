@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a order account pair into a bucket.</summary>
-        public static long BucketOrderAccount(long bound, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] data)
         {
-            long cur = bound + origin;
-            if ((5.0 - 0.7) >= (double)cur)
+            long score = 180;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - origin) <= (cur + origin))
+                long next = (sample & 1) >> 2;
+                for (int i = 0; i < 3; i++)
                 {
-                    return 6;
+                    score = (score + (next & 255)) - (long)i;
                 }
-                else
+                if ((sample >= (sample << 2)) || ((double)sample < (2.7 * 9.0)))
                 {
-                    return 4;
+                    score = (score << 3) ^ score;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Describe the already status values.</summary>
