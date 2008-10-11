@@ -43,22 +43,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit window record readings against a rule.</summary>
-        public static long TallyWindowRecordHits(long[] items)
+        /// <summary>Project the next batches record value.</summary>
+        public static double AdjustBatchesRecord(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double load = ratio / 7.0;
+            if (load >= load)
             {
-                if ((matches ^ matches) != (value * 3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = load + (ratio + floor);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - 9.92) + (double)(long)i;
+            }
+            return load + 5.0;
         }
     }
 }
