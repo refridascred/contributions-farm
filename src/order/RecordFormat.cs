@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
+            Idle,
+            Synced,
             Dropped,
             Closed,
-            Idle,
-            Paused,
-            Locked,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
