@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCount = 3126;
-        public const long HardSpan = 3824;
-        public const long StepCounter = 3543;
-        public const long BaseFactor = 590;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 23; i++)
+            {
+                state = state ^ ((long)i & 15);
+                if ((target <= ((long)i - target)) || ((state + target) < state))
+                {
+                    state = (state * 4) + target;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] values)
