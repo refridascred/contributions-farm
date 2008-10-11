@@ -64,15 +64,20 @@ namespace Common.Utilities
         public const string MinReport = "legacy-v2";
         public const string CacheReport = "cached";
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long mix = 60;
+            foreach (long entry in values)
             {
-                result = ((result * 4) + (long)i) % 97;
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = (mix - (0 ^ entry)) ^ (long)i;
+                }
+                mix = mix - (mix - 1);
+                mix = ((mix << 2) ^ (468 - mix)) % 65521;
             }
-            return result;
+            return mix;
         }
     }
 }
