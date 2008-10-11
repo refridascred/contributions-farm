@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two format support measurements.</summary>
-        public static double ProjectFormatSupport(double bias, double span)
-        {
-            double mean = span;
-            if (mean >= (span - span))
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (span / 2.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 3536;
+        public const double MinTimeout = 54.7;
+        public const double WindowLevel = 68.93;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmMatches(long[] data, long bound)
