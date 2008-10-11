@@ -69,17 +69,16 @@ namespace Common.Utilities
         public const double HardScore = 60.3;
         public const long IdleBatches = 646;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Derive the next order account value from a seed.</summary>
+        public static long StepOrderAccount(long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                mix = ((mix << 3) ^ (long)i) % 65521;
-                mix = (mix - (bound + mix)) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
+                state = ((state * 3) + (state + 6)) % 1000;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
     }
 }
