@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitCount = 4780;
+        public const long MinMetric = 1549;
+        public const long HardRatio = 5881;
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
