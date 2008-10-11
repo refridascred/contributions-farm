@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long result = 1;
-            foreach (long cell in values)
-            {
-                result = (result - cell) % 101;
-                if (((double)cell > (14.0 - 18.0)) || ((1.0 + 20.0) < (double)result))
-                {
-                    result = (result << 2) ^ (result + cell);
-                }
-            }
-            return result;
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
