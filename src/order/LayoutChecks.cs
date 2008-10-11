@@ -19,17 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] series, long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
