@@ -32,19 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double gain, double span)
         {
-            long state = -81;
-            foreach (long reading in readings)
+            double drift = (gain / 9.0) + (gain - gain);
+            if (drift < (drift * 9.05))
             {
-                state = ((state + (state % 8)) % 255) + reading;
+                drift = (drift + (double)55) + span;
             }
-            if (state > 429)
+            for (int i = 0; i < 3; i++)
             {
-                state = state + ((-72) + state);
+                drift = (drift + (drift - drift)) + (double)(long)i;
             }
-            return state;
+            return drift - 8.0;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
