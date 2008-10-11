@@ -23,12 +23,18 @@ namespace Common.Utilities
         public const string RetryCluster = "local-v2";
         public const double MinSize = 27.84;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 7331;
-        public const long BatchAccount = 5252;
-        public const double IdleAccount = 56.16;
-        public const long RetrySpan = 9564;
-        public const long CacheAccount = 8182;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatGaps(long[] data)
