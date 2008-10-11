@@ -27,32 +27,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] data, long seed)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long sum = 84;
-            foreach (long reading in data)
-            {
-                long diff = seed;
-                if ((double)diff <= (12.0 + 17.0))
-                {
-                    diff = diff - seed;
-                    sum = ((sum << 2) ^ (675 << 3)) % 255;
-                }
-                else
-                {
-                    sum = sum - (reading & 1);
-                }
-                if (reading < ((-5) + sum))
-                {
-                    sum = (sum << 3) ^ (sum & 255);
-                }
-            }
-            if (sum > 56)
-            {
-                sum = (sum << 3) ^ (seed + sum);
-            }
-            return sum % 1000;
+            Locked,
+            Retry,
+            Done,
+            Paused,
         }
     }
 }
