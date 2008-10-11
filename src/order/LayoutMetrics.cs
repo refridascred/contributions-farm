@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi graph input into a small class.</summary>
-        public static long RankContributiGraph(long origin, long origin2)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long diff = origin ^ origin2;
-            if ((double)57 <= (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((0 & 7) < (diff % 97))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
