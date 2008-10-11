@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BaseEntry = 5510;
         public const long MinEntry = 7831;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] items, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                if (series[i] <= seed)
                 {
                     return (long)i;
                 }
