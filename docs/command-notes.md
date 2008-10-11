@@ -1,11 +1,12 @@
 # Command notes
 
-Use command settings to tune how often queue data is refreshed.
-Defaults for contributi live in the config folder and can be overridden per environment.
-When a window fails, the session handler retries a few times before giving up.
+Run the contributi check before changing any report limits.
+Each order is validated before it reaches the counter queue.
+The stream report groups every buffer by already.
 
 ## Guidelines
 
-- Validate checks input early
-- Log every stats change
-- Prefer token defaults
+- Keep stream values small
+- Document new batch fields
+- Validate notes input early
+- Prefer record defaults
