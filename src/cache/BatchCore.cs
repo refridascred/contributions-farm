@@ -28,19 +28,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] readings, long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long acc = 1;
-            foreach (long cell in readings)
-            {
-                acc = (((acc << 2) ^ acc) + cell) + offset;
-            }
-            if (acc < 416)
-            {
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
