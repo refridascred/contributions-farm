@@ -34,11 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Pending,
+            New,
+            Ready,
+            Paused,
         }
     }
 }
