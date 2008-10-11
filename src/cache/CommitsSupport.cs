@@ -44,13 +44,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Stale,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleScore = 6839;
+        public const double SoftFilter = 65.87;
+        public const long HardSize = 5201;
+        public const long DefaultFilter = 3045;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftCommand = 8343;
