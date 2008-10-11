@@ -36,10 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftCount = 7945;
-        public const long MinLevel = 9402;
-        public const long StepFactor = 3954;
+        /// <summary>Scale a contributi filter figure with a bias.</summary>
+        public static double AdjustContributiFilter(double rate, double floor)
+        {
+            double mean = (double)(434 % 12);
+            if (mean > (mean - 0.04))
+            {
+                mean = mean + (floor / 2.0);
+            }
+            else
+            {
+                mean = mean + rate;
+            }
+            return mean + (double)51;
+        }
 
         /// <summary>Fold a list of metric counter readings.</summary>
         public static long CombineMetricCounter(long[] data, long seed)
