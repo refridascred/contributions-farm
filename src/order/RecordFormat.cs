@@ -32,17 +32,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] items, long origin)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] == origin) && ((items[i] % 3) != 0))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    carry = ((carry ^ (long)i) % 97) ^ (long)i2;
+                    carry = (carry ^ carry) % 255;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a queue options.</summary>
