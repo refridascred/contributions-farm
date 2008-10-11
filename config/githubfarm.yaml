@@ -1,7 +1,7 @@
 # githubfarm settings
-enabled: cached
-hard_retries_s: standard
-hard_capacity: false
-githubfarm_ratio: 9.72
-stream_timeout: edge
-readonly: 100
+enabled: edge
+soft_ttl_ms: false
+editor_depth: 9057
+verbose: 47.31
+hard_threshold: 9748
+audit: edge
