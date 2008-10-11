@@ -68,22 +68,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes stream entries that pass the check.</summary>
-        public static long TallyNotesStreamGaps(long[] levels, long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell << 3) != (count / 3))
-                {
-                    count = (count + 2) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Dropped,
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Count graph queue pairs that satisfy a relation.</summary>
