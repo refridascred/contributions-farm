@@ -1,12 +1,7 @@
 {
-  "min_delay_s": [216, 364, 342],
-  "persist": [262, 395],
-  "default_timeout": "open",
-  "notes_capacity": {
-    "min_ratio": 250,
-    "report_window": "edge",
-    "cache_ttl": false
-  },
-  "flush_retries": "blue",
-  "min_size_pct": true
+  "report_ratio": ["edge", "latest", "open"],
+  "batch_capacity": ["green", "eu-west", "strict"],
+  "metrics_threshold": 52.44,
+  "readonly": [210, 61, 292],
+  "token_ttl": 250
 }
