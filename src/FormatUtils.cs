@@ -50,25 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long step, long seed)
+        /// <summary>Validate metric queue readings against a bound.</summary>
+        public static bool GuardMetricQueueRange(long[] series, long target)
         {
-            long lane = step ^ seed;
-            if ((step - 184) < step)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-912) + seed) < lane)
+                if (sample <= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
