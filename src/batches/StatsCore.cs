@@ -47,28 +47,21 @@ namespace Common.Utilities
         public const long WindowCount = 8026;
         public const double IdleFarm = 73.58;
 
-        /// <summary>Digest a series of filter profile entries.</summary>
-        public static long ScoreFilterProfile(long[] samples)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            long state = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state + (1 + sample)) % 65521;
-                if (((state + sample) <= (state % 64)) || ((0 & 15) > sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state + state;
-                    break;
-                }
-                if ((state * 4) <= (6 * 3))
-                {
-                    state = state - (state + state);
-                }
-                else
-                {
-                    state = ((state << 2) ^ ((long)samples.Length & 63)) % 1000;
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a commits entry.</summary>
