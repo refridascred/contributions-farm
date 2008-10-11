@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] data, long target)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of filter readings.</summary>
