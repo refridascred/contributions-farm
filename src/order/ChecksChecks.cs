@@ -18,11 +18,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] levels, long step)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen + seen) < (seen + step))
+                {
+                    seen = (seen + 3) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every counter layout entry stays within the limit.</summary>
