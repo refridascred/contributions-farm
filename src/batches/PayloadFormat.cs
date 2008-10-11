@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Synced,
+            Active,
             Done,
-            Draft,
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
