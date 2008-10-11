@@ -29,13 +29,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Pending,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 12;
+        public const long RetryWidth = 3465;
+        public const double BurstInterval = 94.41;
+        public const double BaseBuffer = 32.94;
 
         /// <summary>Project the next batch stats value.</summary>
         public static double AdjustBatchStats(double rate, double bias)
