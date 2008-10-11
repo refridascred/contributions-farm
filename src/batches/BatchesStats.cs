@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long step)
+        /// <summary>Roll a filter stream counter forward.</summary>
+        public static long IterateFilterStream(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Blend two schema measurements.</summary>
