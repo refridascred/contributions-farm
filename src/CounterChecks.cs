@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "stable";
-        public const long DefaultDepth = 5855;
-        public const long RetryWidth = 860;
-        public const string BaseLevel = "cached-edge";
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = (score ^ (959 + score)) ^ (long)i2;
+                }
+                score = (score ^ score) % 4096;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long SeriesProfile(long target)
