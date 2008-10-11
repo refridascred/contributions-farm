@@ -47,12 +47,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinWidth = 9150;
-        public const double SoftCount = 52.32;
-        public const long MinLayout = 9231;
-        public const long CacheLayout = 3129;
-        public const string BurstWidth = "latest";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((5.57 / 9.0) <= (double)matches)
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] data)
