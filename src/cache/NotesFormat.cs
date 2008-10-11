@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] values, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches - matches) > datum)
                 {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + origin;
                 }
             }
             return matches;
