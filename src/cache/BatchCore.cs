@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double gain, double span)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double mean = span;
-            if (mean > (double)380)
-            {
-                mean = mean + (double)(-8);
-            }
-            else
-            {
-                mean = mean - (gain + 14.0);
-            }
-            return mean - (gain * 8.5);
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
