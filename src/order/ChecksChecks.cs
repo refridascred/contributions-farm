@@ -12,22 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine record githubfarm values into a single score.</summary>
-        public static long DigestRecordGithubfarm(long[] items)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] values, long origin)
         {
-            long carry = 995;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (!((carry ^ carry) < (8 * 2)))
+                if (sample < origin)
                 {
-                    carry = (carry ^ (carry & 7)) ^ sample;
-                }
-                else
-                {
-                    carry = (carry - (72 << 1)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return stale;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
