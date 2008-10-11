@@ -32,18 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] samples)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if ((bound - 597) >= (bound * 5))
             {
-                if ((reading << 3) <= (matches + 630))
+                return 4;
+            }
+            else
+            {
+                if ((floor - floor) <= floor)
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound ^ bound) < (floor / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((floor * 3) < 547))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two format cluster measurements.</summary>
