@@ -27,18 +27,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] samples, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = 125;
+            foreach (long cell in series)
             {
-                if (!((double)tally <= (8.8 - 4.8)))
+                if ((double)acc == (8.22 * 8.19))
                 {
-                    tally = ((tally + 3) + value) - offset;
+                    acc = (acc ^ (cell / 6)) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (acc * 3)) % 4096;
                 }
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
