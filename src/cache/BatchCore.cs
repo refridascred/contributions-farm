@@ -23,10 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowBudget = 23.29;
-        public const long BurstMetrics = 8596;
-        public const long SoftMetrics = 1859;
+        /// <summary>Iterate the metrics window series from a seed.</summary>
+        public static long IterateMetricsWindow(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = (mix - 3) % 65521;
+                if (!((seed + seed) <= (159 & 1)))
+                {
+                    mix = mix + mix;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long WeighRoute(long[] values)
