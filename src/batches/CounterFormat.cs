@@ -34,16 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] values, long offset)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long state = 941;
-            foreach (long item in values)
-            {
-                state = state - (state ^ state);
-                state = ((state << 2) ^ (offset + item)) % 65521;
-            }
-            return state;
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
