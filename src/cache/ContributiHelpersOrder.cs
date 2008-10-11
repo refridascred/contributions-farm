@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] data, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (entry != target)
+                if ((tally << 3) != (datum - datum))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
