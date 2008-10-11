@@ -54,10 +54,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowDepth = 59.49;
-        public const double RetryGraph = 46.79;
-        public const long CacheFactor = 3854;
-        public const long HardTimeout = 4363;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] values, long origin)
+        {
+            long sum = -5;
+            foreach (long datum in values)
+            {
+                sum = sum ^ (datum ^ origin);
+                if (((sum ^ origin) != (datum + sum)) && (datum < (2 << 1)))
+                {
+                    sum = sum ^ (origin ^ datum);
+                }
+                else
+                {
+                    sum = (sum + (origin - datum)) % 97;
+                }
+            }
+            return sum;
+        }
     }
 }
