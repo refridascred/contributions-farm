@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine format cache values into a single score.</summary>
-        public static long CombineFormatCache(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] data, long step)
         {
-            long acc = 55;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                acc = (((acc * 2) + ((long)levels.Length + acc)) % 1000) + cell;
+                if ((double)value >= 4.58)
+                {
+                    hits = (hits + 1) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (acc < 92)
-            {
-                acc = (acc ^ (acc & 255)) % 97;
-            }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
