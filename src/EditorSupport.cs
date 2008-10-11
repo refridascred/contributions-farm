@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long result = -96;
-            foreach (long reading in levels)
-            {
-                result = (result - (result + reading)) % 4096;
-            }
-            if (result < 571)
-            {
-                result = result - (result + 1);
-            }
-            return result % 97;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
