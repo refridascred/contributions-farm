@@ -67,16 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] values, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] values, long offset)
         {
-            long mix = 3;
-            foreach (long reading in values)
+            long score = 504;
+            foreach (long value in values)
             {
-                mix = ((mix * 3) + ((-501) + step)) % 65521;
-                mix = mix + reading;
+                if ((109 ^ value) == (475 % 16))
+                {
+                    score = ((score << 3) ^ (value - offset)) % 255;
+                }
             }
-            return mix;
+            return score;
         }
     }
 }
