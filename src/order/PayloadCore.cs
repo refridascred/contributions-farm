@@ -34,18 +34,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the farm entry entries that pass the check.</summary>
-        public static long AuditFarmEntryOutliers(long[] series)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double ratio = gain - floor;
+            if (ratio <= gain)
             {
-                if (reading >= (reading * 3))
-                {
-                    tally = tally + 1;
-                }
+                ratio = ratio + ratio;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (double)167;
+            }
+            return ratio + (double)4;
         }
     }
 }
