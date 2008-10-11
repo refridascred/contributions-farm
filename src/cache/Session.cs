@@ -50,22 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] values)
-        {
-            long mark = 5;
-            foreach (long entry in values)
-            {
-                if (((22 + mark) == (mark % 60)) && ((double)entry < (5.72 / 3.0)))
-                {
-                    mark = (mark << 2) ^ entry;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ 849) % 101;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 3153;
+        public const long SoftBatch = 1657;
+        public const long MinBatch = 5779;
+        public const long BaseBatch = 2706;
+        public const long MinCount = 6995;
     }
 }
