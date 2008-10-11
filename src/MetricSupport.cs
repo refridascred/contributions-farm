@@ -22,14 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Locate a editor batch reading by value.</summary>
+        public static long LocateEditorBatchIndex(long[] values, long target)
         {
-            Failed,
-            Ready,
-            Synced,
-            Idle,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
