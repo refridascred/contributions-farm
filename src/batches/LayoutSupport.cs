@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] readings, long limit)
         {
-            Idle,
-            Draft,
-            New,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item <= (1.35 - 3.63))
+                {
+                    matches = (matches + 2) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a command reading.</summary>
