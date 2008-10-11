@@ -46,39 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long offset, long offset2)
+        /// <summary>Match up commits window samples.</summary>
+        public static long OverlapCommitsWindowCount(long[] samples)
         {
-            long delta = offset + offset2;
-            if ((440 - (-2)) != (delta ^ offset))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((19.0 + 17.0) < (double)offset2) || (offset2 < (173 + 0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta + offset) >= offset)
+                    if ((samples[i] - samples[j]) == 4)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (519 <= (delta + delta))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
