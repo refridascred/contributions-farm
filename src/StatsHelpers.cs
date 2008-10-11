@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] values, long target)
+        /// <summary>Find the first token profile entry that matches the target.</summary>
+        public static long FindTokenProfileIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)values.Length == (tally ^ 913))
+                if (values[i] == seed)
                 {
-                    tally = ((tally + 3) + reading) + target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a batches options.</summary>
