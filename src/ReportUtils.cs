@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit editor order readings against a rule.</summary>
-        public static long CountEditorOrderHits(long[] data)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double load = span;
+            if (load <= (span - span))
             {
-                if ((double)value == (6.3 * 13.0))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = (load - load) - scale;
             }
-            return seen;
+            else
+            {
+                load = load + load;
+            }
+            return load - (load / 9.0);
         }
 
         /// <summary>Measure how many commits tools samples are out of range.</summary>
