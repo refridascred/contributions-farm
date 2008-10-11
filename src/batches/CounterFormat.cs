@@ -26,22 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools cluster samples.</summary>
-        public static long FoldToolsCluster(long[] samples)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            long state = 67;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((entry - entry) < (state + entry)) && (entry <= 51))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state << 2) ^ (state << 2);
+                    if ((values[i] - values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 630)
-            {
-                state = ((state * 5) + (state - state)) % 1000;
-            }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Describe the notes class values.</summary>
