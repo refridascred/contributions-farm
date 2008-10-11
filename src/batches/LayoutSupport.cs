@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] readings, long limit)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item <= (1.35 - 3.63))
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a entry summary.</summary>
