@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of farm profile entries.</summary>
-        public static long ScoreFarmProfile(long[] series)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long step)
         {
-            long mix = 8;
-            foreach (long value in series)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((53 + value) < mix)
-                {
-                    mix = ((mix * 4) + value) % 1000;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix + value);
-                }
+                mix = (mix - (mix + mix)) % 97;
+                mix = (mix ^ (mix ^ mix)) % 97;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            if (mix > 1)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix % 65521;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
