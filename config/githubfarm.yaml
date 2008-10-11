@@ -1,7 +1,25 @@
 # githubfarm settings
-enabled:
-  - fallback
-  - open
-  - fallback
-max_retries_s: green
-idle_timeout_count: 76.19
+tools_ratio:
+  burst_delay_ms: standard
+  strict: 65
+  retry_timeout:
+    verbose: strict
+    base_capacity_ms: false
+    audit: eu-west
+  max_timeout_s: true
+default_delay_count: false
+metric_delay:
+  retry_ttl_pct: legacy
+  batches_delay:
+    - 448
+    - 18
+  compress: open
+  default_depth_count: 100
+  flush_timeout:
+    - open
+    - fallback
+    - standard
+  sync_timeout_s:
+    already_capacity: false
+    counter_delay: staging
+    soft_delay_s: primary
