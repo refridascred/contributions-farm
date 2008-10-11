@@ -1,8 +1,5 @@
 {
-  "strict": 1024,
-  "checks_depth": 9577,
-  "audit": 2380,
-  "cache_ratio_pct": 1024,
-  "default_delay_s": [68, 94, 281, 61],
-  "context_size": "latest"
+  "max_ttl_s": "primary",
+  "readonly": 49.98,
+  "cache_capacity": 72.29
 }
