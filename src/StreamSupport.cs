@@ -31,18 +31,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] data, long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long offset)
         {
-            long anchor = 6;
-            foreach (long sample in data)
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((sample + sample) > anchor)
-                {
-                    anchor = ((anchor ^ sample) % 4096) - bound;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
     }
 }
