@@ -23,14 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Dropped,
-            Queued,
-            Synced,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheLevel = 30.08;
+        public const long BatchCount = 1672;
+        public const long BatchNotes = 4683;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long CombineQueue(long[] readings)
