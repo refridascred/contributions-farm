@@ -19,15 +19,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Check that every report stats entry stays within the limit.</summary>
+        public static bool CheckReportStatsRange(long[] items, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
