@@ -28,18 +28,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] samples, long limit)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long sum = 400;
+            foreach (long value in series)
             {
-                if (datum >= (hits & 7))
+                if ((9.3 - 12.0) != (double)sum)
                 {
-                    hits = (hits + 1) + limit;
+                    sum = (((sum * 3) + (sum / 8)) % 4096) ^ value;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
