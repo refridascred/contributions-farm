@@ -29,32 +29,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long floor, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] readings, long limit)
         {
-            long edge = floor ^ origin;
-            if (!((9.0 * 7.3) < (double)edge))
+            bool found = true;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((285 / 5) < origin)
+                if (cell >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.23 + 2.0) >= (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of already readings.</summary>
