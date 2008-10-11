@@ -67,10 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 8295;
-        public const double BaseChecks = 20.08;
-        public const long BurstLevel = 9318;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Active,
+            Retry,
+            New,
+            Failed,
+            Done,
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long StepFormat(long limit)
