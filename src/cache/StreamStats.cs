@@ -20,18 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the notes session entries that pass the check.</summary>
-        public static long TallyNotesSessionMatches(long[] values, long origin)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((0.8 / 9.0) <= (double)origin) && ((sample ^ sample) > tally)) && !((90 % 7) < (tally + 56)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
