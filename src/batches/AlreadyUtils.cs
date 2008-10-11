@@ -19,22 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor account entries that pass the check.</summary>
-        public static long TallyEditorAccountOutliers(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (!!((3 / 9) <= (778 + entry)))
+                if (!((long)i > offset))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor * 4) + (24 >> 4)) % 1000;
+                    anchor = ((anchor * 5) + ((long)i + anchor)) % 97;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
