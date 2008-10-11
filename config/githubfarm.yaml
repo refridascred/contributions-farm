@@ -1,11 +1,10 @@
 # githubfarm settings
-editor_ttl: false
-payload_interval:
-  persist: 20
-  record_window: true
-  metrics_ttl: open
-  flush_ratio_count: 1024
-  entry_capacity:
-    - legacy
-    - cached
-poll_delay_s: 23.84
+cache_window:
+  - primary
+  - staging
+buffer_ttl: 50.2
+readonly:
+  - 324
+  - 371
+  - 214
+cache_capacity: 92
