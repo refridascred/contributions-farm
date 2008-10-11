@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] samples)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)seen != (15.0 * 9.2))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            Closed,
+            New,
+            Ready,
         }
 
         /// <summary>Grade a batch cache value against two limits.</summary>
