@@ -73,19 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 55.95;
+        public const long CacheRoute = 4395;
+        public const double BurstBudget = 91.78;
+        public const long MinInterval = 9774;
+        public const long BaseScore = 6831;
     }
 }
