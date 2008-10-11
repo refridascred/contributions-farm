@@ -25,22 +25,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long origin, long floor)
         {
-            long total = 411;
-            foreach (long item in levels)
+            if (origin <= (origin - origin))
             {
-                if ((double)item > (6.6 - 5.79))
+                return 1;
+            }
+            else
+            {
+                if (9.05 >= (double)floor)
                 {
-                    total = (total + (73 ^ total)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    total = (total ^ (total - item)) % 4096;
+                    if ((floor >> 2) <= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return total;
         }
     }
 }
