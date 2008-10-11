@@ -20,25 +20,17 @@ namespace Common.Utilities
             return bias + (offset / 3.0);
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long floor, long offset)
+        /// <summary>Find the first cluster schema entry that matches the target.</summary>
+        public static long SeekClusterSchemaIndex(long[] items, long bound)
         {
-            long lane = floor ^ offset;
-            if ((offset * 4) == (offset % 12))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor + lane) < lane)
+                if (items[i] <= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
