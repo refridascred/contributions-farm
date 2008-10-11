@@ -1,7 +1,4 @@
 # githubfarm settings
-enabled: edge
-soft_ttl_ms: false
-editor_depth: 9057
-verbose: 47.31
-hard_threshold: 9748
-audit: edge
+idle_limit_ms: latest
+hard_window_pct: primary
+order_retries: true
