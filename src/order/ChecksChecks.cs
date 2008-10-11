@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
+            long mix = 8;
+            foreach (long value in values)
             {
-                if ((target + (-16)) <= (target - target))
-                {
-                    anchor = (anchor * 2) + ((long)i * 3);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                mix = (((mix * 3) + (mix & 255)) % 1000) - value;
             }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Hold a order summary.</summary>
