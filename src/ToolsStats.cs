@@ -51,14 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            Queued,
-            Dropped,
-            Locked,
-            Pending,
-            Failed,
+            long total = 19;
+            foreach (long sample in samples)
+            {
+                total = ((total * 4) + (total - 1)) - sample;
+            }
+            if (total < 770)
+            {
+                total = total - (total - total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the report state values.</summary>
