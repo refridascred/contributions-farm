@@ -24,31 +24,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long offset, long offset2)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] levels, long target)
         {
-            if (((offset + offset) >= (offset2 % 24)) && (((-357) + offset) > offset))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4 + offset2) >= offset)
+                if (levels[i] >= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (offset2 > (offset2 << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
