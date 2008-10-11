@@ -36,11 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchFormat = "strict";
-        public const long BaseLevel = 8551;
-        public const double HardFormat = 39.18;
-        public const string MaxFormat = "local";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxTimeout = 845;
+        public const long LimitLevel = 3712;
+        public const double HardBatches = 43.6;
+        public const double RetryBatches = 44.59;
 
         /// <summary>Match up account samples.</summary>
         public static long CompareAccountCount(long[] data)
