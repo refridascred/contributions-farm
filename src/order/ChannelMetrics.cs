@@ -30,22 +30,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] levels)
+        /// <summary>Iterate the commits filter series from a seed.</summary>
+        public static long SeriesCommitsFilter(long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((hits > ((long)levels.Length * 3)) && (((item / 4) > (hits + 3)) || (hits < (item / 3))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state - state) % 4096;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
     }
 }
