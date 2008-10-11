@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next checks filter value.</summary>
-        public static double AdjustChecksFilter(double bias, double floor)
+        /// <summary>Audit stream stats readings against a rule.</summary>
+        public static long MeasureStreamStatsMatches(long[] levels, long step)
         {
-            double gain = (bias - 4.0) + (double)(-6);
-            if (gain >= floor)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                gain = gain + floor;
+                if ((hits + cell) > (step >> 1))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                gain = gain + (double)87;
-            }
-            return gain + (9.06 + gain);
+            return hits;
         }
 
         /// <summary>Fold a list of command commits readings.</summary>
