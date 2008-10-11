@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of profile window entries.</summary>
+        public static long TotalProfileWindow(long[] data, long seed)
         {
-            Failed,
-            Paused,
-            Dropped,
-            Synced,
+            long carry = 851;
+            foreach (long entry in data)
+            {
+                if ((seed ^ 56) > (42 - seed))
+                {
+                    carry = (((carry << 3) ^ (seed & 7)) % 1000) + entry;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Project the next contributi value.</summary>
