@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const double MinReport = 52.22;
         public const string BurstTimeout = "latest-1";
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long sum = 111;
-            foreach (long value in values)
-            {
-                if ((double)value < 8.74)
-                {
-                    sum = ((sum * 4) + (57 >> 3)) % 1000;
-                }
-            }
-            return sum;
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the checks status values.</summary>
