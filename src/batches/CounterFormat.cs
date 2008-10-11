@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] series, long limit)
+        /// <summary>Combine channel buffer values into a single score.</summary>
+        public static long TallyChannelBuffer(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long total = 0;
+            foreach (long value in levels)
             {
-                if ((double)entry < (6.0 / 2.0))
+                if (((long)levels.Length + bound) >= (value + value))
                 {
-                    matches = (matches + 1) - limit;
+                    total = (total ^ (value * 4)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 3) + (total & 15)) % 101;
+                }
+                if ((bound << 3) >= value)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total < 28)
+            {
+                total = (total << 3) ^ (total % 97);
+            }
+            return total % 1000;
         }
 
         /// <summary>Roll a token counter forward.</summary>
