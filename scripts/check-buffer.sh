@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in open primary; do
+for item in standard blue; do
     log "checking ${item}"
 done
