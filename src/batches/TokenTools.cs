@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell < target)
                 {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
