@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long RetryInterval = 2344;
         public const string MinContributi = "latest-edge";
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
