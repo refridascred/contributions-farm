@@ -51,37 +51,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long target, long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long origin, long target)
         {
-            long bound = target - offset;
-            if (bound >= (395 ^ offset))
+            if (10.0 >= (double)target)
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((bound + bound) > (offset - offset))
+                if (!((origin / 8) > (target - origin)))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((8.53 * 13.0) <= (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1 > (offset + target)) || ((target - target) != (bound + 943)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
