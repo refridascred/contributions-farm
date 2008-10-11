@@ -11,17 +11,24 @@ namespace Common.Utilities
         public const long StepInterval = 1726;
         public const long MinFarm = 1888;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] values, long target)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] > target)
+                if (((long)i - step) <= (7 << 1))
                 {
-                    return (long)i;
+                    anchor = (anchor + ((long)i << 3)) % 101;
                 }
+                else
+                {
+                    anchor = (anchor ^ ((long)i % 7)) % 65521;
+                }
+                anchor = (anchor + (anchor << 2)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
