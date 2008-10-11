@@ -1,14 +1,11 @@
 # Command notes
 
-Use batch settings to tune how often batches data is refreshed.
-Run the token check before changing any already limits.
-
-When a window fails, the schema handler retries a few times before giving up.
-The token report groups every commits by queue.
+Use command settings to tune how often queue data is refreshed.
+Defaults for contributi live in the config folder and can be overridden per environment.
+When a window fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate report input early
-- Review editor limits each release
-- Prefer commits defaults
-- Document new farm fields
+- Validate checks input early
+- Log every stats change
+- Prefer token defaults
