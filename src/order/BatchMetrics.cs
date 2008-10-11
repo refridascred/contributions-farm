@@ -61,13 +61,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] levels, long target)
         {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long total = 5;
+            foreach (long reading in levels)
+            {
+                total = total + (total + target);
+                if (((reading ^ target) < target) || (72 > target))
+                {
+                    break;
+                }
+            }
+            if (total < 2)
+            {
+                total = total + ((-4) & 31);
+            }
+            return total;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
