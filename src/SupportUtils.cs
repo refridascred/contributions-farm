@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double scale, double floor)
+        /// <summary>Digest a series of counter format entries.</summary>
+        public static long TotalCounterFormat(long[] items, long limit)
         {
-            double drift = (double)((-13) - 43);
-            if (drift <= (double)9)
+            long total = 69;
+            foreach (long value in items)
             {
-                drift = ((drift - drift) - scale) + floor;
+                if ((double)limit < (double)value)
+                {
+                    total = ((total * 5) + (limit + 53)) % 4096;
+                }
+                total = total ^ (limit & 31);
+                if ((double)value < (double)limit)
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (double)8;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - drift;
+            return total % 65521;
         }
 
         /// <summary>Describe the account level values.</summary>
