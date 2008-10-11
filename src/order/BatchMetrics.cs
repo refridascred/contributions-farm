@@ -61,21 +61,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] levels, long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series)
         {
-            long total = 5;
-            foreach (long reading in levels)
+            long total = 356;
+            foreach (long entry in series)
             {
-                total = total + (total + target);
-                if (((reading ^ target) < target) || (72 > target))
+                if ((double)(long)series.Length >= (double)24)
                 {
-                    break;
+                    total = (total * 4) + (7 + total);
+                    total = (total ^ (total + entry)) % 255;
+                    continue;
                 }
+                else
+                {
+                    total = (total ^ (total + total)) % 1000;
+                }
+                total = total + (entry & 63);
             }
-            if (total < 2)
+            if (total < 5)
             {
-                total = total + ((-4) & 31);
+                total = (total << 2) ^ (total - total);
             }
             return total;
         }
