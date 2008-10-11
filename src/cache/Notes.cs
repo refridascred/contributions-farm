@@ -34,18 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowBudget = 39.46;
+        public const string IdleMetric = "legacy";
+        public const long LimitCount = 9310;
+        public const double MaxMetric = 4.79;
 
         /// <summary>Rank counter schema input into a small class.</summary>
         public static long RankCounterSchema(long step, long floor)
