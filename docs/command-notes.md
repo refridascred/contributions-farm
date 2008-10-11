@@ -1,11 +1,15 @@
 # Command notes
 
 The layout helpers are pure functions, so they are safe to call from any thread.
-Run the context check before changing any report limits.
-Keep checks and session names short and lowercase.
+The metric module keeps stats values in sync with the cluster cache.
+Run the cache check before changing any report limits.
+
+The entry report groups every account by cache.
+Each metric is validated before it reaches the editor queue.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every entry change
-- Review filter limits each release
-- Validate order input early
+- Document new graph fields
+- Log every route change
+- Review metrics limits each release
