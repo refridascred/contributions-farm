@@ -31,25 +31,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long seed, long floor)
+        /// <summary>Match up tools window samples.</summary>
+        public static long OverlapToolsWindowCount(long[] values)
         {
-            long cur = seed + floor;
-            if (cur > (cur + floor))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor + 35) < (cur - cur))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    if ((values[i] - values[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
