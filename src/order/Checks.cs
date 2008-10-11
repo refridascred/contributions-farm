@@ -51,22 +51,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] series, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((double)item < (3.0 - 4.41))
-                {
-                    tally = (tally + 3) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double scale = gain;
+            return (scale - (scale - scale)) + bias;
         }
     }
 }
