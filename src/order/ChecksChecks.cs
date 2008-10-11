@@ -16,15 +16,13 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] values, long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long anchor = 58;
-            foreach (long value in values)
-            {
-                anchor = (((anchor * 4) + anchor) - value) - limit;
-            }
-            return anchor;
+            Idle,
+            Dropped,
+            Locked,
+            Stale,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
