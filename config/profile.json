@@ -1,5 +1,16 @@
 {
-  "default_window_pct": "eu-west",
-  "readonly": "legacy",
-  "githubfarm_capacity": true
+  "sync_ttl_count": "eu-west",
+  "cache_ratio_ms": false,
+  "batch_timeout_pct": {
+    "retry_size_pct": 4824,
+    "hard_capacity_count": "latest",
+    "idle_ratio_pct": {
+      "sync_retries": "green",
+      "token_interval": 24,
+      "hard_retries_count": [325, 134, 232],
+      "default_ttl_ms": 60,
+      "base_threshold": 60
+    }
+  },
+  "max_threshold_pct": 69.68
 }
