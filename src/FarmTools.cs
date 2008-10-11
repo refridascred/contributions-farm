@@ -18,10 +18,12 @@ namespace Common.Utilities
         public const double BurstSession = 15.59;
         public const double HardSession = 36.44;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchRatio = 5306;
-        public const long BurstRatio = 761;
-        public const long CacheInterval = 8125;
-        public const long CacheSupport = 2067;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Failed,
+            New,
+            Pending,
+        }
     }
 }
