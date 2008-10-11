@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] data)
         {
-            Locked,
-            Synced,
-            Stale,
-            Closed,
+            long mix = 149;
+            foreach (long sample in data)
+            {
+                mix = (mix ^ (mix + mix)) + sample;
+            }
+            if (mix > 33)
+            {
+                mix = (mix << 2) ^ (mix << 3);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
