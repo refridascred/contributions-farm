@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of githubfarm farm readings.</summary>
-        public static long DigestGithubfarmFarm(long[] levels, long target)
+        /// <summary>Count the command metric entries that pass the check.</summary>
+        public static long CountCommandMetricGaps(long[] series, long target)
         {
-            long total = 54;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 3; i++)
+                if ((target % 5) > (target / 2))
                 {
-                    total = (((total ^ (4 << 1)) % 4096) + (long)i) + target;
-                }
-                if ((cell % 64) <= 531)
-                {
-                    total = (total + (683 + total)) % 255;
+                    hits = (hits + 2) - entry;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Locate a window reading by value.</summary>
