@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            Ready,
-            Active,
-            Pending,
+            Paused,
             Stale,
-            Dropped,
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
