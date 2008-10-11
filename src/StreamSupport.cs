@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] values, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] items, long bound)
         {
-            long mix = 300;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (((value ^ origin) > (mix << 1)) && ((mix * 4) != (value & 255)))
+                if (datum > bound)
                 {
-                    mix = ((mix << 2) ^ (mix * 3)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (mix < 45)
-            {
-                mix = (mix * 3) + (mix << 1);
-            }
-            return mix;
+            return ready;
         }
 
         /// <summary>Project the next counter value.</summary>
