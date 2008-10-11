@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseFactor = 1324;
-        public const long WindowRecord = 380;
-        public const long BaseSize = 3919;
+        /// <summary>Fold a list of schema tools readings.</summary>
+        public static long TallySchemaTools(long[] data, long origin)
+        {
+            long anchor = 4;
+            foreach (long cell in data)
+            {
+                anchor = (((anchor << 3) ^ anchor) % 65521) - cell;
+            }
+            if (anchor < 655)
+            {
+                anchor = anchor - origin;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
