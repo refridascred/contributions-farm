@@ -36,17 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stats profile entry that matches the target.</summary>
-        public static long FindStatsProfileIndex(long[] values, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                if (entry >= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
