@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardInterval = 3391;
-        public const long LimitStats = 2630;
-        public const string CacheStats = "fallback-1";
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double gain, double span)
+        {
+            double weight = (gain * 9.0) + (double)4;
+            if (weight > span)
+            {
+                weight = weight + (weight / 2.0);
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + span) - (double)(long)i;
+            }
+            return weight + span;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
