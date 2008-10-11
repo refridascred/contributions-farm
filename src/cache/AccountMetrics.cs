@@ -71,32 +71,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a editor support value against two limits.</summary>
-        public static long RankEditorSupport(long offset, long step)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            long gap = offset + step;
-            if ((offset + step) < (330 << 2))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((gap - gap) != (step + step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.5 + 4.0) >= (double)gap)
+                    if ((readings[i] - readings[j]) == 16)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
