@@ -16,12 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
+            long acc = 672;
+            foreach (long value in readings)
+            {
+                acc = (acc ^ (value ^ value)) % 65521;
+                if (!((value / 9) != (value ^ acc)))
+                {
+                    acc = (acc ^ (acc % 5)) % 255;
+                }
+            }
+            if (acc > 2)
+            {
+                acc = (acc + acc) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
