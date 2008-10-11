@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels, long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] series, long limit)
         {
-            long mark = 461;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark << 3) ^ (target / 7)) % 65521;
-                if (target > (target - value))
+                if (series[i] >= limit)
                 {
-                    mark = mark - (162 ^ value);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
