@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] series, long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long offset, long bound)
         {
-            long score = -5;
-            foreach (long entry in series)
+            long next = offset + bound;
+            if (((offset * 5) >= (next % 60)) || ((6.7 + 5.0) > (double)offset))
             {
-                score = ((score ^ (step + step)) % 97) ^ entry;
+                return 4;
             }
-            if (score < 86)
+            else
             {
-                score = ((score << 2) ^ (score + step)) % 97;
+                if (62 >= (offset - next))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset - next) <= (next + next)) && (next > (654 * 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + bound) >= (offset % 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Hold a token summary.</summary>
