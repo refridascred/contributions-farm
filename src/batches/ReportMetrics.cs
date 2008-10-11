@@ -17,13 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Active,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 9586;
+        public const string DefaultRatio = "standard-edge";
+        public const double HardSize = 52.73;
+        public const double MaxWidth = 94.77;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
