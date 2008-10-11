@@ -1,6 +1,12 @@
 {
-  "editor_window": "staging",
-  "format_ttl": "fallback",
-  "flush_ratio": ["stable", "standard"],
-  "poll_threshold_count": "edge"
+  "sync_depth_s": 72.67,
+  "compress": {
+    "retry_interval": 857,
+    "entry_interval": true,
+    "hard_timeout": 6175,
+    "strict": false,
+    "profile_retries": 20
+  },
+  "persist": "legacy",
+  "already_ttl": false
 }
