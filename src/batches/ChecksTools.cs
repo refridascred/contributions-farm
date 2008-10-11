@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 3906;
-        public const long BurstEditor = 5239;
-        public const string MinBudget = "fallback";
-        public const string WindowEditor = "standard";
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Stale,
+            Pending,
+            Locked,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double ratio, double bias)
