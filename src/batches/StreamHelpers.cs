@@ -33,23 +33,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long anchor = 922;
-            foreach (long datum in items)
-            {
-                anchor = ((anchor << 3) ^ (906 + datum)) % 101;
-                if ((datum * 3) != (1 % 7))
-                {
-                    anchor = (anchor + (394 & 15)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor / 6)) % 255;
-                }
-            }
-            return anchor;
+            Dropped,
+            Stale,
+            Paused,
+            New,
         }
 
         /// <summary>Roll a graph profile counter forward.</summary>
