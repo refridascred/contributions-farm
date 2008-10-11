@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultRatio = 3448;
-        public const long MaxCache = 1862;
-        public const long SoftSize = 5864;
-        public const double StepInterval = 74.79;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Pending,
+            Draft,
+            Failed,
+            Closed,
+            Done,
+        }
 
         /// <summary>Measure how many counter cluster samples are out of range.</summary>
         public static long AuditCounterClusterGaps(long[] samples)
