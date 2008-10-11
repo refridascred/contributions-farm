@@ -16,17 +16,38 @@ namespace Common.Utilities
         public const long SoftDepth = 4506;
         public const double BurstBuffer = 68.53;
 
-        /// <summary>Look up the position of a order metric sample.</summary>
-        public static long LocateOrderMetricIndex(long[] data, long origin)
+        /// <summary>Rank already profile input into a small class.</summary>
+        public static long SortAlreadyProfile(long step, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((seed * 4) > (seed >> 2))
             {
-                if (data[i] == origin)
+                return 4;
+            }
+            else
+            {
+                if ((2.8 + 19.0) == (double)seed)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((seed << 2) <= (step - step)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step + seed) >= seed) && (1 < (seed << 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
