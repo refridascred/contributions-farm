@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double gain, double span)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double weight = (gain * 9.0) + (double)4;
-            if (weight > span)
-            {
-                weight = weight + (weight / 2.0);
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + span) - (double)(long)i;
-            }
-            return weight + span;
+            Stale,
+            Pending,
+            Active,
         }
 
         /// <summary>Accumulate session samples.</summary>
