@@ -35,13 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
