@@ -1,30 +1,5 @@
 {
-  "idle_interval_count": {
-    "flush_threshold": {
-      "burst_capacity": 100,
-      "batch_window": 100,
-      "token_retries": 695,
-      "session_window": 4560
-    },
-    "default_ttl": 59.03,
-    "context_threshold": "fallback",
-    "warm_timeout_count": {
-      "retry_timeout": true,
-      "base_interval_s": ["strict", "stable"],
-      "hard_interval": [287, 172, 101],
-      "report_depth": 48,
-      "flush_retries_pct": ["green", "fallback"],
-      "batch_timeout_count": 60
-    },
-    "burst_ttl_ms": ["strict", "latest"],
-    "audit": {
-      "sync_ratio_count": 500,
-      "flush_delay_count": 32.68,
-      "hard_window_s": "local",
-      "soft_depth_count": 90.76,
-      "compress": "open"
-    }
-  },
-  "retry_capacity": 100,
-  "enabled": [54, 78]
+  "retry_size": 4040,
+  "max_size_count": 73,
+  "support_threshold": 100
 }
