@@ -48,16 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data)
-        {
-            long mix = 7;
-            foreach (long cell in data)
-            {
-                mix = (mix - (mix >> 3)) ^ cell;
-                mix = mix ^ 89;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardBudget = "alpha-v2";
+        public const string LimitFactor = "alpha-1";
+        public const long LimitTimeout = 2843;
+        public const long MaxEntry = 4018;
     }
 }
