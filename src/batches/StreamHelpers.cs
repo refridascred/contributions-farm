@@ -50,20 +50,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepBudget = 38.58;
+        public const string MaxSession = "cached";
+        public const long RetrySession = 4100;
+        public const long HardFactor = 736;
+        public const long CacheDepth = 8389;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
