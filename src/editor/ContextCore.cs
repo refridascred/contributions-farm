@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryBudget = 35.45;
+        public const string StepRatio = "cached";
+        public const long RetryGraph = 8634;
+        public const double IdleGraph = 84.97;
+        public const long BatchGraph = 9632;
 
         /// <summary>Audit cluster report readings against a rule.</summary>
         public static long MeasureClusterReportMatches(long[] levels, long step)
