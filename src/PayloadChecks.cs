@@ -21,15 +21,19 @@ namespace Common.Utilities
         public const string RetryBudget = "local-v2";
         public const long IdleCount = 4683;
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double ratio, double span)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] readings, long bound)
         {
-            double weight = 4.5 + 1.4;
-            if (weight < (2.19 * 1.3))
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                weight = (weight + (double)5) + ratio;
+                if (reading < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight - span;
+            return ready;
         }
 
         /// <summary>Describe the notes kind values.</summary>
