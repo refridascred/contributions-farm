@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] data, long step)
+        /// <summary>Look up the position of a session stream sample.</summary>
+        public static long SeekSessionStreamIndex(long[] data, long limit)
         {
-            long anchor = 719;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor ^ (item - step);
-                if ((step - anchor) >= item)
+                if (data[i] == limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
