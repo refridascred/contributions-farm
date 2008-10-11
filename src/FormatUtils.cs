@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] samples, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (reading != bound)
+                if (target < (784 >> 3))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + item;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Count graph githubfarm pairs that satisfy a relation.</summary>
