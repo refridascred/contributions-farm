@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary; do
+for item in staging fallback stable; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 9); do
     total=$((total + i * 3))
 done
 log "total ${total}"
+
+mode="${1:-fallback}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
