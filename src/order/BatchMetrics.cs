@@ -75,21 +75,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Count the metrics farm entries that pass the check.</summary>
+        public static long CountMetricsFarmMatches(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((bound + tally) < (tally - reading)) || ((tally + reading) >= ((-7) / 9)))
                 {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
