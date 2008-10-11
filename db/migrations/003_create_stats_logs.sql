@@ -2,12 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    state TEXT NOT NULL DEFAULT 'new',
-    owner TEXT NOT NULL
+    score REAL NOT NULL DEFAULT 0,
+    count INTEGER NOT NULL DEFAULT 0,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
 
-INSERT INTO stats_logs (active, state, owner) VALUES (39, 'primary', 'strict');
-INSERT INTO stats_logs (active, state, owner) VALUES (89, 'cached', 'fallback');
-INSERT INTO stats_logs (active, state, owner) VALUES (36, 'edge', 'staging');
+INSERT INTO stats_logs (active, score, count, token) VALUES (65, 1.86, 97, 'open');
