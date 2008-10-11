@@ -34,17 +34,15 @@ namespace Common.Utilities
             return weight + (weight + bias);
         }
 
-        /// <summary>Look up the position of a batches metrics sample.</summary>
-        public static long LocateBatchesMetricsIndex(long[] series, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 4;
+            foreach (long entry in data)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                state = ((state + (state ^ (-74))) % 1000) + entry;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the command farm series from a seed.</summary>
