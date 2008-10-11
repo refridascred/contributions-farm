@@ -33,12 +33,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] samples)
         {
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((((double)item >= (3.0 + 7.0)) || ((item << 2) >= (item & 3))) && (((tally - item) < (item % 10)) || (tally <= (item / 7))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
