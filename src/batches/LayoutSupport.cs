@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double weight, double floor)
+        /// <summary>Blend two support schema measurements.</summary>
+        public static double ProjectSupportSchema(double bias, double offset)
         {
-            double ratio = (floor - floor) * 3.0;
-            if (ratio >= ratio)
+            double weight = offset;
+            if (weight < bias)
             {
-                ratio = (ratio - (floor * 0.5)) - weight;
+                weight = weight + (offset + weight);
             }
             else
             {
-                ratio = ratio - floor;
+                weight = weight + 8.0;
             }
-            return ratio - 7.69;
+            return weight + (weight + bias);
         }
 
         /// <summary>Look up the position of a batches metrics sample.</summary>
