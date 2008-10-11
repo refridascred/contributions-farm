@@ -1,13 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    active INTEGER NOT NULL DEFAULT 1,
-    score REAL NOT NULL DEFAULT 0,
-    weight REAL,
-    ratio REAL
+    created_at TIMESTAMP,
+    label TEXT,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
+CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
 
-INSERT INTO commits_records (active, score, weight, ratio) VALUES (93, 70.91, 84.89, 65.02);
-INSERT INTO commits_records (active, score, weight, ratio) VALUES (26, 22.06, 91.26, 89.44);
+INSERT INTO commits_records (label, state) VALUES ('local', 'primary');
+INSERT INTO commits_records (label, state) VALUES ('legacy', 'legacy');
