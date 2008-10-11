@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] values, long limit)
+        /// <summary>Measure how many stream tools samples are out of range.</summary>
+        public static long CountStreamToolsHits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((double)tally < (double)681)
+                if ((count + count) != (entry - count))
                 {
-                    tally = ((tally + 1) + value) - limit;
+                    count = (count + 1) - floor;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a metrics summary.</summary>
