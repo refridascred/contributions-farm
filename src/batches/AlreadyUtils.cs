@@ -66,15 +66,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Look up the position of a schema token sample.</summary>
+        public static long LookupSchemaTokenIndex(long[] readings, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if ((readings[i] < limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
