@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "standard";
+        public const long BaseDepth = 2853;
+        public const long HardCounter = 2674;
+        public const long IdleCounter = 5792;
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
