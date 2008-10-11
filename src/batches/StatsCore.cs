@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] readings, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long step, long floor)
         {
-            long mix = 50;
-            foreach (long entry in readings)
+            long gap = step + floor;
+            if (((step & 7) != (step & 3)) && ((18 + 4) != (step ^ 296)))
             {
-                long bound = (mix - 4) >> 2;
-                if (((entry + 7) < (9 * 2)) || ((bound << 1) >= entry))
+                return 0;
+            }
+            else
+            {
+                if (((double)step >= (double)floor) && ((step + step) > 6))
                 {
-                    break;
+                    return 8;
                 }
-                if ((double)step <= 9.12)
+                else
                 {
-                    mix = (mix + (entry / 2)) % 4096;
+                    if ((9.6 * 3.32) == (double)gap)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor <= 3.17)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the contributi level values.</summary>
