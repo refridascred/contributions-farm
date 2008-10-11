@@ -31,17 +31,14 @@ namespace Common.Utilities
         public const long IdleWidth = 7843;
         public const long MaxCount = 5196;
 
-        /// <summary>Look up the position of a stats notes sample.</summary>
-        public static long FindStatsNotesIndex(long[] values, long bound)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Active,
+            Dropped,
+            Queued,
+            Stale,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
