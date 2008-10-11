@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] values, long seed)
+        /// <summary>Audit token report readings against a rule.</summary>
+        public static long AuditTokenReportHits(long[] samples)
         {
-            long score = 261;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((seed ^ reading) > (seed / 4))
+                if ((double)hits > 2.98)
                 {
-                    score = (score << 2) ^ (4 + seed);
-                }
-                else
-                {
-                    score = score - reading;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
