@@ -34,22 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] items, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long score = 343;
-            foreach (long value in items)
-            {
-                if ((limit + score) > (value / 5))
-                {
-                    score = score ^ ((-2) / 7);
-                }
-                if (limit >= score)
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
