@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long state = 870;
-            foreach (long entry in readings)
-            {
-                if ((entry << 1) >= (entry & 63))
-                {
-                    state = ((state * 3) + (entry / 6)) % 4096;
-                }
-            }
-            return state % 1000;
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
