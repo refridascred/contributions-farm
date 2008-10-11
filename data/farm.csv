@@ -1,6 +1,11 @@
-id,rank,weight
-1,cached,77.18
-2,open,89.92
-3,82.97,staging
-4,43.86,1.02
-5,20.94,edge
+id,state,label
+1,537,529
+2,standard,482
+3,866,green
+4,cached,480
+5,blue,574
+6,219,239
+7,standard,33.36
+8,fallback,84
+9,66.27,305
+10,edge,blue
