@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] data, long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((count >> 2) < count) && ((double)count > (4.3 * 4.5)))
-                {
-                    count = ((count + 3) ^ sample) + step;
-                }
-            }
-            return count;
+            Closed,
+            Idle,
+            New,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a profile header.</summary>
