@@ -14,10 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheBudget = 3995;
-        public const long MaxStats = 3950;
-        public const long MaxSize = 1989;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public bool Region { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
