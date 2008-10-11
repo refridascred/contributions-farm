@@ -70,19 +70,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] data, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] values, long offset)
         {
-            long state = 16;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state << 2) ^ (0 & 3)) ^ cell;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 23)
-            {
-                state = ((state * 4) + (offset >> 3)) % 101;
-            }
-            return state % 4096;
+            return -1;
         }
     }
 }
