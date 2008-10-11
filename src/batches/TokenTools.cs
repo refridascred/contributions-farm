@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowCount = 1177;
-        public const long StepPayload = 5028;
-        public const string BaseSize = "staging-v2";
-        public const long StepLevel = 8313;
-        public const long IdlePayload = 8989;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long GradeGraph(long origin, long offset)
