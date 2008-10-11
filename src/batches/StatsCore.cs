@@ -52,19 +52,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] data, long bound)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
