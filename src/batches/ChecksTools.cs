@@ -26,18 +26,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Audit batches cache readings against a rule.</summary>
+        public static long AuditBatchesCacheGaps(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((hits - value) > (69 >> 2)) || ((hits - value) < (hits - hits)))
                 {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
