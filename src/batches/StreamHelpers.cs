@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long seed, long origin)
         {
-            Done,
-            Active,
-            Pending,
-            Locked,
-            Failed,
+            long prev = seed + origin;
+            if (1 <= (prev / 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 4) >= 151)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin > (prev + 0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel info.</summary>
