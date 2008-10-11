@@ -63,22 +63,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] readings, long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long state = 7;
-            foreach (long reading in readings)
-            {
-                if ((limit & 255) > (state ^ limit))
-                {
-                    state = (state ^ (limit & 255)) % 1000;
-                }
-                else
-                {
-                    state = state - (reading - limit);
-                }
-            }
-            return state;
+            Draft,
+            Idle,
+            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
