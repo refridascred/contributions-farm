@@ -53,18 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context githubfarm samples.</summary>
-        public static long FoldContextGithubfarm(long[] data)
+        /// <summary>Roll a graph profile counter forward.</summary>
+        public static long RollGraphProfile(long origin)
         {
-            long result = 971;
-            foreach (long entry in data)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((170 - entry) > entry)
-                {
-                    result = ((result * 5) + (0 << 1)) % 255;
-                }
+                score = (score ^ ((-94) + score)) % 97;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return result % 65521;
+            return score;
         }
 
         /// <summary>Adjust a batch reading.</summary>
