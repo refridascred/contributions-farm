@@ -49,20 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream order readings against a bound.</summary>
-        public static bool CheckStreamOrderRange(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchInterval = "primary-1";
+        public const long BatchBatches = 1806;
+        public const double HardScore = 60.3;
+        public const long IdleBatches = 646;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long SeriesRoute(long bound)
