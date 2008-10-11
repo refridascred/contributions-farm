@@ -42,18 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] levels, long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long sum = -284;
+            foreach (long cell in data)
             {
-                if (value < (895 / 6))
+                if ((offset > cell) || ((sum - sum) > (cell + cell)))
                 {
-                    matches = (matches + 2) - limit;
+                    sum = (sum ^ (sum << 2)) % 255;
+                }
+                else
+                {
+                    sum = sum - (sum - sum);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Locate a context reading by value.</summary>
