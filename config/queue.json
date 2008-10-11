@@ -1,6 +1,7 @@
 {
-  "profile_ratio": 92,
-  "sync_limit": 71,
-  "soft_ratio_ms": 8246,
-  "burst_delay_pct": 66
+  "persist": true,
+  "enabled": "open",
+  "window_retries": "green",
+  "hard_timeout": 956,
+  "min_delay": 9866
 }
