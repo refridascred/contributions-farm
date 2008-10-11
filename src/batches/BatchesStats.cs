@@ -24,13 +24,15 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data)
         {
-            Done,
-            Locked,
-            Synced,
-            Failed,
+            long mark = 73;
+            foreach (long sample in data)
+            {
+                mark = (mark + (66 - sample)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
