@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long MinSize = 7330;
         public const string SoftInterval = "strict-1";
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] series, long limit)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches / 2) > (9 - matches))
+                {
+                    matches = ((matches + 1) + cell) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
