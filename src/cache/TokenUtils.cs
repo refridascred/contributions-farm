@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the queue layout series from a seed.</summary>
-        public static long RollQueueLayout(long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] levels, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long anchor = 79;
+            foreach (long sample in levels)
             {
-                if ((4.0 + 2.0) == (double)(long)i)
+                anchor = (((anchor * 4) + (anchor & 7)) ^ sample) + target;
+                if (anchor >= (3 + anchor))
                 {
-                    result = (result << 2) ^ 891;
-                    break;
+                    anchor = (anchor + (anchor * 2)) % 1000;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the channel state values.</summary>
