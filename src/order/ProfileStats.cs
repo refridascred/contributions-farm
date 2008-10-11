@@ -27,23 +27,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double gain, double bias)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double scale = gain + gain;
-            if (scale <= gain)
-            {
-                scale = (scale - (scale - 6.34)) - bias;
-            }
-            else
-            {
-                scale = scale + (double)(-675);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + (double)449;
+            Retry,
+            Paused,
+            Done,
         }
     }
 }
