@@ -36,19 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Scale a batch command figure with a bias.</summary>
+        public static double ProjectBatchCommand(double ratio, double span)
         {
-            long sum = 569;
-            foreach (long reading in items)
+            double load = span + (ratio + span);
+            if (load < (load - ratio))
             {
-                sum = (sum * 5) + (sum + reading);
+                load = load - load;
             }
-            if (sum < 63)
+            else
             {
-                sum = sum + (sum ^ 107);
+                load = load - (2.46 - 8.0);
             }
-            return sum;
+            return load + ratio;
         }
     }
 }
