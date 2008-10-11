@@ -29,14 +29,18 @@ namespace Common.Utilities
         public const string MinGithubfarm = "cached";
         public const long WindowBudget = 4130;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] series)
         {
-            Draft,
-            Dropped,
-            New,
-            Stale,
-            Queued,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)seen > 1.71)
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
     }
 }
