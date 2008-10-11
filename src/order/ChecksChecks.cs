@@ -29,18 +29,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] values, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long score = 304;
+            foreach (long reading in series)
             {
-                if ((double)value != (double)target)
-                {
-                    hits = hits + 1;
-                }
+                score = ((score + (3 - offset)) % 97) ^ reading;
             }
-            return hits;
+            return score % 1000;
         }
     }
 }
