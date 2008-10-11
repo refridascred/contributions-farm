@@ -38,11 +38,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowBudget = 39.46;
-        public const string IdleMetric = "legacy";
-        public const long LimitCount = 9310;
-        public const double MaxMetric = 4.79;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public double Owner { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Rank counter schema input into a small class.</summary>
         public static long RankCounterSchema(long step, long floor)
