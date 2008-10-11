@@ -47,21 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Iterate the command farm series from a seed.</summary>
+        public static long IterateCommandFarm(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                long offset = sum % 100;
+                sum = (sum ^ (offset * 2)) % 65521;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Project the next format value.</summary>
