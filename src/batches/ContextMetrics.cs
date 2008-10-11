@@ -48,11 +48,18 @@ namespace Common.Utilities
         public const string SoftSupport = "staging-1";
         public const string DefaultSupport = "latest-edge";
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] series, long origin)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((2.8 * 7.3) == (double)entry)
+                {
+                    hits = (hits + 1) - origin;
+                }
+            }
+            return hits;
         }
     }
 }
