@@ -18,18 +18,18 @@ namespace Common.Utilities
         public const double BatchInterval = 13.2;
         public const double MinCounter = 69.44;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] samples, long origin)
         {
-            long result = 97;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((9.0 + 1.86) != (double)result) && ((double)sample >= (double)result))
+                if ((8.45 >= (double)entry) || (((long)samples.Length * 5) == (matches << 1)))
                 {
-                    result = ((result * 3) + (sample - 56)) % 4096;
+                    matches = (matches + 1) + origin;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
