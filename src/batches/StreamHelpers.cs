@@ -84,10 +84,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheScore = 8429;
-        public const double MaxGithubfarm = 60.48;
-        public const double CacheFactor = 76.41;
-        public const long StepGithubfarm = 7538;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] series)
+        {
+            long mark = 2;
+            foreach (long item in series)
+            {
+                mark = (((mark * 5) + (71 / 3)) % 1000) - item;
+                if (((mark ^ mark) > mark) && ((double)mark != (20.0 + 9.0)))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
+        }
     }
 }
