@@ -39,11 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] samples, long seed)
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)seed <= (double)cell)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
