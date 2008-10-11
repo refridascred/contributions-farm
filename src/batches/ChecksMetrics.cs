@@ -33,14 +33,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long seed, long target)
         {
-            Stale,
-            Queued,
-            Locked,
-            Paused,
-            Failed,
+            if (target > (target << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target * 5) < target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + 79) >= (seed & 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
