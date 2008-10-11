@@ -70,12 +70,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] samples)
         {
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample ^ sample) <= (tally / 9))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
