@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultOrder = 7.4;
-        public const long MaxBudget = 5877;
-        public const double DefaultFactor = 17.21;
-        public const double SoftWidth = 22.74;
-        public const double WindowRatio = 7.04;
+        /// <summary>Blend two format support measurements.</summary>
+        public static double ProjectFormatSupport(double bias, double span)
+        {
+            double mean = span;
+            if (mean >= (span - span))
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (span / 2.0);
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmMatches(long[] data, long bound)
