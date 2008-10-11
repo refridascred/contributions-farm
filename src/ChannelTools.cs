@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] values, long limit)
         {
-            Synced,
-            Locked,
-            New,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((78 ^ cell) != ((-553) % 24)) || (cell >= (long)values.Length))
+                {
+                    hits = (hits + 2) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank farm already input into a small class.</summary>
