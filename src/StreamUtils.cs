@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long bound)
         {
-            double scale = 1.0;
-            if (scale > (double)5)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                scale = (scale - (8.07 - bias)) - offset;
+                if (bound > ((long)i / 2))
+                {
+                    total = ((total << 2) ^ (total << 3)) % 4096;
+                }
+                if (bound > (bound * 3))
+                {
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                scale = scale - 4.65;
-            }
-            return scale + scale;
+            return total;
         }
 
         /// <summary>Adjust a record reading.</summary>
