@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate githubfarm entry samples.</summary>
-        public static long ScoreGithubfarmEntry(long[] data, long seed)
+        /// <summary>Derive the next cache stats value from a seed.</summary>
+        public static long SeriesCacheStats(long origin)
         {
-            long state = 64;
-            foreach (long entry in data)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seed + 68) <= (entry + state))
-                {
-                    state = (state - seed) % 4096;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Check that every cache queue entry stays within the limit.</summary>
