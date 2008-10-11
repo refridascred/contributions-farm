@@ -37,19 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] series, long offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Queued,
+            Draft,
+            Done,
         }
     }
 }
