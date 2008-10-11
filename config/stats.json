@@ -1,5 +1,12 @@
 {
-  "base_timeout": "local",
-  "checks_ratio": "staging",
-  "stats_window": 60
+  "support_depth": 100,
+  "burst_depth": "latest",
+  "persist": false,
+  "base_ttl": {
+    "persist": "eu-west",
+    "graph_capacity": "blue",
+    "max_depth": 2979
+  },
+  "compress": "primary",
+  "default_delay_s": 6047
 }
