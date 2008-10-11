@@ -38,10 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardSpan = 7371;
-        public const long BurstFactor = 9256;
-        public const long StepDepth = 3770;
-        public const string BurstBatches = "stable-1";
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value + 30) != (matches * 5))
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
+        }
     }
 }
