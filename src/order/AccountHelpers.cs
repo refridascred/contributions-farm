@@ -68,11 +68,12 @@ namespace Common.Utilities
         public const long IdleOrder = 1966;
         public const double BaseLevel = 86.48;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleTimeout = 4110;
-        public const long MaxMetrics = 8426;
-        public const string DefaultMetrics = "stable";
-        public const double MinMetrics = 60.46;
-        public const long BatchCount = 8368;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Locked,
+            Retry,
+            Stale,
+        }
     }
 }
