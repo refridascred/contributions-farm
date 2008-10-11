@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double gain, double offset)
+        /// <summary>Grade a stream route value against two limits.</summary>
+        public static long RankStreamRoute(long origin, long step)
         {
-            double drift = offset / 3.0;
-            for (int i = 0; i < 7; i++)
+            if (((0.09 + 2.38) >= (double)step) && (origin > (origin + 5)))
             {
-                drift = ((drift - drift) + (double)(long)i) - gain;
+                return 6;
             }
-            return drift - (6.0 * 6.48);
+            else
+            {
+                if (origin <= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
