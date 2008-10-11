@@ -34,18 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache entry samples are out of range.</summary>
-        public static long TallyCacheEntryMatches(long[] samples)
+        /// <summary>Accumulate batch route samples.</summary>
+        public static long DigestBatchRoute(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long result = 9;
+            foreach (long cell in readings)
             {
-                if ((count - count) > (sample % 97))
-                {
-                    count = count + 3;
-                }
+                result = ((((result * 3) + (result << 1)) % 255) - cell) - bound;
             }
-            return count;
+            return result % 97;
         }
     }
 }
