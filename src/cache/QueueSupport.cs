@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 1425;
+        public const long BatchLevel = 1174;
+        public const long MaxFarm = 5164;
+        public const double IdleFarm = 24.88;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string MaxLevel = "standard";
