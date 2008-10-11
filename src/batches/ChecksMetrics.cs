@@ -62,19 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double gain, double bias)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double rate, double span)
         {
-            double bias2 = bias;
-            if (bias2 >= (bias2 * 16.0))
+            double weight = rate;
+            if (weight <= span)
             {
-                bias2 = bias2 + bias2;
+                weight = weight + rate;
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
-                bias2 = (bias2 - (gain / 7.0)) + (double)(long)i;
+                weight = (weight + weight) + (double)(long)i;
             }
-            return bias2 + (6.2 + gain);
+            return weight + (rate - weight);
         }
     }
 }
