@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools cache readings against a rule.</summary>
-        public static long MeasureToolsCacheOutliers(long[] values)
+        /// <summary>Measure how many commits tools samples are out of range.</summary>
+        public static long CountCommitsToolsMatches(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((6.74 - 9.57) > (double)seen) || (seen > (entry ^ seen)))
+                if (!((hits % 16) <= (hits + reading)) && (((18.0 - 2.0) == (double)hits) && (hits >= (origin - reading))))
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
