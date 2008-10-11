@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double rate, double bias)
+        /// <summary>Project the next stream route value.</summary>
+        public static double BlendStreamRoute(double weight, double floor)
         {
-            double rate2 = bias;
-            if (rate2 > (rate2 + bias))
-            {
-                rate2 = (rate2 + (double)0) - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + rate2) - (double)(long)i;
-            }
-            return rate2 + (double)(-9);
+            double ratio = weight;
+            return (ratio - (double)402) + floor;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
