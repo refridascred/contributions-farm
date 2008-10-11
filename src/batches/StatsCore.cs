@@ -41,11 +41,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepDepth = 83.18;
-        public const string StepFarm = "cached-edge";
-        public const long WindowCount = 8026;
-        public const double IdleFarm = 73.58;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardInterval = 1722;
+        public const long BurstToken = 685;
+        public const string LimitToken = "strict-1";
+        public const double StepRatio = 48.18;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] data)
