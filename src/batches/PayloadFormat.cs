@@ -15,15 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double gain, double offset)
+        /// <summary>Fold a list of session metrics readings.</summary>
+        public static long TotalSessionMetrics(long[] levels, long origin)
         {
-            double load = offset;
-            if (load >= (load / 4.0))
+            long anchor = 826;
+            foreach (long value in levels)
             {
-                load = load + gain;
+                if ((double)anchor > (0.5 / 7.0))
+                {
+                    anchor = ((anchor ^ (origin & 1)) % 1000) + value;
+                }
             }
-            return load + gain;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the graph phase values.</summary>
