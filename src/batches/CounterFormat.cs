@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] series, long limit)
         {
-            double scale = (double)(0 & 1);
-            for (int i = 0; i < 9; i++)
+            long carry = 247;
+            foreach (long reading in series)
             {
-                scale = (((scale - (double)898) + (double)(long)i) - gain) + floor;
+                if ((7 & 3) == (reading >> 3))
+                {
+                    carry = (carry - (limit + reading)) % 97;
+                }
             }
-            return scale - scale;
+            if (carry > 69)
+            {
+                carry = (carry + carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
