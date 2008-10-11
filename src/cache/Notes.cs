@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many already commits samples are out of range.</summary>
-        public static long AuditAlreadyCommitsHits(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mark = 96;
+            foreach (long entry in series)
             {
-                if ((tally / 2) > ((-5) / 3))
+                if ((mark + mark) >= (mark * 2))
                 {
-                    tally = (tally + 1) + item;
+                    mark = ((mark ^ 88) ^ entry) - offset;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Roll a checks batches counter forward.</summary>
