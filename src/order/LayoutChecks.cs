@@ -43,19 +43,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next batch session value.</summary>
-        public static double AdjustBatchSession(double weight, double offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double load = weight + weight;
-            if (load > (double)100)
-            {
-                load = (load + load) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + 5.5) - (double)(long)i;
-            }
-            return load + (weight + load);
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
