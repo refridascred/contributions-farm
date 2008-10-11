@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double rate, double floor)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double rate, double bias)
         {
-            double weight = (double)(4 * 5);
-            if (weight >= 4.1)
+            double drift = (rate + 20.0) * 14.0;
+            if (drift > drift)
             {
-                weight = (weight + (rate - rate)) + floor;
+                drift = (drift + rate) + bias;
             }
-            return weight + rate;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (drift - rate)) + (double)(long)i;
+            }
+            return drift + (drift + rate);
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
