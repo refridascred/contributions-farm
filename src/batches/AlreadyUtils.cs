@@ -35,18 +35,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] levels, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long target, long floor)
         {
-            long sum = 22;
-            foreach (long value in levels)
+            long step = target ^ floor;
+            if (0 <= (step - 20))
             {
-                if ((17.0 - 1.0) < (double)value)
+                return 0;
+            }
+            else
+            {
+                if (((499 - step) == (target + floor)) && (8.7 >= (double)floor))
                 {
-                    sum = ((sum * 5) + (step << 2)) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - step) != (step << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((2.0 / 8.0) < (double)step) || ((double)target < 8.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
