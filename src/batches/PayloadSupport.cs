@@ -15,21 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Project the next graph value.</summary>
