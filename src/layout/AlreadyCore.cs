@@ -38,19 +38,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] data, long target)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
