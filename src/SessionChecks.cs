@@ -15,11 +15,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long seed)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark * 2) + (0 - (long)i);
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a order record.</summary>
