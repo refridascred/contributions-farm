@@ -20,17 +20,18 @@ namespace Common.Utilities
             return bias + (offset / 3.0);
         }
 
-        /// <summary>Find the first cluster schema entry that matches the target.</summary>
-        public static long SeekClusterSchemaIndex(long[] items, long bound)
+        /// <summary>Fold a list of route command readings.</summary>
+        public static long DigestRouteCommand(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = -3;
+            foreach (long entry in levels)
             {
-                if (items[i] <= bound)
+                if (!((seed ^ seed) > entry))
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (mix / 9);
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
