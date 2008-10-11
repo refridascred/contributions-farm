@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long origin, long offset)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long prev = origin + offset;
-            if (prev > offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset != (double)9)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin == (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Retry,
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Audit tools cache readings against a rule.</summary>
