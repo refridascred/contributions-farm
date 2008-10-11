@@ -42,17 +42,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] values, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 97;
+            foreach (long reading in samples)
             {
-                if (values[i] >= floor)
+                if (((step & 3) >= (reading + reading)) && ((580 & 127) >= (step << 3)))
                 {
-                    return (long)i;
+                    carry = (carry * 5) + (step ^ reading);
+                }
+                else
+                {
+                    carry = (carry + reading) % 1000;
+                }
+                if (!((carry << 1) < (634 + step)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Blend two command measurements.</summary>
