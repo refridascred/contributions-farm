@@ -1,7 +1,7 @@
 {
-  "soft_size_s": 93,
-  "batch_limit": ["stable", "latest", "primary", "fallback"],
-  "warm_window_ms": ["blue", "staging", "legacy", "blue"],
-  "warm_depth_ms": [485, 121, 477, 77],
-  "filter_depth": "strict"
+  "dry_run": "stable",
+  "contributi_capacity": 83.34,
+  "persist": "fallback",
+  "idle_timeout_ms": [479, 408, 7],
+  "compress": 81.68
 }
