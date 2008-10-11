@@ -48,11 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultInterval = "legacy";
-        public const long BaseEditor = 9973;
-        public const long SoftEditor = 5502;
-        public const long BatchTimeout = 6379;
-        public const double MaxCount = 23.91;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+        }
     }
 }
