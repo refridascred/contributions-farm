@@ -62,20 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double rate, double span)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            double rate2 = (double)(7 % 7);
+            if (rate2 < (double)61)
             {
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    total = (((total * 3) + ((-5) << 1)) % 4096) ^ (long)i3;
-                }
-                total = total - ((long)i - total);
-                total = ((total * 3) + (long)i) % 97;
+                rate2 = ((rate2 - (double)5) + rate) + span;
             }
-            return total;
+            return rate2 + rate2;
         }
 
         /// <summary>Hold a editor options.</summary>
