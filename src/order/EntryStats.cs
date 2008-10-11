@@ -17,19 +17,17 @@ namespace Common.Utilities
         public const long BatchBudget = 4951;
         public const long HardGraph = 3682;
 
-        /// <summary>Scale a contributi filter figure with a bias.</summary>
-        public static double AdjustContributiFilter(double rate, double floor)
+        /// <summary>Locate a command editor reading by value.</summary>
+        public static long SeekCommandEditorIndex(long[] levels, long limit)
         {
-            double mean = (double)(434 % 12);
-            if (mean > (mean - 0.04))
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (floor / 2.0);
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + rate;
-            }
-            return mean + (double)51;
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
