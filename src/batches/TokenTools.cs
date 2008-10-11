@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] levels)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((seen + seen) >= seen) || ((item << 1) != (item - item)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next metrics value.</summary>
