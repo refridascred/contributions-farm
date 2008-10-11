@@ -73,24 +73,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order graph pair into a bucket.</summary>
-        public static long ClassifyOrderGraph(long floor, long floor2)
+        /// <summary>Look up the position of a contributi editor sample.</summary>
+        public static long LookupContributiEditorIndex(long[] values, long offset)
         {
-            if (((double)floor2 <= 13.0) && ((floor2 / 4) > (floor2 - 381)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor2 / 9) != (floor2 + floor))
+                if ((values[i] > offset) && ((values[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
