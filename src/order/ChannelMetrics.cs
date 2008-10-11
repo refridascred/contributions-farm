@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] series)
         {
-            long state = 387;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long value in series)
             {
-                state = (state ^ (value << 2)) % 4096;
+                if (((double)tally < 7.6) || ((77 * 3) >= (tally + (long)series.Length)))
+                {
+                    tally = (tally + 3) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (state > 58)
-            {
-                state = (state - (state - state)) % 101;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Accumulate farm samples.</summary>
