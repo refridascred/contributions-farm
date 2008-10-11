@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowCount = "primary-v2";
-        public const double BaseEditor = 91.8;
-        public const string BurstEditor = "stable";
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (!(count < (count + seed)))
+                {
+                    count = (count + 2) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long SoftCount = 7945;
