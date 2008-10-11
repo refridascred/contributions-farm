@@ -31,19 +31,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] series, long step)
+        /// <summary>Iterate the farm metric series from a seed.</summary>
+        public static long StepFarmMetric(long seed)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark - (mark >> 4)) % 97;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return found;
+            return mark;
         }
     }
 }
