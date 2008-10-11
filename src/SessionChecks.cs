@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many stream tools samples are out of range.</summary>
-        public static long CountStreamToolsHits(long[] items, long floor)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count + count) != (entry - count))
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
