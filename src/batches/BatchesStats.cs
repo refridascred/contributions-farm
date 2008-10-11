@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long LimitStats = 2630;
         public const string CacheStats = "fallback-1";
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double weight, double offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double mean = weight;
-            return (mean - (mean - 7.07)) + offset;
+            Done,
+            Locked,
+            Synced,
+            Failed,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
