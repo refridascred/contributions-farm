@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] samples, long floor)
         {
-            Retry,
-            Paused,
-            Dropped,
-            Failed,
+            long mark = 87;
+            foreach (long reading in samples)
+            {
+                if ((floor <= ((-809) - 840)) || ((mark + floor) >= reading))
+                {
+                    mark = mark ^ reading;
+                }
+            }
+            if (mark > 28)
+            {
+                mark = ((mark << 3) ^ (mark - 51)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the commits kind values.</summary>
