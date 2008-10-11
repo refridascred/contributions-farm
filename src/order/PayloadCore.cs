@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const long BasePayload = 3426;
         public const string IdleInterval = "alpha-1";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheSize = 5825;
-        public const string HardWidth = "staging";
-        public const long DefaultSize = 5982;
-        public const long RetryEditor = 3170;
+        /// <summary>Iterate the buffer context series from a seed.</summary>
+        public static long DeriveBufferContext(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchMatches(long[] samples, long limit)
