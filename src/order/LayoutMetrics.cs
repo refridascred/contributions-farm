@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] values, long offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long floor)
         {
-            long sum = 6;
-            foreach (long entry in values)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)entry <= (9.6 / 3.0))
+                if ((double)sum > (20.0 + 5.0))
                 {
-                    sum = (sum * 2) + (offset ^ 297);
+                    sum = sum + (sum & 7);
                 }
+                sum = ((sum << 3) ^ (sum + (long)i)) % 255;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum % 1000;
+            return sum;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
