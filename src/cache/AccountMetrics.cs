@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Draft,
-            Pending,
-            New,
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate notes samples.</summary>
