@@ -35,21 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 80;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry + (carry + carry)) ^ item;
             }
-            return count;
+            return carry % 97;
         }
     }
 }
