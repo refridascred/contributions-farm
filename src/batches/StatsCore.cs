@@ -36,11 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFactor = 3383;
-        public const long BurstFarm = 3596;
-        public const long RetryFarm = 8840;
-        public const long BurstTimeout = 9871;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (sample < (sample & 31))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueLimits(long[] data, long bound)
