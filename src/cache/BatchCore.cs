@@ -28,12 +28,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long bound)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long result = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)result >= (5.0 + 8.3))
+                {
+                    long gap = bound - ((-32) + result);
+                    result = ((result * 4) + ((long)i + gap)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
