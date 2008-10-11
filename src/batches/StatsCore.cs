@@ -73,14 +73,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of commits stream readings.</summary>
+        public static long ScoreCommitsStream(long[] values, long floor)
         {
-            Dropped,
-            Locked,
-            Queued,
-            Synced,
-            Done,
+            long state = 6;
+            foreach (long sample in values)
+            {
+                if ((floor - state) <= (floor % 64))
+                {
+                    state = (((state << 2) ^ (floor + state)) % 97) - sample;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a cluster summary.</summary>
