@@ -13,14 +13,25 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Grade a contributi filter value against two limits.</summary>
+        public static long BucketContributiFilter(long limit, long limit2)
         {
-            Draft,
-            Synced,
-            Active,
-            New,
-            Retry,
+            long slot = limit - limit2;
+            if ((double)limit2 < (5.29 * 5.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((slot + slot) >= slot))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of account entries.</summary>
