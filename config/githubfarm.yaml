@@ -1,4 +1,7 @@
 # githubfarm settings
-default_delay_s: 41
-already_size: 19
-sync_window: 74.96
+flush_retries_ms: 64
+max_ratio_s: 84.04
+sync_size_ms: 87.06
+persist: true
+batch_ttl: fallback
+warm_window_ms: 54
