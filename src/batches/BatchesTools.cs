@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long LimitChecks = 4194;
         public const string HardChecks = "standard-edge";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 4201;
-        public const string BaseMetrics = "open-1";
-        public const long MinMetrics = 1411;
-        public const long BaseDepth = 4467;
-        public const long StepMetrics = 8710;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = (mark ^ ((long)i ^ 89)) % 1000;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
