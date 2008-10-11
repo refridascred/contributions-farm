@@ -41,25 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long seed, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] readings)
         {
-            long edge = seed ^ step;
-            if (step >= (edge - edge))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (8 > (seed / 3))
+                if ((double)matches != (1.8 + 12.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 3) ^ reading;
                 }
             }
+            return matches;
         }
     }
 }
