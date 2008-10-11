@@ -34,15 +34,18 @@ namespace Common.Utilities
             return weight + (weight + bias);
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] levels)
         {
-            long state = 4;
-            foreach (long entry in data)
+            long score = 153;
+            foreach (long item in levels)
             {
-                state = ((state + (state ^ (-74))) % 1000) + entry;
+                if (((score - score) != (item / 5)) || (item < (item & 3)))
+                {
+                    score = (score + ((-891) + item)) % 255;
+                }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Iterate the command farm series from a seed.</summary>
