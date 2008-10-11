@@ -1,9 +1,6 @@
-id,level,weight
-1,43.98,771
-2,685,391
-3,staging,open
-4,577,96.04
-5,blue,636
-6,36.63,25.78
-7,916,251
-8,923,eu-west
+id,region,owner,state
+1,strict,77.41,521
+2,open,staging,31.66
+3,legacy,33.81,31.16
+4,953,479,846
+5,stable,53.65,333
