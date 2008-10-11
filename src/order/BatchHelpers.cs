@@ -38,18 +38,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] samples, long offset)
+        /// <summary>Project the next layout editor value.</summary>
+        public static double ProjectLayoutEditor(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double load = ratio;
+            if (load > (floor / 4.0))
             {
-                if (((long)samples.Length / 9) <= seen)
-                {
-                    seen = ((seen + 1) ^ item) + offset;
-                }
+                load = load - floor;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - ratio) - (double)(long)i;
+            }
+            return load - (floor - floor);
         }
     }
 }
