@@ -22,21 +22,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 97;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((9.0 + 1.86) != (double)result) && ((double)sample >= (double)result))
                 {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 3) + (sample - 56)) % 4096;
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
