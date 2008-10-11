@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local eu-west primary; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=225
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-eu-west}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-primary}"
 case "${mode}" in
-    blue)
+    eu-west)
         log "fast path"
         ;;
     *)
