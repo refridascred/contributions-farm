@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultRatio = 32.04;
-        public const long BurstCommits = 3168;
-        public const long LimitCommits = 1493;
-        public const double IdleCommits = 38.96;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels, long target)
+        {
+            long mark = 461;
+            foreach (long value in levels)
+            {
+                mark = ((mark << 3) ^ (target / 7)) % 65521;
+                if (target > (target - value))
+                {
+                    mark = mark - (162 ^ value);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
