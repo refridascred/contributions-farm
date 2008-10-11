@@ -47,22 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data, long offset)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            long sum = -284;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset > cell) || ((sum - sum) > (cell + cell)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum ^ (sum << 2)) % 255;
-                }
-                else
-                {
-                    sum = sum - (sum - sum);
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Locate a context reading by value.</summary>
