@@ -33,10 +33,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowBudget = "local-1";
-        public const long MinSession = 6278;
-        public const double CacheBudget = 39.28;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Roll a graph profile counter forward.</summary>
         public static long RollGraphProfile(long origin)
