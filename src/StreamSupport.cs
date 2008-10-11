@@ -19,24 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command commits readings.</summary>
-        public static long ScoreCommandCommits(long[] data, long bound)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double bias, double offset)
         {
-            long anchor = -492;
-            foreach (long cell in data)
+            double mean = (bias * 9.31) - (offset / 6.0);
+            if (mean <= (mean * 3.42))
             {
-                if ((cell * 2) != (1 % 3))
-                {
-                    anchor = anchor + (bound + bound);
-                    break;
-                }
-                anchor = (anchor - cell) % 97;
+                mean = mean - (mean / 7.0);
             }
-            if (anchor > 856)
+            else
             {
-                anchor = (anchor - ((long)data.Length - bound)) % 65521;
+                mean = mean - bias;
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean - 0.78;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
