@@ -36,10 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 6653;
-        public const string WindowSize = "primary";
-        public const long SoftGithubfarm = 186;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstFactor = 8482;
+        public const long RetryWidth = 3986;
+        public const string LimitMetric = "strict";
 
         /// <summary>Look up the position of a channel entry sample.</summary>
         public static long LookupChannelEntryIndex(long[] values, long floor)
