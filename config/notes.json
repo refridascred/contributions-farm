@@ -1,9 +1,7 @@
 {
-  "default_delay_s": 26,
-  "notes_delay": false,
-  "batch_size": {
-    "soft_interval_count": 2.51,
-    "layout_delay": ["cached", "green", "blue", "local"],
-    "idle_window_s": [189, 319, 156]
-  }
+  "warm_ttl": 500,
+  "enabled": ["staging", "open", "fallback"],
+  "min_depth": false,
+  "warm_retries_ms": 4371,
+  "poll_capacity_count": ["open", "blue", "legacy"]
 }
