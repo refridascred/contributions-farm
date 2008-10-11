@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank batch already input into a small class.</summary>
-        public static long SortBatchAlready(long bound, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] data, long floor)
         {
-            long prev = bound + offset;
-            if ((double)prev <= (2.0 * 2.0))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((prev * 2) < (offset << 2))
+                if ((datum >> 1) < (996 / 5))
                 {
-                    return 1;
+                    hits = (hits + 2) + floor;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
