@@ -27,19 +27,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] levels, long seed)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
