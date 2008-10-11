@@ -13,24 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long bound, long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            if ((double)bound > 6.6)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound <= (limit - limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
