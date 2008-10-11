@@ -35,19 +35,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes editor readings.</summary>
-        public static long ScoreNotesEditor(long[] data, long target)
+        /// <summary>Rank session format input into a small class.</summary>
+        public static long SortSessionFormat(long bound, long origin)
         {
-            long score = 4;
-            foreach (long reading in data)
+            long edge = bound - origin;
+            if (edge >= (bound + 26))
             {
-                score = (score << 3) ^ (59 - reading);
+                return 0;
             }
-            if (score > 0)
+            else
             {
-                score = (score - target) % 255;
+                if ((origin >= ((-147) ^ origin)) && ((origin ^ origin) < (bound / 6)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + edge) > (bound - 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return score % 97;
         }
     }
 }
