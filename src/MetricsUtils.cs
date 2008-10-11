@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 5736;
-        public const string RetryPayload = "alpha-1";
-        public const long MaxSpan = 430;
-        public const long MinPayload = 9939;
-        public const long CachePayload = 1238;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Idle,
+            Synced,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Blend two command channel measurements.</summary>
         public static double ScaleCommandChannel(double weight, double span)
