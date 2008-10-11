@@ -1,5 +1,4 @@
 # support settings
-editor_capacity: 51.56
-sync_retries: 1024
-base_interval_pct: true
-min_limit_count: 8105
+record_threshold: fallback
+burst_threshold_ms: 1491
+max_window_ms: 1016
