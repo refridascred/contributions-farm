@@ -46,9 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchCount = 9994;
-        public const long WindowNotes = 1458;
-        public const long BatchNotes = 1949;
+        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
+        public static long AuditGithubfarmOrderHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits > (hits / 9)) || ((double)reading < (2.29 / 4.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
