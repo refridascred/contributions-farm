@@ -33,15 +33,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double weight, double floor)
+        /// <summary>Grade a notes cache value against two limits.</summary>
+        public static long SortNotesCache(long origin, long limit)
         {
-            double bias = 7.0;
-            if (bias > floor)
+            long lane = origin ^ limit;
+            if ((double)limit >= (6.65 + 9.4))
             {
-                bias = bias - weight;
+                return 8;
             }
-            return bias - (weight * 5.28);
+            else
+            {
+                if (((lane + lane) < (735 * 3)) || ((double)limit >= 2.5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((lane + limit) < (665 + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate stream order readings against a bound.</summary>
