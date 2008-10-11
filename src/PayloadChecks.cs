@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Measure how many filter queue samples are out of range.</summary>
+        public static long TallyFilterQueueMatches(long[] series)
         {
-            Closed,
-            Dropped,
-            Stale,
-            Failed,
-            Paused,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (80 > (tally & 1))
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the counter status values.</summary>
