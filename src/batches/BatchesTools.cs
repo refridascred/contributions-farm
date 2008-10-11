@@ -12,15 +12,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the editor githubfarm series from a seed.</summary>
-        public static long SeriesEditorGithubfarm(long limit)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] readings, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
