@@ -36,17 +36,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] values, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = result + (52 - result);
+                result = (result + result) % 4096;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
