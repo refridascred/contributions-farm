@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value != bound)
                 {
-                    if ((samples[i] ^ samples[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
