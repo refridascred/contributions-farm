@@ -26,19 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command stream readings against a bound.</summary>
-        public static bool GuardCommandStreamRange(long[] values, long floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Done,
+            Synced,
+            Closed,
         }
 
         /// <summary>Locate a checks layout reading by value.</summary>
