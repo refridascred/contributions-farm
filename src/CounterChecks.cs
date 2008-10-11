@@ -21,18 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((value + value) < seen)
+                if ((tally / 5) <= (item & 7))
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many batch payload samples are out of range.</summary>
