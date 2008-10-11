@@ -13,15 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double weight, double offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long origin)
         {
-            double gain = (double)(3 & 15);
-            for (int i = 0; i < 6; i++)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                gain = ((gain + (double)(long)i) - weight) - offset;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = (total ^ (origin * 3)) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return gain + (gain + 9.0);
+            return total;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
