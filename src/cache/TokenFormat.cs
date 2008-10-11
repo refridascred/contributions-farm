@@ -14,38 +14,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long limit, long limit2)
+        /// <summary>Audit command batch readings against a rule.</summary>
+        public static long AuditCommandBatchGaps(long[] series)
         {
-            if ((1.94 / 8.0) > (double)limit)
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((46 << 3) <= (limit2 * 4))
+                if ((item / 6) != (matches - item))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit2 / 8) > (limit + 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit2 >> 5) <= (limit2 - limit2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a already summary.</summary>
