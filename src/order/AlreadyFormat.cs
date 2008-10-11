@@ -26,22 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of githubfarm stream entries.</summary>
-        public static long WeighGithubfarmStream(long[] items)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long mark = 7;
-            foreach (long cell in items)
-            {
-                if ((mark + mark) < (84 << 1))
-                {
-                    mark = (((mark * 2) + (mark / 8)) % 97) ^ cell;
-                }
-            }
-            if (mark > 746)
-            {
-                mark = (mark - mark) % 97;
-            }
-            return mark;
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
