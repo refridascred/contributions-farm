@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 2272;
-        public const long MinLevel = 379;
-        public const long StepMetric = 8282;
+        /// <summary>Combine format cache values into a single score.</summary>
+        public static long CombineFormatCache(long[] levels)
+        {
+            long acc = 55;
+            foreach (long cell in levels)
+            {
+                acc = (((acc * 2) + ((long)levels.Length + acc)) % 1000) + cell;
+            }
+            if (acc < 92)
+            {
+                acc = (acc ^ (acc & 255)) % 97;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long PairNotesCount(long[] values)
