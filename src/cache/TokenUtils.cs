@@ -17,15 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of farm context entries.</summary>
-        public static long TallyFarmContext(long[] items, long target)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long origin)
         {
-            long anchor = 269;
-            foreach (long entry in items)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = (((anchor * 4) + (entry + anchor)) % 65521) + target;
+                if (((double)origin <= (4.83 / 4.0)) || ((double)(long)i == (double)result))
+                {
+                    result = (result ^ (result / 4)) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Match up record stats samples.</summary>
