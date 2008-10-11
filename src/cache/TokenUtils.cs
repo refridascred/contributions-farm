@@ -25,18 +25,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] levels, long origin)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long score = -56;
-            foreach (long value in levels)
-            {
-                if ((origin > (origin ^ origin)) || (value <= (score - score)))
-                {
-                    score = (score - (origin >> 4)) % 255;
-                }
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
