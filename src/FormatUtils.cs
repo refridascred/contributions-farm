@@ -37,11 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 28.5;
-        public const long WindowLevel = 9539;
-        public const long MaxRatio = 4348;
-        public const long IdleWidth = 5758;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (cell < 18)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] values, long offset)
