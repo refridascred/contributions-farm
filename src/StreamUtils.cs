@@ -20,19 +20,15 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double gain, double offset)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            double weight = offset / 9.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((13.0 - 1.12) != (double)target)
-                {
-                    total = (total * 4) + (total + total);
-                }
-                total = ((total * 3) + (long)i) % 101;
+                weight = ((weight - (double)8) + (double)(long)i) - gain;
             }
-            return total;
+            return weight - (double)247;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
