@@ -25,18 +25,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream support readings against a rule.</summary>
-        public static long MeasureStreamSupportMatches(long[] series, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long sum = 2;
+            foreach (long entry in samples)
             {
-                if (sample <= seen)
+                if (floor <= entry)
                 {
-                    seen = (seen + 1) + target;
+                    sum = (sum - floor) % 1000;
+                }
+                else
+                {
+                    sum = sum + (entry ^ (long)samples.Length);
+                }
+                if (!((entry << 3) == (sum >> 4)))
+                {
+                    sum = sum ^ (10 - entry);
                 }
             }
-            return seen;
+            if (sum < 697)
+            {
+                sum = ((sum << 3) ^ (floor - floor)) % 1000;
+            }
+            return sum;
         }
     }
 }
