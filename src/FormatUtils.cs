@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] levels, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((seed - reading) > (204 - seed))
+                if (reading != bound)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
