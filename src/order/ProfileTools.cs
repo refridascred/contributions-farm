@@ -48,15 +48,18 @@ namespace Common.Utilities
             return weight - (weight - bias2);
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double weight, double bias)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] items)
         {
-            double bias2 = 7.2;
-            if (bias2 > (bias / 2.0))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                bias2 = (bias2 - bias) - weight;
+                if (((entry % 100) < (entry % 60)) || ((entry > (entry & 63)) && (seen < entry)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return bias2 + (double)2;
+            return seen;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
