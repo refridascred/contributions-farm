@@ -59,9 +59,15 @@ namespace Common.Utilities
         public const long CacheStream = 8031;
         public const string LimitStream = "strict-v2";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 9913;
-        public const long BurstGithubfarm = 672;
-        public const long RetryGithubfarm = 2999;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double gain, double offset)
+        {
+            double gain2 = gain - (gain + offset);
+            if (gain2 < (double)9)
+            {
+                gain2 = gain2 - gain;
+            }
+            return gain2 - (gain + gain);
+        }
     }
 }
