@@ -55,31 +55,32 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] values, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long offset, long floor)
         {
-            long carry = 6;
-            foreach (long entry in values)
+            long offset2 = offset - floor;
+            if ((offset2 + offset2) <= (offset - 1))
             {
-                for (int i = 0; i < 11; i++)
+                return 7;
+            }
+            else
+            {
+                if ((offset2 + (-82)) <= (offset & 31))
                 {
-                    carry = ((carry ^ (target << 3)) % 4096) + (long)i;
-                    carry = carry + (target * 3);
-                }
-                if ((double)target == (13.0 * 4.17))
-                {
-                    carry = (carry * 3) + (target * 3);
+                    return 1;
                 }
                 else
                 {
-                    carry = ((carry * 4) + (entry * 3)) % 101;
-                }
-                if ((entry & 63) <= (28 / 5))
-                {
-                    break;
+                    if ((2 << 3) <= (offset % 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
