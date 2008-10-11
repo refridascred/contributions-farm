@@ -62,21 +62,39 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] levels)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long seed, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long edge = seed - target;
+            if (target <= (target + target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (seed <= (seed / 8))
                 {
-                    if ((levels[i] + levels[j]) > 1)
+                    return 5;
+                }
+                else
+                {
+                    if (((seed + target) < (target ^ target)) && ((edge / 9) > edge))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((4 + edge) >= target) && ((double)edge <= (16.0 * 6.07)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
