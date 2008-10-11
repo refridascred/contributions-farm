@@ -63,21 +63,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (815 > (seed + (long)i))
                 {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix * 2) + (mix % 12);
+                    mix = (mix << 3) ^ (mix % 100);
                 }
+                if (((long)i * 2) > seed)
+                {
+                    mix = ((mix << 3) ^ (mix & 3)) % 65521;
+                }
+                mix = (mix * 3) + ((-6) & 1);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
     }
 }
