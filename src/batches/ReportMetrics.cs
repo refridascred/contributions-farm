@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 76.99;
-        public const long WindowScore = 5836;
-        public const string DefaultStream = "alpha";
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 5; i++)
+            {
+                total = (total ^ ((long)i << 2)) % 1000;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
