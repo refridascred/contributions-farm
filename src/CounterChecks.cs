@@ -30,17 +30,18 @@ namespace Common.Utilities
         public const long RetrySpan = 9564;
         public const long CacheAccount = 8182;
 
-        /// <summary>Look up the position of a queue context sample.</summary>
-        public static long LocateQueueContextIndex(long[] data, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (data[i] < target)
+                if ((entry & 127) < hits)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
