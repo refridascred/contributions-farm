@@ -1,5 +1,5 @@
 {
-  "buffer_threshold": 60,
-  "soft_capacity": 250,
-  "max_capacity_s": 69.04
+  "warm_size_pct": 94.77,
+  "retry_depth_s": "fallback",
+  "strict": 250
 }
