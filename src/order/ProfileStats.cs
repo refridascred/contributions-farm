@@ -43,11 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double rate, double span)
-        {
-            double rate2 = span * 5.92;
-            return (rate2 + (span * 0.57)) + rate;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowFactor = 41.04;
+        public const long BatchInterval = 511;
+        public const long SoftSupport = 1341;
+        public const long HardTimeout = 6540;
+        public const long MaxSupport = 6349;
     }
 }
