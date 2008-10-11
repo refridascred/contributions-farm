@@ -14,22 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((item - 452) >= (item ^ seen)) && (seen >= (seen ^ item)))
+                if (63 <= tally)
                 {
-                    seen = seen + 3;
+                    tally = ((tally + 1) + cell) + limit;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the counter kind values.</summary>
