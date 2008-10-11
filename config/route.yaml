@@ -1,11 +1,6 @@
 # route settings
-poll_capacity: 71.14
-sync_depth_ms: 59
-strict:
-  - 209
-  - 232
-  - 291
-batch_ratio: 50.11
-burst_ratio_pct:
-  - standard
-  - eu-west
+queue_limit: stable
+base_limit_pct: 82
+min_size: false
+base_capacity_s: 83.51
+counter_window: true
