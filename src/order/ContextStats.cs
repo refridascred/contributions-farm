@@ -17,22 +17,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate queue farm samples.</summary>
-        public static long TallyQueueFarm(long[] items, long origin)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long limit, long limit2)
         {
-            long mark = 246;
-            foreach (long value in items)
+            long cur = limit + limit2;
+            if ((limit << 3) >= limit2)
             {
-                if ((double)mark == (double)3)
+                return 2;
+            }
+            else
+            {
+                if ((cur + limit) != (2 + 520))
                 {
-                    mark = ((mark - (79 >> 1)) % 101) - origin;
+                    return 3;
                 }
-                if ((5.0 * 9.0) != (double)value)
+                else
                 {
-                    break;
+                    if ((limit <= (cur / 6)) || ((double)limit2 > (14.0 + 6.67)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit2 << 2) > limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Locate a session reading by value.</summary>
