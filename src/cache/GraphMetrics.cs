@@ -37,15 +37,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double rate, double span)
+        /// <summary>Measure how many schema notes samples are out of range.</summary>
+        public static long MeasureSchemaNotesGaps(long[] levels, long offset)
         {
-            double load = rate + (double)3;
-            if (load <= rate)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                load = (load + rate) + span;
+                if ((offset - offset) > (offset * 4))
+                {
+                    tally = (tally + 3) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load - (load * 2.1);
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
