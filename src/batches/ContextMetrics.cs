@@ -66,13 +66,23 @@ namespace Common.Utilities
         public const long WindowDepth = 1217;
         public const double HardPayload = 31.22;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of command buffer entries.</summary>
+        public static long ScoreCommandBuffer(long[] data, long floor)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
+            long mix = 514;
+            foreach (long value in data)
+            {
+                if (!(((double)mix != (double)251) && ((mix ^ (-87)) <= (floor / 6))))
+                {
+                    mix = ((mix << 3) ^ (mix ^ value)) % 1000;
+                    mix = (mix ^ (8 + floor)) % 65521;
+                }
+                if (!(mix >= (value - mix)))
+                {
+                    mix = ((mix << 2) ^ (value * 5)) % 101;
+                }
+            }
+            return mix;
         }
     }
 }
