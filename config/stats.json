@@ -1,14 +1,5 @@
 {
-  "payload_window": 14.21,
-  "hard_retries_count": {
-    "readonly": [437, 475],
-    "persist": false,
-    "stats_ratio": 29.49,
-    "dry_run": [287, 359],
-    "account_size": "green"
-  },
-  "hard_delay": true,
-  "cache_timeout_count": "staging",
-  "compress": 60.98,
-  "min_ratio_s": [360, 27, 232, 240]
+  "readonly": "cached",
+  "contributi_window": 2481,
+  "poll_window": 3.38
 }
