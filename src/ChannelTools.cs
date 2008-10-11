@@ -31,18 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((seen - 5) >= seen)
-                {
-                    seen = ((seen + 2) + datum) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 8800;
+        public const string BurstSize = "cached";
+        public const long WindowSession = 951;
+        public const long BurstCount = 5536;
     }
 }
