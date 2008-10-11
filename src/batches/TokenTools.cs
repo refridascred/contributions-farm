@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] items, long seed)
+        /// <summary>Validate commits already readings against a bound.</summary>
+        public static bool VerifyCommitsAlreadyRange(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (item < seed)
+                if (cell != bound)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
