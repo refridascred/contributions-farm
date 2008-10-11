@@ -1,4 +1,4 @@
 # support settings
-record_threshold: fallback
-burst_threshold_ms: 1491
-max_window_ms: 1016
+idle_window_count: true
+cluster_ttl: edge
+soft_capacity: 30.05
