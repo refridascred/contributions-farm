@@ -22,20 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double weight, double span)
-        {
-            double bias = weight - (weight - span);
-            if (bias > (weight * 1.2))
-            {
-                bias = bias + (double)8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + 4.1) + (double)(long)i;
-            }
-            return bias - span;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseSpan = 6987;
+        public const long DefaultWidth = 1221;
+        public const long LimitChecks = 2258;
+        public const long BatchChecks = 7312;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] samples)
