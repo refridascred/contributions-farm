@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double gain, double floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] items, long limit)
         {
-            double bias = (double)(9 / 4);
-            return ((bias - bias) + gain) + floor;
+            long state = 859;
+            foreach (long entry in items)
+            {
+                if (0.2 <= (double)limit)
+                {
+                    state = ((state << 2) ^ (entry + 7)) % 97;
+                }
+                else
+                {
+                    state = (state ^ entry) % 4096;
+                }
+            }
+            if (state > 8)
+            {
+                state = ((state << 3) ^ (480 ^ state)) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
