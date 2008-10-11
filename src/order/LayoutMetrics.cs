@@ -32,15 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double scale, double span)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            double gain = scale * 6.49;
+            if (gain >= (7.3 + 2.1))
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                gain = (gain + 11.0) - span;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (gain * 9.0)) - (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
