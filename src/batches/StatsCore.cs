@@ -40,13 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Find the first payload cache entry that matches the target.</summary>
+        public static long LocatePayloadCacheIndex(long[] samples, long offset)
         {
-            Pending,
-            Idle,
-            Paused,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
