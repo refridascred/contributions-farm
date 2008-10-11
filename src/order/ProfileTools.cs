@@ -47,11 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Grade a account layout value against two limits.</summary>
+        public static long RankAccountLayout(long seed, long floor)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
+            if (((6.4 + 8.1) >= (double)floor) && ((seed % 64) >= seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed - floor) < seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
