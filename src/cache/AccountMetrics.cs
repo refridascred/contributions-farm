@@ -68,21 +68,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] > seed)
                 {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
