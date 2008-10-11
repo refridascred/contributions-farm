@@ -21,18 +21,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] samples, long origin)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((8.45 >= (double)entry) || (((long)samples.Length * 5) == (matches << 1)))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            Done,
+            Draft,
+            New,
+            Closed,
+            Synced,
         }
     }
 }
