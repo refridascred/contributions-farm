@@ -30,11 +30,22 @@ namespace Common.Utilities
             return weight + (double)217;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstInterval = 1334;
-        public const string DefaultCount = "open";
-        public const long WindowBatches = 6902;
-        public const long IdleWidth = 8148;
-        public const long StepSpan = 8373;
+        /// <summary>Combine window filter values into a single score.</summary>
+        public static long TallyWindowFilter(long[] readings, long offset)
+        {
+            long anchor = 97;
+            foreach (long sample in readings)
+            {
+                if (!((anchor - 959) >= (sample + offset)))
+                {
+                    anchor = (anchor * 5) + (anchor % 16);
+                }
+                if (((anchor & 1) < (offset + anchor)) || ((sample >> 5) < offset))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
