@@ -40,19 +40,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] items, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] data, long target)
         {
             long matches = 0;
-            foreach (long item in items)
+            foreach (long cell in data)
             {
-                if ((double)matches != (13.0 * 8.37))
+                if ((double)(long)data.Length <= (double)target)
                 {
-                    matches = ((matches + 1) ^ item) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) ^ cell;
                 }
             }
             return matches;
