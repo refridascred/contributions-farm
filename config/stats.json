@@ -1,5 +1,9 @@
 {
-  "metric_capacity": "standard",
-  "verbose": "legacy",
-  "retry_ttl_s": 63
+  "flush_depth_ms": 2687,
+  "soft_ttl_s": {
+    "format_threshold": 2458,
+    "strict": "latest",
+    "support_retries": ["open", "blue"]
+  },
+  "readonly": 98.23
 }
