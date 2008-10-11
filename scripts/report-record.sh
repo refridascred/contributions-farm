@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in blue stable legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-cached}"
 case "${mode}" in
-    eu-west)
+    local)
         log "fast path"
         ;;
     *)
