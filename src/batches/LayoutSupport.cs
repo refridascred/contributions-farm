@@ -33,38 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a filter batches pair into a bucket.</summary>
-        public static long BucketFilterBatches(long limit, long floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if ((8.0 + 17.0) <= (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((-76) > (limit * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit > (floor % 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((8.54 - 18.0) > (double)limit) && ((70 + floor) != (7 + limit)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            New,
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
