@@ -18,13 +18,24 @@ namespace Common.Utilities
         public const long BaseDepth = 4467;
         public const long StepMetrics = 8710;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long bound, long seed)
         {
-            Idle,
-            Failed,
-            Ready,
-            Paused,
+            if ((double)seed > (0.3 + 9.3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + seed) == (106 + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
