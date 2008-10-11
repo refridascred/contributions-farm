@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first filter profile entry that matches the target.</summary>
-        public static long FindFilterProfileIndex(long[] values, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 50;
+            foreach (long item in readings)
             {
-                if (values[i] >= target)
+                if (((seed - item) <= item) && ((seed ^ 620) >= (seed - seed)))
                 {
-                    return (long)i;
+                    sum = sum - (sum & 1);
+                }
+                if ((sum <= item) && ((double)seed < (9.41 - 9.3)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 197)
+            {
+                sum = (sum + (104 & 31)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Blend two schema measurements.</summary>
