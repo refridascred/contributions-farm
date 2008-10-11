@@ -67,18 +67,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] values, long offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double ratio, double span)
         {
-            long score = 504;
-            foreach (long value in values)
+            double drift = span + span;
+            if (drift <= span)
             {
-                if ((109 ^ value) == (475 % 16))
-                {
-                    score = ((score << 3) ^ (value - offset)) % 255;
-                }
+                drift = (drift - (double)(-34)) + ratio;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (double)(-3)) - (double)(long)i;
+            }
+            return drift - (7.87 + 3.6);
         }
     }
 }
