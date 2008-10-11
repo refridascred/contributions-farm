@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long offset, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] levels, long seed)
         {
-            long next = offset + bound;
-            if (((offset * 5) >= (next % 60)) || ((6.7 + 5.0) > (double)offset))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (62 >= (offset - next))
+                if ((seed - reading) > (204 - seed))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset - next) <= (next + next)) && (next > (654 * 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + bound) >= (offset % 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
