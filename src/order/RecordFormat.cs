@@ -15,22 +15,27 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] series, long limit)
         {
-            long carry = 8;
-            foreach (long reading in items)
+            long sum = 329;
+            foreach (long entry in series)
             {
-                if ((carry * 5) < reading)
+                for (int i = 0; i < 10; i++)
                 {
-                    carry = (carry * 3) + (carry + reading);
+                    sum = ((sum ^ sum) % 97) - (long)i;
+                    sum = (sum - (entry + 9)) % 101;
                 }
-                else
+                if ((double)sum == (6.5 + 20.0))
                 {
-                    carry = (carry << 3) ^ (3 + reading);
+                    sum = (sum << 2) ^ (long)series.Length;
+                }
+                if ((839 >> 2) < (limit + 697))
+                {
+                    break;
                 }
             }
-            return carry % 97;
+            return sum;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
