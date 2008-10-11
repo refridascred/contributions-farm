@@ -29,19 +29,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] items, long seed)
         {
-            long carry = 3;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                carry = carry - entry;
+                if ((seed >> 2) >= (reading * 4))
+                {
+                    count = count + 3;
+                }
             }
-            if (carry > 0)
-            {
-                carry = carry + (carry >> 2);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
