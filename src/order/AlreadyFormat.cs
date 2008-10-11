@@ -56,13 +56,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] series, long seed)
         {
-            New,
-            Synced,
-            Pending,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
