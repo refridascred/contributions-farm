@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long acc = 76;
+            foreach (long reading in readings)
             {
-                if (!((9.0 / 3.0) != (double)count) || (((cell / 2) > count) && ((33 & 31) == (count + cell))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 4) + (reading / 8)) % 4096;
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Digest a series of metric entry entries.</summary>
