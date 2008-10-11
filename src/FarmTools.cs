@@ -20,18 +20,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series, long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long limit, long bound)
         {
-            long anchor = 16;
-            foreach (long reading in series)
+            long cur = limit + bound;
+            if ((cur >> 3) >= cur)
             {
-                if ((reading * 3) != (5 << 1))
+                return 1;
+            }
+            else
+            {
+                if (bound >= (655 + limit))
                 {
-                    anchor = anchor + (target + reading);
+                    return 3;
+                }
+                else
+                {
+                    if (limit < (bound - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((limit >> 3) == (limit + limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
