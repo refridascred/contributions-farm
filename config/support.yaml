@@ -1,22 +1,11 @@
 # support settings
-flush_capacity_ms: legacy
-cache_delay_ms:
-  - 242
-  - 476
-  - 72
-queue_depth:
-  - legacy
-  - legacy
-batch_size:
-  burst_interval_count: green
-  readonly:
-    - 295
-    - 462
-    - 177
-  batches_threshold: 39.11
-  payload_threshold:
-    - stable
-    - stable
-    - latest
-    - fallback
-  already_delay: edge
+base_timeout_pct:
+  - 42
+  - 25
+  - 485
+  - 47
+hard_limit: primary
+cache_ttl: fallback
+base_timeout: true
+batch_depth: primary
+persist: 500
