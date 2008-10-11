@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit format record readings against a rule.</summary>
-        public static long TallyFormatRecordHits(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((1 >> 2) <= (limit + matches))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 5154;
+        public const double WindowScore = 12.19;
+        public const long MinSize = 7330;
+        public const string SoftInterval = "strict-1";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double CacheLevel = 30.08;
