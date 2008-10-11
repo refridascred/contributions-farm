@@ -54,9 +54,18 @@ namespace Common.Utilities
         public const long CacheStream = 8031;
         public const string LimitStream = "strict-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleSize = 29.17;
-        public const long MinFilter = 3794;
-        public const string MaxSpan = "primary";
+        /// <summary>Audit channel graph readings against a rule.</summary>
+        public static long AuditChannelGraphOutliers(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (limit < datum)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
