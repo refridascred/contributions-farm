@@ -25,13 +25,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm channel counter forward.</summary>
-        public static long RollFarmChannel(long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                state = (state - ((long)i - (long)i)) % 101;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = state + (limit + (long)i2);
+                }
                 state = ((state * 3) + (long)i) % 101;
             }
             return state;
