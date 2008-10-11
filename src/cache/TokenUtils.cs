@@ -17,38 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long step, long floor)
+        /// <summary>Digest a series of farm context entries.</summary>
+        public static long TallyFarmContext(long[] items, long target)
         {
-            if (((floor & 255) >= (step - floor)) || ((step ^ floor) != (step >> 4)))
+            long anchor = 269;
+            foreach (long entry in items)
             {
-                return 6;
+                anchor = (((anchor * 4) + (entry + anchor)) % 65521) + target;
             }
-            else
-            {
-                if ((90 - step) > step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((18.0 / 6.0) == (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step * 5) >= (floor + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Match up record stats samples.</summary>
