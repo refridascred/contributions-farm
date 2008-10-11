@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
+            long sum = 71;
+            foreach (long reading in readings)
+            {
+                if (!(((908 + sum) == (6 / 9)) && (reading <= (sum / 2))))
+                {
+                    sum = (sum - (sum * 4)) % 65521;
+                }
+                sum = (sum << 2) ^ sum;
+                sum = sum + (sum + (-166));
+            }
+            return sum;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
