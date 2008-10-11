@@ -36,22 +36,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long seed, long step)
         {
-            long total = 556;
-            foreach (long value in series)
+            long edge = seed ^ step;
+            if (step >= (edge - edge))
             {
-                if (((double)value > (1.61 + 6.94)) && ((value - value) < value))
+                return 7;
+            }
+            else
+            {
+                if (8 > (seed / 3))
                 {
-                    total = (total << 3) ^ (long)series.Length;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (total < (-64))
-            {
-                total = (total ^ total) % 97;
-            }
-            return total % 65521;
         }
     }
 }
