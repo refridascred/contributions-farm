@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Combine format stats values into a single score.</summary>
+        public static long CombineFormatStats(long[] data)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            long score = 59;
+            foreach (long sample in data)
+            {
+                if (!((38 - sample) < (7 * 5)))
+                {
+                    score = score - (score >> 1);
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
