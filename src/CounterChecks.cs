@@ -79,16 +79,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long target, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long slot = target ^ origin;
+            if (((486 * 5) != (origin - slot)) || (target <= (slot - target)))
             {
-                result = (result ^ (target + (long)i)) % 97;
-                result = ((result * 4) + (long)i) % 65521;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((8.19 * 9.1) < (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the editor mode values.</summary>
