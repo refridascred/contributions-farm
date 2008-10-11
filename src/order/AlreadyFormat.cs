@@ -55,11 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Done,
             New,
+            Synced,
+            Pending,
             Retry,
         }
     }
