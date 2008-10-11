@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Find the first tools channel entry that matches the target.</summary>
+        public static long LocateToolsChannelIndex(long[] values, long target)
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of session entries.</summary>
