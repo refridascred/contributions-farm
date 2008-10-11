@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] samples, long offset)
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
