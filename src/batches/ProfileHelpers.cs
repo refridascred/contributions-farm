@@ -34,13 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            Draft,
-            Pending,
-            Ready,
-            Idle,
+            long mark = 0;
+            foreach (long sample in levels)
+            {
+                if ((8.0 + 9.9) >= (double)mark)
+                {
+                    mark = ((mark * 4) + sample) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (sample % 16)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the profile mode values.</summary>
