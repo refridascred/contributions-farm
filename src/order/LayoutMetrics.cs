@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a metrics graph pair into a bucket.</summary>
-        public static long BucketMetricsGraph(long target, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] values, long offset)
         {
-            if (79 > (limit % 5))
+            long sum = 6;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - 707) <= 54)
+                if ((double)entry <= (9.6 / 3.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    sum = (sum * 2) + (offset ^ 297);
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
