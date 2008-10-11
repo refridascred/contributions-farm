@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] items, long offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long mark = 83;
-            foreach (long cell in items)
-            {
-                mark = (mark - (mark << 2)) % 255;
-                if (cell <= (mark - 627))
-                {
-                    mark = (mark << 2) ^ (offset >> 2);
-                }
-            }
-            return mark;
+            Stale,
+            Locked,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
