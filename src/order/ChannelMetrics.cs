@@ -13,17 +13,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] values, long origin)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the commits filter series from a seed.</summary>
