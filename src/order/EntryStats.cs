@@ -12,10 +12,32 @@ namespace Common.Utilities
         public const long RetryTimeout = 5503;
         public const long LimitFormat = 1410;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseFactor = 98.07;
-        public const long BatchBudget = 4951;
-        public const long HardGraph = 3682;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long origin, long seed)
+        {
+            if (!((origin + seed) < seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed - 78) <= 823)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin >= (origin - 56))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a command editor reading by value.</summary>
         public static long SeekCommandEditorIndex(long[] levels, long limit)
