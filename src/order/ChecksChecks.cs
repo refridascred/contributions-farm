@@ -37,11 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] samples, long bound)
         {
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
+            long carry = 3;
+            foreach (long sample in samples)
+            {
+                carry = ((carry ^ (6 << 1)) ^ sample) - bound;
+            }
+            return carry;
         }
     }
 }
