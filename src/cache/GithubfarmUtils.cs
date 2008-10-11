@@ -40,25 +40,22 @@ namespace Common.Utilities
         public const double RetrySpan = 62.53;
         public const long RetryLevel = 3813;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long bound, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] items)
         {
-            long span = bound - origin;
-            if (span < (span - origin))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((span + bound) == (6 - origin))
+                if ((double)3 < (double)seen)
                 {
-                    return 5;
+                    seen = (seen + 1) ^ reading;
                 }
                 else
                 {
-                    return 2;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
