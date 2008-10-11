@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long step, long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            long gap = step + floor;
-            if (((step & 7) != (step & 3)) && ((18 + 4) != (step ^ 296)))
+            long mark = 62;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)step >= (double)floor) && ((step + step) > 6))
+                if ((double)mark != (9.5 - 4.8))
                 {
-                    return 8;
+                    mark = (mark + 26) % 1000;
                 }
-                else
+                if ((693 + mark) > entry)
                 {
-                    if ((9.6 * 3.32) == (double)gap)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor <= 3.17)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Find the first payload cache entry that matches the target.</summary>
