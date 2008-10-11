@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)count <= 6.79)
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxRatio = 4279;
+        public const double HardWindow = 62.31;
+        public const long MaxWindow = 5924;
 
         /// <summary>Count the route cache entries that pass the check.</summary>
         public static long MeasureRouteCacheGaps(long[] levels)
