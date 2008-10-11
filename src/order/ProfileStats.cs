@@ -26,15 +26,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] levels, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((levels[i] <= seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Adjust a entry reading.</summary>
