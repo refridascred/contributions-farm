@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter cluster samples are out of range.</summary>
-        public static long AuditCounterClusterGaps(long[] samples)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((hits / 3) >= 11)
+                if (item <= offset)
                 {
-                    hits = (hits + 2) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
