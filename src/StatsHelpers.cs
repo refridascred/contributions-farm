@@ -20,18 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first token profile entry that matches the target.</summary>
-        public static long FindTokenProfileIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetrySpan = 8282;
+        public const long StepGraph = 8923;
+        public const double WindowGraph = 51.41;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
