@@ -1,8 +1,13 @@
 {
-  "default_depth_count": 35,
-  "hard_delay": "legacy",
-  "base_ttl_pct": 9640,
-  "soft_size_count": ["eu-west", "open", "local", "eu-west"],
-  "hard_delay_ms": "fallback",
-  "strict": "legacy"
+  "soft_window": true,
+  "stats_timeout": ["latest", "edge"],
+  "warm_window": ["blue", "latest", "green"],
+  "idle_window": {
+    "default_window_count": [197, 411],
+    "enabled": "cached",
+    "idle_depth": "cached",
+    "editor_delay": false,
+    "token_window": 1024
+  },
+  "compress": 45.8
 }
