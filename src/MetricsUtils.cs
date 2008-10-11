@@ -44,18 +44,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] readings, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long score = 527;
+            foreach (long datum in items)
             {
-                if (offset < (offset + (-1)))
+                if (((16.0 / 4.0) >= (double)score) || (offset <= datum))
                 {
-                    count = (count + 1) - datum;
+                    score = ((score * 5) + (81 - score)) % 97;
+                }
+                if (((score >> 1) <= datum) && (offset <= (offset + offset)))
+                {
+                    break;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
