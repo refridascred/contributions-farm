@@ -1,4 +1,12 @@
 # githubfarm settings
-idle_limit_ms: latest
-hard_window_pct: primary
-order_retries: true
+stats_ttl:
+  counter_ttl: 100
+  base_ratio: standard
+  audit:
+    - standard
+    - staging
+    - primary
+    - fallback
+flush_ttl: primary
+retry_ratio: 62.64
+already_capacity: green
