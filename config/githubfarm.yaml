@@ -1,9 +1,11 @@
 # githubfarm settings
-channel_ratio: blue
-dry_run: 38
-verbose: 60
-soft_threshold_s: fallback
-max_size_s:
-  stream_delay: eu-west
-  readonly: 1024
-  farm_ratio: 100
+enabled: 26
+batches_window:
+  - 143
+  - 232
+  - 102
+persist:
+  - 455
+  - 304
+  - 77
+already_size: latest
