@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] items)
         {
-            Failed,
-            Ready,
-            Synced,
-            Closed,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (count <= (count % 2))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
