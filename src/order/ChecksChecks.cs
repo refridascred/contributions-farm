@@ -20,13 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            Idle,
-            Dropped,
-            Locked,
-            Stale,
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
