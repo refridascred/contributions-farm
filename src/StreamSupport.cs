@@ -38,15 +38,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((mix + origin) == (mix - (long)i))
+                {
+                    mix = ((mix << 3) ^ ((long)i / 9)) % 4096;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = ((mix - mix) % 101) + (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mark;
+            return mix;
         }
     }
 }
