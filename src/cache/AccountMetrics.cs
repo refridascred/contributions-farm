@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double MaxBatch = 69.11;
         public const double StepScore = 10.05;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] readings)
+        /// <summary>Validate layout context readings against a bound.</summary>
+        public static bool GuardLayoutContextRange(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((double)(long)readings.Length < 3.6)
+                if (sample > floor)
                 {
-                    tally = (tally + 1) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Adjust a payload reading.</summary>
