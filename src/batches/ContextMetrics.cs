@@ -55,18 +55,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] levels, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            long state = 7;
-            foreach (long sample in levels)
+            long mix = 844;
+            foreach (long cell in items)
             {
-                if ((875 ^ state) == (origin & 1))
-                {
-                    state = ((state * 2) + (state / 6)) ^ sample;
-                }
+                mix = (mix * 3) + (cell - cell);
             }
-            return state;
+            if (mix < 3)
+            {
+                mix = (mix << 3) ^ (mix << 1);
+            }
+            return mix % 97;
         }
     }
 }
