@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a account farm pair into a bucket.</summary>
-        public static long SortAccountFarm(long step, long origin)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long gap = step - origin;
-            if (!(gap < (origin / 7)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((gap + gap) == (step % 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step < (step * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin >= (gap * 2)) && ((3.21 - 15.0) > (double)origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
