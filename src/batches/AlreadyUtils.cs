@@ -14,10 +14,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 7231;
-        public const string CacheToken = "fallback-v2";
-        public const long MaxToken = 5777;
+        /// <summary>Count the editor account entries that pass the check.</summary>
+        public static long TallyEditorAccountOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (!!((3 / 9) <= (778 + entry)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterMatches(long[] series, long limit)
