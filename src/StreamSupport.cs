@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] data, long floor)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum >> 1) < (996 / 5))
-                {
-                    hits = (hits + 2) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
