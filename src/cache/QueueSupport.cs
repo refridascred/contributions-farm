@@ -39,14 +39,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Idle,
-            Active,
-            Retry,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstLevel = 8011;
+        public const long CacheScore = 8032;
+        public const long MinCount = 4239;
+        public const string CacheDepth = "alpha";
     }
 }
