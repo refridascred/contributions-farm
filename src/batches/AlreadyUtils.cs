@@ -19,20 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long state = 78;
+            foreach (long datum in items)
             {
-                if (!((long)i > offset))
+                if (((long)items.Length + state) != (state << 2))
                 {
-                    anchor = ((anchor * 4) + (24 >> 4)) % 1000;
-                    anchor = ((anchor * 5) + ((long)i + anchor)) % 97;
+                    state = ((state * 2) + (datum + state)) % 101;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                else
+                {
+                    state = (state << 2) ^ datum;
+                }
             }
-            return anchor;
+            if (state > 7)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
