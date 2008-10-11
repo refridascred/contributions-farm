@@ -53,19 +53,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks support values into a single score.</summary>
-        public static long FoldChecksSupport(long[] samples, long seed)
+        /// <summary>Roll a layout commits counter forward.</summary>
+        public static long IterateLayoutCommits(long origin)
         {
-            long mix = 213;
-            foreach (long entry in samples)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix << 3) ^ (seed * 5)) % 255;
-                if (seed >= (seed << 3))
+                if ((acc / 9) <= ((long)i - 420))
                 {
-                    mix = (mix * 4) + (entry - mix);
+                    acc = ((acc << 2) ^ (acc + origin)) % 101;
                 }
+                acc = (acc + (acc + (long)i)) % 101;
+                if (acc <= origin)
+                {
+                    acc = (acc - (acc + origin)) % 1000;
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return mix % 65521;
+            return acc;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
