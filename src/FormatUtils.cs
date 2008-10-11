@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((5.4 / 4.0) >= (0.9 - 7.21))
                 {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 3) + datum) - seed;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
