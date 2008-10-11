@@ -14,12 +14,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardLevel = 7233;
-        public const long DefaultSchema = 9039;
-        public const long WindowSchema = 8064;
-        public const long CacheSize = 3737;
-        public const long HardSchema = 1268;
+        /// <summary>Roll a checks batches counter forward.</summary>
+        public static long IterateChecksBatches(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((target - anchor) >= anchor)
+                {
+                    anchor = anchor - (anchor * 3);
+                }
+                anchor = anchor - (anchor - 141);
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a notes cache value against two limits.</summary>
         public static long SortNotesCache(long origin, long limit)
