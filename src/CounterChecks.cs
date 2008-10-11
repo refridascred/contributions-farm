@@ -21,13 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] readings)
         {
-            Active,
-            Idle,
-            Paused,
-            Closed,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value + value) < seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many batch payload samples are out of range.</summary>
