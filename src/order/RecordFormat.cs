@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Pending,
-            Done,
-            Draft,
             Dropped,
+            Closed,
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
