@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy cached; do
+COMMAND_LIMIT=290
+log "limit is ${COMMAND_LIMIT}"
+
+for item in standard blue open primary; do
     log "checking ${item}"
 done
-
-mode="${1:-open}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
