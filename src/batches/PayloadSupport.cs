@@ -31,23 +31,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double gain, double offset)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double weight = offset;
-            if (weight >= gain)
-            {
-                weight = weight - (gain + 4.44);
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (weight + offset);
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
