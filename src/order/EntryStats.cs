@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardBudget = 28;
-        public const long IdleTimeout = 2207;
-        public const long DefaultCount = 1880;
-        public const long RetryTimeout = 5503;
-        public const long LimitFormat = 1410;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] samples, long limit)
+        {
+            long mark = -917;
+            foreach (long cell in samples)
+            {
+                mark = (((mark * 2) + 37) - cell) - limit;
+            }
+            if (mark < 86)
+            {
+                mark = (mark + (mark >> 1)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long RankGithubfarm(long origin, long seed)
