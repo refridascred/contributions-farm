@@ -24,12 +24,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Active,
-            Locked,
-            Closed,
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count notes cluster pairs that satisfy a relation.</summary>
