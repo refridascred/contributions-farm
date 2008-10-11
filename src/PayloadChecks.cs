@@ -15,19 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] values, long floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
