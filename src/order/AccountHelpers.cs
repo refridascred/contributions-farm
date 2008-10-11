@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Digest a series of report entries.</summary>
