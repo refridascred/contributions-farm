@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheFactor = 146;
-        public const long MaxChecks = 1711;
-        public const double BaseWidth = 63.99;
-        public const long IdleChecks = 2546;
-        public const double DefaultChecks = 89.12;
+        /// <summary>Check that every command profile entry stays within the limit.</summary>
+        public static bool ValidateCommandProfileRange(long[] samples, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next cache command value from a seed.</summary>
         public static long RollCacheCommand(long limit)
