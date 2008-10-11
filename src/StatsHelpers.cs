@@ -49,32 +49,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long offset, long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] values, long step)
         {
-            long offset2 = offset - floor;
-            if ((offset2 + offset2) <= (offset - 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset2 + (-82)) <= (offset & 31))
+                if (values[i] > step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((2 << 3) <= (offset % 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
