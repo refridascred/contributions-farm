@@ -76,19 +76,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] data, long bound)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
