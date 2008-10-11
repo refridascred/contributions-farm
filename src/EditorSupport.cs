@@ -35,21 +35,18 @@ namespace Common.Utilities
         public const long StepBudget = 1976;
         public const string MaxSpan = "strict-v2";
 
-        /// <summary>Match up report checks samples.</summary>
-        public static long CompareReportChecksCount(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((741 ^ reading) != (reading - reading))
                 {
-                    if ((items[i] + items[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Digest a series of farm token entries.</summary>
