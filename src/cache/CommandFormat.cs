@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double scale, double offset)
-        {
-            double weight = scale;
-            if (weight >= scale)
-            {
-                weight = (weight - (17.0 / 5.0)) - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + 7.48) + (double)(long)i;
-            }
-            return weight + (scale + 8.0);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 2851;
+        public const long CacheBudget = 2136;
+        public const string DefaultQueue = "stable-edge";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheMatches(long[] series)
