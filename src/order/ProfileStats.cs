@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of session already readings.</summary>
-        public static long WeighSessionAlready(long[] samples)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long step)
         {
-            long total = 395;
-            foreach (long sample in samples)
+            long prev = limit ^ step;
+            if ((double)limit != (2.0 - 1.9))
             {
-                total = (total - (616 - sample)) % 65521;
-                if ((double)sample >= (4.0 * 5.32))
+                return 7;
+            }
+            else
+            {
+                if (!((limit - prev) < (limit >> 2)))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 4) < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
