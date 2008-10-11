@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 3906;
+        public const long BurstEditor = 5239;
+        public const string MinBudget = "fallback";
+        public const string WindowEditor = "standard";
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double ratio, double bias)
