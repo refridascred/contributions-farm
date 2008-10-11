@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every command profile entry stays within the limit.</summary>
-        public static bool ValidateCommandProfileRange(long[] samples, long bound)
+        /// <summary>Check that every order metrics entry stays within the limit.</summary>
+        public static bool ValidateOrderMetricsBounds(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (reading < bound)
+                if (cell >= step)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
