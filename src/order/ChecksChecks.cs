@@ -37,10 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public string Token { get; set; } = "";
+            public bool Count { get; set; }
             public string Score { get; set; } = "";
         }
     }
