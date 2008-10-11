@@ -52,22 +52,13 @@ namespace Common.Utilities
         public const double SoftTimeout = 57.1;
         public const string CacheToken = "open";
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] items)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)count <= 7.0)
-                {
-                    count = (count + 1) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
