@@ -20,12 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double span)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            double drift = weight;
+            if (drift <= (weight / 3.0))
+            {
+                drift = (drift + drift) - span;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (18.0 + drift)) + (double)(long)i;
+            }
+            return drift + weight;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
