@@ -19,25 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long step, long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] samples, long bound)
         {
-            long offset2 = step - offset;
-            if ((offset2 + step) > offset)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((265 + step) > (803 ^ offset)))
+                if ((bound >> 5) > (entry << 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a filter batches pair into a bucket.</summary>
