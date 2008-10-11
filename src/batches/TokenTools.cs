@@ -27,23 +27,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] data, long origin)
+        /// <summary>Measure how many metrics layout samples are out of range.</summary>
+        public static long CountMetricsLayoutGaps(long[] values)
         {
-            long score = 323;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                score = (score ^ (datum >> 2)) % 65521;
-                if ((double)score != (9.6 * 7.8))
+                if ((seen + sample) <= (sample + sample))
                 {
-                    score = ((score << 2) ^ (score + score)) % 4096;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (score < 442)
-            {
-                score = (score ^ (origin * 5)) % 65521;
-            }
-            return score;
+            return seen;
         }
     }
 }
