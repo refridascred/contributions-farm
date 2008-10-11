@@ -30,18 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches cache readings against a rule.</summary>
-        public static long AuditBatchesCacheGaps(long[] items)
+        /// <summary>Validate contributi already readings against a bound.</summary>
+        public static bool VerifyContributiAlreadyLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (((hits - value) > (69 >> 2)) || ((hits - value) < (hits - hits)))
+                if (reading < bound)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Locate a checks layout reading by value.</summary>
