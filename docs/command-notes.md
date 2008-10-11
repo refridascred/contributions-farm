@@ -1,14 +1,11 @@
 # Command notes
 
-A context that stays idle for too long is moved to the route list.
-Defaults for notes live in the config folder and can be overridden per environment.
-Defaults for farm live in the config folder and can be overridden per environment.
-
-The queue report groups every context by entry.
-Run the report check before changing any profile limits.
+The order module keeps filter values in sync with the commits cache.
+Use record settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Log every counter change
-- Document new checks fields
-- Keep channel values small
+- Log every layout change
+- Review order limits each release
+- Document new support fields
+- Keep graph values small
