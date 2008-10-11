@@ -12,13 +12,11 @@ namespace Common.Utilities
             return (ratio - (double)402) + floor;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a support options.</summary>
