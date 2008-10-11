@@ -20,23 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item % 24) == (hits % 10))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "strict-1";
+        public const long IdleProfile = 7926;
+        public const double BurstProfile = 51.15;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long SortSupport(long offset, long step)
