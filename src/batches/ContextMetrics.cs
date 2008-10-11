@@ -31,11 +31,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinRatio = 6914;
-        public const long BaseSpan = 8109;
-        public const long HardCluster = 9971;
-        public const long StepSize = 1706;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double floor)
+        {
+            double load = weight;
+            if (load <= (load / 5.0))
+            {
+                load = (load - (weight + load)) - floor;
+            }
+            return load - (double)67;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] data)
