@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] samples, long origin)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum <= (origin + tally)) && ((long)samples.Length <= origin))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Failed,
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
