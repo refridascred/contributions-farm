@@ -1,12 +1,17 @@
 {
-  "persist": 3334,
-  "batch_limit": {
-    "burst_timeout_s": 250,
-    "counter_size": true,
-    "cache_ttl": 30,
-    "session_ttl": 28.98,
-    "cache_depth": "stable"
+  "min_retries_s": "primary",
+  "default_interval": true,
+  "retry_interval_pct": false,
+  "retry_ratio_ms": {
+    "base_ttl_count": {
+      "batches_delay": 20.74,
+      "cache_limit_count": true,
+      "dry_run": [482, 293, 105, 400],
+      "buffer_size": 30,
+      "max_window_pct": 40.2
+    },
+    "hard_limit_s": ["legacy", "strict"],
+    "min_ttl_ms": 9
   },
-  "min_interval_count": true,
-  "burst_capacity_ms": 2887
+  "flush_delay": [327, 335, 292, 291]
 }
