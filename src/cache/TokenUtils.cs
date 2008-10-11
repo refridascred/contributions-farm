@@ -17,22 +17,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] samples)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long step, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            if (((floor & 255) >= (step - floor)) || ((step ^ floor) != (step >> 4)))
             {
-                if ((7 - 75) == (tally + cell))
+                return 6;
+            }
+            else
+            {
+                if ((90 - step) > step)
                 {
-                    tally = tally + 1;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((18.0 / 6.0) == (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step * 5) >= (floor + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up record stats samples.</summary>
