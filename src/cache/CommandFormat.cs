@@ -44,17 +44,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                result = result + (52 - result);
-                result = (result + result) % 4096;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Ready,
+            Locked,
+            Paused,
+            Draft,
+            Synced,
         }
     }
 }
