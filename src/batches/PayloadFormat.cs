@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Digest a series of format contributi entries.</summary>
+        public static long ScoreFormatContributi(long[] values, long origin)
         {
-            Stale,
-            Idle,
-            Dropped,
-            Active,
-            Synced,
+            long total = 94;
+            foreach (long cell in values)
+            {
+                total = (((total << 2) ^ (total * 3)) % 255) - origin;
+                if (cell < (cell / 6))
+                {
+                    total = total ^ cell;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
