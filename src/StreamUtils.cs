@@ -62,21 +62,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((hits - hits) > ((-24) * 4)) && ((cell ^ 257) > 3))
                 {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
