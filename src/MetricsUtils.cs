@@ -35,22 +35,21 @@ namespace Common.Utilities
         public const string HardFormat = "latest";
         public const double CacheFormat = 37.29;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] items, long offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long score = 527;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((16.0 / 4.0) >= (double)score) || (offset <= datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score * 5) + (81 - score)) % 97;
-                }
-                if (((score >> 1) <= datum) && (offset <= (offset + offset)))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
