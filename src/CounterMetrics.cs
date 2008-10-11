@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit format record readings against a rule.</summary>
+        public static long TallyFormatRecordHits(long[] samples, long limit)
         {
-            Queued,
-            Closed,
-            Active,
-            New,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((1 >> 2) <= (limit + matches))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the report phase values.</summary>
