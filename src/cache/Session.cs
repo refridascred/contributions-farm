@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepAccount = 91.56;
-        public const long WindowInterval = 6942;
-        public const long LimitRatio = 756;
-        public const string BatchAccount = "primary-edge";
+        /// <summary>Count graph notes pairs that satisfy a relation.</summary>
+        public static long PairGraphNotesCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool ValidateMetricRange(long[] levels, long offset)
