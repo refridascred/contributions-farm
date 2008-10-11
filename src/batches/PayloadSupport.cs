@@ -20,10 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "strict-1";
-        public const long IdleProfile = 7926;
-        public const double BurstProfile = 51.15;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Draft,
+            New,
+            Dropped,
+            Done,
+            Failed,
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long SortSupport(long offset, long step)
