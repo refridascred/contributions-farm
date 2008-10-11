@@ -22,14 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] series, long limit)
         {
-            Closed,
-            Retry,
-            Locked,
-            Dropped,
-            Queued,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the stream phase values.</summary>
