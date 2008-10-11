@@ -18,24 +18,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of stats filter readings.</summary>
-        public static long CombineStatsFilter(long[] values, long offset)
+        /// <summary>Look up the position of a cluster counter sample.</summary>
+        public static long LookupClusterCounterIndex(long[] values, long offset)
         {
-            long carry = 679;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry ^ (carry + offset);
-                carry = (carry ^ (offset >> 4)) % 4096;
-                if (carry <= (item + item))
+                if (values[i] > offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 290)
-            {
-                carry = ((carry * 5) + (offset << 3)) % 1000;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
