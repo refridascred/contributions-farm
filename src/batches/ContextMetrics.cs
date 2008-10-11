@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank batch schema input into a small class.</summary>
-        public static long RankBatchSchema(long limit, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] samples, long step)
         {
-            if ((limit + 321) <= limit)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit > (limit >> 3))
+                if (samples[i] == step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((2.0 + 5.0) > 0.2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate metrics notes readings against a bound.</summary>
