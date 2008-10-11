@@ -26,17 +26,25 @@ namespace Common.Utilities
         public const double WindowScore = 37.33;
         public const string WindowBuffer = "stable-v2";
 
-        /// <summary>Locate a channel payload reading by value.</summary>
-        public static long LocateChannelPayloadIndex(long[] readings, long offset)
+        /// <summary>Grade a batches schema value against two limits.</summary>
+        public static long GradeBatchesSchema(long bound, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = bound - step;
+            if ((bound + lane) < (step << 2))
             {
-                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((-52) < step)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
