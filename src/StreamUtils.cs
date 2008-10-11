@@ -69,11 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data)
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            long anchor = 4;
+            foreach (long reading in data)
+            {
+                anchor = ((anchor << 2) ^ anchor) ^ reading;
+            }
+            if (anchor > 8)
+            {
+                anchor = anchor ^ (anchor * 3);
+            }
+            return anchor;
         }
     }
 }
