@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long seed)
         {
-            Synced,
-            Pending,
-            Done,
+            long state = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
