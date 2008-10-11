@@ -20,17 +20,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] data, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((data[i] == target) && ((data[i] % 5) != 0))
+                if ((sample >= (sample ^ sample)) && ((5 & 7) <= count))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many schema notes samples are out of range.</summary>
