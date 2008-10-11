@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] series, long step)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
