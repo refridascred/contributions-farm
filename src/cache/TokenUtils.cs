@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a metrics counter reading.</summary>
-        public static double AdjustMetricsCounter(double rate, double floor)
-        {
-            double drift = 9.0;
-            if (drift >= (rate + drift))
-            {
-                drift = (drift + drift) + floor;
-            }
-            return drift + (drift / 2.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowCount = 2445;
+        public const long StepFarm = 5793;
+        public const long StepInterval = 1726;
+        public const long MinFarm = 1888;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LocateQueueIndex(long[] data, long origin)
