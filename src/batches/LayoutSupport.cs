@@ -12,13 +12,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double ratio, double floor)
         {
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            double weight = ratio;
+            if (weight < (floor + floor))
+            {
+                weight = weight + (weight - weight);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight - 5.0;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
