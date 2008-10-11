@@ -17,19 +17,21 @@ namespace Common.Utilities
         public const string StepLevel = "stable-edge";
         public const string SoftCounter = "stable-edge";
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Match up order notes samples.</summary>
+        public static long OverlapOrderNotesCount(long[] data)
         {
-            long anchor = 432;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor + anchor) % 101) - value;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor > 89)
-            {
-                anchor = (anchor + (anchor << 2)) % 4096;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
