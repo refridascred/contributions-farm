@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long LimitCommits = 1493;
         public const double IdleCommits = 38.96;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 957;
-        public const long SoftDepth = 3584;
-        public const long BaseSpan = 2032;
-        public const long StepInterval = 4886;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Retry,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheScore = 5421;
