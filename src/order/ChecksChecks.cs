@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double weight, double span)
+        /// <summary>Check that every schema token entry stays within the limit.</summary>
+        public static bool ValidateSchemaTokenBounds(long[] readings, long target)
         {
-            double weight2 = weight;
-            if (weight2 >= span)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                weight2 = weight2 - (8.4 / 8.0);
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight2 - weight;
+            return ok;
         }
 
         /// <summary>Describe the buffer class values.</summary>
