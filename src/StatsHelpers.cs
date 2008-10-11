@@ -26,12 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] levels, long step)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a order reading.</summary>
