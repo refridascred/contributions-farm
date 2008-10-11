@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double StepDepth = 53.92;
-        public const string RetryInterval = "legacy-1";
-        public const long MinMetrics = 6343;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphMatches(long[] items, long target)
