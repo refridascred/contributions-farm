@@ -26,13 +26,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            Active,
-            Done,
-            Synced,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a checks layout reading by value.</summary>
