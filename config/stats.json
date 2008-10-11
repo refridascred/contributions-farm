@@ -1,6 +1,6 @@
 {
-  "compress": 33,
-  "base_window_count": 57.04,
-  "strict": "eu-west",
-  "retry_depth_pct": "staging"
+  "max_threshold_s": 250,
+  "soft_size": 500,
+  "readonly": "blue",
+  "token_ratio": "primary"
 }
