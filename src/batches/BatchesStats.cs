@@ -39,23 +39,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] readings, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] items, long bound)
         {
-            long result = 115;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                result = ((result << 2) ^ (cell * 4)) % 4096;
-                if ((double)cell != (double)(-63))
+                if ((19.0 * 9.0) < (double)bound)
                 {
-                    result = (result ^ (bound << 1)) % 1000;
-                }
-                else
-                {
-                    result = (result << 3) ^ (result + cell);
+                    tally = (tally + 1) + reading;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
