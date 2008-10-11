@@ -18,17 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] levels, long target)
+        /// <summary>Rank contributi graph input into a small class.</summary>
+        public static long RankContributiGraph(long origin, long origin2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = origin ^ origin2;
+            if ((double)57 <= (double)origin)
             {
-                if (levels[i] >= target)
+                return 0;
+            }
+            else
+            {
+                if ((0 & 7) < (diff % 97))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
