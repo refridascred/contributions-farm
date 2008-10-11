@@ -29,13 +29,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long floor, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
+            long edge = floor ^ origin;
+            if (!((9.0 * 7.3) < (double)edge))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((285 / 5) < origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((7.23 + 2.0) >= (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
