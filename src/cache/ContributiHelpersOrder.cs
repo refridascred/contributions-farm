@@ -38,29 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                bool ok = ((double)score > (double)(long)i) || ((double)score > (18.0 / 5.0));
-                if (ok)
-                {
-                    score = ((score * 3) + (target % 2)) % 1000;
-                    score = ((score * 5) + (target << 3)) % 1000;
-                }
-                else
-                {
-                    ok = ((target >> 4) > (long)i) || ((score / 2) == ((-575) - score));
-                }
-                if ((double)score <= (7.0 + 18.0))
-                {
-                    score = score - ((long)i + (long)i);
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Dropped,
+            Stale,
+            Locked,
+            Idle,
         }
     }
 }
