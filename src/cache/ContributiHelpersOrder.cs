@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] data, long target)
         {
-            long state = 3;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (entry >= (entry - 7))
+                if (entry != target)
                 {
-                    state = ((state << 2) ^ state) % 65521;
-                }
-                else
-                {
-                    state = state ^ (state ^ state);
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 89)
-            {
-                state = ((state * 4) + (state - state)) % 97;
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Grade a entry report value against two limits.</summary>
