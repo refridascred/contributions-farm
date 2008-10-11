@@ -23,17 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first payload cache entry that matches the target.</summary>
-        public static long LocatePayloadCacheIndex(long[] samples, long offset)
+        /// <summary>Roll a notes route counter forward.</summary>
+        public static long IterateNotesRoute(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (samples[i] == offset)
+                long prev = score;
+                if ((long)i <= (prev - limit))
                 {
-                    return (long)i;
+                    prev = (prev ^ prev) % 4096;
                 }
+                prev = prev - ((long)i << 2);
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
