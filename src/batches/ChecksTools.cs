@@ -24,18 +24,19 @@ namespace Common.Utilities
             return gain + (ratio / 4.0);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Validate command stream readings against a bound.</summary>
+        public static bool GuardCommandStreamRange(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (((double)cell != (double)count) && (13.0 <= (double)cell))
+                if (reading <= floor)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
