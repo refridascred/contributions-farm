@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] items)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long result = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((hits >> 1) <= (cell ^ hits))
+                if (result >= origin)
                 {
-                    hits = hits + 3;
+                    result = result ^ ((long)i + (long)i);
+                    result = result ^ result;
                 }
-                else
+                if ((6.6 - 2.69) <= (double)result)
                 {
-                    hits = hits - 1;
+                    result = ((result * 3) + (2 + result)) % 255;
+                    result = ((result << 2) ^ (result / 7)) % 1000;
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a entry summary.</summary>
