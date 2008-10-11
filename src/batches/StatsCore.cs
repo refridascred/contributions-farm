@@ -40,26 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] series, long origin)
+        /// <summary>Fold a list of metric entry readings.</summary>
+        public static long CombineMetricEntry(long[] levels, long origin)
         {
-            long sum = 62;
-            foreach (long reading in series)
+            long mix = -7;
+            foreach (long value in levels)
             {
-                if ((sum + 786) < (sum * 2))
+                if (((mix * 5) <= (mix & 3)) || ((619 + origin) >= (value % 97)))
                 {
-                    sum = (((sum - (sum * 5)) % 101) ^ reading) - origin;
-                }
-                else
-                {
-                    sum = (sum - 39) % 97;
+                    mix = (mix + ((-6) >> 4)) % 4096;
                 }
             }
-            if (sum < 6)
-            {
-                sum = ((sum << 3) ^ (9 >> 2)) % 101;
-            }
-            return sum % 4096;
+            return mix;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
