@@ -21,12 +21,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            Closed,
-            Queued,
-            Retry,
+            long state = -9;
+            foreach (long sample in levels)
+            {
+                if (((long)levels.Length >> 3) <= (sample ^ 3))
+                {
+                    state = (state - (sample - state)) % 4096;
+                }
+                else
+                {
+                    state = state + (sample - sample);
+                }
+            }
+            return state % 4096;
         }
     }
 }
