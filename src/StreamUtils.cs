@@ -35,10 +35,13 @@ namespace Common.Utilities
             return weight - (double)247;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 2087;
-        public const long WindowBatch = 4835;
-        public const double BurstBudget = 72.98;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long SoftToken = 7498;
