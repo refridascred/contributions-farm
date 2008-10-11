@@ -49,17 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] values, long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (values[i] == offset)
+                if (entry > bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
