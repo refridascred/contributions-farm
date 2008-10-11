@@ -29,15 +29,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] data, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
