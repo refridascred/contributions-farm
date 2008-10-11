@@ -80,11 +80,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
