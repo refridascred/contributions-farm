@@ -15,15 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] data, long bound)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            foreach (long reading in data)
             {
-                if ((double)entry > (0.8 + 10.0))
+                if ((double)bound >= (6.03 + 9.3))
                 {
-                    seen = seen + 3;
+                    seen = (seen + 1) ^ reading;
                 }
             }
             return seen;
