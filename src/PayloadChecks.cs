@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftFactor = 5486;
+        public const long BurstGraph = 3099;
+        public const long BatchGraph = 5408;
+        public const string RetryBudget = "local-v2";
+        public const long IdleCount = 4683;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LookupReportIndex(long[] readings, long seed)
