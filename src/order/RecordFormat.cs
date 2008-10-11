@@ -60,13 +60,19 @@ namespace Common.Utilities
         public const long LimitSession = 9771;
         public const string SoftScore = "local-edge";
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] series, long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
+            long mix = 373;
+            foreach (long reading in series)
+            {
+                mix = ((mix + (54 / 8)) + reading) + seed;
+            }
+            if (mix < 75)
+            {
+                mix = ((mix << 2) ^ mix) % 255;
+            }
+            return mix;
         }
     }
 }
