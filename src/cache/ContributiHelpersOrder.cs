@@ -52,10 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 3995;
-        public const long BatchRatio = 6573;
-        public const long RetrySize = 3422;
-        public const long DefaultWidth = 3535;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] samples, long target)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (target > (target * 3))
+                {
+                    matches = (matches + 1) - item;
+                }
+            }
+            return matches;
+        }
     }
 }
