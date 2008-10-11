@@ -27,30 +27,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] samples, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long sum = 2;
-            foreach (long entry in samples)
+            long acc = 678;
+            foreach (long sample in values)
             {
-                if (floor <= entry)
+                acc = acc ^ (acc + acc);
+                if (5 <= (sample % 2))
                 {
-                    sum = (sum - floor) % 1000;
+                    continue;
+                }
+                if ((double)sample < (double)9)
+                {
+                    acc = ((acc * 3) + (sample << 1)) % 97;
                 }
                 else
                 {
-                    sum = sum + (entry ^ (long)samples.Length);
-                }
-                if (!((entry << 3) == (sum >> 4)))
-                {
-                    sum = sum ^ (10 - entry);
+                    acc = acc - (sample + acc);
                 }
             }
-            if (sum < 697)
+            if (acc > 332)
             {
-                sum = ((sum << 3) ^ (floor - floor)) % 1000;
+                acc = (acc ^ 95) % 255;
             }
-            return sum;
+            return acc;
         }
     }
 }
