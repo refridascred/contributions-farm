@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double weight, double span)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double gain = span * 8.4;
-            if (gain >= (gain + span))
-            {
-                gain = gain + (0.4 / 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain + (double)579;
+            Closed,
+            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define order limits and defaults.</summary>
