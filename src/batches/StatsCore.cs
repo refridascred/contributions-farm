@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            long mark = 62;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)mark != (9.5 - 4.8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark + 26) % 1000;
-                }
-                if ((693 + mark) > entry)
-                {
-                    break;
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Roll a notes route counter forward.</summary>
