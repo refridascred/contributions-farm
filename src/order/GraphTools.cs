@@ -57,11 +57,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] values, long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
