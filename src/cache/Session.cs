@@ -35,38 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already profile input into a small class.</summary>
-        public static long SortAlreadyProfile(long step, long seed)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            if ((seed * 4) > (seed >> 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2.8 + 19.0) == (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((seed << 2) <= (step - step)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step + seed) >= seed) && (1 < (seed << 1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
