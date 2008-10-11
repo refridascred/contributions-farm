@@ -48,22 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] samples)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long state = 242;
+            foreach (long item in items)
             {
-                if ((double)reading < (5.11 / 3.0))
+                state = (state + (141 + state)) % 65521;
+                if (((double)state < (5.36 - 5.0)) || ((state + state) == (item << 2)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = (state ^ (item - item)) % 97;
                 }
             }
-            return matches;
+            return state % 1000;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
