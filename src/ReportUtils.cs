@@ -47,15 +47,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] readings, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] series, long target)
         {
-            long mark = 1;
-            foreach (long item in readings)
+            long mix = 8;
+            foreach (long datum in series)
             {
-                mark = (((mark * 3) + (-8)) + item) - offset;
+                if (!((mix - datum) < datum))
+                {
+                    mix = mix + target;
+                }
+                if ((datum - mix) < (target ^ target))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (mix > 4)
+            {
+                mix = (mix * 3) + (961 + 65);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of route readings.</summary>
