@@ -68,17 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] values, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (values[i] >= bound)
+                if (!(((double)matches > (6.2 * 7.7)) && ((8.6 + 13.0) < (double)step)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
