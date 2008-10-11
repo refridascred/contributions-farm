@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] samples, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target >= (target - 76)) && ((total & 15) <= (total * 2)))
+                if (samples[i] <= offset)
                 {
-                    total = (total * 2) + 2;
+                    return (long)i;
                 }
-                total = ((total * 2) + (total % 7)) % 101;
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
