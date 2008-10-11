@@ -23,13 +23,15 @@ namespace Common.Utilities
         public const double HardSize = 52.73;
         public const double MaxWidth = 94.77;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long result = 21;
+            foreach (long cell in samples)
+            {
+                result = ((result << 2) ^ (468 % 64)) + cell;
+            }
+            return result;
         }
     }
 }
