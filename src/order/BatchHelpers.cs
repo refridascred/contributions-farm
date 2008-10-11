@@ -14,12 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public bool Region { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 3.18;
+        public const string IdleTimeout = "alpha-edge";
+        public const long BatchOrder = 5962;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TallyFilter(long[] levels)
