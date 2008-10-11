@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((bound ^ sum) >= bound)
-                {
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many record filter samples are out of range.</summary>
