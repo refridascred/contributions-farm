@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] levels, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long step, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long diff = step + bound;
+            if (((step - step) > diff) || (diff < (step - bound)))
             {
-                if (tally > (origin ^ 82))
+                return 7;
+            }
+            else
+            {
+                if (bound > (bound << 2))
                 {
-                    tally = (tally + 2) + datum;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit record command readings against a rule.</summary>
