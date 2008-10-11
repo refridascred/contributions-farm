@@ -33,14 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Retry,
-            Synced,
-            Locked,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardTimeout = 8249;
+        public const double LimitScore = 25.51;
+        public const double BurstBuffer = 37.22;
+        public const double StepLevel = 75.1;
+        public const long BurstLevel = 3614;
     }
 }
