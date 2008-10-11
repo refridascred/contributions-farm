@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "cached";
-        public const long BatchSpan = 324;
-        public const long LimitInterval = 2680;
+        /// <summary>Derive the next stats session value from a seed.</summary>
+        public static long DeriveStatsSession(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                state = (state ^ (floor ^ state)) % 4096;
+                state = state + (floor - floor);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ProjectBatch(double bias, double span)
