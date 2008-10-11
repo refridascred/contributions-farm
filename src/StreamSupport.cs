@@ -19,23 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double bias, double offset)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double mean = (bias * 9.31) - (offset / 6.0);
-            if (mean <= (mean * 3.42))
-            {
-                mean = mean - (mean / 7.0);
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean - 0.78;
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
