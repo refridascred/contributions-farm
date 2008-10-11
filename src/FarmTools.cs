@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] samples, long offset)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a buffer options.</summary>
