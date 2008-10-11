@@ -36,19 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item + offset) <= offset)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchFormat = "strict";
+        public const long BaseLevel = 8551;
+        public const double HardFormat = 39.18;
+        public const string MaxFormat = "local";
 
         /// <summary>Match up account samples.</summary>
         public static long CompareAccountCount(long[] data)
