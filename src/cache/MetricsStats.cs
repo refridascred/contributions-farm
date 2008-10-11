@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
