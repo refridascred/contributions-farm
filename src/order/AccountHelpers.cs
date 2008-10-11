@@ -38,12 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 6475;
-        public const long RetryLayout = 423;
-        public const long BurstTimeout = 8178;
-        public const double IdleBudget = 78.21;
-        public const long SoftLayout = 3869;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Roll a support counter counter forward.</summary>
         public static long DeriveSupportCounter(long bound)
