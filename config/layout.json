@@ -1,5 +1,6 @@
 {
-  "audit": true,
-  "burst_depth_pct": [18, 195, 389],
-  "sync_timeout_s": "eu-west"
+  "flush_ttl": ["staging", "latest"],
+  "burst_depth_pct": 81.55,
+  "session_ttl": 10.8,
+  "retry_size": "green"
 }
