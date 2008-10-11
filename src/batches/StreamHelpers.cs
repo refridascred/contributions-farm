@@ -33,12 +33,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Project the next window filter value.</summary>
+        public static double ScaleWindowFilter(double gain, double bias)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            double ratio = gain;
+            if (ratio > (gain * 1.48))
+            {
+                ratio = ratio + bias;
+            }
+            else
+            {
+                ratio = ratio + (double)41;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Roll a graph profile counter forward.</summary>
