@@ -1,7 +1,27 @@
 # entry settings
-cache_ttl_pct: latest
-soft_limit: 52
-soft_threshold_count:
-  - eu-west
-  - strict
-  - latest
+soft_delay_ms: true
+contributi_threshold: true
+persist: 56.38
+support_delay:
+  max_delay_pct: fallback
+  base_depth_s: 100
+  graph_delay:
+    - blue
+    - local
+  audit: stable
+  checks_ratio:
+    retry_size_pct: 7862
+    base_size: 9305
+    warm_interval_count: blue
+    retry_ttl: true
+  retry_timeout_pct:
+    metric_retries:
+      - blue
+      - staging
+      - edge
+    format_window: local
+    flush_interval_pct: local
+    min_depth: false
+    hard_retries_s:
+      - 258
+      - 117
