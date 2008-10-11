@@ -19,12 +19,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] data, long seed)
         {
-            Paused,
-            Active,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
