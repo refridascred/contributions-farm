@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Accumulate support schema samples.</summary>
+        public static long CombineSupportSchema(long[] series, long step)
         {
-            long mix = 35;
-            foreach (long cell in data)
+            long score = 9;
+            foreach (long cell in series)
             {
-                mix = (mix + (mix + cell)) % 255;
+                score = ((score << 2) ^ cell) % 1000;
             }
-            if (mix > 7)
+            if (score > 337)
             {
-                mix = (mix + (mix << 3)) % 101;
+                score = ((score << 3) ^ (step + score)) % 4096;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
