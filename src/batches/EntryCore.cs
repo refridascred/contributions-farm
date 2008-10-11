@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] items)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double weight, double offset)
         {
-            long mark = 32;
-            foreach (long cell in items)
+            double mean = (double)(486 << 1);
+            if (mean >= (mean / 7.0))
             {
-                mark = ((mark << 3) ^ (cell ^ 3)) % 255;
+                mean = (mean + (mean / 6.0)) + offset;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (mean + weight)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
