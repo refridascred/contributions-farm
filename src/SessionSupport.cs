@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long step, long target)
+        /// <summary>Measure how many contributi format samples are out of range.</summary>
+        public static long MeasureContributiFormatHits(long[] samples, long bound)
         {
-            if ((((-163) % 60) >= (target << 3)) && ((target + target) > step))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((892 & 31) <= (target << 3))
+                if (matches <= (matches + bound))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 3) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
