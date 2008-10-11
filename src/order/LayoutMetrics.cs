@@ -28,19 +28,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] samples, long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long bound)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum != target)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor ^ ((long)i2 * 2)) % 97;
                 }
+                anchor = (anchor << 3) ^ 28;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return stale;
+            return anchor;
         }
     }
 }
