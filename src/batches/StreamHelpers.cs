@@ -49,16 +49,14 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Roll a graph profile counter forward.</summary>
-        public static long RollGraphProfile(long origin)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                score = (score ^ ((-94) + score)) % 97;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Queued,
+            Stale,
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
