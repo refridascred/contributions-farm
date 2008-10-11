@@ -24,23 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Audit stream support readings against a rule.</summary>
+        public static long MeasureStreamSupportMatches(long[] series, long target)
         {
-            long anchor = 261;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((reading << 2) >= (reading << 3)) && ((double)reading > (5.38 - 8.46)))
+                if (sample <= seen)
                 {
-                    anchor = (anchor + (reading ^ reading)) % 101;
+                    seen = (seen + 1) + target;
                 }
-                anchor = (anchor - (reading % 7)) % 101;
             }
-            if (anchor > 27)
-            {
-                anchor = ((anchor << 3) ^ (579 % 24)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
