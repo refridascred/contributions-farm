@@ -43,11 +43,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleScore = 6839;
-        public const double SoftFilter = 65.87;
-        public const long HardSize = 5201;
-        public const long DefaultFilter = 3045;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftCommand = 8343;
