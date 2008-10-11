@@ -30,14 +30,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] samples, long limit)
         {
-            Failed,
-            Pending,
-            Locked,
-            Idle,
-            Retry,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (count >= (limit ^ count))
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a window reading.</summary>
