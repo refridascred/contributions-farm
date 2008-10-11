@@ -77,25 +77,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank report session input into a small class.</summary>
-        public static long SortReportSession(long step, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] data, long bound)
         {
-            long span = step + target;
-            if (target > (1 + span))
+            bool ready = true;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)span >= 0.81) && ((80 + step) <= (span >> 3)))
+                if (sample < bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
