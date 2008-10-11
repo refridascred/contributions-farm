@@ -24,18 +24,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long state = -81;
+            foreach (long reading in readings)
             {
-                if (!(reading > (seen & 7)) || (83 >= (reading >> 5)))
-                {
-                    seen = seen + 1;
-                }
+                state = ((state + (state % 8)) % 255) + reading;
             }
-            return seen;
+            if (state > 429)
+            {
+                state = state + ((-72) + state);
+            }
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
