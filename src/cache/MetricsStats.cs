@@ -62,14 +62,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Ready,
-            Paused,
-            Closed,
-            Pending,
-            Active,
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
