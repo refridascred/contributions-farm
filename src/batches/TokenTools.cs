@@ -19,11 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double bias, double span)
+        /// <summary>Look up the position of a contributi context sample.</summary>
+        public static long SeekContributiContextIndex(long[] samples, long floor)
         {
-            double load = bias;
-            return load - (span / 7.0);
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a checks cache counter forward.</summary>
