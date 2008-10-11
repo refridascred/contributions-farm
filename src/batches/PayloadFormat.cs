@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank farm window input into a small class.</summary>
-        public static long SortFarmWindow(long offset, long limit)
+        /// <summary>Validate notes tools readings against a bound.</summary>
+        public static bool CheckNotesToolsRange(long[] values, long seed)
         {
-            if (!((double)offset > (double)(-75)))
+            bool valid = true;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit >> 5) < offset)
+                if (item <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset >> 1) != (limit + offset)) && ((offset + offset) >= (offset * 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
