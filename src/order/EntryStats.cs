@@ -69,14 +69,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Paused,
-            Idle,
-            Failed,
-            Active,
-            New,
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
