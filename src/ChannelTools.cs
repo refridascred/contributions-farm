@@ -20,18 +20,18 @@ namespace Common.Utilities
             return bias + (offset / 3.0);
         }
 
-        /// <summary>Fold a list of route command readings.</summary>
-        public static long DigestRouteCommand(long[] levels, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] data)
         {
-            long mix = -3;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (!((seed ^ seed) > entry))
+                if ((value * 3) > count)
                 {
-                    mix = (mix << 2) ^ (mix / 9);
+                    count = count + 1;
                 }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
