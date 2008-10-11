@@ -84,10 +84,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 6552;
-        public const double BatchScore = 41.88;
-        public const string MaxRecord = "staging-edge";
-        public const long RetryInterval = 7831;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long step, long limit)
+        {
+            if (((limit * 2) >= limit) || ((double)step >= (double)limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((644 * 3) == (limit - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit >= (5.25 - 5.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
