@@ -24,15 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double gain, double offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] readings, long target)
         {
-            double weight = offset / 9.0;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                weight = ((weight - (double)8) + (double)(long)i) - gain;
+                if (datum >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight - (double)247;
+            return ok;
         }
 
         /// <summary>Hold a window summary.</summary>
