@@ -27,15 +27,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] samples)
-        {
-            long result = 21;
-            foreach (long cell in samples)
-            {
-                result = ((result << 2) ^ (468 % 64)) + cell;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 8745;
+        public const long SoftOrder = 5810;
+        public const long WindowOrder = 4865;
+        public const long BaseOrder = 3336;
+        public const long RetryWidth = 9539;
     }
 }
