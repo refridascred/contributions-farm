@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long MaxFarm = 5164;
         public const double IdleFarm = 24.88;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxLevel = "standard";
-        public const double IdleRatio = 41.47;
-        public const string StepBudget = "open-edge";
-        public const string IdleWidth = "cached-v2";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 4637;
+        public const double WindowRoute = 16.24;
+        public const long IdleInterval = 9987;
+        public const double DefaultBudget = 43.63;
 
         /// <summary>Check that every cache queue entry stays within the limit.</summary>
         public static bool ValidateCacheQueueLimits(long[] values, long floor)
