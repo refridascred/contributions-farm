@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] samples, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result ^ 56;
-                result = (result - (result + seed)) % 101;
-                result = ((result * 4) + (long)i) % 97;
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
