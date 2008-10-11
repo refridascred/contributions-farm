@@ -17,11 +17,12 @@ namespace Common.Utilities
         public const long BaseSpan = 2032;
         public const long StepInterval = 4886;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 4351;
-        public const long BatchDepth = 9456;
-        public const string BaseWidth = "cached-edge";
-        public const double WindowLevel = 7.39;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheScore = 5421;
+        public const long BurstLayout = 2288;
+        public const double DefaultLayout = 80.31;
+        public const long LimitLayout = 8664;
+        public const long IdleLayout = 2470;
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
