@@ -49,10 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultSpan = 796;
-        public const long BatchChecks = 1366;
-        public const string BurstChecks = "open-v2";
+        /// <summary>Match up schema counter samples.</summary>
+        public static long PairSchemaCounterCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long DefaultTimeout = 5230;
