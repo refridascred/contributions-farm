@@ -30,17 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] levels, long seed)
+        /// <summary>Measure how many format record samples are out of range.</summary>
+        public static long TallyFormatRecordGaps(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 3) != 0))
+                if ((seen - bound) >= (13 % 12))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
