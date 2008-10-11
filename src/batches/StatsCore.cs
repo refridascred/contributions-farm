@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Locate a contributi record reading by value.</summary>
+        public static long LookupContributiRecordIndex(long[] items, long limit)
         {
-            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((items[i] > limit) && ((items[i] % 5) != 0))
                 {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a notes route counter forward.</summary>
