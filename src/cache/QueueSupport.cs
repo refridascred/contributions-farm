@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the order cluster entries that pass the check.</summary>
-        public static long AuditOrderClusterGaps(long[] values, long offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((count + offset) >= ((-9) + offset)) && ((offset - count) >= (count + 41)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) ^ datum;
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine record values into a single score.</summary>
