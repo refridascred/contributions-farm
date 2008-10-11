@@ -1,8 +1,11 @@
 {
-  "persist": 100,
-  "burst_ttl": 5514,
-  "default_limit_s": false,
-  "readonly": 9070,
-  "schema_timeout": 3585,
-  "retry_timeout_s": "local"
+  "buffer_timeout": {
+    "counter_depth": false,
+    "hard_threshold_ms": 36,
+    "account_ratio": "strict",
+    "cluster_interval": false
+  },
+  "soft_threshold_pct": true,
+  "batch_window": true,
+  "soft_ratio_count": "green"
 }
