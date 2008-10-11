@@ -19,13 +19,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 6888;
+        public const string BatchGraph = "primary-1";
+        public const long BurstGraph = 3454;
 
         /// <summary>Iterate the session payload series from a seed.</summary>
         public static long DeriveSessionPayload(long origin)
