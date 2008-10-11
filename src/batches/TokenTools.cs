@@ -12,18 +12,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many record filter samples are out of range.</summary>
-        public static long CountRecordFilterMatches(long[] samples)
+        /// <summary>Derive the next route editor value from a seed.</summary>
+        public static long RollRouteEditor(long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((count & 7) > (entry ^ count))
+                if (!(((floor & 15) < floor) || (((long)i ^ carry) == (floor + floor))))
                 {
-                    count = count + 3;
+                    carry = (carry << 3) ^ ((long)i / 8);
                 }
+                carry = (carry * 2) + (carry % 12);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
