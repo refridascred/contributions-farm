@@ -30,13 +30,17 @@ namespace Common.Utilities
             return ratio - 7.69;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Look up the position of a batches metrics sample.</summary>
+        public static long LocateBatchesMetricsIndex(long[] series, long bound)
         {
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
