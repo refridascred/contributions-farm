@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long bound)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
+                result = result ^ 56;
+                result = (result - (result + seed)) % 101;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the account mode values.</summary>
