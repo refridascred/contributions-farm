@@ -24,11 +24,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double bias, double offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long target, long origin)
         {
-            double load = (double)(-46) * 8.9;
-            return (load - bias) + offset;
+            long step = target - origin;
+            if ((origin / 2) >= 3)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - step) >= target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((6.11 / 6.0) == (double)origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (35 > (origin << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
