@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "legacy-v2";
-        public const double BurstRatio = 50.76;
-        public const long MinLayout = 8747;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string IdleBuffer = "legacy-1";
