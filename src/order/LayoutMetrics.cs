@@ -30,9 +30,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepSpan = 63.53;
-        public const string IdleRatio = "strict-v2";
-        public const long BurstRecord = 3760;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
