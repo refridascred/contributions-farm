@@ -38,14 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] items)
         {
-            Stale,
-            Failed,
-            Active,
-            New,
-            Idle,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading / 9) < reading)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
