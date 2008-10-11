@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double bias, double span)
         {
-            long mix = 86;
-            foreach (long datum in readings)
+            double ratio = (span - 9.0) - span;
+            for (int i = 0; i < 3; i++)
             {
-                mix = ((mix * 5) + mix) % 4096;
-                if ((mix - datum) != (mix << 1))
-                {
-                    break;
-                }
+                ratio = ((ratio + ratio) + (double)(long)i) - bias;
             }
-            return mix;
+            return ratio - (double)826;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
