@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] readings, long step)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Derive the next commits window value from a seed.</summary>
