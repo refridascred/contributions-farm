@@ -1,7 +1,6 @@
 {
-  "min_ratio": 37,
-  "burst_ratio_s": "latest",
-  "filter_ttl": true,
-  "contributi_timeout": 8808,
-  "burst_capacity_s": 4137
+  "base_capacity_count": 89.23,
+  "hard_timeout": ["stable", "strict"],
+  "tools_retries": false,
+  "flush_timeout_count": 8772
 }
