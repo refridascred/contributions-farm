@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardLevel = 7233;
+        public const long DefaultSchema = 9039;
+        public const long WindowSchema = 8064;
+        public const long CacheSize = 3737;
+        public const long HardSchema = 1268;
 
         /// <summary>Grade a notes cache value against two limits.</summary>
         public static long SortNotesCache(long origin, long limit)
