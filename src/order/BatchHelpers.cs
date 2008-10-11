@@ -13,14 +13,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Ready,
-            Idle,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheBudget = 3995;
+        public const long MaxStats = 3950;
+        public const long MaxSize = 1989;
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
