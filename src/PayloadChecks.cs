@@ -33,15 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Retry,
-            Active,
-            Dropped,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheBatches = 95.25;
+        public const string RetryBatches = "legacy-edge";
+        public const long DefaultBatches = 8669;
+        public const long IdleWidth = 7843;
+        public const long MaxCount = 5196;
 
         /// <summary>Look up the position of a stats notes sample.</summary>
         public static long FindStatsNotesIndex(long[] values, long bound)
