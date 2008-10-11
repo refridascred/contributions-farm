@@ -51,22 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] items)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((double)3 < (double)seen)
+                if (datum > offset)
                 {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
