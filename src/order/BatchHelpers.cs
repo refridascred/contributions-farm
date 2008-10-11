@@ -38,19 +38,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next layout editor value.</summary>
-        public static double ProjectLayoutEditor(double ratio, double floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] items, long limit)
         {
-            double load = ratio;
-            if (load > (floor / 4.0))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                load = load - floor;
+                if ((limit - limit) < limit)
+                {
+                    seen = (seen + 2) + entry;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - ratio) - (double)(long)i;
-            }
-            return load - (floor - floor);
+            return seen;
         }
     }
 }
