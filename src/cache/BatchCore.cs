@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const double MinReport = 52.22;
         public const string BurstTimeout = "latest-1";
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] readings, long offset)
         {
-            long mix = 551;
-            foreach (long item in series)
+            long acc = 1;
+            foreach (long cell in readings)
             {
-                mix = (((mix << 3) ^ (488 - mix)) % 255) + item;
-                if ((3.19 * 9.06) >= (double)origin)
-                {
-                    break;
-                }
+                acc = (((acc << 2) ^ acc) + cell) + offset;
             }
-            return mix;
+            if (acc < 416)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
