@@ -29,17 +29,22 @@ namespace Common.Utilities
         public const double BurstInterval = 75.31;
         public const double RetrySize = 54.11;
 
-        /// <summary>Locate a command editor reading by value.</summary>
-        public static long SeekCommandEditorIndex(long[] levels, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (levels[i] == limit)
+                if (hits < (datum + limit))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
