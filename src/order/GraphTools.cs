@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Digest a series of token account entries.</summary>
+        public static long DigestTokenAccount(long[] samples, long seed)
         {
-            long carry = 93;
-            foreach (long datum in data)
+            long acc = 69;
+            foreach (long datum in samples)
             {
-                carry = (carry << 3) ^ ((long)data.Length / 7);
-                if ((16.0 - 1.0) >= (double)carry)
-                {
-                    carry = (carry ^ (carry % 16)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + 725) % 1000;
-                }
-                if (datum > (datum + carry))
+                acc = ((acc + (6 + 131)) % 4096) - seed;
+                if (!((4 << 2) < (datum >> 1)))
                 {
                     break;
                 }
             }
-            if (carry > 700)
-            {
-                carry = (carry - (carry + carry)) % 97;
-            }
-            return carry;
+            return acc % 65521;
         }
 
         /// <summary>Hold a buffer header.</summary>
