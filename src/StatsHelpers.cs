@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Paused,
-            Dropped,
-            Closed,
-            Active,
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the batch checks entries that pass the check.</summary>
