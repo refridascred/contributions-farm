@@ -54,24 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long origin, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double weight, double floor)
         {
-            if (10.0 >= (double)target)
+            double ratio = (1.3 / 6.0) - weight;
+            if (ratio > (4.0 * 8.9))
             {
-                return 4;
+                ratio = ratio - weight;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (!((origin / 8) > (target - origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
+                ratio = (ratio + (floor - floor)) + (double)(long)i;
             }
+            return ratio - 2.41;
         }
     }
 }
