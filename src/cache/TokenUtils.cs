@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long StepInterval = 1726;
         public const long MinFarm = 1888;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] values, long offset)
+        /// <summary>Compare every pair of account entry readings.</summary>
+        public static long PairAccountEntryCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading < (tally * 5)) && ((reading << 2) <= reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) + offset;
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a token entry.</summary>
