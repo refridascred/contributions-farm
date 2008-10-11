@@ -13,15 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the buffer context series from a seed.</summary>
-        public static long DeriveBufferContext(long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Retry,
+            Stale,
+            Idle,
+            Failed,
+            New,
         }
 
         /// <summary>Audit cache account readings against a rule.</summary>
