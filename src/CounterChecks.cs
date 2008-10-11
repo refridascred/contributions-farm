@@ -36,17 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long offset)
+        /// <summary>Measure how many batch payload samples are out of range.</summary>
+        public static long MeasureBatchPayloadGaps(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (readings[i] < offset)
+                if ((150 + step) != (long)readings.Length)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
