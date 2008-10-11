@@ -36,17 +36,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate session order samples.</summary>
-        public static long TotalSessionOrder(long[] samples)
-        {
-            long carry = 98;
-            foreach (long value in samples)
-            {
-                carry = (carry - (value + carry)) % 4096;
-                carry = (carry ^ (long)samples.Length) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryBudget = "fallback";
+        public const string MaxRecord = "latest-v2";
+        public const long BurstRecord = 8355;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
