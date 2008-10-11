@@ -40,12 +40,12 @@ namespace Common.Utilities
         public const long WindowBatch = 4835;
         public const double BurstBudget = 72.98;
 
-        /// <summary>Project the next layout stats value.</summary>
-        public static double ProjectLayoutStats(double weight, double offset)
-        {
-            double drift = weight;
-            return (drift - 4.0) + offset;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 7498;
+        public const string MinInterval = "stable-1";
+        public const double HardToken = 72.44;
+        public const double SoftTimeout = 57.1;
+        public const string CacheToken = "open";
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterLimits(long[] samples, long target)
