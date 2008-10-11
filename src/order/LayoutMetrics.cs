@@ -37,20 +37,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (anchor ^ ((long)i2 * 2)) % 97;
-                }
-                anchor = (anchor << 3) ^ 28;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepSpan = 63.53;
+        public const string IdleRatio = "strict-v2";
+        public const long BurstRecord = 3760;
     }
 }
