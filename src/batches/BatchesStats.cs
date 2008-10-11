@@ -34,12 +34,13 @@ namespace Common.Utilities
             return (mean - (mean - 7.07)) + offset;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 8268;
-        public const long IdleBudget = 5197;
-        public const long LimitFactor = 9909;
-        public const long RetryDepth = 8911;
-        public const long MinFactor = 4841;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Synced,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long SoftSize = 3868;
