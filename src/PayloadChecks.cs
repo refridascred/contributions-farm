@@ -73,18 +73,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the format already entries that pass the check.</summary>
-        public static long MeasureFormatAlreadyMatches(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally * 3) >= (seed - tally))
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 5413;
+        public const long CacheSize = 9942;
+        public const long BatchBudget = 1934;
+        public const long MinAccount = 6727;
+        public const string BurstCount = "staging-1";
     }
 }
