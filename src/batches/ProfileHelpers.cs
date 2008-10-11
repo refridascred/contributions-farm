@@ -65,18 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] series, long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((origin >> 5) < value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
