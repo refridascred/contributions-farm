@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftSize = 99;
-        public const long BatchProfile = 693;
-        public const long BaseSize = 1868;
-        public const long DefaultProfile = 4519;
-        public const string DefaultSpan = "latest-edge";
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
