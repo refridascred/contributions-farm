@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 11.45;
-        public const long DefaultGraph = 4651;
-        public const string SoftGraph = "cached-v2";
-        public const long LimitRatio = 3715;
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
