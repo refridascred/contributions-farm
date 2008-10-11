@@ -31,17 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                result = result + (-869);
-                result = result ^ (long)i;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Retry,
+            Ready,
+            Paused,
         }
     }
 }
