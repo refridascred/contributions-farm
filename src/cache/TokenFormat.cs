@@ -28,10 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 2901;
-        public const double WindowBudget = 87.4;
-        public const long SoftFactor = 5307;
-        public const string SoftFarm = "local-1";
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public double Owner { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
