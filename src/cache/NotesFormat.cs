@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double gain, double floor)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double scale = gain;
-            if (scale > gain)
-            {
-                scale = (scale - gain) - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + scale;
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
