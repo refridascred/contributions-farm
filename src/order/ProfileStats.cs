@@ -39,18 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
-        public static long AuditGithubfarmOrderHits(long[] samples)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double rate, double span)
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits > (hits / 9)) || ((double)reading < (2.29 / 4.0)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double rate2 = span * 5.92;
+            return (rate2 + (span * 0.57)) + rate;
         }
     }
 }
