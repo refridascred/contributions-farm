@@ -44,19 +44,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] values, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long anchor = 79;
+            foreach (long entry in levels)
             {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (((anchor << 2) ^ anchor) % 255) - entry;
             }
-            return stale;
+            if (anchor > 3)
+            {
+                anchor = (anchor ^ (459 / 4)) % 65521;
+            }
+            return anchor;
         }
     }
 }
