@@ -38,17 +38,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] readings, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -54;
+            foreach (long sample in values)
             {
-                if (readings[i] >= seed)
+                sum = (sum ^ (71 + sample)) % 1000;
+                if ((sample + sample) < 506)
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (origin + origin);
+                }
+                else
+                {
+                    sum = sum - sample;
                 }
             }
-            return -1;
+            if (sum > (-694))
+            {
+                sum = (sum ^ (59 + (long)values.Length)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Combine format values into a single score.</summary>
