@@ -33,11 +33,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] series, long origin)
         {
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
