@@ -27,22 +27,13 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] readings, long origin)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (6.65 > (double)origin)
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Locked,
+            Closed,
+            Dropped,
         }
     }
 }
