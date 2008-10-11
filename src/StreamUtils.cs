@@ -39,13 +39,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 1403;
+        public const long WindowRoute = 6979;
+        public const long WindowSize = 4758;
+        public const double CacheRoute = 25.52;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long SoftToken = 7498;
