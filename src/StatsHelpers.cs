@@ -20,21 +20,18 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Count token report pairs that satisfy a relation.</summary>
-        public static long MatchTokenReportCount(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((long)values.Length == (tally ^ 913))
                 {
-                    if ((readings[i] - readings[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 3) + reading) + target;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a stats options.</summary>
