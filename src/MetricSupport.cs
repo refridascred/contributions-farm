@@ -47,10 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitWidth = 6634;
-        public const long LimitContributi = 5478;
-        public const string WindowContributi = "stable";
-        public const long BaseWidth = 8354;
+        /// <summary>Roll a queue buffer counter forward.</summary>
+        public static long IterateQueueBuffer(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = acc + ((long)i << 1);
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
