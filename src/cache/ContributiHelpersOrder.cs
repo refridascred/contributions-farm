@@ -27,12 +27,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Grade a entry report value against two limits.</summary>
+        public static long BucketEntryReport(long floor, long bound)
         {
-            Paused,
-            Closed,
-            Dropped,
+            long bound2 = floor ^ bound;
+            if ((bound >> 2) >= (bound % 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound << 1) > (bound ^ bound2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound <= 77)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9.32 + 3.9) != (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next commits window value from a seed.</summary>
