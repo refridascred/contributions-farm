@@ -46,13 +46,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchCount = 9994;
+        public const long WindowNotes = 1458;
+        public const long BatchNotes = 1949;
     }
 }
