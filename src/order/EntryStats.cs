@@ -23,11 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 48.97;
-        public const string DefaultRatio = "latest-edge";
-        public const double BurstInterval = 75.31;
-        public const double RetrySize = 54.11;
+        /// <summary>Project the next batches entry value.</summary>
+        public static double SmoothBatchesEntry(double ratio, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 > bias2)
+            {
+                bias2 = bias2 - 6.79;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (bias2 + bias2)) - (double)(long)i;
+            }
+            return bias2 + ratio;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportHits(long[] readings, long limit)
