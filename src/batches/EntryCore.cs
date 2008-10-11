@@ -57,10 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleBudget = 7884;
-        public const long WindowWidth = 2496;
-        public const long RetryLevel = 1644;
-        public const long HardScore = 9989;
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double scale, double floor)
+        {
+            double scale2 = scale;
+            if (scale2 >= (floor * 15.0))
+            {
+                scale2 = scale2 - (scale * 8.56);
+            }
+            else
+            {
+                scale2 = scale2 - floor;
+            }
+            return scale2 - scale2;
+        }
     }
 }
