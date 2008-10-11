@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a stream route value against two limits.</summary>
-        public static long RankStreamRoute(long origin, long step)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long bound)
         {
-            if (((0.09 + 2.38) >= (double)step) && (origin > (origin + 5)))
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
+                carry = (carry - ((long)i >> 5)) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (origin <= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
