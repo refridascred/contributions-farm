@@ -36,10 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstFactor = 8482;
-        public const long RetryWidth = 3986;
-        public const string LimitMetric = "strict";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((((limit & 63) != (31 / 2)) || ((double)tally == (4.8 - 5.0))) || (((double)tally >= (double)item) && ((tally ^ 31) >= (item & 31))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a channel entry sample.</summary>
         public static long LookupChannelEntryIndex(long[] values, long floor)
