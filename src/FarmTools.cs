@@ -20,39 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long limit, long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long cur = limit + bound;
-            if ((cur >> 3) >= cur)
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound >= (655 + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit < (bound - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((limit >> 3) == (limit + limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Active,
+            Dropped,
+            New,
+            Done,
         }
 
         /// <summary>Rank token input into a small class.</summary>
