@@ -28,22 +28,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Digest a series of buffer layout entries.</summary>
+        public static long WeighBufferLayout(long[] values)
         {
-            long total = 363;
-            foreach (long value in samples)
+            long carry = 7;
+            foreach (long datum in values)
             {
-                if ((value * 4) > (total - total))
+                if (carry > (-8))
                 {
-                    total = total + (7 + 26);
-                }
-                if (value > (long)samples.Length)
-                {
-                    break;
+                    carry = ((carry ^ carry) % 97) - datum;
                 }
             }
-            return total;
+            if (carry > 46)
+            {
+                carry = ((carry * 5) + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a tools stats.</summary>
