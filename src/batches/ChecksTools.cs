@@ -40,18 +40,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = -5;
+            foreach (long item in samples)
             {
-                if ((reading + 138) <= (matches + reading))
+                if (((8.4 - 0.5) <= (double)item) || ((double)result >= (14.0 - 8.5)))
                 {
-                    matches = matches + 1;
+                    result = (result + (result - result)) % 101;
                 }
+                else
+                {
+                    result = result + (item >> 1);
+                }
+                result = (result ^ (item % 64)) % 65521;
             }
-            return matches;
+            return result % 4096;
         }
     }
 }
