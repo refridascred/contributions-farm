@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the command metric entries that pass the check.</summary>
-        public static long CountCommandMetricGaps(long[] series, long target)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double weight = scale;
+            if (weight >= scale)
             {
-                if ((target % 5) > (target / 2))
-                {
-                    hits = (hits + 2) - entry;
-                }
+                weight = (weight - (17.0 / 5.0)) - offset;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + 7.48) + (double)(long)i;
+            }
+            return weight + (scale + 8.0);
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
