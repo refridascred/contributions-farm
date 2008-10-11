@@ -1,6 +1,5 @@
 {
-  "cache_window": [295, 321, 8],
-  "compress": false,
-  "max_limit": "fallback",
-  "poll_depth_count": [346, 375, 257, 153]
+  "batch_threshold_s": 250,
+  "cache_interval": "local",
+  "min_interval_pct": ["edge", "local"]
 }
