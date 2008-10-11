@@ -37,15 +37,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] samples, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            long carry = 3;
-            foreach (long sample in samples)
+            long mix = -476;
+            foreach (long item in levels)
             {
-                carry = ((carry ^ (6 << 1)) ^ sample) - bound;
+                mix = (mix * 5) + (mix >> 5);
+                if (((double)item != (16.0 + 6.4)) || ((mix & 7) != (mix & 127)))
+                {
+                    mix = (mix * 2) + (27 + 151);
+                }
+                if ((mix + item) >= (556 + mix))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (mix < 77)
+            {
+                mix = (mix * 3) + (mix & 127);
+            }
+            return mix % 65521;
         }
     }
 }
