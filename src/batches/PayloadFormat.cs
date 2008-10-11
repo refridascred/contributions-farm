@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] data)
-        {
-            long score = 6;
-            foreach (long datum in data)
-            {
-                score = (score * 2) + (score + score);
-                if ((9.89 * 2.56) != (double)score)
-                {
-                    score = score ^ (datum - score);
-                }
-                else
-                {
-                    score = (score - score) % 65521;
-                }
-            }
-            if (score > 881)
-            {
-                score = (score ^ (score - score)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardEntry = 10.46;
+        public const double SoftEntry = 73.4;
+        public const long BatchTimeout = 9589;
+        public const double IdleDepth = 8.61;
+        public const double BurstEntry = 65.54;
 
         /// <summary>Check that every githubfarm token entry stays within the limit.</summary>
         public static bool VerifyGithubfarmTokenBounds(long[] readings, long bound)
