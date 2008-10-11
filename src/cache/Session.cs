@@ -50,18 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mark = 5;
+            foreach (long entry in values)
             {
-                if ((double)matches != (1.8 + 12.0))
+                if (((22 + mark) == (mark % 60)) && ((double)entry < (5.72 / 3.0)))
                 {
-                    matches = (matches + 3) ^ reading;
+                    mark = (mark << 2) ^ entry;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ 849) % 101;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
