@@ -14,18 +14,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] values)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long anchor = 2;
+            foreach (long sample in readings)
             {
-                if ((double)matches >= (5.0 + 4.72))
+                anchor = ((anchor << 2) ^ 286) % 65521;
+                if ((5.2 * 6.61) == (double)sample)
                 {
-                    matches = (matches + 3) ^ value;
+                    break;
                 }
             }
-            return matches;
+            if (anchor > 929)
+            {
+                anchor = (anchor * 2) + seed;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the checks status values.</summary>
