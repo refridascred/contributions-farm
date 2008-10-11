@@ -17,14 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double weight, double span)
         {
-            Retry,
-            Dropped,
-            Closed,
-            Idle,
-            Active,
+            double gain = span * 8.4;
+            if (gain >= (gain + span))
+            {
+                gain = gain + (0.4 / 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain + (double)579;
         }
 
         /// <summary>Define order limits and defaults.</summary>
