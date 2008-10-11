@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] data, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((hits / 9) <= (entry + limit))
+                if ((double)count <= 6.79)
                 {
-                    hits = hits + 2;
+                    count = (count + 2) + item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Scale a already format figure with a bias.</summary>
