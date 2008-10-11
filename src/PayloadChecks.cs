@@ -28,12 +28,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] values, long step)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] == step)
+                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
