@@ -61,17 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi editor sample.</summary>
-        public static long LookupContributiEditorIndex(long[] values, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((values[i] > offset) && ((values[i] % 5) != 0))
+                if ((seed * 4) <= (matches % 24))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
