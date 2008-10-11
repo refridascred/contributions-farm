@@ -1,4 +1,9 @@
 # support settings
-profile_interval: 100
-strict: edge
-enabled: fallback
+warm_delay: 8.58
+strict: true
+batch_limit_count: 6438
+max_interval_pct:
+  max_interval: fallback
+  readonly: 16
+  checks_ttl: eu-west
+  base_limit_s: 1899
