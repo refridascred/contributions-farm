@@ -20,17 +20,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] samples, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 265;
+            foreach (long datum in readings)
             {
-                if (samples[i] <= step)
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + (datum % 64)) - (long)i;
+                    carry = (carry + carry) % 255;
+                }
+                carry = carry + (carry ^ (long)readings.Length);
+                if (((double)datum >= 0.4) && (carry < (94 * 2)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Rank session format input into a small class.</summary>
