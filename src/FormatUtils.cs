@@ -27,12 +27,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] series, long target)
+        /// <summary>Look up the position of a buffer batches sample.</summary>
+        public static long FindBufferBatchesIndex(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] >= target) && ((series[i] % 3) == 0))
+                if ((data[i] > step) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
