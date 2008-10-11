@@ -47,31 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long origin, long bound)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if ((double)origin > (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(62 < (origin * 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (origin / 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
