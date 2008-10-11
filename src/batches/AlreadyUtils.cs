@@ -35,18 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] series, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long sum = 22;
+            foreach (long value in levels)
             {
-                if ((matches >> 2) >= (reading / 4))
+                if ((17.0 - 1.0) < (double)value)
                 {
-                    matches = (matches + 3) - limit;
+                    sum = ((sum * 5) + (step << 2)) % 65521;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
