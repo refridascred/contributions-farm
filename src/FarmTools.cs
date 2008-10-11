@@ -32,18 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] levels)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long offset, long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            if (offset > (offset * 4))
             {
-                if ((double)seen <= (4.95 * 4.1))
+                return 4;
+            }
+            else
+            {
+                if (!(step <= (step >> 1)))
                 {
-                    seen = (seen + 3) + sample;
+                    return 1;
+                }
+                else
+                {
+                    if (!((offset + offset) == (offset + step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((step << 2) <= (offset % 2)) || ((offset / 4) < (step % 8)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
