@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long origin)
         {
-            public double Mode { get; set; }
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            long mix = 8;
+            foreach (long cell in values)
+            {
+                mix = ((mix - (438 + origin)) % 101) + cell;
+            }
+            if (mix > 543)
+            {
+                mix = (mix - (origin - mix)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
