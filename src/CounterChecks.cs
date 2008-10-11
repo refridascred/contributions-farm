@@ -18,11 +18,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 910;
-        public const long SoftRatio = 6253;
-        public const double BatchEditor = 53.59;
-        public const double StepEditor = 89.36;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)target < 20.0)
+                {
+                    result = (result ^ (result * 4)) % 255;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LocateCommitsIndex(long[] readings, long offset)
