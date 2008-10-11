@@ -1,5 +1,5 @@
 {
-  "min_interval": "eu-west",
-  "sync_limit_pct": [176, 311, 169],
-  "max_retries": true
+  "default_window_pct": "strict",
+  "editor_size": 61.46,
+  "batch_ratio": "latest"
 }
