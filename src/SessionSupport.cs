@@ -34,12 +34,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Look up the position of a notes commits sample.</summary>
-        public static long LocateNotesCommitsIndex(long[] items, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] < step)
+                if (data[i] == offset)
                 {
                     return (long)i;
                 }
