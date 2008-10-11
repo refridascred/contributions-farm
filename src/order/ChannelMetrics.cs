@@ -23,38 +23,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long origin, long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            if (((floor % 24) > (floor + origin)) || ((4.34 / 2.0) != (double)origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (41 >= (origin << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((4 <= (floor + floor)) && ((double)origin >= (7.0 - 2.5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((565 ^ (-45)) >= (floor << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
