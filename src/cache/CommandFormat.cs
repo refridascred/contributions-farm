@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepBudget = 32.91;
-        public const long StepLevel = 6027;
-        public const string RetryScore = "legacy-edge";
-        public const long LimitCommits = 85;
-        public const string RetryTimeout = "latest-v2";
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double rate, double bias)
+        {
+            double rate2 = bias;
+            if (rate2 > (rate2 + bias))
+            {
+                rate2 = (rate2 + (double)0) - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + rate2) - (double)(long)i;
+            }
+            return rate2 + (double)(-9);
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheMatches(long[] series)
