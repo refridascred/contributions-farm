@@ -40,13 +40,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] values)
         {
-            Active,
-            Queued,
-            Draft,
-            Failed,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (!((sample + count) > (sample << 1)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
