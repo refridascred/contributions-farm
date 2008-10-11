@@ -61,17 +61,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Idle,
+            Failed,
+            Active,
+            New,
         }
     }
 }
