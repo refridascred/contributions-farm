@@ -1,6 +1,5 @@
 {
-  "soft_size": "strict",
-  "compress": 16.07,
-  "flush_capacity_pct": 6355,
-  "warm_depth_s": "latest"
+  "min_interval": "eu-west",
+  "sync_limit_pct": [176, 311, 169],
+  "max_retries": true
 }
