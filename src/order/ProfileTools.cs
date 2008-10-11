@@ -23,22 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter githubfarm entries that pass the check.</summary>
-        public static long MeasureFilterGithubfarmOutliers(long[] readings, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((tally - tally) > (step & 63)) && ((double)2 <= (double)step))
+                if ((reading << 3) <= (matches + 630))
                 {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Blend two format cluster measurements.</summary>
