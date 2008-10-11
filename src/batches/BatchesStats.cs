@@ -42,9 +42,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftSize = 3868;
-        public const long SoftRoute = 9225;
-        public const double MinRoute = 83.65;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] levels)
+        {
+            long total = 411;
+            foreach (long item in levels)
+            {
+                if ((double)item > (6.6 - 5.79))
+                {
+                    total = (total + (73 ^ total)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ (total - item)) % 4096;
+                }
+            }
+            return total;
+        }
     }
 }
