@@ -66,18 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] data, long target)
+        /// <summary>Adjust a batch context reading.</summary>
+        public static double ProjectBatchContext(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double load = weight;
+            if (load >= (3.7 * 2.03))
             {
-                if ((entry & 127) <= 745)
-                {
-                    matches = (matches + 2) + target;
-                }
+                load = load + offset;
             }
-            return matches;
+            return load - (offset * 8.5);
         }
 
         /// <summary>Audit format readings against a rule.</summary>
