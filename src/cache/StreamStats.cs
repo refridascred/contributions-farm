@@ -38,19 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account already readings against a bound.</summary>
-        public static bool ValidateAccountAlreadyLimits(long[] data, long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != offset)
+                if ((values[i] >= origin) && ((values[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Blend two commits order measurements.</summary>
