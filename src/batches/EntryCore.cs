@@ -57,20 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] series, long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long score = 94;
+            foreach (long sample in series)
             {
-                anchor = (anchor ^ anchor) % 97;
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((sample ^ sample) <= (43 / 5))
                 {
-                    anchor = ((anchor << 3) ^ (step + anchor)) - (long)i2;
+                    score = (score + (sample % 3)) % 1000;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                score = score - (offset - offset);
             }
-            return anchor;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
