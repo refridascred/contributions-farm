@@ -76,18 +76,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] data, long target)
+        /// <summary>Count cache stream pairs that satisfy a relation.</summary>
+        public static long PairCacheStreamCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (count <= (count % 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = ((count + 2) + value) + target;
+                    if ((samples[i] - samples[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
