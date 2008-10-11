@@ -41,11 +41,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double rate, double floor)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
+            double bias = (13.0 + rate) * 6.0;
+            if (bias <= rate)
+            {
+                bias = (bias - bias) - floor;
+            }
+            return bias - rate;
         }
 
         /// <summary>Check that every order format entry stays within the limit.</summary>
