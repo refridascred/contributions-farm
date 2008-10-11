@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long CacheContributi = 3282;
         public const long SoftLevel = 9443;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultDepth = "strict-v2";
+        public const long BurstCounter = 7088;
+        public const string StepLevel = "stable-edge";
+        public const string SoftCounter = "stable-edge";
 
         /// <summary>Accumulate support samples.</summary>
         public static long TallySupport(long[] readings)
