@@ -20,17 +20,25 @@ namespace Common.Utilities
             return bias + (offset / 3.0);
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] data, long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long floor, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = floor ^ offset;
+            if ((offset * 4) == (offset % 12))
             {
-                if ((data[i] >= seed) && ((data[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((floor + lane) < lane)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
