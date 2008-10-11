@@ -12,12 +12,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long floor)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate notes samples.</summary>
