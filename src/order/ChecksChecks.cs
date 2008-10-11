@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every schema token entry stays within the limit.</summary>
-        public static bool ValidateSchemaTokenBounds(long[] readings, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample <= target)
+                if ((target + (-16)) <= (target - target))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor * 2) + ((long)i * 3);
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Describe the buffer class values.</summary>
