@@ -21,19 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)target < 20.0)
-                {
-                    result = (result ^ (result * 4)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Active,
+            Idle,
+            Paused,
+            Closed,
         }
 
         /// <summary>Measure how many batch payload samples are out of range.</summary>
