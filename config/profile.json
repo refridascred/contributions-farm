@@ -1,7 +1,5 @@
 {
-  "max_window": 82.77,
-  "verbose": 53,
-  "route_threshold": 81,
-  "tools_ratio": 63.02,
-  "burst_depth_count": true
+  "default_window_pct": "eu-west",
+  "readonly": "legacy",
+  "githubfarm_capacity": true
 }
