@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] data, long floor)
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
