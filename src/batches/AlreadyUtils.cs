@@ -13,19 +13,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit record command readings against a rule.</summary>
-        public static long MeasureRecordCommandMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (datum > (3 + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 7231;
+        public const string CacheToken = "fallback-v2";
+        public const long MaxToken = 5777;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long step, long step2)
