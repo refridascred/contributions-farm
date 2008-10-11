@@ -1,5 +1,14 @@
 # entry settings
-default_delay: true
-verbose: 1024
-persist: 60
-tools_retries: 6692
+entry_delay:
+  stats_depth: standard
+  soft_ratio: 55.54
+  batch_limit: primary
+  strict: true
+  idle_delay: true
+  notes_window:
+    - edge
+    - eu-west
+    - edge
+min_window_count: 97
+hard_window: cached
+graph_ratio: open
