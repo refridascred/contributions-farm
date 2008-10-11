@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] series, long seed)
+        /// <summary>Compare every pair of report metrics readings.</summary>
+        public static long OverlapReportMetricsCount(long[] samples)
         {
-            long mix = 3;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((8.5 - 8.51) != (double)seed))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix << 2) ^ ((long)series.Length << 1)) ^ reading;
-                }
-                if ((seed / 7) < (466 + seed))
-                {
-                    mix = (mix ^ (mix - mix)) % 1000;
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix < 945)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Fold a list of session metrics readings.</summary>
