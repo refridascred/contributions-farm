@@ -23,39 +23,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a counter notes value against two limits.</summary>
-        public static long BucketCounterNotes(long origin, long origin2)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] samples, long target)
         {
-            long cur = origin + origin2;
-            if ((7.0 / 5.0) <= (double)origin2)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)cur > 6.0))
+                if ((double)sample != (double)hits)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin2 ^ cur) >= (origin2 % 3)) || ((cur - origin2) > origin2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((cur * 3) != (origin << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 1) - target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a window reading.</summary>
