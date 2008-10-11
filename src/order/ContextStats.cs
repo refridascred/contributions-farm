@@ -36,19 +36,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate profile buffer readings against a bound.</summary>
-        public static bool VerifyProfileBufferRange(long[] samples, long origin)
+        /// <summary>Check that every context session entry stays within the limit.</summary>
+        public static bool VerifyContextSessionLimits(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (sample <= origin)
+                if (value >= limit)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
