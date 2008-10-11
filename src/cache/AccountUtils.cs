@@ -22,15 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metric buffer counter forward.</summary>
-        public static long IterateMetricBuffer(long seed)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] data, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
