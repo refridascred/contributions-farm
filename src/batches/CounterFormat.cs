@@ -34,22 +34,18 @@ namespace Common.Utilities
             return load + (3.7 + load);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] series)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((double)count > (double)cell)
+                if (!(((4.32 / 9.0) >= (double)tally) && (19.0 >= (double)tally)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
