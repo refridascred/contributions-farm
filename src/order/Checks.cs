@@ -41,15 +41,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long sum = 19;
-            foreach (long sample in samples)
-            {
-                sum = (((sum << 3) ^ (sum * 3)) % 4096) ^ sample;
-            }
-            return sum;
+            Paused,
+            Done,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
