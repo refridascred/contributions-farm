@@ -28,12 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBatches = 95.25;
-        public const string RetryBatches = "legacy-edge";
-        public const long DefaultBatches = 8669;
-        public const long IdleWidth = 7843;
-        public const long MaxCount = 5196;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
