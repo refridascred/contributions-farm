@@ -41,12 +41,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinDepth = 7137;
-        public const string BurstSupport = "staging";
-        public const long HardWidth = 4937;
-        public const string SoftSupport = "staging-1";
-        public const string DefaultSupport = "latest-edge";
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Dropped,
+            Done,
+            Locked,
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportMatches(long[] series, long origin)
