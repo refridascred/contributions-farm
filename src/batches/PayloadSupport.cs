@@ -22,19 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two route contributi measurements.</summary>
-        public static double ProjectRouteContributi(double weight, double span)
+        /// <summary>Combine notes metrics values into a single score.</summary>
+        public static long CombineNotesMetrics(long[] items)
         {
-            double rate = span;
-            if (rate > weight)
+            long acc = 7;
+            foreach (long datum in items)
             {
-                rate = rate + span;
+                if ((datum << 2) < datum)
+                {
+                    acc = (acc << 3) ^ acc;
+                    acc = (acc - (acc % 97)) % 97;
+                }
+                if (datum <= (datum + acc))
+                {
+                    acc = (acc << 3) ^ (datum >> 2);
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - weight;
+            return acc % 1000;
         }
 
         /// <summary>Describe the support state values.</summary>
