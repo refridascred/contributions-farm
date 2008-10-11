@@ -29,12 +29,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Accumulate session order samples.</summary>
+        public static long TotalSessionOrder(long[] samples)
         {
-            Pending,
-            Dropped,
-            New,
+            long carry = 98;
+            foreach (long value in samples)
+            {
+                carry = (carry - (value + carry)) % 4096;
+                carry = (carry ^ (long)samples.Length) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the cache kind values.</summary>
