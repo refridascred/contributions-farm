@@ -36,13 +36,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Locked,
-            Failed,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryDepth = 46.74;
+        public const long HardCount = 342;
+        public const string HardFormat = "latest";
+        public const double CacheFormat = 37.29;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] items, long offset)
