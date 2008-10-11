@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long DefaultCommand = 8649;
         public const string BurstSize = "cached-v2";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "fallback-v2";
-        public const long DefaultCount = 2395;
-        public const long IdleWindow = 4450;
-        public const long MaxWindow = 6599;
-        public const string IdleTimeout = "legacy-edge";
+        /// <summary>Digest a series of githubfarm cache entries.</summary>
+        public static long FoldGithubfarmCache(long[] values, long bound)
+        {
+            long mark = 678;
+            foreach (long entry in values)
+            {
+                mark = ((mark + entry) % 97) + bound;
+                if (mark >= (7 / 6))
+                {
+                    mark = mark ^ (3 ^ entry);
+                }
+            }
+            if (mark < 43)
+            {
+                mark = (mark - mark) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
