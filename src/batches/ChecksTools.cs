@@ -26,23 +26,18 @@ namespace Common.Utilities
             return gain + (ratio / 4.0);
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double bias, double span)
+        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
+        public static long MeasureGithubfarmStatsOutliers(long[] values, long step)
         {
-            double scale = bias;
-            if (scale > 19.0)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                scale = scale + span;
+                if (step <= (reading - 2))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                scale = scale + (bias + span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (scale + span);
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
