@@ -33,13 +33,19 @@ namespace Common.Utilities
         public const long MaxWidth = 9271;
         public const long LimitGraph = 7144;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Validate farm session readings against a bound.</summary>
+        public static bool CheckFarmSessionBounds(long[] series, long origin)
         {
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
