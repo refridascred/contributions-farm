@@ -1,24 +1,5 @@
 # entry settings
-burst_size_ms:
-  checks_timeout: true
-  route_retries: 52.15
-  format_threshold:
-    - fallback
-    - staging
-    - eu-west
-buffer_interval:
-  retry_threshold:
-    - 438
-    - 165
-    - 388
-  batch_size_ms: 7915
-  sync_threshold_count:
-    - latest
-    - green
-    - fallback
-    - edge
-verbose: 3431
-farm_ratio: false
-flush_window_count:
-  - latest
-  - fallback
+poll_retries: 400
+poll_depth_count: true
+soft_limit_ms: false
+command_retries: 61.3
