@@ -1,6 +1,7 @@
-id,score,state,weight
-1,primary,646,66.66
-2,legacy,684,866
-3,524,60.69,standard
-4,blue,local,7.31
-5,green,77.01,642
+id,token,active
+1,318,47.95
+2,edge,365
+3,217,blue
+4,10.52,cached
+5,standard,746
+6,5.58,225
