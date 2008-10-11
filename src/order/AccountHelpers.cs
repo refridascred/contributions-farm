@@ -42,17 +42,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] levels, long floor)
+        /// <summary>Digest a series of context stats entries.</summary>
+        public static long FoldContextStats(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 28;
+            foreach (long sample in levels)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 3) != 0))
+                if ((sample % 60) < (state + state))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ state) % 255;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Roll a support counter counter forward.</summary>
