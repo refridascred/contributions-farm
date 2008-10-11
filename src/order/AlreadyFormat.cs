@@ -14,21 +14,16 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 4) + total) % 65521;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Match up schema counter samples.</summary>
