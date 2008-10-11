@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Retry,
-            Paused,
-            Closed,
-            Ready,
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
