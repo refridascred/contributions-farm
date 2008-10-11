@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] data, long origin)
         {
-            Pending,
-            Draft,
-            Failed,
-            Closed,
-            Done,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((origin - 6) != (seen % 8))
+                {
+                    seen = (seen + 1) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many counter cluster samples are out of range.</summary>
