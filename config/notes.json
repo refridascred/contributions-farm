@@ -1,12 +1,7 @@
 {
-  "sync_depth_s": 72.67,
-  "compress": {
-    "retry_interval": 857,
-    "entry_interval": true,
-    "hard_timeout": 6175,
-    "strict": false,
-    "profile_retries": 20
-  },
-  "persist": "legacy",
-  "already_ttl": false
+  "batches_timeout": 54.0,
+  "soft_window": "strict",
+  "soft_size": 1146,
+  "max_retries_s": "cached",
+  "warm_threshold": 9277
 }
