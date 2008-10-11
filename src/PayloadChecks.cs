@@ -21,20 +21,11 @@ namespace Common.Utilities
         public const string RetryBudget = "local-v2";
         public const long IdleCount = 4683;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCount = 334;
+        public const string DefaultCache = "latest-1";
+        public const double SoftCache = 97.07;
+        public const long BaseTimeout = 9021;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
