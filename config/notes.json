@@ -1,7 +1,5 @@
 {
-  "audit": 84.22,
-  "default_window_pct": "cached",
-  "min_size_count": "legacy",
-  "strict": "local",
-  "verbose": 43
+  "account_timeout": ["legacy", "blue"],
+  "flush_threshold": true,
+  "base_threshold": 60
 }
