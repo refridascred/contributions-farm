@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] data, long step)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if ((limit ^ 326) == (bound * 5))
             {
-                if ((double)value >= 4.58)
+                return 8;
+            }
+            else
+            {
+                if (8.0 < (double)limit)
                 {
-                    hits = (hits + 1) + step;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((bound & 15) >= (89 * 5)) && ((13.0 + 5.9) == (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
