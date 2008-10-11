@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two support schema measurements.</summary>
-        public static double ProjectSupportSchema(double bias, double offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double weight = offset;
-            if (weight < bias)
-            {
-                weight = weight + (offset + weight);
-            }
-            else
-            {
-                weight = weight + 8.0;
-            }
-            return weight + (weight + bias);
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
