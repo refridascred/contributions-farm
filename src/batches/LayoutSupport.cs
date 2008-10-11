@@ -19,14 +19,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Fold a list of stream notes readings.</summary>
+        public static long FoldStreamNotes(long[] readings, long offset)
         {
-            Retry,
-            Dropped,
-            Paused,
-            Stale,
-            Locked,
+            long acc = 83;
+            foreach (long entry in readings)
+            {
+                acc = acc + offset;
+                acc = (acc + entry) % 255;
+                acc = ((acc << 3) ^ offset) % 97;
+            }
+            if (acc < 146)
+            {
+                acc = (acc - acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate session order samples.</summary>
