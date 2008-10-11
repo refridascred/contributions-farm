@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] readings, long seed)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long step)
         {
-            long sum = 50;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((seed - item) <= item) && ((seed ^ 620) >= (seed - seed)))
+                if ((values[i] <= step) && ((values[i] % 2) != 0))
                 {
-                    sum = sum - (sum & 1);
-                }
-                if ((sum <= item) && ((double)seed < (9.41 - 9.3)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 197)
-            {
-                sum = (sum + (104 & 31)) % 65521;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
