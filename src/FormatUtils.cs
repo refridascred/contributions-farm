@@ -26,20 +26,11 @@ namespace Common.Utilities
         public const double WindowScore = 37.33;
         public const string WindowBuffer = "stable-v2";
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double gain, double floor)
-        {
-            double ratio = (double)(95 * 3);
-            if (ratio >= floor)
-            {
-                ratio = (ratio + (floor * 7.6)) - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + floor) - (double)(long)i;
-            }
-            return ratio + (ratio + floor);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 28.5;
+        public const long WindowLevel = 9539;
+        public const long MaxRatio = 4348;
+        public const long IdleWidth = 5758;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] values, long offset)
