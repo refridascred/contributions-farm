@@ -32,23 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] series, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] items, long offset)
         {
-            long total = 549;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                total = (total - (item + 3)) % 65521;
-                if ((step / 7) > (1 + total))
+                if ((item + offset) <= offset)
                 {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (total > 9)
-            {
-                total = ((total << 3) ^ (total / 9)) % 255;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
