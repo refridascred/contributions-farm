@@ -38,11 +38,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
+            public long Offset { get; set; }
             public long Flag { get; set; }
-            public bool Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
