@@ -1,8 +1,8 @@
 {
-  "readonly": "legacy",
-  "burst_limit_ms": ["latest", "cached", "legacy", "standard"],
-  "flush_interval": 30,
-  "retry_interval": true,
-  "hard_capacity_s": "local",
-  "cache_size_count": 36
+  "strict": 31.66,
+  "hard_ttl_s": "blue",
+  "max_capacity_s": 33,
+  "channel_delay": 99,
+  "warm_size": "local",
+  "burst_ttl": "standard"
 }
