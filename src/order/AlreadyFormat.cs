@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 3158;
-        public const double StepBudget = 21.45;
-        public const long RetryEntry = 3804;
-        public const long HardEntry = 8306;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Idle,
+            Active,
+            Dropped,
+            New,
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long SortMetrics(long limit, long limit2)
