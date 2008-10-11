@@ -39,12 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstDepth = 19.03;
-        public const long BurstContext = 5533;
-        public const long StepContext = 4351;
-        public const long DefaultInterval = 6724;
-        public const long MaxContext = 3143;
+        /// <summary>Find the first channel stats entry that matches the target.</summary>
+        public static long SeekChannelStatsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a tools editor value against two limits.</summary>
         public static long ClassifyToolsEditor(long offset, long seed)
