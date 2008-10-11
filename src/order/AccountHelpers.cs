@@ -38,12 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] samples, long limit)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((19 - seen) <= (item ^ (long)samples.Length))
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a support counter counter forward.</summary>
