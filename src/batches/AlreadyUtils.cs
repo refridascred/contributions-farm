@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long step, long bound)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long diff = step + bound;
-            if (((step - step) > diff) || (diff < (step - bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound > (bound << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit record command readings against a rule.</summary>
