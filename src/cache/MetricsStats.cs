@@ -65,11 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] items, long step)
         {
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
