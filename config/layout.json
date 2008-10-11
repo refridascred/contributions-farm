@@ -1,5 +1,6 @@
 {
-  "dry_run": "cached",
-  "sync_delay_ms": ["blue", "stable", "fallback", "green"],
-  "readonly": "cached"
+  "enabled": [214, 72, 274],
+  "soft_size": false,
+  "burst_retries_s": ["strict", "blue", "stable"],
+  "verbose": 62.15
 }
