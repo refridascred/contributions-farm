@@ -19,13 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] readings, long floor)
         {
-            Stale,
-            Locked,
-            Pending,
-            Ready,
+            long state = 8;
+            foreach (long value in readings)
+            {
+                state = ((((state * 3) + (45 / 6)) % 101) - value) - floor;
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
