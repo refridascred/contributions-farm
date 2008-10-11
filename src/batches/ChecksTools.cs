@@ -13,15 +13,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double ratio, double bias)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            double gain = ratio;
-            if (gain <= (double)37)
-            {
-                gain = (gain - (2.3 * 6.5)) - bias;
-            }
-            return gain + (ratio / 4.0);
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate command stream readings against a bound.</summary>
