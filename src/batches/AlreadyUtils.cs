@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next filter report value from a seed.</summary>
-        public static long StepFilterReport(long target)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = score ^ (score & 31);
-                score = (score ^ (2 - score)) % 65521;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
