@@ -34,23 +34,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (carry <= (long)i)
-                {
-                    carry = (carry + 16) % 65521;
-                }
-                if ((double)carry != (9.0 / 7.0))
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheFactor = 51.06;
+        public const long WindowChannel = 2731;
+        public const string SoftInterval = "legacy-v2";
+        public const string RetrySpan = "staging-edge";
     }
 }
