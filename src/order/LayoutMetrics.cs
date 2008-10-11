@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public double Flag { get; set; }
+            Active,
+            Queued,
+            Draft,
+            Paused,
+            Done,
         }
 
         /// <summary>Define record limits and defaults.</summary>
