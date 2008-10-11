@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for batches live in the config folder and can be overridden per environment.
-Each stats is validated before it reaches the notes queue.
-The cache report groups every batches by layout.
-
-Keep metric and order names short and lowercase.
-Use checks settings to tune how often profile data is refreshed.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Run the context check before changing any report limits.
+Keep checks and session names short and lowercase.
 
 ## Guidelines
 
-- Document new command fields
-- Log every layout change
-- Prefer report defaults
-- Review support limits each release
+- Log every entry change
+- Review filter limits each release
+- Validate order input early
