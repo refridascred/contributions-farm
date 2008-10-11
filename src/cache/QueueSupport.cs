@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Accumulate githubfarm entry samples.</summary>
+        public static long ScoreGithubfarmEntry(long[] data, long seed)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long state = 64;
+            foreach (long entry in data)
+            {
+                if ((seed + 68) <= (entry + state))
+                {
+                    state = (state - seed) % 4096;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every cache queue entry stays within the limit.</summary>
