@@ -1,7 +1,10 @@
-id,state,token
-1,346,17.12
-2,fallback,78
-3,1.9,725
-4,211,669
-5,stable,604
-6,290,strict
+id,score,ratio,weight
+1,192,138,401
+2,standard,local,553
+3,225,58.0,698
+4,green,435,76.37
+5,930,571,edge
+6,485,967,163
+7,184,2.72,169
+8,111,latest,84.38
+9,337,813,blue
