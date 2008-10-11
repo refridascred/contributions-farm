@@ -19,10 +19,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 6888;
-        public const string BatchGraph = "primary-1";
-        public const long BurstGraph = 3454;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the session payload series from a seed.</summary>
         public static long DeriveSessionPayload(long origin)
