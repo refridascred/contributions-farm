@@ -32,18 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((7.2 / 8.0) > (double)seen)
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 2289;
+        public const double MaxLevel = 6.43;
+        public const double DefaultToken = 60.42;
+        public const long HardFactor = 8409;
+        public const long BurstSpan = 2691;
     }
 }
