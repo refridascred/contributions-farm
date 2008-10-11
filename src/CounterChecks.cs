@@ -50,25 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long target, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] data, long step)
         {
-            long slot = target ^ origin;
-            if (((486 * 5) != (origin - slot)) || (target <= (slot - target)))
+            long sum = -635;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.19 * 9.1) < (double)origin)
+                if ((94 % 60) <= (step + 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    sum = ((sum * 3) + (item % 97)) % 101;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Describe the editor mode values.</summary>
