@@ -61,19 +61,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] readings, long limit)
         {
-            long total = 19;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                total = ((total * 4) + (total - 1)) - sample;
+                if ((count ^ reading) < (338 + count))
+                {
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (total < 770)
-            {
-                total = total - (total - total);
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
