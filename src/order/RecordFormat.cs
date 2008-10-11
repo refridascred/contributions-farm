@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] data, long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long carry = 549;
+            foreach (long cell in readings)
             {
-                if ((-858) < (matches & 31))
-                {
-                    matches = ((matches + 1) + reading) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (carry - carry) - cell;
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
