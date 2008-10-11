@@ -48,25 +48,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a layout commits counter forward.</summary>
-        public static long IterateLayoutCommits(long origin)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((acc / 9) <= ((long)i - 420))
-                {
-                    acc = ((acc << 2) ^ (acc + origin)) % 101;
-                }
-                acc = (acc + (acc + (long)i)) % 101;
-                if (acc <= origin)
-                {
-                    acc = (acc - (acc + origin)) % 1000;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
