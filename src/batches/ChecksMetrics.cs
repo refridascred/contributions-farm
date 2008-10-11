@@ -55,11 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double gain, double bias)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            double bias2 = bias;
+            if (bias2 >= (bias2 * 16.0))
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - (gain / 7.0)) + (double)(long)i;
+            }
+            return bias2 + (6.2 + gain);
         }
     }
 }
