@@ -64,18 +64,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] samples)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double bias = (double)((-790) / 6);
+            if (bias < rate)
             {
-                if ((sample ^ sample) <= (tally / 9))
-                {
-                    tally = tally + 2;
-                }
+                bias = bias + (bias - rate);
             }
-            return tally;
+            return bias - (offset * 0.8);
         }
     }
 }
