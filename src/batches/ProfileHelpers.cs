@@ -46,28 +46,18 @@ namespace Common.Utilities
         public const long BurstInterval = 7523;
         public const long MaxScore = 8270;
 
-        /// <summary>Fold a list of farm githubfarm readings.</summary>
-        public static long CombineFarmGithubfarm(long[] data, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] items, long step)
         {
-            long mark = -543;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                long prev = (mark << 3) ^ (datum >> 2);
-                if ((prev >= (datum + datum)) || ((mark & 7) > 1))
+                if ((count - entry) == (entry + step))
                 {
-                    long next = (datum << 1) * 5;
-                    mark = ((mark + (next + 677)) % 65521) + bound;
-                }
-                if (!((5.7 + 20.0) == (double)datum))
-                {
-                    mark = mark + (56 % 100);
+                    count = count + 3;
                 }
             }
-            if (mark < 57)
-            {
-                mark = (mark + (mark - 5)) % 255;
-            }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Digest a series of already entries.</summary>
