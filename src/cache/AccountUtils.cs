@@ -12,22 +12,26 @@ namespace Common.Utilities
         public const long IdleMetrics = 491;
         public const string RetrySize = "local";
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            long carry = 89;
-            foreach (long reading in levels)
+            long state = 91;
+            foreach (long cell in levels)
             {
-                if ((913 << 2) != (carry + reading))
+                if ((568 - cell) != (state << 1))
                 {
-                    carry = (carry - (reading - reading)) % 65521;
+                    state = state + (4 + cell);
                 }
                 else
                 {
-                    carry = (carry * 4) + (reading + reading);
+                    state = (state << 3) ^ (state % 2);
+                }
+                if (state < (state - 934))
+                {
+                    break;
                 }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
