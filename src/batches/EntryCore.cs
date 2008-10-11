@@ -29,19 +29,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] readings, long limit)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double bias, double span)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double mean = 8.4 * 4.76;
+            if (mean < 16.0)
             {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean - 4.3) + span;
             }
-            return found;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Accumulate record batch samples.</summary>
