@@ -22,11 +22,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 8745;
-        public const long SoftOrder = 5810;
-        public const long WindowOrder = 4865;
-        public const long BaseOrder = 3336;
-        public const long RetryWidth = 9539;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
