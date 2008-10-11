@@ -20,13 +20,23 @@ namespace Common.Utilities
             return mean - (gain * 8.5);
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double scale, double bias)
         {
-            Dropped,
-            Ready,
-            Failed,
-            Synced,
+            double bias2 = (double)(675 + 593);
+            if (bias2 > bias)
+            {
+                bias2 = (bias2 + bias2) - scale;
+            }
+            else
+            {
+                bias2 = bias2 - (bias2 - bias2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - 3.0) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
