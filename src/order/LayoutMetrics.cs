@@ -14,15 +14,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] samples, long floor)
         {
-            long acc = 93;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 3) + ((long)samples.Length ^ acc)) ^ item;
+                if ((11 + tally) < (tally << 2))
+                {
+                    tally = ((tally + 1) - datum) - floor;
+                }
             }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
