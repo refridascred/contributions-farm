@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long floor)
         {
-            long state = 538;
-            foreach (long cell in data)
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (61 <= (state + (long)data.Length))
-                {
-                    state = (state << 3) ^ (cell - state);
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return state % 4096;
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
