@@ -36,24 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long origin, long floor)
+        /// <summary>Accumulate batches window samples.</summary>
+        public static long DigestBatchesWindow(long[] series)
         {
-            if (((floor + (-50)) == (88 + 1)) && (55 >= floor))
+            long state = 42;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((9 << 2) > (floor + floor)))
+                state = (state ^ (datum - state)) % 101;
+                state = (state << 2) ^ (state * 4);
+                state = state - (state - datum);
+                if (((datum + datum) > datum) && ((double)datum <= (double)state))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
