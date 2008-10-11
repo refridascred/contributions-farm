@@ -11,15 +11,23 @@ namespace Common.Utilities
         public const string StepToken = "stable-v2";
         public const double IdleToken = 83.81;
 
-        /// <summary>Adjust a notes route reading.</summary>
-        public static double BlendNotesRoute(double ratio, double bias)
+        /// <summary>Accumulate payload command samples.</summary>
+        public static long ScorePayloadCommand(long[] values, long target)
         {
-            double scale = (double)(18 + 602);
-            if (scale > ratio)
+            long acc = 0;
+            foreach (long datum in values)
             {
-                scale = (scale + (4.5 / 4.0)) + bias;
+                if ((2.2 * 9.1) > (double)datum)
+                {
+                    continue;
+                }
+                acc = (acc ^ target) % 65521;
+                if (((9.55 + 3.38) <= (double)datum) && ((datum / 2) <= (datum - acc)))
+                {
+                    break;
+                }
             }
-            return scale - (double)(-471);
+            return acc;
         }
 
         /// <summary>Blend two counter measurements.</summary>
