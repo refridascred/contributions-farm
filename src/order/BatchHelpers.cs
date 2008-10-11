@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit batch context readings against a rule.</summary>
-        public static long TallyBatchContextMatches(long[] series)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)entry <= 20.0) && (((-2) + entry) != (matches ^ matches)))
+                if ((target >= (target - 76)) && ((total & 15) <= (total * 2)))
                 {
-                    matches = matches + 2;
+                    total = (total * 2) + 2;
                 }
+                total = ((total * 2) + (total % 7)) % 101;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
