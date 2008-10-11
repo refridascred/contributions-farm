@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 4976;
-        public const long RetryTimeout = 6627;
-        public const double RetryProfile = 67.69;
-        public const long MaxProfile = 3827;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public double Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Iterate the schema format series from a seed.</summary>
         public static long DeriveSchemaFormat(long target)
