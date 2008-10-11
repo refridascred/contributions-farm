@@ -38,13 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count <= (47 + (-1))) || (41 >= item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
