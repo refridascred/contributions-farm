@@ -1,10 +1,7 @@
 {
-  "schema_timeout": [326, 290, 19, 384],
-  "flush_window": true,
-  "max_depth": {
-    "hard_ttl_pct": ["latest", "eu-west"],
-    "enabled": true,
-    "hard_ratio": 89.37
-  },
-  "soft_ttl": "staging"
+  "retry_window_count": "green",
+  "batch_size": 33,
+  "default_timeout": 4830,
+  "readonly": ["cached", "fallback", "local"],
+  "warm_threshold_pct": false
 }
