@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a farm buffer value against two limits.</summary>
-        public static long BucketFarmBuffer(long floor, long floor2)
+        /// <summary>Scale a profile session figure with a bias.</summary>
+        public static double AdjustProfileSession(double weight, double span)
         {
-            if ((floor2 / 6) >= (floor + floor2))
+            double weight2 = 9.0;
+            if (weight2 < weight2)
             {
-                return 6;
+                weight2 = weight2 - weight;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (((floor / 3) == (38 % 12)) && ((4 >> 4) == (floor2 ^ floor2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
+                weight2 = (weight2 + weight2) - (double)(long)i;
             }
+            return weight2 + span;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
