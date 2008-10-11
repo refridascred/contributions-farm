@@ -1,11 +1,8 @@
 # support settings
-batch_capacity:
-  - latest
-  - green
-hard_threshold_s:
-  - local
-  - local
-  - strict
-  - latest
-sync_window_count: 69.76
-readonly: stable
+order_interval: 97
+contributi_timeout: eu-west
+batch_delay_ms:
+  filter_ratio: 100
+  retry_retries_pct: 8350
+  soft_capacity: 89.04
+warm_depth_count: cached
