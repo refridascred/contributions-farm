@@ -60,19 +60,9 @@ namespace Common.Utilities
         public const long CacheStream = 8031;
         public const string LimitStream = "strict-v2";
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 9913;
+        public const long BurstGithubfarm = 672;
+        public const long RetryGithubfarm = 2999;
     }
 }
