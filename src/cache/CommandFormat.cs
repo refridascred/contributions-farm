@@ -12,18 +12,13 @@ namespace Common.Utilities
             return (ratio - (double)402) + floor;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] series)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - count) >= (count >> 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a support options.</summary>
