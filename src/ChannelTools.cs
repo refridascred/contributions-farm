@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] values, long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)22 / 4.0;
+            if (bias <= (double)702)
             {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
+                bias = (bias - offset) - weight;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (offset / 3.0);
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
