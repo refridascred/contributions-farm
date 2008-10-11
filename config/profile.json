@@ -1,10 +1,13 @@
 {
-  "format_window": 2011,
-  "dry_run": 68.75,
-  "soft_interval": {
-    "profile_window": 2181,
-    "persist": "legacy",
-    "idle_limit_count": "primary",
-    "min_window": false
-  }
+  "batch_threshold_pct": "standard",
+  "audit": [50, 272, 323, 238],
+  "burst_interval_ms": "strict",
+  "cache_delay_pct": {
+    "cache_delay": 9307,
+    "hard_timeout": "cached",
+    "graph_ttl": [262, 189, 21, 236],
+    "context_ttl": "legacy",
+    "enabled": "green"
+  },
+  "notes_interval": 95.36
 }
