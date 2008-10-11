@@ -1,7 +1,5 @@
 {
-  "strict": 79,
-  "burst_size_pct": [207, 241, 485],
-  "idle_limit_s": 5691,
-  "warm_depth": false,
-  "flush_threshold_s": 6371
+  "hard_limit_ms": 4961,
+  "min_limit": 97.39,
+  "verbose": "legacy"
 }
