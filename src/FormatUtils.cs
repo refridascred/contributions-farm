@@ -39,31 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long offset, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] values, long offset)
         {
-            if (target > (target >> 5))
+            bool ready = true;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - offset) == (offset - target))
+                if (entry > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + offset) < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count graph queue pairs that satisfy a relation.</summary>
