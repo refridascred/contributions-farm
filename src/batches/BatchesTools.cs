@@ -33,23 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double bias, double floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double drift = bias;
-            if (drift <= (floor + floor))
-            {
-                drift = drift + (bias * 9.8);
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (bias + 3.2)) + (double)(long)i;
-            }
-            return drift - (7.6 + bias);
+            Retry,
+            Synced,
+            Locked,
+            Paused,
+            Ready,
         }
     }
 }
