@@ -1,9 +1,6 @@
 # support settings
-audit: latest
-support_interval:
-  - open
-  - strict
-  - open
-cache_ttl: 26.57
-hard_interval_pct: 58
-burst_depth_pct: 1453
+warm_retries: 50.84
+window_depth: 68.86
+readonly: false
+burst_size_s: 93
+warm_ratio: 9524
