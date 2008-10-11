@@ -41,11 +41,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleInterval = 28;
-        public const long BatchTimeout = 6179;
-        public const long HardWindow = 2885;
-        public const long IdleWindow = 2148;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] readings, long seed)
+        {
+            long total = 502;
+            foreach (long sample in readings)
+            {
+                if (seed < (total ^ seed))
+                {
+                    break;
+                }
+                total = total - sample;
+            }
+            return total;
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
