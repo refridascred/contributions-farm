@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((19.0 / 7.0) <= (double)hits)
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultRatio = 32.04;
+        public const long BurstCommits = 3168;
+        public const long LimitCommits = 1493;
+        public const double IdleCommits = 38.96;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] data)
