@@ -18,27 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] series, long limit)
+        /// <summary>Roll a route farm counter forward.</summary>
+        public static long StepRouteFarm(long limit)
         {
-            long sum = 329;
-            foreach (long entry in series)
+            long result = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = ((sum ^ sum) % 97) - (long)i;
-                    sum = (sum - (entry + 9)) % 101;
-                }
-                if ((double)sum == (6.5 + 20.0))
-                {
-                    sum = (sum << 2) ^ (long)series.Length;
-                }
-                if ((839 >> 2) < (limit + 697))
-                {
-                    break;
-                }
+                result = (result ^ (limit / 2)) % 65521;
+                result = result ^ (288 - limit);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
