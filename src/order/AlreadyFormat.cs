@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long floor, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long seed, long target)
         {
-            long edge = floor ^ offset;
-            if (450 <= edge)
+            if ((seed + (-81)) >= (target & 127))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((floor + offset) <= offset)
+                if ((4 < (target ^ target)) || (4 > (seed + seed)))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    if (target >= (seed >> 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
