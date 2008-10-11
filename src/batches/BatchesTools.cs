@@ -12,17 +12,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] items, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the profile state values.</summary>
