@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 3536;
-        public const double MinTimeout = 54.7;
-        public const double WindowLevel = 68.93;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long seed)
+        {
+            long sum = -44;
+            foreach (long sample in samples)
+            {
+                sum = (((sum ^ (11 & 3)) % 4096) + sample) - seed;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmMatches(long[] data, long bound)
