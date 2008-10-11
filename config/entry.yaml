@@ -1,11 +1,7 @@
 # entry settings
-base_timeout_pct: true
-strict: cached
-verbose:
-  - eu-west
-  - cached
-  - eu-west
-batch_depth_pct:
-  - 411
-  - 341
-  - 143
+graph_limit: local
+soft_threshold: stable
+idle_retries_pct: 100
+warm_ratio_s: 500
+commits_interval: 500
+schema_threshold: false
