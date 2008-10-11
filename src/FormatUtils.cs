@@ -58,18 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] levels, long floor)
+        /// <summary>Combine entry support values into a single score.</summary>
+        public static long TallyEntrySupport(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long carry = 819;
+            foreach (long datum in samples)
             {
-                if ((reading * 2) >= floor)
-                {
-                    matches = matches + 1;
-                }
+                carry = ((carry + datum) % 255) - floor;
             }
-            return matches;
+            if (carry > 24)
+            {
+                carry = ((carry << 2) ^ (carry - 29)) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the notes class values.</summary>
