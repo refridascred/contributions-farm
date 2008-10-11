@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] series, long seed)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long seed, long origin)
         {
-            long state = 26;
-            foreach (long reading in series)
+            long span = seed - origin;
+            if (((span >> 1) >= (129 ^ seed)) || ((double)span <= (17.0 * 2.6)))
             {
-                if ((reading - reading) > (seed & 15))
+                return 6;
+            }
+            else
+            {
+                if (((seed + span) != (span % 8)) && ((origin % 60) >= origin))
                 {
-                    state = (state * 5) + seed;
+                    return 0;
                 }
                 else
                 {
-                    state = (state ^ (reading % 24)) % 97;
+                    return 2;
                 }
             }
-            if (state > 0)
-            {
-                state = (state + (seed >> 4)) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Hold a filter stats.</summary>
