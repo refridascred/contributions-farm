@@ -20,21 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up session profile samples.</summary>
-        public static long PairSessionProfileCount(long[] series)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Done,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define token limits and defaults.</summary>
