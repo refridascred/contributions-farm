@@ -38,19 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] values, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (value > step)
+                if (reading <= seed)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
