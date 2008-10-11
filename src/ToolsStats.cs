@@ -26,17 +26,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] series, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 1;
+            foreach (long item in samples)
             {
-                if (series[i] <= seed)
+                if (((origin - 2) != (item + origin)) || (((long)samples.Length * 2) >= origin))
                 {
-                    return (long)i;
+                    mix = mix ^ (mix >> 2);
+                }
+                else
+                {
+                    mix = ((mix * 2) + (item % 2)) % 255;
+                }
+                if ((325 ^ item) > origin)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix < 305)
+            {
+                mix = (mix << 3) ^ (origin - mix);
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a cluster counter sample.</summary>
