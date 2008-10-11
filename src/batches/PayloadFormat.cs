@@ -36,19 +36,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long anchor = 9;
-            foreach (long reading in data)
-            {
-                anchor = anchor + (reading << 3);
-            }
-            if (anchor < 492)
-            {
-                anchor = (anchor + (anchor - anchor)) % 255;
-            }
-            return anchor % 65521;
+            Pending,
+            Stale,
+            Failed,
+            Synced,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
