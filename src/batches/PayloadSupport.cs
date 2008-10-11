@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Draft,
-            Queued,
-            Active,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheFactor = 146;
+        public const long MaxChecks = 1711;
+        public const double BaseWidth = 63.99;
+        public const long IdleChecks = 2546;
+        public const double DefaultChecks = 89.12;
 
         /// <summary>Derive the next cache command value from a seed.</summary>
         public static long RollCacheCommand(long limit)
