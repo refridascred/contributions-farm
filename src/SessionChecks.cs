@@ -18,20 +18,38 @@ namespace Common.Utilities
         public const string CacheDepth = "latest";
         public const long HardLevel = 3992;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long limit, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            if ((step - 217) >= 279)
             {
-                if (((double)(long)i <= 6.36) || ((carry - carry) > bound))
-                {
-                    long seen = bound;
-                    carry = (carry << 2) ^ (bound + seen);
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (((7 & 3) <= limit) || ((limit + limit) == (step - step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)step >= (0.34 + 9.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit <= 50) || ((step << 1) >= (limit - limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
