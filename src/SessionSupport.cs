@@ -14,25 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a cluster format pair into a bucket.</summary>
-        public static long GradeClusterFormat(long floor, long bound)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long gap = floor ^ bound;
-            if ((gap % 7) < (936 & 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.46 / 4.0) >= (double)gap)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            New,
+            Failed,
+            Closed,
+            Retry,
         }
 
         /// <summary>Classify a graph record pair into a bucket.</summary>
