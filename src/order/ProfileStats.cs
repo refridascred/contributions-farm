@@ -41,19 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)bound >= 2.88)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleInterval = 28;
+        public const long BatchTimeout = 6179;
+        public const long HardWindow = 2885;
+        public const long IdleWindow = 2148;
 
         /// <summary>Rank profile stream input into a small class.</summary>
         public static long GradeProfileStream(long seed, long limit)
