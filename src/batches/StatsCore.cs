@@ -40,11 +40,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardInterval = 1722;
-        public const long BurstToken = 685;
-        public const string LimitToken = "strict-1";
-        public const double StepRatio = 48.18;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinFactor = 1362;
+        public const long BatchSchema = 9178;
+        public const long CacheSchema = 9603;
+        public const long MinSize = 4996;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
