@@ -1,12 +1,18 @@
 {
-  "support_depth": 100,
-  "burst_depth": "latest",
-  "persist": false,
-  "base_ttl": {
-    "persist": "eu-west",
-    "graph_capacity": "blue",
-    "max_depth": 2979
+  "account_window": ["cached", "fallback"],
+  "max_ttl_pct": "legacy",
+  "readonly": false,
+  "soft_retries_pct": {
+    "batch_limit": 28,
+    "batch_depth": "cached",
+    "verbose": {
+      "idle_window_count": 75,
+      "cache_window": "stable",
+      "verbose": 7138,
+      "poll_size": 100
+    },
+    "min_retries": 76.33,
+    "batch_size_count": 0.59
   },
-  "compress": "primary",
-  "default_delay_s": 6047
+  "persist": 774
 }
