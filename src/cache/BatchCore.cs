@@ -28,21 +28,18 @@ namespace Common.Utilities
         public const long BurstMetrics = 8596;
         public const long SoftMetrics = 1859;
 
-        /// <summary>Compare every pair of contributi token readings.</summary>
-        public static long PairContributiTokenCount(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 111;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)value < 8.74)
                 {
-                    if ((data[i] ^ data[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum * 4) + (57 >> 3)) % 1000;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the checks status values.</summary>
