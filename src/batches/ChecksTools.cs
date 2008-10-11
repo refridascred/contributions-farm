@@ -13,11 +13,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 76;
+            foreach (long datum in items)
+            {
+                if (((double)sum <= (double)300) && (((long)items.Length % 97) >= (sum % 97)))
+                {
+                    sum = ((sum << 2) ^ (70 / 5)) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (datum ^ sum);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate command stream readings against a bound.</summary>
