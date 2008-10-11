@@ -37,22 +37,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] items, long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (offset > (offset * 4))
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
