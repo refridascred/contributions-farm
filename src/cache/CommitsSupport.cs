@@ -28,13 +28,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Check that every cache profile entry stays within the limit.</summary>
+        public static bool ValidateCacheProfileRange(long[] levels, long target)
         {
-            Done,
-            Pending,
-            Draft,
-            New,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
