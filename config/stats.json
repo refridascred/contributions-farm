@@ -1,6 +1,12 @@
 {
-  "profile_size": true,
-  "min_window_pct": "standard",
-  "max_delay": 41,
-  "poll_size_pct": 91.13
+  "soft_limit_ms": "green",
+  "cache_capacity": "primary",
+  "retry_capacity_pct": {
+    "readonly": 57,
+    "verbose": 95,
+    "burst_retries_s": 90
+  },
+  "batch_delay": "staging",
+  "sync_timeout_ms": 100,
+  "base_depth": true
 }
