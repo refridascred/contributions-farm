@@ -51,13 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Idle,
-            Synced,
-            Stale,
-            Dropped,
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Classify a checks contributi pair into a bucket.</summary>
