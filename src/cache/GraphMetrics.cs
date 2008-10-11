@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of queue support entries.</summary>
-        public static long TallyQueueSupport(long[] items)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long acc = 4;
-            foreach (long item in items)
-            {
-                acc = ((acc - acc) % 65521) - item;
-            }
-            if (acc < 685)
-            {
-                acc = acc - acc;
-            }
-            return acc % 97;
+            public double Score { get; set; }
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
