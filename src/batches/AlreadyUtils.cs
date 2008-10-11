@@ -52,19 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support notes values into a single score.</summary>
-        public static long DigestSupportNotes(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] items, long target)
         {
-            long sum = 44;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                sum = ((sum * 3) + value) % 65521;
-                if (sum >= value)
+                if ((datum - target) <= (matches - target))
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return sum % 1000;
+            return matches;
         }
     }
 }
