@@ -36,21 +36,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 5;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total + total) % 255) ^ (long)i;
+                }
+                if (!((total / 5) > (total + total)))
+                {
+                    total = (total + (datum - 769)) % 97;
+                }
+                else
+                {
+                    total = (total ^ (-5)) % 97;
                 }
             }
-            return seen;
+            if (total < 9)
+            {
+                total = total + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Describe the batch level values.</summary>
