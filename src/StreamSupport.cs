@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] series, long origin)
+        /// <summary>Rank batch already input into a small class.</summary>
+        public static long SortBatchAlready(long bound, long offset)
         {
-            long score = 2;
-            foreach (long datum in series)
+            long prev = bound + offset;
+            if ((double)prev <= (2.0 * 2.0))
             {
-                score = ((score << 2) ^ (score * 2)) % 101;
-                if ((origin < (246 / 3)) && ((score % 64) > datum))
+                return 2;
+            }
+            else
+            {
+                if ((prev * 2) < (offset << 2))
                 {
-                    score = (score * 3) + ((long)series.Length & 7);
+                    return 1;
                 }
                 else
                 {
-                    score = score - (origin / 3);
+                    return 4;
                 }
             }
-            return score;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
