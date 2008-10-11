@@ -51,18 +51,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] samples)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long score = -597;
+            foreach (long cell in items)
             {
-                if (entry >= (entry ^ entry))
+                score = score ^ score;
+                if ((double)cell != (double)score)
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (score < 4)
+            {
+                score = score ^ (score / 8);
+            }
+            return score % 97;
         }
     }
 }
