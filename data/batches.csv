@@ -1,7 +1,10 @@
-id,token,active
-1,318,47.95
-2,edge,365
-3,217,blue
-4,10.52,cached
-5,standard,746
-6,5.58,225
+id,weight,token,owner
+1,primary,72.69,717
+2,34.25,green,cached
+3,7.46,727,19.81
+4,staging,strict,422
+5,73.61,35.75,1.39
+6,45.37,571,66
+7,65.16,537,56
+8,72.14,blue,standard
+9,56.15,latest,705
