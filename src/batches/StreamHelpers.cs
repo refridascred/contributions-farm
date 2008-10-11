@@ -79,39 +79,14 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long step, long step2)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long span = step ^ step2;
-            if (step <= span)
-            {
-                return 0;
-            }
-            else
-            {
-                if (span >= (0 & 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((98 >> 3) == (420 + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step >= (step2 >> 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Ready,
+            Draft,
+            Pending,
+            Queued,
         }
     }
 }
