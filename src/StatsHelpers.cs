@@ -37,17 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = (sum * 3) + (939 % 7);
-                sum = sum ^ ((long)i + 8);
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
