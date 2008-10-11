@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] data)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item * 3) > item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a entry info.</summary>
