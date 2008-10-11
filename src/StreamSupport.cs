@@ -24,14 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Closed,
-            Ready,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 2976;
+        public const long BatchLevel = 7744;
+        public const string WindowLevel = "latest";
+        public const long LimitMetrics = 1182;
+        public const double CacheInterval = 56.12;
 
         /// <summary>Accumulate route samples.</summary>
         public static long WeighRoute(long[] data, long bound)
