@@ -1,4 +1,5 @@
 # support settings
-poll_ratio_ms: 29.02
-editor_size: 77
-cache_ratio_pct: cached
+editor_capacity: 51.56
+sync_retries: 1024
+base_interval_pct: true
+min_limit_count: 8105
