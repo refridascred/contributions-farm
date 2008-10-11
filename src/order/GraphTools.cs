@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the schema status values.</summary>
