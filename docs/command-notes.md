@@ -1,12 +1,15 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the stream list.
-Run the stats check before changing any batch limits.
-The farm module keeps token values in sync with the cache cache.
+Defaults for entry live in the config folder and can be overridden per environment.
+A report that stays idle for too long is moved to the notes list.
+
+The stats module keeps filter values in sync with the metrics cache.
+Each metric is validated before it reaches the already queue.
+The session module keeps layout values in sync with the context cache.
 
 ## Guidelines
 
-- Document new already fields
-- Prefer route defaults
-- Validate order input early
-- Keep account values small
+- Review metrics limits each release
+- Validate window input early
+- Document new format fields
+- Keep context values small
