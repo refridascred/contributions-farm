@@ -76,11 +76,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 55.95;
-        public const long CacheRoute = 4395;
-        public const double BurstBudget = 91.78;
-        public const long MinInterval = 9774;
-        public const long BaseScore = 6831;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix << 3) ^ (long)i) % 65521;
+                mix = (mix - (bound + mix)) % 4096;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
