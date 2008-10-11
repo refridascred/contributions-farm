@@ -31,19 +31,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((seed >> 2) >= (reading * 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinRatio = 6914;
+        public const long BaseSpan = 8109;
+        public const long HardCluster = 9971;
+        public const long StepSize = 1706;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] data)
