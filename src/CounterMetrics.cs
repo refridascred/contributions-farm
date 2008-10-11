@@ -19,17 +19,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] data, long seed)
+        /// <summary>Grade a counter notes value against two limits.</summary>
+        public static long BucketCounterNotes(long origin, long origin2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = origin + origin2;
+            if ((7.0 / 5.0) <= (double)origin2)
             {
-                if (data[i] < seed)
+                return 5;
+            }
+            else
+            {
+                if (!((double)cur > 6.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((origin2 ^ cur) >= (origin2 % 3)) || ((cur - origin2) > origin2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((cur * 3) != (origin << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
