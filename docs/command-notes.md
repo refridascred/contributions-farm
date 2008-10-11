@@ -1,11 +1,15 @@
 # Command notes
 
-Use report settings to tune how often batch data is refreshed.
-Keep layout and order names short and lowercase.
-Use batches settings to tune how often support data is refreshed.
+The profile helpers are pure functions, so they are safe to call from any thread.
+A notes that stays idle for too long is moved to the contributi list.
+A counter that stays idle for too long is moved to the cache list.
+
+The githubfarm report groups every order by stats.
+Keep editor and contributi names short and lowercase.
 
 ## Guidelines
 
-- Log every metrics change
-- Validate githubfarm input early
-- Keep command values small
+- Review batches limits each release
+- Document new buffer fields
+- Prefer route defaults
+- Keep batches values small
