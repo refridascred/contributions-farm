@@ -13,13 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Project the next context already value.</summary>
+        public static double AdjustContextAlready(double bias, double floor)
         {
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            double rate = floor;
+            return (rate + floor) + bias;
         }
 
         /// <summary>Project the next tools value.</summary>
