@@ -20,18 +20,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] levels)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((26 <= (44 - item)) || !((687 + item) >= item))
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a filter info.</summary>
