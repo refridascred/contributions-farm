@@ -1,7 +1,10 @@
-id,active,region,owner
-1,local,93,352
-2,98,78.67,16
-3,37.35,88.21,65.36
-4,eu-west,614,3.26
-5,stable,18.46,680
-6,353,925,open
+id,token,active,owner,state
+1,82.11,78.58,20.31,251
+2,378,50.99,staging,103
+3,stable,stable,48.87,strict
+4,fallback,223,506,open
+5,887,23,2.11,815
+6,40,primary,13.63,79.58
+7,eu-west,54,908,edge
+8,985,18.94,eu-west,37.63
+9,81.73,316,741,5.19
