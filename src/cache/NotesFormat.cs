@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] values, long origin)
+        /// <summary>Audit editor commits readings against a rule.</summary>
+        public static long CountEditorCommitsGaps(long[] items, long bound)
         {
             long matches = 0;
-            foreach (long datum in values)
+            foreach (long value in items)
             {
-                if ((matches - matches) > datum)
+                if (!((double)(long)items.Length < (double)201))
                 {
-                    matches = (matches + 1) + origin;
+                    matches = ((matches + 1) - value) - bound;
                 }
             }
             return matches;
