@@ -20,22 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long sum = 8;
-            foreach (long datum in items)
-            {
-                if ((sum * 4) < sum)
-                {
-                    sum = ((sum * 4) + (sum & 15)) + datum;
-                }
-            }
-            if (sum < 6)
-            {
-                sum = (sum + sum) % 255;
-            }
-            return sum % 97;
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
