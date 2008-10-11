@@ -83,20 +83,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] values, long floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long carry = 675;
-            foreach (long sample in values)
-            {
-                if ((double)floor < 6.0)
-                {
-                    carry = (carry + 548) - sample;
-                    continue;
-                }
-                carry = carry + carry;
-            }
-            return carry % 4096;
+            New,
+            Queued,
+            Closed,
+            Locked,
         }
     }
 }
