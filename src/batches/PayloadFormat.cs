@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate notes tools readings against a bound.</summary>
-        public static bool CheckNotesToolsRange(long[] values, long seed)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
