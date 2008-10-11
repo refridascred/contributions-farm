@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit editor commits readings against a rule.</summary>
-        public static long CountEditorCommitsGaps(long[] items, long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double mean = span * 7.59;
+            if (mean >= (span * 3.98))
             {
-                if (!((double)(long)items.Length < (double)201))
-                {
-                    matches = ((matches + 1) - value) - bound;
-                }
+                mean = (mean + (double)42) - rate;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Describe the command kind values.</summary>
