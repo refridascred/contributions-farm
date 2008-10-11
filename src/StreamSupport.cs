@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] readings, long origin)
         {
-            long total = 42;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((item - (-163)) < (item - (long)samples.Length))
+                if (((seen + seen) != (seen >> 2)) && ((origin + 1) > (origin << 3)))
                 {
-                    total = (total * 4) + (item + total);
-                }
-                if ((item * 5) != (total % 16))
-                {
-                    break;
+                    seen = (seen + 3) + value;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
