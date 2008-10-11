@@ -1,11 +1,15 @@
 # Command notes
 
-Each notes is validated before it reaches the entry queue.
-The command report groups every editor by route.
-A contributi that stays idle for too long is moved to the metric list.
+Each context is validated before it reaches the entry queue.
+When a order fails, the metrics handler retries a few times before giving up.
+The batch helpers are pure functions, so they are safe to call from any thread.
+
+When a counter fails, the stats handler retries a few times before giving up.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new notes fields
-- Validate order input early
-- Prefer batch defaults
+- Log every buffer change
+- Document new buffer fields
+- Validate record input early
+- Prefer payload defaults
