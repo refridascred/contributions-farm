@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Done,
+            Paused,
+            Retry,
             Locked,
-            Dropped,
         }
 
         /// <summary>Rank farm already input into a small class.</summary>
