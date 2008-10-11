@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many contributi format samples are out of range.</summary>
-        public static long MeasureContributiFormatHits(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (matches <= (matches + bound))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftBudget = "standard-edge";
+        public const double StepCount = 70.6;
+        public const long LimitLevel = 7863;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelHits(long[] values)
