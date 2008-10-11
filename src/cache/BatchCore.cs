@@ -29,12 +29,23 @@ namespace Common.Utilities
         public const double MinReport = 52.22;
         public const string BurstTimeout = "latest-1";
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double rate, double bias)
         {
-            Locked,
-            Ready,
-            Pending,
+            double rate2 = 7.3;
+            if (rate2 >= (double)99)
+            {
+                rate2 = (rate2 + rate2) - rate;
+            }
+            else
+            {
+                rate2 = rate2 - (bias + bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 - (rate2 - rate2)) + (double)(long)i;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Describe the checks status values.</summary>
