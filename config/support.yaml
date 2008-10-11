@@ -1,11 +1,8 @@
 # support settings
-base_timeout_pct:
-  - 42
-  - 25
-  - 485
-  - 47
-hard_limit: primary
-cache_ttl: fallback
-base_timeout: true
-batch_depth: primary
-persist: 500
+record_window: 4986
+farm_limit: true
+flush_window_s: 1024
+flush_retries_count:
+  persist: blue
+  retry_ttl: 9257
+  graph_capacity: strict
