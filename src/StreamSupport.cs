@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "primary-v2";
-        public const long IdleGithubfarm = 4226;
-        public const string MinGithubfarm = "cached";
-        public const long WindowBudget = 4130;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Dropped,
+            Pending,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandHits(long[] series)
