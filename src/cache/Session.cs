@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] samples, long limit)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
