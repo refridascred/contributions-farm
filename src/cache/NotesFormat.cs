@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] values, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long anchor = 53;
+            foreach (long cell in data)
             {
-                if (cell >= step)
+                if ((origin - cell) <= anchor)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor << 3) ^ (cell / 9);
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Blend two batch measurements.</summary>
