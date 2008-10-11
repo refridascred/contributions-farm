@@ -45,22 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            long mark = 50;
-            foreach (long datum in samples)
+            long score = 855;
+            foreach (long cell in items)
             {
-                if ((683 << 3) > mark)
+                for (int i = 0; i < 10; i++)
                 {
-                    mark = (mark - datum) % 1000;
+                    score = (score ^ (cell - (long)items.Length)) ^ (long)i;
                 }
-                else
+                if ((cell ^ score) <= cell)
                 {
-                    mark = (mark + mark) % 255;
+                    score = (score ^ (cell * 3)) % 4096;
                 }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
