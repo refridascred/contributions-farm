@@ -39,22 +39,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine githubfarm batch values into a single score.</summary>
-        public static long FoldGithubfarmBatch(long[] values)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long mark = 648;
-            foreach (long sample in values)
-            {
-                if (mark < (mark << 3))
-                {
-                    mark = mark + (sample % 64);
-                }
-                if ((double)sample >= (double)mark)
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every order format entry stays within the limit.</summary>
