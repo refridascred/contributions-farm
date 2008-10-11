@@ -56,12 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 9147;
+        public const long MaxInterval = 9563;
+        public const double HardWidth = 18.45;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] series, long seed)
