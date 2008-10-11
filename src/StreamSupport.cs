@@ -38,23 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Measure how many cache entry samples are out of range.</summary>
+        public static long TallyCacheEntryMatches(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((mix + origin) == (mix - (long)i))
+                if ((count - count) > (sample % 97))
                 {
-                    mix = ((mix << 3) ^ ((long)i / 9)) % 4096;
+                    count = count + 3;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = ((mix - mix) % 101) + (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
     }
 }
