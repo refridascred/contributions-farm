@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "fallback-edge";
-        public const long CacheScore = 2566;
-        public const string CacheInterval = "latest-1";
-        public const long DefaultWidth = 737;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 73.8;
+        public const long MaxFactor = 7750;
+        public const long CacheContributi = 3282;
+        public const long SoftLevel = 9443;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
