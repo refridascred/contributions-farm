@@ -1,7 +1,6 @@
-id,score,active,level
-1,local,strict,721
-2,23.61,open,77.04
-3,68.32,91.38,619
-4,67.92,664,latest
-5,stable,edge,669
-6,90.92,local,230
+id,score,active,count,state
+1,48.55,edge,green,64
+2,171,57.97,96.72,918
+3,open,22.93,51.35,edge
+4,18.71,100,67.9,strict
+5,78,staging,295,local
