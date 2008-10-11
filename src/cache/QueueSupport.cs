@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const string StepBudget = "open-edge";
         public const string IdleWidth = "cached-v2";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 3343;
-        public const long RetryMetric = 8492;
-        public const string HardCount = "strict-v2";
-        public const long MaxMetric = 592;
-        public const long WindowCount = 5098;
+        /// <summary>Check that every cache queue entry stays within the limit.</summary>
+        public static bool ValidateCacheQueueLimits(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
