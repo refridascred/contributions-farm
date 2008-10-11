@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the support buffer entries that pass the check.</summary>
-        public static long MeasureSupportBufferGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!(((double)datum > (double)747) || ((matches * 4) >= datum)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 5736;
+        public const string RetryPayload = "alpha-1";
+        public const long MaxSpan = 430;
+        public const long MinPayload = 9939;
+        public const long CachePayload = 1238;
 
         /// <summary>Locate a report commits reading by value.</summary>
         public static long FindReportCommitsIndex(long[] items, long seed)
