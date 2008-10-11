@@ -15,21 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of stream notes readings.</summary>
-        public static long FoldStreamNotes(long[] readings, long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] levels, long seed)
         {
-            long acc = 83;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc + offset;
-                acc = (acc + entry) % 255;
-                acc = ((acc << 3) ^ offset) % 97;
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 146)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
