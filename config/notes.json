@@ -1,19 +1,13 @@
 {
-  "sync_depth_ms": 19,
-  "record_retries": [389, 61, 272],
-  "route_retries": 39.81,
-  "cluster_size": "cached",
-  "metrics_delay": {
-    "batch_delay_ms": ["cached", "edge", "local"],
-    "max_ratio_s": {
-      "metrics_window": 32.33,
-      "window_limit": 28.21,
-      "sync_ttl": 2
-    },
-    "soft_ttl_pct": 24.97,
-    "order_window": 60,
-    "record_threshold": "cached",
-    "max_capacity_s": "local"
-  },
-  "dry_run": 5045
+  "persist": "green",
+  "min_limit_count": 4216,
+  "dry_run": "edge",
+  "audit": ["standard", "strict", "staging"],
+  "strict": false,
+  "retry_depth_ms": {
+    "cache_limit": 80,
+    "filter_size": ["green", "stable", "local"],
+    "batches_threshold": 57.12,
+    "enabled": "standard"
+  }
 }
