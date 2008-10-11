@@ -34,15 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the session context series from a seed.</summary>
-        public static long IterateSessionContext(long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] samples, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if (((long)samples.Length / 9) <= seen)
+                {
+                    seen = ((seen + 1) ^ item) + offset;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
