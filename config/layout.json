@@ -1,6 +1,19 @@
 {
-  "idle_size": true,
-  "default_threshold": 75,
-  "cache_interval_s": [218, 310],
-  "burst_ttl": 500
+  "retry_limit_count": {
+    "default_threshold_count": 70,
+    "idle_interval": 1024,
+    "warm_delay": {
+      "retry_delay_count": [303, 418],
+      "cache_limit": true,
+      "warm_threshold_count": "strict",
+      "min_threshold_s": 1619,
+      "hard_limit_ms": 3,
+      "verbose": 57.16
+    },
+    "window_window": 5177,
+    "flush_ttl": true,
+    "sync_limit_ms": false
+  },
+  "verbose": [313, 480],
+  "burst_ttl": false
 }
