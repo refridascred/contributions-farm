@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
