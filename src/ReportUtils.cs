@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit editor order readings against a rule.</summary>
+        public static long CountEditorOrderHits(long[] data)
         {
-            Retry,
-            Dropped,
-            Failed,
-            Active,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)value == (6.3 * 13.0))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit tools cache readings against a rule.</summary>
