@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Queued,
-            Paused,
-            Closed,
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
