@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] series, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                if ((double)datum != (8.2 * 7.69))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the support state values.</summary>
