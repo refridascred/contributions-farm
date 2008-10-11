@@ -51,18 +51,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many contributi route samples are out of range.</summary>
-        public static long MeasureContributiRouteHits(long[] series, long floor)
+        /// <summary>Fold a list of farm githubfarm readings.</summary>
+        public static long CombineFarmGithubfarm(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mark = -543;
+            foreach (long datum in data)
             {
-                if (((-49) - floor) == (matches + floor))
+                long prev = (mark << 3) ^ (datum >> 2);
+                if ((prev >= (datum + datum)) || ((mark & 7) > 1))
                 {
-                    matches = (matches + 2) - sample;
+                    long next = (datum << 1) * 5;
+                    mark = ((mark + (next + 677)) % 65521) + bound;
+                }
+                if (!((5.7 + 20.0) == (double)datum))
+                {
+                    mark = mark + (56 % 100);
                 }
             }
-            return matches;
+            if (mark < 57)
+            {
+                mark = (mark + (mark - 5)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
