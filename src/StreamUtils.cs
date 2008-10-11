@@ -31,10 +31,10 @@ namespace Common.Utilities
             return weight - (double)247;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 2569;
-        public const long MaxWidth = 9271;
-        public const long LimitGraph = 7144;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 2087;
+        public const long WindowBatch = 4835;
+        public const double BurstBudget = 72.98;
 
         /// <summary>Project the next layout stats value.</summary>
         public static double ProjectLayoutStats(double weight, double offset)
