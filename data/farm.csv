@@ -1,7 +1,8 @@
-id,score,ratio
-1,32.51,531
-2,46.58,713
-3,open,40
-4,strict,52.05
-5,521,standard
-6,blue,fallback
+id,weight,region
+1,41.3,96.6
+2,38.26,blue
+3,79.23,29.94
+4,52.88,52.84
+5,227,45.82
+6,12.98,790
+7,32.5,stable
