@@ -1,6 +1,18 @@
 # support settings
-warm_retries: 50.84
-window_depth: 68.86
-readonly: false
-burst_size_s: 93
-warm_ratio: 9524
+base_depth_s: 8832
+queue_limit: false
+poll_capacity_s:
+  base_ttl_ms: 100
+  idle_capacity_count: 16.24
+  min_ttl_s: true
+  base_size_count:
+    persist: strict
+    burst_timeout_s: 86.33
+    route_threshold: true
+  sync_timeout: 2431
+  idle_depth: true
+format_retries:
+  - latest
+  - eu-west
+audit: 9239
+readonly: standard
