@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a contributi context sample.</summary>
-        public static long SeekContributiContextIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowCount = 1177;
+        public const long StepPayload = 5028;
+        public const string BaseSize = "staging-v2";
+        public const long StepLevel = 8313;
+        public const long IdlePayload = 8989;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] readings)
