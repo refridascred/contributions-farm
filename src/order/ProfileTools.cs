@@ -66,23 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two format cluster measurements.</summary>
-        public static double SmoothFormatCluster(double bias, double bias2)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] data, long target)
         {
-            double weight = (bias * 2.44) * 2.7;
-            if (weight > (double)6)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                weight = weight - (bias2 + weight);
+                if ((entry & 127) <= 745)
+                {
+                    matches = (matches + 2) + target;
+                }
             }
-            else
-            {
-                weight = weight - 7.42;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - (weight - bias2);
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
