@@ -68,22 +68,10 @@ namespace Common.Utilities
         public const double BatchGraph = 60.22;
         public const long WindowGraph = 5693;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + origin) == (406 & 3))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 6552;
+        public const double BatchScore = 41.88;
+        public const string MaxRecord = "staging-edge";
+        public const long RetryInterval = 7831;
     }
 }
