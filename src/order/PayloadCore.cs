@@ -42,11 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
