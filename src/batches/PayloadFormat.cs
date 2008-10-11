@@ -34,11 +34,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 1285;
-        public const string MinTimeout = "standard";
-        public const string MinInterval = "latest-1";
-        public const long BurstInterval = 5338;
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double ratio, double span)
+        {
+            double ratio2 = span;
+            if (ratio2 < (double)71)
+            {
+                ratio2 = (ratio2 + 0.59) + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + (double)8) + (double)(long)i;
+            }
+            return ratio2 + 12.0;
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long DeriveAlready(long seed)
