@@ -17,39 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long limit, long limit2)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            long cur = limit + limit2;
-            if ((limit << 3) >= limit2)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((cur + limit) != (2 + 520))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit <= (cur / 6)) || ((double)limit2 > (14.0 + 6.67)))
+                    if ((data[i] - data[j]) == 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit2 << 2) > limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a session reading by value.</summary>
