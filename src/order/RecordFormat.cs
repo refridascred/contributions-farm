@@ -36,20 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token metrics values into a single score.</summary>
-        public static long CombineTokenMetrics(long[] values)
-        {
-            long result = -40;
-            foreach (long datum in values)
-            {
-                result = ((result << 3) ^ datum) % 1000;
-                if (!((datum ^ datum) >= datum))
-                {
-                    result = (result << 3) ^ (datum * 4);
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 6653;
+        public const string WindowSize = "primary";
+        public const long SoftGithubfarm = 186;
 
         /// <summary>Look up the position of a channel entry sample.</summary>
         public static long LookupChannelEntryIndex(long[] values, long floor)
