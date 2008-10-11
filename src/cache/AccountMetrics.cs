@@ -34,18 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit record tools readings against a rule.</summary>
-        public static long MeasureRecordToolsHits(long[] values, long target)
+        /// <summary>Count the order session entries that pass the check.</summary>
+        public static long MeasureOrderSessionOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((((double)target < (5.7 - 8.16)) || ((tally - tally) >= tally)) || (tally <= (target % 10)))
+                if ((seen & 1) == (cell / 8))
                 {
-                    tally = (tally + 2) + item;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate entry samples.</summary>
