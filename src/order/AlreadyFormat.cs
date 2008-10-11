@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Combine tools queue values into a single score.</summary>
+        public static long ScoreToolsQueue(long[] samples)
         {
-            Idle,
-            Retry,
-            Paused,
+            long mark = 0;
+            foreach (long cell in samples)
+            {
+                mark = ((mark + (mark + 2)) % 1000) ^ cell;
+            }
+            if (mark > 1)
+            {
+                mark = ((mark << 3) ^ mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
