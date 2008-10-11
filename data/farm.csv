@@ -1,9 +1,6 @@
-id,owner,count
-1,69.95,strict
-2,82.08,edge
-3,445,90.88
-4,851,legacy
-5,469,456
-6,494,5.67
-7,79.34,920
-8,533,37.68
+id,owner,ratio,level
+1,strict,edge,372
+2,19.49,latest,eu-west
+3,425,40.1,1.48
+4,840,blue,645
+5,legacy,latest,489
