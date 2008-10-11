@@ -20,15 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a farm header.</summary>
