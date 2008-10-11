@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardEntry = 10.46;
-        public const double SoftEntry = 73.4;
-        public const long BatchTimeout = 9589;
-        public const double IdleDepth = 8.61;
-        public const double BurstEntry = 65.54;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Stale,
+            Idle,
+            Dropped,
+            Active,
+            Synced,
+        }
 
         /// <summary>Check that every githubfarm token entry stays within the limit.</summary>
         public static bool VerifyGithubfarmTokenBounds(long[] readings, long bound)
