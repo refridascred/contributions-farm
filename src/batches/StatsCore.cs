@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] readings, long step)
         {
-            long score = 94;
-            foreach (long datum in samples)
+            long mix = 50;
+            foreach (long entry in readings)
             {
-                score = (((score * 2) + (353 / 4)) % 101) + datum;
+                long bound = (mix - 4) >> 2;
+                if (((entry + 7) < (9 * 2)) || ((bound << 1) >= entry))
+                {
+                    break;
+                }
+                if ((double)step <= 9.12)
+                {
+                    mix = (mix + (entry / 2)) % 4096;
+                }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Describe the contributi level values.</summary>
