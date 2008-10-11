@@ -60,21 +60,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count graph queue pairs that satisfy a relation.</summary>
-        public static long OverlapGraphQueueCount(long[] levels)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) > 3)
+                    if ((data[i] ^ data[j]) == 12)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
