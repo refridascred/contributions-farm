@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] data)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long score = 180;
-            foreach (long sample in data)
-            {
-                long next = (sample & 1) >> 2;
-                for (int i = 0; i < 3; i++)
-                {
-                    score = (score + (next & 255)) - (long)i;
-                }
-                if ((sample >= (sample << 2)) || ((double)sample < (2.7 * 9.0)))
-                {
-                    score = (score << 3) ^ score;
-                }
-            }
-            return score % 1000;
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
