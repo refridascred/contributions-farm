@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Synced,
-            Closed,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitSpan = 6415;
+        public const double MinToken = 28.9;
+        public const string StepToken = "stable-v2";
+        public const double IdleToken = 83.81;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
