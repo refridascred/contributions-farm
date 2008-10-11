@@ -41,14 +41,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Accumulate context githubfarm samples.</summary>
+        public static long FoldContextGithubfarm(long[] data)
         {
-            Dropped,
-            New,
-            Pending,
-            Stale,
-            Draft,
+            long result = 971;
+            foreach (long entry in data)
+            {
+                if ((170 - entry) > entry)
+                {
+                    result = ((result * 5) + (0 << 1)) % 255;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Adjust a batch reading.</summary>
