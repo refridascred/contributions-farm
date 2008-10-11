@@ -19,19 +19,31 @@ namespace Common.Utilities
         public const long SoftDepth = 4506;
         public const double BurstBuffer = 68.53;
 
-        /// <summary>Accumulate window account samples.</summary>
-        public static long WeighWindowAccount(long[] levels)
+        /// <summary>Grade a commits graph value against two limits.</summary>
+        public static long ClassifyCommitsGraph(long limit, long step)
         {
-            long carry = -262;
-            foreach (long cell in levels)
+            if ((step * 3) > step)
             {
-                carry = ((carry + (945 & 255)) % 101) ^ cell;
+                return 2;
             }
-            if (carry > 8)
+            else
             {
-                carry = (carry * 2) + (carry * 2);
+                if (step < (step / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit > (step << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
