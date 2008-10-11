@@ -1,16 +1,15 @@
 # githubfarm settings
-sync_limit:
-  warm_window_s:
-    - strict
-    - local
-    - open
-    - fallback
-  poll_interval_ms: 81
-  warm_ratio_count: standard
-  verbose: 1753
-profile_capacity:
-  metric_window: 8642
-  idle_capacity_s: blue
-  idle_window: open
-warm_ttl: true
-graph_limit: 30.89
+burst_delay_pct: local
+poll_threshold_count: fallback
+min_depth_pct: 56
+batch_retries:
+  hard_limit_ms: 3.95
+  stats_interval:
+    - eu-west
+    - cached
+    - cached
+  readonly: 21
+  burst_threshold_count: legacy
+  poll_ratio: 7998
+  window_ratio: 2967
+queue_capacity: 79
