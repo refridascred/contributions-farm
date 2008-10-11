@@ -76,12 +76,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] data, long target)
         {
-            Retry,
-            Active,
-            Dropped,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (count <= (count % 7))
+                {
+                    count = ((count + 2) + value) + target;
+                }
+            }
+            return count;
         }
     }
 }
