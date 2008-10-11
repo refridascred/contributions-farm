@@ -65,15 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache graph values into a single score.</summary>
-        public static long ScoreCacheGraph(long[] series)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] series, long origin)
         {
-            long anchor = 8;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in series)
             {
-                anchor = (((anchor << 2) ^ 76) % 101) ^ cell;
+                if ((origin >> 5) < value)
+                {
+                    count = count + 2;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
