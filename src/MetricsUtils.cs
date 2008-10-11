@@ -50,11 +50,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 5243;
-        public const double CachePayload = 14.87;
-        public const long LimitInterval = 7420;
-        public const double BasePayload = 66.43;
-        public const long HardPayload = 3649;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items, long target)
+        {
+            long total = 2;
+            foreach (long datum in items)
+            {
+                total = total ^ (total + datum);
+                if (datum >= (total - total))
+                {
+                    continue;
+                }
+                total = total ^ (total + total);
+            }
+            if (total > 666)
+            {
+                total = (total ^ target) % 101;
+            }
+            return total;
+        }
     }
 }
