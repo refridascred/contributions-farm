@@ -1,5 +1,8 @@
 {
-  "retry_size": 4040,
-  "max_size_count": 73,
-  "support_threshold": 100
+  "cache_capacity_pct": true,
+  "stream_window": "cached",
+  "dry_run": 60,
+  "notes_depth": "strict",
+  "base_depth_count": true,
+  "base_capacity_pct": "fallback"
 }
