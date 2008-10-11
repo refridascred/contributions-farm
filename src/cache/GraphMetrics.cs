@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] items, long limit)
+        /// <summary>Digest a series of queue support entries.</summary>
+        public static long TallyQueueSupport(long[] items)
         {
-            long state = 859;
-            foreach (long entry in items)
+            long acc = 4;
+            foreach (long item in items)
             {
-                if (0.2 <= (double)limit)
-                {
-                    state = ((state << 2) ^ (entry + 7)) % 97;
-                }
-                else
-                {
-                    state = (state ^ entry) % 4096;
-                }
+                acc = ((acc - acc) % 65521) - item;
             }
-            if (state > 8)
+            if (acc < 685)
             {
-                state = ((state << 3) ^ (480 ^ state)) % 97;
+                acc = acc - acc;
             }
-            return state % 4096;
+            return acc % 97;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
