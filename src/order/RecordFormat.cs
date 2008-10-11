@@ -72,11 +72,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double weight, double bias)
+        /// <summary>Check that every metric session entry stays within the limit.</summary>
+        public static bool CheckMetricSessionBounds(long[] data, long bound)
         {
-            double mean = (double)62 * 7.0;
-            return ((mean + 10.0) + weight) + bias;
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
