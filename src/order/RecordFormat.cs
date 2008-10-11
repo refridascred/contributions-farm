@@ -14,17 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] items, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 8;
+            foreach (long reading in items)
             {
-                if ((items[i] < step) && ((items[i] % 5) != 0))
+                if ((carry * 5) < reading)
                 {
-                    return (long)i;
+                    carry = (carry * 3) + (carry + reading);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (3 + reading);
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
