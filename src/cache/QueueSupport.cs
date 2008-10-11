@@ -20,10 +20,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLevel = 3175;
-        public const string CacheScore = "stable-v2";
-        public const double StepDepth = 41.13;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank session format input into a small class.</summary>
         public static long SortSessionFormat(long bound, long origin)
