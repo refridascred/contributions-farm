@@ -25,21 +25,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 92;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = mark ^ 94;
+                if ((mark << 3) >= (sample + (-908)))
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return mark % 1000;
         }
     }
 }
