@@ -24,13 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Dropped,
-            Pending,
-            Idle,
-            Locked,
+            Closed,
+            Ready,
+            Synced,
+            Retry,
         }
 
         /// <summary>Accumulate route samples.</summary>
