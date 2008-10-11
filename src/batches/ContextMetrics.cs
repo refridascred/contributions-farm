@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] data, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((double)hits < (10.0 * 5.0))
+                if (((count >> 2) < count) && ((double)count > (4.3 * 4.5)))
                 {
-                    hits = ((hits + 2) + reading) - limit;
+                    count = ((count + 3) ^ sample) + step;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a profile header.</summary>
