@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the batch checks entries that pass the check.</summary>
-        public static long MeasureBatchChecksOutliers(long[] levels)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((cell % 16) <= (cell / 4))
-                {
-                    hits = hits + 3;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
