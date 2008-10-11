@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Failed,
-            Paused,
-            Idle,
-            Dropped,
-            Closed,
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Locate a metric reading by value.</summary>
