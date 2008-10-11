@@ -34,12 +34,22 @@ namespace Common.Utilities
             return (bias + (weight * 20.0)) + offset;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data, long bound)
         {
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long acc = 4;
+            foreach (long value in data)
+            {
+                if ((acc % 12) < (value + value))
+                {
+                    acc = acc ^ (77 - value);
+                }
+                else
+                {
+                    acc = (acc * 4) + bound;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
