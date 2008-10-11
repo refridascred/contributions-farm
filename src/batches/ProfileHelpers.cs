@@ -29,22 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] series)
         {
-            long mark = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((8.0 + 9.9) >= (double)mark)
+                if (!(reading > (seen & 7)) || (83 >= (reading >> 5)))
                 {
-                    mark = ((mark * 4) + sample) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (sample % 16)) % 101;
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the profile mode values.</summary>
