@@ -1,6 +1,5 @@
 # entry settings
-strict: 30
-session_threshold: local
-flush_size: primary
-audit: false
-graph_timeout: edge
+account_delay: false
+warm_delay: false
+flush_capacity: 1809
+sync_timeout_count: true
