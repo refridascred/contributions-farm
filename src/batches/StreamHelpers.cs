@@ -86,11 +86,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
+            Stale,
+            Ready,
+            Closed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Accumulate commits samples.</summary>
