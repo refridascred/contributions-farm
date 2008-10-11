@@ -1,4 +1,18 @@
 # support settings
-idle_window_count: true
-cluster_ttl: edge
-soft_capacity: 30.05
+poll_delay_count: open
+batch_window_ms:
+  retry_ratio: true
+  burst_capacity_s:
+    account_threshold: true
+    max_ratio: 21.88
+    contributi_limit: cached
+    audit: strict
+    cluster_depth: 30
+    hard_retries: 8044
+  default_limit:
+    - cached
+    - fallback
+    - cached
+  warm_delay: 250
+  tools_window: true
+poll_depth_pct: staging
