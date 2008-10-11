@@ -1,6 +1,17 @@
 {
-  "enabled": [308, 174, 306, 419],
-  "min_timeout_s": [291, 143],
-  "hard_interval": 1024,
-  "poll_delay_s": true
+  "compress": ["standard", "local", "cached", "latest"],
+  "default_retries": true,
+  "metrics_window": {
+    "batch_capacity_pct": true,
+    "burst_ttl": 33,
+    "batch_depth_count": 8846,
+    "context_size": 28.94
+  },
+  "flush_ttl": {
+    "payload_depth": "staging",
+    "enabled": 15.0,
+    "cache_delay": "eu-west"
+  },
+  "batches_ttl": 8959,
+  "notes_timeout": true
 }
