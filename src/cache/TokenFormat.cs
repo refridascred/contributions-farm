@@ -27,11 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            Paused,
+            Locked,
+            Synced,
+            Dropped,
         }
     }
 }
