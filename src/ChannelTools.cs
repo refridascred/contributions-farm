@@ -20,18 +20,12 @@ namespace Common.Utilities
             return bias + (offset / 3.0);
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] data)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((value * 3) > count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
