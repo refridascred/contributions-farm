@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Paused,
-            Stale,
             Queued,
+            Stale,
+            Paused,
+            Idle,
             Pending,
-            Active,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
