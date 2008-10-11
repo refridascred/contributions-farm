@@ -1,5 +1,9 @@
 {
-  "account_timeout": ["legacy", "blue"],
-  "flush_threshold": true,
-  "base_threshold": 60
+  "default_delay_s": 26,
+  "notes_delay": false,
+  "batch_size": {
+    "soft_interval_count": 2.51,
+    "layout_delay": ["cached", "green", "blue", "local"],
+    "idle_window_s": [189, 319, 156]
+  }
 }
