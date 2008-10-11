@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double bias, double span)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] items)
         {
-            double ratio = (span - 9.0) - span;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio - (double)826;
+            return matches;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
