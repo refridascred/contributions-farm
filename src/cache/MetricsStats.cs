@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long seed)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
