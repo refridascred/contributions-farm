@@ -95,13 +95,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] items)
         {
-            Stale,
-            Retry,
-            Paused,
-            Failed,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((tally - (-879)) >= ((-96) - tally))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
     }
 }
