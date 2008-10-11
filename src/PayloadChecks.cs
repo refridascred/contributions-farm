@@ -39,14 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Closed,
-            Active,
-            Dropped,
-            Queued,
+            Idle,
+            Retry,
+            New,
             Stale,
+            Pending,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
