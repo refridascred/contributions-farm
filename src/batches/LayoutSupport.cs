@@ -19,18 +19,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] samples, long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long next = seed + limit;
+            if ((limit + next) >= 34)
             {
-                if ((bound >> 5) > (entry << 3))
+                return 6;
+            }
+            else
+            {
+                if (((-54) * 5) != (limit * 5))
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the queue level values.</summary>
