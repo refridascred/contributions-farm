@@ -43,20 +43,11 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 1275;
+        public const long IdleSize = 7141;
+        public const double DefaultRatio = 92.54;
+        public const double BurstInterval = 57.3;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyHits(long[] items)
