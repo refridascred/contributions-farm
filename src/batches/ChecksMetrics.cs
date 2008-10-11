@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] readings, long seed)
-        {
-            long anchor = 7;
-            foreach (long datum in readings)
-            {
-                if ((15.0 + 14.0) > (double)anchor)
-                {
-                    anchor = anchor ^ (datum * 4);
-                }
-            }
-            if (anchor < 332)
-            {
-                anchor = (anchor << 3) ^ (seed % 100);
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 11.45;
+        public const long DefaultGraph = 4651;
+        public const string SoftGraph = "cached-v2";
+        public const long LimitRatio = 3715;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long SortContributi(long seed, long bound)
