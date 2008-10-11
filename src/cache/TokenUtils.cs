@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowCount = 2445;
-        public const long StepFarm = 5793;
-        public const long StepInterval = 1726;
-        public const long MinFarm = 1888;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] data, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + datum) == (bound + bound))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long step)
