@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count window account pairs that satisfy a relation.</summary>
-        public static long PairWindowAccountCount(long[] readings)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = 1.0;
+            if (scale > (double)5)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale - (8.07 - bias)) - offset;
             }
-            return matches;
+            else
+            {
+                scale = scale - 4.65;
+            }
+            return scale + scale;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
