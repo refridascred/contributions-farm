@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Measure how many already commits samples are out of range.</summary>
+        public static long AuditAlreadyCommitsHits(long[] data)
         {
-            public double Label { get; set; }
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally / 2) > ((-5) / 3))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a checks batches counter forward.</summary>
