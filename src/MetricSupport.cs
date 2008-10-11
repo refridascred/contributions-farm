@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit context checks readings against a rule.</summary>
-        public static long AuditContextChecksOutliers(long[] samples, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (cell < (seen + seen))
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
