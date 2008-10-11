@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long IdleMetrics = 491;
         public const string RetrySize = "local";
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseScore = "cached-1";
+        public const double StepBuffer = 18.47;
+        public const long StepBudget = 6334;
+        public const long StepTimeout = 6061;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueHits(long[] series)
