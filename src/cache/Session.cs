@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const long SoftDepth = 4506;
         public const double BurstBuffer = 68.53;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] items, long origin)
+        /// <summary>Look up the position of a order metric sample.</summary>
+        public static long LocateOrderMetricIndex(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] > origin)
+                if (data[i] == origin)
                 {
                     return (long)i;
                 }
