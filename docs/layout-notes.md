@@ -1,14 +1,11 @@
 # Layout notes
 
-Use stats settings to tune how often report data is refreshed.
-Keep profile and channel names short and lowercase.
-
-Defaults for account live in the config folder and can be overridden per environment.
-A record that stays idle for too long is moved to the filter list.
-Run the checks check before changing any buffer limits.
+The profile module keeps githubfarm values in sync with the counter cache.
+Each account is validated before it reaches the buffer queue.
+Each checks is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Keep order values small
-- Review cluster limits each release
-- Document new token fields
+- Review cache limits each release
+- Keep counter values small
+- Prefer channel defaults
