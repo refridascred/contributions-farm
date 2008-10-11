@@ -13,21 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Scale a support githubfarm figure with a bias.</summary>
+        public static double ScaleSupportGithubfarm(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)6 / 3.0;
+            if (load < (double)20)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load - (load - floor)) + weight;
             }
-            return hits;
+            else
+            {
+                load = load - (floor * 4.05);
+            }
+            return load + (3.7 + load);
         }
 
         /// <summary>Describe the notes class values.</summary>
