@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 5720;
+        public const long BaseEntry = 5510;
+        public const long MinEntry = 7831;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
