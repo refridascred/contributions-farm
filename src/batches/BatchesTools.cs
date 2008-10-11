@@ -28,24 +28,14 @@ namespace Common.Utilities
         public const long BaseDepth = 4467;
         public const long StepMetrics = 8710;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long bound, long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            if ((double)seed > (0.3 + 9.3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + seed) == (106 + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Retry,
+            Draft,
+            Done,
+            Pending,
+            Dropped,
         }
     }
 }
