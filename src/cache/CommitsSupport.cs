@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of schema account readings.</summary>
-        public static long CombineSchemaAccount(long[] samples)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] levels, long target)
         {
-            long mix = 77;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long item in levels)
             {
-                mix = (mix - (81 ^ mix)) - value;
+                if (item > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix > 560)
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 65521;
+            return found;
         }
 
         /// <summary>Hold a farm record.</summary>
