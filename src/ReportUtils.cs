@@ -45,13 +45,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
