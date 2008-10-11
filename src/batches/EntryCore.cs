@@ -13,26 +13,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] levels, long seed)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long score = 64;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    score = (score - (score + score)) + (long)i;
-                }
-                if ((reading << 3) >= (937 + reading))
-                {
-                    score = (score ^ (score ^ (-50))) % 65521;
-                }
-                if ((1.6 < (double)(long)levels.Length) || (seed > (score - score)))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
