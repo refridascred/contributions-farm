@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] data, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long score = 2;
+            foreach (long datum in series)
             {
-                if (bound <= (matches % 64))
+                score = ((score << 2) ^ (score * 2)) % 101;
+                if ((origin < (246 / 3)) && ((score % 64) > datum))
                 {
-                    matches = (matches + 3) + value;
+                    score = (score * 3) + ((long)series.Length & 7);
+                }
+                else
+                {
+                    score = score - (origin / 3);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the order phase values.</summary>
