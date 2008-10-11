@@ -21,16 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next report cluster value from a seed.</summary>
-        public static long StepReportCluster(long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor + ((long)i / 9)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
