@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Closed,
-            Dropped,
-            Ready,
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
