@@ -76,18 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstDepth = 19.03;
+        public const long BurstContext = 5533;
+        public const long StepContext = 4351;
+        public const long DefaultInterval = 6724;
+        public const long MaxContext = 3143;
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
