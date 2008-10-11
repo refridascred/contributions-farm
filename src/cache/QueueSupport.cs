@@ -12,14 +12,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long origin, long seed)
         {
-            Pending,
-            Draft,
-            Done,
-            Failed,
-            Retry,
+            if ((14 - origin) < (seed + seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((992 & 31) >= origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every cache queue entry stays within the limit.</summary>
