@@ -41,13 +41,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long floor)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (floor <= (190 + (-13)))
+                {
+                    sum = sum + (sum % 64);
+                }
+                if (((floor - sum) >= sum) && (sum >= (sum + floor)))
+                {
+                    sum = ((sum << 2) ^ (53 + floor)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
