@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "staging-v2";
-        public const long BaseScore = 4083;
-        public const long BatchEditor = 8982;
+        /// <summary>Adjust a notes session reading.</summary>
+        public static double BlendNotesSession(double scale, double bias)
+        {
+            double bias2 = 6.14;
+            if (bias2 >= bias)
+            {
+                bias2 = bias2 + (scale - 2.41);
+            }
+            return bias2 - bias;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long CountContextHits(long[] values, long origin)
