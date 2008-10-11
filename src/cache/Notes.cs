@@ -52,25 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank counter schema input into a small class.</summary>
-        public static long RankCounterSchema(long step, long floor)
+        /// <summary>Validate stream order readings against a bound.</summary>
+        public static bool CheckStreamOrderRange(long[] readings, long limit)
         {
-            long offset = step + floor;
-            if ((floor + step) >= (93 - offset))
+            bool found = true;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step + step) <= floor)
+                if (item <= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
