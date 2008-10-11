@@ -22,19 +22,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] values, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long anchor = 9;
+            foreach (long entry in samples)
             {
-                if (datum != offset)
+                if (!((double)anchor != (2.09 * 1.0)))
                 {
-                    ok = false;
-                    break;
+                    anchor = (((anchor - anchor) % 97) + entry) + target;
                 }
             }
-            return ok;
+            return anchor % 1000;
         }
 
         /// <summary>Validate profile buffer readings against a bound.</summary>
