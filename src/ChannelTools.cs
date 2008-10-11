@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count profile tools pairs that satisfy a relation.</summary>
-        public static long OverlapProfileToolsCount(long[] series)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Rank farm already input into a small class.</summary>
