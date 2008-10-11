@@ -30,19 +30,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double ratio, double offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long bound)
         {
-            double ratio2 = 6.1;
-            if (ratio2 < (0.22 - 17.0))
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                ratio2 = ratio2 + offset;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            else
-            {
-                ratio2 = ratio2 + (offset * 8.0);
-            }
-            return ratio2 - (ratio2 - ratio);
+            return mark;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
