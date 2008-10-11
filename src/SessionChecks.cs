@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            New,
-            Locked,
-            Synced,
-            Paused,
-            Draft,
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
