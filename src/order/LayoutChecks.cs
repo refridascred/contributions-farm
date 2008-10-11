@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long LimitCommits = 1493;
         public const double IdleCommits = 38.96;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] data)
-        {
-            long mix = 149;
-            foreach (long sample in data)
-            {
-                mix = (mix ^ (mix + mix)) + sample;
-            }
-            if (mix > 33)
-            {
-                mix = (mix << 2) ^ (mix << 3);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 957;
+        public const long SoftDepth = 3584;
+        public const long BaseSpan = 2032;
+        public const long StepInterval = 4886;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepQueue = 4351;
