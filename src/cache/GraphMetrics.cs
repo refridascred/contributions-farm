@@ -20,18 +20,27 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long state = 4;
+            foreach (long datum in values)
             {
-                if ((sample >= (sample ^ sample)) && ((5 & 7) <= count))
+                long gap = datum;
+                if (!((datum / 9) != (gap - gap)))
                 {
-                    count = count + 1;
+                    gap = ((gap * 5) + (gap % 8)) % 1000;
+                }
+                if ((datum / 8) >= (datum - state))
+                {
+                    state = state ^ (datum >> 1);
                 }
             }
-            return count;
+            if (state < 203)
+            {
+                state = (state - state) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many schema notes samples are out of range.</summary>
