@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            Locked,
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define token limits and defaults.</summary>
