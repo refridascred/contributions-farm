@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the report stream entries that pass the check.</summary>
-        public static long TallyReportStreamHits(long[] samples)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((sample / 2) > (sample % 60)) && !(sample > (0 ^ 35)))
+                if ((datum - datum) >= (seen + seen))
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
