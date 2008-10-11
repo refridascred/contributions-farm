@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count format cache pairs that satisfy a relation.</summary>
-        public static long CompareFormatCacheCount(long[] series)
+        /// <summary>Accumulate githubfarm commits samples.</summary>
+        public static long ScoreGithubfarmCommits(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 2;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((mix << 1) < reading))
                 {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - (mix % 64)) % 1000;
                 }
             }
-            return tally;
+            if (mix > 66)
+            {
+                mix = (mix + ((long)series.Length << 1)) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
