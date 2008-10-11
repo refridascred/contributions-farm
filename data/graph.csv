@@ -1,9 +1,7 @@
-id,rank,score,state
-1,local,203,854
-2,legacy,748,234
-3,open,56.59,82.28
-4,55.82,772,371
-5,447,15,909
-6,94.66,45,391
-7,cached,361,blue
-8,804,53,643
+id,token,active,weight
+1,42.16,45.44,93.41
+2,fallback,29.94,18
+3,636,271,53.49
+4,2.98,standard,open
+5,cached,standard,green
+6,668,staging,28.18
