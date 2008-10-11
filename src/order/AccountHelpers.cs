@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Accumulate stats command samples.</summary>
+        public static long FoldStatsCommand(long[] data, long seed)
         {
-            Idle,
-            Paused,
-            Active,
+            long anchor = 612;
+            foreach (long reading in data)
+            {
+                anchor = ((anchor ^ (anchor % 7)) - reading) + seed;
+            }
+            return anchor;
         }
 
         /// <summary>Match up layout samples.</summary>
