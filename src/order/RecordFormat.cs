@@ -45,22 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long score = 855;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    score = (score ^ (cell - (long)items.Length)) ^ (long)i;
-                }
-                if ((cell ^ score) <= cell)
-                {
-                    score = (score ^ (cell * 3)) % 4096;
-                }
-            }
-            return score;
+            Paused,
+            New,
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a farm snapshot.</summary>
