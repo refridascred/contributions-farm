@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long step, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            if (!((step % 64) >= (step / 6)))
             {
-                total = (total ^ ((long)i << 2)) % 1000;
-                total = ((total * 2) + (long)i) % 4093;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (6.13 >= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8 * 5) >= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit >> 2) < step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
