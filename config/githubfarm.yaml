@@ -1,14 +1,4 @@
 # githubfarm settings
-tools_timeout:
-  - stable
-  - primary
-  - cached
-default_timeout_s: 60
-default_threshold:
-  soft_size_pct: 92
-  retry_delay_ms: 9995
-  min_threshold:
-    - 306
-    - 470
-    - 142
-  idle_depth_ms: 5134
+cache_retries: stable
+dry_run: 23.86
+cache_delay_ms: 7549
