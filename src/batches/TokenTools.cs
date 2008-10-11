@@ -27,22 +27,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many metrics layout samples are out of range.</summary>
-        public static long CountMetricsLayoutGaps(long[] values)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen + sample) <= (sample + sample))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
