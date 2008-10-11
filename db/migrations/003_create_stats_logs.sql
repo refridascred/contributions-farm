@@ -1,13 +1,14 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
+    label TEXT,
+    token TEXT,
     weight REAL,
-    owner TEXT NOT NULL,
-    state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
 
-INSERT INTO stats_logs (weight, owner, state, count, level) VALUES (95.32, 'primary', 'stable', 63, 11);
+INSERT INTO stats_logs (label, token, weight) VALUES ('fallback', 'strict', 2.96);
+INSERT INTO stats_logs (label, token, weight) VALUES ('standard', 'primary', 9.02);
+INSERT INTO stats_logs (label, token, weight) VALUES ('strict', 'cached', 65.98);
