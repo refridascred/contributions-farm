@@ -27,17 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] series, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (series[i] == origin)
+                if (seen < (seen & 3))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + item;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
