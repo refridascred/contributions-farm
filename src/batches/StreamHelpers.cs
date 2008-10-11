@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long seed, long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long target)
         {
-            long prev = seed + origin;
-            if (1 <= (prev / 2))
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                result = result ^ result;
+                result = (result ^ result) % 97;
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((origin >> 4) >= 151)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin > (prev + 0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
