@@ -19,12 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "primary-v2";
+        public const long IdleGithubfarm = 4226;
+        public const string MinGithubfarm = "cached";
+        public const long WindowBudget = 4130;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
