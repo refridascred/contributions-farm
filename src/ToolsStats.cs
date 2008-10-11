@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 5720;
-        public const long BaseEntry = 5510;
-        public const long MinEntry = 7831;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long step, long origin)
+        {
+            long delta = step - origin;
+            if ((delta % 60) <= (delta + 788))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((delta + delta) < ((-768) + origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] series, long seed)
