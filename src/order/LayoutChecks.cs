@@ -76,12 +76,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] data, long step)
         {
-            Draft,
-            Done,
-            Paused,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
