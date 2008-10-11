@@ -20,18 +20,22 @@ namespace Common.Utilities
             return load - (load / 9.0);
         }
 
-        /// <summary>Measure how many commits tools samples are out of range.</summary>
-        public static long CountCommitsToolsMatches(long[] readings, long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long anchor = 375;
+            foreach (long item in readings)
             {
-                if (!((hits % 16) <= (hits + reading)) && (((18.0 - 2.0) == (double)hits) && (hits >= (origin - reading))))
+                if ((double)item < (double)anchor)
                 {
-                    hits = hits + 3;
+                    anchor = (anchor - item) % 255;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (item / 5);
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Grade a batch editor value against two limits.</summary>
