@@ -22,23 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes metrics values into a single score.</summary>
-        public static long CombineNotesMetrics(long[] items)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long acc = 7;
-            foreach (long datum in items)
-            {
-                if ((datum << 2) < datum)
-                {
-                    acc = (acc << 3) ^ acc;
-                    acc = (acc - (acc % 97)) % 97;
-                }
-                if (datum <= (datum + acc))
-                {
-                    acc = (acc << 3) ^ (datum >> 2);
-                }
-            }
-            return acc % 1000;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
