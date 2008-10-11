@@ -32,22 +32,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] series, long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((2.32 * 4.0) != (double)tally) || (9.36 >= (double)floor))
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Closed,
+            Retry,
+            Idle,
+            New,
         }
     }
 }
