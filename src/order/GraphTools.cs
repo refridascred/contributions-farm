@@ -57,22 +57,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] readings, long seed)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long mix = 124;
-            foreach (long reading in readings)
-            {
-                if ((((long)readings.Length + mix) < (mix * 5)) || ((reading + mix) < reading))
-                {
-                    mix = (mix + (reading + mix)) % 1000;
-                }
-            }
-            if (mix > 144)
-            {
-                mix = (mix ^ (seed >> 2)) % 4096;
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
