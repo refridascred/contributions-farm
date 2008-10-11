@@ -38,11 +38,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] items)
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches + entry) >= (entry + entry))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank counter schema input into a small class.</summary>
