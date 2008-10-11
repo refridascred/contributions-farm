@@ -35,18 +35,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] series, long offset)
         {
-            long sum = 400;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((9.3 - 12.0) != (double)sum)
+                if (datum > offset)
                 {
-                    sum = (((sum * 3) + (sum / 8)) % 4096) ^ value;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
     }
 }
