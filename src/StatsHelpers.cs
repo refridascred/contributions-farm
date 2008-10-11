@@ -34,12 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBudget = 9964;
-        public const long MaxFactor = 5316;
-        public const long IdleDepth = 1981;
-        public const long BaseBatches = 544;
-        public const double MinBatches = 74.77;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
