@@ -27,23 +27,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double bias, double floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double ratio = (double)2 * 9.23;
-            if (ratio > (double)1)
-            {
-                ratio = ratio + floor;
-            }
-            else
-            {
-                ratio = ratio + (double)826;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (ratio / 8.0)) - (double)(long)i;
-            }
-            return ratio + bias;
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the order session entries that pass the check.</summary>
