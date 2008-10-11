@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] samples, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long seed)
         {
-            long mark = 87;
-            foreach (long reading in samples)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((floor <= ((-809) - 840)) || ((mark + floor) >= reading))
+                if (((long)i << 2) > (seed << 3))
                 {
-                    mark = mark ^ reading;
+                    anchor = (anchor ^ (anchor / 4)) % 65521;
+                    anchor = (anchor ^ ((long)i - 31)) % 65521;
                 }
+                else
+                {
+                    anchor = anchor + seed;
+                }
+                anchor = (anchor ^ (anchor + (long)i)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (mark > 28)
-            {
-                mark = ((mark << 3) ^ (mark - 51)) % 101;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Hold a order snapshot.</summary>
