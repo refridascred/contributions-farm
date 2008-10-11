@@ -66,22 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload session entries.</summary>
-        public static long TotalPayloadSession(long[] levels)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long state = 91;
-            foreach (long datum in levels)
-            {
-                if ((969 * 5) >= (state >> 3))
-                {
-                    state = (state - (state + state)) - datum;
-                }
-            }
-            if (state < 9)
-            {
-                state = ((state * 2) + state) % 65521;
-            }
-            return state % 65521;
+            Draft,
+            Idle,
+            Closed,
+            Queued,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
