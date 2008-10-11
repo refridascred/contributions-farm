@@ -31,18 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (hits > (hits ^ item))
-                {
-                    hits = hits + 3;
-                }
+                result = result + (-869);
+                result = result ^ (long)i;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
     }
 }
