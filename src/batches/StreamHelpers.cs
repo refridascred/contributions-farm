@@ -33,13 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long step)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine checks support values into a single score.</summary>
