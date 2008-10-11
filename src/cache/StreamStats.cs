@@ -34,17 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stats filter sample.</summary>
-        public static long LookupStatsFilterIndex(long[] series, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 500;
+            foreach (long item in readings)
             {
-                if (series[i] < origin)
+                state = state - 65;
+                if (!((item & 127) > state))
                 {
-                    return (long)i;
+                    state = (state - (item & 127)) % 1000;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
