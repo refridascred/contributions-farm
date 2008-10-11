@@ -17,24 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((long)i - step) <= (7 << 1))
+                if ((7 - 75) == (tally + cell))
                 {
-                    anchor = (anchor + ((long)i << 3)) % 101;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    anchor = (anchor ^ ((long)i % 7)) % 65521;
+                    tally = tally - 1;
                 }
-                anchor = (anchor + (anchor << 2)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Match up record stats samples.</summary>
