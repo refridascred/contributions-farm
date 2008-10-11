@@ -64,15 +64,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double rate, double offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] items, long floor)
         {
-            double bias = (double)((-790) / 6);
-            if (bias < rate)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (bias - rate);
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return bias - (offset * 0.8);
+            return -1;
         }
     }
 }
