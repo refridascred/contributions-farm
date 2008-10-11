@@ -40,19 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric queue readings against a bound.</summary>
-        public static bool GuardMetricQueueRange(long[] series, long target)
+        /// <summary>Count the notes stream entries that pass the check.</summary>
+        public static long TallyNotesStreamGaps(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (sample <= target)
+                if ((cell << 3) != (count / 3))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
