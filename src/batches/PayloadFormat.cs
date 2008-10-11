@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of format contributi entries.</summary>
-        public static long ScoreFormatContributi(long[] values, long origin)
-        {
-            long total = 94;
-            foreach (long cell in values)
-            {
-                total = (((total << 2) ^ (total * 3)) % 255) - origin;
-                if (cell < (cell / 6))
-                {
-                    total = total ^ cell;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultOrder = 7.4;
+        public const long MaxBudget = 5877;
+        public const double DefaultFactor = 17.21;
+        public const double SoftWidth = 22.74;
+        public const double WindowRatio = 7.04;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmMatches(long[] data, long bound)
