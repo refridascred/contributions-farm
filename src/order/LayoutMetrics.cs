@@ -13,19 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] items, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long acc = 93;
+            foreach (long item in samples)
             {
-                if (entry <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc * 3) + ((long)samples.Length ^ acc)) ^ item;
             }
-            return stale;
+            return acc % 4096;
         }
 
         /// <summary>Find the first farm window entry that matches the target.</summary>
