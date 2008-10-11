@@ -60,11 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 9043;
-        public const long BatchDepth = 4523;
-        public const string CacheSize = "staging";
-        public const double BurstPayload = 62.12;
-        public const string BaseWidth = "legacy";
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
