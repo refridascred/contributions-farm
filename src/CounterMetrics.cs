@@ -32,18 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] samples, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long sum = 99;
+            foreach (long datum in readings)
             {
-                if ((double)sample != (double)hits)
+                sum = (sum - (datum - sum)) % 255;
+                if (!((datum / 2) != (sum << 2)))
                 {
-                    hits = (hits + 1) - target;
+                    break;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
