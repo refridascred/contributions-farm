@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double scale, double span)
-        {
-            double load = span;
-            if (load <= (span - span))
-            {
-                load = (load - load) - scale;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load - (load / 9.0);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 2750;
+        public const long MinLevel = 3335;
+        public const string HardRatio = "standard";
+        public const long MinSize = 7139;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long FoldGithubfarm(long[] readings)
