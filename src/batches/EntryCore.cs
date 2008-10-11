@@ -58,19 +58,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes order readings against a bound.</summary>
-        public static bool CheckNotesOrderLimits(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleBudget = 7884;
+        public const long WindowWidth = 2496;
+        public const long RetryLevel = 1644;
+        public const long HardScore = 9989;
     }
 }
