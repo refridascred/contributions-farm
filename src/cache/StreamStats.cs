@@ -53,22 +53,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] samples, long offset)
+        /// <summary>Blend two commits order measurements.</summary>
+        public static double SmoothCommitsOrder(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double scale = gain;
+            if (scale <= gain)
             {
-                if ((double)matches == (double)datum)
-                {
-                    matches = (matches + 3) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = (scale - scale) - floor;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (6.4 + gain)) - (double)(long)i;
+            }
+            return scale - (scale * 1.7);
         }
     }
 }
