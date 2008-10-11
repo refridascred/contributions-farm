@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
