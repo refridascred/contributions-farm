@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] levels, long limit)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((4.42 + 7.0) > (double)sample)
-                {
-                    matches = (matches + 1) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 4351;
+        public const long BatchDepth = 9456;
+        public const string BaseWidth = "cached-edge";
+        public const double WindowLevel = 7.39;
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
