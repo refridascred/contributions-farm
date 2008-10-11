@@ -1,6 +1,23 @@
 {
-  "report_retries": "latest",
-  "cache_capacity_pct": false,
-  "cache_timeout": 3.82,
-  "retry_ttl_s": [379, 310, 246]
+  "batch_threshold_s": "fallback",
+  "default_depth": {
+    "retry_ratio_pct": {
+      "idle_ratio_pct": 34.27,
+      "account_window": ["cached", "latest", "strict", "green"],
+      "soft_capacity_count": "fallback",
+      "soft_window_pct": 4868,
+      "batch_limit_s": false
+    },
+    "max_limit_count": 100,
+    "batch_limit_pct": "staging",
+    "burst_timeout": {
+      "warm_limit": ["staging", "stable"],
+      "notes_depth": 250,
+      "sync_delay_s": "fallback"
+    },
+    "warm_ratio": 78
+  },
+  "warm_retries": true,
+  "min_timeout_count": "fallback",
+  "githubfarm_ttl": true
 }
