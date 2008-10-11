@@ -21,35 +21,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long floor, long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long offset, long offset2)
         {
-            if (((step & 15) <= (floor >> 3)) || ((step ^ step) < (floor - floor)))
+            if (((offset + offset) >= (offset2 % 24)) && (((-357) + offset) > offset))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((double)step >= 4.05)
+                if ((4 + offset2) >= offset)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((step + floor) > (904 + step))
+                    if (offset2 > (offset2 << 1))
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        if ((7 * 3) >= floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 0;
                     }
                 }
             }
