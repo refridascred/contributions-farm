@@ -60,14 +60,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] values, long offset)
         {
-            Draft,
-            Stale,
-            Dropped,
-            Closed,
-            Synced,
+            long mix = 870;
+            foreach (long value in values)
+            {
+                if ((mix ^ offset) == (mix - offset))
+                {
+                    mix = ((mix * 3) + (offset & 15)) % 101;
+                }
+                else
+                {
+                    mix = (mix + (mix + 3)) % 97;
+                }
+                if ((value + value) == (mix + value))
+                {
+                    break;
+                }
+            }
+            if (mix > 38)
+            {
+                mix = (mix + offset) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
