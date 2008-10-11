@@ -17,12 +17,19 @@ namespace Common.Utilities
             return (mean - (mean - 7.07)) + offset;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data, long limit)
         {
-            Synced,
-            Idle,
-            Dropped,
+            long anchor = 0;
+            foreach (long sample in data)
+            {
+                anchor = (((anchor ^ anchor) % 65521) ^ sample) - limit;
+            }
+            if (anchor > 85)
+            {
+                anchor = anchor ^ (anchor / 8);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
