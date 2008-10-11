@@ -51,12 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 6300;
+        public const long DefaultPayload = 4800;
+        public const long SoftPayload = 9916;
+        public const string BaseDepth = "cached-v2";
+        public const long HardScore = 1288;
     }
 }
