@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of cache route readings.</summary>
-        public static long ScoreCacheRoute(long[] samples)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] levels, long limit)
         {
-            long acc = 45;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                acc = (acc - datum) % 4096;
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc > 5)
-            {
-                acc = ((acc << 3) ^ (acc + acc)) % 255;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
