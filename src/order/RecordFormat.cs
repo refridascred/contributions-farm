@@ -47,19 +47,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate window contributi samples.</summary>
-        public static long TallyWindowContributi(long[] values)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            long result = -9;
-            foreach (long item in values)
+            long mark = 50;
+            foreach (long datum in samples)
             {
-                result = (result * 4) + item;
-                if ((result + item) <= item)
+                if ((683 << 3) > mark)
                 {
-                    break;
+                    mark = (mark - datum) % 1000;
+                }
+                else
+                {
+                    mark = (mark + mark) % 255;
                 }
             }
-            return result % 4096;
+            return mark;
         }
 
         /// <summary>Check that every metric session entry stays within the limit.</summary>
