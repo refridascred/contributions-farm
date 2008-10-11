@@ -49,20 +49,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultSpan = 796;
+        public const long BatchChecks = 1366;
+        public const string BurstChecks = "open-v2";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BaseEntry = 9147;
