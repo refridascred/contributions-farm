@@ -13,10 +13,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 9418;
-        public const double DefaultSpan = 8.05;
-        public const double RetryLevel = 46.9;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Label { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long FindReportIndex(long[] values, long origin)
