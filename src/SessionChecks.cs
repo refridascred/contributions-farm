@@ -15,33 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long offset, long offset2)
-        {
-            long bound = offset + offset2;
-            if ((offset2 & 63) >= (bound + 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 / 7) <= (offset << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound <= (offset & 15))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitRatio = 3207;
+        public const long HardBatches = 9843;
+        public const long BatchRatio = 983;
+        public const double BurstBatches = 35.21;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
