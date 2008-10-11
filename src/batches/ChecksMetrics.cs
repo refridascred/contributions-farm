@@ -33,31 +33,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long seed, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] data)
         {
-            if (target > (target << 2))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target * 5) < target)
+                if (17.0 >= (double)count)
                 {
-                    return 8;
+                    count = (count + 2) ^ item;
                 }
                 else
                 {
-                    if ((target + 79) >= (seed & 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the notes level values.</summary>
