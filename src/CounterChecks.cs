@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = (mix - (mix + mix)) % 97;
-                mix = (mix ^ (mix ^ mix)) % 97;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "stable";
+        public const long DefaultDepth = 5855;
+        public const long RetryWidth = 860;
+        public const string BaseLevel = "cached-edge";
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long SeriesProfile(long target)
