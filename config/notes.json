@@ -1,7 +1,23 @@
 {
-  "dry_run": "stable",
-  "contributi_capacity": 83.34,
-  "persist": "fallback",
-  "idle_timeout_ms": [479, 408, 7],
-  "compress": 81.68
+  "default_ttl_count": 250,
+  "strict": {
+    "cache_retries_count": {
+      "already_depth": 72.23,
+      "cluster_retries": 22.01,
+      "retry_interval": 250,
+      "default_interval": "primary",
+      "idle_timeout_pct": 22.44,
+      "base_timeout": 5849
+    },
+    "default_threshold_ms": 500,
+    "compress": true,
+    "strict": true
+  },
+  "queue_ratio": {
+    "verbose": ["fallback", "green"],
+    "notes_retries": 78,
+    "idle_limit_pct": [486, 178],
+    "editor_timeout": 76
+  },
+  "persist": false
 }
