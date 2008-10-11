@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long origin)
+        /// <summary>Combine token session values into a single score.</summary>
+        public static long CombineTokenSession(long[] series)
         {
-            long mix = 8;
-            foreach (long cell in values)
+            long total = 678;
+            foreach (long datum in series)
             {
-                mix = ((mix - (438 + origin)) % 101) + cell;
+                for (int i = 0; i < 4; i++)
+                {
+                    total = ((total + (total - (long)series.Length)) % 1000) ^ (long)i;
+                }
+                if (((total ^ total) >= ((-442) & 127)) && ((datum ^ total) <= (total >> 3)))
+                {
+                    total = ((total << 2) ^ total) % 101;
+                }
             }
-            if (mix > 543)
-            {
-                mix = (mix - (origin - mix)) % 1000;
-            }
-            return mix % 65521;
+            return total;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
