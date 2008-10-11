@@ -31,27 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] values, long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long sum = -54;
-            foreach (long sample in values)
-            {
-                sum = (sum ^ (71 + sample)) % 1000;
-                if ((sample + sample) < 506)
-                {
-                    sum = (sum << 3) ^ (origin + origin);
-                }
-                else
-                {
-                    sum = sum - sample;
-                }
-            }
-            if (sum > (-694))
-            {
-                sum = (sum ^ (59 + (long)values.Length)) % 4096;
-            }
-            return sum;
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the record phase values.</summary>
