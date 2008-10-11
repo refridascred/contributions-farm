@@ -30,20 +30,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next window filter value.</summary>
-        public static double ScaleWindowFilter(double gain, double bias)
-        {
-            double ratio = gain;
-            if (ratio > (gain * 1.48))
-            {
-                ratio = ratio + bias;
-            }
-            else
-            {
-                ratio = ratio + (double)41;
-            }
-            return ratio + bias;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRatio = "cached";
+        public const long BatchFactor = 3172;
+        public const string HardRoute = "open-edge";
 
         /// <summary>Blend two profile measurements.</summary>
         public static double ScaleProfile(double rate, double offset)
