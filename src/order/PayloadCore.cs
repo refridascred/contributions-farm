@@ -35,13 +35,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Synced,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseInterval = 8.97;
+        public const double HardInterval = 33.54;
+        public const double DefaultCount = 25.4;
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] values, long offset)
