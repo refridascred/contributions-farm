@@ -35,18 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric entry readings.</summary>
-        public static long CombineMetricEntry(long[] levels, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long seed)
         {
-            long mix = -7;
-            foreach (long value in levels)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (((mix * 5) <= (mix & 3)) || ((619 + origin) >= (value % 97)))
+                if ((3.55 + 6.53) >= (0.2 + 13.0))
                 {
-                    mix = (mix + ((-6) >> 4)) % 4096;
+                    anchor = (anchor ^ anchor) % 97;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
