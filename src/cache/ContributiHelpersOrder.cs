@@ -27,32 +27,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long floor, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] data)
         {
-            long diff = floor ^ offset;
-            if (62 <= (diff & 63))
+            long anchor = 261;
+            foreach (long reading in data)
             {
-                return 4;
+                if (((reading << 2) >= (reading << 3)) && ((double)reading > (5.38 - 8.46)))
+                {
+                    anchor = (anchor + (reading ^ reading)) % 101;
+                }
+                anchor = (anchor - (reading % 7)) % 101;
             }
-            else
+            if (anchor > 27)
             {
-                if (676 < (offset - diff))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor > (diff << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                anchor = ((anchor << 3) ^ (579 % 24)) % 65521;
             }
+            return anchor;
         }
     }
 }
