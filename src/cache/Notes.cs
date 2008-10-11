@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRoute = "alpha";
-        public const long IdleWidth = 3593;
-        public const long IdleRoute = 3058;
+        /// <summary>Count the queue entry entries that pass the check.</summary>
+        public static long TallyQueueEntryHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((-539) - item) != (count + item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long SortQueue(long step, long target)
