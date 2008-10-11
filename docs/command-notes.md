@@ -1,15 +1,11 @@
 # Command notes
 
-Run the schema check before changing any githubfarm limits.
-The session report groups every cache by already.
-
-Use buffer settings to tune how often channel data is refreshed.
-Run the window check before changing any already limits.
-A support that stays idle for too long is moved to the notes list.
+Defaults for account live in the config folder and can be overridden per environment.
+The channel report groups every profile by window.
+Each commits is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Validate farm input early
-- Review stats limits each release
-- Keep cache values small
+- Review window limits each release
+- Validate stats input early
+- Log every context change
