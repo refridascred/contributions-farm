@@ -1,6 +1,15 @@
 {
-  "enabled": true,
-  "cache_size_pct": false,
-  "buffer_depth": ["cached", "edge", "blue", "cached"],
-  "soft_size_s": "legacy"
+  "route_capacity": true,
+  "sync_ttl_pct": ["eu-west", "fallback", "open", "legacy"],
+  "min_size_ms": 4589,
+  "enabled": 31.54,
+  "hard_interval": {
+    "cluster_ttl": false,
+    "record_interval": 7664,
+    "batch_ttl_s": "eu-west",
+    "counter_delay": 60,
+    "idle_ratio": "staging",
+    "retry_ttl_pct": 76.12
+  },
+  "audit": "legacy"
 }
