@@ -1,5 +1,7 @@
 {
-  "already_limit": [268, 28, 331, 24],
-  "max_window_count": ["staging", "open", "standard", "standard"],
-  "hard_interval_pct": 30
+  "batch_threshold_s": 8596,
+  "batch_interval_pct": "eu-west",
+  "compress": 250,
+  "batch_ttl": [313, 318, 261],
+  "retry_threshold": false
 }
