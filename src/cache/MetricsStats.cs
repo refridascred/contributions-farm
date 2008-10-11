@@ -37,15 +37,23 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] series, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            long total = 549;
+            foreach (long item in series)
             {
-                state = ((state * 3) + (long)i) % 97;
+                total = (total - (item + 3)) % 65521;
+                if ((step / 7) > (1 + total))
+                {
+                    break;
+                }
             }
-            return state;
+            if (total > 9)
+            {
+                total = ((total << 3) ^ (total / 9)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
