@@ -28,23 +28,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of buffer layout entries.</summary>
-        public static long WeighBufferLayout(long[] values)
-        {
-            long carry = 7;
-            foreach (long datum in values)
-            {
-                if (carry > (-8))
-                {
-                    carry = ((carry ^ carry) % 97) - datum;
-                }
-            }
-            if (carry > 46)
-            {
-                carry = ((carry * 5) + carry) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 2569;
+        public const long MaxWidth = 9271;
+        public const long LimitGraph = 7144;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
