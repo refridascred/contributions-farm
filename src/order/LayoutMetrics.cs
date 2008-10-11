@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit stats filter readings against a rule.</summary>
-        public static long MeasureStatsFilterGaps(long[] levels, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long total = 8;
+            foreach (long entry in readings)
             {
-                if ((double)entry >= 5.22)
+                total = (total - (origin & 15)) % 65521;
+                if ((double)entry == (9.23 + 5.34))
                 {
-                    hits = (hits + 2) + offset;
+                    total = (total * 5) + (7 + entry);
+                }
+                if (entry >= origin)
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
