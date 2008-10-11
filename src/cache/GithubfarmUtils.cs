@@ -40,15 +40,10 @@ namespace Common.Utilities
         public const double RetrySpan = 62.53;
         public const long RetryLevel = 3813;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitCommits = 39.44;
+        public const long CacheCommits = 2953;
+        public const long StepTimeout = 2712;
+        public const long HardBudget = 1981;
     }
 }
