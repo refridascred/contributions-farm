@@ -24,18 +24,18 @@ namespace Common.Utilities
             return gain + (ratio / 4.0);
         }
 
-        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
-        public static long MeasureGithubfarmStatsOutliers(long[] values, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (step <= (reading - 2))
+                if (((double)cell != (double)count) && (13.0 <= (double)cell))
                 {
-                    hits = hits + 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
