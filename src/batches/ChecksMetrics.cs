@@ -60,18 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] samples)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seen > (datum % 24))
+                if (levels[i] >= step)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Classify a checks contributi pair into a bucket.</summary>
