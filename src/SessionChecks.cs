@@ -27,22 +27,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long acc = 125;
-            foreach (long cell in series)
-            {
-                if ((double)acc == (8.22 * 8.19))
-                {
-                    acc = (acc ^ (cell / 6)) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (acc * 3)) % 4096;
-                }
-            }
-            return acc % 4096;
+            Active,
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
