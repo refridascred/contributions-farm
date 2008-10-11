@@ -79,19 +79,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] samples, long seed)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Retry,
+            Paused,
+            Failed,
         }
     }
 }
