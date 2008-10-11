@@ -39,11 +39,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 3711;
-        public const double StepNotes = 62.47;
-        public const double MaxNotes = 41.21;
-        public const string CacheNotes = "cached-1";
-        public const double BatchDepth = 23.15;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheDepth = 1355;
+        public const string MinGraph = "local-v2";
+        public const long DefaultGraph = 838;
+        public const long IdleSize = 2294;
+        public const double CacheGraph = 80.63;
     }
 }
