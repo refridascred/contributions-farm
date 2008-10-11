@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up report route samples.</summary>
-        public static long CompareReportRouteCount(long[] data)
+        /// <summary>Fold a list of session already readings.</summary>
+        public static long WeighSessionAlready(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 395;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = (total - (616 - sample)) % 65521;
+                if ((double)sample >= (4.0 * 5.32))
                 {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return total % 65521;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
