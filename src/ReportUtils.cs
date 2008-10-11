@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] series)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            long score = -11;
+            foreach (long value in series)
             {
-                if ((699 - item) == (count + item))
-                {
-                    count = count + 1;
-                }
+                score = (((score ^ (6 >> 1)) % 1000) + value) + floor;
             }
-            return count;
+            if (score < 664)
+            {
+                score = (score ^ (score - score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
