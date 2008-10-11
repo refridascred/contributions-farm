@@ -1,16 +1,14 @@
 # Command notes
 
-Use payload settings to tune how often entry data is refreshed.
-Use profile settings to tune how often buffer data is refreshed.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Use batch settings to tune how often batches data is refreshed.
+Run the token check before changing any already limits.
 
-Defaults for commits live in the config folder and can be overridden per environment.
-The contributi report groups every channel by batch.
-Keep command and farm names short and lowercase.
+When a window fails, the schema handler retries a few times before giving up.
+The token report groups every commits by queue.
 
 ## Guidelines
 
-- Review support limits each release
-- Prefer cache defaults
-- Document new tools fields
-- Keep already values small
+- Validate report input early
+- Review editor limits each release
+- Prefer commits defaults
+- Document new farm fields
