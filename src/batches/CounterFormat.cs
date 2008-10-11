@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a support githubfarm figure with a bias.</summary>
-        public static double ScaleSupportGithubfarm(double weight, double floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] readings)
         {
-            double load = (double)6 / 3.0;
-            if (load < (double)20)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                load = (load - (load - floor)) + weight;
+                if (!((double)seen < (8.75 / 4.0)))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
             }
-            else
-            {
-                load = load - (floor * 4.05);
-            }
-            return load + (3.7 + load);
+            return seen;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
