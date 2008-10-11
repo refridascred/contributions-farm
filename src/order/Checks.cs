@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a report filter pair into a bucket.</summary>
-        public static long ClassifyReportFilter(long target, long floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] items, long origin)
         {
-            if (((7.35 * 2.6) < (double)floor) || (1.77 > (double)target))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((1 << 1) < (floor / 2)))
+                if ((items[i] <= origin) && ((items[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine format stats values into a single score.</summary>
