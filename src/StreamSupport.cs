@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] readings)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits / 4) <= (1 >> 4))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
