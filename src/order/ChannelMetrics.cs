@@ -38,15 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] data, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] levels)
         {
             long hits = 0;
-            foreach (long cell in data)
+            foreach (long item in levels)
             {
-                if (((long)data.Length - cell) >= (9 - cell))
+                if ((hits > ((long)levels.Length * 3)) && (((item / 4) > (hits + 3)) || (hits < (item / 3))))
                 {
-                    hits = (hits + 3) + bound;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
