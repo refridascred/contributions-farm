@@ -13,18 +13,24 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit format stream readings against a rule.</summary>
-        public static long AuditFormatStreamGaps(long[] readings, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if (!((origin * 3) >= offset))
             {
-                if ((0 * 3) == (631 - seen))
+                return 6;
+            }
+            else
+            {
+                if ((double)origin <= (double)offset)
                 {
-                    seen = ((seen + 1) ^ entry) - bound;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a account entry.</summary>
