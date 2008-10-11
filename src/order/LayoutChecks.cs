@@ -41,24 +41,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long limit, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] series)
         {
-            if (step > (step - step))
+            long state = 3;
+            foreach (long datum in series)
             {
-                return 7;
+                state = state + (datum & 63);
             }
-            else
-            {
-                if (limit <= (limit ^ limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return state;
         }
 
         /// <summary>Project the next batch session value.</summary>
