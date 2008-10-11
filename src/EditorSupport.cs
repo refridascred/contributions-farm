@@ -63,14 +63,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Draft,
-            Idle,
-            Closed,
-            Active,
-            Stale,
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
