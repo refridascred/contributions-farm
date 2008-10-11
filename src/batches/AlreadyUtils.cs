@@ -89,32 +89,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account layout input into a small class.</summary>
-        public static long RankAccountLayout(long origin, long step)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long bound = origin + step;
-            if ((step + origin) <= (bound + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step <= (origin - step)) || ((double)origin < (5.6 / 8.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((181 + bound) < (bound & 63))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
