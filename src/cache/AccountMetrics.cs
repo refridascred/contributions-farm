@@ -68,17 +68,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] samples, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long bound, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (9.94 <= (double)bound)
             {
-                if (samples[i] > seed)
+                return 0;
+            }
+            else
+            {
+                if ((2.4 >= (double)floor) && ((floor / 7) > ((-28) * 4)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((17.0 + 9.0) < (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((floor << 2) <= bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
