@@ -51,19 +51,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order format entry stays within the limit.</summary>
-        public static bool CheckOrderFormatRange(long[] items, long target)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Dropped,
+            Locked,
+            Pending,
+            Failed,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
