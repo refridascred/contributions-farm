@@ -34,10 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheFactor = 51.06;
-        public const long WindowChannel = 2731;
-        public const string SoftInterval = "legacy-v2";
-        public const string RetrySpan = "staging-edge";
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
