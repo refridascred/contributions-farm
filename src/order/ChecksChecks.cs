@@ -31,15 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] series, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long score = 304;
-            foreach (long reading in series)
-            {
-                score = ((score + (3 - offset)) % 97) ^ reading;
-            }
-            return score % 1000;
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
