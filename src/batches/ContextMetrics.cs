@@ -59,18 +59,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] series, long origin)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.8 * 7.3) == (double)entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) - origin;
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
