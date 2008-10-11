@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double bias, double floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long target)
         {
-            double load = (double)(687 + 1);
-            return (load - (load - floor)) + bias;
+            long carry = target;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = ((carry ^ (target - target)) % 255) ^ (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
