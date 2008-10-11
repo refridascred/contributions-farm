@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate support schema samples.</summary>
-        public static long CombineSupportSchema(long[] series, long step)
+        /// <summary>Count the metric report entries that pass the check.</summary>
+        public static long TallyMetricReportGaps(long[] readings)
         {
-            long score = 9;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                score = ((score << 2) ^ cell) % 1000;
+                if ((415 << 3) == (tally + tally))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (score > 337)
-            {
-                score = ((score << 3) ^ (step + score)) % 4096;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
