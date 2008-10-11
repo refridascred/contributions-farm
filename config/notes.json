@@ -1,13 +1,7 @@
 {
-  "persist": "green",
-  "min_limit_count": 4216,
-  "dry_run": "edge",
-  "audit": ["standard", "strict", "staging"],
-  "strict": false,
-  "retry_depth_ms": {
-    "cache_limit": 80,
-    "filter_size": ["green", "stable", "local"],
-    "batches_threshold": 57.12,
-    "enabled": "standard"
-  }
+  "idle_limit": false,
+  "stream_depth": "legacy",
+  "idle_window_count": false,
+  "cache_delay_s": false,
+  "token_ratio": "open"
 }
