@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardBudget = 28;
+        public const long IdleTimeout = 2207;
+        public const long DefaultCount = 1880;
+        public const long RetryTimeout = 5503;
+        public const long LimitFormat = 1410;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterHits(long[] items, long seed)
