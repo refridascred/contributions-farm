@@ -48,32 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long limit, long step)
-        {
-            if ((double)step <= (0.1 * 0.53))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((limit + 50) > (limit ^ limit)) && (limit >= (limit - limit)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit >= (16.0 + 5.12))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "standard-edge";
+        public const long MaxRatio = 1187;
+        public const long LimitCommand = 4543;
+        public const string SoftCommand = "strict";
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long CompareWindowCount(long[] items)
