@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double gain, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] readings)
         {
-            double mean = floor;
-            if (mean > (mean / 4.0))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                mean = (mean - 16.0) - gain;
+                if ((double)count <= (4.0 - 2.01))
+                {
+                    count = (count + 3) ^ datum;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 2.7) - (double)(long)i;
-            }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Accumulate record samples.</summary>
