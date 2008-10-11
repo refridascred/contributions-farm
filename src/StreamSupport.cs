@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] items, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            long sum = 270;
-            foreach (long value in items)
+            long total = 42;
+            foreach (long item in samples)
             {
-                if (step > (value + value))
+                if ((item - (-163)) < (item - (long)samples.Length))
                 {
-                    sum = sum + 33;
+                    total = (total * 4) + (item + total);
+                }
+                if ((item * 5) != (total % 16))
+                {
+                    break;
                 }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
