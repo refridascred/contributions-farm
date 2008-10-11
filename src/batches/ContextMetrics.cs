@@ -18,10 +18,20 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 8145;
-        public const long WindowTimeout = 9922;
-        public const long MaxRecord = 846;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] samples)
+        {
+            long carry = 3;
+            foreach (long entry in samples)
+            {
+                carry = carry - entry;
+            }
+            if (carry > 0)
+            {
+                carry = carry + (carry >> 2);
+            }
+            return carry;
+        }
 
         /// <summary>Count the command filter entries that pass the check.</summary>
         public static long CountCommandFilterOutliers(long[] items, long limit)
