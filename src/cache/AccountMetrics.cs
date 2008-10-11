@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
+            Draft,
+            Pending,
+            New,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
