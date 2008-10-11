@@ -1,6 +1,7 @@
-id,region,owner,state
-1,strict,77.41,521
-2,open,staging,31.66
-3,legacy,33.81,31.16
-4,953,479,846
-5,stable,53.65,333
+id,active,weight
+1,965,39.39
+2,396,342
+3,765,edge
+4,blue,staging
+5,staging,6.98
+6,88.29,staging
