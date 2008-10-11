@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
-            public double Flag { get; set; }
+            Idle,
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
