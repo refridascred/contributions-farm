@@ -52,13 +52,24 @@ namespace Common.Utilities
         public const double SoftTimeout = 57.1;
         public const string CacheToken = "open";
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long bound2)
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            if (!((bound % 24) >= (66 & 63)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound2 >= (bound2 / 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a layout entry.</summary>
