@@ -18,26 +18,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] items)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] levels, long seed)
         {
-            long state = 78;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (((long)items.Length + state) != (state << 2))
+                if (seen > ((-1) - 9))
                 {
-                    state = ((state * 2) + (datum + state)) % 101;
-                }
-                else
-                {
-                    state = (state << 2) ^ datum;
+                    seen = ((seen + 2) ^ item) - seed;
                 }
             }
-            if (state > 7)
-            {
-                state = state + state;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
