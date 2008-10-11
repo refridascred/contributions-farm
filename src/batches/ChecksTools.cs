@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (!!((item + item) > (seen + seen)))
+                if (!((double)tally != (double)item))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
