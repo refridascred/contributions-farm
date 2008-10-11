@@ -1,4 +1,8 @@
 # entry settings
-soft_limit_ms: 13
-batch_retries_pct: 76
-strict: 76
+entry_ratio: 30.9
+tools_timeout:
+  - primary
+  - fallback
+  - edge
+soft_limit_s: legacy
+cache_ratio: 6383
