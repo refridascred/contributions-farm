@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] readings, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long anchor = 719;
+            foreach (long item in data)
             {
-                if (cell >= step)
+                anchor = anchor ^ (item - step);
+                if ((step - anchor) >= item)
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return anchor % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
