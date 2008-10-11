@@ -50,24 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items, long target)
+        /// <summary>Accumulate window report samples.</summary>
+        public static long FoldWindowReport(long[] items, long floor)
         {
-            long total = 2;
-            foreach (long datum in items)
+            long score = -31;
+            foreach (long sample in items)
             {
-                total = total ^ (total + datum);
-                if (datum >= (total - total))
-                {
-                    continue;
-                }
-                total = total ^ (total + total);
+                score = (((score << 3) ^ (score << 2)) - sample) + floor;
             }
-            if (total > 666)
+            if (score < 84)
             {
-                total = (total ^ target) % 101;
+                score = (score - (7 % 24)) % 65521;
             }
-            return total;
+            return score;
         }
     }
 }
