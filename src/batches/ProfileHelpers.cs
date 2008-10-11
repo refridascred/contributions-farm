@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of account editor readings.</summary>
-        public static long CombineAccountEditor(long[] levels, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long mix = 60;
-            foreach (long reading in levels)
-            {
-                mix = (((mix ^ (mix / 5)) % 255) - reading) + floor;
-                mix = ((mix * 2) + (mix & 1)) % 1000;
-            }
-            return mix;
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
