@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long bound, long limit)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] items, long origin)
         {
-            if ((limit ^ 326) == (bound * 5))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (8.0 < (double)limit)
+                if ((items[i] < origin) && ((items[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound & 15) >= (89 * 5)) && ((13.0 + 5.9) == (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
