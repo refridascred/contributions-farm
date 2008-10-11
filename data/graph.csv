@@ -1,6 +1,11 @@
-id,ratio,label
-1,standard,stable
-2,legacy,41.03
-3,884,32.93
-4,16.57,882
-5,green,55.31
+id,count,weight
+1,574,34.88
+2,448,804
+3,open,fallback
+4,995,154
+5,latest,50.3
+6,57.48,67.58
+7,213,686
+8,63.8,fallback
+9,554,green
+10,36.47,876
