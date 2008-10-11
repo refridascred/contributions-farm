@@ -1,12 +1,14 @@
 {
-  "retry_capacity_s": 35.84,
-  "warm_interval": {
-    "min_ttl_count": [17, 498, 371, 130],
-    "min_size_s": "open",
-    "soft_size": ["cached", "primary", "open", "eu-west"],
-    "poll_limit": [341, 411, 409],
-    "commits_size": 60,
-    "report_depth": 250
+  "queue_retries": "fallback",
+  "default_threshold_pct": "local",
+  "graph_capacity": {
+    "hard_delay_ms": "eu-west",
+    "batch_interval": "open",
+    "counter_window": 500,
+    "burst_window_pct": ["fallback", "cached", "stable", "green"],
+    "metric_window": 1570,
+    "layout_ratio": 17
   },
-  "max_ratio_pct": "stable"
+  "entry_retries": "latest",
+  "persist": "staging"
 }
