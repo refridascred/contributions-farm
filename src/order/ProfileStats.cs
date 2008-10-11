@@ -54,19 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] readings, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] levels, long limit)
         {
-            long total = 502;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (seed < (total ^ seed))
+                if (!(((seen + limit) != (sample >> 1)) || ((27 / 4) < limit)))
                 {
-                    break;
+                    seen = seen + 3;
                 }
-                total = total - sample;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
