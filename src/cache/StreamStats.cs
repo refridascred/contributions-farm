@@ -53,15 +53,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] samples, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if ((double)matches == (double)datum)
+                {
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
