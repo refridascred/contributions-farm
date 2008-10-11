@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Active,
-            Idle,
-            Locked,
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Project the next context already value.</summary>
