@@ -38,19 +38,24 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] levels, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long floor, long floor2)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            if ((7.7 - 4.03) < (double)floor)
             {
-                if (reading >= seed)
+                return 6;
+            }
+            else
+            {
+                if ((8 - floor2) < (floor ^ 67))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
     }
 }
