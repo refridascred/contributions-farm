@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] data, long limit)
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a buffer batches sample.</summary>
