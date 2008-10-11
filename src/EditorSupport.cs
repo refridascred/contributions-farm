@@ -84,13 +84,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Ready,
-            Active,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitSpan = 5818;
+        public const long MaxWidth = 7803;
+        public const long BaseRatio = 9726;
     }
 }
