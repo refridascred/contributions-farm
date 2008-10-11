@@ -30,13 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long bound)
         {
-            Dropped,
-            Draft,
-            Ready,
-            Idle,
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context status values.</summary>
