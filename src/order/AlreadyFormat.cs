@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
             Idle,
-            Active,
-            Dropped,
-            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
