@@ -20,14 +20,21 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Count token report pairs that satisfy a relation.</summary>
+        public static long MatchTokenReportCount(long[] readings)
         {
-            Dropped,
-            Pending,
-            Queued,
-            Ready,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a already counter forward.</summary>
