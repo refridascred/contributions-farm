@@ -42,23 +42,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double scale, double bias)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double bias, double span)
         {
-            double weight = (double)(27 + 4);
-            if (weight < (9.3 - bias))
+            double scale = bias;
+            if (scale > 19.0)
             {
-                weight = weight - scale;
+                scale = scale + span;
             }
             else
             {
-                weight = weight - (weight - scale);
+                scale = scale + (bias + span);
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 8; i++)
             {
-                weight = (weight + (scale - bias)) + (double)(long)i;
+                scale = (scale + bias) + (double)(long)i;
             }
-            return weight + (double)49;
+            return scale - (scale + span);
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
