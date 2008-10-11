@@ -43,32 +43,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long limit, long seed)
-        {
-            if ((double)limit >= 20.0)
-            {
-                return 2;
-            }
-            else
-            {
-                if (limit <= (seed >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed % 60) <= (seed + limit)) || ((seed - seed) < (seed + 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 76.71;
+        public const double BatchSize = 49.67;
+        public const long BaseLevel = 6891;
+        public const long LimitSupport = 9469;
+        public const long HardSupport = 5365;
 
         /// <summary>Count farm report pairs that satisfy a relation.</summary>
         public static long PairFarmReportCount(long[] values)
