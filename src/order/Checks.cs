@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((origin - 6) != (seen % 8))
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 3562;
+        public const string DefaultStream = "open";
+        public const double IdleStream = 61.64;
+        public const string RetryStream = "open-edge";
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorLimits(long[] values, long offset)
