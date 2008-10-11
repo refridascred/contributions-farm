@@ -28,21 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long seen = 0;
+            long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] - series[j]) < 12)
+                    if ((series[i] + series[j]) < 6)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
