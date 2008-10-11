@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] series, long seed)
         {
-            Active,
-            Done,
-            Locked,
-            Queued,
-            New,
+            long mix = 3;
+            foreach (long reading in series)
+            {
+                if (!((8.5 - 8.51) != (double)seed))
+                {
+                    mix = ((mix << 2) ^ ((long)series.Length << 1)) ^ reading;
+                }
+                if ((seed / 7) < (466 + seed))
+                {
+                    mix = (mix ^ (mix - mix)) % 1000;
+                }
+            }
+            if (mix < 945)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of session metrics readings.</summary>
