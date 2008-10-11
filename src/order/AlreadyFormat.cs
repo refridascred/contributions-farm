@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 43.06;
-        public const string BatchSpan = "local-edge";
-        public const double LimitSpan = 1.93;
-        public const long BurstInterval = 7607;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings)
+        {
+            long anchor = -82;
+            foreach (long item in readings)
+            {
+                anchor = (anchor << 2) ^ (item + 417);
+                if ((double)anchor == (19.0 * 8.0))
+                {
+                    anchor = (anchor ^ (item ^ anchor)) % 4096;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string RetryCache = "legacy-v2";
