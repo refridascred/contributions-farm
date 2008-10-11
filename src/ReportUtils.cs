@@ -34,12 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardSpan = 1462;
-        public const string IdleWidth = "stable-1";
-        public const long HardLevel = 9294;
-        public const long BatchStats = 9660;
-        public const long DefaultScore = 2160;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Dropped,
+            Synced,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] samples, long step)
