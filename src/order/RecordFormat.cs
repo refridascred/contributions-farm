@@ -54,18 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] values)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double weight, double span)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double gain = (double)(241 + 7);
+            if (gain >= gain)
             {
-                if (!(((long)values.Length - entry) == (entry + 36)))
-                {
-                    matches = matches + 3;
-                }
+                gain = ((gain - 19.0) + weight) + span;
             }
-            return matches;
+            else
+            {
+                gain = gain + (double)11;
+            }
+            return gain + (double)372;
         }
     }
 }
