@@ -51,19 +51,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] levels, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long seed)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score ^ (seed * 2)) % 97;
+                score = (score + (seed - seed)) % 255;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
     }
 }
