@@ -41,10 +41,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 1652;
-        public const double MinCache = 51.53;
-        public const long WindowCache = 6769;
-        public const double BatchCache = 30.1;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Synced,
+            Idle,
+            Paused,
+            Done,
+        }
     }
 }
