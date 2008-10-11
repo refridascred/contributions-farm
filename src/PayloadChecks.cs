@@ -76,19 +76,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double ratio, double offset)
+        /// <summary>Count the format already entries that pass the check.</summary>
+        public static long MeasureFormatAlreadyMatches(long[] levels, long seed)
         {
-            double load = 8.24 / 8.0;
-            if (load < (18.0 / 8.0))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                load = load + (offset + load);
+                if ((tally * 3) >= (seed - tally))
+                {
+                    tally = (tally + 3) - cell;
+                }
             }
-            else
-            {
-                load = load - ratio;
-            }
-            return load - load;
+            return tally;
         }
     }
 }
