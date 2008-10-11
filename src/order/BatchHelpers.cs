@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] levels, long floor)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
