@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
+            long mix = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = mix ^ 3;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the metric status values.</summary>
