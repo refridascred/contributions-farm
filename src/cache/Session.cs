@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "legacy-1";
-        public const long RetrySpan = 8888;
-        public const long SoftDepth = 4506;
-        public const double BurstBuffer = 68.53;
+        /// <summary>Compare every pair of report metrics readings.</summary>
+        public static long MatchReportMetricsCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank already profile input into a small class.</summary>
         public static long SortAlreadyProfile(long step, long seed)
