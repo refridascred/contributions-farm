@@ -12,18 +12,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] values, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long carry = 669;
+            foreach (long entry in series)
             {
-                if ((9.1 + 2.0) < (double)hits)
+                if (((-73) + carry) > carry)
                 {
-                    hits = ((hits + 3) ^ entry) + floor;
+                    carry = ((carry ^ (carry * 3)) % 255) ^ entry;
                 }
             }
-            return hits;
+            if (carry > 2)
+            {
+                carry = ((carry * 5) + (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Locate a format reading by value.</summary>
