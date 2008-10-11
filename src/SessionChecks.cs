@@ -21,13 +21,15 @@ namespace Common.Utilities
         public const long BatchRatio = 983;
         public const double BurstBatches = 35.21;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] levels, long target)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long result = 20;
+            foreach (long datum in levels)
+            {
+                result = ((result * 4) + (result + datum)) - target;
+            }
+            return result % 65521;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
