@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
+            Done,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Rank farm already input into a small class.</summary>
