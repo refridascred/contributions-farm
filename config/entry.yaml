@@ -1,14 +1,7 @@
 # entry settings
-entry_delay:
-  stats_depth: standard
-  soft_ratio: 55.54
-  batch_limit: primary
-  strict: true
-  idle_delay: true
-  notes_window:
-    - edge
-    - eu-west
-    - edge
-min_window_count: 97
-hard_window: cached
-graph_ratio: open
+max_depth: edge
+max_retries_s: 6601
+max_size_ms: 51.2
+readonly: edge
+enabled: true
+cache_capacity_ms: 10.88
