@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double weight, double offset)
-        {
-            double load = (offset / 4.0) / 7.0;
-            if (load >= offset)
-            {
-                load = load - (double)56;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstWidth = 8008;
+        public const string RetryChannel = "fallback-1";
+        public const long LimitChannel = 7375;
+        public const long BatchSize = 9899;
+        public const double MaxChannel = 58.83;
 
         /// <summary>Roll a notes route counter forward.</summary>
         public static long IterateNotesRoute(long limit)
