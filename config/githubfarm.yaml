@@ -1,11 +1,4 @@
 # githubfarm settings
-enabled: 26
-batches_window:
-  - 143
-  - 232
-  - 102
-persist:
-  - 455
-  - 304
-  - 77
-already_size: latest
+payload_size: 7798
+sync_ttl_s: primary
+batch_timeout: 85.18
