@@ -14,19 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long carry = 665;
-            foreach (long cell in data)
-            {
-                carry = ((carry ^ (2 & 255)) % 97) + cell;
-            }
-            if (carry < 8)
-            {
-                carry = (carry - carry) % 97;
-            }
-            return carry;
+            Failed,
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Project the next contributi value.</summary>
