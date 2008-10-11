@@ -28,15 +28,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] readings, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if ((readings[i] >= origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
