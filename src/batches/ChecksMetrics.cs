@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryFactor = 8876;
-        public const string MinToken = "primary-1";
-        public const string SoftToken = "cached-1";
-        public const string CacheToken = "cached-1";
-        public const long MinScore = 9891;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] levels)
+        {
+            long acc = 300;
+            foreach (long value in levels)
+            {
+                acc = ((acc * 3) + value) % 4096;
+                if (7.13 <= (double)value)
+                {
+                    break;
+                }
+            }
+            if (acc > 371)
+            {
+                acc = ((acc * 3) + (496 & 63)) % 1000;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long SortContributi(long seed, long bound)
