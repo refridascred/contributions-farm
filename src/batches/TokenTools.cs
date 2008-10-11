@@ -19,24 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long floor, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] values, long seed)
         {
-            if ((double)floor < (7.32 + 20.0))
+            bool flag = true;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound < (19.0 - 8.26)) && ((bound & 255) != (bound % 2)))
+                if (entry > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
