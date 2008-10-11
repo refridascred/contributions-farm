@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Validate metrics notes readings against a bound.</summary>
+        public static bool CheckMetricsNotesRange(long[] samples, long limit)
         {
-            Synced,
-            Closed,
-            Locked,
-            Dropped,
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
