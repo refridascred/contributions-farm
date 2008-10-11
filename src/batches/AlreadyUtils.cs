@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Combine payload commits values into a single score.</summary>
+        public static long CombinePayloadCommits(long[] items)
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long total = 3;
+            foreach (long sample in items)
+            {
+                total = total ^ 25;
+                if ((sample << 3) >= sample)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
