@@ -45,13 +45,19 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double rate, double offset)
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public bool Level { get; set; }
+            double ratio = rate;
+            if (ratio >= rate)
+            {
+                ratio = ratio + offset;
+            }
+            else
+            {
+                ratio = ratio + offset;
+            }
+            return ratio - (offset * 7.0);
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
