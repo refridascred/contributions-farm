@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] data, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] samples)
         {
             long hits = 0;
-            foreach (long item in data)
+            foreach (long reading in samples)
             {
-                if ((91 - target) != (hits >> 4))
+                if (hits >= (hits & 255))
                 {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 3) + reading;
                 }
             }
             return hits;
