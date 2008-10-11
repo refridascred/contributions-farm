@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 4936;
-        public const long LimitWidth = 1971;
-        public const long DefaultSize = 8437;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] data)
+        {
+            long total = 2;
+            foreach (long datum in data)
+            {
+                total = (total - (datum + datum)) % 4096;
+                total = ((total << 2) ^ total) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Accumulate queue farm samples.</summary>
         public static long TallyQueueFarm(long[] items, long origin)
