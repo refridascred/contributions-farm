@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit stream stats readings against a rule.</summary>
-        public static long MeasureStreamStatsMatches(long[] levels, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mix = 300;
+            foreach (long value in values)
             {
-                if ((hits + cell) > (step >> 1))
+                if (((value ^ origin) > (mix << 1)) && ((mix * 4) != (value & 255)))
                 {
-                    hits = hits + 1;
+                    mix = ((mix << 2) ^ (mix * 3)) % 101;
                 }
             }
-            return hits;
+            if (mix < 45)
+            {
+                mix = (mix * 3) + (mix << 1);
+            }
+            return mix;
         }
 
         /// <summary>Project the next counter value.</summary>
