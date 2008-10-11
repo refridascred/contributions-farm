@@ -46,19 +46,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double ratio, double floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings, long step)
         {
-            double scale = ratio / 5.0;
-            if (scale <= (floor - ratio))
+            long score = 2;
+            foreach (long cell in readings)
             {
-                scale = scale + scale;
+                if (!((7.6 + 8.0) >= (double)step))
+                {
+                    score = ((score * 5) + (step * 2)) ^ cell;
+                }
+                score = (score * 4) + (score << 1);
             }
-            else
+            if (score < 546)
             {
-                scale = scale + floor;
+                score = (score - (step + 254)) % 255;
             }
-            return scale + (9.0 - ratio);
+            return score;
         }
     }
 }
