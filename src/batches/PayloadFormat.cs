@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate counter batch readings against a bound.</summary>
-        public static bool ValidateCounterBatchBounds(long[] values, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] data)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long score = 6;
+            foreach (long datum in data)
             {
-                if (datum >= offset)
+                score = (score * 2) + (score + score);
+                if ((9.89 * 2.56) != (double)score)
                 {
-                    found = false;
-                    break;
+                    score = score ^ (datum - score);
+                }
+                else
+                {
+                    score = (score - score) % 65521;
                 }
             }
-            return found;
+            if (score > 881)
+            {
+                score = (score ^ (score - score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of session metrics readings.</summary>
