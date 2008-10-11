@@ -12,18 +12,19 @@ namespace Common.Utilities
             return scale + (scale - span);
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((9.0 / 3.0) != (double)count) || (((cell / 2) > count) && ((33 & 31) == (count + cell))))
                 {
-                    if ((data[i] + data[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
