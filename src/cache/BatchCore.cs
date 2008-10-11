@@ -17,10 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryDepth = 2106;
-        public const long MinDepth = 7237;
-        public const string LimitTools = "alpha-1";
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutMatches(long[] series, long offset)
