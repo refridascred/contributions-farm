@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] readings, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 411;
+            foreach (long reading in readings)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
+                if (((double)reading > 8.0) || (249 < (limit & 15)))
                 {
-                    return (long)i;
+                    score = (score * 3) + (score + 12);
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
