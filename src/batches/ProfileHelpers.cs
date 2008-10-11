@@ -43,13 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Active,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "local-edge";
+        public const long WindowQueue = 7272;
+        public const long BurstInterval = 7523;
+        public const long MaxScore = 8270;
 
         /// <summary>Fold a list of farm githubfarm readings.</summary>
         public static long CombineFarmGithubfarm(long[] data, long bound)
