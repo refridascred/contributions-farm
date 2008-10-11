@@ -20,21 +20,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Iterate the graph stream series from a seed.</summary>
+        public static long SeriesGraphStream(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
     }
 }
