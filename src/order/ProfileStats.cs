@@ -41,12 +41,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double scale, double offset)
         {
-            Retry,
-            Paused,
-            Done,
+            double mean = (offset * 2.2) * 5.8;
+            return (mean - mean) + scale;
         }
     }
 }
