@@ -1,8 +1,8 @@
 {
-  "order_limit": ["primary", "legacy", "strict", "edge"],
-  "cache_threshold": "standard",
-  "cache_ratio_pct": 67,
-  "sync_size": [426, 88, 409],
-  "graph_retries": "green",
-  "idle_interval_s": 34.78
+  "entry_threshold": 100,
+  "min_interval_s": "edge",
+  "hard_retries_count": true,
+  "retry_ratio_s": ["stable", "latest", "local", "fallback"],
+  "idle_limit_s": "legacy",
+  "cache_capacity_ms": 23.95
 }
