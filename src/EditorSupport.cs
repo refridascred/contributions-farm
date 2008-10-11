@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] samples, long limit)
+        /// <summary>Classify a graph counter pair into a bucket.</summary>
+        public static long SortGraphCounter(long offset, long step)
         {
-            bool found = true;
-            foreach (long item in samples)
+            if ((38 + step) == (offset + offset))
             {
-                if (item < limit)
+                return 7;
+            }
+            else
+            {
+                if (((step + step) <= offset) && ((step * 2) <= offset))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return found;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
