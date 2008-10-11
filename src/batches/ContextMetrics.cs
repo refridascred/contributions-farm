@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Rank batch schema input into a small class.</summary>
+        public static long RankBatchSchema(long limit, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((limit + 321) <= limit)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (limit > (limit >> 3))
                 {
-                    if ((items[i] ^ items[j]) != 7)
+                    return 3;
+                }
+                else
+                {
+                    if (!((2.0 + 5.0) > 0.2))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the layout status values.</summary>
