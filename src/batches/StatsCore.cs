@@ -16,24 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings, long step)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long carry = 9;
-            foreach (long cell in readings)
-            {
-                bool found = carry >= (step - cell);
-                if (found)
-                {
-                    continue;
-                }
-                carry = carry - (cell * 5);
-            }
-            if (carry > 81)
-            {
-                carry = (carry + (step << 1)) % 4096;
-            }
-            return carry;
+            Pending,
+            Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a editor stats.</summary>
