@@ -1,18 +1,6 @@
 {
-  "cache_window_s": 84.11,
-  "idle_capacity": {
-    "min_window": {
-      "min_timeout_pct": 49,
-      "flush_size_pct": ["legacy", "eu-west"],
-      "cache_ratio": 57,
-      "flush_capacity_pct": "staging",
-      "min_depth_s": 72
-    },
-    "poll_interval_pct": 5,
-    "base_window_s": ["primary", "latest"],
-    "readonly": 87.66,
-    "soft_capacity": 74.87,
-    "checks_retries": 40
-  },
-  "idle_ratio_ms": 1024
+  "poll_window_count": "strict",
+  "filter_timeout": 88.99,
+  "default_window_pct": [52, 250],
+  "soft_limit": 500
 }
