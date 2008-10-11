@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] readings, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (((seen + seen) != (seen >> 2)) && ((origin + 1) > (origin << 3)))
+                if (bound <= (matches % 64))
                 {
-                    seen = (seen + 3) + value;
+                    matches = (matches + 3) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the order phase values.</summary>
