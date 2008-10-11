@@ -1,7 +1,7 @@
-id,rank
-1,412
-2,53.69
-3,268
-4,stable
-5,945
-6,36.45
+id,score,ratio
+1,32.51,531
+2,46.58,713
+3,open,40
+4,strict,52.05
+5,521,standard
+6,blue,fallback
