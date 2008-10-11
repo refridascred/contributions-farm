@@ -20,18 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] items)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long anchor = 2;
+            foreach (long datum in items)
             {
-                if ((datum % 2) > (count ^ datum))
+                anchor = anchor - (anchor % 10);
+                if ((datum + 37) <= (anchor + 200))
                 {
-                    count = count + 1;
+                    anchor = ((anchor * 5) + ((-939) / 2)) % 1000;
                 }
+                anchor = ((anchor << 2) ^ (anchor / 4)) % 97;
             }
-            return count;
+            if (anchor > (-640))
+            {
+                anchor = (anchor ^ (anchor / 6)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Combine context values into a single score.</summary>
