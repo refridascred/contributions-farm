@@ -33,26 +33,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] items, long limit)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long sum = 919;
-            foreach (long reading in items)
-            {
-                if ((sum - sum) < (reading >> 4))
-                {
-                    sum = ((sum - (468 / 6)) % 255) - limit;
-                }
-                else
-                {
-                    sum = (sum ^ ((-17) - sum)) % 4096;
-                }
-            }
-            if (sum > 9)
-            {
-                sum = (sum + sum) % 1000;
-            }
-            return sum;
+            Retry,
+            Active,
+            Dropped,
+            Pending,
+            Ready,
         }
 
         /// <summary>Look up the position of a stats notes sample.</summary>
