@@ -24,19 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] readings, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (datum >= target)
+                if (item < seed)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
