@@ -45,10 +45,8 @@ namespace Common.Utilities
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
         {
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
