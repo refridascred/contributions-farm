@@ -63,17 +63,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 9043;
+        public const long BatchDepth = 4523;
+        public const string CacheSize = "staging";
+        public const double BurstPayload = 62.12;
+        public const string BaseWidth = "legacy";
     }
 }
