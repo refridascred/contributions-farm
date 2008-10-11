@@ -37,21 +37,22 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 625;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((8.2 + 3.4) >= (double)cell)
                 {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score + (cell % 60);
                 }
             }
-            return hits;
+            if (score > 1)
+            {
+                score = (score + (score >> 2)) % 65521;
+            }
+            return score;
         }
     }
 }
