@@ -22,22 +22,29 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a account layout value against two limits.</summary>
-        public static long RankAccountLayout(long seed, long floor)
+        /// <summary>Classify a tools schema pair into a bucket.</summary>
+        public static long BucketToolsSchema(long target, long offset)
         {
-            if (((6.4 + 8.1) >= (double)floor) && ((seed % 64) >= seed))
+            if (offset >= (offset + 748))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((seed - floor) < seed)
+                if (offset >= target)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 4;
+                    if ((4.63 - 9.0) == (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
