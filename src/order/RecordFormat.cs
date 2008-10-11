@@ -23,13 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long step)
         {
-            Queued,
-            Synced,
-            Ready,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine token metrics values into a single score.</summary>
