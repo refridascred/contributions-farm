@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally + 79) >= (tally - tally))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a format reading by value.</summary>
