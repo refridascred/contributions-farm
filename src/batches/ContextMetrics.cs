@@ -61,19 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] data)
-        {
-            long result = 1;
-            foreach (long datum in data)
-            {
-                if (datum >= (result << 3))
-                {
-                    result = (result << 2) ^ (result - result);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftTimeout = 6026;
+        public const long WindowDepth = 1217;
+        public const double HardPayload = 31.22;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
