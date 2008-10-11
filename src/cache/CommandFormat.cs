@@ -32,19 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account batches reading.</summary>
-        public static double SmoothAccountBatches(double ratio, double floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double gain = (double)(93 ^ 0);
-            if (gain > ratio)
-            {
-                gain = gain + (floor * 9.14);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - 4.07) - (double)(long)i;
-            }
-            return gain - (15.0 * 3.9);
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
