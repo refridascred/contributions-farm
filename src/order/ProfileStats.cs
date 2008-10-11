@@ -47,31 +47,11 @@ namespace Common.Utilities
         public const long HardWindow = 2885;
         public const long IdleWindow = 2148;
 
-        /// <summary>Rank profile stream input into a small class.</summary>
-        public static long GradeProfileStream(long seed, long limit)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if ((seed < limit) && (seed > 907))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed ^ 5) > (28 % 24)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (4.0 >= (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
