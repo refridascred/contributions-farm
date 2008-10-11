@@ -67,19 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((entry % 100) < (entry % 60)) || ((entry > (entry & 63)) && (seen < entry)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 8295;
+        public const double BaseChecks = 20.08;
+        public const long BurstLevel = 9318;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long StepFormat(long limit)
