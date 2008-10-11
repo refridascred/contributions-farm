@@ -33,18 +33,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the order session entries that pass the check.</summary>
-        public static long MeasureOrderSessionOutliers(long[] levels)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((seen & 1) == (cell / 8))
+                if ((5.55 / 4.0) == (double)value)
                 {
-                    seen = seen + 3;
+                    hits = (hits + 1) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
