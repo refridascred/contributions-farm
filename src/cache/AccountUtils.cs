@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((((double)value != (0.13 + 2.2)) && (9.0 <= (double)matches)) && ((matches & 3) < (matches - 5)))
+                if ((26 <= (44 - item)) || !((687 + item) >= item))
                 {
-                    matches = matches + 2;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a filter info.</summary>
