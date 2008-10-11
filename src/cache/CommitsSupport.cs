@@ -44,22 +44,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the account profile entries that pass the check.</summary>
-        public static long MeasureAccountProfileMatches(long[] data, long seed)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - reading) >= (seed / 5))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define command limits and defaults.</summary>
