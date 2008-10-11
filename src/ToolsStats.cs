@@ -13,11 +13,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "fallback-1";
-        public const double WindowScore = 3.59;
-        public const long HardRecord = 1440;
-        public const long RetryRecord = 9732;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Synced,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Fold a list of stats filter readings.</summary>
         public static long CombineStatsFilter(long[] values, long offset)
