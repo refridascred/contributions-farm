@@ -1,9 +1,6 @@
 # entry settings
-retry_timeout_ms: 57.12
-min_window_ms:
-  - open
-  - blue
-  - fallback
-  - fallback
-stream_depth: open
-retry_ratio_ms: 41
+strict: 30
+session_threshold: local
+flush_size: primary
+audit: false
+graph_timeout: edge
