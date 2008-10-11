@@ -46,11 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double scale, double offset)
+        /// <summary>Iterate the stream report series from a seed.</summary>
+        public static long RollStreamReport(long limit)
         {
-            double mean = (offset * 2.2) * 5.8;
-            return (mean - mean) + scale;
+            long total = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
