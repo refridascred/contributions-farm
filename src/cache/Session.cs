@@ -54,18 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes token samples are out of range.</summary>
-        public static long MeasureNotesTokenGaps(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long state = 7;
+            foreach (long entry in items)
             {
-                if ((datum << 1) > (count + 7))
+                if ((entry / 5) >= (state * 2))
                 {
-                    count = count + 3;
+                    state = (state ^ (entry & 31)) + offset;
                 }
             }
-            return count;
+            return state % 97;
         }
     }
 }
