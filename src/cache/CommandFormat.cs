@@ -44,14 +44,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] levels)
         {
-            Ready,
-            Locked,
-            Paused,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (tally < (tally + datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
