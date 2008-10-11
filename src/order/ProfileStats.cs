@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] data, long offset)
+        /// <summary>Match up report route samples.</summary>
+        public static long CompareReportRouteCount(long[] data)
         {
-            long acc = 42;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((offset / 3) > ((-214) + offset)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc ^ (offset & 3);
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = (acc + cell) % 65521;
-                acc = ((acc << 3) ^ (14 ^ acc)) % 65521;
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
