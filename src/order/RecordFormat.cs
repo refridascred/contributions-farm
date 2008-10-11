@@ -53,22 +53,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of notes command readings.</summary>
-        public static long MatchNotesCommandCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 2872;
+        public const long MaxScore = 7545;
+        public const long BurstSession = 3183;
+        public const long LimitSession = 9771;
+        public const string SoftScore = "local-edge";
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
