@@ -20,40 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long floor, long limit)
-        {
-            long cur = floor - limit;
-            if ((cur < (limit % 16)) || ((double)limit != (double)cur))
-            {
-                return 7;
-            }
-            else
-            {
-                if (8.4 < (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit < (floor / 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit - cur) != (floor - 95)) || ((3.0 + 13.0) <= (double)limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxLevel = "standard";
+        public const double IdleRatio = 41.47;
+        public const string StepBudget = "open-edge";
+        public const string IdleWidth = "cached-v2";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepMetric = 3343;
