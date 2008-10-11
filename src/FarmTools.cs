@@ -20,14 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long floor, long limit)
         {
-            Paused,
-            Active,
-            Dropped,
-            New,
-            Done,
+            long edge = floor + limit;
+            if (((limit >> 5) == (edge + edge)) || ((edge - edge) <= edge))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor - edge) > (limit * 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Rank token input into a small class.</summary>
