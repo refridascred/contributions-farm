@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result * 2) + (step * 4);
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
