@@ -23,22 +23,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit cache account readings against a rule.</summary>
-        public static long MeasureCacheAccountHits(long[] data, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((double)target >= (double)count)
+                if (entry != offset)
                 {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
