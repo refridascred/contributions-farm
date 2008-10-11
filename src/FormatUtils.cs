@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] series, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long score = -5;
+            foreach (long entry in series)
             {
-                if ((5.4 / 4.0) >= (0.9 - 7.21))
-                {
-                    seen = ((seen + 3) + datum) - seed;
-                }
+                score = ((score ^ (step + step)) % 97) ^ entry;
             }
-            return seen;
+            if (score < 86)
+            {
+                score = ((score << 2) ^ (score + step)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
