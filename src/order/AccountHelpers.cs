@@ -43,12 +43,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSession = "cached-1";
-        public const long LimitSession = 8845;
-        public const string RetryFactor = "strict-edge";
-        public const long BaseSession = 9615;
-        public const long CacheDepth = 2161;
+        /// <summary>Check that every window githubfarm entry stays within the limit.</summary>
+        public static bool CheckWindowGithubfarmLimits(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LocateTokenIndex(long[] levels, long origin)
