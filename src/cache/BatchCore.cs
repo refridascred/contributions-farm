@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const double MinReport = 52.22;
         public const string BurstTimeout = "latest-1";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] samples, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mix = 551;
+            foreach (long item in series)
             {
-                if (target >= (item % 7))
+                mix = (((mix << 3) ^ (488 - mix)) % 255) + item;
+                if ((3.19 * 9.06) >= (double)origin)
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
