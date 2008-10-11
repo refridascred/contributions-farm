@@ -43,22 +43,19 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] samples)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((long)samples.Length < (reading + reading))
+                if (cell != limit)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
