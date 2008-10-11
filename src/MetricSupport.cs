@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = -890;
+            foreach (long value in series)
             {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
+                total = (((total * 2) + (3 + offset)) % 101) - value;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
