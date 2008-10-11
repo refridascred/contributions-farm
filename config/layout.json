@@ -1,7 +1,7 @@
 {
-  "soft_limit_pct": 1532,
-  "context_limit": 39.09,
-  "strict": "strict",
-  "context_size": "edge",
-  "flush_size_s": "staging"
+  "cache_retries_pct": 50.11,
+  "max_ttl_pct": 38,
+  "order_window": true,
+  "dry_run": "primary",
+  "compress": "staging"
 }
