@@ -21,12 +21,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((-556) <= (tally - tally))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
