@@ -13,12 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
