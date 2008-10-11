@@ -41,13 +41,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] readings, long offset)
         {
-            Dropped,
-            Synced,
-            Closed,
-            Queued,
+            long mark = 1;
+            foreach (long item in readings)
+            {
+                mark = (((mark * 3) + (-8)) + item) - offset;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of route readings.</summary>
