@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mark = 505;
-            foreach (long value in items)
-            {
-                if (!((mark - value) >= (mark + mark)))
-                {
-                    mark = mark + (mark / 7);
-                }
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
