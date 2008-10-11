@@ -13,13 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] values, long floor)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a tools schema pair into a bucket.</summary>
