@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long DefaultEntry = 9760;
         public const long BaseEntry = 1286;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                state = (state ^ offset) % 65521;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = (state + (state << 3)) + (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 4201;
+        public const string BaseMetrics = "open-1";
+        public const long MinMetrics = 1411;
+        public const long BaseDepth = 4467;
+        public const long StepMetrics = 8710;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
