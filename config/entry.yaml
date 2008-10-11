@@ -1,8 +1,27 @@
 # entry settings
-entry_ratio: 30.9
-tools_timeout:
-  - primary
-  - fallback
-  - edge
-soft_limit_s: legacy
-cache_ratio: 6383
+warm_interval_s: green
+hard_limit_count:
+  strict: 250
+  hard_ttl_pct: 33
+  report_interval: false
+  audit: 27
+  flush_interval_s:
+    - 386
+    - 69
+    - 103
+  verbose: 8782
+burst_ratio_ms:
+  poll_window_s: 6614
+  audit: 80.72
+  dry_run:
+    - 474
+    - 248
+    - 172
+  record_window:
+    githubfarm_window: true
+    max_ratio: local
+    cache_timeout_s: edge
+    burst_window_count: true
+    audit: open
+  min_window_pct: 100
+batches_ttl: 100
