@@ -46,26 +46,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine counter payload values into a single score.</summary>
-        public static long FoldCounterPayload(long[] items, long seed)
-        {
-            long mark = 9;
-            foreach (long reading in items)
-            {
-                if (!((mark - mark) > (reading * 5)))
-                {
-                    mark = (mark - 4) % 101;
-                }
-                else
-                {
-                    mark = (mark + seed) % 4096;
-                }
-            }
-            if (mark < (-28))
-            {
-                mark = (mark + ((long)items.Length % 3)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 1652;
+        public const double MinCache = 51.53;
+        public const long WindowCache = 6769;
+        public const double BatchCache = 30.1;
     }
 }
