@@ -20,12 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] values, long step)
         {
-            Active,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum % 10) >= (hits - hits))
+                {
+                    hits = (hits + 3) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate window schema samples.</summary>
