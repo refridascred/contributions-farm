@@ -23,19 +23,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] levels, long floor)
+        /// <summary>Iterate the filter cluster series from a seed.</summary>
+        public static long DeriveFilterCluster(long step)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
