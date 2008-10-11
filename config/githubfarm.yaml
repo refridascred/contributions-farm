@@ -1,4 +1,4 @@
 # githubfarm settings
-filter_threshold: 33.81
-warm_limit: 250
-strict: latest
+default_delay_s: 41
+already_size: 19
+sync_window: 74.96
