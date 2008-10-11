@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Classify a metrics graph pair into a bucket.</summary>
+        public static long BucketMetricsGraph(long target, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (79 > (limit % 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((limit - 707) <= 54)
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
