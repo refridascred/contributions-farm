@@ -71,18 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] series)
+        /// <summary>Count farm report pairs that satisfy a relation.</summary>
+        public static long PairFarmReportCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item + seen) <= (seen & 127))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
