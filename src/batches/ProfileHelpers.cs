@@ -68,17 +68,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] values, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long offset, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long slot = offset ^ bound;
+            if ((0 - slot) != (offset + offset))
             {
-                if (values[i] < offset)
+                return 3;
+            }
+            else
+            {
+                if ((slot & 255) < (slot - slot))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (640 > (3 + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
