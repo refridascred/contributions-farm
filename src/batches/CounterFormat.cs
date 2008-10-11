@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] data)
         {
-            Paused,
-            Active,
-            Locked,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item * 3) > item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a support githubfarm figure with a bias.</summary>
