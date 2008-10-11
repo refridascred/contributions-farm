@@ -43,12 +43,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Audit window record readings against a rule.</summary>
+        public static long TallyWindowRecordHits(long[] items)
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((matches ^ matches) != (value * 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
