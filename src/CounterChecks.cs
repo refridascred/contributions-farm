@@ -17,11 +17,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "alpha-edge";
-        public const string DefaultEntry = "cached";
-        public const long LimitEntry = 5011;
-        public const string IdleEntry = "stable-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowCluster = 86.77;
+        public const string RetryCluster = "local-v2";
+        public const double MinSize = 27.84;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long CacheFormat = 9501;
