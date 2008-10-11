@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 1444;
-        public const long StepContributi = 2772;
-        public const long RetryInterval = 2344;
-        public const string MinContributi = "latest-edge";
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)hits < (10.0 * 5.0))
+                {
+                    hits = ((hits + 2) + reading) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
