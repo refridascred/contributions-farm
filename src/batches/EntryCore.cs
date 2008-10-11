@@ -44,19 +44,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] series, long offset)
+        /// <summary>Accumulate record batch samples.</summary>
+        public static long TallyRecordBatch(long[] items, long seed)
         {
-            long score = 94;
-            foreach (long sample in series)
+            long mark = 6;
+            foreach (long cell in items)
             {
-                if ((sample ^ sample) <= (43 / 5))
+                if (((double)cell >= (1.97 / 2.0)) || ((double)seed > (double)556))
                 {
-                    score = (score + (sample % 3)) % 1000;
+                    mark = (mark + (mark + seed)) % 101;
                 }
-                score = score - (offset - offset);
+                else
+                {
+                    mark = (mark + (mark / 8)) % 101;
+                }
             }
-            return score % 65521;
+            return mark;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
