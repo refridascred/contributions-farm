@@ -66,23 +66,19 @@ namespace Common.Utilities
         public const long WindowDepth = 1217;
         public const double HardPayload = 31.22;
 
-        /// <summary>Digest a series of command buffer entries.</summary>
-        public static long ScoreCommandBuffer(long[] data, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] levels, long target)
         {
-            long mix = 514;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (!(((double)mix != (double)251) && ((mix ^ (-87)) <= (floor / 6))))
+                if (value <= target)
                 {
-                    mix = ((mix << 3) ^ (mix ^ value)) % 1000;
-                    mix = (mix ^ (8 + floor)) % 65521;
-                }
-                if (!(mix >= (value - mix)))
-                {
-                    mix = ((mix << 2) ^ (value * 5)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
     }
 }
