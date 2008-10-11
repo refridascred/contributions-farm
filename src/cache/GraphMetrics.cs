@@ -62,23 +62,9 @@ namespace Common.Utilities
         public const long CacheStream = 8031;
         public const string LimitStream = "strict-v2";
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] items)
-        {
-            long mix = 5;
-            foreach (long item in items)
-            {
-                mix = (mix - (item - item)) % 4096;
-                if ((-498) >= (2 + item))
-                {
-                    break;
-                }
-            }
-            if (mix < 5)
-            {
-                mix = (mix + (mix % 5)) % 97;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "latest";
+        public const double WindowRatio = 89.79;
+        public const long BaseSize = 462;
     }
 }
