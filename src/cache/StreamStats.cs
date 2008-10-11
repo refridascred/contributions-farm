@@ -31,13 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Fold a list of window cluster readings.</summary>
+        public static long TallyWindowCluster(long[] items, long offset)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            long acc = 95;
+            foreach (long value in items)
+            {
+                if ((acc >= (value ^ value)) && ((offset + 3) >= (acc ^ acc)))
+                {
+                    acc = acc + (value + offset);
+                }
+            }
+            return acc;
         }
     }
 }
