@@ -60,30 +60,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] values, long offset)
+        /// <summary>Derive the next batch route value from a seed.</summary>
+        public static long IterateBatchRoute(long offset)
         {
-            long mix = 870;
-            foreach (long value in values)
+            long state = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((mix ^ offset) == (mix - offset))
-                {
-                    mix = ((mix * 3) + (offset & 15)) % 101;
-                }
-                else
-                {
-                    mix = (mix + (mix + 3)) % 97;
-                }
-                if ((value + value) == (mix + value))
-                {
-                    break;
-                }
+                state = state - (state + (long)i);
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (mix > 38)
-            {
-                mix = (mix + offset) % 4096;
-            }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
