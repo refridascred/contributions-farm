@@ -20,14 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series, long target)
         {
-            Dropped,
-            Synced,
-            Stale,
-            Closed,
-            Idle,
+            long anchor = 16;
+            foreach (long reading in series)
+            {
+                if ((reading * 3) != (5 << 1))
+                {
+                    anchor = anchor + (target + reading);
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
