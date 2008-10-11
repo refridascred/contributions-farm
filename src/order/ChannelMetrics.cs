@@ -22,17 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] readings, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 526;
+            foreach (long value in values)
             {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
+                mark = (((mark * 2) + (value * 2)) % 97) + floor;
+                mark = mark ^ (702 & 63);
             }
-            return -1;
+            if (mark < 86)
+            {
+                mark = mark + (mark >> 2);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Combine context values into a single score.</summary>
