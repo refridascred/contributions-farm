@@ -1,5 +1,15 @@
 # githubfarm settings
-min_threshold_count: false
-base_ttl_pct: 60
-enabled: 72
-metric_interval: 8224
+persist: false
+readonly: 4479
+base_ratio:
+  poll_depth_s: green
+  max_interval_count: 8638
+  min_ttl: latest
+  queue_limit: 1024
+  readonly: 34
+hard_size_ms:
+  idle_size_pct: 92.11
+  default_limit: 44.66
+  poll_ttl: fallback
+  contributi_ttl: latest
+buffer_retries: 45
