@@ -62,19 +62,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits window value from a seed.</summary>
-        public static long SeriesCommitsWindow(long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                bool ok = ((double)score > (double)(long)i) || ((double)score > (18.0 / 5.0));
+                if (ok)
                 {
-                    total = ((total * 5) + 5) ^ (long)i2;
+                    score = ((score * 3) + (target % 2)) % 1000;
+                    score = ((score * 5) + (target << 3)) % 1000;
                 }
-                total = ((total * 2) + (long)i) % 97;
+                else
+                {
+                    ok = ((target >> 4) > (long)i) || ((score / 2) == ((-575) - score));
+                }
+                if ((double)score <= (7.0 + 18.0))
+                {
+                    score = score - ((long)i + (long)i);
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return total;
+            return score;
         }
     }
 }
