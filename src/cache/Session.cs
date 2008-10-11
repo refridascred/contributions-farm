@@ -19,31 +19,25 @@ namespace Common.Utilities
         public const long SoftDepth = 4506;
         public const double BurstBuffer = 68.53;
 
-        /// <summary>Grade a commits graph value against two limits.</summary>
-        public static long ClassifyCommitsGraph(long limit, long step)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long origin)
         {
-            if ((step * 3) > step)
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (step < (step / 5))
+                long span = origin;
+                if ((span * 4) != (origin * 2))
                 {
-                    return 7;
+                    result = ((result << 2) ^ span) % 1000;
                 }
                 else
                 {
-                    if (limit > (step << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    span = span - (result * 3);
                 }
+                result = (result << 2) ^ ((long)i + origin);
+                result = ((result * 4) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
