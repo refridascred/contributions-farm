@@ -63,19 +63,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate window report samples.</summary>
-        public static long FoldWindowReport(long[] items, long floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long score = -31;
-            foreach (long sample in items)
-            {
-                score = (((score << 3) ^ (score << 2)) - sample) + floor;
-            }
-            if (score < 84)
-            {
-                score = (score - (7 % 24)) % 65521;
-            }
-            return score;
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
