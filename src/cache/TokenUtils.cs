@@ -20,10 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowSpan = 3306;
-        public const long StepRecord = 4596;
-        public const long BaseFactor = 143;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchRatio = 81.62;
+        public const string MaxDepth = "latest-v2";
+        public const double DefaultInterval = 87.12;
+        public const long SoftWidth = 4522;
+        public const long IdleEntry = 9635;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] levels, long origin)
