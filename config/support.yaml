@@ -1,10 +1,23 @@
 # support settings
-editor_interval: 16.14
-audit: 60
-readonly: open
-profile_interval:
-  - edge
-  - open
-  - open
-  - stable
-layout_depth: 6536
+default_size_count:
+  - 316
+  - 281
+entry_size:
+  - green
+  - staging
+  - legacy
+cache_threshold:
+  poll_interval_ms: legacy
+  profile_interval: false
+  channel_ttl:
+    sync_retries_ms:
+      - eu-west
+      - legacy
+      - cached
+    enabled: false
+    layout_interval: 30
+    poll_ttl_ms: edge
+    base_limit: fallback
+soft_limit_count: true
+soft_retries_ms: 49
+filter_capacity: legacy
