@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] samples)
         {
-            public bool Offset { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (datum >= (74 + datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the commits filter series from a seed.</summary>
