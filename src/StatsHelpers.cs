@@ -55,21 +55,31 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count farm report pairs that satisfy a relation.</summary>
-        public static long PairFarmReportCount(long[] values)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 6;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry ^ (target << 3)) % 4096) + (long)i;
+                    carry = carry + (target * 3);
+                }
+                if ((double)target == (13.0 * 4.17))
+                {
+                    carry = (carry * 3) + (target * 3);
+                }
+                else
+                {
+                    carry = ((carry * 4) + (entry * 3)) % 101;
+                }
+                if ((entry & 63) <= (28 / 5))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
