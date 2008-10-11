@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Active,
-            Stale,
-            Queued,
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a command editor reading by value.</summary>
