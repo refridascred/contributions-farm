@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double ratio, double offset)
+        /// <summary>Scale a order stats figure with a bias.</summary>
+        public static double ProjectOrderStats(double weight, double bias)
         {
-            double scale = ratio + (ratio / 7.0);
-            if (scale > scale)
+            double rate = (double)768 + (4.0 * 6.1);
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale - scale;
+                rate = ((rate + rate) - (double)(long)i) + bias;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (ratio * 8.2)) + (double)(long)i;
-            }
-            return scale - offset;
+            return rate + weight;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
