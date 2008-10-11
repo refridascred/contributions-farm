@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a batches token value against two limits.</summary>
-        public static long RankBatchesToken(long offset, long bound)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long next = offset + bound;
-            if (((9.14 / 4.0) >= (double)offset) && (bound > (bound % 16)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((next - offset) >= offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset != (5.88 + 4.1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the schema status values.</summary>
