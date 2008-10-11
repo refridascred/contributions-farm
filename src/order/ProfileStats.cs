@@ -39,18 +39,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many format record samples are out of range.</summary>
-        public static long TallyFormatRecordGaps(long[] values, long bound)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen - bound) >= (13 % 12))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + cell;
+                    if ((items[i] - items[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
