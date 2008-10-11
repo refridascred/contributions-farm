@@ -23,11 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            Paused,
+            Draft,
+            Active,
+            Done,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
