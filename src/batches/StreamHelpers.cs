@@ -33,14 +33,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Dropped,
-            Stale,
-            Paused,
-            New,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowBudget = "local-1";
+        public const long MinSession = 6278;
+        public const double CacheBudget = 39.28;
 
         /// <summary>Roll a graph profile counter forward.</summary>
         public static long RollGraphProfile(long origin)
