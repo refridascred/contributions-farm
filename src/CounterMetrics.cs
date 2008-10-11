@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long MinSize = 7330;
         public const string SoftInterval = "strict-1";
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Done,
-            Retry,
-            Dropped,
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
