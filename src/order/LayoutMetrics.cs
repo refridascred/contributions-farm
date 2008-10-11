@@ -30,17 +30,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] readings, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((readings[i] < floor) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
