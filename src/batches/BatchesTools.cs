@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Queued,
-            Stale,
-            Paused,
-            Idle,
-            Pending,
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
