@@ -19,38 +19,18 @@ namespace Common.Utilities
         public const string CacheToken = "fallback-v2";
         public const long MaxToken = 5777;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long step, long step2)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] series, long limit)
         {
-            if ((step2 % 16) != (step ^ step2))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step + step2) < step2) || ((step2 + step2) >= (830 / 2)))
+                if ((matches >> 2) >= (reading / 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((step - step) > (step - step2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((step2 + 7) != (step2 ^ step2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 3) - limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
