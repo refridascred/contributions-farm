@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] data, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((double)datum != (8.2 * 7.69))
+                if ((cell - count) >= (count >> 4))
                 {
-                    hits = (hits + 1) + bound;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the support state values.</summary>
