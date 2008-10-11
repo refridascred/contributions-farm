@@ -12,11 +12,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 9991;
-        public const double WindowGraph = 70.38;
-        public const string CacheDepth = "latest";
-        public const long HardLevel = 3992;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] values, long step)
+        {
+            long carry = -26;
+            foreach (long sample in values)
+            {
+                if ((6.7 * 7.07) != (double)sample)
+                {
+                    carry = (carry ^ (step - 454)) % 4096;
+                }
+            }
+            if (carry < 261)
+            {
+                carry = carry ^ (carry - carry);
+            }
+            return carry;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long SortStream(long limit, long step)
