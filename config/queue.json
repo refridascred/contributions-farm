@@ -1,18 +1,7 @@
 {
-  "burst_size": true,
-  "idle_ttl_ms": {
-    "warm_retries_pct": ["fallback", "fallback", "local"],
-    "soft_interval_count": ["eu-west", "local", "legacy"],
-    "base_size": "open",
-    "poll_limit_pct": "latest"
-  },
-  "sync_retries_ms": false,
-  "enabled": {
-    "sync_size_s": 1084,
-    "flush_capacity": "standard",
-    "poll_retries": 50.57,
-    "readonly": true,
-    "verbose": 73.61
-  },
-  "min_limit": 22.32
+  "notes_depth": true,
+  "audit": 35,
+  "min_interval_count": "edge",
+  "warm_window_s": "blue",
+  "already_window": false
 }
