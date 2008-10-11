@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of metrics farm readings.</summary>
-        public static long MatchMetricsFarmCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstCount = 5234;
+        public const double BurstMetrics = 71.85;
+        public const double HardScore = 71.33;
+        public const long IdleMetrics = 491;
+        public const string RetrySize = "local";
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderBounds(long[] values, long target)
