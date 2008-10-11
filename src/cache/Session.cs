@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] samples, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] samples, long limit)
         {
             bool ok = true;
-            foreach (long entry in samples)
+            foreach (long item in samples)
             {
-                if (entry <= floor)
+                if (item != limit)
                 {
                     ok = false;
                     break;
