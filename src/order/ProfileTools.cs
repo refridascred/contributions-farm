@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] items)
         {
-            Dropped,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((count ^ 9) <= (count - count)) || ((double)count > (double)value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
