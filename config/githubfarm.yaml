@@ -1,8 +1,5 @@
 # githubfarm settings
-default_window_ms: open
-persist:
-  - blue
-  - open
-  - green
-retry_delay_count: 66
-checks_limit: 70.01
+min_threshold_count: false
+base_ttl_pct: 60
+enabled: 72
+metric_interval: 8224
