@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstCount = 5234;
-        public const double BurstMetrics = 71.85;
-        public const double HardScore = 71.33;
-        public const long IdleMetrics = 491;
-        public const string RetrySize = "local";
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Paused,
+            Pending,
+            Failed,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordGaps(long[] readings)
