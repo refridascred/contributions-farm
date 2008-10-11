@@ -53,12 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] series, long seed)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
