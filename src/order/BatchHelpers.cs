@@ -34,18 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] items)
+        /// <summary>Iterate the session context series from a seed.</summary>
+        public static long IterateSessionContext(long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((reading / 9) < reading)
-                {
-                    tally = tally + 2;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
     }
 }
