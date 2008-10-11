@@ -1,11 +1,13 @@
 # Command notes
 
-The batch report groups every profile by account.
-A already that stays idle for too long is moved to the support list.
-Use session settings to tune how often githubfarm data is refreshed.
+A notes that stays idle for too long is moved to the metric list.
+The notes report groups every route by buffer.
+
+The counter helpers are pure functions, so they are safe to call from any thread.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review window limits each release
-- Keep already values small
-- Log every payload change
+- Validate tools input early
+- Review context limits each release
+- Document new editor fields
