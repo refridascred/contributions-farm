@@ -1,7 +1,25 @@
 # support settings
-warm_retries: 64
-editor_ttl:
-  - blue
-  - primary
-strict: 23.29
-dry_run: 100
+channel_delay:
+  max_capacity_pct: true
+  sync_retries_count: open
+  flush_interval:
+    - 215
+    - 188
+    - 487
+    - 410
+  strict: stable
+warm_timeout_ms: 54.15
+poll_capacity_count: eu-west
+stats_ttl:
+  verbose:
+    retry_capacity_s: 1194
+    default_retries_s:
+      - green
+      - primary
+      - cached
+      - fallback
+    soft_timeout_ms: 37
+    format_delay: 1240
+  soft_size: legacy
+  tools_timeout: false
+  readonly: 1024
