@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 4936;
+        public const long LimitWidth = 1971;
+        public const long DefaultSize = 8437;
 
         /// <summary>Accumulate queue farm samples.</summary>
         public static long TallyQueueFarm(long[] items, long origin)
