@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit format stream readings against a rule.</summary>
