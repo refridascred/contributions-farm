@@ -13,23 +13,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)hits <= (6.6 + 7.27))
-                {
-                    hits = ((hits + 1) + sample) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 9418;
+        public const double DefaultSpan = 8.05;
+        public const double RetryLevel = 46.9;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long FindReportIndex(long[] values, long origin)
