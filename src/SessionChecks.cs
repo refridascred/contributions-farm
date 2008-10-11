@@ -19,19 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double rate, double bias)
+        /// <summary>Roll a tools metrics counter forward.</summary>
+        public static long SeriesToolsMetrics(long floor)
         {
-            double drift = (rate + 20.0) * 14.0;
-            if (drift > drift)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                drift = (drift + rate) + bias;
+                if ((total * 4) == ((long)i - floor))
+                {
+                    total = (total * 3) + floor;
+                    break;
+                }
+                else
+                {
+                    total = ((total << 2) ^ ((long)i / 8)) % 4096;
+                }
+                total = ((total << 2) ^ (floor >> 5)) % 65521;
+                total = ((total << 2) ^ total) % 101;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (drift - rate)) + (double)(long)i;
-            }
-            return drift + (drift + rate);
+            return total;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
