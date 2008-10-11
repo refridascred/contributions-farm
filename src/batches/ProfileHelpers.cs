@@ -14,18 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] items, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (!((target - (long)items.Length) <= target))
+                if (((item - 452) >= (item ^ seen)) && (seen >= (seen ^ item)))
                 {
-                    matches = (matches + 3) ^ sample;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
