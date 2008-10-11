@@ -42,18 +42,11 @@ namespace Common.Utilities
         public const long MaxWidth = 9271;
         public const long LimitGraph = 7144;
 
-        /// <summary>Accumulate metric commits samples.</summary>
-        public static long TallyMetricCommits(long[] readings)
+        /// <summary>Project the next layout stats value.</summary>
+        public static double ProjectLayoutStats(double weight, double offset)
         {
-            long result = 796;
-            foreach (long entry in readings)
-            {
-                if ((entry * 4) >= ((-1) << 1))
-                {
-                    result = (result + result) % 65521;
-                }
-            }
-            return result;
+            double drift = weight;
+            return (drift - 4.0) + offset;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
