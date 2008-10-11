@@ -51,19 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits order measurements.</summary>
-        public static double SmoothCommitsOrder(double gain, double floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double scale = gain;
-            if (scale <= gain)
-            {
-                scale = (scale - scale) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (6.4 + gain)) - (double)(long)i;
-            }
-            return scale - (scale * 1.7);
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
