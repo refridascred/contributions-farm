@@ -7,20 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=145
+COMMAND_LIMIT=152
 log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-legacy}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
