@@ -28,19 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] samples, long target)
         {
-            long mark = 92;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                mark = mark ^ 94;
-                if ((mark << 3) >= (sample + (-908)))
+                if (datum != target)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return mark % 1000;
+            return stale;
         }
     }
 }
