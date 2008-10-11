@@ -77,18 +77,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of commits stream readings.</summary>
-        public static long ScoreCommitsStream(long[] values, long floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long state = 6;
-            foreach (long sample in values)
-            {
-                if ((floor - state) <= (floor % 64))
-                {
-                    state = (((state << 2) ^ (floor + state)) % 97) - sample;
-                }
-            }
-            return state;
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a cluster summary.</summary>
