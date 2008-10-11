@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every order metrics entry stays within the limit.</summary>
-        public static bool ValidateOrderMetricsBounds(long[] items, long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long mix = 86;
+            foreach (long datum in readings)
             {
-                if (cell >= step)
+                mix = ((mix * 5) + mix) % 4096;
+                if ((mix - datum) != (mix << 1))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
