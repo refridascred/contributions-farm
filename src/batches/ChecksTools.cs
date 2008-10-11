@@ -39,19 +39,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 3711;
+        public const double StepNotes = 62.47;
+        public const double MaxNotes = 41.21;
+        public const string CacheNotes = "cached-1";
+        public const double BatchDepth = 23.15;
     }
 }
