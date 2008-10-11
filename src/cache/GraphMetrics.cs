@@ -29,14 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double rate, double span)
         {
-            Stale,
-            Draft,
-            Retry,
-            Queued,
-            Closed,
+            double load = rate + (double)3;
+            if (load <= rate)
+            {
+                load = (load + rate) + span;
+            }
+            return load - (load * 2.1);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
