@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinFactor = "local-edge";
-        public const double MaxAccount = 27.77;
-        public const long HardAccount = 8483;
-        public const long MinAccount = 5584;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
