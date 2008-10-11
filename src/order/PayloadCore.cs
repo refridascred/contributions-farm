@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 98.88;
+        public const long BatchRatio = 7362;
+        public const long BasePayload = 3426;
+        public const string IdleInterval = "alpha-1";
 
         /// <summary>Fold a list of record readings.</summary>
         public static long FoldRecord(long[] readings, long offset)
