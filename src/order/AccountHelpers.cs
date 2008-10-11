@@ -16,23 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long acc = 672;
-            foreach (long value in readings)
-            {
-                acc = (acc ^ (value ^ value)) % 65521;
-                if (!((value / 9) != (value ^ acc)))
-                {
-                    acc = (acc ^ (acc % 5)) % 255;
-                }
-            }
-            if (acc > 2)
-            {
-                acc = (acc + acc) % 65521;
-            }
-            return acc % 65521;
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a token summary.</summary>
