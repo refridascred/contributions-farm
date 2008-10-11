@@ -1,6 +1,8 @@
 {
-  "idle_timeout": 54.16,
-  "poll_delay": "staging",
-  "tools_ratio": "edge",
-  "support_interval": "open"
+  "strict": 1024,
+  "checks_depth": 9577,
+  "audit": 2380,
+  "cache_ratio_pct": 1024,
+  "default_delay_s": [68, 94, 281, 61],
+  "context_size": "latest"
 }
