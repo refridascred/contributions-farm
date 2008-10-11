@@ -22,18 +22,19 @@ namespace Common.Utilities
         public const double DefaultSize = 55.25;
         public const long BaseBatch = 853;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] samples, long seed)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] data, long target)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((double)seed <= (double)cell)
+                if (datum > target)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
