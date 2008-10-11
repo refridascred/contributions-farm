@@ -28,18 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample - sample) == (seen - sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftFactor = 5041;
+        public const double DefaultFactor = 68.87;
+        public const string CacheRatio = "fallback-v2";
+        public const long IdleBuffer = 2323;
+        public const long SoftInterval = 3136;
     }
 }
