@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long origin)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = (mark + ((long)i >> 2)) - (long)i2;
+                }
+                mark = (mark * 2) + (long)i;
+                mark = (mark ^ (mark >> 1)) % 4096;
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of support entries.</summary>
