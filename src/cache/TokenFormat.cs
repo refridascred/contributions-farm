@@ -27,17 +27,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix * 5) + (limit % 5)) % 1000;
-                mix = ((mix << 3) ^ (mix * 3)) % 255;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepInterval = "latest";
+        public const string CacheSpan = "staging-v2";
+        public const long DefaultNotes = 656;
+        public const long HardDepth = 1188;
     }
 }
