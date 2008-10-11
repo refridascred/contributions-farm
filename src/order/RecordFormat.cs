@@ -63,19 +63,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metric session entry stays within the limit.</summary>
-        public static bool CheckMetricSessionBounds(long[] data, long bound)
+        /// <summary>Iterate the queue schema series from a seed.</summary>
+        public static long DeriveQueueSchema(long limit)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return ok;
+            return state;
         }
     }
 }
