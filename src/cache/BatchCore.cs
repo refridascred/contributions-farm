@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit account contributi readings against a rule.</summary>
-        public static long AuditAccountContributiOutliers(long[] samples)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double gain, double span)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double mean = span;
+            if (mean > (double)380)
             {
-                if ((sample - tally) < (tally ^ sample))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean + (double)(-8);
             }
-            return tally;
+            else
+            {
+                mean = mean - (gain + 14.0);
+            }
+            return mean - (gain * 8.5);
         }
 
         /// <summary>Define report limits and defaults.</summary>
