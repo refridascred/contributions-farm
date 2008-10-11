@@ -24,19 +24,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] samples, long seed)
+        /// <summary>Combine checks support values into a single score.</summary>
+        public static long FoldChecksSupport(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long mix = 213;
+            foreach (long entry in samples)
             {
-                if (reading > seed)
+                mix = ((mix << 3) ^ (seed * 5)) % 255;
+                if (seed >= (seed << 3))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix * 4) + (entry - mix);
                 }
             }
-            return stale;
+            return mix % 65521;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
