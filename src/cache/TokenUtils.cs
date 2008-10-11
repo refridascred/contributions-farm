@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long StepInterval = 1726;
         public const long MinFarm = 1888;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] data, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((data[i] == origin) && ((data[i] % 5) != 0))
+                if ((reading < (tally * 5)) && ((reading << 2) <= reading))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
