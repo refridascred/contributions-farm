@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the schema format series from a seed.</summary>
