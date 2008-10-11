@@ -19,12 +19,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many already context samples are out of range.</summary>
+        public static long TallyAlreadyContextMatches(long[] data)
         {
-            New,
-            Stale,
-            Pending,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (((value - 1) < (value - value)) && !((tally - tally) >= tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a counter stats.</summary>
