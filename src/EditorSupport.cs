@@ -70,15 +70,27 @@ namespace Common.Utilities
             return mean + (double)36;
         }
 
-        /// <summary>Iterate the support session series from a seed.</summary>
-        public static long StepSupportSession(long target)
+        /// <summary>Digest a series of farm token entries.</summary>
+        public static long CombineFarmToken(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long mark = 3;
+            foreach (long item in data)
             {
-                result = ((result * 5) + (long)i) % 101;
+                mark = (mark - (long)data.Length) % 255;
+                if ((mark * 3) > (mark - item))
+                {
+                    mark = ((mark << 3) ^ (mark * 2)) % 97;
+                }
+                else
+                {
+                    mark = (mark * 3) + item;
+                }
             }
-            return result;
+            if (mark > (-73))
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
