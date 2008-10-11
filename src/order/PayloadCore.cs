@@ -40,11 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinRatio = 8033;
-        public const long RetryCount = 6111;
-        public const double BaseMetrics = 24.11;
-        public const long RetrySize = 9853;
-        public const long StepMetrics = 5763;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Region { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
