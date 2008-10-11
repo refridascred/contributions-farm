@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] values, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (cell > floor)
+                if (datum > floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Describe the filter status values.</summary>
