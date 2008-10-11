@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long seed, long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if ((seed + (-81)) >= (target & 127))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4 < (target ^ target)) || (4 > (seed + seed)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target >= (seed >> 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
