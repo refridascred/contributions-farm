@@ -62,12 +62,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long origin, long bound)
         {
-            Retry,
-            Failed,
-            Ready,
+            if ((419 >= origin) && ((bound ^ bound) > (698 & 1)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound <= 15.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound - 33) != (bound * 4)) && ((bound >> 2) != (origin + bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
