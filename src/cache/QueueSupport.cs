@@ -20,17 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long floor, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long cur = floor - limit;
+            if ((cur < (limit % 16)) || ((double)limit != (double)cur))
             {
-                anchor = (anchor ^ (1 - (long)i)) % 101;
-                anchor = (anchor << 2) ^ ((long)i << 2);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (8.4 < (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit < (floor / 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit - cur) != (floor - 95)) || ((3.0 + 13.0) <= (double)limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank session format input into a small class.</summary>
