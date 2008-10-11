@@ -39,11 +39,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double bias, double span)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            double mean = (double)(81 * 5);
+            return ((mean + mean) + bias) + span;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
