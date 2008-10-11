@@ -15,19 +15,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] readings, long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long limit, long seed)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long prev = limit + seed;
+            if ((329 <= (prev - seed)) && ((952 + seed) >= limit))
             {
-                if (reading < step)
+                return 0;
+            }
+            else
+            {
+                if ((seed & 1) < 5)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
 
         /// <summary>Iterate the commits filter series from a seed.</summary>
