@@ -28,14 +28,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Dropped,
-            Closed,
             Stale,
+            Failed,
+            Active,
+            New,
             Idle,
-            Locked,
         }
     }
 }
