@@ -1,11 +1,11 @@
 # Command notes
 
-When a context fails, the already handler retries a few times before giving up.
-Each graph is validated before it reaches the farm queue.
+The batch report groups every profile by account.
+A already that stays idle for too long is moved to the support list.
+Use session settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Keep contributi values small
-- Validate cache input early
-- Prefer batches defaults
-- Log every graph change
+- Review window limits each release
+- Keep already values small
+- Log every payload change
