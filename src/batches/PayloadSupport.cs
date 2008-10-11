@@ -28,31 +28,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long target, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double gain, double offset)
         {
-            if ((limit / 5) < (limit << 2))
+            double weight = offset;
+            if (weight >= gain)
             {
-                return 2;
+                weight = weight - (gain + 4.44);
             }
             else
             {
-                if (!((target - 588) > (limit >> 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit >> 1) == ((-80) % 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                weight = weight + weight;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (weight + offset);
         }
     }
 }
