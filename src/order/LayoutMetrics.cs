@@ -23,14 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Active,
-            Queued,
-            Draft,
-            Paused,
-            Done,
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
