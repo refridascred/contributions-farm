@@ -78,19 +78,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] data, long step)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
