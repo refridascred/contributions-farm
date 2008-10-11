@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in standard blue; do
+for item in cached eu-west edge local; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=365
+log "limit is ${BUFFER_LIMIT}"
