@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] series)
-        {
-            long anchor = 5;
-            foreach (long sample in series)
-            {
-                anchor = (anchor - (anchor ^ anchor)) % 255;
-                if ((sample + 26) == (anchor >> 1))
-                {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                anchor = (anchor - (anchor + sample)) % 255;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseWidth = 12.79;
+        public const long BurstChecks = 8346;
+        public const long HardFactor = 6551;
+        public const long LimitChecks = 4194;
+        public const string HardChecks = "standard-edge";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long IdleMetrics = 4201;
