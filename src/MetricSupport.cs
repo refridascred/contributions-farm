@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] readings, long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Fold a list of report cluster readings.</summary>
