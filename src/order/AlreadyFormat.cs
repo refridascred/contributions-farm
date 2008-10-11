@@ -26,19 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools queue values into a single score.</summary>
-        public static long ScoreToolsQueue(long[] samples)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long mark = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark + (mark + 2)) % 1000) ^ cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark > 1)
-            {
-                mark = ((mark << 3) ^ mark) % 97;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
