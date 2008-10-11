@@ -28,12 +28,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public double Owner { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            Closed,
+            Locked,
+            Stale,
+            Queued,
+            Done,
         }
     }
 }
