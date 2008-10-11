@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] values)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)seen <= (20.0 * 1.2))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double bias = (double)(9 / 4);
+            return ((bias - bias) + gain) + floor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
