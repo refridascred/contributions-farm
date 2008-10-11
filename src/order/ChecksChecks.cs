@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            public string Ratio { get; set; } = "";
-            public bool Stamp { get; set; }
+            long result = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 5) + offset) % 65521;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
