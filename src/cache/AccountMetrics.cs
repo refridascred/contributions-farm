@@ -20,18 +20,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] data)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] data, long floor)
         {
-            long matches = 0;
+            long sum = 6;
             foreach (long cell in data)
             {
-                if (((7.4 - 8.3) < (double)matches) || ((cell << 3) < matches))
-                {
-                    matches = matches + 2;
-                }
+                sum = (((sum << 2) ^ (sum % 12)) - cell) - floor;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
