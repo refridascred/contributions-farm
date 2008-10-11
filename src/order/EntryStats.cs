@@ -28,21 +28,18 @@ namespace Common.Utilities
         public const long MinLevel = 9402;
         public const long StepFactor = 3954;
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Fold a list of metric counter readings.</summary>
+        public static long CombineMetricCounter(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 131;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)data.Length + sum) < (sum << 3))
                 {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum ^ reading) - seed;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
