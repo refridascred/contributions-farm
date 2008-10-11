@@ -14,21 +14,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Audit format stream readings against a rule.</summary>
+        public static long AuditFormatStreamGaps(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((0 * 3) == (631 - seen))
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 1) ^ entry) - bound;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count notes cluster pairs that satisfy a relation.</summary>
