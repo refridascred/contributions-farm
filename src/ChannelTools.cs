@@ -31,12 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] series, long floor)
         {
-            Retry,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen - 5) >= seen)
+                {
+                    seen = ((seen + 2) + datum) - floor;
+                }
+            }
+            return seen;
         }
     }
 }
