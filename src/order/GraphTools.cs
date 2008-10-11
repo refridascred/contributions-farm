@@ -13,26 +13,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a contributi filter value against two limits.</summary>
-        public static long BucketContributiFilter(long limit, long limit2)
-        {
-            long slot = limit - limit2;
-            if ((double)limit2 < (5.29 * 5.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((slot + slot) >= slot))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 3.08;
+        public const long RetryAccount = 2237;
+        public const long CacheDepth = 6561;
+        public const long IdleWidth = 2776;
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
