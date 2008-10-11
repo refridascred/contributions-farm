@@ -13,11 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] values, long seed)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((seed - hits) < (entry << 1)) || ((entry >= 8) || ((5.0 - 5.8) > (double)hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
