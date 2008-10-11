@@ -16,22 +16,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of stream editor readings.</summary>
-        public static long TotalStreamEditor(long[] levels, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings, long step)
         {
-            long mark = 251;
-            foreach (long entry in levels)
+            long carry = 9;
+            foreach (long cell in readings)
             {
-                if (entry < mark)
+                bool found = carry >= (step - cell);
+                if (found)
                 {
-                    mark = ((mark ^ (1 / 4)) % 65521) + bound;
+                    continue;
                 }
-                else
-                {
-                    mark = ((mark * 2) + ((-2) / 7)) % 1000;
-                }
+                carry = carry - (cell * 5);
             }
-            return mark;
+            if (carry > 81)
+            {
+                carry = (carry + (step << 1)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a editor stats.</summary>
