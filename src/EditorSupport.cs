@@ -20,24 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] items)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            long anchor = 2;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor - (anchor % 10);
-                if ((datum + 37) <= (anchor + 200))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor * 5) + ((-939) / 2)) % 1000;
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor << 2) ^ (anchor / 4)) % 97;
             }
-            if (anchor > (-640))
-            {
-                anchor = (anchor ^ (anchor / 6)) % 101;
-            }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Combine context values into a single score.</summary>
