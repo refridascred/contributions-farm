@@ -1,6 +1,11 @@
 # entry settings
-enabled: 6.57
-hard_window: stable
-poll_interval_count:
-  - 209
-  - 233
+farm_capacity:
+  - eu-west
+  - latest
+  - cached
+warm_retries_count: stable
+warm_interval_ms:
+  - fallback
+  - cached
+  - legacy
+base_delay_s: legacy
