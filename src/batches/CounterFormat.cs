@@ -34,11 +34,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double ratio, double span)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] values, long offset)
         {
-            double rate = ratio;
-            return rate + (span - rate);
+            long state = 941;
+            foreach (long item in values)
+            {
+                state = state - (state ^ state);
+                state = ((state << 2) ^ (offset + item)) % 65521;
+            }
+            return state;
         }
     }
 }
