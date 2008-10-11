@@ -53,11 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
