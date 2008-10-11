@@ -34,24 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long limit, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            if (!(limit > (limit & 127)))
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
+                state = (state << 2) ^ ((long)i + (long)i);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)bound <= (0.09 * 7.1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return state;
         }
     }
 }
