@@ -72,9 +72,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitSpan = 5818;
-        public const long MaxWidth = 7803;
-        public const long BaseRatio = 9726;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Active,
+            New,
+            Dropped,
+            Paused,
+            Queued,
+        }
     }
 }
