@@ -13,22 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] data)
         {
-            long sum = 76;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((double)sum <= (double)300) && (((long)items.Length % 97) >= (sum % 97)))
+                if (!((matches << 3) >= (sample ^ sample)))
                 {
-                    sum = ((sum << 2) ^ (70 / 5)) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ (datum ^ sum);
+                    matches = matches + 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate command stream readings against a bound.</summary>
