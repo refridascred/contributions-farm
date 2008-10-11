@@ -41,12 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] values, long step)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
