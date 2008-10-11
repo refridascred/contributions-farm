@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open staging primary blue; do
+for item in legacy staging primary; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=269
+CHANNEL_LIMIT=351
 log "limit is ${CHANNEL_LIMIT}"
