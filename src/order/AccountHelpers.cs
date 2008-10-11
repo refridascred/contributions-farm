@@ -52,13 +52,18 @@ namespace Common.Utilities
         public const long CacheLevel = 7761;
         public const long RetryTimeout = 1194;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many contributi entry samples are out of range.</summary>
+        public static long AuditContributiEntryHits(long[] items, long origin)
         {
-            Closed,
-            Pending,
-            Done,
-            Idle,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((count + cell) > (count ^ count))
+                {
+                    count = (count + 1) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
