@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] levels, long target)
+        /// <summary>Adjust a metrics counter reading.</summary>
+        public static double AdjustMetricsCounter(double rate, double floor)
         {
-            long anchor = 79;
-            foreach (long sample in levels)
+            double drift = 9.0;
+            if (drift >= (rate + drift))
             {
-                anchor = (((anchor * 4) + (anchor & 7)) ^ sample) + target;
-                if (anchor >= (3 + anchor))
-                {
-                    anchor = (anchor + (anchor * 2)) % 1000;
-                }
+                drift = (drift + drift) + floor;
             }
-            return anchor;
+            return drift + (drift / 2.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
