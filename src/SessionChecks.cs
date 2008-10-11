@@ -27,13 +27,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Active,
-            New,
-            Draft,
-            Paused,
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
