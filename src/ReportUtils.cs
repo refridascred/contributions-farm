@@ -20,25 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Audit tools cache readings against a rule.</summary>
+        public static long MeasureToolsCacheOutliers(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                carry = (carry ^ step) % 97;
-                if ((7.04 / 7.0) == (double)(long)i)
+                if (((6.74 - 9.57) > (double)seen) || (seen > (entry ^ seen)))
                 {
-                    continue;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    carry = carry ^ carry;
-                }
-                carry = (carry - (step & 15)) % 4096;
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Digest a series of window entries.</summary>
