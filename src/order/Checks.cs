@@ -51,11 +51,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double gain, double bias)
+        /// <summary>Check that every checks payload entry stays within the limit.</summary>
+        public static bool ValidateChecksPayloadBounds(long[] items, long seed)
         {
-            double scale = gain;
-            return (scale - (scale - scale)) + bias;
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
