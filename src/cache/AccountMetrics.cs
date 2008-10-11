@@ -48,11 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark << 2) ^ (seed + seed)) % 4096;
+                mark = (mark * 4) + (seed - seed);
+                if (!((mark ^ (long)i) >= (seed ^ mark)))
+                {
+                    mark = (mark ^ mark) % 1000;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Match up farm samples.</summary>
