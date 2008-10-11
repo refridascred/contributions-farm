@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 98.88;
-        public const long BatchRatio = 7362;
-        public const long BasePayload = 3426;
-        public const string IdleInterval = "alpha-1";
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Idle,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Iterate the buffer context series from a seed.</summary>
         public static long DeriveBufferContext(long bound)
