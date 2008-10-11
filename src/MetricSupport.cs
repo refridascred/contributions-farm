@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] series, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] data)
         {
-            long total = -890;
-            foreach (long value in series)
+            long mix = 35;
+            foreach (long cell in data)
             {
-                total = (((total * 2) + (3 + offset)) % 101) - value;
+                mix = (mix + (mix + cell)) % 255;
             }
-            return total;
+            if (mix > 7)
+            {
+                mix = (mix + (mix << 3)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
