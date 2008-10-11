@@ -49,11 +49,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Compare every pair of notes command readings.</summary>
+        public static long MatchNotesCommandCount(long[] series)
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a report options.</summary>
