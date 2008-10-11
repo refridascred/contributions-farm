@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseScore = "strict-1";
-        public const double RetryFarm = 73.84;
-        public const double StepFarm = 18.61;
-        public const string BatchSize = "latest-edge";
-        public const long BatchDepth = 8212;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Locked,
+            Closed,
+            Active,
+            Failed,
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
