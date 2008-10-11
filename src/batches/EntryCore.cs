@@ -13,32 +13,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long bound, long bound2)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] levels, long seed)
         {
-            long cur = bound + bound2;
-            if (bound < (cur - bound2))
+            long score = 64;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound >> 2) < 1)
+                for (int i = 0; i < 4; i++)
                 {
-                    return 3;
+                    score = (score - (score + score)) + (long)i;
                 }
-                else
+                if ((reading << 3) >= (937 + reading))
                 {
-                    if ((bound <= 28) && ((bound + bound) == (cur * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = (score ^ (score ^ (-50))) % 65521;
+                }
+                if ((1.6 < (double)(long)levels.Length) || (seed > (score - score)))
+                {
+                    break;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
