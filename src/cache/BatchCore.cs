@@ -23,21 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metrics window series from a seed.</summary>
-        public static long IterateMetricsWindow(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix - 3) % 65521;
-                if (!((seed + seed) <= (159 & 1)))
-                {
-                    mix = mix + mix;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxTimeout = "latest-1";
+        public const double IdleBudget = 85.25;
+        public const double MinReport = 52.22;
+        public const string BurstTimeout = "latest-1";
 
         /// <summary>Accumulate route samples.</summary>
         public static long WeighRoute(long[] values)
