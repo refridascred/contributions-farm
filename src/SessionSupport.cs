@@ -13,12 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] series, long step)
         {
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a notes already value against two limits.</summary>
