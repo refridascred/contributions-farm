@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double gain, double bias)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] readings, long offset)
         {
-            double weight = (double)(9 + 48);
-            if (weight < weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - (weight + 0.8)) + bias;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + gain;
-            }
-            return weight + (double)(-6);
+            return -1;
         }
 
         /// <summary>Match up route samples.</summary>
