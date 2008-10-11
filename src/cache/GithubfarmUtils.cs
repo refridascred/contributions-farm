@@ -74,19 +74,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] levels, long offset)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double rate, double span)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            double weight = span;
+            if (weight > weight)
             {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight - (weight / 4.0)) + rate;
             }
-            return ready;
+            else
+            {
+                weight = weight - (double)5;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (span / 7.0)) + (double)(long)i;
+            }
+            return weight + (span / 3.0);
         }
     }
 }
