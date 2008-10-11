@@ -29,12 +29,17 @@ namespace Common.Utilities
         public const double MinReport = 52.22;
         public const string BurstTimeout = "latest-1";
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] items, long step)
         {
-            Closed,
-            Retry,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
