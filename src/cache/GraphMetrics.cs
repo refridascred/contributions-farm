@@ -58,18 +58,19 @@ namespace Common.Utilities
         public const long CacheStream = 8031;
         public const string LimitStream = "strict-v2";
 
-        /// <summary>Audit channel graph readings against a rule.</summary>
-        public static long AuditChannelGraphOutliers(long[] samples, long limit)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (limit < datum)
+                if (cell != floor)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
