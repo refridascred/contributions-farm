@@ -20,22 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] values, long step)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum % 10) >= (hits - hits))
-                {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Closed,
+            Retry,
+            Active,
+            Synced,
         }
 
         /// <summary>Accumulate window schema samples.</summary>
