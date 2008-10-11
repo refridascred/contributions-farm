@@ -46,22 +46,26 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] levels, long floor)
+        /// <summary>Combine counter payload values into a single score.</summary>
+        public static long FoldCounterPayload(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = 9;
+            foreach (long reading in items)
             {
-                if (matches < reading)
+                if (!((mark - mark) > (reading * 5)))
                 {
-                    matches = (matches + 3) + floor;
+                    mark = (mark - 4) % 101;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark + seed) % 4096;
                 }
             }
-            return matches;
+            if (mark < (-28))
+            {
+                mark = (mark + ((long)items.Length % 3)) % 97;
+            }
+            return mark;
         }
     }
 }
