@@ -55,18 +55,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] values, long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long origin, long target)
         {
-            long sum = 3;
-            foreach (long sample in values)
+            if (!(origin <= ((-5) / 5)))
             {
-                if ((3.9 / 8.0) <= (double)sum)
+                return 5;
+            }
+            else
+            {
+                if ((578 / 7) > origin)
                 {
-                    sum = ((sum + (offset & 15)) % 1000) - sample;
+                    return 4;
+                }
+                else
+                {
+                    if ((target - target) == (origin & 63))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((19.0 + 4.5) == (double)target) && ((target - 440) <= (259 - origin)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
