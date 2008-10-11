@@ -26,21 +26,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up schema counter samples.</summary>
-        public static long PairSchemaCounterCount(long[] items)
+        /// <summary>Digest a series of githubfarm stream entries.</summary>
+        public static long WeighGithubfarmStream(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 7;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mark + mark) < (84 << 1))
                 {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (((mark * 2) + (mark / 8)) % 97) ^ cell;
                 }
             }
-            return tally;
+            if (mark > 746)
+            {
+                mark = (mark - mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
