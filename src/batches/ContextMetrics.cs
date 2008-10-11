@@ -75,9 +75,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheScore = 64.36;
-        public const long StepGraph = 7374;
-        public const long WindowGraph = 6245;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
