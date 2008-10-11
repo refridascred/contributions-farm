@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next cache order value from a seed.</summary>
-        public static long RollCacheOrder(long limit)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result + limit) % 101;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a farm record.</summary>
