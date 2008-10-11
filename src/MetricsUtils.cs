@@ -59,19 +59,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] levels)
-        {
-            long state = 19;
-            foreach (long reading in levels)
-            {
-                state = state - (reading & 3);
-            }
-            if (state < 3)
-            {
-                state = (state ^ (state / 3)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 5243;
+        public const double CachePayload = 14.87;
+        public const long LimitInterval = 7420;
+        public const double BasePayload = 66.43;
+        public const long HardPayload = 3649;
     }
 }
