@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long DefaultEntry = 9760;
         public const long BaseEntry = 1286;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long offset)
         {
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
+            long state = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state ^ offset) % 65521;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = (state + (state << 3)) + (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the profile state values.</summary>
