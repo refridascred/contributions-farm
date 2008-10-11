@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the account format entries that pass the check.</summary>
-        public static long AuditAccountFormatHits(long[] readings, long floor)
+        /// <summary>Count the notes session entries that pass the check.</summary>
+        public static long TallyNotesSessionMatches(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((5 + count) >= (count + sample))
+                if ((((0.8 / 9.0) <= (double)origin) && ((sample ^ sample) > tally)) && !((90 % 7) < (tally + 56)))
                 {
-                    count = (count + 2) - floor;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
