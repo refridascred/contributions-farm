@@ -40,39 +40,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long target, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            long step = target ^ floor;
-            if (0 <= (step - 20))
+            long sum = step;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                sum = (sum - ((long)i ^ step)) % 65521;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((499 - step) == (target + floor)) && (8.7 >= (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - step) != (step << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((2.0 / 8.0) < (double)step) || ((double)target < 8.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
