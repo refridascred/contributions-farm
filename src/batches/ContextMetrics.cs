@@ -55,19 +55,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] levels, long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long state = 7;
+            foreach (long sample in levels)
             {
-                if (value <= target)
+                if ((875 ^ state) == (origin & 1))
                 {
-                    valid = false;
-                    break;
+                    state = ((state * 2) + (state / 6)) ^ sample;
                 }
             }
-            return valid;
+            return state;
         }
     }
 }
