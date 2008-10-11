@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
