@@ -23,13 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            New,
-            Failed,
-            Closed,
-            Retry,
+            long state = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a notes commits sample.</summary>
