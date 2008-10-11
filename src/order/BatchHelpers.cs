@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] samples)
         {
-            long mix = 752;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                mix = ((mix * 4) + ((long)levels.Length & 7)) - entry;
-                mix = (mix ^ mix) % 1000;
+                if ((matches * 5) > 61)
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate order samples.</summary>
