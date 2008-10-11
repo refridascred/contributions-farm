@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate profile checks samples.</summary>
-        public static long ScoreProfileChecks(long[] readings, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] items)
         {
-            long result = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                result = ((result << 2) ^ reading) % 65521;
+                if ((hits >> 1) <= (cell ^ hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (result < 426)
-            {
-                result = ((result << 3) ^ floor) % 65521;
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Hold a entry summary.</summary>
