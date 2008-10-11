@@ -35,31 +35,19 @@ namespace Common.Utilities
         public const double BurstInterval = 94.41;
         public const double BaseBuffer = 32.94;
 
-        /// <summary>Grade a account profile value against two limits.</summary>
-        public static long BucketAccountProfile(long target, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] levels, long floor)
         {
-            if (target >= (target ^ target))
+            bool flag = true;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.5 / 8.0) > (double)target)
+                if (value != floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((14 % 64) < (limit + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
