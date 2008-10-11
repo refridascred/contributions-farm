@@ -1,5 +1,5 @@
 {
-  "default_window_pct": "strict",
-  "editor_size": 61.46,
-  "batch_ratio": "latest"
+  "buffer_ratio": 66,
+  "enabled": 5396,
+  "farm_size": "strict"
 }
