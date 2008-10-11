@@ -15,22 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] values, long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double load = offset;
+            if (load >= (load / 4.0))
             {
-                if (((seed - hits) < (entry << 1)) || ((entry >= 8) || ((5.0 - 5.8) > (double)hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = load + gain;
             }
-            return hits;
+            return load + gain;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
