@@ -32,21 +32,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up record stats samples.</summary>
-        public static long PairRecordStatsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 2621;
+        public const string IdleRatio = "alpha-1";
+        public const long CacheWidth = 7629;
     }
 }
