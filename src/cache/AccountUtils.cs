@@ -19,23 +19,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many already context samples are out of range.</summary>
-        public static long TallyAlreadyContextMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((value - 1) < (value - value)) && !((tally - tally) >= tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseFactor = 1324;
+        public const long WindowRecord = 380;
+        public const long BaseSize = 3919;
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
