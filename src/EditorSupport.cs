@@ -70,10 +70,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowInterval = 8423;
-        public const double BatchGraph = 60.22;
-        public const long WindowGraph = 5693;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)8 >= (double)hits)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultRecord = 6552;
