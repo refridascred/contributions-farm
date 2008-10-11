@@ -29,11 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 2289;
-        public const double MaxLevel = 6.43;
-        public const double DefaultToken = 60.42;
-        public const long HardFactor = 8409;
-        public const long BurstSpan = 2691;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
