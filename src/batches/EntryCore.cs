@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] items, long step)
+        /// <summary>Grade a already context value against two limits.</summary>
+        public static long ClassifyAlreadyContext(long target, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if ((bound % 100) != (bound + target))
             {
-                if (851 > (long)items.Length)
+                return 0;
+            }
+            else
+            {
+                if (bound <= (bound * 4))
                 {
-                    tally = ((tally + 1) + entry) - step;
+                    return 5;
+                }
+                else
+                {
+                    if (((target << 2) > 759) && ((double)target == (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
