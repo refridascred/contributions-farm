@@ -33,24 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long seed, long seed2)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long limit)
         {
-            if ((double)seed >= (0.4 - 8.28))
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed2 % 2) >= (seed2 >> 2))
+                if ((long)i != ((long)i ^ limit))
                 {
-                    return 4;
+                    score = (score - limit) % 255;
                 }
-                else
-                {
-                    return 2;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Roll a layout commits counter forward.</summary>
