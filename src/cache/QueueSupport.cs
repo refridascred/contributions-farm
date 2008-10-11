@@ -29,22 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support contributi values into a single score.</summary>
-        public static long ScoreSupportContributi(long[] readings, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long anchor = 8;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed <= (seed - seed)) && (sample <= (anchor ^ sample)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + (seed * 2)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (seed % 10)) % 101;
+                    if ((readings[i] - readings[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return count;
         }
     }
 }
