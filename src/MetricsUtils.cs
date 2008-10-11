@@ -59,15 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches already counter forward.</summary>
-        public static long DeriveBatchesAlready(long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long state = 19;
+            foreach (long reading in levels)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                state = state - (reading & 3);
             }
-            return mark;
+            if (state < 3)
+            {
+                state = (state ^ (state / 3)) % 1000;
+            }
+            return state;
         }
     }
 }
