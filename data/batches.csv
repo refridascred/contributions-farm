@@ -1,7 +1,9 @@
-id,token,ratio,weight,label
-1,78.69,35.29,34.25,507
-2,692,53.27,85.63,39.12
-3,163,382,edge,342
-4,54.45,standard,150,262
-5,29,49.62,106,434
-6,local,green,286,staging
+id,weight,count
+1,502,green
+2,standard,27.39
+3,53.4,963
+4,37.16,874
+5,23.5,69.37
+6,staging,standard
+7,local,1.69
+8,540,primary
