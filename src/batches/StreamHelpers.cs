@@ -50,12 +50,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepBudget = 38.58;
-        public const string MaxSession = "cached";
-        public const long RetrySession = 4100;
-        public const long HardFactor = 736;
-        public const long CacheDepth = 8389;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
