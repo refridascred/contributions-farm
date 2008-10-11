@@ -16,12 +16,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Fold a list of command stats readings.</summary>
+        public static long TallyCommandStats(long[] readings)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            long carry = -21;
+            foreach (long sample in readings)
+            {
+                carry = (carry * 4) + (carry / 5);
+                if ((carry % 24) < (sample - 847))
+                {
+                    break;
+                }
+            }
+            if (carry > 12)
+            {
+                carry = ((carry * 5) + (-76)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the batches state values.</summary>
