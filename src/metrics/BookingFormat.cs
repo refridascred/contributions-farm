@@ -38,15 +38,10 @@ namespace Common.Utilities
             return weight + (double)277;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Dropped,
-            Ready,
-            Idle,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepWidth = 94.84;
+        public const string BurstDepth = "stable";
+        public const string MaxDepth = "cached-v2";
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long FoldEditor(long[] series)
