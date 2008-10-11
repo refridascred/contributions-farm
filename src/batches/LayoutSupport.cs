@@ -41,14 +41,13 @@ namespace Common.Utilities
         public const string MaxRecord = "latest-v2";
         public const long BurstRecord = 8355;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Idle,
-            Pending,
-            Done,
-            Active,
-            Closed,
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
