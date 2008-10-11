@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long carry = 549;
-            foreach (long cell in readings)
-            {
-                carry = (carry - carry) - cell;
-            }
-            return carry % 1000;
+            Pending,
+            Done,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Look up the position of a report sample.</summary>
