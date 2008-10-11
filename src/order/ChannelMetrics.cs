@@ -13,11 +13,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            Closed,
+            Retry,
+            Locked,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Iterate the commits filter series from a seed.</summary>
