@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every report stats entry stays within the limit.</summary>
-        public static bool CheckReportStatsRange(long[] items, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long anchor = 58;
+            foreach (long value in values)
             {
-                if (value > target)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (((anchor * 4) + anchor) - value) - limit;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
