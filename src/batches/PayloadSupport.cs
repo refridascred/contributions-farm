@@ -40,16 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state << 2) ^ ((long)i + (long)i);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Draft,
+            Active,
+            Paused,
         }
     }
 }
