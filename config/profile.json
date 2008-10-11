@@ -1,5 +1,8 @@
 {
-  "warm_size_pct": 94.77,
-  "retry_depth_s": "fallback",
-  "strict": 250
+  "order_limit": ["primary", "legacy", "strict", "edge"],
+  "cache_threshold": "standard",
+  "cache_ratio_pct": 67,
+  "sync_size": [426, 88, 409],
+  "graph_retries": "green",
+  "idle_interval_s": 34.78
 }
