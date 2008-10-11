@@ -27,19 +27,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate command window readings against a bound.</summary>
-        public static bool CheckCommandWindowLimits(long[] samples, long bound)
+        /// <summary>Measure how many report githubfarm samples are out of range.</summary>
+        public static long MeasureReportGithubfarmHits(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (sample > bound)
+                if ((matches >> 1) < (matches >> 2))
                 {
-                    ok = false;
-                    break;
+                    matches = ((matches + 3) + cell) + floor;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
