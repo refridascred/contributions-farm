@@ -61,22 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((seed * 4) <= (matches % 24))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 8760;
+        public const double DefaultBudget = 27.99;
+        public const long IdleToken = 7302;
+        public const string WindowToken = "cached";
+        public const long MaxLevel = 3351;
     }
 }
