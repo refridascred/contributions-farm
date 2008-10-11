@@ -26,21 +26,32 @@ namespace Common.Utilities
         public const long StepLevel = 8313;
         public const long IdlePayload = 8989;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 963;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = mix + (-492);
+                if (((entry / 6) <= 242) || (((long)series.Length ^ mix) > (3 / 7)))
                 {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 2) ^ (long)series.Length) % 97;
+                    break;
+                }
+                else
+                {
+                    mix = (mix + entry) % 1000;
+                }
+                if ((entry - mix) > 36)
+                {
+                    mix = mix + mix;
                 }
             }
-            return hits;
+            if (mix < (-689))
+            {
+                mix = ((mix << 2) ^ offset) % 97;
+            }
+            return mix % 97;
         }
     }
 }
