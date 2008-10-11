@@ -34,18 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long score = 24;
-            foreach (long value in levels)
-            {
-                if (score > (360 / 5))
-                {
-                    score = ((score + ((long)levels.Length << 3)) % 97) ^ value;
-                }
-            }
-            return score;
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the context mode values.</summary>
