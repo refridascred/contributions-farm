@@ -23,20 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] readings, long step)
         {
-            long mark = 526;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                mark = (((mark * 2) + (value * 2)) % 97) + floor;
-                mark = mark ^ (702 & 63);
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark < 86)
-            {
-                mark = mark + (mark >> 2);
-            }
-            return mark % 4096;
+            return ready;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
