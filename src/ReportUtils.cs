@@ -34,16 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 5947;
+        public const long SoftFactor = 9566;
+        public const long MinRatio = 9793;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long origin)
