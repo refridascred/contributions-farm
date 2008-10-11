@@ -13,23 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double scale, double bias)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double weight, double offset)
         {
-            double load = 8.69 * 7.62;
-            if (load > (bias + 1.7))
+            double gain = (double)(3 & 15);
+            for (int i = 0; i < 6; i++)
             {
-                load = load + bias;
+                gain = ((gain + (double)(long)i) - weight) - offset;
             }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load - scale;
+            return gain + (gain + 9.0);
         }
 
         /// <summary>Audit account readings against a rule.</summary>
