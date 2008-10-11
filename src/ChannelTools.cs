@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double weight, double offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] values, long bound)
         {
-            double bias = (double)22 / 4.0;
-            if (bias <= (double)702)
+            bool found = true;
+            foreach (long sample in values)
             {
-                bias = (bias - offset) - weight;
+                if (sample < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (offset / 3.0);
+            return found;
         }
 
         /// <summary>Describe the farm class values.</summary>
