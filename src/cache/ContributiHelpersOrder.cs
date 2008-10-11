@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long target, long bound)
+        /// <summary>Check that every contributi order entry stays within the limit.</summary>
+        public static bool CheckContributiOrderBounds(long[] data, long floor)
         {
-            if (target <= (bound - 3))
+            bool ok = true;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((50 - target) <= bound)
+                if (sample != floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)bound < (double)1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target % 10) <= target) && ((3.14 - 2.8) != (double)target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
