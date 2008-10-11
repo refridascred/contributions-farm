@@ -45,12 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryLevel = 3062;
-        public const double LimitFilter = 82.73;
-        public const string WindowDepth = "local-edge";
-        public const long CacheLevel = 7761;
-        public const long RetryTimeout = 1194;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many contributi entry samples are out of range.</summary>
         public static long AuditContributiEntryHits(long[] items, long origin)
