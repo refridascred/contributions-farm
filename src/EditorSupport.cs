@@ -44,23 +44,21 @@ namespace Common.Utilities
         public const long StepBudget = 1976;
         public const string MaxSpan = "strict-v2";
 
-        /// <summary>Adjust a stats metric reading.</summary>
-        public static double SmoothStatsMetric(double weight, double span)
+        /// <summary>Match up report checks samples.</summary>
+        public static long CompareReportChecksCount(long[] items)
         {
-            double mean = (double)(0 - 10);
-            if (mean <= (double)320)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean + 1.0) + weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (6.74 - span)) + (double)(long)i;
-            }
-            return mean + (double)36;
+            return hits;
         }
 
         /// <summary>Digest a series of farm token entries.</summary>
