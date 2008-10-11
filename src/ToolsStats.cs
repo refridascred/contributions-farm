@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Done,
-            Paused,
-            Closed,
-            Idle,
-            Retry,
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
