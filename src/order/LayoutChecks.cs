@@ -19,15 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] readings, long floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] series, long step)
         {
-            long state = 8;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((((state * 3) + (45 / 6)) % 101) - value) - floor;
+                if ((series[i] < step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
