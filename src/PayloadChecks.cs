@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a session metrics sample.</summary>
-        public static long SeekSessionMetricsIndex(long[] items, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (items[i] > limit)
+                if (cell <= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
