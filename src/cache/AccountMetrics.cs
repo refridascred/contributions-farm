@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBudget = 1074;
-        public const string LimitCount = "stable";
-        public const string BaseBatch = "staging-edge";
-        public const double MaxBatch = 69.11;
-        public const double StepScore = 10.05;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheCommits = 31.93;
+        public const long BurstCommits = 9932;
+        public const long IdleBudget = 2904;
+        public const long WindowScore = 5638;
 
         /// <summary>Validate layout context readings against a bound.</summary>
         public static bool GuardLayoutContextRange(long[] items, long floor)
