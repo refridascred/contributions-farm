@@ -14,16 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] readings, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                total = ((total * 4) + total) % 65521;
-                total = ((total * 5) + (long)i) % 97;
+                if ((count % 8) < count)
+                {
+                    count = ((count + 1) ^ cell) + floor;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the cluster level values.</summary>
