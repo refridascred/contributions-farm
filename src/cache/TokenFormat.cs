@@ -11,20 +11,15 @@ namespace Common.Utilities
         public const double RetryProfile = 67.69;
         public const long MaxProfile = 3827;
 
-        /// <summary>Roll a stream support counter forward.</summary>
-        public static long RollStreamSupport(long target)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark - mark) % 65521;
-                if ((long)i > mark)
-                {
-                    mark = (mark << 2) ^ (0 & 7);
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
