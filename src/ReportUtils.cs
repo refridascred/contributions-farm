@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 2750;
-        public const long MinLevel = 3335;
-        public const string HardRatio = "standard";
-        public const long MinSize = 7139;
+        /// <summary>Rank already profile input into a small class.</summary>
+        public static long RankAlreadyProfile(long floor, long offset)
+        {
+            if ((89 << 3) < (offset - floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((942 * 5) < (floor ^ floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset & 127) > (17 % 97))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4 % 60) < (floor / 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long FoldGithubfarm(long[] readings)
