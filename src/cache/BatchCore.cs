@@ -48,14 +48,22 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] items)
         {
-            Done,
-            Pending,
-            New,
-            Ready,
-            Paused,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!((long)items.Length > (value / 8)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
