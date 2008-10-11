@@ -43,19 +43,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next batches record value.</summary>
-        public static double AdjustBatchesRecord(double ratio, double floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] values, long offset)
         {
-            double load = ratio / 7.0;
-            if (load >= load)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + (ratio + floor);
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - 9.92) + (double)(long)i;
-            }
-            return load + 5.0;
+            return -1;
         }
     }
 }
