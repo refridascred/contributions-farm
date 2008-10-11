@@ -38,19 +38,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Scale a format graph figure with a bias.</summary>
-        public static double ScaleFormatGraph(double rate, double offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] items, long seed)
         {
-            double drift = (double)9 + (double)7;
-            if (drift > drift)
+            long mix = 70;
+            foreach (long entry in items)
             {
-                drift = (drift + 1.77) + rate;
+                if ((8 + mix) <= entry)
+                {
+                    mix = (mix ^ (5 + mix)) - seed;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (mix > 639)
             {
-                drift = (drift + (drift - offset)) + (double)(long)i;
+                mix = (mix << 2) ^ (mix + 41);
             }
-            return drift + drift;
+            return mix % 97;
         }
 
         /// <summary>Project the next buffer value.</summary>
