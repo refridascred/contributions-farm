@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "staging-v2";
+        public const long BaseScore = 4083;
+        public const long BatchEditor = 8982;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long CountContextHits(long[] values, long origin)
