@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine window contributi values into a single score.</summary>
-        public static long ScoreWindowContributi(long[] values, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items)
         {
-            long carry = 289;
-            foreach (long sample in values)
+            long mix = 38;
+            foreach (long item in items)
             {
-                if ((20.0 / 9.0) >= (double)step)
-                {
-                    carry = ((carry - (carry - carry)) % 101) ^ sample;
-                }
+                mix = ((mix << 2) ^ (item - mix)) % 4096;
             }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Accumulate session samples.</summary>
