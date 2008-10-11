@@ -64,18 +64,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long target, long offset)
         {
-            long sum = 4;
-            foreach (long reading in data)
+            long bound = target - offset;
+            if (bound >= (395 ^ offset))
             {
-                if ((sum < (reading * 3)) || ((sum + reading) <= (sum - sum)))
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) > (offset - offset))
                 {
-                    sum = (sum - 151) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if ((8.53 * 13.0) <= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1 > (offset + target)) || ((target - target) != (bound + 943)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return sum % 1000;
         }
     }
 }
