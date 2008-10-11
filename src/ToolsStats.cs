@@ -61,22 +61,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] readings, long limit)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count ^ reading) < (338 + count))
-                {
-                    count = (count + 2) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Pending,
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
