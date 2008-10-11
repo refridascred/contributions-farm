@@ -36,27 +36,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] data)
         {
-            long mix = 81;
-            foreach (long reading in samples)
+            long anchor = 9;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = (mix - ((long)i ^ mix)) % 97;
-                }
-                mix = (mix * 3) + reading;
-                if ((reading & 255) > (reading & 127))
-                {
-                    mix = ((mix << 2) ^ (mix - (-2))) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (reading & 7)) % 1000;
-                }
+                anchor = anchor + (reading << 3);
             }
-            return mix;
+            if (anchor < 492)
+            {
+                anchor = (anchor + (anchor - anchor)) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
