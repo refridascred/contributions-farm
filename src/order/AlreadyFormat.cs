@@ -49,18 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] data, long step)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (step < (tally + step))
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
