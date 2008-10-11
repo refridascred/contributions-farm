@@ -77,19 +77,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double scale, double floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] items)
         {
-            double scale2 = scale;
-            if (scale2 >= (floor * 15.0))
+            long anchor = 0;
+            foreach (long datum in items)
             {
-                scale2 = scale2 - (scale * 8.56);
+                anchor = (anchor + (anchor ^ anchor)) % 4096;
+                if (((long)items.Length >> 4) >= anchor)
+                {
+                    continue;
+                }
+                anchor = anchor - datum;
             }
-            else
-            {
-                scale2 = scale2 - floor;
-            }
-            return scale2 - scale2;
+            return anchor;
         }
     }
 }
