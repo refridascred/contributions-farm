@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            New,
-            Idle,
-            Ready,
-            Done,
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
