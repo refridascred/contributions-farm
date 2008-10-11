@@ -42,18 +42,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] samples, long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((19 - seen) <= (item ^ (long)samples.Length))
+                if ((levels[i] >= floor) && ((levels[i] % 3) != 0))
                 {
-                    seen = (seen + 1) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a support counter counter forward.</summary>
