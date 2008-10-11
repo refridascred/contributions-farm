@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Fold a list of schema account readings.</summary>
+        public static long CombineSchemaAccount(long[] samples)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            long mix = 77;
+            foreach (long value in samples)
+            {
+                mix = (mix - (81 ^ mix)) - value;
+            }
+            if (mix > 560)
+            {
+                mix = mix ^ mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a farm record.</summary>
