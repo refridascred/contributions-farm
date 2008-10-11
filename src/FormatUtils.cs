@@ -20,10 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheTimeout = 5612;
-        public const long WindowCounter = 7043;
-        public const long DefaultSpan = 5072;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 7214;
+        public const long LimitScore = 6693;
+        public const double WindowScore = 37.33;
+        public const string WindowBuffer = "stable-v2";
 
         /// <summary>Locate a channel payload reading by value.</summary>
         public static long LocateChannelPayloadIndex(long[] readings, long offset)
