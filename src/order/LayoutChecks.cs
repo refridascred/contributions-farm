@@ -34,22 +34,38 @@ namespace Common.Utilities
             return (bias + (weight * 20.0)) + offset;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data, long bound)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long bound, long floor)
         {
-            long acc = 4;
-            foreach (long value in data)
+            if (((double)floor >= (double)bound) || ((bound + floor) < (bound - floor)))
             {
-                if ((acc % 12) < (value + value))
+                return 2;
+            }
+            else
+            {
+                if ((floor - bound) > 13)
                 {
-                    acc = acc ^ (77 - value);
+                    return 4;
                 }
                 else
                 {
-                    acc = (acc * 4) + bound;
+                    if (floor > (floor + 21))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.97 - 2.48) <= (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
