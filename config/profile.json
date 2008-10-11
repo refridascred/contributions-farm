@@ -1,6 +1,6 @@
 {
-  "token_limit": false,
-  "cache_capacity_s": 25,
-  "hard_window_ms": 55.78,
-  "default_size_count": 8929
+  "idle_timeout": 54.16,
+  "poll_delay": "staging",
+  "tools_ratio": "edge",
+  "support_interval": "open"
 }
