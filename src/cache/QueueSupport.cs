@@ -20,15 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next cache stats value from a seed.</summary>
-        public static long SeriesCacheStats(long origin)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Pending,
+            Draft,
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Check that every cache queue entry stays within the limit.</summary>
