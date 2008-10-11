@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long origin, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long slot = origin - target;
-            if ((5.24 * 12.0) != (double)origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)slot >= (14.0 / 9.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every window cluster entry stays within the limit.</summary>
