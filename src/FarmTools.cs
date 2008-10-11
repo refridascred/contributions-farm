@@ -55,11 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinBuffer = "staging-1";
-        public const long MinSpan = 6860;
-        public const long DefaultScore = 2568;
-        public const double IdleBudget = 30.47;
-        public const long IdleBuffer = 5079;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] values, long offset)
+        {
+            long sum = 3;
+            foreach (long sample in values)
+            {
+                if ((3.9 / 8.0) <= (double)sum)
+                {
+                    sum = ((sum + (offset & 15)) % 1000) - sample;
+                }
+            }
+            return sum;
+        }
     }
 }
