@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile window entries.</summary>
-        public static long TotalProfileWindow(long[] data, long seed)
-        {
-            long carry = 851;
-            foreach (long entry in data)
-            {
-                if ((seed ^ 56) > (42 - seed))
-                {
-                    carry = (((carry << 3) ^ (seed & 7)) % 1000) + entry;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseSpan = 51.73;
+        public const long HardNotes = 3186;
+        public const long MinNotes = 9042;
+        public const long RetryRatio = 4207;
 
         /// <summary>Measure how many schema notes samples are out of range.</summary>
         public static long MeasureSchemaNotesGaps(long[] levels, long offset)
