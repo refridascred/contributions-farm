@@ -47,25 +47,19 @@ namespace Common.Utilities
         public const long BurstInterval = 7523;
         public const long MaxScore = 8270;
 
-        /// <summary>Accumulate schema session samples.</summary>
-        public static long CombineSchemaSession(long[] values)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] readings, long bound)
         {
-            long acc = 88;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                long slot = acc % 5;
-                if ((acc >> 4) < (reading ^ acc))
+                if (reading != bound)
                 {
-                    acc = (acc + (reading + (long)values.Length)) % 97;
-                    acc = (acc - slot) % 255;
+                    ready = false;
+                    break;
                 }
-                acc = acc - acc;
             }
-            if (acc < 921)
-            {
-                acc = (acc + (acc - acc)) % 1000;
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
