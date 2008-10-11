@@ -28,13 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Active,
-            Idle,
-            Synced,
-            Done,
+            Stale,
+            Draft,
+            Retry,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a profile entry.</summary>
