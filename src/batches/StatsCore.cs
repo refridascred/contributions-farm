@@ -41,19 +41,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit counter order readings against a rule.</summary>
-        public static long AuditCounterOrderHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + datum) < tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepDepth = 83.18;
+        public const string StepFarm = "cached-edge";
+        public const long WindowCount = 8026;
+        public const double IdleFarm = 73.58;
 
         /// <summary>Digest a series of filter profile entries.</summary>
         public static long ScoreFilterProfile(long[] samples)
