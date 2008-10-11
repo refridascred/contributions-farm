@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Compare every pair of metrics farm readings.</summary>
+        public static long MatchMetricsFarmCount(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
