@@ -41,16 +41,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double weight, double floor)
-        {
-            double load = weight;
-            if (load <= (load / 5.0))
-            {
-                load = (load - (weight + load)) - floor;
-            }
-            return load - (double)67;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinTimeout = 1365;
+        public const long BatchWidth = 3782;
+        public const long LimitCache = 2125;
+        public const long DefaultCache = 5037;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] data)
