@@ -1,5 +1,13 @@
 {
-  "cache_threshold": true,
-  "queue_threshold": [40, 345, 186],
-  "layout_retries": 26
+  "hard_depth": "edge",
+  "cache_ttl_count": {
+    "route_ratio": "fallback",
+    "hard_size": "standard",
+    "burst_retries_ms": 33.74,
+    "min_limit": "local",
+    "tools_ratio": "edge"
+  },
+  "profile_size": [179, 171, 349, 450],
+  "compress": "latest",
+  "soft_threshold": "strict"
 }
