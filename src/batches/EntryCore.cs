@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a already context value against two limits.</summary>
-        public static long ClassifyAlreadyContext(long target, long bound)
-        {
-            if ((bound % 100) != (bound + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound <= (bound * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((target << 2) > 759) && ((double)target == (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowFactor = "standard";
+        public const string LimitContributi = "cached-v2";
+        public const long HardCount = 8035;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long IterateStats(long bound)
