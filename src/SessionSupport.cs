@@ -13,16 +13,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix - mix) % 4096;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Synced,
+            Pending,
+            Locked,
+            Closed,
+            Stale,
         }
 
         /// <summary>Grade a notes already value against two limits.</summary>
