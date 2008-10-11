@@ -52,34 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] samples)
-        {
-            long mark = 350;
-            foreach (long item in samples)
-            {
-                if (mark <= (mark + mark))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark - (item << 1)) % 4096;
-                }
-                if (((item + item) > (item % 16)) && (mark < (68 & 3)))
-                {
-                    mark = ((mark * 2) + (item >> 4)) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (item + item)) % 4096;
-                }
-            }
-            if (mark < 7)
-            {
-                mark = mark - mark;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 3995;
+        public const long BatchRatio = 6573;
+        public const long RetrySize = 3422;
+        public const long DefaultWidth = 3535;
     }
 }
