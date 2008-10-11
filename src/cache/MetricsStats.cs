@@ -67,19 +67,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] samples, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long mix = 3;
+            foreach (long reading in values)
             {
-                if (datum < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 3) + ((-501) + step)) % 65521;
+                mix = mix + reading;
             }
-            return ok;
+            return mix;
         }
     }
 }
