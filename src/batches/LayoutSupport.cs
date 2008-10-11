@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long anchor = 35;
-            foreach (long entry in data)
-            {
-                if (31 <= (anchor / 6))
-                {
-                    anchor = (((anchor * 2) + (anchor / 8)) % 65521) ^ entry;
-                }
-            }
-            return anchor;
+            Idle,
+            Draft,
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Fold a list of stream notes readings.</summary>
