@@ -1,8 +1,22 @@
 # support settings
-order_interval: 97
-contributi_timeout: eu-west
-batch_delay_ms:
-  filter_ratio: 100
-  retry_retries_pct: 8350
-  soft_capacity: 89.04
-warm_depth_count: cached
+flush_capacity_ms: legacy
+cache_delay_ms:
+  - 242
+  - 476
+  - 72
+queue_depth:
+  - legacy
+  - legacy
+batch_size:
+  burst_interval_count: green
+  readonly:
+    - 295
+    - 462
+    - 177
+  batches_threshold: 39.11
+  payload_threshold:
+    - stable
+    - stable
+    - latest
+    - fallback
+  already_delay: edge
