@@ -27,17 +27,21 @@ namespace Common.Utilities
         public const long WindowToken = 3401;
         public const string BatchCount = "local-edge";
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] readings, long limit)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            long acc = 82;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (((acc << 2) ^ acc) % 101) - limit;
-                acc = (acc - (reading / 5)) % 1000;
-                acc = acc ^ (reading & 127);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Describe the editor kind values.</summary>
