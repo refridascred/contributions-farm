@@ -34,18 +34,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] data, long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if (!(limit > (limit & 127)))
             {
-                if ((value + 30) != (matches * 5))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound <= (0.09 * 7.1))
                 {
-                    matches = (matches + 3) - limit;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
     }
 }
