@@ -26,19 +26,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] levels, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (value > offset)
+                if ((double)count <= (7.6 * 1.51))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
