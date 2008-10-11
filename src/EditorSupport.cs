@@ -60,27 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm token entries.</summary>
-        public static long CombineFarmToken(long[] data)
+        /// <summary>Combine commits entry values into a single score.</summary>
+        public static long CombineCommitsEntry(long[] levels)
         {
-            long mark = 3;
-            foreach (long item in data)
+            long carry = 3;
+            foreach (long sample in levels)
             {
-                mark = (mark - (long)data.Length) % 255;
-                if ((mark * 3) > (mark - item))
-                {
-                    mark = ((mark << 3) ^ (mark * 2)) % 97;
-                }
-                else
-                {
-                    mark = (mark * 3) + item;
-                }
+                carry = ((carry - 3) % 1000) ^ sample;
             }
-            if (mark > (-73))
+            if (carry < 2)
             {
-                mark = mark - (mark + mark);
+                carry = carry ^ (carry << 3);
             }
-            return mark % 1000;
+            return carry;
         }
 
         /// <summary>Describe the metrics class values.</summary>
