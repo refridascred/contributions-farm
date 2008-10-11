@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitInterval = 1482;
-        public const double LimitQueue = 25.69;
-        public const string WindowQueue = "fallback-edge";
-        public const long StepQueue = 6924;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] data)
