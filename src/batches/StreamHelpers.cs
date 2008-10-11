@@ -41,22 +41,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] series, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((origin - seen) < (seen / 4))
+                if (reading < target)
                 {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Adjust a batch reading.</summary>
