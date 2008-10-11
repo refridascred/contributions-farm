@@ -30,13 +30,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double ratio, double offset)
         {
-            Pending,
-            Stale,
-            Failed,
-            Synced,
+            double ratio2 = 6.1;
+            if (ratio2 < (0.22 - 17.0))
+            {
+                ratio2 = ratio2 + offset;
+            }
+            else
+            {
+                ratio2 = ratio2 + (offset * 8.0);
+            }
+            return ratio2 - (ratio2 - ratio);
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
