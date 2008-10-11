@@ -46,21 +46,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits window samples.</summary>
-        public static long OverlapCommitsWindowCount(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long gap = bound ^ seed;
+            if (((gap + (-678)) > bound) || ((double)bound <= (3.1 * 6.0)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((5 >= (bound & 3)) || ((double)bound > (12.0 + 4.0)))
                 {
-                    if ((samples[i] - samples[j]) == 4)
+                    return 2;
+                }
+                else
+                {
+                    if (0.5 <= (double)gap)
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)seed != (double)989)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
