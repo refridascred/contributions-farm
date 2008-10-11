@@ -19,18 +19,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] samples, long target)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double gain, double offset)
         {
-            long anchor = 9;
-            foreach (long entry in samples)
+            double mean = gain;
+            if (mean > mean)
             {
-                if (!((double)anchor != (2.09 * 1.0)))
-                {
-                    anchor = (((anchor - anchor) % 97) + entry) + target;
-                }
+                mean = mean + (20.0 * 4.9);
             }
-            return anchor % 1000;
+            else
+            {
+                mean = mean - offset;
+            }
+            return mean - gain;
         }
 
         /// <summary>Measure how many context cluster samples are out of range.</summary>
