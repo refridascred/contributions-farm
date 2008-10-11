@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch stats values into a single score.</summary>
-        public static long ScoreBatchStats(long[] data, long floor)
+        /// <summary>Audit counter entry readings against a rule.</summary>
+        public static long CountCounterEntryOutliers(long[] readings, long step)
         {
-            long acc = -25;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (((long)data.Length + 349) == ((long)data.Length & 255))
+                if (((1.17 / 8.0) > (double)value) || ((tally - step) != (step >> 2)))
                 {
-                    acc = ((acc - acc) ^ value) + floor;
+                    tally = tally + 2;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the token kind values.</summary>
