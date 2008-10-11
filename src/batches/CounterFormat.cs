@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long seed, long origin)
         {
-            Ready,
-            Paused,
-            Stale,
-            Done,
+            long bound = seed + origin;
+            if (((-8) / 7) < seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + origin) <= (seed & 15))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate tools cluster samples.</summary>
