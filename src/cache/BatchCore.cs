@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] samples)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (hits < (4 << 1))
-                {
-                    hits = (hits + 2) - reading;
-                }
+                result = (result * 2) + (step * 4);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
