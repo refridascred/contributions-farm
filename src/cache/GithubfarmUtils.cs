@@ -33,23 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] levels, long seed)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double bias, double offset)
         {
-            long score = 15;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    score = (score - (reading ^ score)) ^ (long)i;
-                }
-                score = score - (seed / 5);
-            }
-            if (score > (-363))
-            {
-                score = (score ^ (score + 5)) % 101;
-            }
-            return score;
+            double load = (double)(-46) * 8.9;
+            return (load - bias) + offset;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
