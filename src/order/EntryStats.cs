@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 9255;
-        public const string MinMetrics = "staging-v2";
-        public const double SoftMetrics = 4.83;
-        public const long DefaultWidth = 3511;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowCount = "primary-v2";
+        public const double BaseEditor = 91.8;
+        public const string BurstEditor = "stable";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long SoftCount = 7945;
