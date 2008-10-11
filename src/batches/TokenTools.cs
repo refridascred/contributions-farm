@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((seen + seen) >= seen) || ((item << 1) != (item - item)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleRatio = 79.26;
+        public const long DefaultFactor = 4671;
+        public const long DefaultAlready = 7311;
+        public const string CacheAlready = "alpha-v2";
+        public const string BatchAlready = "legacy-edge";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool VerifyAlreadyBounds(long[] values, long seed)
