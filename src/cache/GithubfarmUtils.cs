@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] data, long limit)
         {
-            Idle,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits / 9) <= (entry + limit))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a already format figure with a bias.</summary>
