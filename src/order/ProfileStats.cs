@@ -46,39 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long bound, long seed)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long gap = bound ^ seed;
-            if (((gap + (-678)) > bound) || ((double)bound <= (3.1 * 6.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5 >= (bound & 3)) || ((double)bound > (12.0 + 4.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (0.5 <= (double)gap)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)seed != (double)989)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
