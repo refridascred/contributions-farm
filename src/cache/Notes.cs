@@ -19,31 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long step, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] levels, long bound)
         {
-            if ((19.0 / 3.0) == (double)step)
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= (4.1 + 0.27))
+                if (item < bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + 10) >= (step << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many channel graph samples are out of range.</summary>
