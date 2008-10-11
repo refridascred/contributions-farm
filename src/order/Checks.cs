@@ -32,13 +32,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] readings, long origin)
         {
-            New,
-            Queued,
-            Dropped,
-            Paused,
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the profile kind values.</summary>
