@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Count format cache pairs that satisfy a relation.</summary>
+        public static long CompareFormatCacheCount(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix ^ 3;
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the metric status values.</summary>
