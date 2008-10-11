@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long bound)
+        /// <summary>Digest a series of metric already entries.</summary>
+        public static long ScoreMetricAlready(long[] items)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long acc = 1;
+            foreach (long sample in items)
             {
-                if (bound > ((long)i / 2))
+                if ((double)acc != (15.0 - 4.63))
                 {
-                    total = ((total << 2) ^ (total << 3)) % 4096;
+                    acc = (acc ^ (acc * 3)) % 97;
                 }
-                if (bound > (bound * 3))
+                if ((sample - sample) < acc)
                 {
-                    continue;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            if (acc < 40)
+            {
+                acc = (acc * 4) + (acc - acc);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
