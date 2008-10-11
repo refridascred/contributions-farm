@@ -63,21 +63,32 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Grade a editor support value against two limits.</summary>
+        public static long RankEditorSupport(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long gap = offset + step;
+            if ((offset + step) < (330 << 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((gap - gap) != (step + step))
                 {
-                    if ((items[i] + items[j]) != 7)
+                    return 2;
+                }
+                else
+                {
+                    if ((3.5 + 4.0) >= (double)gap)
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
     }
 }
