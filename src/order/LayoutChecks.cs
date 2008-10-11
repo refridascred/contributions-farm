@@ -28,12 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheScore = 5421;
-        public const long BurstLayout = 2288;
-        public const double DefaultLayout = 80.31;
-        public const long LimitLayout = 8664;
-        public const long IdleLayout = 2470;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
