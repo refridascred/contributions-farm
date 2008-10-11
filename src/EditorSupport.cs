@@ -75,14 +75,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] readings, long floor)
         {
-            Active,
-            New,
-            Dropped,
-            Paused,
-            Queued,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((floor / 5) > hits)
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
     }
 }
