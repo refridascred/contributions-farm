@@ -32,13 +32,18 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] samples)
         {
-            Retry,
-            Queued,
-            Closed,
-            New,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (item <= (339 - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
