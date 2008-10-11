@@ -41,17 +41,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] data, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 569;
+            foreach (long reading in items)
             {
-                if ((data[i] <= step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum * 5) + (sum + reading);
             }
-            return -1;
+            if (sum < 63)
+            {
+                sum = sum + (sum ^ 107);
+            }
+            return sum;
         }
     }
 }
