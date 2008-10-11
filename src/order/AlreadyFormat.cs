@@ -14,19 +14,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count % 8) < count)
-                {
-                    count = ((count + 1) ^ cell) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "legacy-v2";
+        public const long StepCache = 6430;
+        public const string IdleWidth = "standard-1";
 
         /// <summary>Project the next tools value.</summary>
         public static double ProjectTools(double rate, double offset)
