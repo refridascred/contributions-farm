@@ -37,18 +37,15 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] levels, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)seen < (double)567)
-                {
-                    seen = ((seen + 1) ^ reading) + target;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
