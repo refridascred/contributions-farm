@@ -1,14 +1,4 @@
 # githubfarm settings
-sync_ratio:
-  max_limit_pct: true
-  poll_size_count:
-    - 48
-    - 293
-    - 119
-    - 491
-  poll_capacity:
-    - staging
-    - stable
-    - local
-default_timeout: latest
-checks_window: 1.21
+filter_threshold: 33.81
+warm_limit: 250
+strict: latest
