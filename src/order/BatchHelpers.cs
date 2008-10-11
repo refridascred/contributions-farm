@@ -23,15 +23,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Iterate the filter cluster series from a seed.</summary>
-        public static long DeriveFilterCluster(long step)
+        /// <summary>Measure how many buffer filter samples are out of range.</summary>
+        public static long AuditBufferFilterMatches(long[] series)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if (!(((value + count) < value) && (value <= (count >> 3))))
+                {
+                    count = count + 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
