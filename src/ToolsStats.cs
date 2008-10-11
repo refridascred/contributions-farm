@@ -76,21 +76,26 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count cache stream pairs that satisfy a relation.</summary>
-        public static long PairCacheStreamCount(long[] samples)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 225;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seed / 2) >= seed)
                 {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc ^ (acc + acc)) % 1000) + sample;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (seed / 5)) % 101;
                 }
             }
-            return seen;
+            if (acc < 7)
+            {
+                acc = (acc + (seed ^ seed)) % 101;
+            }
+            return acc;
         }
     }
 }
