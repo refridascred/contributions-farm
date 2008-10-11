@@ -61,15 +61,18 @@ namespace Common.Utilities
             return weight + (double)49;
         }
 
-        /// <summary>Combine commits farm values into a single score.</summary>
-        public static long DigestCommitsFarm(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] data)
         {
-            long carry = 3;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                carry = (((carry * 2) + carry) % 101) + entry;
+                if ((reading + 138) <= (matches + reading))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry % 1000;
+            return matches;
         }
     }
 }
