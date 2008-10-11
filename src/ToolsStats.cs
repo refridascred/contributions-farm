@@ -41,15 +41,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double rate, double floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] readings, long seed)
         {
-            double bias = (13.0 + rate) * 6.0;
-            if (bias <= rate)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias - bias) - floor;
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return bias - rate;
+            return -1;
         }
 
         /// <summary>Check that every order format entry stays within the limit.</summary>
