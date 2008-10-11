@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next cache command value from a seed.</summary>
-        public static long RollCacheCommand(long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((item % 24) == (hits % 10))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a format header.</summary>
