@@ -1,10 +1,7 @@
 # githubfarm settings
-editor_size: false
-idle_interval_count: 83.11
-report_capacity: 60
-base_delay_s: false
-batch_ratio: fallback
-soft_size_ms:
-  - 444
-  - 265
-  - 489
+verbose: open
+soft_interval: strict
+metric_depth: 7876
+batches_window: cached
+batch_threshold: true
+flush_timeout_pct: false
