@@ -22,11 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseSpan = 6987;
-        public const long DefaultWidth = 1221;
-        public const long LimitChecks = 2258;
-        public const long BatchChecks = 7312;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Failed,
+            Ready,
+            Synced,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] samples)
