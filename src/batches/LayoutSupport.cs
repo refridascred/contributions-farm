@@ -10,24 +10,13 @@ namespace Common.Utilities
         public const long RetrySpan = 7775;
         public const long MinSchema = 4061;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long offset, long target)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            if ((target - offset) != (target - target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target % 100) <= ((-789) + 957))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Failed,
+            New,
+            Closed,
         }
 
         /// <summary>Accumulate checks samples.</summary>
