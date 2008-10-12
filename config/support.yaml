@@ -1,26 +1,11 @@
 # support settings
-max_size_s: 87
-burst_interval: eu-west
-farm_timeout:
-  base_interval_s: 51.34
-  dry_run: standard
-  compress: latest
-  max_size_count: fallback
-max_window_s:
-  soft_window_s: 56.82
-  layout_delay:
-    audit: green
-    strict: blue
-    cluster_threshold: true
-    verbose: 66.78
-    cache_ratio_pct: true
-  min_depth:
-    - strict
-    - blue
-    - fallback
-  soft_size_count: 38.5
-  verbose:
-    - 271
-    - 54
-max_retries: 98.92
-retry_delay: 81
+burst_interval: strict
+base_threshold: false
+graph_window:
+  - standard
+  - legacy
+  - latest
+  - edge
+sync_ratio_pct: latest
+flush_window: 98.21
+hard_depth: cached
