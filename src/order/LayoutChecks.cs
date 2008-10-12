@@ -96,12 +96,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            Retry,
+            Done,
+            Stale,
+            Locked,
         }
     }
 }
