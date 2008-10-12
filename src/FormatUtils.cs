@@ -85,13 +85,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Roll a editor report counter forward.</summary>
+        public static long SeriesEditorReport(long step)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                result = ((result * 2) + (long)i) % 101;
+                result = ((result * 5) + (long)i) % 97;
             }
             return result;
         }
