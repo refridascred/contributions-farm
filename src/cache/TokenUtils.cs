@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next githubfarm counter value from a seed.</summary>
-        public static long SeriesGithubfarmCounter(long origin)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Queued,
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
