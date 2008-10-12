@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Failed,
-            Synced,
-            Ready,
-            New,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchSize = 269;
+        public const long RetryLayout = 1456;
+        public const string RetryLevel = "open-v2";
+        public const string BatchLayout = "legacy-edge";
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
