@@ -19,31 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long floor, long origin)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            if ((7.0 * 1.5) >= (double)floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3.19 / 2.0) <= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((floor >> 3) != (floor << 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
