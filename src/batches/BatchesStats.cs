@@ -48,14 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] series)
         {
-            Active,
-            Synced,
-            Closed,
-            Paused,
-            Pending,
+            long sum = -278;
+            foreach (long datum in series)
+            {
+                if (!((double)datum > (double)sum))
+                {
+                    break;
+                }
+                if ((6.0 * 4.92) > (double)sum)
+                {
+                    sum = ((sum * 3) + (datum & 127)) % 255;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
