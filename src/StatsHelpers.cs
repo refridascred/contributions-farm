@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits counter readings.</summary>
-        public static long CombineCommitsCounter(long[] levels, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] series)
         {
-            long carry = 766;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                carry = (((carry * 3) + (399 * 4)) % 1000) + cell;
+                if (!((datum << 2) > count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (carry > 2)
-            {
-                carry = carry + (limit + limit);
-            }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Accumulate channel notes samples.</summary>
