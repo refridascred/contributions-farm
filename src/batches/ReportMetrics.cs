@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] data)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            long carry = 0;
+            foreach (long entry in data)
+            {
+                if (((double)carry < (7.0 / 9.0)) || (((-48) + 49) < entry))
+                {
+                    carry = (carry + (entry * 4)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ entry) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a record snapshot.</summary>
