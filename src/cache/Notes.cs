@@ -28,21 +28,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long floor, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)floor < 10.0)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound <= (7.0 / 5.0))
                 {
-                    if ((readings[i] - readings[j]) < 0)
+                    return 4;
+                }
+                else
+                {
+                    if ((floor >> 3) <= (bound % 60))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((bound - floor) >= bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
