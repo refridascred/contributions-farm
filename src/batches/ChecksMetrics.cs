@@ -52,12 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "legacy-1";
-        public const string IdleSize = "staging";
-        public const long DefaultInterval = 7873;
-        public const double SoftChecks = 60.42;
-        public const long BaseDepth = 3999;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = (carry + (1 >> 2)) % 1000;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Combine counter notes values into a single score.</summary>
         public static long ScoreCounterNotes(long[] samples)
