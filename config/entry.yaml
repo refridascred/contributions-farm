@@ -1,27 +1,9 @@
 # entry settings
-flush_window_s:
-  batch_depth_s: cached
-  strict: 68
-  dry_run: local
-  default_retries: staging
-  support_ttl: false
-stats_timeout:
-  sync_window_pct: 60
-  flush_window_ms:
-    - stable
-    - stable
-    - primary
-  max_ratio_count: 31.21
-  burst_interval_pct: 5895
-  default_timeout: 100
-  stats_ttl:
-    hard_delay: false
-    route_capacity: primary
-    max_retries_s: fallback
-    support_retries: false
-    strict: staging
-    sync_size: 7217
-record_ratio: local
-batch_interval: 71.51
-default_ratio: 89
-dry_run: blue
+channel_retries: 50
+cache_window_s:
+  - eu-west
+  - strict
+  - standard
+  - open
+counter_retries: 87.43
+sync_window_ms: 79
