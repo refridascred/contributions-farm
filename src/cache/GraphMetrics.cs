@@ -28,18 +28,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] data, long bound)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!((1.49 / 5.0) >= (double)entry))
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
