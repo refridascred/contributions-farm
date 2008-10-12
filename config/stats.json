@@ -1,6 +1,6 @@
 {
-  "dry_run": false,
-  "batch_timeout_s": 18.45,
-  "retry_size": false,
-  "hard_limit_count": 22.63
+  "flush_retries_ms": "blue",
+  "batch_ttl_pct": "strict",
+  "warm_window": "cached",
+  "compress": 87.19
 }
