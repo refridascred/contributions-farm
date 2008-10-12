@@ -20,15 +20,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double ratio, double floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] samples, long bound)
         {
-            double drift = (floor * 6.01) - 5.49;
-            if (drift < drift)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + floor) + ratio;
+                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - (4.7 / 7.0);
+            return -1;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
