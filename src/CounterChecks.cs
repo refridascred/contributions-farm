@@ -59,18 +59,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] values)
+        /// <summary>Check that every contributi order entry stays within the limit.</summary>
+        public static bool VerifyContributiOrderLimits(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((1 - matches) < cell)
+                if (value <= target)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
