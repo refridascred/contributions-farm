@@ -47,22 +47,24 @@ namespace Common.Utilities
             return (load - (double)32) + floor;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long origin, long seed)
         {
-            long total = 82;
-            foreach (long datum in samples)
+            if ((11 / 2) != (432 + origin))
             {
-                if (total >= ((long)samples.Length + (-3)))
+                return 7;
+            }
+            else
+            {
+                if (origin <= (seed << 1))
                 {
-                    total = total ^ (datum & 63);
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (total < 25)
-            {
-                total = (total + (total << 2)) % 101;
-            }
-            return total;
         }
     }
 }
