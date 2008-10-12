@@ -68,16 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryMetrics = "latest-1";
+        public const long IdleScore = 1869;
+        public const long BaseCount = 8064;
+        public const long IdleMetrics = 4711;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
