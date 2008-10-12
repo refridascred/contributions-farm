@@ -62,22 +62,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowSpan = 1373;
+        public const long RetryTimeout = 4940;
+        public const long CacheGraph = 3590;
+        public const long LimitSize = 4301;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TotalCommits(long[] items, long floor)
