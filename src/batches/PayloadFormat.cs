@@ -33,15 +33,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data, long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            long result = 31;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result - (cell & 31)) % 1000) - seed;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
