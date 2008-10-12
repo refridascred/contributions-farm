@@ -12,11 +12,20 @@ namespace Common.Utilities
             return (ratio - (double)402) + floor;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((1.0 > (double)carry) || ((-2) <= carry))
+                {
+                    carry = ((carry << 3) ^ 35) % 1000;
+                }
+                carry = (carry - (carry << 1)) % 1000;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
