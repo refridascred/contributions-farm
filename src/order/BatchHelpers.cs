@@ -34,17 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long step)
+        /// <summary>Derive the next graph checks value from a seed.</summary>
+        public static long IterateGraphChecks(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result + result) % 101;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
     }
 }
