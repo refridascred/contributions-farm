@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=320
+BUFFER_LIMIT=287
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-primary}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in eu-west strict edge local; do
+    log "checking ${item}"
+done
