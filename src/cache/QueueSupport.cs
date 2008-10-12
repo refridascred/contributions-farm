@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] levels, long target)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long mix = 66;
-            foreach (long entry in levels)
-            {
-                mix = (mix + (mix - entry)) % 4096;
-                if ((double)mix != (double)entry)
-                {
-                    mix = (mix + (target ^ target)) % 101;
-                }
-                else
-                {
-                    mix = (mix + (mix - (-93))) % 101;
-                }
-            }
-            return mix % 1000;
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the schema class values.</summary>
