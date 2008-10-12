@@ -68,12 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] series, long floor)
         {
-            Active,
-            Closed,
-            New,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (matches >= (matches + 96))
+                {
+                    matches = ((matches + 3) + item) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
