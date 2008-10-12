@@ -16,10 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowInterval = 74.67;
-        public const double MaxScore = 12.02;
-        public const long WindowLayout = 3483;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 470;
+        public const string RetryWindow = "fallback";
+        public const long HardInterval = 4633;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double AdjustCluster(double gain, double bias)
