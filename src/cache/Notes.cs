@@ -63,11 +63,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchInterval = "primary-1";
-        public const long BatchBatches = 1806;
-        public const double HardScore = 60.3;
-        public const long IdleBatches = 646;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] levels, long step)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next order account value from a seed.</summary>
         public static long StepOrderAccount(long step)
