@@ -1,4 +1,18 @@
 # entry settings
-base_window_s: 3157
-sync_ttl: 25
-metrics_timeout: edge
+enabled: legacy
+token_ttl:
+  idle_size_ms: blue
+  verbose: 30
+  strict:
+    min_limit_pct: 87.43
+    hard_threshold_s: standard
+    retry_threshold: 92.84
+    batch_ratio_s: 4172
+    poll_timeout: true
+  default_retries_pct:
+    - 302
+    - 202
+    - 308
+    - 385
+persist: 60
+already_ratio: blue
