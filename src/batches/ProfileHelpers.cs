@@ -28,11 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double scale, double bias)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            double ratio = (double)(33 - 1);
+            return (ratio - bias) + scale;
         }
 
         /// <summary>Hold a notes header.</summary>
