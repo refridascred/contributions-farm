@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the cluster window entries that pass the check.</summary>
-        public static long TallyClusterWindowGaps(long[] data, long step)
+        /// <summary>Rank record buffer input into a small class.</summary>
+        public static long RankRecordBuffer(long offset, long seed)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if ((seed ^ offset) < (offset * 2))
             {
-                if ((count - step) <= 40)
+                return 4;
+            }
+            else
+            {
+                if (!(122 >= (seed / 9)))
                 {
-                    count = (count + 2) - sample;
+                    return 0;
+                }
+                else
+                {
+                    if (seed <= (seed << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
