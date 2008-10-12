@@ -25,18 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] data, long offset)
+        /// <summary>Combine account editor values into a single score.</summary>
+        public static long FoldAccountEditor(long[] readings, long step)
         {
-            long carry = 389;
-            foreach (long value in data)
+            long state = 904;
+            foreach (long reading in readings)
             {
-                if (offset <= (carry + value))
+                if ((8 % 8) > state)
                 {
-                    carry = ((carry * 2) + carry) % 97;
+                    state = (state + (step * 2)) + reading;
+                }
+                else
+                {
+                    state = (state + (state + 5)) % 101;
                 }
             }
-            return carry;
+            if (state > 266)
+            {
+                state = (state ^ 288) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
