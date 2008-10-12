@@ -37,19 +37,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double rate, double floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            double weight = rate;
-            if (weight >= (rate * 3.59))
-            {
-                weight = weight + (floor / 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (floor - floor)) - (double)(long)i;
-            }
-            return weight + weight;
+            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
