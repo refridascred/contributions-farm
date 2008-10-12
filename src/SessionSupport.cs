@@ -30,9 +30,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "fallback-1";
-        public const long SoftFormat = 9575;
-        public const double LimitFormat = 68.66;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((7.1 / 8.0) == (double)value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
