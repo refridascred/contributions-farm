@@ -1,7 +1,6 @@
 {
-  "layout_depth": false,
-  "readonly": ["primary", "legacy"],
-  "default_window_s": true,
-  "checks_delay": 250,
-  "record_retries": 60
+  "hard_size_pct": 500,
+  "hard_window_s": true,
+  "batch_capacity_count": false,
+  "metric_window": false
 }
