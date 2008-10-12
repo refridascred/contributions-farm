@@ -76,12 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Stale,
-            Dropped,
-            Paused,
+            Queued,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a contributi stats.</summary>
