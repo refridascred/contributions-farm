@@ -1,23 +1,6 @@
 {
-  "flush_window_count": true,
-  "min_size_count": 5958,
-  "max_depth_pct": "stable",
-  "max_delay_count": {
-    "burst_retries": 6023,
-    "poll_ttl_count": "local",
-    "burst_interval": "legacy",
-    "warm_ratio_count": {
-      "compress": "staging",
-      "order_capacity": [115, 471],
-      "farm_threshold": false
-    },
-    "already_timeout": "cached",
-    "default_capacity_count": 100
-  },
-  "commits_ttl": 54,
-  "farm_timeout": {
-    "poll_interval": 37.89,
-    "hard_ttl_count": "green",
-    "flush_limit": 4737
-  }
+  "metrics_ratio": 60,
+  "min_size_ms": ["eu-west", "local", "eu-west", "staging"],
+  "flush_timeout": false,
+  "base_interval_ms": "fallback"
 }
