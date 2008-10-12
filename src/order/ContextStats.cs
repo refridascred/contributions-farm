@@ -31,19 +31,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] values, long offset)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > offset)
+                if ((samples[i] == target) && ((samples[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
