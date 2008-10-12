@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long origin, long floor)
         {
-            Done,
-            Failed,
-            Ready,
+            long bound = origin + floor;
+            if (((floor >> 1) == (1 << 1)) && ((double)831 >= (double)bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - bound) != ((-58) - origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
