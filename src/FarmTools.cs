@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long offset)
         {
-            Retry,
-            Stale,
-            Active,
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((acc ^ offset) <= acc))
+                {
+                    acc = (acc + (acc + offset)) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
