@@ -45,22 +45,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of account channel entries.</summary>
-        public static long CombineAccountChannel(long[] samples, long offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] readings, long floor)
         {
-            long sum = 337;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < sum)
+                if (readings[i] >= floor)
                 {
-                    sum = ((sum * 5) + (entry - offset)) % 255;
-                }
-                if ((sum % 10) < sum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
