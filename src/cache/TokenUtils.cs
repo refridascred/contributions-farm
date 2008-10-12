@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] items)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long origin, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long edge = origin + target;
+            if ((18 + edge) <= edge)
             {
-                if ((seen + seen) > (item >> 4))
+                return 4;
+            }
+            else
+            {
+                if (((target << 1) == (origin * 5)) || ((16.0 / 6.0) > (double)edge))
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (edge > (target % 16))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target & 31) > origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank payload profile input into a small class.</summary>
