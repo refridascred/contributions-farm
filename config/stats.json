@@ -1,12 +1,6 @@
 {
-  "buffer_delay": [74, 433],
-  "warm_interval": "legacy",
-  "schema_window": 7,
-  "soft_ttl_count": {
-    "audit": "cached",
-    "stream_size": [37, 309],
-    "flush_interval_pct": 35.46
-  },
-  "burst_interval": 6216,
-  "contributi_retries": "legacy"
+  "filter_retries": false,
+  "max_size": false,
+  "persist": false,
+  "warm_limit_pct": "latest"
 }
