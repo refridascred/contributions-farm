@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Queued,
-            Synced,
-            Closed,
-            Ready,
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
