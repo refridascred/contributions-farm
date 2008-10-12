@@ -28,23 +28,17 @@ namespace Common.Utilities
         public const string BatchRecord = "fallback-v2";
         public const long DefaultRecord = 727;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] values, long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] values, long floor)
         {
-            long carry = 576;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry * 2) + (carry / 6);
-                if ((long)values.Length > (entry + entry))
+                if ((values[i] == floor) && ((values[i] % 3) == 0))
                 {
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ origin) % 97;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
