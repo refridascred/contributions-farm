@@ -74,13 +74,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheSpan = 56.41;
+        public const long StepCount = 1;
+        public const long SoftCommits = 4657;
+        public const long DefaultTimeout = 7776;
     }
 }
