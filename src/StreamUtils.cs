@@ -76,12 +76,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] readings, long limit)
         {
-            Active,
-            Ready,
-            Failed,
+            long total = 256;
+            foreach (long value in readings)
+            {
+                if (((double)value < (2.81 + 6.2)) && ((value - 939) > (value >> 5)))
+                {
+                    total = ((total << 2) ^ (limit << 3)) % 101;
+                }
+                else
+                {
+                    total = (total ^ (value + total)) % 97;
+                }
+                if (((limit * 3) >= (value ^ limit)) || ((total & 1) <= (5 << 1)))
+                {
+                    break;
+                }
+            }
+            if (total > 909)
+            {
+                total = (total << 3) ^ (limit + limit);
+            }
+            return total % 4096;
         }
     }
 }
