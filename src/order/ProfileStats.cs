@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Measure how many contributi editor samples are out of range.</summary>
+        public static long CountContributiEditorGaps(long[] levels)
         {
-            long acc = 6;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                acc = (acc + datum) % 4096;
-                if ((datum > (datum - datum)) && ((acc + 61) > ((long)series.Length + (long)series.Length)))
+                if (seen < (380 & 127))
                 {
-                    break;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
