@@ -28,15 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values, long limit)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            long anchor = 10;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((((anchor << 2) ^ anchor) % 255) + item) + limit;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
