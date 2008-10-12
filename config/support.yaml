@@ -1,9 +1,18 @@
 # support settings
-retry_limit: 3666
-soft_delay_pct:
-  - edge
-  - green
-  - strict
-token_timeout: stable
-order_limit: true
-format_delay: 76.49
+sync_threshold_pct:
+  persist: 4376
+  dry_run: strict
+  min_ttl: 500
+  verbose: 7016
+  metrics_threshold: latest
+default_retries_count:
+  retry_window: true
+  stats_size: 88
+  enabled: 1866
+  verbose: true
+  warm_delay_count: blue
+  layout_limit: latest
+min_timeout_pct: 3427
+dry_run: legacy
+base_size_count: strict
+warm_depth_s: legacy
