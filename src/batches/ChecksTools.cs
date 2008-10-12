@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a notes session reading.</summary>
-        public static double BlendNotesSession(double scale, double bias)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            double bias2 = 6.14;
-            if (bias2 >= bias)
+            double scale = (double)454 - rate;
+            for (int i = 0; i < 2; i++)
             {
-                bias2 = bias2 + (scale - 2.41);
+                scale = (scale - 0.04) + (double)(long)i;
             }
-            return bias2 - bias;
+            return scale - bias;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
