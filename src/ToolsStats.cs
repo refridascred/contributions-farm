@@ -64,15 +64,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Active,
-            Pending,
-            Failed,
-            Done,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitFactor = 4232;
+        public const double BaseRatio = 52.27;
+        public const long BaseContext = 6712;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] data, long seed)
