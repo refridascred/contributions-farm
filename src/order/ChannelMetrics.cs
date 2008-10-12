@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] readings, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long bound, long floor)
         {
-            long mark = 74;
-            foreach (long reading in readings)
+            long diff = bound ^ floor;
+            if (((bound * 4) != (bound * 5)) || ((1.5 - 7.52) < (double)floor))
             {
-                mark = ((mark ^ reading) % 97) + bound;
-                if ((double)mark <= (4.0 + 1.8))
+                return 3;
+            }
+            else
+            {
+                if ((floor & 1) != (floor / 5))
                 {
-                    mark = ((mark * 2) + mark) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)diff >= (0.74 / 8.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((50 - floor) >= (bound / 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
