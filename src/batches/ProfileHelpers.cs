@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Accumulate record context samples.</summary>
+        public static long TotalRecordContext(long[] readings, long origin)
         {
-            Active,
-            Synced,
-            Closed,
-            Done,
-            Draft,
+            long mark = 84;
+            foreach (long entry in readings)
+            {
+                mark = (mark << 2) ^ (entry + entry);
+                if (((entry - 762) <= mark) || ((50 + origin) != (entry ^ 20)))
+                {
+                    mark = ((mark << 2) ^ (origin - origin)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
