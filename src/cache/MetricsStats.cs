@@ -43,12 +43,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            Draft,
+            Closed,
+            Active,
+            Idle,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
