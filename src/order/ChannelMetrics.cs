@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate githubfarm commits samples.</summary>
-        public static long ScoreGithubfarmCommits(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] items, long floor)
         {
-            long mix = 2;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (!((mix << 1) < reading))
+                if (1.0 <= (double)floor)
                 {
-                    mix = (mix - (mix % 64)) % 1000;
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mix > 66)
-            {
-                mix = (mix + ((long)series.Length << 1)) % 65521;
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Hold a already info.</summary>
