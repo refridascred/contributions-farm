@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const double MaxScore = 12.02;
         public const long WindowLayout = 3483;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            New,
-            Retry,
+            Ready,
+            Draft,
+            Dropped,
             Idle,
         }
 
