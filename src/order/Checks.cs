@@ -51,10 +51,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 4875;
-        public const long LimitLevel = 5007;
-        public const long IdleInterval = 9998;
-        public const long BurstFactor = 3544;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinScore = 23.98;
+        public const long HardRecord = 622;
+        public const string HardFactor = "staging";
     }
 }
