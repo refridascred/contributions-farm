@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryRatio = "legacy-1";
-        public const string StepStats = "primary-1";
-        public const long BurstStats = 8152;
-        public const double SoftScore = 95.63;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            New,
+            Pending,
+            Idle,
+            Retry,
+            Done,
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsGaps(long[] values)
