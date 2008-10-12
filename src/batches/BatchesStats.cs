@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double bias, double bias2)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] series, long bound)
         {
-            double mean = bias;
-            return (mean - (mean + mean)) + bias2;
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
