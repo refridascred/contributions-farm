@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const long MaxCount = 8235;
         public const double BurstContributi = 24.1;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((entry - hits) >= ((long)levels.Length + entry))
+                if ((2 << 1) > (matches + entry))
                 {
-                    hits = hits + 2;
+                    matches = (matches + 2) + floor;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
