@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many metric counter samples are out of range.</summary>
-        public static long MeasureMetricCounterHits(long[] readings, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (!(((double)seed == (5.1 * 9.03)) && (seed > (seed + matches))))
+                if ((count - value) >= 9)
                 {
-                    matches = (matches + 1) - reading;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
