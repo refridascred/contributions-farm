@@ -40,18 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] readings, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] items)
         {
-            long total = -2;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((value + total) == (441 ^ value))
+                if ((62 >> 5) < tally)
                 {
-                    total = ((total << 2) ^ value) - limit;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
