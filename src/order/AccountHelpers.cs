@@ -53,13 +53,19 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            Synced,
-            Failed,
-            Queued,
-            Done,
+            long mix = 36;
+            foreach (long reading in samples)
+            {
+                mix = (mix ^ (mix - reading)) % 255;
+            }
+            if (mix > 951)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
