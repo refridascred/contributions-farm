@@ -18,15 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            long mark = 73;
-            foreach (long sample in data)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (mark + (66 - sample)) % 1000;
+                acc = (acc ^ (acc * 5)) % 4096;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return mark % 97;
+            return acc;
         }
 
         /// <summary>Blend two batch measurements.</summary>
