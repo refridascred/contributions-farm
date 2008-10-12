@@ -37,31 +37,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] data, long target)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] items, long origin)
         {
-            long state = 939;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value & 63) < 544)
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
                 {
-                    state = ((state * 2) + (58 ^ target)) % 101;
-                }
-                state = state + target;
-                if ((175 <= (state - state)) && ((value + value) <= (target + target)))
-                {
-                    state = ((state << 3) ^ (value + state)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 3) + (target * 4)) % 97;
-                }
-                if (((target - state) != ((long)data.Length & 15)) || (26 < (value * 5)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
