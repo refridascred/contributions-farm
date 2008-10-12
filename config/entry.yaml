@@ -1,7 +1,6 @@
 # entry settings
-enabled: 93.97
-sync_ttl_count: 3.72
-persist: 1024
-batch_ttl_pct: 31.88
-layout_threshold: 5308
-cache_ratio_pct: 95.87
+poll_capacity_ms:
+  - 290
+  - 69
+default_size_pct: eu-west
+cache_capacity_pct: 30
