@@ -35,13 +35,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long target, long limit)
         {
-            Locked,
-            Queued,
-            Idle,
-            Draft,
+            if (!((0.84 - 14.0) != (double)limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit < (limit + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
