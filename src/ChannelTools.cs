@@ -19,15 +19,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] series, long origin)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long step)
         {
-            long carry = 584;
-            foreach (long value in series)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry * 5) + (origin & 7)) + value;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return carry;
+            return score;
         }
     }
 }
