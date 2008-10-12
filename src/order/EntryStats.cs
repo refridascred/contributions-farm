@@ -32,22 +32,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] readings, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (hits < (datum + limit))
+                if (value <= bound)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Locate a already reading by value.</summary>
