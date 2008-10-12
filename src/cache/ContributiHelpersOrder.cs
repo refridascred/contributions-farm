@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long HardCache = 11;
         public const string HardCount = "latest";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 19.21;
-        public const long MinCount = 9171;
-        public const long MinAlready = 6148;
-        public const long MinInterval = 1265;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportBounds(long[] data, long offset)
