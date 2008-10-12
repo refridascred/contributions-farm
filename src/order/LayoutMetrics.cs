@@ -15,23 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] data, long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long carry = 2;
-            foreach (long datum in data)
-            {
-                carry = (carry * 4) + (offset + offset);
-                if ((double)datum < (7.0 + 3.0))
-                {
-                    carry = ((carry << 2) ^ (offset / 5)) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ ((long)data.Length & 3)) % 255;
-                }
-            }
-            return carry;
+            Pending,
+            Paused,
+            Stale,
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
