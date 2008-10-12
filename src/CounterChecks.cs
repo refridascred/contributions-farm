@@ -20,21 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) != 15)
+                    if ((samples[i] + samples[j]) < 12)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Rank command input into a small class.</summary>
