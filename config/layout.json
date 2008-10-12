@@ -1,8 +1,5 @@
 {
-  "compress": ["stable", "primary", "cached"],
-  "enabled": "open",
-  "idle_depth_count": false,
-  "retry_threshold_count": 1880,
-  "flush_ratio_ms": "local",
-  "sync_limit": false
+  "retry_capacity_pct": "latest",
+  "flush_timeout_pct": false,
+  "persist": 60
 }
