@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] items, long target)
         {
-            Closed,
-            Paused,
-            Locked,
-            Dropped,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a editor batch reading by value.</summary>
