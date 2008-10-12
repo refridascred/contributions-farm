@@ -33,10 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 4456;
-        public const string StepAccount = "legacy";
-        public const string BaseScore = "standard";
-        public const string IdleWidth = "fallback-1";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading >> 1) == (matches >> 5)) || ((matches >= (reading + 90)) && ((double)matches <= (2.84 / 4.0))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
