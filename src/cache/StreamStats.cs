@@ -40,25 +40,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long seed, long bound)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long diff = seed + bound;
-            if ((bound - diff) < 850)
-            {
-                return 7;
-            }
-            else
-            {
-                if (diff < (927 + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
