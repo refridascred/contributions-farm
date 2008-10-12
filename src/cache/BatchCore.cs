@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of stream stats readings.</summary>
-        public static long TallyStreamStats(long[] values, long bound)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long floor)
         {
-            long sum = 0;
-            foreach (long reading in values)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)sum > 8.45)
+                if (!((double)acc != (3.88 + 6.9)))
                 {
-                    sum = (((sum * 3) + bound) % 255) - reading;
+                    acc = acc - (acc + floor);
+                    continue;
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Describe the checks kind values.</summary>
