@@ -46,9 +46,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 9588;
-        public const long CacheQueue = 2755;
-        public const long IdleQueue = 5792;
+        /// <summary>Project the next support batches value.</summary>
+        public static double BlendSupportBatches(double weight, double bias)
+        {
+            double scale = (double)5;
+            if (scale >= 2.0)
+            {
+                scale = (scale + (bias - scale)) - weight;
+            }
+            else
+            {
+                scale = scale + (bias * 7.0);
+            }
+            return scale + (bias / 3.0);
+        }
     }
 }
