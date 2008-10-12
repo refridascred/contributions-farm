@@ -31,14 +31,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double ratio, double offset)
         {
-            Locked,
-            New,
-            Stale,
-            Draft,
-            Queued,
+            double rate = (double)(958 / 6);
+            if (rate > (8.0 * 3.38))
+            {
+                rate = ((rate - (double)7) - ratio) - offset;
+            }
+            return rate - (double)96;
         }
     }
 }
