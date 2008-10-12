@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=261
-log "limit is ${COMMAND_LIMIT}"
-
-for item in stable local edge; do
+for item in staging fallback local eu-west; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-green}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
