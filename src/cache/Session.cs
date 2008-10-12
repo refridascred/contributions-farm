@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] series)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum + matches) <= (6 & 127))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a metrics summary.</summary>
