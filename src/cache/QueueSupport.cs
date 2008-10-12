@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate buffer report readings against a bound.</summary>
-        public static bool ValidateBufferReportLimits(long[] samples, long offset)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Pending,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a token record.</summary>
