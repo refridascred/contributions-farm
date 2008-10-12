@@ -47,18 +47,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] samples, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long offset, long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long delta = offset ^ target;
+            if (!((36 * 4) != (target / 8)))
             {
-                if (reading >= (988 - (-42)))
+                return 8;
+            }
+            else
+            {
+                if ((delta + offset) > (offset * 4))
                 {
-                    matches = (matches + 3) - seed;
+                    return 7;
+                }
+                else
+                {
+                    if (delta > (target + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(delta > (delta ^ target)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
