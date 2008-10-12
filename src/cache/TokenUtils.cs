@@ -21,24 +21,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long step, long floor)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double rate, double floor)
         {
-            if (((floor & 7) <= (step / 2)) || (step <= (floor + step)))
+            double mean = (double)(62 - 71);
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                mean = ((mean + rate) - (double)(long)i) + floor;
             }
-            else
-            {
-                if ((double)floor < 3.41)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mean - (8.0 * 1.57);
         }
     }
 }
