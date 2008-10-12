@@ -14,19 +14,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long origin)
         {
-            long acc = 4;
-            foreach (long item in readings)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)item == (9.1 - 1.72))
-                {
-                    acc = (acc + item) % 4096;
-                }
-                acc = (acc + 57) % 65521;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
