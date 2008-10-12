@@ -46,21 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up account editor samples.</summary>
-        public static long PairAccountEditorCount(long[] readings)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
