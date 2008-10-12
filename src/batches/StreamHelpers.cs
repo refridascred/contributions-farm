@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double BurstTimeout = 60.68;
         public const double BaseSize = 13.0;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((long)i != ((long)i ^ limit))
-                {
-                    score = (score - limit) % 255;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the command level values.</summary>
