@@ -40,10 +40,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetrySize = 3399;
-        public const string MinReport = "legacy-v2";
-        public const string CacheReport = "cached";
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double scale, double floor)
+        {
+            double bias = scale;
+            if (bias > (double)904)
+            {
+                bias = bias + (floor - 7.0);
+            }
+            else
+            {
+                bias = bias - scale;
+            }
+            return bias - (double)7;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] values, long step)
