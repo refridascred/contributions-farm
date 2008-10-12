@@ -24,20 +24,11 @@ namespace Common.Utilities
         public const long MaxEditor = 5489;
         public const double CacheEditor = 14.73;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = ((mix + (step << 3)) % 101) + (long)i2;
-                    mix = (mix + (mix + step)) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
