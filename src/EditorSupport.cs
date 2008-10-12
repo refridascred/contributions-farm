@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 99;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state + (state - reading)) % 101;
             }
-            return hits;
+            if (state > 12)
+            {
+                state = (state ^ (49 << 2)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
