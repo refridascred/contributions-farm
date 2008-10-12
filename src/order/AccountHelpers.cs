@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first stats metric entry that matches the target.</summary>
-        public static long FindStatsMetricIndex(long[] values, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (values[i] > offset)
+                if (datum > limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
