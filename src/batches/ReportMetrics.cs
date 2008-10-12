@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Blend two token buffer measurements.</summary>
+        public static double BlendTokenBuffer(double ratio, double offset)
         {
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
-            public double Total { get; set; }
+            double drift = (17.0 - offset) * 2.67;
+            if (drift < 9.0)
+            {
+                drift = (drift + (double)6) - ratio;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + (drift + offset);
         }
 
         /// <summary>Describe the metric mode values.</summary>
