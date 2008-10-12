@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long target, long origin)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long target, long bound)
         {
-            long edge = target - origin;
-            if ((184 + origin) >= (7 * 5))
+            long lane = target + bound;
+            if (lane > (bound % 97))
             {
                 return 1;
             }
             else
             {
-                if (((origin << 2) == (origin + origin)) || ((target << 2) < target))
+                if (target <= (4 >> 3))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if (((edge + origin) >= (origin + origin)) && ((edge - edge) > (target << 2)))
+                    if (!(lane >= (target / 7)))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        return 8;
+                        return 4;
                     }
                 }
             }
