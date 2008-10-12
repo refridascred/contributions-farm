@@ -43,19 +43,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double rate, double offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings, long offset)
         {
-            double ratio = rate;
-            if (ratio >= rate)
+            long result = 819;
+            foreach (long item in readings)
             {
-                ratio = ratio + offset;
+                if (((offset * 4) < (offset + offset)) && ((offset + item) <= (43 + result)))
+                {
+                    result = (result << 3) ^ item;
+                    result = result - 7;
+                }
+                if (!((result ^ 182) <= item))
+                {
+                    result = (result + offset) % 65521;
+                }
             }
-            else
-            {
-                ratio = ratio + offset;
-            }
-            return ratio - (offset * 7.0);
+            return result;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
