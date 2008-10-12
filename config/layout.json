@@ -1,17 +1,6 @@
 {
-  "sync_ratio_count": 1024,
-  "idle_ratio_ms": 71.52,
-  "sync_window_count": {
-    "verbose": "stable",
-    "checks_interval": [412, 420, 458, 302],
-    "default_timeout_count": {
-      "soft_threshold_s": true,
-      "audit": ["blue", "eu-west"],
-      "batch_size_count": "primary",
-      "cache_timeout_s": true,
-      "compress": "blue",
-      "retry_window_pct": 9
-    }
-  },
-  "dry_run": "latest"
+  "strict": 2.85,
+  "route_ratio": 1618,
+  "idle_retries_count": 250,
+  "poll_timeout_s": 1
 }
