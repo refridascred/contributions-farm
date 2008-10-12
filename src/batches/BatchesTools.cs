@@ -22,12 +22,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 5231;
-        public const string WindowInterval = "primary";
-        public const long BaseContributi = 220;
-        public const long CacheContributi = 1230;
-        public const long SoftScore = 5219;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftTimeout = "alpha-1";
+        public const long WindowFormat = 5161;
+        public const string DefaultCount = "primary-v2";
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
