@@ -19,13 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Roll a metrics support counter forward.</summary>
+        public static long RollMetricsSupport(long floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry ^ (carry >> 5)) % 4096;
+                if (((floor >> 4) > (488 * 3)) && ((floor + carry) >= carry))
+                {
+                    carry = (carry << 3) ^ (5 - 665);
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count tools notes pairs that satisfy a relation.</summary>
