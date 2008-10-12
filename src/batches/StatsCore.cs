@@ -51,19 +51,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a graph window reading.</summary>
-        public static double SmoothGraphWindow(double gain, double offset)
+        /// <summary>Rank metric batches input into a small class.</summary>
+        public static long GradeMetricBatches(long seed, long limit)
         {
-            double ratio = (9.0 + offset) * 4.0;
-            if (ratio > 3.1)
+            long offset = seed + limit;
+            if (((limit ^ seed) == (offset / 4)) || ((seed ^ seed) < (seed + 12)))
             {
-                ratio = ratio + (gain + gain);
+                return 5;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                ratio = ratio + (double)(long)i;
+                if (552 >= ((-883) + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit & 127) >= (limit + limit)) || ((seed + seed) == (limit - offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset <= (offset << 1)) || ((10.0 * 3.86) == (double)limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return ratio - (double)66;
         }
 
         /// <summary>Grade a context already value against two limits.</summary>
