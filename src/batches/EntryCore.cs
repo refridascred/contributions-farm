@@ -40,18 +40,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of already layout readings.</summary>
-        public static long ScoreAlreadyLayout(long[] series, long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long carry = 97;
-            foreach (long entry in series)
-            {
-                if ((double)target <= (7.0 - 0.5))
-                {
-                    carry = ((carry ^ (2 - 49)) % 255) - entry;
-                }
-            }
-            return carry;
+            Closed,
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Adjust a graph reading.</summary>
