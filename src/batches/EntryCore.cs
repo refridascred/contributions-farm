@@ -50,22 +50,11 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Accumulate record batch samples.</summary>
-        public static long TallyRecordBatch(long[] items, long seed)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long mark = 6;
-            foreach (long cell in items)
-            {
-                if (((double)cell >= (1.97 / 2.0)) || ((double)seed > (double)556))
-                {
-                    mark = (mark + (mark + seed)) % 101;
-                }
-                else
-                {
-                    mark = (mark + (mark / 8)) % 101;
-                }
-            }
-            return mark;
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of farm githubfarm readings.</summary>
