@@ -66,22 +66,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 5765;
+        public const long IdleOrder = 3360;
+        public const long BaseInterval = 7742;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MinSession = 3428;
