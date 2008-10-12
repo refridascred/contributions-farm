@@ -19,13 +19,21 @@ namespace Common.Utilities
         public const double MinContributi = 79.84;
         public const double SoftContributi = 7.44;
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
