@@ -29,10 +29,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 1152;
-        public const long DefaultSize = 4907;
-        public const long SoftRatio = 871;
-        public const long DefaultLevel = 2809;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardLevel = 1210;
+        public const string RetryWidth = "fallback-1";
+        public const long WindowFactor = 5602;
+        public const long WindowWidth = 7285;
     }
 }
