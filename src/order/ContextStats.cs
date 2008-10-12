@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] data, long bound)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((bound >> 5) == ((long)data.Length & 1)) && ((double)(-403) >= (double)bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) ^ sample;
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the metric mode values.</summary>
