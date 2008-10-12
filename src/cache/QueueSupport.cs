@@ -40,23 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double scale, double offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double ratio = offset;
-            if (ratio < (ratio + scale))
-            {
-                ratio = ratio - offset;
-            }
-            else
-            {
-                ratio = ratio + (ratio / 5.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio + (double)258;
+            Done,
+            Idle,
+            Draft,
         }
     }
 }
