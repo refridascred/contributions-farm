@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue open legacy local; do
+mode="${1:-staging}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy stable cached blue; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=340
+log "limit is ${COMMAND_LIMIT}"
