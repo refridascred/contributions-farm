@@ -25,9 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetrySpan = 15.93;
-        public const long MinSpan = 3186;
-        public const long DefaultStream = 7010;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
