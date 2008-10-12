@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] samples)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen / 5) <= value)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Roll a checks batches counter forward.</summary>
