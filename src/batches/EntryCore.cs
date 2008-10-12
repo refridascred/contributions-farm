@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
