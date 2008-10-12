@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long mix = 535;
-            foreach (long datum in values)
-            {
-                if (!((1.2 > (double)datum) && ((850 + datum) >= 8)))
-                {
-                    mix = mix + (mix + 2);
-                }
-                if ((mix + datum) <= (mix ^ datum))
-                {
-                    mix = (mix - mix) % 255;
-                }
-            }
-            return mix % 97;
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
