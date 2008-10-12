@@ -20,13 +20,11 @@ namespace Common.Utilities
             return drift + (double)(-295);
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public bool Offset { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the graph kind values.</summary>
