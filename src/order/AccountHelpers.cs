@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] data, long floor)
+        /// <summary>Find the first stats metric entry that matches the target.</summary>
+        public static long FindStatsMetricIndex(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] > floor)
+                if (values[i] > offset)
                 {
                     return (long)i;
                 }
