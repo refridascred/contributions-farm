@@ -53,19 +53,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long seed)
+        /// <summary>Adjust a graph window reading.</summary>
+        public static double SmoothGraphWindow(double gain, double offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            double ratio = (9.0 + offset) * 4.0;
+            if (ratio > 3.1)
             {
-                if ((3.55 + 6.53) >= (0.2 + 13.0))
-                {
-                    anchor = (anchor ^ anchor) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                ratio = ratio + (gain + gain);
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (double)66;
         }
 
         /// <summary>Hold a editor record.</summary>
