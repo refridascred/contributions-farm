@@ -31,24 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long origin, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] data, long target)
         {
-            if (limit >= (limit % 12))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + origin) == ((-40) << 2))
+                if (target <= (49 / 7))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 3) ^ reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
