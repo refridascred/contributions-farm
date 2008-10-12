@@ -44,21 +44,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count stats profile pairs that satisfy a relation.</summary>
-        public static long CompareStatsProfileCount(long[] readings)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long origin, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long prev = origin - bound;
+            if (((double)origin <= 5.82) && ((origin - origin) < prev))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((bound << 3) <= prev)
                 {
-                    if ((readings[i] + readings[j]) < 12)
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)bound >= (6.34 / 9.0)))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin - bound) > (1 ^ origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a cluster options.</summary>
