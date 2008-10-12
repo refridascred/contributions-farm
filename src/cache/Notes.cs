@@ -33,10 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardBudget = "cached-edge";
-        public const long LimitFarm = 2580;
-        public const double BaseFarm = 56.06;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] items, long step)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamOutliers(long[] series, long limit)
