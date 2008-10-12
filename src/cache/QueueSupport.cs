@@ -14,10 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 5171;
-        public const long IdleBudget = 7930;
-        public const string RetryProfile = "staging-edge";
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
