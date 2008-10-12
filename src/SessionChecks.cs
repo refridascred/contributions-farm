@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] levels, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long result = 714;
+            foreach (long reading in values)
             {
-                if (((sample / 5) == (665 + 4)) && ((hits - bound) < ((-6) & 31)))
-                {
-                    hits = hits + 1;
-                }
+                result = ((result ^ result) % 101) ^ reading;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
