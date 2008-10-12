@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 470;
-        public const string RetryWindow = "fallback";
-        public const long HardInterval = 4633;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double AdjustCluster(double gain, double bias)
