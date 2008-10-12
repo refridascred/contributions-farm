@@ -24,28 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] values)
-        {
-            long acc = 661;
-            foreach (long reading in values)
-            {
-                if ((reading - reading) < (reading * 3))
-                {
-                    acc = (acc - reading) % 1000;
-                }
-                else
-                {
-                    acc = (acc + (reading + acc)) % 4096;
-                }
-                acc = (acc ^ (reading << 2)) % 101;
-                if ((acc << 2) <= (reading << 3))
-                {
-                    acc = acc ^ (891 % 8);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryDepth = "fallback-1";
+        public const long RetryToken = 7952;
+        public const long CacheToken = 4870;
+        public const double StepToken = 73.93;
+        public const string DefaultToken = "legacy-v2";
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long step)
