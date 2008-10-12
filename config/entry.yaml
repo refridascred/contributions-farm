@@ -1,5 +1,5 @@
 # entry settings
-max_delay_s: 1.34
-soft_delay_count: staging
-checks_threshold: 30
-default_timeout_pct: 65
+githubfarm_limit: 2584
+default_size_pct: false
+warm_threshold: 71.61
+poll_delay_count: 6946
