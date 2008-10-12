@@ -1,12 +1,11 @@
 {
-  "report_size": {
-    "warm_size_pct": 100,
-    "compress": [425, 234],
-    "soft_interval": 500,
-    "warm_capacity_pct": 15.34,
-    "max_capacity_ms": "green",
-    "base_capacity": 8.52
+  "commits_ratio": "legacy",
+  "window_capacity": "primary",
+  "enabled": {
+    "stream_window": 30,
+    "retry_retries_s": "strict",
+    "soft_size_pct": 96.66
   },
-  "idle_window_count": "fallback",
-  "already_depth": 83.64
+  "readonly": 32.19,
+  "commits_threshold": 60
 }
