@@ -79,14 +79,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] values, long bound)
         {
-            Closed,
-            Synced,
-            Active,
-            Locked,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
