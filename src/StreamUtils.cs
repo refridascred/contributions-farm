@@ -34,14 +34,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] values, long bound)
         {
-            Stale,
-            New,
-            Synced,
-            Dropped,
-            Active,
+            long result = 7;
+            foreach (long value in values)
+            {
+                if (((value / 6) > (result - result)) || ((double)value >= (double)bound))
+                {
+                    result = ((result << 2) ^ (result % 24)) % 255;
+                }
+                else
+                {
+                    result = result - (result << 2);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Rank already input into a small class.</summary>
