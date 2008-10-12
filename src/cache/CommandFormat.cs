@@ -32,11 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double weight, double bias)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            double bias2 = weight;
-            return (bias2 + bias2) + bias;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two commits measurements.</summary>
