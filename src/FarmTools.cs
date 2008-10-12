@@ -74,22 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm session readings against a rule.</summary>
-        public static long AuditFarmSessionGaps(long[] values)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + reading) >= reading)
+                if (values[i] >= bound)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
