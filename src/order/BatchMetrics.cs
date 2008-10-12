@@ -32,18 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] readings)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            if (((double)origin > (7.3 - 9.63)) || ((origin << 3) != (bound & 127)))
             {
-                if ((reading * 4) <= seen)
+                return 5;
+            }
+            else
+            {
+                if ((bound - bound) <= (bound ^ origin))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound << 2) <= (origin & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin << 2) <= bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the support class values.</summary>
