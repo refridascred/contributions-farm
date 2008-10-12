@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] samples)
+        /// <summary>Scale a command farm figure with a bias.</summary>
+        public static double ScaleCommandFarm(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double ratio = bias * 11.0;
+            if (ratio > (bias + ratio))
             {
-                if ((matches >> 1) > entry)
-                {
-                    matches = matches + 3;
-                }
+                ratio = (ratio - 15.0) + gain;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + 8.0) + (double)(long)i;
+            }
+            return ratio + (double)8;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
