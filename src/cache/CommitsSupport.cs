@@ -20,19 +20,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] values, long bound)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            double bias = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                if (cell < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = ((bias + bias) - (double)(long)i) - span;
             }
-            return flag;
+            return bias - ratio;
         }
 
         /// <summary>Adjust a batches reading.</summary>
