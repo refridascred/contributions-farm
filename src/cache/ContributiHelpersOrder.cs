@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long HardCache = 11;
         public const string HardCount = "latest";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 7508;
-        public const string IdleCluster = "cached";
-        public const long BatchCluster = 4414;
-        public const long MaxCluster = 606;
-        public const string BatchFactor = "latest";
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 19.21;
+        public const long MinCount = 9171;
+        public const long MinAlready = 6148;
+        public const long MinInterval = 1265;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportBounds(long[] data, long offset)
