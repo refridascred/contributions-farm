@@ -53,18 +53,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] levels)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((963 - value) >= (value / 7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((levels[i] ^ levels[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
