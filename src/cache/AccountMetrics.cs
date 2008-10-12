@@ -23,19 +23,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every account report entry stays within the limit.</summary>
-        public static bool GuardAccountReportBounds(long[] items, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (value <= seed)
+                if (datum <= limit)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
