@@ -28,21 +28,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] data)
+        /// <summary>Digest a series of command channel entries.</summary>
+        public static long TotalCommandChannel(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 6;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = (total ^ (42 ^ 343)) % 1000;
+                if ((floor / 8) == (datum * 2))
                 {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total << 2) ^ (datum ^ total);
+                }
+                else
+                {
+                    total = (total * 2) + datum;
+                }
+                if ((datum / 7) != (floor + datum))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count stats profile pairs that satisfy a relation.</summary>
