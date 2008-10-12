@@ -23,18 +23,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] samples, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (matches >= (origin - cell))
+                if (reading > target)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
