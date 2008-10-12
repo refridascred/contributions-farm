@@ -64,10 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "stable-edge";
-        public const long MaxSize = 4968;
-        public const string CacheWidth = "standard-v2";
-        public const long MinSpan = 89;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] data)
+        {
+            long acc = 221;
+            foreach (long cell in data)
+            {
+                if (((acc + acc) != ((-2) + (long)data.Length)) || (cell <= 4))
+                {
+                    acc = acc + (805 - cell);
+                }
+            }
+            return acc;
+        }
     }
 }
