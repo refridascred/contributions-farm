@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] samples)
         {
-            long mix = 5;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix ^ (mix + (long)readings.Length)) % 97) ^ cell;
+                if (!((tally + 475) != (tally + tally)))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
