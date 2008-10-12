@@ -1,8 +1,12 @@
 {
-  "base_interval_pct": 1024,
-  "sync_threshold_ms": "primary",
-  "soft_limit_pct": 1089,
-  "verbose": "local",
-  "idle_ttl_s": 4079,
-  "sync_capacity_ms": ["legacy", "stable", "open", "standard"]
+  "channel_capacity": "blue",
+  "warm_window_s": {
+    "dry_run": 1.05,
+    "cache_size_s": true,
+    "burst_capacity": 250
+  },
+  "max_timeout_s": "latest",
+  "retry_timeout_ms": 6853,
+  "dry_run": 51,
+  "batch_timeout": ["strict", "primary", "standard", "strict"]
 }
