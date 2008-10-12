@@ -28,9 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 9452;
-        public const string MaxBuffer = "cached";
-        public const double BurstLevel = 52.16;
+        /// <summary>Iterate the queue buffer series from a seed.</summary>
+        public static long SeriesQueueBuffer(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
