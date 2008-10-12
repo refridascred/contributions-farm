@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a notes metrics reading by value.</summary>
-        public static long FindNotesMetricsIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultSpan = 8622;
+        public const string MinTimeout = "latest-1";
+        public const long LimitProfile = 738;
 
         /// <summary>Project the next profile value.</summary>
         public static double SmoothProfile(double weight, double span)
