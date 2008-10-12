@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Audit account stats readings against a rule.</summary>
+        public static long AuditAccountStatsGaps(long[] levels, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((mark % 2) != (limit - (long)i))
+                if ((tally / 6) < offset)
                 {
-                    mark = ((mark * 3) + (2 / 7)) % 1000;
+                    tally = (tally + 3) ^ entry;
                 }
-                mark = (mark + (limit / 5)) % 255;
-                mark = (mark ^ (5 / 5)) % 97;
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
