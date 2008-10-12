@@ -49,17 +49,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a counter queue sample.</summary>
-        public static long FindCounterQueueIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseTimeout = 9958;
+        public const long WindowSpan = 2608;
+        public const double RetrySession = 94.16;
     }
 }
