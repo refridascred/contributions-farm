@@ -1,8 +1,6 @@
 {
-  "verbose": "green",
-  "schema_delay": ["edge", "edge", "strict", "blue"],
-  "base_size_ms": 250,
-  "account_ttl": "staging",
-  "token_delay": 2831,
-  "max_size_s": true
+  "strict": true,
+  "order_retries": 58.03,
+  "hard_window_pct": 9685,
+  "default_capacity_ms": 1483
 }
