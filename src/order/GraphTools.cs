@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 4208;
-        public const long SoftContributi = 1992;
-        public const long MaxCount = 2620;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheSize = 1662;
+        public const long MaxProfile = 1121;
+        public const long BatchProfile = 2473;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long ClassifyMetrics(long floor, long offset)
