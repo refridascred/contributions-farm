@@ -72,10 +72,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 3428;
-        public const string IdleSession = "strict";
-        public const long HardScore = 5667;
-        public const string BatchSession = "standard";
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
