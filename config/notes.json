@@ -1,6 +1,5 @@
 {
-  "strict": 3.28,
-  "persist": 5273,
-  "batch_capacity": [435, 214, 493, 312],
-  "hard_ratio_s": 87
+  "hard_interval_count": 6503,
+  "format_delay": 70.11,
+  "already_capacity": 1198
 }
