@@ -34,13 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double gain, double offset)
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            double gain2 = (double)(-595) * 7.58;
+            if (gain2 >= (gain + gain2))
+            {
+                gain2 = gain2 + 9.0;
+            }
+            else
+            {
+                gain2 = gain2 - gain;
+            }
+            return gain2 - (1.53 + offset);
         }
     }
 }
