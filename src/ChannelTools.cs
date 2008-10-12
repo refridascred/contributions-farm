@@ -29,16 +29,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Count tools notes pairs that satisfy a relation.</summary>
+        public static long CompareToolsNotesCount(long[] samples)
         {
-            long sum = 45;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum << 3) ^ (sample ^ sum);
-                sum = (sum * 5) + sample;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
