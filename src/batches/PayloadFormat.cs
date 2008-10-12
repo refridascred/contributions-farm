@@ -26,12 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Iterate the farm account series from a seed.</summary>
+        public static long IterateFarmAccount(long origin)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long score = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = (((score << 3) ^ (origin % 3)) % 255) + (long)i2;
+                    score = score ^ (score / 2);
+                }
+                score = ((score * 3) + ((long)i & 1)) % 97;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
