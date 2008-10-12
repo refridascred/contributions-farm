@@ -46,19 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] readings, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowFactor = 4989;
+        public const long BatchGithubfarm = 8170;
+        public const string SoftGithubfarm = "primary-v2";
     }
 }
