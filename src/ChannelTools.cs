@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] samples, long bound)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (samples[i] >= bound)
+                if ((8.6 + 0.6) < (double)offset)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up editor samples.</summary>
