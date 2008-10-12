@@ -45,17 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] levels, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (levels[i] > floor)
+                if ((tally % 3) < (782 + tally))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
