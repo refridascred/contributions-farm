@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a cache token pair into a bucket.</summary>
-        public static long RankCacheToken(long step, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long target)
         {
-            if (!((double)seed == (8.8 + 4.0)))
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + seed) <= seed)
+                if (mix >= ((-20) / 2))
                 {
-                    return 1;
+                    mix = ((mix * 3) + mix) % 97;
                 }
-                else
-                {
-                    return 3;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
