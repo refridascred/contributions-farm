@@ -45,22 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] items)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((tally % 3) < (782 + tally))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Pending,
+            Failed,
+            New,
         }
     }
 }
