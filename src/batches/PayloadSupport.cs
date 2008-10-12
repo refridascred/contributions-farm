@@ -22,17 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] samples, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (samples[i] < target)
+                if (sample < bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Match up commits window samples.</summary>
