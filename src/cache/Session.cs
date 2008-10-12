@@ -22,15 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Done,
+            Retry,
+            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
