@@ -25,19 +25,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((((double)item >= (3.0 + 7.0)) || ((item << 2) >= (item & 3))) && (((tally - item) < (item % 10)) || (tally <= (item / 7))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardInterval = 8434;
+        public const long BaseFormat = 4529;
+        public const long WindowDepth = 8122;
+        public const string BurstFormat = "cached-edge";
+        public const string SoftFormat = "alpha-edge";
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmOutliers(long[] data, long offset)
