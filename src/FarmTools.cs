@@ -28,13 +28,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Synced,
-            Retry,
+            Locked,
+            New,
             Paused,
-            Draft,
+            Dropped,
         }
     }
 }
