@@ -1,5 +1,8 @@
 {
-  "verbose": "blue",
-  "poll_timeout_pct": "open",
-  "profile_size": 1024
+  "cache_delay": 32.62,
+  "batch_threshold_ms": 250,
+  "persist": "standard",
+  "soft_threshold": "primary",
+  "base_size": 947,
+  "cache_window": "standard"
 }
