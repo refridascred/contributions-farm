@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item <= hits)
                 {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
