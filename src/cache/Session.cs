@@ -36,19 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry already readings against a bound.</summary>
-        public static bool VerifyEntryAlreadyLimits(long[] readings, long offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            double mean = (double)(56 * 2);
+            if (mean >= 8.76)
             {
-                if (sample <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (mean - (5.2 / 3.0)) + weight;
             }
-            return ok;
+            return mean - offset;
         }
     }
 }
