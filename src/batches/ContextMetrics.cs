@@ -42,19 +42,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] series, long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long floor, long limit)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long cur = floor ^ limit;
+            if (floor >= limit)
             {
-                if (datum < seed)
+                return 5;
+            }
+            else
+            {
+                if ((cur + limit) != (floor & 255))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor <= (limit - 7)) && ((cur + cur) == (limit - 83)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
