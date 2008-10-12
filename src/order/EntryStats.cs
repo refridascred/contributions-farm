@@ -69,22 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report schema entries that pass the check.</summary>
-        public static long TallyReportSchemaOutliers(long[] samples, long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (offset <= ((long)samples.Length + count))
-                {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
