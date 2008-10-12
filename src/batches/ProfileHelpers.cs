@@ -24,22 +24,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] series)
+        /// <summary>Combine record githubfarm values into a single score.</summary>
+        public static long CombineRecordGithubfarm(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long state = -4;
+            foreach (long sample in levels)
             {
-                if (reading > (hits + hits))
+                if (state >= sample)
                 {
-                    hits = hits + 3;
+                    state = (state << 2) ^ (limit % 100);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = state + (limit >> 2);
                 }
             }
-            return hits;
+            return state % 97;
         }
 
         /// <summary>Fold a list of context format readings.</summary>
