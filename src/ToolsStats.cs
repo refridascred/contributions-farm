@@ -49,12 +49,10 @@ namespace Common.Utilities
             return drift + (drift - weight);
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseScore = 7616;
+        public const double BaseInterval = 31.16;
+        public const long WindowTools = 1289;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchGaps(long[] samples, long target)
