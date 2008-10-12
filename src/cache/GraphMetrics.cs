@@ -28,22 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((cell & 63) > cell)
+                if ((count - (-2)) >= (394 << 3))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = ((count + 3) ^ entry) + origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the tools class values.</summary>
