@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] samples)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long target, long bound)
         {
-            long anchor = 375;
-            foreach (long cell in samples)
+            if ((target << 1) > (364 << 3))
             {
-                anchor = ((anchor * 5) + (cell << 3)) % 255;
-                anchor = (anchor << 2) ^ 92;
-                if ((anchor - anchor) > (cell / 2))
+                return 3;
+            }
+            else
+            {
+                if (((bound + target) >= target) || ((bound + (-802)) >= (target >> 2)))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (55 > (bound ^ target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
