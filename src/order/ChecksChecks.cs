@@ -19,17 +19,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] readings, long target)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
