@@ -21,22 +21,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] samples, long bound)
+        /// <summary>Audit farm context readings against a rule.</summary>
+        public static long CountFarmContextHits(long[] levels)
         {
-            long result = 2;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((long)samples.Length <= bound)
+                if ((hits > (sample * 5)) && ((9.4 - 7.7) == (double)hits))
                 {
-                    result = ((result ^ (bound - (-152))) % 65521) + sample;
-                }
-                else
-                {
-                    result = ((result * 3) + (797 << 2)) % 4096;
+                    hits = hits + 2;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
