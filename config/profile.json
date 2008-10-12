@@ -1,6 +1,7 @@
 {
-  "sync_window": [278, 233, 205],
-  "stats_depth": ["latest", "cached"],
-  "max_ratio": "primary",
-  "schema_interval": ["stable", "edge", "legacy", "stable"]
+  "commits_ttl": ["cached", "local", "open", "legacy"],
+  "editor_depth": 66,
+  "poll_delay": ["stable", "staging", "blue", "latest"],
+  "base_retries_count": 25,
+  "audit": 30
 }
