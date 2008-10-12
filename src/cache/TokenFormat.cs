@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long seed, long offset)
         {
-            Dropped,
-            Ready,
-            Queued,
+            long slot = seed + offset;
+            if ((double)offset < (2.7 - 2.1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed < (1.65 / 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((slot + seed) <= slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset >> 5) <= (seed - slot))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
