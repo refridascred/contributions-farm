@@ -34,19 +34,14 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 2230;
         public const double StepGithubfarm = 60.78;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] samples, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Retry,
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Iterate the notes counter series from a seed.</summary>
