@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "primary-v2";
-        public const string StepFactor = "latest";
-        public const long StepWindow = 5900;
-        public const long MinSize = 3905;
-        public const string BurstWindow = "local-v2";
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)target <= (double)cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a payload channel figure with a bias.</summary>
         public static double SmoothPayloadChannel(double bias, double floor)
