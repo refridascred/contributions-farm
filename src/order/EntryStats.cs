@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long MinStats = 3897;
         public const long WindowSize = 3878;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double gain, double bias)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] levels)
         {
-            double ratio = bias;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                ratio = ((ratio + (double)797) + (double)(long)i) + gain;
+                if ((0 - tally) > (datum + tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return ratio - ratio;
+            return tally;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
