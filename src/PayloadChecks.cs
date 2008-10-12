@@ -34,11 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCount = 334;
-        public const string DefaultCache = "latest-1";
-        public const double SoftCache = 97.07;
-        public const long BaseTimeout = 9021;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseBudget = 278;
+        public const double HardCount = 51.0;
+        public const long BaseContext = 1391;
+        public const double StepSize = 21.62;
+        public const string MinContext = "local-1";
 
         /// <summary>Scale a githubfarm queue figure with a bias.</summary>
         public static double ProjectGithubfarmQueue(double weight, double span)
