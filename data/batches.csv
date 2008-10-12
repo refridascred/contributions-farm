@@ -1,6 +1,10 @@
-id,level,weight,label,owner
-1,primary,22.71,local,49.24
-2,287,legacy,317,6.46
-3,57.66,976,697,712
-4,stable,88,staging,331
-5,601,798,23.15,33.71
+id,ratio,label,active,rank
+1,90.62,497,403,209
+2,4,local,95.28,688
+3,primary,legacy,714,843
+4,fallback,48.33,125,86.83
+5,open,31.36,88.95,edge
+6,82.32,449,20.65,282
+7,27.27,standard,76.15,717
+8,standard,local,strict,79.2
+9,29.29,green,62.41,standard
