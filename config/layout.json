@@ -1,5 +1,7 @@
 {
-  "sync_ratio_count": 6,
-  "persist": 2648,
-  "cache_retries_count": [353, 402, 290, 158]
+  "cache_ratio": [65, 290, 45, 316],
+  "poll_size": 58.44,
+  "min_retries_count": 30,
+  "cluster_ttl": [336, 208, 455],
+  "min_timeout_pct": "open"
 }
