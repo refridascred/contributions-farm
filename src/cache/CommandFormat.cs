@@ -14,19 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate filter payload readings against a bound.</summary>
-        public static bool CheckFilterPayloadBounds(long[] data, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (item > limit)
+                if ((((2.8 / 9.0) <= (double)value) || ((tally * 5) != (tally % 10))) && ((value + value) >= (tally ^ value)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the editor state values.</summary>
