@@ -27,19 +27,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] data, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] values, long step)
         {
-            long sum = 76;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                sum = ((sum * 4) + (357 * 2)) % 1000;
-                if (origin > (entry >> 3))
+                if (sample < step)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Scale a cluster batch figure with a bias.</summary>
