@@ -1,7 +1,18 @@
 # githubfarm settings
-report_interval: 16
-githubfarm_size: 40.73
-hard_timeout: 92
-contributi_ratio: 86.21
-token_ratio: cached
-base_window_s: 80.82
+readonly: false
+poll_retries:
+  default_ratio_pct:
+    context_size:
+      - open
+      - fallback
+      - cached
+      - cached
+    layout_ratio: standard
+    poll_ttl_ms: staging
+    counter_depth: true
+    max_depth_pct: 60
+  support_capacity: 250
+  account_interval: blue
+  session_limit: 21.27
+batch_retries: 781
+audit: true
