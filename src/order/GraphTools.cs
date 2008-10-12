@@ -31,18 +31,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum * 5) < seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            New,
+            Failed,
+            Ready,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
