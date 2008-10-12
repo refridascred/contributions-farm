@@ -90,19 +90,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch batches entry stays within the limit.</summary>
-        public static bool CheckBatchBatchesRange(long[] values, long limit)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != limit)
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
