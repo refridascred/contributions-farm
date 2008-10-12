@@ -25,10 +25,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 9403;
-        public const double DefaultSize = 55.25;
-        public const long BaseBatch = 853;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesMatches(long[] levels)
