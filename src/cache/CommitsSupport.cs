@@ -78,11 +78,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftFactor = 3977;
-        public const long DefaultStream = 5374;
-        public const long BatchStream = 629;
-        public const long StepSize = 4848;
-        public const double BurstFactor = 80.42;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
