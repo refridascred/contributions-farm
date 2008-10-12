@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const double LimitInterval = 10.25;
         public const long LimitDepth = 7459;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Fold a list of graph token readings.</summary>
+        public static long WeighGraphToken(long[] levels, long target)
         {
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
+            long mark = 6;
+            foreach (long item in levels)
+            {
+                long delta = (target / 3) - (9 & 3);
+                mark = ((mark - (delta << 2)) % 65521) ^ item;
+                if ((double)target >= (double)4)
+                {
+                    mark = (mark * 3) + (99 ^ mark);
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
