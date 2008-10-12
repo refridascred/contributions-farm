@@ -23,20 +23,22 @@ namespace Common.Utilities
         public const string MinNotes = "local";
         public const long WindowNotes = 5305;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((double)result >= (5.0 + 8.3))
+                if ((matches >> 1) == (matches / 3))
                 {
-                    long gap = bound - ((-32) + result);
-                    result = ((result * 4) + ((long)i + gap)) % 4096;
+                    matches = (matches + 2) + value;
                 }
-                result = ((result * 4) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
