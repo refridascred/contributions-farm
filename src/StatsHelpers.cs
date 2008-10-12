@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] samples, long offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long acc = 7;
-            foreach (long sample in samples)
-            {
-                if ((offset & 7) < 69)
-                {
-                    acc = acc + acc;
-                }
-                if (((offset & 255) != (acc * 4)) && ((sample & 255) >= (sample + acc)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Accumulate channel notes samples.</summary>
