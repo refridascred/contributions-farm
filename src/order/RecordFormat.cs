@@ -28,17 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long limit)
         {
-            long total = 77;
-            foreach (long entry in series)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                total = (total ^ (entry % 5)) % 4096;
-            }
-            if (total < 91)
-            {
-                total = total ^ ((long)series.Length & 1);
+                total = ((total * 4) + (total + total)) % 255;
+                total = ((total * 2) + (long)i) % 101;
             }
             return total;
         }
