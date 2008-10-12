@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftCount = 6038;
+        public const long HardRatio = 1469;
+        public const long SoftMetric = 1093;
+        public const long BatchSize = 5240;
+        public const long HardTimeout = 4920;
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
