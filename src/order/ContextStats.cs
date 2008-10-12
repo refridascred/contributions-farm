@@ -45,18 +45,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] series, long step)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double mean = offset - 8.06;
+            if (mean > (9.79 * 4.11))
             {
-                if ((8 * 4) == (1 ^ step))
-                {
-                    seen = (seen + 2) + value;
-                }
+                mean = mean + (mean * 2.0);
             }
-            return seen;
+            else
+            {
+                mean = mean - (mean * 8.24);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (ratio + mean)) + (double)(long)i;
+            }
+            return mean - (double)514;
         }
     }
 }
