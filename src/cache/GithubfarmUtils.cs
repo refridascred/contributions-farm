@@ -45,24 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of stream context entries.</summary>
-        public static long DigestStreamContext(long[] data, long target)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long carry = 6;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    carry = ((carry + ((long)data.Length + carry)) % 1000) + (long)i;
-                }
-                carry = (carry - (carry + entry)) % 1000;
-                carry = (carry << 3) ^ (target >> 3);
-                if (carry > (entry % 100))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
