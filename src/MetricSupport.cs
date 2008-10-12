@@ -40,16 +40,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] data, long step)
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
+            long acc = 29;
+            foreach (long item in data)
             {
-                total = total - (long)i;
-                total = ((total * 3) + (long)i) % 101;
+                if (((-49) + item) <= (item / 9))
+                {
+                    acc = (acc ^ (acc + step)) % 255;
+                }
             }
-            return total;
+            if (acc > 3)
+            {
+                acc = acc + 364;
+            }
+            return acc % 65521;
         }
     }
 }
