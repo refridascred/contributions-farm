@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long CacheSpan = 8164;
         public const long MaxContributi = 4640;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] series, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((matches >> 2) > (945 + datum))
+                if (reading > bound)
                 {
-                    matches = (matches + 2) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
