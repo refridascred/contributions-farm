@@ -25,10 +25,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 5635;
-        public const long SoftStats = 3238;
-        public const string HardTimeout = "latest";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 9587;
+        public const string WindowInterval = "primary";
+        public const double StepCount = 28.43;
+        public const string CacheInterval = "local-v2";
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandGaps(long[] data)
