@@ -18,32 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] levels, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] values, long limit)
         {
-            long mark = 76;
-            foreach (long reading in levels)
+            long acc = 301;
+            foreach (long datum in values)
             {
-                if (((offset ^ mark) != (mark << 1)) && ((mark - reading) == (reading >> 2)))
-                {
-                    mark = ((mark << 2) ^ ((long)levels.Length ^ reading)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark ^ (4 & 15)) % 1000;
-                }
-                if ((mark < (offset - mark)) || ((mark / 3) >= (83 + offset)))
-                {
-                    mark = ((mark << 2) ^ (mark - mark)) % 1000;
-                    continue;
-                }
-                if ((mark & 1) <= (offset % 5))
-                {
-                    mark = (mark ^ (987 + offset)) % 65521;
-                }
+                acc = (((acc * 5) + limit) % 1000) ^ datum;
             }
-            return mark % 65521;
+            return acc % 97;
         }
 
         /// <summary>Look up the position of a layout githubfarm sample.</summary>
