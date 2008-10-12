@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetrySize = 5467;
-        public const double IdleStats = 75.52;
-        public const long MinStats = 3897;
-        public const long WindowSize = 3878;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long MeasureClusterGaps(long[] levels)
