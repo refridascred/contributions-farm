@@ -40,12 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit tools cluster readings against a rule.</summary>
+        public static long CountToolsClusterMatches(long[] values)
         {
-            Closed,
-            Paused,
-            Done,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally > (value + tally)) && ((9 + tally) >= (670 + tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
