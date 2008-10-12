@@ -68,12 +68,9 @@ namespace Common.Utilities
         public const long BaseCount = 8064;
         public const long IdleMetrics = 4711;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Dropped,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowDepth = 4290;
+        public const string MinLevel = "standard-1";
+        public const long HardBuffer = 8733;
     }
 }
