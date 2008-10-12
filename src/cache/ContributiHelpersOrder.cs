@@ -40,21 +40,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] samples)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 892;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)offset != (5.07 / 9.0)) && ((double)offset != (9.13 - 4.4)))
                 {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc ^ (acc % 16)) - sample;
+                }
+                else
+                {
+                    acc = acc ^ offset;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
     }
 }
