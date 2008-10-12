@@ -52,15 +52,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] levels, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (sample >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Digest a series of report entries.</summary>
