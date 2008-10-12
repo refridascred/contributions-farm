@@ -33,11 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepCount = 90.81;
-        public const double BaseTimeout = 18.74;
-        public const long RetryGithubfarm = 650;
-        public const string BatchGithubfarm = "standard-edge";
-        public const long SoftGithubfarm = 5961;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample << 3) == (count ^ target)) || (target <= (sample + 685)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
