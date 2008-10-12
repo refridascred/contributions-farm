@@ -24,14 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double rate, double span)
         {
-            Active,
-            Closed,
-            Pending,
-            Queued,
-            Retry,
+            double ratio = (rate * 2.5) + span;
+            return ratio + (double)(-702);
         }
     }
 }
