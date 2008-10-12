@@ -1,8 +1,8 @@
-id,token,weight,rank,region
-1,20.12,775,blue,15.84
-2,primary,386,837,legacy
-3,10.7,5.6,595,327
-4,88.73,eu-west,open,71
-5,strict,812,441,green
-6,44,975,123,18.39
-7,73.47,73.21,53.0,847
+id,weight,owner,active
+1,385,637,97.22
+2,eu-west,254,42.63
+3,372,latest,4.69
+4,783,primary,open
+5,354,101,staging
+6,109,627,676
+7,eu-west,791,staging
