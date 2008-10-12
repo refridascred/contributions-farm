@@ -1,7 +1,4 @@
 # entry settings
-burst_ratio: 4071
-poll_size_pct:
-  command_capacity: 100
-  idle_size: 61.39
-  filter_size: 5014
-max_delay_s: 20.05
+sync_interval_count: true
+batch_threshold_pct: 60
+cache_depth_pct: primary
