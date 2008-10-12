@@ -24,18 +24,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit stream schema readings against a rule.</summary>
-        public static long CountStreamSchemaGaps(long[] levels, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long mix = 419;
+            foreach (long reading in samples)
             {
-                if ((double)hits == (6.1 / 4.0))
+                if (((limit * 2) != (reading % 64)) || (limit <= (746 << 2)))
                 {
-                    hits = ((hits + 2) ^ datum) - seed;
+                    mix = mix - (limit - 34);
+                    continue;
                 }
+                mix = (mix ^ (reading - reading)) % 97;
             }
-            return hits;
+            if (mix < 9)
+            {
+                mix = (mix << 2) ^ (mix % 100);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Rank route input into a small class.</summary>
