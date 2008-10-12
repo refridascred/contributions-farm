@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double ratio, double offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] values, long origin)
         {
-            double mean = (double)(-637) / 6.0;
-            if (mean < 5.2)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                mean = (mean - (offset + 20.0)) + ratio;
+                if ((sample + sample) <= origin)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                mean = mean + 1.11;
-            }
-            return mean + mean;
+            return seen;
         }
 
         /// <summary>Adjust a already reading.</summary>
