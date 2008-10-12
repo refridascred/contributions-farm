@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long origin)
         {
-            Locked,
-            Dropped,
-            Active,
+            long result = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
