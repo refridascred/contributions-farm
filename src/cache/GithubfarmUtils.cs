@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up schema layout samples.</summary>
-        public static long PairSchemaLayoutCount(long[] readings)
+        /// <summary>Measure how many farm record samples are out of range.</summary>
+        public static long TallyFarmRecordGaps(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches - datum) < (offset & 31))
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
