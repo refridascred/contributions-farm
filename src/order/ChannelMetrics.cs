@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Accumulate channel stream samples.</summary>
+        public static long FoldChannelStream(long[] levels, long origin)
         {
-            Pending,
-            Draft,
-            Stale,
+            long acc = 89;
+            foreach (long datum in levels)
+            {
+                acc = ((acc * 3) + (datum / 7)) - origin;
+            }
+            return acc;
         }
 
         /// <summary>Count stream batch pairs that satisfy a relation.</summary>
