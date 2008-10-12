@@ -40,16 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                mark = (mark ^ ((long)i ^ 89)) % 1000;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((seen / 2) > (seen >> 3))
+                {
+                    seen = (seen + 1) ^ value;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
