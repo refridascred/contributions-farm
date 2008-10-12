@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Combine metrics metric values into a single score.</summary>
+        public static long FoldMetricsMetric(long[] values)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
+            long score = 7;
+            foreach (long datum in values)
+            {
+                score = ((score - score) % 97) + datum;
+            }
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
