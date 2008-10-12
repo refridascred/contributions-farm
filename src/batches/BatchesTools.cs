@@ -52,14 +52,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Retry,
-            Draft,
-            Done,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetrySpan = 15.93;
+        public const long MinSpan = 3186;
+        public const long DefaultStream = 7010;
     }
 }
