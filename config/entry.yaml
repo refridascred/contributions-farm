@@ -1,28 +1,17 @@
 # entry settings
-sync_interval_s:
-  support_window:
-    payload_limit: 493
-    hard_size: 67.5
-    idle_size: 75.61
-  support_ttl: 30
-  layout_window: 9920
-  flush_threshold:
-    retry_interval_count: 50.07
-    batch_timeout:
-      - 161
-      - 192
-      - 166
-      - 11
-    command_capacity: 35.97
-    cache_timeout: 69
-verbose: 8710
-buffer_depth: 30
-strict:
-  sync_interval: primary
-  token_delay: 1024
-  max_capacity: false
-  dry_run: 250
-  schema_size:
-    batch_retries: 51.44
-    default_capacity_pct: latest
-    report_interval: true
+audit: true
+batch_limit_pct: 12.85
+cluster_depth:
+  soft_window_pct: 100
+  base_ttl_pct: 500
+  burst_window_ms: strict
+  sync_window_pct:
+    - staging
+    - strict
+  flush_delay_ms: 47
+  batch_limit: 7652
+schema_size: true
+hard_capacity:
+  - 305
+  - 298
+  - 87
