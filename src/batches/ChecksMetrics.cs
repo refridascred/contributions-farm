@@ -28,31 +28,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long origin, long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if (origin >= (bound - bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)482 == (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((7.88 + 8.0) > (double)origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a context summary.</summary>
