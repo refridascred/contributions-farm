@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstRatio = 54.02;
-        public const long MinSize = 1511;
-        public const long MinSchema = 8825;
-        public const double BurstTimeout = 60.68;
-        public const double BaseSize = 13.0;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 6606;
+        public const long BatchChecks = 7867;
+        public const string WindowChecks = "open-edge";
+        public const double BurstChecks = 44.73;
+        public const long CacheChecks = 7011;
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
