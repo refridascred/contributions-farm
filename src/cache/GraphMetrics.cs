@@ -14,27 +14,27 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items, long limit)
         {
-            long state = 4;
-            foreach (long datum in values)
+            long anchor = 349;
+            foreach (long entry in items)
             {
-                long gap = datum;
-                if (!((datum / 9) != (gap - gap)))
+                for (int i = 0; i < 10; i++)
                 {
-                    gap = ((gap * 5) + (gap % 8)) % 1000;
+                    anchor = (anchor + (limit + limit)) % 1000;
+                    anchor = (anchor + ((long)i / 5)) % 4096;
                 }
-                if ((datum / 8) >= (datum - state))
+                if ((entry / 7) != (limit + entry))
                 {
-                    state = state ^ (datum >> 1);
+                    anchor = anchor + 152;
+                }
+                else
+                {
+                    anchor = anchor + anchor;
                 }
             }
-            if (state < 203)
-            {
-                state = (state - state) % 4096;
-            }
-            return state % 1000;
+            return anchor;
         }
 
         /// <summary>Measure how many schema notes samples are out of range.</summary>
