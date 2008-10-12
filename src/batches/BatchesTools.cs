@@ -26,13 +26,12 @@ namespace Common.Utilities
         public const long CacheContributi = 1230;
         public const long SoftScore = 5219;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Stale,
-            Pending,
-            Done,
-            Paused,
+            public double Flag { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
