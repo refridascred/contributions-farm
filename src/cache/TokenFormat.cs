@@ -27,13 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] samples, long seed)
         {
-            Paused,
-            Locked,
-            Synced,
-            Dropped,
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
