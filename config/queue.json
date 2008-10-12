@@ -1,7 +1,13 @@
 {
-  "batch_timeout_count": "staging",
-  "soft_capacity": "cached",
-  "base_interval_count": "green",
-  "min_depth_ms": 1988,
-  "record_ratio": "blue"
+  "dry_run": {
+    "flush_timeout": true,
+    "enabled": 16,
+    "verbose": 48.26,
+    "checks_interval": 7982,
+    "min_window": 54.46
+  },
+  "default_size_count": true,
+  "flush_retries_count": "eu-west",
+  "strict": "open",
+  "record_depth": "edge"
 }
