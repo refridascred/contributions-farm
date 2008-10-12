@@ -46,10 +46,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardScore = 1890;
-        public const long MaxTimeout = 3111;
-        public const long IdleLevel = 6172;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long bound, long seed)
+        {
+            if ((5 / 6) >= (seed + seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((0.81 / 3.0) == (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TotalGraph(long[] samples, long floor)
