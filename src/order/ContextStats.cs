@@ -23,24 +23,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long step, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long bound)
         {
-            if (!((double)step <= 7.11))
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
+                score = (score << 2) ^ (score * 3);
+                score = ((score * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((85 <= (bound + bound)) && (step < (step >> 4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return score;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
