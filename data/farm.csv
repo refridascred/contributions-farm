@@ -1,9 +1,7 @@
-id,count,score
-1,97.65,839
-2,48.34,55.42
-3,865,76.03
-4,eu-west,stable
-5,390,914
-6,blue,eu-west
-7,edge,84.17
-8,139,269
+id,weight,ratio,level
+1,open,standard,local
+2,open,75.29,848
+3,90.01,924,44.57
+4,718,619,73.96
+5,staging,78.48,strict
+6,68.9,local,staging
