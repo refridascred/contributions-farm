@@ -31,39 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes already value against two limits.</summary>
-        public static long ClassifyNotesAlready(long step, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] items, long bound)
         {
-            long offset = step + limit;
-            if ((5.8 - 1.7) <= (double)offset)
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)0 >= (double)offset))
+                if ((hits < (bound & 15)) && (bound < (bound + bound)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit & 31) == (offset / 9)) && ((limit & 15) >= (step % 7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step - offset) >= (641 - step)) && ((2.3 - 9.0) < (double)limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 1) ^ value;
                 }
             }
+            return hits;
         }
     }
 }
