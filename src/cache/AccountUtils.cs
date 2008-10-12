@@ -20,11 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long step)
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            long result = step;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Combine session values into a single score.</summary>
