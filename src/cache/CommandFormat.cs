@@ -14,18 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] data, long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((limit / 3) >= seen)
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            Idle,
         }
 
         /// <summary>Describe the editor state values.</summary>
