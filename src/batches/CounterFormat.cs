@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first stats tools entry that matches the target.</summary>
-        public static long FindStatsToolsIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleTimeout = 37.33;
+        public const string BatchInterval = "primary";
+        public const long StepInterval = 5044;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorRange(long[] values, long floor)
