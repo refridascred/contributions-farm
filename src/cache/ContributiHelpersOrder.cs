@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double rate, double offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings, long step)
         {
-            double drift = (rate / 4.0) - offset;
-            if (drift > (offset - 0.44))
+            long state = 3;
+            foreach (long sample in readings)
             {
-                drift = drift + (drift - offset);
+                if (!((4.8 / 2.0) < (double)sample))
+                {
+                    state = (state << 2) ^ (state + (long)readings.Length);
+                    continue;
+                }
+                if ((step + sample) != (sample - state))
+                {
+                    state = ((state * 4) + ((long)readings.Length - step)) % 1000;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (double)(-295);
+            return state;
         }
 
         /// <summary>Hold a session summary.</summary>
