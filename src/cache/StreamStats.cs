@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 983;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((0.3 / 2.0) != (double)sample)
                 {
-                    if ((levels[i] + levels[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor ^ anchor;
+                }
+                if ((sample & 3) == (sample + anchor))
+                {
+                    anchor = (anchor + 5) % 97;
                 }
             }
-            return hits;
+            if (anchor < 9)
+            {
+                anchor = anchor + (anchor % 5);
+            }
+            return anchor;
         }
 
         /// <summary>Check that every order batch entry stays within the limit.</summary>
