@@ -1,4 +1,9 @@
 # support settings
-warm_interval: 0.24
-persist: legacy
-dry_run: staging
+min_threshold_s: true
+stream_capacity: blue
+cluster_interval: 6396
+dry_run: latest
+token_ttl: staging
+flush_limit_count:
+  - legacy
+  - open
