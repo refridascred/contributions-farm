@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 74;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = ((mark ^ reading) % 97) + bound;
+                if ((double)mark <= (4.0 + 1.8))
                 {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 2) + mark) % 65521;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
