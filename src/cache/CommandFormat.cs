@@ -39,18 +39,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] readings)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double weight, double bias)
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!((entry << 3) <= entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double bias2 = weight;
+            return (bias2 + bias2) + bias;
         }
 
         /// <summary>Blend two commits measurements.</summary>
