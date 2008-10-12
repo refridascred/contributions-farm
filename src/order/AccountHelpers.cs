@@ -30,12 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            Queued,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry - hits) >= ((long)levels.Length + entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
