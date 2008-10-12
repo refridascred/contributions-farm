@@ -37,21 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 76;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = (score - (score + limit)) % 4096;
+                if (!((limit - score) == (sample - limit)))
                 {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + limit) % 101;
                 }
+                score = (score ^ (limit >> 4)) % 65521;
             }
-            return tally;
+            if (score < 3)
+            {
+                score = (score - limit) % 1000;
+            }
+            return score;
         }
     }
 }
