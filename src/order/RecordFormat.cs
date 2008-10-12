@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((result - floor) >= ((-5) + floor)) && ((4 + result) >= (floor << 3)))
-                {
-                    result = (result + (result & 31)) % 1000;
-                }
-                else
-                {
-                    result = ((result * 2) + (floor + floor)) % 1000;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = (result - (floor + 7)) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many layout graph samples are out of range.</summary>
