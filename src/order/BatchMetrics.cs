@@ -55,13 +55,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long step)
         {
-            Dropped,
-            Locked,
-            Idle,
-            Paused,
+            long score = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)score > (8.0 * 7.43))
+                {
+                    continue;
+                }
+                score = (score + (score * 5)) % 1000;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Accumulate editor samples.</summary>
