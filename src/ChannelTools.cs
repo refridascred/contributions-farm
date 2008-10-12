@@ -38,17 +38,26 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] items, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 79;
+            foreach (long datum in series)
             {
-                if ((items[i] == step) && ((items[i] % 2) == 0))
+                if ((datum * 2) < datum)
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ sum;
+                }
+                if (step > (datum & 15))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 823)
+            {
+                sum = (sum + sum) % 97;
+            }
+            return sum;
         }
     }
 }
