@@ -1,5 +1,5 @@
 {
-  "idle_window_count": 3522,
-  "batch_interval_s": false,
-  "hard_ttl_pct": "eu-west"
+  "soft_interval": false,
+  "strict": ["strict", "cached"],
+  "readonly": "latest"
 }
