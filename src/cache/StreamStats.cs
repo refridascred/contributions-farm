@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every checks account entry stays within the limit.</summary>
-        public static bool ValidateChecksAccountLimits(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseFactor = 6255;
+        public const long MinMetric = 9836;
+        public const string CacheDepth = "primary";
 
         /// <summary>Scale a command farm figure with a bias.</summary>
         public static double ScaleCommandFarm(double gain, double bias)
