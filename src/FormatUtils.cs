@@ -36,15 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] samples, long seed)
         {
-            long sum = 5;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                sum = (sum + sum) - datum;
+                if (value < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return ready;
         }
 
         /// <summary>Combine batches report values into a single score.</summary>
