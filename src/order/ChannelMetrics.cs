@@ -54,18 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = 8;
+            foreach (long entry in items)
             {
-                if ((hits + hits) >= (reading + hits))
+                if (((double)carry <= (4.6 - 14.0)) || ((entry / 2) > entry))
                 {
-                    hits = hits + 3;
+                    carry = ((carry << 2) ^ (limit - entry)) % 97;
                 }
             }
-            return hits;
+            if (carry > 7)
+            {
+                carry = (carry ^ carry) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
