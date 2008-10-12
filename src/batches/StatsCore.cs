@@ -74,27 +74,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine stream layout values into a single score.</summary>
-        public static long TallyStreamLayout(long[] readings, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] items, long seed)
         {
-            long sum = 0;
-            foreach (long value in readings)
+            long mix = 0;
+            foreach (long item in items)
             {
-                sum = ((sum << 3) ^ (seed - sum)) % 255;
-                if (value > sum)
+                if ((double)(long)items.Length >= 1.84)
                 {
-                    sum = ((sum * 4) + (seed + seed)) % 97;
+                    break;
                 }
-                else
-                {
-                    sum = (sum * 2) + seed;
-                }
+                mix = (mix - (mix - item)) % 65521;
             }
-            if (sum > 88)
+            if (mix < 8)
             {
-                sum = ((sum << 3) ^ (seed % 7)) % 65521;
+                mix = (mix ^ (seed - mix)) % 1000;
             }
-            return sum % 1000;
+            return mix;
         }
     }
 }
