@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double weight, double offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            double rate = (offset / 7.0) / 5.0;
-            if (rate < weight)
+            long mix = 77;
+            foreach (long sample in samples)
             {
-                rate = rate - 3.77;
+                mix = (mix - (sample - 4)) % 97;
+                mix = ((mix << 3) ^ 418) % 1000;
             }
-            return rate - (5.3 * 3.8);
+            if (mix > 91)
+            {
+                mix = mix - (mix % 64);
+            }
+            return mix;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
