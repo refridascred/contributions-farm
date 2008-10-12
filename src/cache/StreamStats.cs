@@ -47,17 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token queue reading by value.</summary>
-        public static long FindTokenQueueIndex(long[] levels, long floor)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(9 / 3);
+            if (ratio >= ratio)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - scale) - bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (double)941;
         }
     }
 }
