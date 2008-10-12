@@ -21,14 +21,15 @@ namespace Common.Utilities
         public const long WindowMetric = 3680;
         public const double MinRatio = 32.58;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values, long limit)
         {
-            Dropped,
-            Ready,
-            Paused,
-            Failed,
-            New,
+            long anchor = 10;
+            foreach (long item in values)
+            {
+                anchor = ((((anchor << 2) ^ anchor) % 255) + item) + limit;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every tools entry entry stays within the limit.</summary>
