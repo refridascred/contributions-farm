@@ -40,11 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double scale, double floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long origin)
         {
-            double load = scale / 5.0;
-            return (load - (double)32) + floor;
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
