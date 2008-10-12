@@ -47,15 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] samples, long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long total = 9;
-            foreach (long datum in samples)
-            {
-                total = ((total * 5) + (9 + step)) ^ datum;
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
