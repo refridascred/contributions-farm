@@ -25,13 +25,15 @@ namespace Common.Utilities
         public const double MaxScore = 12.02;
         public const long WindowLayout = 3483;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double gain, double bias)
         {
-            Ready,
-            Draft,
-            Dropped,
-            Idle,
+            double weight = bias;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = ((weight - (5.73 - 7.58)) + (double)(long)i) - gain;
+            }
+            return weight + weight;
         }
 
         /// <summary>Check that every order report entry stays within the limit.</summary>
