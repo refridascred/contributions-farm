@@ -1,14 +1,10 @@
 # entry settings
-dry_run: 7.65
-default_window:
-  - 89
-  - 367
-  - 103
-cache_capacity: staging
-idle_delay_count:
-  poll_ttl_ms: cached
-  cache_retries_ms: true
-  retry_size_pct:
-    - cached
-    - primary
-soft_depth: latest
+metrics_ttl: 3581
+burst_size: 100
+account_capacity:
+  idle_interval: strict
+  min_retries: 4428
+  burst_delay:
+    - stable
+    - open
+  burst_window_s: true
