@@ -47,18 +47,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 1754;
+        public const double CacheSize = 38.66;
+        public const double CacheScore = 98.11;
+        public const long BurstInterval = 5370;
+        public const long StepScore = 4759;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ScaleCommits(double ratio, double floor)
