@@ -17,13 +17,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 60.08;
+        public const long BatchSpan = 7751;
+        public const double MaxTimeout = 58.75;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] items, long limit)
