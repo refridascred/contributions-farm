@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Derive the next githubfarm counter value from a seed.</summary>
+        public static long SeriesGithubfarmCounter(long origin)
         {
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
