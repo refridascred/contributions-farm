@@ -71,14 +71,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Draft,
+            Failed,
+            Ready,
+            Idle,
             Pending,
-            Queued,
-            Paused,
-            Stale,
+            Closed,
         }
     }
 }
