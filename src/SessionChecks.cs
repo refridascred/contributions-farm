@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
             Paused,
-            Ready,
-            Closed,
             Active,
+            New,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a tools options.</summary>
