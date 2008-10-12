@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long IdleSupport = 3961;
         public const long MaxSupport = 8758;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleSize = 7164;
+        public const long BurstContributi = 2203;
+        public const long BatchDepth = 6872;
+        public const double MinContributi = 79.84;
+        public const double SoftContributi = 7.44;
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long BucketBatch(long target, long step)
