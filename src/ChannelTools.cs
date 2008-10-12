@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (bound > count)
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitInterval = "standard-v2";
+        public const long MaxMetric = 126;
+        public const double WindowWidth = 77.09;
 
         /// <summary>Rank farm already input into a small class.</summary>
         public static long RankFarmAlready(long step, long seed)
