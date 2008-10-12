@@ -1,15 +1,15 @@
 # Command notes
 
-Keep support and metric names short and lowercase.
-Run the support check before changing any account limits.
-The counter report groups every order by record.
+The report report groups every channel by notes.
+Keep buffer and metric names short and lowercase.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
-The entry module keeps commits values in sync with the entry cache.
-Run the account check before changing any farm limits.
+Defaults for buffer live in the config folder and can be overridden per environment.
+A format that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Validate token input early
-- Keep format values small
-- Log every commits change
-- Prefer format defaults
+- Keep tools values small
+- Validate queue input early
+- Review schema limits each release
+- Log every entry change
