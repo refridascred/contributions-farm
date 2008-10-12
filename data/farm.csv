@@ -1,7 +1,8 @@
-id,weight,ratio,level
-1,open,standard,local
-2,open,75.29,848
-3,90.01,924,44.57
-4,718,619,73.96
-5,staging,78.48,strict
-6,68.9,local,staging
+id,ratio,active,score
+1,95.8,local,542
+2,340,11,130
+3,28,local,standard
+4,stable,16.04,615
+5,eu-west,latest,92.36
+6,primary,830,47.96
+7,40.61,6.41,staging
