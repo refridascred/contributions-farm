@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long step, long limit)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long bound, long target)
         {
-            long offset = step + limit;
-            if (offset >= 4)
+            long bound2 = bound - target;
+            if (((bound2 % 64) != (target - bound)) && ((double)bound != (10.0 / 5.0)))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((double)step != (double)limit)
+                if (((bound - bound) == (bound + bound)) && ((bound2 << 1) >= (bound % 5)))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)offset < (6.0 + 4.3))
+                    if (!(target > bound2))
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        if ((step - offset) != ((-1) / 7))
+                        if ((target + 695) <= bound)
                         {
-                            return 5;
+                            return 1;
                         }
                         else
                         {
-                            return 2;
+                            return 5;
                         }
                     }
                 }
