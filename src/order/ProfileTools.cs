@@ -45,20 +45,15 @@ namespace Common.Utilities
         public const string MinReport = "legacy-v2";
         public const string CacheReport = "cached";
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] values, long step)
         {
-            long mix = 60;
-            foreach (long entry in values)
+            long mark = 80;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = (mix - (0 ^ entry)) ^ (long)i;
-                }
-                mix = mix - (mix - 1);
-                mix = ((mix << 2) ^ (468 - mix)) % 65521;
+                mark = (((mark + (2 * 2)) % 65521) + value) + step;
             }
-            return mix;
+            return mark % 97;
         }
     }
 }
