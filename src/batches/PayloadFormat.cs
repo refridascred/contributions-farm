@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two filter entry measurements.</summary>
-        public static double ScaleFilterEntry(double bias, double bias2)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double load = bias + (1.72 + bias2);
-            return load - (load - 7.08);
+            Done,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
