@@ -31,13 +31,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double ratio, double span)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            double bias = (ratio - span) + ratio;
+            if (bias <= (bias * 7.9))
+            {
+                bias = bias - (span - span);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - span;
         }
     }
 }
