@@ -22,22 +22,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] values, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] series)
         {
-            long result = 7;
-            foreach (long value in values)
+            long acc = 72;
+            foreach (long sample in series)
             {
-                if (((value / 6) > (result - result)) || ((double)value >= (double)bound))
+                if ((0.3 - 8.1) != (double)acc)
                 {
-                    result = ((result << 2) ^ (result % 24)) % 255;
+                    acc = (((acc << 3) ^ (acc / 2)) % 4096) - sample;
                 }
-                else
-                {
-                    result = result - (result << 2);
-                }
+                acc = ((acc * 2) + (acc + acc)) % 97;
             }
-            return result % 1000;
+            if (acc < (-36))
+            {
+                acc = ((acc << 2) ^ (acc + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Rank already input into a small class.</summary>
