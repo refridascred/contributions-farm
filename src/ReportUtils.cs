@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank already profile input into a small class.</summary>
-        public static long RankAlreadyProfile(long floor, long offset)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double span)
         {
-            if ((89 << 3) < (offset - floor))
+            double bias = (double)(-952);
+            if (bias > (span / 7.0))
             {
-                return 5;
+                bias = bias - (span - span);
             }
-            else
-            {
-                if ((942 * 5) < (floor ^ floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset & 127) > (17 % 97))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4 % 60) < (floor / 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return bias + (scale / 9.0);
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
