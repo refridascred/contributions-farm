@@ -74,19 +74,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] values, long origin)
+        /// <summary>Rank layout cache input into a small class.</summary>
+        public static long SortLayoutCache(long origin, long limit)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            if ((0 - origin) < (12 ^ limit))
             {
-                if (datum <= origin)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin >= 6.8)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - origin) >= (limit % 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
