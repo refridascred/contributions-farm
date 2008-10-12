@@ -12,14 +12,14 @@ namespace Common.Utilities
         public const long BatchSize = 5240;
         public const long HardTimeout = 4920;
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Done,
-            Draft,
-            Pending,
-            Failed,
-            New,
+            Dropped,
+            Locked,
+            Idle,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the commits class values.</summary>
