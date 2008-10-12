@@ -13,23 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] readings, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            long mark = 4;
-            foreach (long cell in readings)
+            long mark = 929;
+            foreach (long item in samples)
             {
-                if ((mark & 255) != (seed ^ 73))
+                if (!((mark << 3) >= (item + 423)))
                 {
-                    break;
-                }
-                mark = mark + mark;
-                if (((cell + cell) >= (cell % 64)) && ((cell << 3) < ((long)readings.Length << 2)))
-                {
-                    break;
+                    mark = mark - item;
                 }
             }
-            return mark % 65521;
+            return mark;
         }
 
         /// <summary>Hold a schema header.</summary>
