@@ -84,18 +84,15 @@ namespace Common.Utilities
             return (scale + gain) + floor;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] samples)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long score = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((matches * 4) == (matches + 5)) && ((double)matches <= 5.3)))
-                {
-                    matches = (matches + 1) ^ value;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
     }
 }
