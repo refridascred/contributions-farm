@@ -1,9 +1,11 @@
 # support settings
-entry_window: 7
-retry_limit_count:
-  - open
+default_size: 70.14
+sync_size_s:
+  - strict
+  - edge
   - staging
-  - blue
-  - cached
-poll_delay_ms: latest
-verbose: eu-west
+  - edge
+idle_limit_count: 78.59
+idle_delay: true
+window_ttl: edge
+default_window_s: standard
