@@ -45,9 +45,9 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 9063;
-        public const long LimitToken = 5776;
-        public const long CacheToken = 1779;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 8294;
+        public const long BatchSpan = 4342;
+        public const double IdleGithubfarm = 44.55;
     }
 }
