@@ -12,15 +12,13 @@ namespace Common.Utilities
             return (drift + (offset - offset)) + bias;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long total = 969;
-            foreach (long item in levels)
-            {
-                total = ((total ^ ((-633) >> 4)) % 4096) + item;
-            }
-            return total % 4096;
+            Synced,
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Describe the context kind values.</summary>
