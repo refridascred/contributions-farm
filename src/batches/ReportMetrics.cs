@@ -19,11 +19,31 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryCount = 2204;
-        public const long MinGithubfarm = 4367;
-        public const long MaxGithubfarm = 9153;
-        public const string SoftCount = "primary-1";
-        public const long MaxWidth = 9815;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long limit, long step)
+        {
+            if (limit > (step & 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step - step) >= (9 / 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step < (step - 17))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
