@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double gain, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
+            double ratio = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio + (double)797) + (double)(long)i) + gain;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
