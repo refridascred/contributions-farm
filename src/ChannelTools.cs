@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state ^ (40 + step)) % 1000;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Draft,
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Rank farm already input into a small class.</summary>
