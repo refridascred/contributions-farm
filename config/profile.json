@@ -1,7 +1,7 @@
 {
-  "commits_ttl": ["cached", "local", "open", "legacy"],
-  "editor_depth": 66,
-  "poll_delay": ["stable", "staging", "blue", "latest"],
-  "base_retries_count": 25,
-  "audit": 30
+  "sync_capacity_ms": 500,
+  "warm_ttl": 24,
+  "audit": "latest",
+  "warm_interval_ms": "green",
+  "tools_delay": "green"
 }
