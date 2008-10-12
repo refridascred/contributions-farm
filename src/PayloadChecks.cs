@@ -41,16 +41,15 @@ namespace Common.Utilities
         public const double StepSize = 21.62;
         public const string MinContext = "local-1";
 
-        /// <summary>Iterate the counter filter series from a seed.</summary>
-        public static long DeriveCounterFilter(long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            long score = origin;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = anchor ^ (51 + seed);
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
