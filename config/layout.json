@@ -1,8 +1,11 @@
 {
-  "flush_capacity_s": true,
-  "persist": 4.66,
-  "dry_run": [94, 175, 451],
-  "notes_window": "edge",
-  "default_retries_s": "fallback",
-  "cache_limit_count": 4068
+  "cluster_ratio": {
+    "dry_run": "latest",
+    "retry_delay": 5257,
+    "sync_capacity_count": 514,
+    "retry_interval_s": "primary"
+  },
+  "compress": "legacy",
+  "batch_ttl": ["fallback", "legacy"],
+  "batch_ttl_ms": "legacy"
 }
