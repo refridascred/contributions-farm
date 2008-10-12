@@ -13,12 +13,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] readings, long seed)
         {
-            Active,
-            Paused,
-            Dropped,
+            long mark = 4;
+            foreach (long cell in readings)
+            {
+                if ((mark & 255) != (seed ^ 73))
+                {
+                    break;
+                }
+                mark = mark + mark;
+                if (((cell + cell) >= (cell % 64)) && ((cell << 3) < ((long)readings.Length << 2)))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a schema header.</summary>
