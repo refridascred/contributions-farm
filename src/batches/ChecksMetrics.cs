@@ -79,11 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepBudget = 8951;
-        public const long CacheLayout = 420;
-        public const long RetryBudget = 8563;
-        public const string HardWidth = "open-v2";
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Ready,
+            Draft,
+            Retry,
+            Done,
+            Locked,
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
