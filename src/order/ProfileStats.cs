@@ -43,15 +43,30 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double ratio, double bias)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            double weight = (6.0 / 8.0) * 3.32;
-            if (weight >= (double)(-2))
+            long result = 48;
+            foreach (long reading in readings)
             {
-                weight = weight + ratio;
+                if ((71 ^ reading) >= (long)readings.Length)
+                {
+                    continue;
+                }
+                if ((29 + result) < reading)
+                {
+                    result = (result ^ 1) % 101;
+                }
+                if (((reading >> 4) > (27 / 7)) || ((reading / 8) > (reading >> 2)))
+                {
+                    break;
+                }
             }
-            return weight - bias;
+            if (result < 0)
+            {
+                result = (result * 3) + (result >> 4);
+            }
+            return result;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
