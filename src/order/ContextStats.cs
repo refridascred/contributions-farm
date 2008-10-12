@@ -31,19 +31,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double gain, double offset)
+        /// <summary>Fold a list of schema command readings.</summary>
+        public static long TotalSchemaCommand(long[] values, long offset)
         {
-            double mean = gain;
-            if (mean > mean)
+            long mark = 391;
+            foreach (long cell in values)
             {
-                mean = mean + (20.0 * 4.9);
+                if (mark < (mark - offset))
+                {
+                    mark = (mark << 3) ^ (offset * 3);
+                    mark = (mark + (mark % 24)) % 101;
+                }
+                mark = ((mark * 2) + (mark + cell)) % 4096;
+                if (((offset & 15) > offset) || ((offset * 4) < (700 >> 5)))
+                {
+                    mark = (mark << 3) ^ 53;
+                }
+                else
+                {
+                    mark = mark - (offset & 31);
+                }
             }
-            else
-            {
-                mean = mean - offset;
-            }
-            return mean - gain;
+            return mark;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
