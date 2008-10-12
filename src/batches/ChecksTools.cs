@@ -26,24 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double scale, double offset)
-        {
-            double rate = (double)(1 - 32);
-            if (rate < rate)
-            {
-                rate = rate + (scale + offset);
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (rate * 7.29)) + (double)(long)i;
-            }
-            return rate + (double)34;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseDepth = 2345;
+        public const long LimitGraph = 7953;
+        public const long LimitLevel = 4543;
+        public const long WindowGraph = 161;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long bound)
