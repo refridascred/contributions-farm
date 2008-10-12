@@ -78,16 +78,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next order account value from a seed.</summary>
-        public static long StepOrderAccount(long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long step)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long carry = step;
+            for (int i = 0; i < 18; i++)
             {
-                state = ((state * 3) + (state + 6)) % 1000;
-                state = ((state * 3) + (long)i) % 97;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return state;
+            return carry;
         }
     }
 }
