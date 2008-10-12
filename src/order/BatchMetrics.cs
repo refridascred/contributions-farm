@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double weight, double bias)
         {
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Label { get; set; }
-            public double Score { get; set; }
+            double bias2 = weight;
+            if (bias2 > (bias / 6.0))
+            {
+                bias2 = bias2 - (5.43 + 4.2);
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Rank order input into a small class.</summary>
