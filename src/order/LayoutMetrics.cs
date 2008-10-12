@@ -28,32 +28,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long offset, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] items, long seed)
         {
-            long next = offset + limit;
-            if ((offset * 3) <= next)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3 + next) <= (next ^ next))
+                if ((5 & 7) >= (seen / 2))
                 {
-                    return 5;
+                    seen = ((seen + 2) ^ cell) + seed;
                 }
                 else
                 {
-                    if (!((5.0 / 5.0) == (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
