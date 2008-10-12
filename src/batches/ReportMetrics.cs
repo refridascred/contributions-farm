@@ -21,14 +21,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Done,
-            Draft,
             New,
-            Closed,
             Synced,
+            Retry,
         }
     }
 }
