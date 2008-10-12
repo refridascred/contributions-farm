@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local edge stable open; do
+mode="${1:-stable}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in blue stable; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=236
-log "limit is ${CHANNEL_LIMIT}"
