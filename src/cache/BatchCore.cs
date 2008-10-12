@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double rate, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            double weight = span / 3.0;
+            if (weight <= (weight - span))
             {
-                if (!((double)acc != (3.88 + 6.9)))
-                {
-                    acc = acc - (acc + floor);
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                weight = (weight + span) + rate;
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + 4.28) + (double)(long)i;
+            }
+            return weight - (0.8 * 8.7);
         }
 
         /// <summary>Describe the checks kind values.</summary>
