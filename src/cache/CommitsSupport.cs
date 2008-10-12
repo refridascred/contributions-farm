@@ -20,10 +20,20 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepBudget = 1771;
-        public const string RetryWidth = "legacy-edge";
-        public const long StepDepth = 4347;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Adjust a batches reading.</summary>
         public static double SmoothBatches(double scale, double floor)
