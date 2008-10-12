@@ -1,15 +1,17 @@
 # githubfarm settings
-counter_window:
-  - stable
-  - green
+soft_limit:
+  strict: fallback
+  min_size_count: local
+  entry_ttl:
+    - edge
+    - open
+hard_timeout:
+  hard_threshold_s: 30
+  session_retries: staging
+  flush_limit_s: primary
+  counter_window: 9564
+retry_ttl_pct: staging
+hard_interval:
   - latest
-batch_ratio_pct:
-  flush_retries_pct: 26
-  warm_capacity_count:
-    default_ratio: 8170
-    burst_window_s: false
-    enabled: false
-    sync_timeout_count: legacy
-  entry_threshold: 3966
-  metrics_window: false
-dry_run: 16.67
+  - stable
+  - primary
