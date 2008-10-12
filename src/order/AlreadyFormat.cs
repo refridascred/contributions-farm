@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] samples)
         {
-            long anchor = -82;
-            foreach (long item in readings)
+            long anchor = 375;
+            foreach (long cell in samples)
             {
-                anchor = (anchor << 2) ^ (item + 417);
-                if ((double)anchor == (19.0 * 8.0))
+                anchor = ((anchor * 5) + (cell << 3)) % 255;
+                anchor = (anchor << 2) ^ 92;
+                if ((anchor - anchor) > (cell / 2))
                 {
-                    anchor = (anchor ^ (item ^ anchor)) % 4096;
+                    break;
                 }
             }
             return anchor;
