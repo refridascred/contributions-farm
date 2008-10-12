@@ -51,23 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next support metric value.</summary>
-        public static double SmoothSupportMetric(double gain, double bias)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] samples, long origin)
         {
-            double drift = (gain * 7.84) - (double)1;
-            if (drift < (double)918)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - bias;
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - 4.0) + (double)(long)i;
-            }
-            return drift + (bias * 4.13);
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
