@@ -56,19 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double bias, double span)
+        /// <summary>Check that every report editor entry stays within the limit.</summary>
+        public static bool ValidateReportEditorBounds(long[] items, long target)
         {
-            double gain = span;
-            if (gain >= (1.7 * 1.0))
+            bool flag = true;
+            foreach (long sample in items)
             {
-                gain = (gain + span) - bias;
+                if (sample != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (double)78;
-            }
-            return gain + span;
+            return flag;
         }
     }
 }
