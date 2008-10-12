@@ -48,11 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseDepth = 2345;
-        public const long LimitGraph = 7953;
-        public const long LimitLevel = 4543;
-        public const long WindowGraph = 161;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series)
+        {
+            long score = 287;
+            foreach (long item in series)
+            {
+                if (((score % 60) < (item + item)) && ((double)item == (4.97 + 0.24)))
+                {
+                    score = (score * 4) + item;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] items, long floor)
