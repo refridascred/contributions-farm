@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] samples, long offset)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((8.6 + 0.6) < (double)offset)
-                {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Digest a series of already entries.</summary>
