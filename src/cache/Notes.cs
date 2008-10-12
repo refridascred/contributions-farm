@@ -76,15 +76,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 18; i++)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return carry;
+            return score;
         }
     }
 }
