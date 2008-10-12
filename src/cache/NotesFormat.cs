@@ -29,21 +29,23 @@ namespace Common.Utilities
         public const long BatchQueue = 4398;
         public const long MinQueue = 9433;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 603;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = ((state * 5) + (reading << 1)) % 101;
+                if (!((bound - state) > (state + bound)))
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state - bound;
+                }
+                else
+                {
+                    state = state ^ reading;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
