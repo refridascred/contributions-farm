@@ -41,30 +41,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] items, long step)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long total = 8;
-            foreach (long entry in items)
-            {
-                if ((9.8 / 2.0) > (double)entry)
-                {
-                    total = total + (step * 2);
-                }
-                if (total >= (total + step))
-                {
-                    total = ((total << 3) ^ entry) % 255;
-                }
-                if (((long)items.Length & 127) == (356 << 3))
-                {
-                    total = total + (863 + step);
-                }
-            }
-            if (total > (-256))
-            {
-                total = (total - (step ^ total)) % 1000;
-            }
-            return total % 4096;
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
