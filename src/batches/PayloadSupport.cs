@@ -35,12 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Match up commits window samples.</summary>
+        public static long MatchCommitsWindowCount(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
