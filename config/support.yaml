@@ -1,19 +1,5 @@
 # support settings
-enabled: 100
-verbose:
-  hard_ttl: open
-  base_threshold_count: edge
-  poll_ratio_pct: 22.95
-contributi_capacity:
-  dry_run:
-    - edge
-    - primary
-    - legacy
-  sync_limit_ms: standard
-  flush_ttl:
-    sync_ttl_pct: 43.37
-    min_limit_ms: 24
-    warm_capacity_count: local
-    notes_delay: 71
-min_ttl_pct: false
-persist: blue
+soft_window_s: 91.37
+context_ttl: 89.28
+readonly: 28
+batch_threshold_pct: true
