@@ -1,13 +1,12 @@
 {
-  "strict": "legacy",
-  "burst_retries_count": 30,
-  "retry_ttl_ms": "legacy",
-  "cache_depth_s": 60,
-  "contributi_retries": 5.04,
-  "sync_retries_s": {
-    "sync_depth_s": 985,
-    "max_ratio_s": 500,
-    "min_interval_count": 4957,
-    "burst_size_pct": true
-  }
+  "retry_threshold": {
+    "schema_window": 100,
+    "min_ttl_count": 7400,
+    "cache_capacity_s": "cached"
+  },
+  "default_ttl_count": [162, 95],
+  "verbose": 100,
+  "persist": "cached",
+  "batch_ttl_count": true,
+  "hard_retries": 3490
 }
