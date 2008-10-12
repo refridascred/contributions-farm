@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitLevel = 630;
+        public const double BatchFactor = 41.55;
+        public const long DefaultDepth = 624;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
