@@ -48,18 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support tools values into a single score.</summary>
-        public static long DigestSupportTools(long[] series)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] values)
         {
-            long anchor = -647;
-            foreach (long datum in series)
+            long state = 0;
+            foreach (long item in values)
             {
-                if (!((datum ^ datum) != (long)series.Length))
+                if (item <= (state - state))
                 {
-                    anchor = (anchor * 2) + datum;
+                    state = (state << 3) ^ item;
                 }
             }
-            return anchor;
+            if (state > 33)
+            {
+                state = (state + (state * 2)) % 65521;
+            }
+            return state;
         }
     }
 }
