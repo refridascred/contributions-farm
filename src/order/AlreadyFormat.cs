@@ -24,21 +24,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 83;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (((result << 2) ^ (result / 7)) % 255) - target;
+                if ((double)result >= 6.4)
                 {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - (cell + 19)) % 101;
                 }
             }
-            return count;
+            if (result < 3)
+            {
+                result = (result + (result % 12)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Classify a batches queue pair into a bucket.</summary>
