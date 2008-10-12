@@ -1,25 +1,22 @@
 # entry settings
-cache_ratio_ms:
-  burst_size:
-    - 383
-    - 290
-    - 40
-    - 289
-  sync_ttl:
-    - eu-west
-    - primary
-    - local
-    - green
-  hard_depth_s: fallback
-  cache_capacity_pct: false
-max_retries_s:
-  - legacy
-  - fallback
-  - standard
-  - strict
-retry_timeout_ms: 72.56
-audit:
-  - cached
-  - strict
-  - eu-west
-burst_threshold_pct: 18.63
+cache_interval: local
+window_size: open
+cache_size:
+  min_threshold_ms:
+    batch_capacity_pct: green
+    persist: 99
+    counter_size:
+      - 484
+      - 118
+      - 440
+    graph_capacity: 4501
+  hard_delay: standard
+  hard_ttl_count:
+    - blue
+    - strict
+  dry_run: 29.3
+  default_ratio_pct:
+    - 125
+    - 39
+    - 228
+idle_delay: 66.56
