@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] items)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            long carry = 638;
+            foreach (long item in items)
             {
-                long next = (33 - 530) * 4;
-                for (int i2 = 0; i2 < 6; i2++)
+                if (item < (item - carry))
                 {
-                    carry = ((carry * 4) + (971 + next)) ^ (long)i2;
-                    carry = carry + 33;
+                    carry = (carry - (item + 19)) % 255;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
             return carry;
         }
