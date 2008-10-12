@@ -1,4 +1,13 @@
 # entry settings
-sync_interval_count: true
-batch_threshold_pct: 60
-cache_depth_pct: primary
+entry_capacity: edge
+graph_limit: true
+min_threshold_count:
+  default_retries_count:
+    - 310
+    - 269
+  soft_retries_pct: true
+  batch_timeout_count: 3052
+  idle_retries_ms: fallback
+  batch_ratio_ms: blue
+  cache_window_pct: true
+cache_timeout_pct: 61.82
