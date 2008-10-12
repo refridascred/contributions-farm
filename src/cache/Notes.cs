@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            Paused,
-            Pending,
-            Locked,
-            Draft,
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = acc ^ (acc % 64);
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
