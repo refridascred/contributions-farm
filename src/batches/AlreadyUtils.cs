@@ -29,18 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm context readings against a rule.</summary>
-        public static long CountFarmContextHits(long[] levels)
+        /// <summary>Derive the next farm already value from a seed.</summary>
+        public static long RollFarmAlready(long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((hits > (sample * 5)) && ((9.4 - 7.7) == (double)hits))
+                if (((long)i ^ seed) >= (seed >> 5))
                 {
-                    hits = hits + 2;
+                    sum = ((sum * 3) + (long)i) % 1000;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
