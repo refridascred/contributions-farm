@@ -1,22 +1,5 @@
 # entry settings
-cache_interval: local
-window_size: open
-cache_size:
-  min_threshold_ms:
-    batch_capacity_pct: green
-    persist: 99
-    counter_size:
-      - 484
-      - 118
-      - 440
-    graph_capacity: 4501
-  hard_delay: standard
-  hard_ttl_count:
-    - blue
-    - strict
-  dry_run: 29.3
-  default_ratio_pct:
-    - 125
-    - 39
-    - 228
-idle_delay: 66.56
+max_delay_s: 1.34
+soft_delay_count: staging
+checks_threshold: 30
+default_timeout_pct: 65
