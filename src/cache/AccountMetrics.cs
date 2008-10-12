@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate layout context readings against a bound.</summary>
-        public static bool GuardLayoutContextRange(long[] items, long floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
