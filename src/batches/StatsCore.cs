@@ -86,28 +86,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a context already value against two limits.</summary>
-        public static long SortContextAlready(long offset, long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long limit, long step)
         {
-            if ((bound + offset) > (bound - bound))
+            if ((limit <= 604) || ((9.45 * 9.0) == (double)step))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((offset - 6) > (bound * 4))
+                if (((limit * 2) >= limit) || (limit > (limit - limit)))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if (!(bound >= (2 - bound)))
+                    if (((limit - 7) >= (step >> 4)) || ((limit - step) == (9 ^ limit)))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        return 5;
+                        return 6;
                     }
                 }
             }
