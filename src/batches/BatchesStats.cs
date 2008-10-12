@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] series, long floor)
+        /// <summary>Accumulate format counter samples.</summary>
+        public static long FoldFormatCounter(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 332;
+            foreach (long entry in data)
             {
-                if (series[i] > floor)
+                if (entry <= (state * 5))
                 {
-                    return (long)i;
+                    state = (state + (entry % 97)) % 65521;
+                }
+                else
+                {
+                    state = ((state * 4) + (offset * 3)) % 255;
                 }
             }
-            return -1;
+            if (state < 620)
+            {
+                state = (state + (75 - offset)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
