@@ -1,7 +1,8 @@
 {
-  "verbose": 100,
-  "retry_window_pct": "fallback",
-  "flush_ratio_s": ["blue", "latest", "stable", "blue"],
-  "min_interval": false,
-  "commits_window": 48.63
+  "soft_capacity_s": 4677,
+  "poll_interval_count": true,
+  "warm_timeout": 73.79,
+  "dry_run": 500,
+  "poll_depth_s": ["latest", "staging", "standard"],
+  "report_window": [64, 73, 444]
 }
