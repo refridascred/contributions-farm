@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long offset, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] readings)
         {
-            if ((bound >> 2) > (bound << 1))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset <= (double)bound)
+                if ((matches * 5) != (long)readings.Length)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound << 3) <= 662)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = (matches + 3) - value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
