@@ -29,19 +29,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] data, long offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum >= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
