@@ -19,13 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepBudget = 1771;
+        public const string RetryWidth = "legacy-edge";
+        public const long StepDepth = 4347;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchBudget = 2409;
