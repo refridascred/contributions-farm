@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double scale, double offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] series)
         {
-            double scale2 = 7.6 * 7.67;
-            if (scale2 > scale)
+            long sum = 19;
+            foreach (long reading in series)
             {
-                scale2 = (scale2 + (4.2 + scale)) - offset;
+                if ((reading << 2) >= ((long)series.Length % 12))
+                {
+                    sum = (sum << 2) ^ reading;
+                }
             }
-            else
-            {
-                scale2 = scale2 - 16.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 - (0.7 - scale);
+            return sum % 4096;
         }
 
         /// <summary>Locate a already reading by value.</summary>
