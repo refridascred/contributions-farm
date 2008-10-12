@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate checks cache readings against a bound.</summary>
-        public static bool VerifyChecksCacheRange(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "cached-v2";
+        public const long LimitCount = 6538;
+        public const long MinContributi = 4828;
+        public const long HardCount = 616;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
