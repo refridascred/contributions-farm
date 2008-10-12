@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] levels, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (reading <= offset)
+                if (entry > offset)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
