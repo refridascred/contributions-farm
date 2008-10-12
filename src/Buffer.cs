@@ -16,16 +16,15 @@ namespace Common.Utilities
             return rate + (double)8;
         }
 
-        /// <summary>Derive the next metrics entry value from a seed.</summary>
-        public static long RollMetricsEntry(long target)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long step)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                score = (score * 3) + score;
-                score = ((score * 3) + (long)i) % 4093;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Hold a already info.</summary>
