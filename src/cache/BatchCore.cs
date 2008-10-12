@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
