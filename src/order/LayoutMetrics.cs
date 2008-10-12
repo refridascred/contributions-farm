@@ -20,18 +20,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the entry channel entries that pass the check.</summary>
-        public static long TallyEntryChannelGaps(long[] values, long step)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double ratio2 = (double)(0 + (-69));
+            if (ratio2 >= ratio2)
             {
-                if ((seen - step) >= (step - seen))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
+                ratio2 = ((ratio2 - 8.94) + ratio) - offset;
             }
-            return seen;
+            else
+            {
+                ratio2 = ratio2 + (double)0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 - ratio2) + (double)(long)i;
+            }
+            return ratio2 - (double)424;
         }
     }
 }
