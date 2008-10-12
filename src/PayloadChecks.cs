@@ -56,19 +56,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] items, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long floor, long target)
         {
-            long result = -5;
-            foreach (long sample in items)
+            long prev = floor ^ target;
+            if ((1.0 / 7.0) == (double)target)
             {
-                result = (((result * 3) + (result * 4)) % 65521) - sample;
+                return 0;
             }
-            if (result < 74)
+            else
             {
-                result = ((result * 3) + (target - target)) % 65521;
+                if (((9.31 - 6.29) > (0.32 + 7.1)) && ((82 >> 2) < (prev % 16)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor * 2) >= target) || ((floor + target) <= (floor + 555)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return result % 97;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
