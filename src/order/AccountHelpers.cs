@@ -53,12 +53,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            Pending,
+            Failed,
+            Stale,
+            Draft,
+            Paused,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
