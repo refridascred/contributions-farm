@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Project the next stats contributi value.</summary>
+        public static double BlendStatsContributi(double bias, double offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            double load = (double)((-9) >> 3);
+            if (load > bias)
             {
-                if (((long)i % 12) == (offset / 9))
-                {
-                    carry = carry ^ ((long)i % 5);
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                load = load - (double)(-85);
             }
-            return carry;
+            else
+            {
+                load = load - (offset / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (offset + offset)) + (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Define order limits and defaults.</summary>
