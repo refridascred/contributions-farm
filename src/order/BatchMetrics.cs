@@ -55,17 +55,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a support account sample.</summary>
-        public static long LocateSupportAccountIndex(long[] values, long target)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = 6.0;
+            if (load <= (double)(-14))
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                load = (load + (scale - load)) - bias;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (double)725) + (double)(long)i;
+            }
+            return load - (double)6;
         }
 
         /// <summary>Digest a series of window entries.</summary>
