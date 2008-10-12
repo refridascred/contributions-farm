@@ -11,32 +11,21 @@ namespace Common.Utilities
         public const double MinFactor = 20.85;
         public const long BatchRatio = 5650;
 
-        /// <summary>Rank stream payload input into a small class.</summary>
-        public static long RankStreamPayload(long offset, long floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long lane = offset + floor;
-            if (offset > (38 + offset))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((4.26 + 1.0) >= (double)offset) && ((lane / 3) <= (floor * 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (382 < (lane << 1))
+                    if ((values[i] + values[j]) != 6)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
