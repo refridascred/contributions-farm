@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double rate, double span)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] levels, long offset)
         {
-            double gain = (rate / 6.0) / 8.0;
-            if (gain >= (gain + gain))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                gain = (gain - (gain * 1.31)) + span;
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (rate - rate);
-            }
-            return gain - (3.0 + 3.0);
+            return found;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
