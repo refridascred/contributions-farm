@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            Active,
+            Synced,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Project the next payload value.</summary>
