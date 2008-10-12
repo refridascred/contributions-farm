@@ -44,19 +44,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double gain, double offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double rate, double bias)
         {
-            double rate = offset;
-            if (rate > (6.0 - gain))
+            double mean = rate;
+            if (mean <= bias)
             {
-                rate = rate - offset;
+                mean = mean - rate;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                rate = (rate + (offset - 3.0)) + (double)(long)i;
+                mean = mean - rate;
             }
-            return rate - offset;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (0.61 / 3.0)) + (double)(long)i;
+            }
+            return mean + (bias / 6.0);
         }
 
         /// <summary>Accumulate channel samples.</summary>
