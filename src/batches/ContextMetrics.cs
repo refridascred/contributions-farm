@@ -19,31 +19,13 @@ namespace Common.Utilities
         public const double MinContributi = 79.84;
         public const double SoftContributi = 7.44;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long target, long step)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            if (target <= step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (step > (target >> 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target << 3) < (step >> 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
