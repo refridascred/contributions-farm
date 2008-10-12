@@ -30,22 +30,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] items, long target)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (5 > (count ^ entry))
-                {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm cluster readings.</summary>
