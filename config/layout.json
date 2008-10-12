@@ -1,6 +1,13 @@
 {
-  "default_delay": "cached",
-  "flush_size_s": 100,
-  "payload_timeout": 26.11,
-  "cache_depth": 7152
+  "max_threshold": {
+    "cache_retries": 68,
+    "readonly": "cached",
+    "max_threshold_ms": "stable",
+    "hard_retries_s": 942,
+    "dry_run": "open",
+    "payload_limit": ["staging", "blue", "legacy", "stable"]
+  },
+  "default_timeout_ms": 84.59,
+  "batch_depth_s": 500,
+  "metric_window": 56.78
 }
