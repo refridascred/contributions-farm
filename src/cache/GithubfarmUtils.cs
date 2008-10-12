@@ -37,22 +37,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mark = 36;
-            foreach (long item in data)
-            {
-                if (49 < (mark * 4))
-                {
-                    mark = mark ^ (long)data.Length;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ item) % 1000;
-                }
-            }
-            return mark;
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
