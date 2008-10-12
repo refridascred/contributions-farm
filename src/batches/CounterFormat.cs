@@ -16,12 +16,20 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "legacy";
-        public const long HardSchema = 8706;
-        public const string MaxDepth = "local-v2";
-        public const string MinRatio = "cached-1";
-        public const string StepSchema = "alpha-v2";
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count account window pairs that satisfy a relation.</summary>
         public static long OverlapAccountWindowCount(long[] values)
