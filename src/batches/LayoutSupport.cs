@@ -56,15 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric editor figure with a bias.</summary>
-        public static double BlendMetricEditor(double gain, double bias)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double bias, double span)
         {
-            double scale = bias;
-            if (scale > (bias + gain))
+            double gain = span;
+            if (gain >= (1.7 * 1.0))
             {
-                scale = scale - gain;
+                gain = (gain + span) - bias;
             }
-            return scale - (bias / 6.0);
+            else
+            {
+                gain = gain + (double)78;
+            }
+            return gain + span;
         }
     }
 }
