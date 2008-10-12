@@ -1,5 +1,8 @@
 {
-  "strict": "open",
-  "order_threshold": 63,
-  "idle_timeout_s": false
+  "sync_ttl_s": ["open", "eu-west", "latest"],
+  "idle_timeout_s": "latest",
+  "batch_threshold": "eu-west",
+  "soft_depth_s": [27, 383],
+  "soft_interval_count": "edge",
+  "soft_size_ms": "edge"
 }
