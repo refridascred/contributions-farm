@@ -19,15 +19,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double scale, double span)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double rate = span;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = ((rate - span) + (double)(long)i) - scale;
-            }
-            return rate - (rate / 4.0);
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate window samples.</summary>
