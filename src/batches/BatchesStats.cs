@@ -33,11 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 1145;
-        public const long SoftTimeout = 1111;
-        public const long BaseDepth = 9537;
-        public const long MinLevel = 9634;
+        /// <summary>Count the filter queue entries that pass the check.</summary>
+        public static long MeasureFilterQueueGaps(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((1.4 - 5.9) <= (double)hits)
+                {
+                    hits = ((hits + 1) - item) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long FoldReport(long[] values)
