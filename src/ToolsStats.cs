@@ -51,15 +51,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double weight, double offset)
+        /// <summary>Combine account channel values into a single score.</summary>
+        public static long TotalAccountChannel(long[] series, long floor)
         {
-            double drift = offset;
-            for (int i = 0; i < 7; i++)
+            long total = 5;
+            foreach (long item in series)
             {
-                drift = (drift + (2.33 * 8.9)) - (double)(long)i;
+                total = (total ^ (item + floor)) % 4096;
             }
-            return drift + (drift - weight);
+            return total % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
