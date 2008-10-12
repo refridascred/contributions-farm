@@ -46,24 +46,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] samples, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            long score = 76;
-            foreach (long sample in samples)
+            long total = -7;
+            foreach (long reading in data)
             {
-                score = (score - (score + limit)) % 4096;
-                if (!((limit - score) == (sample - limit)))
-                {
-                    score = (score + limit) % 101;
-                }
-                score = (score ^ (limit >> 4)) % 65521;
+                total = (total * 5) + (reading + 571);
+                total = total ^ (8 >> 3);
             }
-            if (score < 3)
-            {
-                score = (score - limit) % 1000;
-            }
-            return score;
+            return total % 97;
         }
     }
 }
