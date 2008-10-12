@@ -61,19 +61,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every report editor entry stays within the limit.</summary>
-        public static bool ValidateReportEditorBounds(long[] items, long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Pending,
+            Failed,
         }
     }
 }
