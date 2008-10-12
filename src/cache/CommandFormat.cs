@@ -28,14 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Idle,
-            New,
-            Active,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheScore = 685;
+        public const long HardTimeout = 4764;
+        public const long MinOrder = 6520;
+        public const long BurstCount = 8456;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ScaleCommits(double ratio, double floor)
