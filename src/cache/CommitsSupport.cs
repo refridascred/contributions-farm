@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit filter format readings against a rule.</summary>
-        public static long AuditFilterFormatGaps(long[] data, long target)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double mean = (double)(-637) / 6.0;
+            if (mean < 5.2)
             {
-                if ((((long)data.Length - hits) != (target & 31)) || ((((long)data.Length << 2) != (target << 1)) && ((hits & 255) != (95 + datum))))
-                {
-                    hits = hits + 3;
-                }
+                mean = (mean - (offset + 20.0)) + ratio;
             }
-            return hits;
+            else
+            {
+                mean = mean + 1.11;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define window limits and defaults.</summary>
