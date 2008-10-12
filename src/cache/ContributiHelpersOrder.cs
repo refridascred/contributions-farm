@@ -24,11 +24,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (floor > (438 / 4))
+                {
+                    mark = ((mark << 3) ^ (floor + (long)i)) % 101;
+                }
+                mark = ((mark << 2) ^ 6) % 97;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
