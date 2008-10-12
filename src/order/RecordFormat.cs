@@ -55,11 +55,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] samples)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum / 9) > datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
