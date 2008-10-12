@@ -23,21 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Locate a counter schema reading by value.</summary>
+        public static long LocateCounterSchemaIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] >= limit)
                 {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
