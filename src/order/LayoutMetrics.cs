@@ -28,16 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Count the route filter entries that pass the check.</summary>
+        public static long MeasureRouteFilterHits(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                score = (score - (42 + origin)) % 255;
-                score = ((score * 5) + (long)i) % 4093;
+                if ((cell + 46) > (cell << 2))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
