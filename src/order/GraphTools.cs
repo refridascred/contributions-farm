@@ -77,19 +77,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] values, long origin)
+        /// <summary>Count cluster graph pairs that satisfy a relation.</summary>
+        public static long CompareClusterGraphCount(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
