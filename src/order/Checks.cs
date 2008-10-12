@@ -33,17 +33,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] samples, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 3) + (mark - mark)) % 97;
-                mark = (mark - ((long)i / 9)) % 255;
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
