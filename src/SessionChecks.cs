@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long result = 714;
-            foreach (long reading in values)
-            {
-                result = ((result ^ result) % 101) ^ reading;
-            }
-            return result;
+            Paused,
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
