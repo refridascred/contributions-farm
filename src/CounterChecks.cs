@@ -60,13 +60,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] items, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
