@@ -18,11 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] levels, long offset)
         {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = 76;
+            foreach (long reading in levels)
+            {
+                if (((offset ^ mark) != (mark << 1)) && ((mark - reading) == (reading >> 2)))
+                {
+                    mark = ((mark << 2) ^ ((long)levels.Length ^ reading)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark ^ (4 & 15)) % 1000;
+                }
+                if ((mark < (offset - mark)) || ((mark / 3) >= (83 + offset)))
+                {
+                    mark = ((mark << 2) ^ (mark - mark)) % 1000;
+                    continue;
+                }
+                if ((mark & 1) <= (offset % 5))
+                {
+                    mark = (mark ^ (987 + offset)) % 65521;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the window level values.</summary>
