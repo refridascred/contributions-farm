@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long floor, long origin)
+        /// <summary>Audit payload tools readings against a rule.</summary>
+        public static long TallyPayloadToolsOutliers(long[] readings)
         {
-            if ((floor & 15) > (62 + 437))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 8) != (origin - origin))
+                if ((entry >> 5) <= (1 << 2))
                 {
-                    return 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 1;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
