@@ -1,6 +1,5 @@
 {
-  "hard_limit_count": true,
-  "default_interval": 30,
-  "enabled": 44.65,
-  "min_delay_pct": "edge"
+  "verbose": 14.09,
+  "base_threshold": 56.85,
+  "enabled": 2498
 }
