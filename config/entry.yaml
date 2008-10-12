@@ -1,4 +1,7 @@
 # entry settings
-warm_interval_count: 8.6
-session_timeout: 100
-dry_run: open
+persist:
+  - primary
+  - primary
+  - staging
+dry_run: true
+filter_limit: 23.47
