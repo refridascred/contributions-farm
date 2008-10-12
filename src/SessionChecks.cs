@@ -33,19 +33,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double gain, double floor)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double scale = (double)((-407) & 31);
-            if (scale < (double)818)
-            {
-                scale = (scale - 18.0) - gain;
-            }
-            else
-            {
-                scale = scale - (scale * 5.3);
-            }
-            return scale + floor;
+            New,
+            Draft,
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Match up farm samples.</summary>
