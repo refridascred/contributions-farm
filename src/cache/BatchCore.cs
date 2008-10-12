@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Fold a list of stream stats readings.</summary>
+        public static long TallyStreamStats(long[] values, long bound)
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public double Offset { get; set; }
+            long sum = 0;
+            foreach (long reading in values)
+            {
+                if ((double)sum > 8.45)
+                {
+                    sum = (((sum * 3) + bound) % 255) - reading;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the checks kind values.</summary>
