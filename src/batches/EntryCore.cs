@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] data, long floor)
         {
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((floor << 3) >= (floor + floor)) || ((double)item != (3.0 - 9.02)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
