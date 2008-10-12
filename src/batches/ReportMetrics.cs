@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Look up the position of a account filter sample.</summary>
+        public static long FindAccountFilterIndex(long[] series, long target)
         {
-            long carry = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)carry < (7.0 / 9.0)) || (((-48) + 49) < entry))
+                if ((series[i] == target) && ((series[i] % 2) == 0))
                 {
-                    carry = (carry + (entry * 4)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ entry) % 97;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a record snapshot.</summary>
