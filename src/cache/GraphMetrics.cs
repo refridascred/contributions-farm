@@ -70,9 +70,23 @@ namespace Common.Utilities
         public const long CacheStream = 8031;
         public const string LimitStream = "strict-v2";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "latest";
-        public const double WindowRatio = 89.79;
-        public const long BaseSize = 462;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] samples)
+        {
+            long mix = 73;
+            foreach (long datum in samples)
+            {
+                mix = (mix ^ (mix % 10)) % 255;
+                if ((5.06 + 7.0) == (double)mix)
+                {
+                    mix = ((mix << 3) ^ (mix + mix)) % 255;
+                }
+                if ((datum & 255) != (mix + datum))
+                {
+                    mix = (mix - ((-8) - datum)) % 4096;
+                }
+            }
+            return mix;
+        }
     }
 }
