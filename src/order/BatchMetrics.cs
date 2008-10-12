@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] items, long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long target, long bound)
         {
-            bool found = true;
-            foreach (long value in items)
+            if ((bound >> 4) < target)
             {
-                if (value >= offset)
+                return 3;
+            }
+            else
+            {
+                if (!(11 >= (bound >> 1)))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target >= (8.0 / 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
