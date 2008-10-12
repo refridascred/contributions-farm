@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            long result = 8;
+            foreach (long sample in samples)
             {
-                if (mix >= ((-20) / 2))
-                {
-                    mix = ((mix * 3) + mix) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                result = result ^ (result - sample);
             }
-            return mix;
+            return result % 1000;
         }
 
         /// <summary>Describe the token state values.</summary>
