@@ -48,13 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
             Draft,
-            Closed,
-            Active,
-            Idle,
+            Queued,
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
