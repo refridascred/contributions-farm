@@ -63,24 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long offset, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double gain, double bias)
         {
-            if ((8 / 5) == (bound / 9))
+            double gain2 = gain;
+            if (gain2 > (gain2 - gain2))
             {
-                return 4;
+                gain2 = gain2 + bias;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)offset == (6.55 - 3.7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                gain2 = (gain2 - gain) + (double)(long)i;
             }
+            return gain2 - (bias / 8.0);
         }
     }
 }
