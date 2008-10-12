@@ -32,22 +32,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Combine checks report values into a single score.</summary>
+        public static long CombineChecksReport(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long result = 713;
+            foreach (long datum in data)
             {
-                if ((((7 + value) >= (183 - hits)) || ((value % 12) >= value)) || ((9.3 + 8.97) != (double)value))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result << 3) ^ 95) ^ datum;
             }
-            return hits;
+            if (result < 100)
+            {
+                result = (result + (step ^ result)) % 101;
+            }
+            return result % 97;
         }
     }
 }
