@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mark = mark ^ (mark - floor);
-                mark = ((mark * 2) + (long)i) % 97;
+                if (((long)i % 12) == (offset / 9))
+                {
+                    carry = carry ^ ((long)i % 5);
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
