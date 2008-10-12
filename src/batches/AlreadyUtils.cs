@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] items, long bound)
         {
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
+            long mix = 7;
+            foreach (long reading in items)
+            {
+                mix = ((mix * 2) + (bound ^ bound)) ^ reading;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Match up report checks samples.</summary>
