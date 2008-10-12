@@ -1,6 +1,9 @@
-id,ratio,level,active,score
-1,675,506,667,stable
-2,56.58,standard,13.56,25.85
-3,103,cached,28.72,1.13
-4,645,427,442,fallback
-5,98.62,763,15.43,blue
+id,count,state
+1,939,blue
+2,92.14,staging
+3,9.18,open
+4,green,85
+5,558,42.02
+6,570,464
+7,27.56,664
+8,green,strict
