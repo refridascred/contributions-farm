@@ -67,18 +67,31 @@ namespace Common.Utilities
         public const double BaseInterval = 31.16;
         public const long WindowTools = 1289;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] values)
+        /// <summary>Classify a metrics batch pair into a bucket.</summary>
+        public static long GradeMetricsBatch(long origin, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if ((origin ^ step) == (step >> 3))
             {
-                if ((cell % 97) <= (cell << 2))
+                return 1;
+            }
+            else
+            {
+                if (step > (step - origin))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (origin > (origin ^ origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a route stats.</summary>
