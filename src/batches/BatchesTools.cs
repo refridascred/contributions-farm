@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((-403) <= limit))
-                {
-                    sum = sum ^ ((long)i >> 4);
-                    sum = sum - (limit / 5);
-                }
-                sum = (sum + (limit << 3)) % 1000;
-                sum = ((sum * 3) + (long)i) % 101;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define format limits and defaults.</summary>
