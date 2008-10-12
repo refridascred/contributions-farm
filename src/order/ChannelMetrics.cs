@@ -36,18 +36,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count stream batch pairs that satisfy a relation.</summary>
-        public static long PairStreamBatchCount(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading + matches) <= (reading - 6))
                 {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
