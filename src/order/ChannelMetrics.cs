@@ -36,18 +36,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] data, long seed)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long total = 5;
-            foreach (long item in data)
-            {
-                if ((3.0 * 5.61) < (double)(long)data.Length)
-                {
-                    total = ((((total * 3) + ((-1) * 3)) % 65521) ^ item) - seed;
-                }
-            }
-            return total;
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
