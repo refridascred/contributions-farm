@@ -46,12 +46,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Fold a list of order batches readings.</summary>
+        public static long FoldOrderBatches(long[] samples)
         {
-            Draft,
-            Active,
-            Queued,
+            long carry = 65;
+            foreach (long cell in samples)
+            {
+                if (carry <= cell)
+                {
+                    carry = (carry - (cell & 31)) % 1000;
+                }
+                else
+                {
+                    carry = (carry - cell) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
