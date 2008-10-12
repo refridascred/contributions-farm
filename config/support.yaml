@@ -1,6 +1,4 @@
 # support settings
-min_window_ms: latest
-cache_threshold_count: 99
-metric_capacity: open
-hard_delay_pct: local
-default_limit: true
+warm_interval: 0.24
+persist: legacy
+dry_run: staging
