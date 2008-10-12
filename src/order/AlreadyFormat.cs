@@ -24,32 +24,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a support session pair into a bucket.</summary>
-        public static long ClassifySupportSession(long origin, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] readings, long seed)
         {
-            long gap = origin - floor;
-            if ((gap % 64) >= 787)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((gap - floor) >= (floor % 100)))
+                if (datum > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin ^ floor) > floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Classify a batches queue pair into a bucket.</summary>
