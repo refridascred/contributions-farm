@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine payload commits values into a single score.</summary>
-        public static long CombinePayloadCommits(long[] items)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] items)
         {
-            long total = 3;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                total = total ^ 25;
-                if ((sample << 3) >= sample)
+                if ((double)seen > (17.0 - 20.0))
                 {
-                    break;
+                    seen = (seen + 1) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
