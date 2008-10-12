@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] samples, long bound)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((13 % 2) >= (tally & 63))
-                {
-                    tally = ((tally + 1) + item) + bound;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
