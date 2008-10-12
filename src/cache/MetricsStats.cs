@@ -17,19 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] items, long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
