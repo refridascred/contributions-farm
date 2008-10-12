@@ -26,20 +26,30 @@ namespace Common.Utilities
         public const long BatchScore = 2133;
         public const long DefaultCommand = 7645;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] samples, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long sum = -1;
+            foreach (long sample in samples)
             {
-                mix = (mix + mix) % 4096;
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((bound << 3) <= sum)
                 {
-                    mix = (mix - (limit + mix)) ^ (long)i2;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
+                if (((sum + bound) <= sample) && (bound <= (bound + bound)))
+                {
+                    sum = ((sum * 4) + sum) % 65521;
+                }
+                else
+                {
+                    sum = sum + (bound - (long)samples.Length);
+                }
             }
-            return mix;
+            if (sum < 8)
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
