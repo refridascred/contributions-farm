@@ -1,14 +1,6 @@
 {
-  "base_window_pct": [384, 164, 306],
-  "sync_timeout": 64.92,
-  "profile_interval": {
-    "payload_ratio": 4,
-    "idle_interval": 26.18,
-    "poll_retries_ms": 9193,
-    "enabled": 138,
-    "warm_retries_ms": 6901
-  },
-  "checks_size": 2675,
-  "audit": 35.84,
-  "max_limit": "eu-west"
+  "sync_interval_count": 44.24,
+  "graph_window": false,
+  "min_capacity_count": "strict",
+  "persist": "legacy"
 }
