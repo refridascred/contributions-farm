@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long origin, long floor)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long bound = origin + floor;
-            if (((floor >> 1) == (1 << 1)) && ((double)831 >= (double)bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin - bound) != ((-58) - origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Synced,
+            Queued,
         }
 
         /// <summary>Iterate the farm account series from a seed.</summary>
