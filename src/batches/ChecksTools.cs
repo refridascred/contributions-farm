@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double gain, double bias)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            double mean = gain;
-            if (mean <= (bias * 7.2))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (1.0 / 3.0);
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
