@@ -34,15 +34,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long bound, long limit)
         {
-            long carry = 516;
-            foreach (long entry in levels)
+            long cur = bound - limit;
+            if ((double)bound != (5.3 * 2.0))
             {
-                carry = carry + (entry + 73);
+                return 2;
             }
-            return carry % 97;
+            else
+            {
+                if (((cur - cur) == (limit - cur)) || ((double)limit <= (double)bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((cur << 3) >= (cur * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
