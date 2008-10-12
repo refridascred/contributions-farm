@@ -39,13 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data, long offset)
         {
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (0.18 <= (double)sample)
+                {
+                    count = (count + 1) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank contributi order input into a small class.</summary>
