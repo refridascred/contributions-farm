@@ -30,21 +30,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)total <= (7.9 - 11.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total ^ (33 * 3)) % 65521;
-                    total = (total * 4) + (total & 7);
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = (total - (-681)) % 97;
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Blend two profile measurements.</summary>
