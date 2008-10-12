@@ -55,15 +55,19 @@ namespace Common.Utilities
             return bias - (double)7;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] readings, long seed)
         {
-            long mark = 80;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                mark = (((mark + (2 * 2)) % 65521) + value) + step;
+                if (cell != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return valid;
         }
     }
 }
