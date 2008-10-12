@@ -18,21 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 10; i++)
-            {
-                result = result ^ (result + result);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (((result << 2) ^ (target - target)) % 1000) ^ (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryLevel = 1172;
+        public const double CacheSchema = 39.85;
+        public const long HardSchema = 10;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCount = 1491;
