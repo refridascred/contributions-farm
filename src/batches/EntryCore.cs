@@ -39,11 +39,12 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Fold a list of farm githubfarm readings.</summary>
