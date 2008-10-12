@@ -28,25 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command channel entries.</summary>
-        public static long TotalCommandChannel(long[] samples, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] series)
         {
-            long total = 6;
-            foreach (long datum in samples)
+            long total = 77;
+            foreach (long entry in series)
             {
-                total = (total ^ (42 ^ 343)) % 1000;
-                if ((floor / 8) == (datum * 2))
-                {
-                    total = (total << 2) ^ (datum ^ total);
-                }
-                else
-                {
-                    total = (total * 2) + datum;
-                }
-                if ((datum / 7) != (floor + datum))
-                {
-                    break;
-                }
+                total = (total ^ (entry % 5)) % 4096;
+            }
+            if (total < 91)
+            {
+                total = total ^ ((long)series.Length & 1);
             }
             return total;
         }
