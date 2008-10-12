@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double weight, double span)
-        {
-            double weight2 = (1.65 - span) * 8.0;
-            if (weight2 < (11.0 * 1.7))
-            {
-                weight2 = (weight2 + (span * 0.3)) - weight;
-            }
-            else
-            {
-                weight2 = weight2 - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 - (double)0;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 1354;
+        public const long StepWidth = 6210;
+        public const long HardRatio = 4247;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesMatches(long[] readings)
