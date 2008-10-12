@@ -67,9 +67,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardSpan = 21.92;
-        public const long SoftFactor = 1974;
-        public const long WindowSize = 1458;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
