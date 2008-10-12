@@ -48,13 +48,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            Active,
+            Synced,
+            Closed,
+            Paused,
+            Pending,
         }
     }
 }
