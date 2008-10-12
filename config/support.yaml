@@ -1,4 +1,10 @@
 # support settings
-burst_threshold_count: edge
-readonly: 2351
-persist: 37.28
+cache_ratio: 307
+retry_threshold: 90.97
+min_depth_pct: open
+sync_retries_count:
+  - 35
+  - 70
+  - 497
+hard_limit_s: 52.14
+persist: 11
