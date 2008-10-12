@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Paused,
-            Draft,
-            Active,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 6816;
+        public const double LimitChecks = 20.8;
+        public const long HardCount = 7117;
+        public const long StepChecks = 1254;
+        public const long BaseChecks = 4632;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowHits(long[] items, long seed)
