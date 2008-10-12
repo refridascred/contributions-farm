@@ -17,17 +17,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a layout cache reading by value.</summary>
-        public static long LookupLayoutCacheIndex(long[] series, long limit)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] < limit) && ((series[i] % 2) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up buffer samples.</summary>
