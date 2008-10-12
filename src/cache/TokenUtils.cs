@@ -21,19 +21,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] samples, long step)
         {
-            long mark = 51;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark ^ sample) % 101;
-                if (!((sample + sample) != (sample << 3)))
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
                 {
-                    mark = (mark * 3) + sample;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
