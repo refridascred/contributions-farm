@@ -1,9 +1,6 @@
-id,level,weight
-1,333,0.21
-2,489,green
-3,405,fallback
-4,77,63.39
-5,eu-west,11.16
-6,88.73,open
-7,87.66,37.73
-8,green,green
+id,level,weight,label,owner
+1,primary,22.71,local,49.24
+2,287,legacy,317,6.46
+3,57.66,976,697,712
+4,stable,88,staging,331
+5,601,798,23.15,33.71
