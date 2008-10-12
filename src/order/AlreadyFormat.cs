@@ -32,10 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 8308;
-        public const double MinFilter = 18.45;
-        public const string BatchSize = "stable";
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] samples)
+        {
+            long mark = 207;
+            foreach (long item in samples)
+            {
+                mark = (mark - (item >> 5)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Combine stats window values into a single score.</summary>
         public static long FoldStatsWindow(long[] readings, long bound)
