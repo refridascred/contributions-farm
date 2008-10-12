@@ -22,13 +22,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Active,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 9647;
+        public const double CacheGraph = 94.27;
+        public const long SoftFactor = 7619;
 
         /// <summary>Match up already samples.</summary>
         public static long MatchAlreadyCount(long[] data)
