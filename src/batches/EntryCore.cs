@@ -40,13 +40,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
             Closed,
-            Locked,
+            Done,
+            New,
             Paused,
-            Dropped,
         }
 
         /// <summary>Adjust a graph reading.</summary>
