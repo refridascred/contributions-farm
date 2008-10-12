@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheTimeout = 6960;
+        public const long WindowBudget = 2322;
+        public const double StepSpan = 38.18;
 
         /// <summary>Derive the next route editor value from a seed.</summary>
         public static long RollRouteEditor(long floor)
