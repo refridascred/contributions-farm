@@ -40,17 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] readings, long target)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long floor, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = floor - seed;
+            if ((double)622 > (double)diff)
             {
-                if (readings[i] == target)
+                return 2;
+            }
+            else
+            {
+                if ((double)seed >= 2.4)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (seed > (520 & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a payload stats.</summary>
