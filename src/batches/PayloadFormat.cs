@@ -44,10 +44,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitSize = 8662;
-        public const long DefaultWidth = 6417;
-        public const long WindowCluster = 8133;
-        public const double BatchLevel = 69.97;
+        /// <summary>Check that every schema counter entry stays within the limit.</summary>
+        public static bool GuardSchemaCounterBounds(long[] series, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
