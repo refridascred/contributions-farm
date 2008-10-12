@@ -61,12 +61,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long seed, long origin)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            if ((6.9 + 6.74) > (5.9 - 10.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed & 31) != (78 - seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
