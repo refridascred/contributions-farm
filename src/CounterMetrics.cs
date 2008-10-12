@@ -48,31 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long step, long limit)
+        /// <summary>Fold a list of githubfarm cluster readings.</summary>
+        public static long FoldGithubfarmCluster(long[] readings)
         {
-            if ((double)limit < (1.9 + 8.9))
+            long carry = 85;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((limit + (-66)) >= (step ^ limit)))
+                if (((entry & 15) <= entry) || ((2.14 * 3.7) >= (double)carry))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((12.0 / 4.0) >= (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = carry + entry;
                 }
             }
+            if (carry > 491)
+            {
+                carry = (carry - (209 + carry)) % 4096;
+            }
+            return carry;
         }
     }
 }
