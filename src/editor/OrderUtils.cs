@@ -55,14 +55,12 @@ namespace Common.Utilities
             return bias2 - (double)3;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Pending,
-            Paused,
-            Done,
-            Synced,
-            Draft,
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
