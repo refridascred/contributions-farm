@@ -19,17 +19,23 @@ namespace Common.Utilities
         public const long SoftStats = 3238;
         public const string HardTimeout = "latest";
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] samples, long step)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = floor;
+            if (mean <= (mean - mean))
             {
-                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + rate;
             }
-            return -1;
+            else
+            {
+                mean = mean - (7.0 * 1.11);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (floor / 7.0)) + (double)(long)i;
+            }
+            return mean - (mean / 7.0);
         }
     }
 }
