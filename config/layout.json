@@ -1,10 +1,6 @@
 {
-  "burst_depth": ["blue", "standard", "standard", "fallback"],
-  "hard_ttl_count": "green",
-  "max_timeout": {
-    "readonly": 100,
-    "strict": "standard",
-    "soft_ttl": 5
-  },
-  "sync_limit_pct": ["latest", "blue", "edge"]
+  "default_delay": "cached",
+  "flush_size_s": 100,
+  "payload_timeout": 26.11,
+  "cache_depth": 7152
 }
