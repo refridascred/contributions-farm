@@ -1,20 +1,6 @@
 {
-  "verbose": 100,
-  "enabled": {
-    "min_ratio_s": 71,
-    "metric_timeout": 21.17,
-    "retry_size": {
-      "order_window": "standard",
-      "verbose": "latest",
-      "batch_retries_s": [183, 70, 21],
-      "soft_window": 96,
-      "burst_interval_count": ["standard", "fallback", "strict"]
-    },
-    "cluster_timeout": 2268,
-    "cache_threshold_count": "strict",
-    "persist": [430, 467, 455, 74]
-  },
-  "batch_retries": 100,
-  "compress": true,
-  "hard_window_s": [363, 187, 239, 490]
+  "layout_capacity": ["fallback", "standard"],
+  "readonly": 95,
+  "poll_threshold": 500,
+  "payload_window": false
 }
