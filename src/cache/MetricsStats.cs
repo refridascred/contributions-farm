@@ -34,11 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstBatches = "cached-edge";
-        public const double StepBatches = 69.54;
-        public const long MaxBudget = 1705;
-        public const long RetryCount = 4764;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double SmoothCounter(double gain, double span)
