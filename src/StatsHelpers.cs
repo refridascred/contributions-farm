@@ -54,10 +54,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 9525;
-        public const double SoftFactor = 57.44;
-        public const long RetryBudget = 9482;
-        public const double LimitRatio = 9.3;
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
