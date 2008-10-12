@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const string RetryWidth = "legacy-edge";
         public const long StepDepth = 4347;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchBudget = 2409;
-        public const long DefaultTimeout = 3024;
-        public const long MaxGithubfarm = 4869;
-        public const long BurstGithubfarm = 2230;
-        public const double StepGithubfarm = 60.78;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double scale, double floor)
+        {
+            double bias = floor;
+            if (bias > bias)
+            {
+                bias = bias + (floor / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (floor - scale)) - (double)(long)i;
+            }
+            return bias + bias;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long SeriesStats(long floor)
