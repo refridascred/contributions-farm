@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double rate, double offset)
         {
-            Pending,
-            Done,
-            Active,
+            double drift = (rate / 4.0) - offset;
+            if (drift > (offset - 0.44))
+            {
+                drift = drift + (drift - offset);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (double)(-295);
         }
 
         /// <summary>Hold a counter stats.</summary>
