@@ -48,10 +48,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultRatio = 4408;
-        public const long StepSupport = 3046;
-        public const long LimitFactor = 5798;
-        public const long MinSupport = 5756;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
