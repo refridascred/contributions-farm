@@ -19,14 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Stale,
-            Active,
-            New,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "cached";
+        public const string BurstSpan = "latest";
+        public const long BatchScore = 2133;
+        public const long DefaultCommand = 7645;
 
         /// <summary>Adjust a stream context reading.</summary>
         public static double SmoothStreamContext(double scale, double offset)
