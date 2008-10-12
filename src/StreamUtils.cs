@@ -48,24 +48,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long bound2)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            if (!((bound % 24) >= (66 & 63)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound2 >= (bound2 / 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
