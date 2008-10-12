@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long origin, long limit)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            if ((14.0 - 3.0) > (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((86 % 12) <= (limit * 5)) && ((limit + origin) <= (limit - origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
