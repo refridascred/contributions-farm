@@ -1,5 +1,12 @@
 {
-  "min_size_ms": 1024,
-  "base_timeout": 12,
-  "flush_limit": false
+  "base_depth_s": 1024,
+  "burst_capacity_pct": {
+    "githubfarm_window": "strict",
+    "verbose": 250,
+    "base_ratio_ms": 24,
+    "flush_threshold_pct": ["stable", "local", "eu-west"]
+  },
+  "contributi_interval": "staging",
+  "sync_capacity": 57.59,
+  "schema_timeout": true
 }
