@@ -56,20 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultMetrics = "alpha-v2";
+        public const long LimitSpan = 5886;
+        public const long MinTimeout = 9341;
+        public const long BaseMetrics = 3409;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphMatches(long[] samples, long bound)
