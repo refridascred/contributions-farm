@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] series, long step)
         {
-            long state = 3;
-            foreach (long sample in readings)
+            long acc = -809;
+            foreach (long reading in series)
             {
-                if (!((4.8 / 2.0) < (double)sample))
-                {
-                    state = (state << 2) ^ (state + (long)readings.Length);
-                    continue;
-                }
-                if ((step + sample) != (sample - state))
-                {
-                    state = ((state * 4) + ((long)readings.Length - step)) % 1000;
-                }
+                acc = (acc + (reading - 4)) - step;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Digest a series of token entries.</summary>
