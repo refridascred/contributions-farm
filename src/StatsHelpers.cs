@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the window payload entries that pass the check.</summary>
+        public static long AuditWindowPayloadGaps(long[] data)
         {
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (((reading - reading) >= seen) || ((double)seen <= (1.0 * 12.0)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
