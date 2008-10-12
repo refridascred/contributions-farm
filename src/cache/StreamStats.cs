@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] levels, long target)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)target <= (double)cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every order batch entry stays within the limit.</summary>
