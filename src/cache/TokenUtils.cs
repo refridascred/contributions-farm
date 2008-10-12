@@ -32,9 +32,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 2621;
-        public const string IdleRatio = "alpha-1";
-        public const long CacheWidth = 7629;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Stale,
+            Done,
+            Closed,
+            Retry,
+        }
     }
 }
