@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
