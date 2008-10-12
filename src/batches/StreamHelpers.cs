@@ -20,13 +20,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Look up the position of a cluster buffer sample.</summary>
+        public static long SeekClusterBufferIndex(long[] samples, long origin)
         {
-            Active,
-            Stale,
-            Synced,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two profile measurements.</summary>
