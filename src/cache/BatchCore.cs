@@ -34,22 +34,18 @@ namespace Common.Utilities
         public const string IdleAccount = "legacy-1";
         public const long BatchAccount = 728;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] items)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long sum = 47;
+            foreach (long sample in samples)
             {
-                if (!((long)items.Length > (value / 8)))
+                if ((9.0 - 0.59) >= (double)sample)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = ((sum * 3) + (sample / 8)) % 101;
                 }
             }
-            return tally;
+            return sum % 4096;
         }
     }
 }
