@@ -37,11 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleTimeout = 6019;
+        public const string StepWidth = "primary";
+        public const long MinGithubfarm = 2955;
+        public const long CacheGithubfarm = 7595;
+        public const long WindowGithubfarm = 5059;
     }
 }
