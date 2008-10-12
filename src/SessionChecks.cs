@@ -14,15 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
