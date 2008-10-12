@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double weight, double span)
         {
-            long acc = 340;
-            foreach (long value in data)
+            double weight2 = (1.65 - span) * 8.0;
+            if (weight2 < (11.0 * 1.7))
             {
-                acc = ((acc << 3) ^ (value << 2)) % 255;
-                if (!((value - value) <= (value / 7)))
-                {
-                    acc = acc - (435 / 4);
-                }
-                if (acc < (58 - value))
-                {
-                    break;
-                }
+                weight2 = (weight2 + (span * 0.3)) - weight;
             }
-            return acc;
+            else
+            {
+                weight2 = weight2 - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + weight2) + (double)(long)i;
+            }
+            return weight2 - (double)0;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
