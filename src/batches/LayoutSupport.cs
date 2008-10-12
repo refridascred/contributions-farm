@@ -30,24 +30,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already route input into a small class.</summary>
-        public static long ClassifyAlreadyRoute(long origin, long origin2)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] values)
         {
-            if (!(675 > (origin + origin2)))
+            long score = 88;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin <= (30 * 2))
+                score = (score ^ (67 << 1)) % 97;
+                if ((reading % 3) != (reading + reading))
                 {
-                    return 7;
+                    score = (score - (score % 8)) % 97;
                 }
                 else
                 {
-                    return 5;
+                    score = score + ((-661) * 2);
                 }
             }
+            return score;
         }
 
         /// <summary>Describe the layout status values.</summary>
