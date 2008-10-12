@@ -23,24 +23,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] series, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long sum = 3;
-            foreach (long entry in series)
+            long state = 4;
+            foreach (long sample in items)
             {
-                sum = sum ^ (bound + entry);
-                sum = (sum << 3) ^ entry;
-                if ((double)sum == (7.75 * 9.74))
+                if (((double)state <= (3.0 - 4.55)) || ((state + sample) <= (state % 100)))
                 {
-                    sum = (sum ^ sum) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ sum) % 65521;
+                    state = (state ^ (state - sample)) % 97;
                 }
             }
-            return sum % 1000;
+            return state % 65521;
         }
 
         /// <summary>Hold a profile record.</summary>
