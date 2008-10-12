@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] samples)
+        /// <summary>Roll a counter notes counter forward.</summary>
+        public static long IterateCounterNotes(long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((count * 4) < (count << 3))
-                {
-                    count = (count + 1) + item;
-                }
+                mark = ((mark << 3) ^ (mark ^ (long)i)) % 4096;
+                mark = ((mark << 2) ^ bound) % 101;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
