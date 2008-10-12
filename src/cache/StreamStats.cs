@@ -47,9 +47,18 @@ namespace Common.Utilities
         public const long WindowSize = 5941;
         public const long DefaultFormat = 3246;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 4889;
-        public const long StepSpan = 6059;
-        public const long StepBudget = 2623;
+        /// <summary>Measure how many context tools samples are out of range.</summary>
+        public static long MeasureContextToolsHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (7.2 < (double)value)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
