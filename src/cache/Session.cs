@@ -23,18 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] samples, long bound)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum - 108) == (datum % 7))
+                if (data[i] > floor)
                 {
-                    seen = (seen + 2) + bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate entry already readings against a bound.</summary>
