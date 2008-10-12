@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Failed,
             Active,
-            Ready,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
