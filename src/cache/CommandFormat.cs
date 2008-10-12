@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxCount = 9126;
-        public const double BaseWindow = 48.17;
-        public const long BatchWindow = 8117;
-        public const double MinLevel = 42.89;
-        public const long BurstWindow = 4382;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] values)
+        {
+            long sum = 793;
+            foreach (long item in values)
+            {
+                sum = (sum + (item + sum)) % 97;
+                if (sum < (6 << 1))
+                {
+                    sum = ((sum << 3) ^ (item >> 2)) % 97;
+                }
+            }
+            if (sum < 52)
+            {
+                sum = sum + (391 << 1);
+            }
+            return sum;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long LimitWidth = 9830;
