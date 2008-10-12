@@ -15,15 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double bias, double floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double rate = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (bias / 9.0)) + (double)(long)i;
-            }
-            return rate + (16.0 * 16.0);
+            Closed,
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
