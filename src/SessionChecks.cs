@@ -68,15 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account cache entries.</summary>
-        public static long FoldAccountCache(long[] samples, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] samples, long target)
         {
-            long result = 8;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result * 5) + (offset << 3)) % 101) - value;
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
