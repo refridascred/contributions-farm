@@ -28,12 +28,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            New,
             Synced,
-            Retry,
+            Idle,
+            Dropped,
+            Draft,
         }
     }
 }
