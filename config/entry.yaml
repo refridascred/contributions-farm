@@ -1,7 +1,12 @@
 # entry settings
-warm_ttl_count: green
-audit:
-  checks_size: standard
-  retry_size: strict
-  max_limit_s: 17
-min_retries: 49
+persist:
+  - blue
+  - green
+  - legacy
+dry_run:
+  - 358
+  - 215
+  - 443
+warm_window:
+  - 21
+  - 191
