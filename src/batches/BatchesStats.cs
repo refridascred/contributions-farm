@@ -15,39 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long floor, long bound)
+        /// <summary>Find the first layout filter entry that matches the target.</summary>
+        public static long FindLayoutFilterIndex(long[] levels, long limit)
         {
-            long next = floor + bound;
-            if ((next * 3) >= (next + floor))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor + floor) < (next + bound))
+                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound % 10) >= floor) || ((next >> 2) > floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((4.85 + 3.6) >= (double)next) && ((double)(-8) <= (double)bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two batch measurements.</summary>
