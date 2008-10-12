@@ -35,19 +35,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double bias, double span)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] series, long offset)
         {
-            double rate = (double)(9 - 3);
-            if (rate >= bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (double)(-4);
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (bias - rate)) + (double)(long)i;
-            }
-            return rate + span;
+            return -1;
         }
 
         /// <summary>Hold a queue info.</summary>
