@@ -47,11 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
