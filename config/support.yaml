@@ -1,36 +1,7 @@
 # support settings
-dry_run: 2448
-flush_interval:
-  persist:
-    strict: 100
-    channel_timeout: blue
-    enabled:
-      - 453
-      - 434
-      - 473
-    default_window_s: false
-    default_ratio_count: false
-    burst_limit_ms: fallback
-  payload_size:
-    batch_ratio_pct:
-      - latest
-      - edge
-    hard_ttl_pct: fallback
-    graph_threshold: 22.75
-    dry_run: stable
-    poll_ttl_ms: 500
-    batch_interval: legacy
-  graph_depth: 48.59
-  soft_threshold_ms:
-    - strict
-    - cached
-    - fallback
-flush_ttl:
-  cluster_retries: 100
-  poll_capacity: false
-  warm_timeout: 100
-  buffer_size: 13
-  graph_delay: 500
-base_depth_pct: 4
-persist: eu-west
-audit: 45
+strict: false
+soft_ttl_ms: 5943
+editor_retries: 6161
+verbose: true
+min_interval: 6974
+warm_limit_s: 500
