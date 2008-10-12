@@ -47,23 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long result = 3;
+            foreach (long sample in series)
             {
-                if (floor <= (190 + (-13)))
-                {
-                    sum = sum + (sum % 64);
-                }
-                if (((floor - sum) >= sum) && (sum >= (sum + floor)))
-                {
-                    sum = ((sum << 2) ^ (53 + floor)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                result = result ^ (sample + result);
             }
-            return sum;
+            return result % 4096;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
