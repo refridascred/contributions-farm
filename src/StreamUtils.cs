@@ -41,25 +41,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long limit, long limit2)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            long slot = limit - limit2;
-            if ((double)limit2 <= (11.0 + 16.0))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1.02 / 5.0) > (double)slot)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
