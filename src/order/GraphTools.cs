@@ -32,22 +32,12 @@ namespace Common.Utilities
         public const string BurstFormat = "cached-edge";
         public const string SoftFormat = "alpha-edge";
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] data, long offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (0.18 <= (double)sample)
-                {
-                    count = (count + 1) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Rank contributi order input into a small class.</summary>
