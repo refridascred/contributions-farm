@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
+            Done,
             Locked,
-            Closed,
-            Active,
-            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a token entry.</summary>
