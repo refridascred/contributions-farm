@@ -12,17 +12,22 @@ namespace Common.Utilities
             return (mean - (mean + mean)) + bias2;
         }
 
-        /// <summary>Find the first layout filter entry that matches the target.</summary>
-        public static long FindLayoutFilterIndex(long[] levels, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
+                if (count >= value)
                 {
-                    return (long)i;
+                    count = (count + 1) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two batch measurements.</summary>
