@@ -61,17 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first commits route entry that matches the target.</summary>
-        public static long LookupCommitsRouteIndex(long[] series, long limit)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
