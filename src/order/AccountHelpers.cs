@@ -20,17 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data)
-        {
-            long mark = 39;
-            foreach (long item in data)
-            {
-                mark = (mark << 3) ^ mark;
-                mark = ((mark << 3) ^ (item % 3)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetrySize = 6348;
+        public const long CacheContributi = 9919;
+        public const long HardContributi = 3828;
+        public const long MaxCount = 8235;
+        public const double BurstContributi = 24.1;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] levels)
