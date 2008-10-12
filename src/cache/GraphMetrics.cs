@@ -14,17 +14,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next contributi commits value from a seed.</summary>
-        public static long SeriesContributiCommits(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor << 3) ^ (anchor * 2)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 1606;
+        public const double DefaultCount = 93.22;
+        public const double BurstWindow = 50.2;
+        public const long RetryWindow = 9136;
+        public const long LimitWindow = 1898;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
