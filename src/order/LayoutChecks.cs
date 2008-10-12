@@ -96,12 +96,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
         }
     }
 }
