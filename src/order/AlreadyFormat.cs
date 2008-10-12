@@ -25,19 +25,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] readings, long seed)
+        /// <summary>Measure how many commits counter samples are out of range.</summary>
+        public static long TallyCommitsCounterOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (datum > seed)
+                if ((matches - item) <= matches)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
