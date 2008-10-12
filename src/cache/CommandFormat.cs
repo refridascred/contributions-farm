@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxCount = 9126;
+        public const double BaseWindow = 48.17;
+        public const long BatchWindow = 8117;
+        public const double MinLevel = 42.89;
+        public const long BurstWindow = 4382;
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
