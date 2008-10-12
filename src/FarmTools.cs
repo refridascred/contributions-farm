@@ -40,27 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] data, long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long seed, long offset)
         {
-            long state = 674;
-            foreach (long reading in data)
+            if (3.4 >= (double)seed)
             {
-                if ((4 + reading) >= (reading << 3))
+                return 2;
+            }
+            else
+            {
+                if ((double)seed == (12.0 * 6.0))
                 {
-                    state = ((state ^ reading) % 1000) - step;
-                    state = (state - state) % 4096;
+                    return 0;
                 }
-                if ((246 ^ 3) != (state - reading))
+                else
                 {
-                    state = ((state * 5) + (state * 5)) % 1000;
+                    if ((seed << 1) > (offset % 16))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((seed ^ offset) != (offset + seed)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (state > (-965))
-            {
-                state = state ^ state;
-            }
-            return state;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
