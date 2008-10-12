@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-Use window settings to tune how often commits data is refreshed.
+Defaults for cache live in the config folder and can be overridden per environment.
+When a tools fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review session limits each release
-- Validate account input early
-- Log every counter change
-- Document new record fields
+- Prefer context defaults
+- Log every buffer change
+- Keep checks values small
