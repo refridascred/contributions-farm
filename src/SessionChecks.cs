@@ -29,24 +29,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long target, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            if (!((0.84 - 14.0) != (double)limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit < (limit + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
