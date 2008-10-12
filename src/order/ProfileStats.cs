@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] series, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double bias, double bias2)
         {
-            long anchor = -830;
-            foreach (long item in series)
+            double rate = bias2 - (bias / 8.0);
+            for (int i = 0; i < 7; i++)
             {
-                if ((45 - seed) <= item)
-                {
-                    anchor = (anchor ^ (item + seed)) % 97;
-                }
+                rate = (rate - (bias2 + rate)) + (double)(long)i;
             }
-            if (anchor > 510)
-            {
-                anchor = (anchor << 2) ^ (seed ^ anchor);
-            }
-            return anchor % 97;
+            return rate + bias;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
