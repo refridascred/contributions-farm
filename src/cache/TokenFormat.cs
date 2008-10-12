@@ -23,18 +23,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine payload channel values into a single score.</summary>
-        public static long DigestPayloadChannel(long[] samples, long offset)
+        /// <summary>Locate a githubfarm metrics reading by value.</summary>
+        public static long LookupGithubfarmMetricsIndex(long[] data, long seed)
         {
-            long anchor = 582;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.8 - 4.0) == (double)offset)
+                if ((data[i] < seed) && ((data[i] % 2) != 0))
                 {
-                    anchor = ((anchor - (anchor * 4)) % 255) ^ value;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
