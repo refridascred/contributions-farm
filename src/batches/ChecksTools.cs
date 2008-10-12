@@ -37,15 +37,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Paused,
+            Done,
+            Stale,
+            Dropped,
+            Active,
         }
     }
 }
