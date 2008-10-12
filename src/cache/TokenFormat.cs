@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] series, long floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            long sum = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell << 1) >= (sum % 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + floor) % 65521;
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a stream entry.</summary>
