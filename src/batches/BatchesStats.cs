@@ -42,29 +42,17 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] values, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score << 2) ^ (origin + (long)i);
-                if (origin < (origin ^ origin))
+                if (values[i] > origin)
                 {
-                    score = (score * 5) + origin;
-                    score = (score + (origin - origin)) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score + (origin & 31)) % 97;
-                }
-                if (((score & 3) <= (origin >> 2)) && (origin <= (score % 100)))
-                {
-                    score = (score << 3) ^ score;
-                }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
     }
 }
