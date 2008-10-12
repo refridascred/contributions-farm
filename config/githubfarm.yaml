@@ -1,13 +1,19 @@
 # githubfarm settings
-max_window_count: primary
-base_limit: edge
-persist: green
-readonly: 100
-audit: 16
-dry_run:
-  readonly: staging
-  batch_size: 9342
-  poll_interval: 80.16
-  compress: 46.58
-  warm_window_s: staging
-  already_limit: 0.54
+burst_threshold_count: eu-west
+dry_run: fallback
+farm_ttl:
+  channel_interval: false
+  retry_interval_count:
+    - 262
+    - 379
+  strict: fallback
+  burst_interval:
+    base_interval_ms: 11.39
+    record_interval: 75
+    poll_limit_pct:
+      - 66
+      - 218
+      - 250
+    hard_retries_count: 30
+    max_delay_pct: 20.85
+    persist: green
