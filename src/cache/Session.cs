@@ -34,12 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Match up schema stream samples.</summary>
+        public static long CompareSchemaStreamCount(long[] values)
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
