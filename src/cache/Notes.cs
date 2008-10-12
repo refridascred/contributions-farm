@@ -31,13 +31,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] items, long step)
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate token support readings against a bound.</summary>
