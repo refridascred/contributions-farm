@@ -14,14 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Paused,
-            Pending,
-            Retry,
-            Active,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 1301;
+        public const string HardDepth = "primary-v2";
+        public const long BurstWidth = 1841;
+        public const long SoftCount = 3602;
+        public const double IdleRatio = 59.92;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long WeighNotes(long[] items)
