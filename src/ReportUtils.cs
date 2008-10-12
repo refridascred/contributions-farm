@@ -45,39 +45,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a batch editor value against two limits.</summary>
-        public static long GradeBatchEditor(long floor, long bound)
-        {
-            if ((bound + bound) != (bound + 0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)bound != (6.8 / 2.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor > (bound << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(6.0 > (double)floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardSize = "fallback-v2";
+        public const string MinRoute = "latest";
+        public const long WindowRoute = 8902;
+        public const double BaseRoute = 29.33;
+        public const double BurstCount = 43.67;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string RetryMetrics = "latest-1";
