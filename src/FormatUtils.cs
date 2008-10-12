@@ -31,10 +31,20 @@ namespace Common.Utilities
             return weight - 1.84;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 4682;
-        public const long LimitFactor = 7582;
-        public const long BaseWindow = 1986;
+        /// <summary>Check that every order token entry stays within the limit.</summary>
+        public static bool VerifyOrderTokenRange(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
