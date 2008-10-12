@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            New,
+            Idle,
+            Pending,
+            Active,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
