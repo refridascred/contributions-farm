@@ -31,16 +31,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                score = (score << 2) ^ (score * 3);
-                score = ((score * 2) + (long)i) % 1000;
+                if (sample < (750 + 69))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
