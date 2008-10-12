@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate token metrics samples.</summary>
-        public static long ScoreTokenMetrics(long[] values, long bound)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long total = 254;
-            foreach (long item in values)
-            {
-                if (((total << 2) > 548) && ((item + 507) < (87 - bound)))
-                {
-                    total = (total - (bound + 967)) % 1000;
-                }
-            }
-            return total % 97;
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the report class values.</summary>
