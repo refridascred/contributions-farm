@@ -1,14 +1,8 @@
 {
-  "soft_limit": "strict",
-  "notes_delay": [181, 62],
-  "graph_depth": 60.85,
-  "batch_depth_s": {
-    "enabled": 46,
-    "readonly": true,
-    "sync_size": 60,
-    "retry_size": true,
-    "max_capacity": 3468
-  },
-  "readonly": 4540,
-  "idle_ratio": 18.36
+  "cache_threshold_ms": 4.07,
+  "default_interval": 6411,
+  "batch_timeout": "blue",
+  "max_capacity": 30,
+  "audit": false,
+  "token_retries": "latest"
 }
