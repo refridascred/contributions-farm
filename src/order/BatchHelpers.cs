@@ -28,11 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] samples)
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((hits - hits) == (126 + value)) && ((value / 7) == (hits % 12)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
