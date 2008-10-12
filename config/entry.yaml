@@ -1,11 +1,4 @@
 # entry settings
-farm_capacity:
-  - eu-west
-  - latest
-  - cached
-warm_retries_count: stable
-warm_interval_ms:
-  - fallback
-  - cached
-  - legacy
-base_delay_s: legacy
+max_threshold: 1024
+verbose: 42.27
+flush_threshold: 5888
