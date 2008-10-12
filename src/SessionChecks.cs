@@ -43,21 +43,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchTimeout = 2367;
+        public const long LimitCount = 7216;
+        public const long BatchPayload = 5292;
     }
 }
