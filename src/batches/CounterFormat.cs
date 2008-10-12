@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long BatchInterval = 3772;
         public const string BurstGraph = "legacy";
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Stale,
-            Idle,
-            Locked,
-            Pending,
+            Dropped,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a batch stats.</summary>
