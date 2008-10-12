@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxInterval = 5249;
-        public const string MaxChannel = "staging";
-        public const double SoftChannel = 67.02;
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
