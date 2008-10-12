@@ -21,12 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] <= seed)
+                if (items[i] > limit)
                 {
                     return (long)i;
                 }
