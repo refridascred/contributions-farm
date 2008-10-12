@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long WindowBudget = 2322;
         public const double StepSpan = 38.18;
 
-        /// <summary>Measure how many metric format samples are out of range.</summary>
-        public static long CountMetricFormatHits(long[] readings, long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((0 + hits) > (316 + sample))
+                if (entry >= floor)
                 {
-                    hits = (hits + 2) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
