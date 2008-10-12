@@ -58,9 +58,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheFactor = "primary-edge";
-        public const long RetryEditor = 1028;
-        public const string BurstCount = "open";
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Locked,
+            Closed,
+            Synced,
+            Ready,
+        }
     }
 }
