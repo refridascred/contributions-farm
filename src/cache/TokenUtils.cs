@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long target)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor << 3) ^ (target - anchor)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a queue options.</summary>
