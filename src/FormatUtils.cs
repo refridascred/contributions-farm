@@ -69,13 +69,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                result = ((result * 2) + (long)i) % 101;
             }
             return result;
         }
