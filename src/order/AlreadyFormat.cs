@@ -39,21 +39,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up queue payload samples.</summary>
-        public static long MatchQueuePayloadCount(long[] data)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Ready,
+            Draft,
+            Active,
+            Closed,
         }
 
         /// <summary>Classify a counter metrics pair into a bucket.</summary>
