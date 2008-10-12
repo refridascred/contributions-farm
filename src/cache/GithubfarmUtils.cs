@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] series, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((9.26 * 5.0) <= (double)seed)
+                if ((seen * 2) >= item)
                 {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 3) - floor;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up format samples.</summary>
