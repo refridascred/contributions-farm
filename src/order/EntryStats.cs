@@ -50,18 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] items, long limit)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (0 >= limit)
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
+            Done,
+            Queued,
+            Draft,
+            Closed,
+            Idle,
         }
     }
 }
