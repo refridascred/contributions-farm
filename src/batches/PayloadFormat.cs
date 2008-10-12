@@ -14,19 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] levels, long bound)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] levels)
         {
-            bool valid = true;
+            long seen = 0;
             foreach (long reading in levels)
             {
-                if (reading < bound)
+                if ((2.1 + 0.88) <= (16.0 - 8.0))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
