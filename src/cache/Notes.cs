@@ -14,12 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchCount = 97.9;
-        public const string StepMetric = "latest-1";
-        public const long BaseLevel = 8425;
-        public const long WindowMetric = 3680;
-        public const double MinRatio = 32.58;
+        /// <summary>Count the profile counter entries that pass the check.</summary>
+        public static long CountProfileCounterMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - 941) <= (count * 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long DigestEntry(long[] values, long limit)
