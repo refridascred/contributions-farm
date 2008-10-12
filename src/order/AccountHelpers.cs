@@ -61,18 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload metrics readings against a rule.</summary>
-        public static long TallyPayloadMetricsHits(long[] samples)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((38 + hits) == (hits + hits))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define session limits and defaults.</summary>
