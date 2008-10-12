@@ -51,16 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session payload series from a seed.</summary>
-        public static long DeriveSessionPayload(long origin)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            double mean = ratio;
+            if (mean < floor)
             {
-                total = total + (total + origin);
-                total = ((total * 5) + (long)i) % 101;
+                mean = mean - ratio;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean + (double)6;
         }
     }
 }
