@@ -96,19 +96,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((item % 60) >= item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 6900;
+        public const string LimitDepth = "strict-v2";
+        public const long MinBatches = 6717;
+        public const long StepDepth = 4321;
+        public const long StepBatches = 7088;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftBudget = 3526;
