@@ -26,22 +26,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] items, long limit)
+        /// <summary>Count stream batch pairs that satisfy a relation.</summary>
+        public static long PairStreamBatchCount(long[] readings)
         {
-            long carry = 8;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)carry <= (4.6 - 14.0)) || ((entry / 2) > entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry << 2) ^ (limit - entry)) % 97;
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry > 7)
-            {
-                carry = (carry ^ carry) % 101;
-            }
-            return carry % 4096;
+            return matches;
         }
     }
 }
