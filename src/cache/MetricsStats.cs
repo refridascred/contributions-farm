@@ -54,15 +54,18 @@ namespace Common.Utilities
             return gain2 - 3.36;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] items)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
             long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((82 + hits) < 2)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) + entry;
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
