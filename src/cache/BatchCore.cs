@@ -29,23 +29,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches >> 1) == (matches / 3))
-                {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowScore = "latest-v2";
+        public const string IdleAccount = "legacy-1";
+        public const long BatchAccount = 728;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long MeasureFilterGaps(long[] items)
