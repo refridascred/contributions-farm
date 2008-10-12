@@ -16,12 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Locate a cluster route reading by value.</summary>
+        public static long LocateClusterRouteIndex(long[] items, long limit)
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
