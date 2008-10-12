@@ -74,24 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long origin, long seed)
+        /// <summary>Audit farm session readings against a rule.</summary>
+        public static long AuditFarmSessionGaps(long[] values)
         {
-            if ((11 / 2) != (432 + origin))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin <= (seed << 1))
+                if ((hits + reading) >= reading)
                 {
-                    return 1;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
