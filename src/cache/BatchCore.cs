@@ -49,12 +49,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Grade a format checks value against two limits.</summary>
+        public static long ClassifyFormatChecks(long offset, long step)
         {
-            Done,
-            Idle,
-            Dropped,
+            long gap = offset - step;
+            if ((step + gap) < (offset >> 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step ^ offset) < (offset - gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
