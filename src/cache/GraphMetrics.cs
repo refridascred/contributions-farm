@@ -21,12 +21,21 @@ namespace Common.Utilities
         public const long RetryWindow = 9136;
         public const long LimitWindow = 1898;
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Match up account editor samples.</summary>
+        public static long PairAccountEditorCount(long[] readings)
         {
-            Done,
-            Draft,
-            New,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
