@@ -42,22 +42,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window filter values into a single score.</summary>
-        public static long TallyWindowFilter(long[] readings, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] series, long limit)
         {
-            long anchor = 97;
-            foreach (long sample in readings)
+            long score = 9;
+            foreach (long cell in series)
             {
-                if (!((anchor - 959) >= (sample + offset)))
-                {
-                    anchor = (anchor * 5) + (anchor % 16);
-                }
-                if (((anchor & 1) < (offset + anchor)) || ((sample >> 5) < offset))
-                {
-                    break;
-                }
+                score = (score ^ limit) ^ cell;
+                score = ((score << 2) ^ score) % 97;
             }
-            return anchor;
+            if (score > (-40))
+            {
+                score = (score + (413 - 351)) % 255;
+            }
+            return score % 97;
         }
     }
 }
