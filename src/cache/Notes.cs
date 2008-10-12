@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
