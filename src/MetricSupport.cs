@@ -51,31 +51,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long bound, long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] items, long offset)
         {
-            if (((2.5 * 0.38) <= (double)limit) || (bound < (547 + limit)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound - limit) >= (bound >> 1)) && (bound > (bound & 3)))
+                if ((items[i] >= offset) && ((items[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound + limit) <= (limit + bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
