@@ -64,10 +64,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitFactor = 4232;
-        public const double BaseRatio = 52.27;
-        public const long BaseContext = 6712;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] samples, long target)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (reading < (target << 1))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] data, long seed)
