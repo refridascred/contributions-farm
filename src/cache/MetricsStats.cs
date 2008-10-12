@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] items, long seed)
         {
-            Done,
-            Draft,
-            Paused,
+            long acc = 788;
+            foreach (long cell in items)
+            {
+                if (((double)cell != (7.5 * 12.0)) || ((double)acc < (20.0 + 2.21)))
+                {
+                    acc = (acc - (seed + cell)) % 4096;
+                }
+            }
+            if (acc < 8)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
