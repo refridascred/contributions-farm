@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine tools metric values into a single score.</summary>
-        public static long WeighToolsMetric(long[] series, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long mark = 506;
-            foreach (long value in series)
-            {
-                if (offset >= value)
-                {
-                    mark = ((mark * 2) + (value << 3)) % 97;
-                }
-            }
-            return mark % 65521;
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
