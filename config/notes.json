@@ -1,5 +1,12 @@
 {
-  "min_interval_s": false,
-  "readonly": 57,
-  "sync_capacity_pct": 6067
+  "base_window": {
+    "soft_depth_ms": false,
+    "record_depth": 80,
+    "soft_capacity_pct": ["edge", "blue"]
+  },
+  "cluster_size": true,
+  "warm_capacity_s": [376, 186, 420],
+  "max_delay_count": true,
+  "max_depth_s": "cached",
+  "batch_capacity": 34
 }
