@@ -1,7 +1,7 @@
 {
-  "hard_size_pct": "strict",
-  "sync_interval_s": 48,
-  "enabled": ["stable", "legacy", "blue"],
-  "default_size_ms": true,
-  "dry_run": "strict"
+  "format_timeout": ["open", "open"],
+  "persist": 54.52,
+  "report_ttl": true,
+  "graph_threshold": "green",
+  "record_window": 3565
 }
