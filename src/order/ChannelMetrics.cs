@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] levels)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if ((double)bound2 != (double)bound)
             {
-                if ((datum - datum) < datum)
+                return 2;
+            }
+            else
+            {
+                if ((bound2 ^ 368) != (487 & 3))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the graph level values.</summary>
