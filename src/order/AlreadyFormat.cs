@@ -40,19 +40,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a stream route counter forward.</summary>
-        public static long RollStreamRoute(long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = ((acc - (acc + origin)) % 255) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
