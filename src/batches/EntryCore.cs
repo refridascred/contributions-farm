@@ -36,18 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report window samples are out of range.</summary>
-        public static long CountReportWindowHits(long[] values, long bound)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (11 >= ((-366) + bound))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the payload class values.</summary>
