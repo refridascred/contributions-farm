@@ -1,12 +1,12 @@
 {
-  "retry_ttl_s": "eu-west",
-  "retry_ttl": {
-    "metric_depth": 1417,
-    "flush_interval_count": 95,
-    "soft_timeout": "green"
+  "poll_timeout_pct": [132, 40, 121],
+  "readonly": 41.73,
+  "context_ttl": "local",
+  "verbose": {
+    "burst_size_pct": ["local", "cached", "standard", "latest"],
+    "strict": "blue",
+    "farm_depth": 85.0,
+    "editor_capacity": 3.12
   },
-  "burst_limit": "edge",
-  "notes_threshold": "latest",
-  "flush_window_ms": 87.44,
-  "readonly": ["edge", "latest", "cached", "legacy"]
+  "default_timeout": [297, 249, 428]
 }
