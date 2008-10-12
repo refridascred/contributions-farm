@@ -24,17 +24,20 @@ namespace Common.Utilities
         public const long MaxEditor = 5489;
         public const double CacheEditor = 14.73;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] levels, long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] == target)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    mix = ((mix + (step << 3)) % 101) + (long)i2;
+                    mix = (mix + (mix + step)) % 4096;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
