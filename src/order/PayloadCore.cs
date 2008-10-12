@@ -45,19 +45,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] values, long bound)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
