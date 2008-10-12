@@ -71,17 +71,11 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] data, long target)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (double)16;
+            return (scale + gain) + floor;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
