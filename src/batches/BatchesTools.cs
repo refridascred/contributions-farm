@@ -25,13 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
+            Stale,
+            Pending,
+            Done,
+            Paused,
         }
     }
 }
