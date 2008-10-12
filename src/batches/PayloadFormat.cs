@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] values)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!((6.0 / 7.0) <= (double)seen))
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Locate a counter schema reading by value.</summary>
