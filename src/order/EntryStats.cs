@@ -32,19 +32,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (value <= bound)
+                if (!((7 - sample) < (13 >> 3)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Locate a already reading by value.</summary>
