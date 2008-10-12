@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] readings, long step)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state << 2) ^ state) % 4096;
-                if ((0 >> 1) < (state * 4))
+                if (readings[i] < step)
                 {
-                    break;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Rank farm already input into a small class.</summary>
