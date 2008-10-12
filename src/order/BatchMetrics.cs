@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long target, long bound)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((bound >> 4) < target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(11 >= (bound >> 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target >= (8.0 / 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
