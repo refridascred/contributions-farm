@@ -1,7 +1,17 @@
 # entry settings
-poll_size_ms: strict
-dry_run:
-  - 339
-  - 392
-  - 122
-warm_size_s: false
+retry_limit_ms: eu-west
+soft_interval_pct:
+  audit: 71
+  sync_retries_pct: fallback
+  retry_ttl: 27
+  dry_run:
+    - open
+    - local
+  format_ratio:
+    - 303
+    - 48
+    - 50
+    - 443
+  schema_ttl: 3925
+soft_delay: 88
+default_threshold: 9413
