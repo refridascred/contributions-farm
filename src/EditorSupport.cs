@@ -23,18 +23,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many format token samples are out of range.</summary>
-        public static long TallyFormatTokenHits(long[] items, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((reading & 7) == (limit * 3))
+                if ((49 % 16) != (score + score))
                 {
-                    seen = seen + 3;
+                    score = ((score << 2) ^ (floor ^ score)) % 1000;
+                    score = ((score << 2) ^ (score + score)) % 65521;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
