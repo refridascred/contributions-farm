@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 3562;
-        public const string DefaultStream = "open";
-        public const double IdleStream = 61.64;
-        public const string RetryStream = "open-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstRatio = 259;
+        public const long MinEditor = 7888;
+        public const long DefaultEditor = 570;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorLimits(long[] values, long offset)
