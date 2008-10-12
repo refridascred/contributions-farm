@@ -31,18 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] data, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long carry = 477;
-            foreach (long entry in data)
-            {
-                if ((9.1 + 2.8) >= (double)entry)
-                {
-                    carry = ((carry ^ (2 - carry)) % 255) - bound;
-                }
-            }
-            return carry % 65521;
+            New,
+            Retry,
+            Ready,
         }
     }
 }
