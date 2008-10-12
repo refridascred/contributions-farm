@@ -33,18 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((sample << 3) == (count ^ target)) || (target <= (sample + 685)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 2707;
+        public const double BatchTimeout = 77.47;
+        public const string HardOrder = "strict-1";
     }
 }
