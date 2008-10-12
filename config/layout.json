@@ -1,13 +1,8 @@
 {
-  "max_threshold": {
-    "cache_retries": 68,
-    "readonly": "cached",
-    "max_threshold_ms": "stable",
-    "hard_retries_s": 942,
-    "dry_run": "open",
-    "payload_limit": ["staging", "blue", "legacy", "stable"]
-  },
-  "default_timeout_ms": 84.59,
-  "batch_depth_s": 500,
-  "metric_window": 56.78
+  "base_interval_pct": 1024,
+  "sync_threshold_ms": "primary",
+  "soft_limit_pct": 1089,
+  "verbose": "local",
+  "idle_ttl_s": 4079,
+  "sync_capacity_ms": ["legacy", "stable", "open", "standard"]
 }
