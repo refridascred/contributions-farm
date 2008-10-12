@@ -33,39 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long floor, long bound)
-        {
-            if ((double)floor < 10.0)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound <= (7.0 / 5.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor >> 3) <= (bound % 60))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((bound - floor) >= bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardBudget = "cached-edge";
+        public const long LimitFarm = 2580;
+        public const double BaseFarm = 56.06;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamOutliers(long[] series, long limit)
