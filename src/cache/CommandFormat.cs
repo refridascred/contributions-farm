@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const double MinLevel = 42.89;
         public const long BurstWindow = 4382;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public bool Score { get; set; }
-            public double Size { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitWidth = 9830;
+        public const long MinBuffer = 348;
+        public const long StepBuffer = 6922;
+        public const long LimitBuffer = 1973;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] series, long target)
