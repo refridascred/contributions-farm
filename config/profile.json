@@ -1,19 +1,6 @@
 {
-  "default_timeout_s": 250,
-  "format_depth": {
-    "compress": 12,
-    "persist": 75.13,
-    "hard_ratio": 8693,
-    "min_timeout_count": 5982,
-    "min_depth_s": {
-      "base_retries_s": false,
-      "dry_run": "blue",
-      "idle_capacity": 3979
-    },
-    "readonly": true
-  },
-  "min_limit_count": "primary",
-  "batches_window": "legacy",
-  "payload_limit": "strict",
-  "soft_delay_count": true
+  "strict": "standard",
+  "min_depth_ms": [237, 271],
+  "githubfarm_interval": "staging",
+  "sync_depth_s": false
 }
