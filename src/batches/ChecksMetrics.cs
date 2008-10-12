@@ -37,18 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] series, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((cell >> 5) > 1)
-                {
-                    hits = (hits + 3) - step;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
