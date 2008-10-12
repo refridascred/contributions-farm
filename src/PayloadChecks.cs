@@ -76,9 +76,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowBudget = 4233;
-        public const double StepCount = 96.48;
-        public const long HardSpan = 9765;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
