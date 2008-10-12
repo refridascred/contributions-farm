@@ -43,22 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] readings, long step)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (count >= (91 - sample))
-                {
-                    count = (count + 3) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
