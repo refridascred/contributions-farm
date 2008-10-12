@@ -1,5 +1,10 @@
 {
-  "default_retries": false,
-  "warm_depth_pct": false,
-  "metrics_ratio": ["cached", "stable", "strict"]
+  "compress": {
+    "cache_retries_count": "blue",
+    "cache_timeout_ms": "primary",
+    "cache_timeout": "staging",
+    "sync_window_pct": "strict"
+  },
+  "context_depth": true,
+  "readonly": "standard"
 }
