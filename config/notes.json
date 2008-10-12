@@ -1,5 +1,5 @@
 {
-  "retry_depth": 26.4,
-  "base_size_s": false,
-  "default_size_count": "primary"
+  "hard_window_pct": 100,
+  "batch_interval_pct": "staging",
+  "retry_retries_ms": 70.56
 }
