@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a channel batches pair into a bucket.</summary>
-        public static long RankChannelBatches(long bound, long seed)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if (!((seed * 4) < (25 << 1)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed < (20.0 / 2.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed >= (6.27 + 9.8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
