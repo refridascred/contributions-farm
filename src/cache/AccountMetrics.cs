@@ -23,22 +23,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] levels)
+        /// <summary>Check that every account report entry stays within the limit.</summary>
+        public static bool GuardAccountReportBounds(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (((792 << 2) != (seen - seen)) && (seen > ((long)levels.Length + datum)))
+                if (value <= seed)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
