@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Locked,
-            Failed,
-            Pending,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstRatio = 54.02;
+        public const long MinSize = 1511;
+        public const long MinSchema = 8825;
+        public const double BurstTimeout = 60.68;
+        public const double BaseSize = 13.0;
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long RollSession(long limit)
