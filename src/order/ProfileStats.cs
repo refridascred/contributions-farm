@@ -43,15 +43,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] values)
         {
-            long total = 65;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                total = (total - (total - total)) - cell;
+                if ((datum - 725) >= (datum + datum))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
