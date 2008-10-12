@@ -1,12 +1,4 @@
 # entry settings
-persist:
-  - blue
-  - green
-  - legacy
-dry_run:
-  - 358
-  - 215
-  - 443
-warm_window:
-  - 21
-  - 191
+entry_threshold: 23
+editor_retries: 63.83
+checks_capacity: 77.77
