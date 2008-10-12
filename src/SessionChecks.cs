@@ -13,20 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of graph token readings.</summary>
-        public static long WeighGraphToken(long[] levels, long target)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long mark = 6;
-            foreach (long item in levels)
-            {
-                long delta = (target / 3) - (9 & 3);
-                mark = ((mark - (delta << 2)) % 65521) ^ item;
-                if ((double)target >= (double)4)
-                {
-                    mark = (mark * 3) + (99 ^ mark);
-                }
-            }
-            return mark % 65521;
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a already options.</summary>
