@@ -7,14 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-stable}"
+BUFFER_LIMIT=124
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    green)
+    blue)
         log "fast path"
         ;;
     *)
