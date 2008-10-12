@@ -72,15 +72,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a session payload counter forward.</summary>
-        public static long DeriveSessionPayload(long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return mix;
+            return sum;
         }
     }
 }
