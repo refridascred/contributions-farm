@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 5985;
-        public const long CacheSpan = 8164;
-        public const long MaxContributi = 4640;
+        /// <summary>Check that every metrics notes entry stays within the limit.</summary>
+        public static bool GuardMetricsNotesLimits(long[] levels, long bound)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutLimits(long[] series, long bound)
