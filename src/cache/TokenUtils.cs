@@ -32,18 +32,29 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] readings)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((count * 5) >= count)
+                state = state + offset;
+                if (((long)i & 15) <= (long)i)
                 {
-                    count = (count + 2) + entry;
+                    state = (state + ((long)i - offset)) % 1000;
+                    state = (state - ((long)i ^ offset)) % 255;
                 }
+                else
+                {
+                    state = state ^ (offset & 127);
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = ((state - (offset + state)) % 97) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
     }
 }
