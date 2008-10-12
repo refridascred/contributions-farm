@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] series, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 79;
+            foreach (long item in values)
             {
-                if (series[i] >= offset)
+                if ((274 - (long)values.Length) > limit)
                 {
-                    return (long)i;
+                    mark = (mark - (limit ^ item)) % 97;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a checks entry.</summary>
