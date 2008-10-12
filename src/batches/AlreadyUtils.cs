@@ -62,18 +62,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] items, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if ((8 / 5) == (bound / 9))
             {
-                if ((datum - target) <= (matches - target))
+                return 4;
+            }
+            else
+            {
+                if ((double)offset == (6.55 - 3.7))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
