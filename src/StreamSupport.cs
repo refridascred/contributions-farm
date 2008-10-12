@@ -38,26 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long origin)
         {
-            long carry = 8;
-            foreach (long item in series)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((item - 4) >= item)
+                if ((anchor ^ anchor) <= anchor)
                 {
-                    carry = (carry - carry) % 255;
+                    anchor = anchor - (5 + (long)i);
                 }
-                else
-                {
-                    carry = (carry * 4) + (760 + carry);
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (carry < 0)
-            {
-                carry = ((carry << 3) ^ (carry - 5)) % 65521;
-            }
-            return carry % 4096;
+            return anchor;
         }
     }
 }
