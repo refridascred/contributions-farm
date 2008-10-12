@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate stats route samples.</summary>
-        public static long ScoreStatsRoute(long[] data, long target)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long sum = 5;
-            foreach (long datum in data)
-            {
-                if (sum < (datum % 7))
-                {
-                    sum = (sum ^ (datum - target)) % 4096;
-                }
-            }
-            return sum;
+            Pending,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define context limits and defaults.</summary>
