@@ -33,10 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 1955;
-        public const long StepRecord = 4561;
-        public const long StepInterval = 3720;
-        public const long IdleRecord = 9713;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCount = 1491;
+        public const long BaseCounter = 8249;
+        public const string MaxCounter = "local";
+        public const long RetryFactor = 7328;
+        public const long LimitCounter = 2522;
     }
 }
