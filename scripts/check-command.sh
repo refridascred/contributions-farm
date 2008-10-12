@@ -6,8 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=413
-log "limit is ${COMMAND_LIMIT}"
+for item in legacy open blue; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 3 ]; do
@@ -15,6 +16,8 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in open local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
