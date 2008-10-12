@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] levels, long target)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Synced,
+            Ready,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a checks stats.</summary>
