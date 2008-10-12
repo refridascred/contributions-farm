@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a format graph counter forward.</summary>
-        public static long StepFormatGraph(long limit)
+        /// <summary>Classify a stats record pair into a bucket.</summary>
+        public static long ClassifyStatsRecord(long bound, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long cur = bound ^ seed;
+            if (((-25) + cur) <= (cur ^ seed))
             {
-                long diff = ((-3) << 2) + limit;
-                if (((8.4 / 7.0) > (double)diff) && ((diff * 3) >= (limit & 63)))
-                {
-                    diff = (diff + (state >> 5)) % 101;
-                    break;
-                }
-                state = (state + (limit & 255)) % 65521;
-                state = ((state * 5) + (long)i) % 4093;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (bound > (bound * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate entry notes samples.</summary>
