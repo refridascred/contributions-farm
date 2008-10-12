@@ -1,6 +1,6 @@
 {
-  "layout_capacity": ["fallback", "standard"],
-  "readonly": 95,
-  "poll_threshold": 500,
-  "payload_window": false
+  "cache_interval_ms": true,
+  "poll_delay_count": 57.05,
+  "cache_window_s": "blue",
+  "readonly": 30
 }
