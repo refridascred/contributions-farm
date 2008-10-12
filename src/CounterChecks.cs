@@ -21,15 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] series)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] data)
         {
             long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally / 5) <= (item & 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
