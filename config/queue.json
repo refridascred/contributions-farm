@@ -1,8 +1,12 @@
 {
-  "notes_limit": "primary",
-  "retry_timeout_pct": ["stable", "cached"],
-  "flush_depth_ms": true,
-  "soft_timeout_ms": [427, 76, 291],
-  "hard_ttl_ms": 250,
-  "farm_retries": true
+  "retry_ttl_s": "eu-west",
+  "retry_ttl": {
+    "metric_depth": 1417,
+    "flush_interval_count": 95,
+    "soft_timeout": "green"
+  },
+  "burst_limit": "edge",
+  "notes_threshold": "latest",
+  "flush_window_ms": 87.44,
+  "readonly": ["edge", "latest", "cached", "legacy"]
 }
