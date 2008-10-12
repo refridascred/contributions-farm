@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
