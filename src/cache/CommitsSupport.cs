@@ -25,12 +25,23 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryWidth = "strict-1";
-        public const long BurstBuffer = 8655;
-        public const long CacheWidth = 5169;
-        public const string MaxBuffer = "local-v2";
-        public const string HardBuffer = "alpha";
+        /// <summary>Audit channel metrics readings against a rule.</summary>
+        public static long AuditChannelMetricsHits(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((double)reading <= (9.81 * 8.9)) || (reading < (reading / 3)))
+                {
+                    tally = (tally + 3) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long SeriesStats(long floor)
