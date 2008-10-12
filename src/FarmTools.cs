@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchScore = "local-v2";
-        public const string BaseMetrics = "legacy-v2";
-        public const double RetryMetrics = 87.98;
-        public const double MaxWidth = 88.23;
-        public const long LimitMetrics = 7207;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            New,
+            Draft,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
