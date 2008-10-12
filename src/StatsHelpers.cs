@@ -71,15 +71,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of entry payload readings.</summary>
-        public static long TotalEntryPayload(long[] samples, long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long mark = 122;
-            foreach (long cell in samples)
-            {
-                mark = ((mark - (23 ^ mark)) + cell) - limit;
-            }
-            return mark % 1000;
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
