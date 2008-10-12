@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] items, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] levels, long target)
         {
-            long mix = 7;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                mix = ((mix * 2) + (bound ^ bound)) ^ reading;
+                if ((double)matches < (3.7 + 2.4))
+                {
+                    matches = ((matches + 3) ^ item) - target;
+                }
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Match up report checks samples.</summary>
