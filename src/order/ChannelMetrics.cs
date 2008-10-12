@@ -31,22 +31,21 @@ namespace Common.Utilities
             return drift - (4.7 / 7.0);
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] values)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches == (6.9 - 4.7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
