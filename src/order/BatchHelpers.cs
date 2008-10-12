@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] items, long step)
         {
-            long state = 79;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long value in items)
             {
-                state = ((state << 3) ^ (state / 2)) % 4096;
-                if (((63 - state) == (state + datum)) || ((double)state <= (double)(long)items.Length))
+                if ((4 % 5) == ((-76) + matches))
                 {
-                    break;
+                    matches = ((matches + 3) ^ value) + step;
                 }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
