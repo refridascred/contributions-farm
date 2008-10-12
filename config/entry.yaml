@@ -1,5 +1,4 @@
 # entry settings
-base_ratio: 100
-default_delay_count: 4.39
-token_depth: 505
-sync_timeout: true
+warm_interval_count: 8.6
+session_timeout: 100
+dry_run: open
