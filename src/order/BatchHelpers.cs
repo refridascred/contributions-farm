@@ -20,24 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long origin, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] values, long origin)
         {
-            if ((14.0 - 3.0) > (double)limit)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((86 % 12) <= (limit * 5)) && ((limit + origin) <= (limit - origin)))
+                if (reading <= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
