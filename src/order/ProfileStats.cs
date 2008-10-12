@@ -49,9 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseTimeout = 9958;
-        public const long WindowSpan = 2608;
-        public const double RetrySession = 94.16;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
