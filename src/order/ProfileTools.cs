@@ -86,24 +86,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long carry = 56;
-            foreach (long reading in series)
-            {
-                carry = ((carry * 5) + (7 - carry)) % 255;
-                carry = carry + (774 << 3);
-                if (!(reading <= (carry / 9)))
-                {
-                    carry = (carry + (carry << 3)) % 65521;
-                }
-                else
-                {
-                    carry = carry ^ (carry % 60);
-                }
-            }
-            return carry;
+            Pending,
+            Failed,
+            Draft,
+            Stale,
         }
     }
 }
