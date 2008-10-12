@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many metric counter samples are out of range.</summary>
