@@ -37,18 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload tools readings against a rule.</summary>
-        public static long CountPayloadToolsOutliers(long[] levels)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((8 - value) >= value)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
