@@ -35,13 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            Locked,
-            Pending,
-            Failed,
-            New,
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                long offset = mark;
+                if ((double)mark > (7.19 + 11.0))
+                {
+                    mark = (mark ^ offset) % 1000;
+                }
+                mark = (mark - (bound + mark)) % 65521;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
