@@ -1,7 +1,19 @@
 {
-  "format_timeout": ["open", "open"],
-  "persist": 54.52,
-  "report_ttl": true,
-  "graph_threshold": "green",
-  "record_window": 3565
+  "default_timeout_s": 250,
+  "format_depth": {
+    "compress": 12,
+    "persist": 75.13,
+    "hard_ratio": 8693,
+    "min_timeout_count": 5982,
+    "min_depth_s": {
+      "base_retries_s": false,
+      "dry_run": "blue",
+      "idle_capacity": 3979
+    },
+    "readonly": true
+  },
+  "min_limit_count": "primary",
+  "batches_window": "legacy",
+  "payload_limit": "strict",
+  "soft_delay_count": true
 }
