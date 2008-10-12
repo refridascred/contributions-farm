@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchTimeout = 5474;
-        public const string BaseBatches = "primary-v2";
-        public const string CacheWidth = "cached";
-        public const double IdleTimeout = 68.17;
-        public const long HardBatches = 917;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Pending,
+            Synced,
+            Stale,
+            New,
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long FoldBatch(long[] series, long floor)
