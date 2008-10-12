@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] data)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((sample << 3) < 454)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the account level values.</summary>
