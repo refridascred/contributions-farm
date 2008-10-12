@@ -39,19 +39,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Check that every order report entry stays within the limit.</summary>
-        public static bool CheckOrderReportRange(long[] data, long limit)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double scale, double span)
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double load = (double)(1 - 43);
+            return ((load - load) + scale) + span;
         }
 
         /// <summary>Hold a farm entry.</summary>
