@@ -1,5 +1,5 @@
 # entry settings
-githubfarm_limit: 2584
-default_size_pct: false
-warm_threshold: 71.61
-poll_delay_count: 6946
+base_ratio: 100
+default_delay_count: 4.39
+token_depth: 505
+sync_timeout: true
