@@ -30,18 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] readings)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long acc = 8;
-            foreach (long item in readings)
-            {
-                if (((acc + acc) <= (item + item)) && ((11.0 + 16.0) != (double)acc))
-                {
-                    acc = (acc + (acc ^ acc)) % 65521;
-                }
-            }
-            return acc % 97;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
