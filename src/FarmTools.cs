@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((acc ^ offset) <= acc))
-                {
-                    acc = (acc + (acc + offset)) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchScore = "local-v2";
+        public const string BaseMetrics = "legacy-v2";
+        public const double RetryMetrics = 87.98;
+        public const double MaxWidth = 88.23;
+        public const long LimitMetrics = 7207;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
