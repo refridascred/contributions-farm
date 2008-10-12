@@ -25,18 +25,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the metric stats entries that pass the check.</summary>
-        public static long AuditMetricStatsOutliers(long[] items, long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)item <= 1.61)
-                {
-                    seen = (seen + 1) + bound;
-                }
-            }
-            return seen;
+            Draft,
+            Active,
+            Queued,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
