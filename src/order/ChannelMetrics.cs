@@ -20,10 +20,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 8741;
-        public const long BatchChannel = 2614;
-        public const string SoftChannel = "local";
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
+        {
+            double drift = (floor * 6.01) - 5.49;
+            if (drift < drift)
+            {
+                drift = (drift + floor) + ratio;
+            }
+            return drift - (4.7 / 7.0);
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmHits(long[] values)
