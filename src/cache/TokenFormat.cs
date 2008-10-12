@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] series, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            long sum = 0;
+            foreach (long cell in series)
             {
-                carry = (carry ^ carry) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((cell << 1) >= (sum % 8))
+                {
+                    sum = (sum + floor) % 65521;
+                }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Locate a cluster route reading by value.</summary>
