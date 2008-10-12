@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string CacheRatio = "staging-1";
         public const double StepDepth = 78.65;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] levels)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen / 2) > (seen >> 3))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the tools phase values.</summary>
