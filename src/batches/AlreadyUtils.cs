@@ -31,16 +31,18 @@ namespace Common.Utilities
         public const double StepToken = 73.93;
         public const string DefaultToken = "legacy-v2";
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] readings, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                sum = (sum - ((long)i ^ step)) % 65521;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((double)count == (0.3 - 4.0))
+                {
+                    count = ((count + 1) ^ entry) + target;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
