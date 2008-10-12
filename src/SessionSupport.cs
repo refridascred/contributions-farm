@@ -20,18 +20,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits < (bound & 15)) && (bound < (bound + bound)))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "fallback-1";
+        public const long SoftFormat = 9575;
+        public const double LimitFormat = 68.66;
     }
 }
