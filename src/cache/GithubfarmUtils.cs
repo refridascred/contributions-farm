@@ -22,13 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long floor, long seed)
         {
-            Synced,
-            Closed,
-            Retry,
-            Done,
+            long step = floor ^ seed;
+            if ((seed + floor) < (3 - floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((seed * 4) != (seed + step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5.0 - 7.74) <= (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0.4 - 5.42) != (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already options.</summary>
