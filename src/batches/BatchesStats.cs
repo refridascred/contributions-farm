@@ -65,21 +65,19 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item != seed)
                 {
-                    if ((items[i] ^ items[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
