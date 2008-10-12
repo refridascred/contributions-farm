@@ -49,16 +49,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total << 3) ^ (long)i;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowSize = 9484;
+        public const double StepDepth = 40.69;
+        public const long RetryRatio = 9318;
+        public const string BatchRatio = "alpha-edge";
     }
 }
