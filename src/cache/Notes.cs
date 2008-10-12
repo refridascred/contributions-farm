@@ -56,13 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Stale,
-            Dropped,
-            Queued,
-            Failed,
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate token support readings against a bound.</summary>
