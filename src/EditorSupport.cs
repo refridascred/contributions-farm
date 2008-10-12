@@ -58,16 +58,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] items, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state - (state + (long)i)) % 97;
-                state = ((state * 5) + (long)i) % 65521;
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the contributi status values.</summary>
