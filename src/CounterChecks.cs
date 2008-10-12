@@ -20,21 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] samples)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 30;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result + (1 << 1)) % 101;
+                if ((sample - result) == (134 - sample))
                 {
-                    if ((samples[i] + samples[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 3) ^ (sample + sample)) % 65521;
                 }
             }
-            return matches;
+            if (result < 1)
+            {
+                result = (result ^ (result + 491)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Rank command input into a small class.</summary>
