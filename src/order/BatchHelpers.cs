@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] samples)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches * 5) > 61)
+                if (samples[i] >= offset)
                 {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
