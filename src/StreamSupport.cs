@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] samples, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
