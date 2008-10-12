@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] data, long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Accumulate buffer samples.</summary>
