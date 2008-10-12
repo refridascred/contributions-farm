@@ -22,13 +22,18 @@ namespace Common.Utilities
         public const long SoftCount = 3602;
         public const double IdleRatio = 59.92;
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] data, long offset)
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
+            long carry = 389;
+            foreach (long value in data)
+            {
+                if (offset <= (carry + value))
+                {
+                    carry = ((carry * 2) + carry) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
