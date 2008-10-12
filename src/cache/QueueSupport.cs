@@ -14,21 +14,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of metric notes readings.</summary>
-        public static long CompareMetricNotesCount(long[] readings)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = floor + (double)1;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate + bias) - (double)(long)i;
             }
-            return seen;
+            return rate + (double)42;
         }
 
         /// <summary>Roll a counter schema counter forward.</summary>
