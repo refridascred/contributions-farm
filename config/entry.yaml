@@ -1,7 +1,8 @@
 # entry settings
-persist:
-  - primary
-  - primary
-  - staging
-dry_run: true
-filter_limit: 23.47
+persist: standard
+min_size: 69
+queue_interval: 96.09
+enabled:
+  - 338
+  - 250
+min_interval_s: 90.48
