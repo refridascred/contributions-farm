@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public double Mode { get; set; }
-            public double Flag { get; set; }
+            Locked,
+            Retry,
+            Pending,
+            Failed,
         }
 
         /// <summary>Adjust a tools reading.</summary>
