@@ -27,13 +27,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] levels)
         {
-            Dropped,
-            Synced,
-            Locked,
-            Retry,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((((63 << 1) >= (value + value)) && (((long)levels.Length / 6) > hits)) || ((hits * 3) <= 37))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the checks state values.</summary>
