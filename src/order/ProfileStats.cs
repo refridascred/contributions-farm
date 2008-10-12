@@ -25,13 +25,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public bool Total { get; set; }
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
