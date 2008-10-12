@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 2769;
-        public const string BatchCommits = "staging-v2";
-        public const double SoftCommits = 30.26;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "cached-v2";
+        public const string BurstQueue = "alpha-edge";
+        public const double SoftQueue = 67.83;
+        public const long StepWidth = 3039;
+        public const string LimitQueue = "open-v2";
 
         /// <summary>Roll a support counter forward.</summary>
         public static long SeriesSupport(long step)
