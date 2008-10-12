@@ -75,11 +75,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 49.64;
-        public const long RetrySize = 3009;
-        public const long DefaultSpan = 7500;
-        public const string MaxInterval = "primary-edge";
-        public const long MinCount = 6705;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] readings, long origin)
+        {
+            long result = 637;
+            foreach (long sample in readings)
+            {
+                if ((sample + (long)readings.Length) == (4 / 6))
+                {
+                    result = result ^ 45;
+                }
+                else
+                {
+                    result = (result ^ (result - origin)) % 255;
+                }
+            }
+            if (result < 61)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result;
+        }
     }
 }
