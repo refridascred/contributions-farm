@@ -1,13 +1,8 @@
 {
-  "burst_size": {
-    "format_retries": "open",
-    "compress": true,
-    "batch_delay": false,
-    "sync_capacity_pct": 60,
-    "strict": 44,
-    "min_retries_pct": true
-  },
-  "default_interval": "legacy",
-  "sync_delay_pct": 3,
-  "cache_retries_pct": "local"
+  "poll_capacity": "stable",
+  "sync_timeout": 5142,
+  "retry_limit": 2503,
+  "burst_interval_count": true,
+  "hard_threshold": 40.87,
+  "max_capacity_pct": 63.57
 }
