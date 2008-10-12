@@ -16,24 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long origin, long seed)
+        /// <summary>Compare every pair of metric notes readings.</summary>
+        public static long CompareMetricNotesCount(long[] readings)
         {
-            if ((14 - origin) < (seed + seed))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((992 & 31) >= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the buffer status values.</summary>
