@@ -1,9 +1,13 @@
 # entry settings
-channel_retries: 50
-cache_window_s:
-  - eu-west
+editor_delay: 86
+persist: 3886
+retry_ratio_count:
+  strict: 3450
+  audit: fallback
+  burst_capacity_s: 500
+  soft_size_pct: 30
+  max_threshold_ms: 26.9
+batches_interval:
+  - edge
   - strict
-  - standard
-  - open
-counter_retries: 87.43
-sync_window_ms: 79
+  - eu-west
