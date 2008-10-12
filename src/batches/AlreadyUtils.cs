@@ -25,18 +25,26 @@ namespace Common.Utilities
         }
 
         /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] values, long limit)
+        public static long DigestContext(long[] values)
         {
-            long score = 0;
-            foreach (long value in values)
+            long acc = 661;
+            foreach (long reading in values)
             {
-                score = ((score - value) % 65521) + limit;
+                if ((reading - reading) < (reading * 3))
+                {
+                    acc = (acc - reading) % 1000;
+                }
+                else
+                {
+                    acc = (acc + (reading + acc)) % 4096;
+                }
+                acc = (acc ^ (reading << 2)) % 101;
+                if ((acc << 2) <= (reading << 3))
+                {
+                    acc = acc ^ (891 % 8);
+                }
             }
-            if (score > 143)
-            {
-                score = score + score;
-            }
-            return score;
+            return acc % 97;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
