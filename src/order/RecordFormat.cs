@@ -13,12 +13,20 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 3086;
-        public const long RetryFactor = 1598;
-        public const string BaseRoute = "staging-edge";
-        public const long MinDepth = 9286;
-        public const string BurstRoute = "staging-1";
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] data)
