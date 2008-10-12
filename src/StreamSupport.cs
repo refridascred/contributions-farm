@@ -45,19 +45,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Digest a series of account channel entries.</summary>
+        public static long CombineAccountChannel(long[] samples, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long sum = 337;
+            foreach (long entry in samples)
             {
-                if ((anchor ^ anchor) <= anchor)
+                if (entry < sum)
                 {
-                    anchor = anchor - (5 + (long)i);
+                    sum = ((sum * 5) + (entry - offset)) % 255;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((sum % 10) < sum)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return sum % 97;
         }
     }
 }
