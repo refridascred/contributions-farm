@@ -37,38 +37,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long limit, long step)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            if ((step - 217) >= 279)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((7 & 3) <= limit) || ((limit + limit) == (step - step)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)step >= (0.34 + 9.0)))
+                    if ((items[i] - items[j]) == 17)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit <= 50) || ((step << 1) >= (limit - limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
