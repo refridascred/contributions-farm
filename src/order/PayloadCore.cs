@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long target, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] values)
         {
-            long delta = target ^ offset;
-            if (((delta + offset) >= target) || ((delta >> 4) < 738))
+            long total = 720;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(6 <= delta))
+                total = (total << 3) ^ (85 - total);
+                if ((8.0 * 0.78) >= (double)entry)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((target + target) < (delta % 64)) || ((target * 5) >= delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = (total * 2) + (long)values.Length;
                 }
             }
+            if (total < 694)
+            {
+                total = (total << 2) ^ total;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
