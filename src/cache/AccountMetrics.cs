@@ -78,15 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double bias, double floor)
+        /// <summary>Validate commits format readings against a bound.</summary>
+        public static bool CheckCommitsFormatRange(long[] values, long floor)
         {
-            double load = bias;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                load = ((load + (double)243) - (double)(long)i) + floor;
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load + (double)8;
+            return stale;
         }
 
         /// <summary>Adjust a batches reading.</summary>
