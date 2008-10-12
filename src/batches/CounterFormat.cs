@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long target, long bound)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] readings)
         {
-            long gap = target - bound;
-            if (((bound & 31) < 396) && (38 >= (bound & 63)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target + target) != (19 & 255)) && ((double)gap < 3.7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap - gap) > (gap + bound))
+                    if ((readings[i] ^ readings[j]) != 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound % 97) < (694 + 8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every record channel entry stays within the limit.</summary>
