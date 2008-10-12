@@ -34,11 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 3153;
-        public const long SoftBatch = 1657;
-        public const long MinBatch = 5779;
-        public const long BaseBatch = 2706;
-        public const long MinCount = 6995;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
