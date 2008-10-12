@@ -30,14 +30,15 @@ namespace Common.Utilities
         public const long MaxBudget = 1705;
         public const long RetryCount = 4764;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double gain, double span)
         {
-            Failed,
-            Closed,
-            Done,
-            Queued,
-            Draft,
+            double gain2 = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = ((gain2 + (1.77 - 3.7)) + (double)(long)i) - span;
+            }
+            return gain2 - 3.36;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
