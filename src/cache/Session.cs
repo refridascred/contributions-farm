@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxSpan = 4496;
-        public const long MinRecord = 7037;
-        public const long BatchDepth = 15;
-        public const string IdleRecord = "legacy-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 2769;
+        public const string BatchCommits = "staging-v2";
+        public const double SoftCommits = 30.26;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long SeriesSupport(long step)
