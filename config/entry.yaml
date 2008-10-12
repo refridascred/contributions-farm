@@ -1,13 +1,7 @@
 # entry settings
-editor_delay: 86
-persist: 3886
-retry_ratio_count:
-  strict: 3450
-  audit: fallback
-  burst_capacity_s: 500
-  soft_size_pct: 30
-  max_threshold_ms: 26.9
-batches_interval:
-  - edge
-  - strict
-  - eu-west
+warm_ttl_count: green
+audit:
+  checks_size: standard
+  retry_size: strict
+  max_limit_s: 17
+min_retries: 49
