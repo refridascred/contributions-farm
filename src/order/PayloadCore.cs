@@ -34,11 +34,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] samples, long step)
         {
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
+            long total = 9;
+            foreach (long datum in samples)
+            {
+                total = ((total * 5) + (9 + step)) ^ datum;
+            }
+            return total;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
