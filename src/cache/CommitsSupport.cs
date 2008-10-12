@@ -60,15 +60,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double gain, double floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double drift = (double)((-2) * 3);
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift + floor) + (double)(long)i) + gain;
-            }
-            return drift + (16.0 * 2.41);
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
     }
 }
