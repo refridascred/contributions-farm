@@ -1,6 +1,8 @@
-id,ratio,active
-1,stable,89.94
-2,cached,746
-3,primary,53.64
-4,53.15,legacy
-5,792,standard
+id,ratio,weight
+1,62.61,edge
+2,14.66,23.28
+3,68.93,staging
+4,local,fallback
+5,895,941
+6,18.32,75.87
+7,88.94,75.22
