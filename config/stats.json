@@ -1,7 +1,5 @@
 {
-  "cluster_interval": ["open", "primary", "standard"],
-  "verbose": "stable",
-  "base_ttl_count": 78,
-  "dry_run": ["green", "strict"],
-  "persist": 4481
+  "min_size_ms": 1024,
+  "base_timeout": 12,
+  "flush_limit": false
 }
