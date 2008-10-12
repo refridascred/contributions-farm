@@ -1,4 +1,5 @@
 # support settings
-strict: true
-idle_limit_pct: 69.75
-verbose: 61
+strict: 1024
+min_depth_count: 35.24
+queue_size: 42.74
+dry_run: eu-west
