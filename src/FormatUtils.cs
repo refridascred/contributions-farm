@@ -47,15 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double ratio, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] levels)
         {
-            double ratio2 = (double)(0 - 351);
-            if (ratio2 < floor)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                ratio2 = (ratio2 - ratio2) - ratio;
+                if ((double)item > (double)(long)levels.Length)
+                {
+                    hits = hits + 2;
+                }
             }
-            return ratio2 - (double)2;
+            return hits;
         }
 
         /// <summary>Hold a payload entry.</summary>
