@@ -1,9 +1,7 @@
-id,region,score
-1,799,stable
-2,98,standard
-3,179,staging
-4,264,107
-5,73.98,417
-6,strict,28.89
-7,47.45,71.55
-8,311,green
+id,count
+1,715
+2,13.13
+3,151
+4,273
+5,stable
+6,960
