@@ -20,21 +20,24 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long step, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((double)step <= 7.11))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((85 <= (bound + bound)) && (step < (step >> 4)))
                 {
-                    if ((samples[i] - samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of format entries.</summary>
