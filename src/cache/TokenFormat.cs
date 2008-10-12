@@ -28,11 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseRecord = "local-edge";
-        public const long BurstCount = 3301;
-        public const double BaseWidth = 96.48;
-        public const long RetryScore = 3138;
-        public const long SoftRecord = 2482;
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
