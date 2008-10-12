@@ -48,19 +48,9 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] data, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 9063;
+        public const long LimitToken = 5776;
+        public const long CacheToken = 1779;
     }
 }
