@@ -30,12 +30,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            Idle,
+            Ready,
+            Paused,
+            Queued,
+            Retry,
         }
     }
 }
