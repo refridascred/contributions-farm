@@ -12,24 +12,22 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long bound, long bound2)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values)
         {
-            if (((bound2 - bound) > ((-165) / 9)) && ((bound2 - bound) >= bound))
+            long mix = 708;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound2 << 2) <= bound)
+                if (((double)mix >= 1.4) || ((mix % 3) < (mix >> 2)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    mix = ((mix ^ mix) % 255) ^ entry;
                 }
             }
+            if (mix > 4)
+            {
+                mix = ((mix * 2) + (mix ^ mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a stats reading.</summary>
