@@ -14,31 +14,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long target, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            if ((target & 7) <= ((-99) ^ 427))
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target * 4) >= (91 + target)) && ((target >> 5) < (limit + target)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 8;
+                    state = (((state * 4) + ((-5) - floor)) % 255) - (long)i2;
                 }
-                else
+                for (int i3 = 0; i3 < 4; i3++)
                 {
-                    if ((3.0 * 3.6) > (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = ((state - (floor + 88)) % 1000) ^ (long)i3;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
