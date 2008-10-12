@@ -25,15 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double rate, double span)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double ratio = (double)621 + span;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 2.22) + (double)(long)i;
-            }
-            return ratio - (ratio + rate);
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
