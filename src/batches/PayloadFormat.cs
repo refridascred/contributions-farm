@@ -14,17 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a counter schema reading by value.</summary>
-        public static long LocateCounterSchemaIndex(long[] readings, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (readings[i] >= limit)
+                if (reading < bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
