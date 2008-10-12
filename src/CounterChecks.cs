@@ -59,17 +59,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] items, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (items[i] >= seed)
+                if ((1 - matches) < cell)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
