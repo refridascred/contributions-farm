@@ -21,29 +21,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long step, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            if (((floor & 7) <= (step / 2)) || (step <= (floor + step)))
             {
-                state = state + offset;
-                if (((long)i & 15) <= (long)i)
+                return 1;
+            }
+            else
+            {
+                if ((double)floor < 3.41)
                 {
-                    state = (state + ((long)i - offset)) % 1000;
-                    state = (state - ((long)i ^ offset)) % 255;
+                    return 6;
                 }
                 else
                 {
-                    state = state ^ (offset & 127);
+                    return 5;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state - (offset + state)) % 97) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
         }
     }
 }
