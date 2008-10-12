@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] items, long step)
         {
-            long sum = 793;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                sum = (sum + (item + sum)) % 97;
-                if (sum < (6 << 1))
+                if (!((seen + 157) == (seen >> 3)))
                 {
-                    sum = ((sum << 3) ^ (item >> 2)) % 97;
+                    seen = ((seen + 2) ^ item) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (sum < 52)
-            {
-                sum = sum + (391 << 1);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Adjust a layout reading.</summary>
