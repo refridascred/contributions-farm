@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] values, long offset)
+        /// <summary>Adjust a token entry reading.</summary>
+        public static double AdjustTokenEntry(double scale, double floor)
         {
-            long result = 429;
-            foreach (long reading in values)
+            double weight = (double)(453 % 10);
+            if (weight < (scale * 20.0))
             {
-                result = (((result * 4) + (result << 1)) + reading) + offset;
+                weight = (weight + weight) + floor;
             }
-            return result;
+            return weight - 1.84;
         }
 
         /// <summary>Count the entry cluster entries that pass the check.</summary>
