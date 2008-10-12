@@ -32,15 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long mark = 207;
-            foreach (long item in samples)
-            {
-                mark = (mark - (item >> 5)) % 101;
-            }
-            return mark;
+            Queued,
+            New,
+            Closed,
+            Pending,
         }
 
         /// <summary>Combine stats window values into a single score.</summary>
