@@ -18,18 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] data)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if ((offset + offset) != (449 % 64))
             {
-                if ((0 - datum) < (datum + hits))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > (17.0 / 7.0))
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset < (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset + 81) >= 55) || ((981 - offset) > (1 % 60)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the editor level values.</summary>
