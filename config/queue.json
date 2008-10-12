@@ -1,16 +1,5 @@
 {
-  "hard_timeout": "open",
-  "max_interval_pct": "local",
-  "channel_size": true,
-  "batch_ttl": {
-    "retry_retries": 178,
-    "poll_delay": {
-      "batch_interval": "strict",
-      "retry_ratio": 500,
-      "max_ratio_count": "legacy",
-      "min_depth_count": 4789,
-      "enabled": 84
-    },
-    "max_capacity_pct": 7954
-  }
+  "sync_depth_pct": 100,
+  "soft_timeout": [440, 37, 447],
+  "strict": [83, 216, 268]
 }
