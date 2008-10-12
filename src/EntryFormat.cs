@@ -20,13 +20,14 @@ namespace Common.Utilities
         public const string BurstOrder = "primary-1";
         public const string MinFactor = "staging-v2";
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            Done,
+            Closed,
+            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
