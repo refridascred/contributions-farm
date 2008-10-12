@@ -15,25 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long step, long bound)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long lane = step - bound;
-            if ((11.0 + 1.0) != (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((lane + lane) == (bound - lane))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
