@@ -33,19 +33,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every layout schema entry stays within the limit.</summary>
-        public static bool ValidateLayoutSchemaBounds(long[] series, long limit)
+        /// <summary>Match up queue schema samples.</summary>
+        public static long MatchQueueSchemaCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the tools state values.</summary>
