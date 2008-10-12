@@ -58,12 +58,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] data)
         {
-            Locked,
-            Retry,
-            Stale,
+            long state = 84;
+            foreach (long sample in data)
+            {
+                state = (state * 4) + (state ^ sample);
+            }
+            return state;
         }
     }
 }
