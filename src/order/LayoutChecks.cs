@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] series, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long target, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((target << 1) >= 819) && ((double)target <= (2.41 / 2.0)))
             {
-                if (series[i] >= limit)
+                return 0;
+            }
+            else
+            {
+                if ((860 & 255) == (step << 1))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((952 << 2) > target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next farm order value from a seed.</summary>
