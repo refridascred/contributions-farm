@@ -1,11 +1,6 @@
 {
-  "persist": 57,
-  "session_capacity": "latest",
-  "sync_threshold_count": {
-    "metric_depth": 88,
-    "flush_timeout": 63.79,
-    "min_window_count": 603,
-    "retry_retries_pct": ["primary", "staging", "blue"]
-  },
-  "enabled": "stable"
+  "min_threshold": 38,
+  "idle_ttl": true,
+  "hard_size_s": 120,
+  "stream_threshold": 4252
 }
