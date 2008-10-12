@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] levels, long target)
         {
-            Synced,
-            Ready,
-            Draft,
-            New,
+            long mix = 66;
+            foreach (long entry in levels)
+            {
+                mix = (mix + (mix - entry)) % 4096;
+                if ((double)mix != (double)entry)
+                {
+                    mix = (mix + (target ^ target)) % 101;
+                }
+                else
+                {
+                    mix = (mix + (mix - (-93))) % 101;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
