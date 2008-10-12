@@ -12,14 +12,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 5635;
+        public const long SoftStats = 3238;
+        public const string HardTimeout = "latest";
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LookupPayloadIndex(long[] samples, long step)
