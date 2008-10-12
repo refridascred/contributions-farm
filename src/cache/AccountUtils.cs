@@ -31,12 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Check that every tools layout entry stays within the limit.</summary>
+        public static bool GuardToolsLayoutLimits(long[] data, long bound)
         {
-            New,
-            Retry,
-            Ready,
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
