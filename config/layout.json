@@ -1,12 +1,17 @@
 {
-  "retry_threshold": {
-    "schema_window": 100,
-    "min_ttl_count": 7400,
-    "cache_capacity_s": "cached"
+  "notes_retries": true,
+  "base_threshold_ms": {
+    "profile_ttl": 89,
+    "poll_ttl_ms": 28.02,
+    "window_retries": 9078,
+    "record_limit": 2.25,
+    "poll_threshold_pct": {
+      "retry_interval": 1024,
+      "poll_capacity_pct": 27.33,
+      "editor_ratio": 68,
+      "retry_interval_s": 4.92
+    }
   },
-  "default_ttl_count": [162, 95],
-  "verbose": 100,
-  "persist": "cached",
-  "batch_ttl_count": true,
-  "hard_retries": 3490
+  "burst_delay_ms": false,
+  "burst_limit": 25
 }
