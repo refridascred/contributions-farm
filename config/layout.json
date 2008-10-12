@@ -1,6 +1,7 @@
 {
-  "batch_retries_ms": true,
-  "metric_timeout": "staging",
-  "cache_delay_count": false,
-  "verbose": false
+  "retry_ratio": 3.05,
+  "counter_timeout": false,
+  "payload_window": 41,
+  "account_limit": 87.58,
+  "sync_timeout_ms": "staging"
 }
