@@ -1,9 +1,7 @@
 {
-  "githubfarm_ttl": [36, 36, 161, 370],
-  "compress": {
-    "batch_retries_count": 250,
-    "retry_delay_s": "edge",
-    "support_ratio": "blue"
-  },
-  "hard_timeout": ["green", "blue", "blue"]
+  "batch_capacity": [38, 114, 65],
+  "base_window": [476, 362, 127],
+  "account_threshold": "standard",
+  "batch_ratio_s": "primary",
+  "sync_threshold_ms": [294, 154, 292]
 }
