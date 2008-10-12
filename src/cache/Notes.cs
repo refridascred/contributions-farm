@@ -31,17 +31,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] readings, long limit)
+        /// <summary>Check that every tools entry entry stays within the limit.</summary>
+        public static bool GuardToolsEntryBounds(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                if (value >= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Validate token support readings against a bound.</summary>
