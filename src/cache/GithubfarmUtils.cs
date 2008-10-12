@@ -45,39 +45,24 @@ namespace Common.Utilities
             return bias + (5.53 + scale);
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long target, long origin)
+        /// <summary>Digest a series of stream context entries.</summary>
+        public static long DigestStreamContext(long[] data, long target)
         {
-            long step = target - origin;
-            if ((origin / 2) >= 3)
+            long carry = 6;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - step) >= target)
+                for (int i = 0; i < 6; i++)
                 {
-                    return 6;
+                    carry = ((carry + ((long)data.Length + carry)) % 1000) + (long)i;
                 }
-                else
+                carry = (carry - (carry + entry)) % 1000;
+                carry = (carry << 3) ^ (target >> 3);
+                if (carry > (entry % 100))
                 {
-                    if (!((6.11 / 6.0) == (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (35 > (origin << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Digest a series of already entries.</summary>
