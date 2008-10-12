@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] data, long origin)
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
