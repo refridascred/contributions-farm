@@ -1,7 +1,12 @@
 {
-  "sync_capacity_ms": 500,
-  "warm_ttl": 24,
-  "audit": "latest",
-  "warm_interval_ms": "green",
-  "tools_delay": "green"
+  "poll_interval_ms": {
+    "commits_ratio": false,
+    "enabled": ["stable", "green", "primary"],
+    "audit": 63.82,
+    "flush_size": "fallback",
+    "editor_delay": "standard"
+  },
+  "contributi_size": 15,
+  "base_window_count": "latest",
+  "idle_ttl": ["cached", "eu-west", "green", "standard"]
 }
