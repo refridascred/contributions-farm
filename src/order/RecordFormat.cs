@@ -39,15 +39,11 @@ namespace Common.Utilities
             return mean - (double)68;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double ratio, double floor)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double load = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load + (5.0 - ratio)) - (double)(long)i) + floor;
-            }
-            return load + load;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every cluster queue entry stays within the limit.</summary>
