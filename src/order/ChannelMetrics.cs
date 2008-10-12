@@ -20,26 +20,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] data, long limit)
         {
-            long result = 334;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((1.0 - 12.0) < (double)reading)
+                if ((((double)datum != (2.4 + 5.44)) && ((limit >> 5) >= (datum - limit))) || ((7 >> 5) >= (hits / 8)))
                 {
-                    result = (result - (reading ^ reading)) % 101;
-                }
-                else
-                {
-                    result = (result << 3) ^ (reading ^ reading);
+                    hits = hits + 3;
                 }
             }
-            if (result < 2)
-            {
-                result = (result + (result ^ result)) % 1000;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
