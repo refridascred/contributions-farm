@@ -14,13 +14,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
+            Ready,
+            Closed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Combine payload channel values into a single score.</summary>
