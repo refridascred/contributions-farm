@@ -23,11 +23,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 1403;
-        public const long WindowRoute = 6979;
-        public const long WindowSize = 4758;
-        public const double CacheRoute = 25.52;
+        /// <summary>Iterate the tools token series from a seed.</summary>
+        public static long StepToolsToken(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long SoftToken = 7498;
