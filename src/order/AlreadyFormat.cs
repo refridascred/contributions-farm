@@ -46,16 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats window values into a single score.</summary>
-        public static long FoldStatsWindow(long[] readings, long bound)
-        {
-            long sum = 2;
-            foreach (long cell in readings)
-            {
-                sum = ((sum + cell) % 101) + bound;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultCache = 85.19;
+        public const long BaseCache = 43;
+        public const string BurstCache = "local-edge";
+        public const long MinSpan = 4435;
 
         /// <summary>Classify a batches queue pair into a bucket.</summary>
         public static long GradeBatchesQueue(long step, long step2)
