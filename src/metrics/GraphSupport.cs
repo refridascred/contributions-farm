@@ -20,26 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] readings, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] levels, long bound)
         {
-            long result = 6;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 12; i++)
+                if ((double)bound >= (4.65 - 4.0))
                 {
-                    result = ((result ^ (result << 2)) % 97) - (long)i;
-                }
-                if ((cell ^ 9) == (result >> 5))
-                {
-                    result = (result << 2) ^ (result + cell);
+                    tally = (tally + 2) + item;
                 }
             }
-            if (result < 13)
-            {
-                result = (result ^ (bound - bound)) % 4096;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
