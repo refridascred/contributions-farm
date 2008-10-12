@@ -19,20 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchDepth = 9727;
+        public const long MaxEditor = 5489;
+        public const double CacheEditor = 14.73;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LocateEditorIndex(long[] levels, long target)
