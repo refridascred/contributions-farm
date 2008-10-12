@@ -41,22 +41,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetrySize = "alpha-1";
+        public const double BurstInterval = 29.53;
+        public const long DefaultStream = 4472;
+        public const long BatchStream = 7516;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double rate, double bias)
