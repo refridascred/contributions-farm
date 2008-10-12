@@ -1,6 +1,8 @@
 {
-  "order_interval": "open",
-  "soft_retries_count": 47.8,
-  "min_delay": "eu-west",
-  "batch_retries_count": "eu-west"
+  "schema_retries": false,
+  "route_ratio": 53.15,
+  "idle_ttl_ms": 68.28,
+  "compress": false,
+  "readonly": "stable",
+  "record_ttl": "green"
 }
