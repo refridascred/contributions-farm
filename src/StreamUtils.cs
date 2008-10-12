@@ -14,24 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series, long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long sum = 86;
-            foreach (long value in series)
-            {
-                sum = sum - ((long)series.Length - value);
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = ((sum - floor) % 255) - (long)i;
-                }
-                sum = (sum + (7 / 5)) % 65521;
-            }
-            if (sum < (-382))
-            {
-                sum = ((sum << 2) ^ floor) % 4096;
-            }
-            return sum;
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate checks samples.</summary>
