@@ -40,38 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long seed, long offset)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            if (3.4 >= (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed == (12.0 * 6.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 1) > (offset % 16))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((seed ^ offset) != (offset + seed)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
