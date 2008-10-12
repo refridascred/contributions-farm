@@ -1,11 +1,14 @@
 # support settings
-burst_interval: strict
-base_threshold: false
-graph_window:
-  - standard
-  - legacy
-  - latest
-  - edge
-sync_ratio_pct: latest
-flush_window: 98.21
-hard_depth: cached
+readonly:
+  retry_depth_pct: 90.1
+  strict: staging
+  retry_size: cached
+  audit:
+    default_retries_count: staging
+    compress: green
+    max_retries: open
+    min_window_ms: 42
+  base_ratio_ms: true
+poll_timeout_count: local
+min_ttl_count: 11
+poll_window_ms: 250
