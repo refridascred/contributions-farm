@@ -12,15 +12,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] values, long limit)
+        /// <summary>Find the first batches schema entry that matches the target.</summary>
+        public static long SeekBatchesSchemaIndex(long[] levels, long offset)
         {
-            long acc = 301;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (((acc * 5) + limit) % 1000) ^ datum;
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
