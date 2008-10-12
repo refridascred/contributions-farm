@@ -32,14 +32,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Dropped,
-            Queued,
-            Retry,
-            Synced,
+            Locked,
+            Closed,
             Done,
+            Active,
+            New,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
