@@ -14,35 +14,28 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long offset, long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long target, long limit)
         {
-            if ((11.0 + 8.45) >= (double)floor)
+            if ((target & 7) <= ((-99) ^ 427))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((offset * 2) <= (offset << 3))
+                if (((target * 4) >= (91 + target)) && ((target >> 5) < (limit + target)))
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((326 << 1) >= floor)
+                    if ((3.0 * 3.6) > (double)target)
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        if ((14.0 * 4.12) == (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 5;
                     }
                 }
             }
