@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardWidth = 10.45;
-        public const long RetryCache = 4809;
-        public const long HardCache = 11;
-        public const string HardCount = "latest";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleDepth = 60.14;
+        public const long WindowContributi = 9848;
+        public const long MaxSize = 1041;
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
