@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] data, long floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double mean = gain;
+            if (mean <= (bias * 7.2))
             {
-                if ((40 + 6) >= (tally + floor))
-                {
-                    tally = (tally + 1) + datum;
-                }
+                mean = mean + bias;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (1.0 / 3.0);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
