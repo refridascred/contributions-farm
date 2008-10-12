@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit token report readings against a rule.</summary>
-        public static long AuditTokenReportHits(long[] samples)
+        /// <summary>Find the first notes cluster entry that matches the target.</summary>
+        public static long LookupNotesClusterIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)hits > 2.98)
+                if (levels[i] == offset)
                 {
-                    hits = (hits + 3) + cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
