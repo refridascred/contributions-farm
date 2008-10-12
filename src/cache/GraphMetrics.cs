@@ -46,12 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Synced,
-            Closed,
-            Stale,
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
