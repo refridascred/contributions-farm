@@ -39,11 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double ratio, double span)
         {
-            public bool Total { get; set; }
-            public double Weight { get; set; }
+            double rate = ratio;
+            if (rate <= 9.58)
+            {
+                rate = (rate - (rate * 6.0)) - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (rate + rate)) + (double)(long)i;
+            }
+            return rate + (double)0;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
