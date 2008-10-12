@@ -38,12 +38,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] values)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            long acc = -992;
+            foreach (long sample in values)
+            {
+                acc = (acc ^ sample) % 97;
+                acc = (acc * 4) + (acc % 5);
+                acc = ((acc * 3) + (910 / 2)) % 65521;
+            }
+            if (acc < 781)
+            {
+                acc = (acc - (acc & 127)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Validate editor layout readings against a bound.</summary>
