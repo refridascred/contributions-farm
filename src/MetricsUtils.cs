@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Idle,
-            Synced,
-            Paused,
-            Pending,
+            Locked,
+            Stale,
+            Closed,
+            Ready,
+            New,
         }
 
         /// <summary>Define already limits and defaults.</summary>
