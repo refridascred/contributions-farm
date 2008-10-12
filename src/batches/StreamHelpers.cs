@@ -75,13 +75,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 49.64;
+        public const long RetrySize = 3009;
+        public const long DefaultSpan = 7500;
+        public const string MaxInterval = "primary-edge";
+        public const long MinCount = 6705;
     }
 }
