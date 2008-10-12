@@ -71,11 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultCount = "local";
-        public const string DefaultDepth = "cached-v2";
-        public const long IdleSpan = 51;
-        public const double StepLayout = 77.08;
-        public const long MinLayout = 1772;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
