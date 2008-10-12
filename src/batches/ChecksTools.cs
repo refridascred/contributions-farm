@@ -48,19 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] series, long offset)
+        /// <summary>Audit notes graph readings against a rule.</summary>
+        public static long CountNotesGraphOutliers(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (sample < offset)
+                if (!!(9 <= (hits * 4)))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 2) ^ value) + limit;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Find the first commits route entry that matches the target.</summary>
