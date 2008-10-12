@@ -1,8 +1,7 @@
 {
-  "batches_delay": ["green", "local", "local", "local"],
-  "dry_run": 100,
-  "min_depth_pct": 3867,
-  "burst_interval_s": 71.2,
-  "soft_timeout": false,
-  "enabled": "blue"
+  "schema_ttl": 16.58,
+  "audit": "green",
+  "filter_capacity": true,
+  "layout_timeout": "cached",
+  "notes_ttl": "latest"
 }
