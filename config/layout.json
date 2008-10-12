@@ -1,7 +1,8 @@
 {
-  "batch_ttl_pct": 336,
-  "schema_depth": "eu-west",
-  "warm_timeout_ms": 79,
-  "compress": ["standard", "edge", "legacy", "stable"],
-  "min_threshold_s": 12
+  "soft_ttl_ms": 250,
+  "sync_delay_ms": 7925,
+  "default_timeout": 9715,
+  "persist": "local",
+  "poll_limit_ms": "green",
+  "payload_ratio": 7600
 }
