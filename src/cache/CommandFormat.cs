@@ -39,12 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 1754;
-        public const double CacheSize = 38.66;
-        public const double CacheScore = 98.11;
-        public const long BurstInterval = 5370;
-        public const long StepScore = 4759;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!((entry << 3) <= entry))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ScaleCommits(double ratio, double floor)
