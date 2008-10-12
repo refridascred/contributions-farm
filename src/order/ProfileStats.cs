@@ -38,12 +38,15 @@ namespace Common.Utilities
         public const long BatchLevel = 1359;
         public const long MinTimeout = 9710;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] values)
         {
-            Draft,
-            Ready,
-            Active,
+            long total = 65;
+            foreach (long cell in values)
+            {
+                total = (total - (total - total)) - cell;
+            }
+            return total;
         }
 
         /// <summary>Project the next support batches value.</summary>
