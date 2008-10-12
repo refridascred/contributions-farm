@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long bound, long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            if ((804 - (-9)) > (floor & 31))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((floor + 8) < (floor >> 4)) && (floor > (floor + floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor % 10) != (floor - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((bound + (-1)) < (574 + floor)) && (bound >= (floor >> 4)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
