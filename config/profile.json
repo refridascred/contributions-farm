@@ -1,18 +1,7 @@
 {
-  "base_retries_s": 1929,
-  "compress": "cached",
-  "checks_timeout": {
-    "hard_timeout_s": 79.65,
-    "retry_retries": "stable",
-    "soft_size": "cached",
-    "schema_ratio": false,
-    "cache_window": 78
-  },
-  "route_capacity": {
-    "metrics_ttl": "latest",
-    "sync_threshold_count": 4736,
-    "filter_interval": 60
-  },
-  "max_retries_ms": "fallback",
-  "base_size": 36.03
+  "max_window_pct": 7.97,
+  "compress": 36.51,
+  "account_size": ["green", "cached", "strict", "local"],
+  "burst_ratio": 89.0,
+  "hard_ratio_s": 68.32
 }
