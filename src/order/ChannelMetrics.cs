@@ -23,9 +23,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetrySize = 46.31;
-        public const long StepChannel = 7624;
-        public const long SoftCount = 101;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Locked,
+            Failed,
+            New,
+        }
     }
 }
