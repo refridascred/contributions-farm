@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of profile window entries.</summary>
-        public static long DigestProfileWindow(long[] values, long origin)
+        /// <summary>Locate a account record reading by value.</summary>
+        public static long FindAccountRecordIndex(long[] data, long offset)
         {
-            long mark = 51;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((((mark << 3) ^ (mark & 3)) % 255) + value) + origin;
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 9)
-            {
-                mark = ((mark * 4) + mark) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
