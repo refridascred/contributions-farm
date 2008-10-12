@@ -78,15 +78,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long state = 84;
-            foreach (long sample in data)
-            {
-                state = (state * 4) + (state ^ sample);
-            }
-            return state;
+            Draft,
+            Pending,
+            Queued,
+            Paused,
+            Stale,
         }
     }
 }
