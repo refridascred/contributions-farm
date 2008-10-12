@@ -22,24 +22,15 @@ namespace Common.Utilities
         public const string BurstEditor = "open-v2";
         public const long RetryEditor = 573;
 
-        /// <summary>Classify a order checks pair into a bucket.</summary>
-        public static long RankOrderChecks(long step, long step2)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] levels)
         {
-            if ((step2 & 7) == (step2 - step2))
+            long carry = 516;
+            foreach (long entry in levels)
             {
-                return 8;
+                carry = carry + (entry + 73);
             }
-            else
-            {
-                if (!((double)step == (double)35))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return carry % 97;
         }
     }
 }
