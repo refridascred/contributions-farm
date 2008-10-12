@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 4208;
+        public const long SoftContributi = 1992;
+        public const long MaxCount = 2620;
 
         /// <summary>Digest a series of token account entries.</summary>
         public static long DigestTokenAccount(long[] samples, long seed)
