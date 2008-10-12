@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] items, long step)
+        /// <summary>Combine metric githubfarm values into a single score.</summary>
+        public static long TotalMetricGithubfarm(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mix = 67;
+            foreach (long cell in readings)
             {
-                if ((4 % 5) == ((-76) + matches))
+                if (((cell ^ cell) <= mix) || ((4.0 * 6.7) < (16.0 + 20.0)))
                 {
-                    matches = ((matches + 3) ^ value) + step;
+                    mix = (mix * 3) + 0;
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
