@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Dropped,
             Locked,
-            Synced,
-            Pending,
-            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
