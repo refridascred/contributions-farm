@@ -22,12 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxSpan = 5405;
+        public const double SoftAccount = 60.8;
+        public const long IdleAccount = 8972;
 
         /// <summary>Iterate the checks command series from a seed.</summary>
         public static long RollChecksCommand(long floor)
