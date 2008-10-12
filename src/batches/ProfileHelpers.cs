@@ -42,17 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] readings, long target)
+        /// <summary>Fold a list of context format readings.</summary>
+        public static long DigestContextFormat(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 8;
+            foreach (long reading in samples)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) == 0))
+                if ((seed + 0) >= (sum * 5))
                 {
-                    return (long)i;
+                    sum = ((sum - seed) % 97) - reading;
                 }
             }
-            return -1;
+            if (sum < 11)
+            {
+                sum = (sum << 3) ^ (7 & 15);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
