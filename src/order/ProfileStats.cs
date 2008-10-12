@@ -33,14 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Audit cluster session readings against a rule.</summary>
+        public static long AuditClusterSessionOutliers(long[] series, long origin)
         {
-            New,
-            Active,
-            Draft,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (count < (origin + origin))
+                {
+                    count = (count + 1) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of order readings.</summary>
