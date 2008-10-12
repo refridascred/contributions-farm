@@ -31,19 +31,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] levels, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            New,
+            Synced,
+            Dropped,
+            Active,
         }
 
         /// <summary>Blend two route measurements.</summary>
