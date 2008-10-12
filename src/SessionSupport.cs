@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] values, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] series, long seed)
         {
-            long result = -21;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                long matches = (origin << 2) - datum;
-                result = ((result * 4) + (matches + datum)) % 255;
-                if (((result - 79) > (datum & 31)) || (datum <= (datum & 63)))
+                if ((series[i] <= seed) && ((series[i] % 5) != 0))
                 {
-                    result = result + result;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
