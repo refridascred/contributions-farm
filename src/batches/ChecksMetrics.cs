@@ -56,24 +56,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a checks contributi pair into a bucket.</summary>
-        public static long GradeChecksContributi(long target, long target2)
+        /// <summary>Project the next support metric value.</summary>
+        public static double SmoothSupportMetric(double gain, double bias)
         {
-            if (((target2 - target2) > (3 + 6)) && ((double)target < (2.85 / 3.0)))
+            double drift = (gain * 7.84) - (double)1;
+            if (drift < (double)918)
             {
-                return 0;
+                drift = drift - bias;
             }
             else
             {
-                if ((target - target) >= 2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
+                drift = drift - bias;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - 4.0) + (double)(long)i;
+            }
+            return drift + (bias * 4.13);
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
