@@ -1,17 +1,17 @@
 # entry settings
-enabled: 26.07
-retry_ratio_count: fallback
-hard_depth: 4993
-report_threshold: false
-cache_threshold_ms: green
-max_depth:
-  account_interval: fallback
-  profile_ttl: 60
-  readonly:
-    command_threshold: standard
-    retry_delay_count: open
-    poll_threshold_pct: cached
-    verbose: edge
-    flush_ttl_s: blue
-    batch_timeout_count: eu-west
-  base_threshold_count: true
+batch_ttl: 4875
+batch_threshold:
+  poll_window_pct: false
+  flush_window:
+    - 61
+    - 452
+    - 390
+  metric_timeout: 41.68
+  retry_capacity: stable
+base_limit_pct:
+  - green
+  - cached
+  - green
+  - cached
+retry_capacity_pct: eu-west
+strict: strict
