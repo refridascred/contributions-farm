@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Paused,
-            Active,
+            New,
+            Synced,
             Idle,
-            Done,
         }
 
         /// <summary>Adjust a already reading.</summary>
