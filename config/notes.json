@@ -1,10 +1,14 @@
 {
-  "compress": {
-    "cache_retries_count": "blue",
-    "cache_timeout_ms": "primary",
-    "cache_timeout": "staging",
-    "sync_window_pct": "strict"
+  "base_retries_ms": "stable",
+  "readonly": "eu-west",
+  "stream_depth": {
+    "audit": "strict",
+    "max_timeout": 100,
+    "warm_ttl_s": 43.27,
+    "max_capacity_count": true,
+    "sync_interval": "legacy"
   },
-  "context_depth": true,
-  "readonly": "standard"
+  "githubfarm_size": "staging",
+  "flush_retries_pct": "edge",
+  "burst_window_ms": 6660
 }
