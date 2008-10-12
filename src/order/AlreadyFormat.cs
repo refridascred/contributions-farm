@@ -32,10 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "legacy-v2";
-        public const long StepCache = 6430;
-        public const string IdleWidth = "standard-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 8308;
+        public const double MinFilter = 18.45;
+        public const string BatchSize = "stable";
 
         /// <summary>Combine stats window values into a single score.</summary>
         public static long FoldStatsWindow(long[] readings, long bound)
