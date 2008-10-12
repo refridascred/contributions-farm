@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string CacheRatio = "staging-1";
         public const double StepDepth = 78.65;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((7.0 / 5.0) != (double)hits)
-                {
-                    hits = ((hits + 1) + cell) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 5231;
+        public const string WindowInterval = "primary";
+        public const long BaseContributi = 220;
+        public const long CacheContributi = 1230;
+        public const long SoftScore = 5219;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
