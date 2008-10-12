@@ -14,24 +14,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (((state * 4) + ((-5) - floor)) % 255) - (long)i2;
-                }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    state = ((state - (floor + 88)) % 1000) ^ (long)i3;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 276;
+        public const long SoftSession = 2545;
+        public const string SoftCount = "primary-1";
+        public const long BaseSize = 9571;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LocateChannelIndex(long[] samples, long bound)
