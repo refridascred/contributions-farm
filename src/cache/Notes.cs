@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 9510;
-        public const long BurstLayout = 9564;
-        public const string BatchInterval = "strict-1";
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Active,
+            Closed,
+            Locked,
+            Done,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetryScore = 9654;
