@@ -56,11 +56,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 5450;
-        public const long SoftRatio = 6097;
-        public const long BatchStream = 2460;
-        public const long RetryStream = 5568;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseFactor = 74.35;
+        public const long DefaultCache = 4501;
+        public const double RetryLevel = 61.59;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double SmoothGraph(double ratio, double span)
