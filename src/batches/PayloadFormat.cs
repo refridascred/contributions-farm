@@ -16,18 +16,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] data, long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)bound >= (6.03 + 9.3))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Project the next queue value.</summary>
