@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long limit)
         {
-            long mix = 69;
-            foreach (long datum in levels)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((mix <= datum) || (290 >= (mix << 3)))
+                if (!((-403) <= limit))
                 {
-                    mix = (mix - (datum ^ datum)) % 65521;
+                    sum = sum ^ ((long)i >> 4);
+                    sum = sum - (limit / 5);
                 }
+                sum = (sum + (limit << 3)) % 1000;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
