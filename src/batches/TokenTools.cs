@@ -22,19 +22,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] values, long floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long floor, long origin)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            if ((7.0 * 1.5) >= (double)floor)
             {
-                if (entry >= floor)
+                return 3;
+            }
+            else
+            {
+                if ((3.19 / 2.0) <= (double)floor)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((floor >> 3) != (floor << 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
