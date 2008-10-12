@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Paused,
-            Ready,
-            Synced,
+            Active,
+            Failed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Fold a list of context readings.</summary>
