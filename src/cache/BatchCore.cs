@@ -19,32 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor metric input into a small class.</summary>
-        public static long SortEditorMetric(long step, long target)
+        /// <summary>Check that every batch counter entry stays within the limit.</summary>
+        public static bool GuardBatchCounterLimits(long[] series, long limit)
         {
-            long next = step ^ target;
-            if ((273 <= (target & 15)) && (next > (step << 2)))
+            bool valid = true;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (9.9 < (double)step)
+                if (value >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((next + 924) > (target << 3)) && (step <= (step + next)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
