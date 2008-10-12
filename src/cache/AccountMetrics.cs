@@ -34,19 +34,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] data, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long total = 22;
+            foreach (long entry in levels)
             {
-                if (sample <= target)
+                total = total ^ entry;
+                total = (total - total) % 65521;
+                if (((total - 562) < (entry - total)) && (entry > (entry >> 4)))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (total > 2)
+            {
+                total = ((total << 3) ^ (total >> 3)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Adjust a batch reading.</summary>
