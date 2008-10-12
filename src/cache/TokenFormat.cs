@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSpan = 31.56;
-        public const double RetrySession = 16.61;
-        public const string BaseDepth = "open-v2";
-        public const long DefaultScore = 7805;
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] levels, long seed)
+        {
+            long mix = -743;
+            foreach (long sample in levels)
+            {
+                mix = (((mix * 3) + (sample ^ mix)) % 4096) + seed;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
