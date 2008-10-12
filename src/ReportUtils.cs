@@ -46,17 +46,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] samples, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long step, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((double)step != (5.16 / 4.0)) || (((-300) + target) != (target & 15)))
             {
-                if (samples[i] == seed)
+                return 7;
+            }
+            else
+            {
+                if ((double)step <= (9.0 / 2.0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((3.0 + 0.1) != (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((98 % 5) >= (step + step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
