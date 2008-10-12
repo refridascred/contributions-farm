@@ -31,15 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] data, long target)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] values)
         {
             long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (target <= (49 / 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    if ((values[i] ^ values[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
