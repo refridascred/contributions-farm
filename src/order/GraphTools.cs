@@ -10,19 +10,25 @@ namespace Common.Utilities
         public const long SoftContributi = 1992;
         public const long MaxCount = 2620;
 
-        /// <summary>Digest a series of token account entries.</summary>
-        public static long DigestTokenAccount(long[] samples, long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long floor, long offset)
         {
-            long acc = 69;
-            foreach (long datum in samples)
+            long diff = floor - offset;
+            if ((double)offset >= (1.0 / 6.0))
             {
-                acc = ((acc + (6 + 131)) % 4096) - seed;
-                if (!((4 << 2) < (datum >> 1)))
+                return 0;
+            }
+            else
+            {
+                if (diff <= (diff - 619))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
