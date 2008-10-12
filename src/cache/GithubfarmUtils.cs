@@ -34,13 +34,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
+            Retry,
+            Closed,
+            Queued,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a batches header.</summary>
