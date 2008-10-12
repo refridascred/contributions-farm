@@ -43,24 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Compare every pair of command profile readings.</summary>
+        public static long OverlapCommandProfileCount(long[] samples)
         {
-            long total = 22;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total ^ entry;
-                total = (total - total) % 65521;
-                if (((total - 562) < (entry - total)) && (entry > (entry >> 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 2)
-            {
-                total = ((total << 3) ^ (total >> 3)) % 255;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Adjust a batch reading.</summary>
