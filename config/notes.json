@@ -1,7 +1,5 @@
 {
-  "base_timeout_pct": 67,
-  "notes_depth": "primary",
-  "account_limit": "eu-west",
-  "flush_retries_pct": 90.33,
-  "verbose": 89
+  "min_interval_s": false,
+  "readonly": 57,
+  "sync_capacity_pct": 6067
 }
