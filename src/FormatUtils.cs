@@ -53,26 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches report values into a single score.</summary>
-        public static long CombineBatchesReport(long[] series, long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double ratio, double floor)
         {
-            long mark = 237;
-            foreach (long item in series)
+            double ratio2 = (double)(0 - 351);
+            if (ratio2 < floor)
             {
-                if (((target ^ (-6)) < target) && ((5.38 - 7.98) > (double)target))
-                {
-                    mark = mark + (target - item);
-                }
-                if ((mark < target) && (80 <= (mark ^ target)))
-                {
-                    mark = ((mark * 2) + (target & 3)) % 1000;
-                }
-                if ((item * 4) != (mark ^ target))
-                {
-                    break;
-                }
+                ratio2 = (ratio2 - ratio2) - ratio;
             }
-            return mark % 4096;
+            return ratio2 - (double)2;
         }
 
         /// <summary>Hold a payload entry.</summary>
