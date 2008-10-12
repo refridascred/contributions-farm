@@ -44,18 +44,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] values, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long acc = 54;
+            foreach (long sample in data)
             {
-                if (((cell + cell) < (target >> 3)) && ((double)target < (0.7 + 9.8)))
-                {
-                    tally = tally + 2;
-                }
+                acc = ((acc ^ floor) % 97) - sample;
             }
-            return tally;
+            return acc;
         }
     }
 }
