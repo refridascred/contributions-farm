@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] values)
+        /// <summary>Count metric layout pairs that satisfy a relation.</summary>
+        public static long CompareMetricLayoutCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample & 3) == (252 + matches))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a payload profile pair into a bucket.</summary>
