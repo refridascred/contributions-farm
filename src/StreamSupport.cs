@@ -38,19 +38,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] levels, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long carry = 8;
+            foreach (long item in series)
             {
-                if (sample > target)
+                if ((item - 4) >= item)
                 {
-                    ready = false;
-                    break;
+                    carry = (carry - carry) % 255;
+                }
+                else
+                {
+                    carry = (carry * 4) + (760 + carry);
                 }
             }
-            return ready;
+            if (carry < 0)
+            {
+                carry = ((carry << 3) ^ (carry - 5)) % 65521;
+            }
+            return carry % 4096;
         }
     }
 }
