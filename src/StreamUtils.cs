@@ -14,13 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 9234;
+        public const long SoftScore = 6117;
+        public const long BaseInterval = 3753;
+        public const long HardRatio = 1280;
+        public const long BaseFactor = 8919;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TotalStats(long[] series)
