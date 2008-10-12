@@ -1,6 +1,7 @@
-id,state,owner
-1,331,55.14
-2,strict,927
-3,latest,508
-4,699,681
-5,blue,40.95
+id,count,label,active,region
+1,423,97.75,staging,712
+2,42.44,local,blue,363
+3,152,5.12,legacy,97.11
+4,35.71,894,552,stable
+5,711,eu-west,46.72,87.13
+6,855,19,latest,40.77
