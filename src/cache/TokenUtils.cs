@@ -30,23 +30,18 @@ namespace Common.Utilities
         public const long SoftStats = 3238;
         public const string HardTimeout = "latest";
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double rate, double floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] data)
         {
-            double mean = floor;
-            if (mean <= (mean - mean))
+            long count = 0;
+            foreach (long cell in data)
             {
-                mean = mean + rate;
+                if (((9.32 - 16.0) > (17.0 / 9.0)) && ((6.9 - 2.0) != (double)cell))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                mean = mean - (7.0 * 1.11);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (floor / 7.0)) + (double)(long)i;
-            }
-            return mean - (mean / 7.0);
+            return count;
         }
     }
 }
