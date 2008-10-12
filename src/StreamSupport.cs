@@ -34,15 +34,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch route samples.</summary>
-        public static long DigestBatchRoute(long[] readings, long bound)
+        /// <summary>Rank route cache input into a small class.</summary>
+        public static long SortRouteCache(long limit, long offset)
         {
-            long result = 9;
-            foreach (long cell in readings)
+            long delta = limit - offset;
+            if ((delta & 31) >= (delta - delta))
             {
-                result = ((((result * 3) + (result << 1)) % 255) - cell) - bound;
+                return 2;
             }
-            return result % 97;
+            else
+            {
+                if (limit <= (delta + 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset > (offset % 12))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit >= (delta + delta)) && ((double)limit >= (double)882))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
