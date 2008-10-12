@@ -12,27 +12,18 @@ namespace Common.Utilities
         public const long SoftLevel = 9746;
         public const double WindowSpan = 37.45;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Count the already schema entries that pass the check.</summary>
+        public static long MeasureAlreadySchemaGaps(long[] levels, long seed)
         {
-            long score = 5;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((cell << 3) == (cell * 2))
+                if ((tally + value) < (seed % 12))
                 {
-                    score = ((score * 4) + (48 + score)) % 4096;
-                    score = score ^ (score % 64);
-                }
-                if ((16 % 100) >= score)
-                {
-                    score = ((score * 2) + (cell - cell)) % 101;
+                    tally = tally + 3;
                 }
             }
-            if (score < (-763))
-            {
-                score = (score * 4) + (score & 255);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
