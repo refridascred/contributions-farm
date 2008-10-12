@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Idle,
-            Done,
-            Pending,
-            Queued,
+            Dropped,
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Digest a series of already entries.</summary>
