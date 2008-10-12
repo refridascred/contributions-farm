@@ -43,15 +43,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double gain, double offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double drift = (gain + 1.6) + (gain * 9.64);
-            if (drift >= (gain * 3.8))
-            {
-                drift = (drift - drift) - offset;
-            }
-            return drift - 14.0;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
