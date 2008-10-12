@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardBudget = "latest-edge";
-        public const string IdleCommand = "strict-1";
-        public const string IdleSpan = "staging-edge";
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Locked,
+            Closed,
+            Failed,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] values)
