@@ -1,11 +1,8 @@
 # githubfarm settings
-enabled:
-  token_limit:
-    format_limit: 94
-    retry_delay_pct: true
-    tools_ratio: 73.07
-    max_retries_ms: false
-  sync_depth_ms: 46
-  githubfarm_threshold: 56
-editor_interval: local
-hard_depth: 500
+warm_size_ms: 53.21
+verbose:
+  - cached
+  - stable
+batches_interval:
+  - local
+  - strict
