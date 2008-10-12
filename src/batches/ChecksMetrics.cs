@@ -69,20 +69,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine counter notes values into a single score.</summary>
-        public static long ScoreCounterNotes(long[] samples)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            long mix = 19;
-            foreach (long reading in samples)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                mix = ((mix * 4) + (reading * 2)) % 101;
-                mix = ((mix * 3) + reading) % 255;
-                if ((reading >= (reading * 2)) && ((reading >> 5) != (mix - mix)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    mix = mix ^ (mix * 4);
+                    acc = (acc ^ (acc - (long)i)) - (long)i2;
+                    acc = (acc + acc) % 4096;
                 }
+                acc = (acc * 4) + acc;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return mix % 97;
+            return acc;
         }
     }
 }
