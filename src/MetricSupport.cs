@@ -28,13 +28,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long offset, long origin)
         {
-            Active,
-            Ready,
-            Stale,
-            Closed,
+            if (!((double)origin <= (6.0 - 19.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((origin + origin) < ((-741) ^ offset)) && ((double)origin != (0.71 / 6.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset % 12) > (origin >> 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset / 2) > offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
