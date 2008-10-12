@@ -54,18 +54,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] samples)
+        /// <summary>Derive the next batches batch value from a seed.</summary>
+        public static long SeriesBatchesBatch(long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum / 9) > datum)
+                if ((anchor * 5) > target)
                 {
-                    tally = tally + 1;
+                    anchor = (anchor << 2) ^ (target % 5);
                 }
+                else
+                {
+                    anchor = (anchor - anchor) % 255;
+                }
+                anchor = anchor ^ (target << 1);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = (((anchor * 4) + (anchor >> 2)) % 97) + (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
     }
 }
