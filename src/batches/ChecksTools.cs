@@ -37,14 +37,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] items, long offset)
         {
-            Paused,
-            Done,
-            Stale,
-            Dropped,
-            Active,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
