@@ -37,21 +37,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a notes route counter forward.</summary>
-        public static long IterateNotesRoute(long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] levels, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                long prev = score;
-                if ((long)i <= (prev - limit))
+                if (cell != seed)
                 {
-                    prev = (prev ^ prev) % 4096;
+                    flag = false;
+                    break;
                 }
-                prev = prev - ((long)i << 2);
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
