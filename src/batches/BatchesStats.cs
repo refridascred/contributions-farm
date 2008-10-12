@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] series, long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= bound)
+                if ((levels[i] <= offset) && ((levels[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
