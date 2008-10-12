@@ -27,11 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftScore = 4193;
-        public const long BaseDepth = 6282;
-        public const long WindowRecord = 5751;
-        public const double HardFactor = 25.07;
-        public const long HardRecord = 7966;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 8189;
+        public const long BatchMetric = 4696;
+        public const double BatchLevel = 35.7;
+        public const long MinMetric = 3647;
+        public const long BaseMetric = 3754;
     }
 }
