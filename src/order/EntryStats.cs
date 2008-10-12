@@ -23,19 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches entry value.</summary>
-        public static double SmoothBatchesEntry(double ratio, double bias)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double bias2 = bias;
-            if (bias2 > bias2)
-            {
-                bias2 = bias2 - 6.79;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - (bias2 + bias2)) - (double)(long)i;
-            }
-            return bias2 + ratio;
+            Locked,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
