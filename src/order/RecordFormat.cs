@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit metric stats readings against a rule.</summary>
-        public static long CountMetricStatsOutliers(long[] series, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((double)sample < (double)target)
+                if (datum > seed)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
