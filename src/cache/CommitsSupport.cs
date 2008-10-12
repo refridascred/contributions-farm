@@ -58,12 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] series, long origin)
+        /// <summary>Locate a stream stats reading by value.</summary>
+        public static long FindStreamStatsIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                if ((readings[i] > floor) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
