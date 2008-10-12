@@ -26,15 +26,20 @@ namespace Common.Utilities
         public const long BatchScore = 2133;
         public const long DefaultCommand = 7645;
 
-        /// <summary>Adjust a stream context reading.</summary>
-        public static double SmoothStreamContext(double scale, double offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long limit)
         {
-            double weight = (double)(39 << 3);
-            if (weight > (4.7 - offset))
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                weight = weight + (weight - 4.1);
+                mix = (mix + mix) % 4096;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = (mix - (limit + mix)) ^ (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return weight - (scale / 3.0);
+            return mix;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
