@@ -14,22 +14,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] readings)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series)
         {
-            long anchor = 375;
-            foreach (long item in readings)
+            long carry = -790;
+            foreach (long cell in series)
             {
-                if ((double)item < (double)anchor)
+                long tally = cell;
+                if ((cell & 31) != (tally << 3))
                 {
-                    anchor = (anchor - item) % 255;
+                    carry = carry - (carry & 15);
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ (item / 5);
+                    tally = tally - (tally % 64);
+                }
+                if (!((cell / 8) != (982 % 5)))
+                {
+                    carry = (carry - (carry % 7)) % 65521;
                 }
             }
-            return anchor;
+            if (carry > (-960))
+            {
+                carry = (carry ^ carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Grade a batch editor value against two limits.</summary>
