@@ -30,14 +30,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Locked,
-            Stale,
-            New,
             Failed,
-            Ready,
+            Closed,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
