@@ -19,12 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftWidth = 9350;
-        public const string CacheScore = "primary";
-        public const long RetrySize = 8171;
-        public const long IdleCommand = 5599;
-        public const double LimitLevel = 41.99;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Retry,
+            Queued,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long RollWindow(long bound)
