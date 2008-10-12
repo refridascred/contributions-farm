@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseRatio = "standard-edge";
-        public const long MaxFarm = 9841;
-        public const long BurstFactor = 7669;
-        public const long LimitTimeout = 1450;
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double scale, double offset)
+        {
+            double scale2 = 7.6 * 7.67;
+            if (scale2 > scale)
+            {
+                scale2 = (scale2 + (4.2 + scale)) - offset;
+            }
+            else
+            {
+                scale2 = scale2 - 16.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 - (0.7 - scale);
+        }
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
