@@ -33,32 +33,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long bound, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] data, long seed)
         {
-            long next = bound ^ seed;
-            if (next > (700 << 1))
+            long result = 31;
+            foreach (long cell in data)
             {
-                return 5;
+                result = ((result - (cell & 31)) % 1000) - seed;
             }
-            else
-            {
-                if (((double)bound > 20.0) || (next >= (seed + next)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed % 16) <= (bound + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return result % 1000;
         }
 
         /// <summary>Measure how many buffer contributi samples are out of range.</summary>
