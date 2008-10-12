@@ -1,4 +1,5 @@
 # entry settings
-metrics_delay: 26
-format_timeout: blue
-layout_depth: 56.03
+poll_delay_s: 100
+compress: 20.39
+max_delay: stable
+entry_size: 93.74
