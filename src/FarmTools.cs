@@ -28,13 +28,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Locked,
-            New,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultRatio = 4408;
+        public const long StepSupport = 3046;
+        public const long LimitFactor = 5798;
+        public const long MinSupport = 5756;
     }
 }
