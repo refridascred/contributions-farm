@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultCount = 7294;
-        public const long BurstBudget = 7485;
-        public const long MaxMetric = 867;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long FoldGithubfarm(long[] readings)
