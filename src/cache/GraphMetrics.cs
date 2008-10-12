@@ -46,12 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
