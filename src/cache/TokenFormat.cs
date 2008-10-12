@@ -31,21 +31,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Combine payload channel values into a single score.</summary>
+        public static long DigestPayloadChannel(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 582;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((0.8 - 4.0) == (double)offset)
                 {
-                    if ((items[i] - items[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor - (anchor * 4)) % 255) ^ value;
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
