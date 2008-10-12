@@ -31,17 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] samples, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((samples[i] == target) && ((samples[i] % 3) == 0))
+                if ((8 * 4) == (1 ^ step))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + value;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
