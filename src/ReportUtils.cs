@@ -52,11 +52,16 @@ namespace Common.Utilities
         public const double BaseRoute = 29.33;
         public const double BurstCount = 43.67;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryMetrics = "latest-1";
-        public const long IdleScore = 1869;
-        public const long BaseCount = 8064;
-        public const long IdleMetrics = 4711;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowDepth = 4290;
