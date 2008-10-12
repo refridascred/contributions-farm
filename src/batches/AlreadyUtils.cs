@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long result = 658;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    result = ((result << 2) ^ entry) ^ (long)i;
-                    result = result + entry;
-                }
-                if ((double)entry != (6.9 * 3.0))
-                {
-                    result = ((result * 2) + result) % 4096;
-                }
-            }
-            return result;
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a cache snapshot.</summary>
