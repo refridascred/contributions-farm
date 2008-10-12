@@ -37,22 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many schema notes samples are out of range.</summary>
-        public static long MeasureSchemaNotesGaps(long[] levels, long offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((offset - offset) > (offset * 4))
-                {
-                    tally = (tally + 3) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            New,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
