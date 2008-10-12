@@ -14,22 +14,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] samples, long limit)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double rate = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (63 <= tally)
-                {
-                    tally = ((tally + 1) + cell) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate - (bias / 9.0)) + (double)(long)i;
             }
-            return tally;
+            return rate + (16.0 * 16.0);
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
