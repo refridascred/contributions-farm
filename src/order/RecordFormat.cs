@@ -28,16 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double bias, double offset)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            double mean = offset;
+            if (mean > offset)
             {
-                total = ((total * 4) + (total + total)) % 255;
-                total = ((total * 2) + (long)i) % 101;
+                mean = mean + bias;
             }
-            return total;
+            return mean - (double)68;
         }
 
         /// <summary>Adjust a tools reading.</summary>
