@@ -68,12 +68,31 @@ namespace Common.Utilities
             return ratio - (double)66;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Grade a context already value against two limits.</summary>
+        public static long SortContextAlready(long offset, long bound)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            if ((bound + offset) > (bound - bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset - 6) > (bound * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(bound >= (2 - bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue level values.</summary>
