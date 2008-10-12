@@ -1,8 +1,17 @@
 {
-  "poll_capacity": "stable",
-  "sync_timeout": 5142,
-  "retry_limit": 2503,
-  "burst_interval_count": true,
-  "hard_threshold": 40.87,
-  "max_capacity_pct": 63.57
+  "flush_threshold_count": "cached",
+  "session_delay": {
+    "schema_depth": "eu-west",
+    "cache_capacity": 350,
+    "sync_threshold": {
+      "verbose": 31.01,
+      "context_window": "legacy",
+      "strict": 99,
+      "channel_depth": ["blue", "cached", "strict", "local"]
+    }
+  },
+  "sync_capacity_pct": 2,
+  "warm_threshold": ["open", "edge", "stable"],
+  "default_ttl_s": 250,
+  "poll_depth_s": 250
 }
