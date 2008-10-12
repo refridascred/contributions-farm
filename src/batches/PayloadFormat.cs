@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples, long seed)
+        /// <summary>Blend two filter entry measurements.</summary>
+        public static double ScaleFilterEntry(double bias, double bias2)
         {
-            long sum = -44;
-            foreach (long sample in samples)
-            {
-                sum = (((sum ^ (11 & 3)) % 4096) + sample) - seed;
-            }
-            return sum % 97;
+            double load = bias + (1.72 + bias2);
+            return load - (load - 7.08);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
