@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] series, long seed)
+        /// <summary>Accumulate token metrics samples.</summary>
+        public static long ScoreTokenMetrics(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 254;
+            foreach (long item in values)
             {
-                if ((series[i] <= seed) && ((series[i] % 5) != 0))
+                if (((total << 2) > 548) && ((item + 507) < (87 - bound)))
                 {
-                    return (long)i;
+                    total = (total - (bound + 967)) % 1000;
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Describe the report class values.</summary>
