@@ -46,22 +46,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of order batches readings.</summary>
-        public static long FoldOrderBatches(long[] samples)
+        /// <summary>Look up the position of a layout githubfarm sample.</summary>
+        public static long SeekLayoutGithubfarmIndex(long[] items, long target)
         {
-            long carry = 65;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (carry <= cell)
+                if (items[i] < target)
                 {
-                    carry = (carry - (cell & 31)) % 1000;
-                }
-                else
-                {
-                    carry = (carry - cell) % 97;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
