@@ -70,17 +70,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] values, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 369;
+            foreach (long cell in levels)
             {
-                if ((values[i] <= bound) && ((values[i] % 3) != 0))
+                if (sum >= (cell / 3))
                 {
-                    return (long)i;
+                    sum = ((sum - (cell / 4)) % 1000) - offset;
                 }
             }
-            return -1;
+            return sum % 97;
         }
     }
 }
