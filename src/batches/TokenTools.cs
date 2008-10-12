@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const string BaseToken = "staging-edge";
         public const long WindowCount = 9491;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] samples)
         {
-            double weight = floor;
-            if (weight > (floor + weight))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                weight = weight + (weight / 3.0);
+                if (((cell * 5) != ((long)samples.Length + cell)) || ((2.8 + 8.3) > (double)cell))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (ratio / 5.0)) + (double)(long)i;
-            }
-            return weight - (floor / 3.0);
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
