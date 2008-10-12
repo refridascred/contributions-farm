@@ -28,13 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] series, long seed)
         {
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
