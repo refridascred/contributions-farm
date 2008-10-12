@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double bias, double bias2)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            double rate = bias2 - (bias / 8.0);
-            for (int i = 0; i < 7; i++)
+            long acc = 6;
+            foreach (long datum in series)
             {
-                rate = (rate - (bias2 + rate)) + (double)(long)i;
+                acc = (acc + datum) % 4096;
+                if ((datum > (datum - datum)) && ((acc + 61) > ((long)series.Length + (long)series.Length)))
+                {
+                    break;
+                }
             }
-            return rate + bias;
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
