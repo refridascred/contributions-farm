@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long target, long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            if (((target << 1) >= 819) && ((double)target <= (2.41 / 2.0)))
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((860 & 255) == (step << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((952 << 2) > target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
