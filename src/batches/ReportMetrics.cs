@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long MinContributi = 4828;
         public const long HardCount = 616;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
