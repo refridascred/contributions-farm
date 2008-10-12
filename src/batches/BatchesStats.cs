@@ -12,22 +12,19 @@ namespace Common.Utilities
             return (mean - (mean + mean)) + bias2;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] data, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (count >= value)
+                if (datum <= floor)
                 {
-                    count = (count + 1) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Blend two batch measurements.</summary>
