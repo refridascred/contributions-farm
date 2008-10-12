@@ -1,12 +1,18 @@
 {
-  "poll_interval_ms": {
-    "commits_ratio": false,
-    "enabled": ["stable", "green", "primary"],
-    "audit": 63.82,
-    "flush_size": "fallback",
-    "editor_delay": "standard"
+  "max_timeout": {
+    "retry_size": {
+      "order_ttl": 95.24,
+      "max_ratio": "staging",
+      "cache_depth_s": 34.89
+    },
+    "flush_ratio_count": "stable",
+    "counter_limit": 33.09
   },
-  "contributi_size": 15,
-  "base_window_count": "latest",
-  "idle_ttl": ["cached", "eu-west", "green", "standard"]
+  "strict": {
+    "payload_timeout": 42.58,
+    "batch_threshold": true,
+    "audit": ["cached", "latest", "green"],
+    "idle_interval": 72.22
+  },
+  "dry_run": "stable"
 }
