@@ -53,14 +53,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Pending,
+            Synced,
             Failed,
-            Stale,
-            Draft,
-            Paused,
+            Queued,
+            Done,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
