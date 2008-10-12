@@ -28,22 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series, long offset)
+        /// <summary>Audit stream schema readings against a rule.</summary>
+        public static long CountStreamSchemaGaps(long[] levels, long seed)
         {
-            long anchor = 801;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((item >> 5) != (anchor + item))
+                if ((double)hits == (6.1 / 4.0))
                 {
-                    anchor = ((anchor ^ (152 & 7)) % 4096) - offset;
+                    hits = ((hits + 2) ^ datum) - seed;
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = anchor - (54 ^ anchor);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Rank route input into a small class.</summary>
