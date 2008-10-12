@@ -34,18 +34,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] values, long origin)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long target, long step)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            if (target <= step)
             {
-                if (((double)origin == (double)entry) || (entry >= matches))
+                return 3;
+            }
+            else
+            {
+                if (step > (target >> 2))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((target << 3) < (step >> 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
