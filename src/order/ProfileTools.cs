@@ -53,10 +53,21 @@ namespace Common.Utilities
             return bias - (double)7;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinCount = 79.01;
-        public const long BatchPayload = 7144;
-        public const double SoftCount = 41.57;
-        public const string WindowSize = "legacy-v2";
+        /// <summary>Count schema counter pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCounterCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
