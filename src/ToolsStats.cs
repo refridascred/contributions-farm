@@ -61,15 +61,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Grade a channel format value against two limits.</summary>
+        public static long GradeChannelFormat(long step, long step2)
         {
-            long result = 242;
-            foreach (long sample in readings)
+            if (69 < step2)
             {
-                result = (((result << 3) ^ result) % 4096) ^ sample;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (((double)step < (9.82 - 12.0)) || ((step + step2) >= step2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Classify a metrics batch pair into a bucket.</summary>
