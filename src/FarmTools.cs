@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 6063;
-        public const double MinRatio = 74.39;
-        public const long BurstFactor = 5965;
-        public const long StepBatches = 3153;
-        public const long SoftBatches = 1319;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double scale, double floor)
+        {
+            double load = scale / 5.0;
+            return (load - (double)32) + floor;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long WeighReport(long[] samples)
