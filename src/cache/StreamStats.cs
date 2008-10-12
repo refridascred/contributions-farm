@@ -19,12 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long step, long offset)
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
+            if ((double)step >= (10.0 - 5.2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)step > 14.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset <= (3 / 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset + step) == (step ^ offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
