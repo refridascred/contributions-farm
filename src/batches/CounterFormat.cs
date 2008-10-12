@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string BatchInterval = "primary";
         public const long StepInterval = 5044;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] values, long floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
