@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate format counter samples.</summary>
-        public static long FoldFormatCounter(long[] data, long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long target)
         {
-            long state = 332;
-            foreach (long entry in data)
+            long result = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry <= (state * 5))
+                if (!((result + (long)i) >= (long)i))
                 {
-                    state = (state + (entry % 97)) % 65521;
+                    result = (result ^ target) % 65521;
                 }
-                else
+                if ((6 << 3) < ((long)i & 127))
                 {
-                    state = ((state * 4) + (offset * 3)) % 255;
+                    result = ((result * 5) + (target & 7)) % 4096;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (state < 620)
-            {
-                state = (state + (75 - offset)) % 101;
-            }
-            return state % 1000;
+            return result;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
