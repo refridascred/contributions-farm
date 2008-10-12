@@ -19,24 +19,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] samples, long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long mix = 419;
-            foreach (long reading in samples)
-            {
-                if (((limit * 2) != (reading % 64)) || (limit <= (746 << 2)))
-                {
-                    mix = mix - (limit - 34);
-                    continue;
-                }
-                mix = (mix ^ (reading - reading)) % 97;
-            }
-            if (mix < 9)
-            {
-                mix = (mix << 2) ^ (mix % 100);
-            }
-            return mix % 1000;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a batches stats.</summary>
