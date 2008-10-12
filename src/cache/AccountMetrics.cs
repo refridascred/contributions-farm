@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
+            Idle,
             Closed,
-            Pending,
-            Paused,
+            Draft,
+            Ready,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
