@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long IdleSupport = 3961;
         public const long MaxSupport = 8758;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleSize = 7164;
-        public const long BurstContributi = 2203;
-        public const long BatchDepth = 6872;
-        public const double MinContributi = 79.84;
-        public const double SoftContributi = 7.44;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] readings)
