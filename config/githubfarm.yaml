@@ -1,19 +1,11 @@
 # githubfarm settings
-burst_threshold_count: eu-west
-dry_run: fallback
-farm_ttl:
-  channel_interval: false
-  retry_interval_count:
-    - 262
-    - 379
-  strict: fallback
-  burst_interval:
-    base_interval_ms: 11.39
-    record_interval: 75
-    poll_limit_pct:
-      - 66
-      - 218
-      - 250
-    hard_retries_count: 30
-    max_delay_pct: 20.85
-    persist: green
+support_timeout: 72.51
+sync_window_count: 96.33
+persist: latest
+graph_threshold: strict
+idle_depth_count:
+  - 166
+  - 124
+  - 408
+  - 476
+editor_retries: 55.08
