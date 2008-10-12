@@ -69,18 +69,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally >> 5) <= item)
                 {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
