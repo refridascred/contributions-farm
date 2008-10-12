@@ -1,13 +1,4 @@
 # entry settings
-base_retries: open
-audit: false
-burst_size: latest
-verbose:
-  hard_delay_s: true
-  base_delay_pct: false
-  soft_ttl_ms:
-    - 3
-    - 306
-    - 135
-  burst_interval: 84.82
-  audit: cached
+base_window_s: 3157
+sync_ttl: 25
+metrics_timeout: edge
