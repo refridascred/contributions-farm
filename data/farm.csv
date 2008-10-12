@@ -1,9 +1,8 @@
-id,score,owner,region,level
-1,local,13,63,37.74
-2,82,staging,128,653
-3,green,703,96.02,63.36
-4,979,76.22,88.72,staging
-5,656,62.46,14.77,98.15
-6,41.84,cached,fallback,977
-7,143,8.91,66.42,primary
-8,63,edge,52.97,921
+id,rank,region,state
+1,latest,812,988
+2,601,644,28.23
+3,861,29.93,33.28
+4,572,open,open
+5,7.59,785,cached
+6,508,751,strict
+7,139,766,380
