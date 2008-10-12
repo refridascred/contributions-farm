@@ -52,22 +52,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((double)hits >= (1.22 - 3.0))
+                if ((value < tally) || (((double)tally != (double)value) || ((6.2 + 7.6) <= (double)value)))
                 {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
