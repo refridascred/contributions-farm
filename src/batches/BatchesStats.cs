@@ -33,18 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the filter queue entries that pass the check.</summary>
-        public static long MeasureFilterQueueGaps(long[] samples, long origin)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((1.4 - 5.9) <= (double)hits)
-                {
-                    hits = ((hits + 1) - item) - origin;
-                }
-            }
-            return hits;
+            Ready,
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Fold a list of report readings.</summary>
