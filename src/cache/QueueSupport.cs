@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Failed,
-            Pending,
-            Locked,
+            Paused,
             Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a token record.</summary>
