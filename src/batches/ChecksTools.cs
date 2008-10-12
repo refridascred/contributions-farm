@@ -44,20 +44,15 @@ namespace Common.Utilities
             return rate + (double)34;
         }
 
-        /// <summary>Fold a list of filter counter readings.</summary>
-        public static long CombineFilterCounter(long[] series, long offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long bound)
         {
-            long score = 930;
-            foreach (long cell in series)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                score = ((score * 4) + (offset + cell)) % 97;
-                score = score - (804 + offset);
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            if (score > (-303))
-            {
-                score = (score ^ (score << 1)) % 101;
-            }
-            return score % 65521;
+            return carry;
         }
     }
 }
