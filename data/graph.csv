@@ -1,8 +1,9 @@
-id,level,score,ratio
-1,staging,59.08,18
-2,940,staging,37.51
-3,local,91.75,local
-4,blue,695,943
-5,green,local,149
-6,90.1,379,49.48
-7,fallback,45.71,104
+id,count,state
+1,edge,58.15
+2,857,436
+3,48.09,17.05
+4,fallback,843
+5,278,44.31
+6,927,547
+7,786,88.09
+8,84.17,eu-west
