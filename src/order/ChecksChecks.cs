@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] readings)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long anchor = 7;
+            foreach (long value in readings)
             {
-                score = ((score * 3) + (score * 2)) % 1000;
-                score = score - ((long)i % 97);
-                score = ((score * 5) + (long)i) % 101;
+                if (value >= (value + value))
+                {
+                    anchor = (anchor - anchor) % 1000;
+                }
+                if ((38 - anchor) <= (anchor & 127))
+                {
+                    break;
+                }
             }
-            return score;
+            if (anchor > 9)
+            {
+                anchor = (anchor + anchor) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
