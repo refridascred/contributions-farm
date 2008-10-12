@@ -1,6 +1,10 @@
-id,score,owner,token
-1,871,standard,17.06
-2,15.77,940,67.68
-3,edge,355,local
-4,local,0.77,primary
-5,staging,664,stable
+id,owner
+1,local
+2,902
+3,eu-west
+4,blue
+5,26.83
+6,166
+7,staging
+8,standard
+9,561
