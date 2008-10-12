@@ -51,15 +51,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long carry = 66;
-            foreach (long cell in items)
-            {
-                carry = ((carry + (carry / 2)) % 101) + cell;
-            }
-            return carry;
+            public double Label { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
