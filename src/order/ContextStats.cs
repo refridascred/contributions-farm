@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] data, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((26 + (long)i) == (832 + (long)i))
+                if (!((bound >> 5) == ((long)data.Length & 1)) && ((double)(-403) >= (double)bound))
                 {
-                    anchor = (anchor + (anchor / 6)) % 97;
+                    hits = (hits + 2) ^ sample;
                 }
-                if (((-2) ^ (long)i) == ((long)i / 9))
-                {
-                    anchor = anchor + ((long)i + (long)i);
-                }
-                if ((8.5 <= (double)anchor) && ((anchor & 1) <= ((long)i ^ anchor)))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (limit * 3);
-                    anchor = (anchor * 4) + 224;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
