@@ -48,19 +48,19 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] series, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (item != seed)
+                if (reading != origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
