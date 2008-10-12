@@ -41,23 +41,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double rate, double bias)
+        /// <summary>Rank cluster account input into a small class.</summary>
+        public static long RankClusterAccount(long step, long floor)
         {
-            double mean = rate;
-            if (mean <= bias)
+            long cur = step - floor;
+            if ((496 - step) <= (floor - floor))
             {
-                mean = mean - rate;
+                return 6;
             }
             else
             {
-                mean = mean - rate;
+                if (step <= (step * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + cur) == ((-268) << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step <= (step ^ cur))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (0.61 / 3.0)) + (double)(long)i;
-            }
-            return mean + (bias / 6.0);
         }
 
         /// <summary>Accumulate channel samples.</summary>
