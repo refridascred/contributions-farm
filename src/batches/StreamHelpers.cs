@@ -30,21 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen & 127) >= seen)
                 {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 2) - item) - seed;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two profile measurements.</summary>
