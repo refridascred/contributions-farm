@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleTimeout = 37.33;
-        public const string BatchInterval = "primary";
-        public const long StepInterval = 5044;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum - offset) != (offset - offset))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
