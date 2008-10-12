@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached eu-west edge local; do
+mode="${1:-local}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in eu-west cached; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=365
+BUFFER_LIMIT=269
 log "limit is ${BUFFER_LIMIT}"
