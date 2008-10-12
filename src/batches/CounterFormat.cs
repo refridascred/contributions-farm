@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record channel entry stays within the limit.</summary>
-        public static bool ValidateRecordChannelLimits(long[] series, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long carry = 887;
+            foreach (long sample in samples)
             {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry + (sample - sample)) % 4096;
             }
-            return found;
+            if (carry < 9)
+            {
+                carry = carry + (carry << 3);
+            }
+            return carry;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
