@@ -1,17 +1,11 @@
 # githubfarm settings
-soft_limit:
-  strict: fallback
-  min_size_count: local
-  entry_ttl:
-    - edge
-    - open
-hard_timeout:
-  hard_threshold_s: 30
-  session_retries: staging
-  flush_limit_s: primary
-  counter_window: 9564
-retry_ttl_pct: staging
-hard_interval:
-  - latest
+compress: 39.59
+warm_retries_ms:
+  - blue
   - stable
+  - eu-west
   - primary
+default_delay: edge
+account_interval: 17.88
+already_depth: 96
+base_capacity_count: 62.22
