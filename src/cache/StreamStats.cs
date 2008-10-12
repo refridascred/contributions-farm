@@ -27,19 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every order batch entry stays within the limit.</summary>
-        public static bool VerifyOrderBatchRange(long[] values, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            double load = (double)(65 ^ (-4));
+            if (load > floor)
             {
-                if (cell > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + load) + weight;
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (load * 8.89)) - (double)(long)i;
+            }
+            return load + (double)9;
         }
 
         /// <summary>Define format limits and defaults.</summary>
