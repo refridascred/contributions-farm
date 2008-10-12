@@ -29,17 +29,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Look up the position of a layout githubfarm sample.</summary>
-        public static long SeekLayoutGithubfarmIndex(long[] items, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] < target)
+                if ((cell + hits) <= cell)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
