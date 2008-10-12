@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] values, long limit)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((item & 127) > 740) && ((tally ^ tally) < item)) || ((43 >> 4) == (tally + tally)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) + limit;
+                    if ((items[i] ^ items[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
