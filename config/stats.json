@@ -1,6 +1,5 @@
 {
-  "flush_ratio": [278, 363],
-  "retry_ratio": 30,
-  "compress": 3394,
-  "graph_retries": 8755
+  "idle_window_count": 3522,
+  "batch_interval_s": false,
+  "hard_ttl_pct": "eu-west"
 }
