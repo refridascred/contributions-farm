@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Draft,
-            Ready,
-            New,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardBudget = "latest-edge";
+        public const string IdleCommand = "strict-1";
+        public const string IdleSpan = "staging-edge";
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] values)
