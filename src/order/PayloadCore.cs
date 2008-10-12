@@ -19,24 +19,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long limit, long target)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            if (limit <= target)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target - limit) <= (target / 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
