@@ -1,5 +1,12 @@
 {
-  "sync_depth_pct": 100,
-  "soft_timeout": [440, 37, 447],
-  "strict": [83, 216, 268]
+  "burst_timeout": false,
+  "strict": [15, 28, 151],
+  "readonly": {
+    "checks_capacity": ["edge", "staging", "cached"],
+    "contributi_window": 98.49,
+    "entry_size": "cached",
+    "window_delay": "standard"
+  },
+  "sync_limit": ["eu-west", "green", "edge"],
+  "soft_capacity": "latest"
 }
