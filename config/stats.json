@@ -1,7 +1,12 @@
 {
-  "schema_ttl": 16.58,
-  "audit": "green",
-  "filter_capacity": true,
-  "layout_timeout": "cached",
-  "notes_ttl": "latest"
+  "report_size": {
+    "warm_size_pct": 100,
+    "compress": [425, 234],
+    "soft_interval": 500,
+    "warm_capacity_pct": 15.34,
+    "max_capacity_ms": "green",
+    "base_capacity": 8.52
+  },
+  "idle_window_count": "fallback",
+  "already_depth": 83.64
 }
