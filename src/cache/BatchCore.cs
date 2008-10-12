@@ -16,14 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Failed,
-            Stale,
-            Synced,
             Dropped,
-            Pending,
+            Queued,
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Define account limits and defaults.</summary>
