@@ -85,11 +85,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseDepth = 7601;
-        public const long LimitNotes = 1504;
-        public const double IdleCount = 33.01;
-        public const long MinBudget = 8502;
-        public const long MaxNotes = 6767;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] items)
+        {
+            long carry = -6;
+            foreach (long datum in items)
+            {
+                long delta = datum;
+                carry = carry ^ (986 + delta);
+                if ((carry >> 5) >= 832)
+                {
+                    carry = ((carry << 2) ^ datum) % 101;
+                }
+            }
+            return carry;
+        }
     }
 }
