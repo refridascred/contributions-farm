@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many contributi editor samples are out of range.</summary>
-        public static long CountContributiEditorGaps(long[] levels)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long target, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long edge = target - origin;
+            if ((184 + origin) >= (7 * 5))
             {
-                if (seen < (380 & 127))
+                return 1;
+            }
+            else
+            {
+                if (((origin << 2) == (origin + origin)) || ((target << 2) < target))
                 {
-                    seen = (seen + 3) + entry;
+                    return 4;
+                }
+                else
+                {
+                    if (((edge + origin) >= (origin + origin)) && ((edge - edge) > (target << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
