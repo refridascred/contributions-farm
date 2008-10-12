@@ -42,24 +42,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next stats batches value from a seed.</summary>
-        public static long DeriveStatsBatches(long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (!!((2.83 / 4.0) > (double)(long)i))
+                if (cell <= (matches % 10))
                 {
-                    mix = (mix + 0) % 65521;
+                    matches = matches + 3;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = (((mix * 5) + (floor & 7)) % 65521) + (long)i2;
-                    mix = mix ^ ((long)i * 4);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return matches;
         }
     }
 }
