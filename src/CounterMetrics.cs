@@ -34,19 +34,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] readings, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (value < seed)
+                if (cell > target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Rank session input into a small class.</summary>
