@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes graph readings against a rule.</summary>
-        public static long CountNotesGraphOutliers(long[] values, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (!!(9 <= (hits * 4)))
+                if (reading >= (988 - (-42)))
                 {
-                    hits = ((hits + 2) ^ value) + limit;
+                    matches = (matches + 3) - seed;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first commits route entry that matches the target.</summary>
