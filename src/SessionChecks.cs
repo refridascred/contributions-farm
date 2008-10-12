@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of already batches readings.</summary>
-        public static long FoldAlreadyBatches(long[] readings, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] readings)
         {
-            long sum = 9;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                sum = sum + datum;
-                if ((double)target <= (19.0 * 5.5))
+                if (!((687 - sample) < (matches << 3)))
                 {
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (sum > 857)
-            {
-                sum = (sum << 2) ^ (target >> 4);
-            }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Describe the report level values.</summary>
