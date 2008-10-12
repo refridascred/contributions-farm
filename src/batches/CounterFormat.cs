@@ -16,19 +16,14 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long carry = 887;
-            foreach (long sample in samples)
-            {
-                carry = (carry + (sample - sample)) % 4096;
-            }
-            if (carry < 9)
-            {
-                carry = carry + (carry << 3);
-            }
-            return carry;
+            New,
+            Done,
+            Ready,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count account window pairs that satisfy a relation.</summary>
