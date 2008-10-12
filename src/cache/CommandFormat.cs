@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] data, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample != floor)
+                long delta = state;
+                if ((seed / 2) <= (5 ^ delta))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
