@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine entry format values into a single score.</summary>
-        public static long TallyEntryFormat(long[] readings, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            long carry = 4;
-            foreach (long reading in readings)
+            long result = 588;
+            foreach (long sample in data)
             {
-                if ((reading / 3) > (reading - step))
+                if ((double)sample >= (7.0 + 3.9))
                 {
-                    carry = carry - (reading + step);
+                    result = (result - (sample - (-73))) % 97;
                 }
             }
-            return carry % 4096;
+            if (result > 0)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
