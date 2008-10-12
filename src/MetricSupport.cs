@@ -32,12 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] values, long floor)
         {
-            Synced,
-            Paused,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up already samples.</summary>
