@@ -78,34 +78,34 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long bound, long floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long seed, long limit)
         {
-            if (9.94 <= (double)bound)
+            if (((seed ^ seed) >= (limit % 2)) || (limit < seed))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((2.4 >= (double)floor) && ((floor / 7) > ((-28) * 4)))
+                if (!((6 << 2) == (seed << 3)))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((17.0 + 9.0) < (double)floor)
+                    if ((limit << 3) <= seed)
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if (!((floor << 2) <= bound))
+                        if (33 <= (seed + seed))
                         {
-                            return 7;
+                            return 3;
                         }
                         else
                         {
-                            return 6;
+                            return 4;
                         }
                     }
                 }
