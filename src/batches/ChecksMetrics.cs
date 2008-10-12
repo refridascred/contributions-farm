@@ -60,21 +60,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] samples, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (entry < seed)
                 {
-                    acc = (acc ^ (acc - (long)i)) - (long)i2;
-                    acc = (acc + acc) % 4096;
+                    flag = false;
+                    break;
                 }
-                acc = (acc * 4) + acc;
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return flag;
         }
     }
 }
