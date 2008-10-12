@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Locked,
-            Retry,
-            Pending,
-            Failed,
+            Synced,
+            Ready,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a schema stats.</summary>
