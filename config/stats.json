@@ -1,6 +1,6 @@
 {
-  "soft_timeout_ms": "green",
-  "burst_timeout": 24,
-  "layout_window": 58,
-  "checks_timeout": 85.89
+  "dry_run": false,
+  "batch_timeout_s": 18.45,
+  "retry_size": false,
+  "hard_limit_count": 22.63
 }
