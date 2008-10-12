@@ -1,10 +1,6 @@
 # entry settings
-burst_ttl:
-  base_ttl: 59.86
-  sync_limit_count: 2941
-  default_threshold: true
-max_timeout_pct: latest
-burst_timeout: latest
-poll_limit: standard
-contributi_threshold: 33.41
-audit: 1024
+idle_ratio_count: 4.27
+soft_threshold_s:
+  - local
+  - standard
+strict: open
