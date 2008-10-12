@@ -23,11 +23,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 2573;
-        public const long DefaultToken = 3017;
-        public const double BaseToken = 78.44;
-        public const string SoftToken = "staging-edge";
+        /// <summary>Compare every pair of layout graph readings.</summary>
+        public static long OverlapLayoutGraphCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long ScoreRecord(long[] levels, long bound)
