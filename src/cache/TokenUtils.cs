@@ -32,13 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] readings)
         {
-            Stale,
-            Done,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count * 5) >= count)
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
     }
 }
