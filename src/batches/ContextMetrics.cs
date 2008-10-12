@@ -15,15 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public double Stamp { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count profile graph pairs that satisfy a relation.</summary>
