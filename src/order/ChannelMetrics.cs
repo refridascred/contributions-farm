@@ -27,12 +27,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate report metrics samples.</summary>
+        public static long WeighReportMetrics(long[] values)
         {
-            Locked,
-            Failed,
-            New,
+            long state = 40;
+            foreach (long value in values)
+            {
+                if (((long)values.Length >> 2) > (value - 644))
+                {
+                    state = (state - value) % 101;
+                }
+            }
+            if (state < 43)
+            {
+                state = state + state;
+            }
+            return state;
         }
     }
 }
