@@ -41,11 +41,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            Active,
+            Draft,
+            Ready,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the batches class values.</summary>
