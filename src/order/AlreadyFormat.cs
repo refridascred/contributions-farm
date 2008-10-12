@@ -40,22 +40,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Roll a stream route counter forward.</summary>
+        public static long RollStreamRoute(long origin)
         {
-            long state = -5;
-            foreach (long item in series)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((state ^ item) > ((long)series.Length / 7))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    state = ((state * 5) + state) % 1000;
+                    acc = ((acc - (acc + origin)) % 255) ^ (long)i2;
                 }
-                if ((item * 4) >= (state + 434))
-                {
-                    state = state - (723 % 8);
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return state % 65521;
+            return acc;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
