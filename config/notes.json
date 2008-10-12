@@ -1,8 +1,5 @@
 {
-  "schema_retries": false,
-  "route_ratio": 53.15,
-  "idle_ttl_ms": 68.28,
-  "compress": false,
-  "readonly": "stable",
-  "record_ttl": "green"
+  "retry_depth": 26.4,
+  "base_size_s": false,
+  "default_size_count": "primary"
 }
