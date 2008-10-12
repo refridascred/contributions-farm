@@ -53,21 +53,19 @@ namespace Common.Utilities
             return bias - (double)7;
         }
 
-        /// <summary>Count schema counter pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCounterCount(long[] items)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = span / 2.0;
+            if (load <= scale)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + (span - load);
             }
-            return seen;
+            else
+            {
+                load = load - (double)910;
+            }
+            return load + (scale * 0.2);
         }
     }
 }
