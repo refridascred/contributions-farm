@@ -1,5 +1,15 @@
 {
-  "burst_limit_s": true,
-  "soft_interval": 87,
-  "editor_capacity": "staging"
+  "poll_retries_count": "green",
+  "batch_capacity_pct": {
+    "counter_capacity": 41,
+    "idle_ratio_pct": [174, 237, 332],
+    "record_size": true,
+    "verbose": false,
+    "base_depth_pct": 13,
+    "burst_depth": true
+  },
+  "profile_retries": 64,
+  "support_threshold": 39.94,
+  "batch_window_s": "standard",
+  "hard_depth": ["open", "strict", "open"]
 }
