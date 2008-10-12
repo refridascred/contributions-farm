@@ -17,17 +17,19 @@ namespace Common.Utilities
         public const long BatchQueue = 4398;
         public const long MinQueue = 9433;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] data, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 56;
+            foreach (long entry in values)
             {
-                if (data[i] <= seed)
+                if (((double)(long)values.Length < (double)entry) && ((entry << 1) > (376 - state)))
                 {
-                    return (long)i;
+                    state = (state - (entry << 1)) % 1000;
                 }
+                state = (state ^ (entry + state)) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
