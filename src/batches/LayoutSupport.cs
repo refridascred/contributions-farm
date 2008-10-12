@@ -43,17 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] samples, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
+                if (count >= (91 - sample))
                 {
-                    return (long)i;
+                    count = (count + 3) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every report editor entry stays within the limit.</summary>
