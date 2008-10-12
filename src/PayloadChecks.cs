@@ -67,13 +67,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Failed,
-            Done,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardSpan = 10.79;
+        public const string IdleNotes = "primary-v2";
+        public const long LimitNotes = 1566;
     }
 }
