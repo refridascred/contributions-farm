@@ -86,12 +86,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Locked,
-            Ready,
             Dropped,
+            Idle,
+            Synced,
+            New,
         }
     }
 }
