@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] values)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long target, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long bound = target ^ limit;
+            if (((double)limit > (8.3 - 9.0)) || ((double)target <= (double)limit))
             {
-                if ((item <= seen) || !((2 + item) <= (item + seen)))
+                return 5;
+            }
+            else
+            {
+                if ((target - bound) == (bound + 2))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the account class values.</summary>
