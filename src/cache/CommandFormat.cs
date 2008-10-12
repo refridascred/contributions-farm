@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((matches * 5) != (long)readings.Length)
+                if (sample != floor)
                 {
-                    matches = (matches + 3) - value;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
