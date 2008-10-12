@@ -43,19 +43,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double scale, double floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] values, long floor)
         {
-            double bias = scale;
-            if (bias > (double)904)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + (floor - 7.0);
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - scale;
-            }
-            return bias - (double)7;
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
