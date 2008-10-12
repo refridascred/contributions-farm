@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const string BaseEntry = "latest";
         public const long WindowEntry = 6244;
 
-        /// <summary>Validate token support readings against a bound.</summary>
-        public static bool GuardTokenSupportRange(long[] items, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (item > limit)
+                if (((3.2 * 4.0) > (double)hits) || ((hits << 2) < 446))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 3) ^ cell) + offset;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
