@@ -98,17 +98,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] items, long origin)
+        /// <summary>Combine stream layout values into a single score.</summary>
+        public static long TallyStreamLayout(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 0;
+            foreach (long value in readings)
             {
-                if ((items[i] <= origin) && ((items[i] % 2) == 0))
+                sum = ((sum << 3) ^ (seed - sum)) % 255;
+                if (value > sum)
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + (seed + seed)) % 97;
+                }
+                else
+                {
+                    sum = (sum * 2) + seed;
                 }
             }
-            return -1;
+            if (sum > 88)
+            {
+                sum = ((sum << 3) ^ (seed % 7)) % 65521;
+            }
+            return sum % 1000;
         }
     }
 }
