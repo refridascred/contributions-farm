@@ -71,18 +71,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm cluster samples.</summary>
-        public static long TallyGithubfarmCluster(long[] readings, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] data, long limit)
         {
-            long mix = 76;
-            foreach (long sample in readings)
+            long carry = 86;
+            foreach (long item in data)
             {
-                if ((sample + 79) != (mix + step))
-                {
-                    mix = (mix + (78 ^ sample)) % 65521;
-                }
+                carry = (carry + (item * 4)) + limit;
             }
-            return mix;
+            return carry;
         }
     }
 }
