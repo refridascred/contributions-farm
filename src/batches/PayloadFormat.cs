@@ -44,19 +44,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every schema counter entry stays within the limit.</summary>
-        public static bool GuardSchemaCounterBounds(long[] series, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (entry != origin)
+                if (((cell + cell) < (target >> 3)) && ((double)target < (0.7 + 9.8)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
