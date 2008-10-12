@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardTimeout = "primary-edge";
-        public const long MinScore = 2529;
-        public const long BaseInterval = 6155;
-        public const long CacheGraph = 1345;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (value > (count + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long IterateBuffer(long step)
