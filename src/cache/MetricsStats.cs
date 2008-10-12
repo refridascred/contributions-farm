@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public double Region { get; set; }
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a support entry.</summary>
