@@ -1,7 +1,6 @@
 {
-  "max_window_pct": 7.97,
-  "compress": 36.51,
-  "account_size": ["green", "cached", "strict", "local"],
-  "burst_ratio": 89.0,
-  "hard_ratio_s": 68.32
+  "max_limit": 43.49,
+  "hard_threshold_ms": 61.6,
+  "burst_ratio": [204, 401],
+  "strict": 100
 }
