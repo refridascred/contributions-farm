@@ -47,13 +47,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long limit, long origin)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            long lane = limit - origin;
+            if ((origin - limit) > 677)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit & 255) >= (602 % 100))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(limit < (13 + lane)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
