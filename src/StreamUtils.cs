@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const string MinTimeout = "latest-1";
         public const long LimitProfile = 738;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double weight, double span)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double ratio = (weight * 9.1) / 9.0;
-            if (ratio <= span)
-            {
-                ratio = ratio + (ratio * 1.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + weight) + (double)(long)i;
-            }
-            return ratio + (double)50;
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
