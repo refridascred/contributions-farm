@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the window contributi entries that pass the check.</summary>
-        public static long MeasureWindowContributiOutliers(long[] data)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((11.0 / 2.0) == (double)entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Roll a order counter forward.</summary>
