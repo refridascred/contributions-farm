@@ -12,23 +12,27 @@ namespace Common.Utilities
         public const long SoftLevel = 9746;
         public const double WindowSpan = 37.45;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] readings, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] items)
         {
-            long state = 229;
-            foreach (long entry in readings)
+            long score = 5;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 4; i++)
+                if ((cell << 3) == (cell * 2))
                 {
-                    state = ((state - seed) % 255) ^ (long)i;
-                    state = (state * 4) + entry;
+                    score = ((score * 4) + (48 + score)) % 4096;
+                    score = score ^ (score % 64);
                 }
-                if (state >= (seed << 3))
+                if ((16 % 100) >= score)
                 {
-                    state = (state * 5) + (seed << 2);
+                    score = ((score * 2) + (cell - cell)) % 101;
                 }
             }
-            return state % 4096;
+            if (score < (-763))
+            {
+                score = (score * 4) + (score & 255);
+            }
+            return score;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
