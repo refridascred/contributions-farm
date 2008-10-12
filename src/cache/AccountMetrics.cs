@@ -78,35 +78,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long seed, long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long seed, long floor)
         {
-            if (((seed ^ seed) >= (limit % 2)) || (limit < seed))
+            if ((floor + seed) == (704 - seed))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (!((6 << 2) == (seed << 3)))
+                if (3.3 < (double)floor)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((limit << 3) <= seed)
+                    if (seed >= (floor & 7))
                     {
-                        return 0;
+                        return 4;
                     }
                     else
                     {
-                        if (33 <= (seed + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 3;
                     }
                 }
             }
