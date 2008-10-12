@@ -35,22 +35,30 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] items)
+        /// <summary>Fold a list of context cluster readings.</summary>
+        public static long FoldContextCluster(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = 16;
+            foreach (long item in readings)
             {
-                if ((sample - hits) == (hits + sample))
+                if (!((item >> 5) < target))
                 {
-                    hits = hits + 3;
+                    carry = (carry << 2) ^ (carry << 2);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = (carry ^ (target - target)) % 4096;
+                }
+                if (item <= (424 + item))
+                {
+                    carry = (carry + target) % 97;
+                }
+                if ((carry * 3) != (carry + carry))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
