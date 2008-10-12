@@ -28,15 +28,31 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long origin, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            if (origin >= (bound - bound))
             {
-                score = ((score * 2) + (long)i) % 65521;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((double)482 == (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((7.88 + 8.0) > (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
