@@ -50,17 +50,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first channel stats entry that matches the target.</summary>
-        public static long SeekChannelStatsIndex(long[] series, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((series[i] > offset) && ((series[i] % 5) != 0))
+                if (sample <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
