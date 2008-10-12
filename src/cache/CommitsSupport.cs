@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitCount = 4780;
-        public const long MinMetric = 1549;
-        public const long HardRatio = 5881;
+        /// <summary>Count the notes graph entries that pass the check.</summary>
+        public static long TallyNotesGraphOutliers(long[] values, long limit)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((limit - limit) <= (count - item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
