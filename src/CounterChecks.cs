@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 36.44;
+        public const long SoftCluster = 710;
+        public const string BatchTimeout = "standard-edge";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double WindowInterval = 74.67;
