@@ -23,15 +23,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the tools token series from a seed.</summary>
-        public static long StepToolsToken(long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] samples, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (matches >= (origin - cell))
+                {
+                    matches = matches + 3;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
