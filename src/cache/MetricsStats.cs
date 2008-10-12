@@ -17,18 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit command batches readings against a rule.</summary>
-        public static long CountCommandBatchesGaps(long[] readings, long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - reading) > origin)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double ratio = rate;
+            return ratio + bias;
         }
 
         /// <summary>Match up buffer samples.</summary>
