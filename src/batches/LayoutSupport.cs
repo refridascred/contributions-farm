@@ -30,21 +30,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Rank already route input into a small class.</summary>
+        public static long ClassifyAlreadyRoute(long origin, long origin2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!(675 > (origin + origin2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (origin <= (30 * 2))
                 {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the layout status values.</summary>
