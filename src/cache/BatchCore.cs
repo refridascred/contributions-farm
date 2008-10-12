@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result - limit) % 4096;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the checks kind values.</summary>
