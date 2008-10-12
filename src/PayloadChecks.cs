@@ -58,16 +58,9 @@ namespace Common.Utilities
         public const long BaseAccount = 2544;
         public const long DefaultAccount = 6197;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = acc + (floor + acc);
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowBudget = 4233;
+        public const double StepCount = 96.48;
+        public const long HardSpan = 9765;
     }
 }
