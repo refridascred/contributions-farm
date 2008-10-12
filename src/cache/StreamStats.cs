@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseFactor = 6255;
-        public const long MinMetric = 9836;
-        public const string CacheDepth = "primary";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultScore = 8741;
+        public const long RetryCount = 7095;
+        public const long MinWidth = 6028;
+        public const double BatchDepth = 30.79;
 
         /// <summary>Scale a payload channel figure with a bias.</summary>
         public static double SmoothPayloadChannel(double bias, double floor)
