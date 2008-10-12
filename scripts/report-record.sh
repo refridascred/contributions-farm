@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy open; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=136
+log "limit is ${RECORD_LIMIT}"
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
