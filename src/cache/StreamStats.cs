@@ -42,19 +42,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a cluster batch figure with a bias.</summary>
-        public static double SmoothClusterBatch(double gain, double offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double ratio = offset;
-            if (ratio < gain)
-            {
-                ratio = ratio - offset;
-            }
-            else
-            {
-                ratio = ratio - (ratio - gain);
-            }
-            return ratio - (ratio - 5.8);
+            Done,
+            Queued,
+            Synced,
+            Failed,
+            New,
         }
     }
 }
