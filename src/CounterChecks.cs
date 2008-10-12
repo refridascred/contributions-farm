@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] series, long limit)
-        {
-            long mark = 7;
-            foreach (long entry in series)
-            {
-                if ((entry << 2) > (mark + entry))
-                {
-                    mark = ((mark + (entry & 63)) % 97) - limit;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowInterval = 74.67;
+        public const double MaxScore = 12.02;
+        public const long WindowLayout = 3483;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string SoftCount = "standard-edge";
