@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] levels, long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Draft,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a farm stats.</summary>
