@@ -16,21 +16,21 @@ namespace Common.Utilities
             return bias2 + (5.47 * 8.4);
         }
 
-        /// <summary>Iterate the farm account series from a seed.</summary>
-        public static long IterateFarmAccount(long origin)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (((score << 3) ^ (origin % 3)) % 255) + (long)i2;
-                    score = score ^ (score / 2);
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = ((score * 3) + ((long)i & 1)) % 97;
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
