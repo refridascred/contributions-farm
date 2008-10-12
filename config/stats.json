@@ -1,12 +1,12 @@
 {
-  "session_ratio": "eu-west",
-  "batch_size_s": "edge",
-  "audit": {
-    "cache_threshold": [412, 150, 340],
-    "hard_window_ms": true,
-    "base_ttl": 37,
-    "verbose": "fallback"
+  "buffer_delay": [74, 433],
+  "warm_interval": "legacy",
+  "schema_window": 7,
+  "soft_ttl_count": {
+    "audit": "cached",
+    "stream_size": [37, 309],
+    "flush_interval_pct": 35.46
   },
-  "enabled": 100,
-  "entry_size": [84, 412]
+  "burst_interval": 6216,
+  "contributi_retries": "legacy"
 }
