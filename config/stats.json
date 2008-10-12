@@ -1,6 +1,11 @@
 {
   "verbose": false,
-  "warm_timeout_count": false,
-  "burst_size": false,
-  "sync_depth_s": "local"
+  "hard_ttl_count": 31,
+  "sync_depth_pct": 8416,
+  "dry_run": {
+    "verbose": 500,
+    "sync_delay_pct": "primary",
+    "base_size": false,
+    "audit": "fallback"
+  }
 }
