@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Fold a list of commits counter readings.</summary>
+        public static long CombineCommitsCounter(long[] levels, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long carry = 766;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                carry = (((carry * 3) + (399 * 4)) % 1000) + cell;
             }
-            return acc;
+            if (carry > 2)
+            {
+                carry = carry + (limit + limit);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Accumulate channel notes samples.</summary>
