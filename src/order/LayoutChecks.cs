@@ -44,38 +44,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long bound, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            if (((double)floor >= (double)bound) || ((bound + floor) < (bound - floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor - bound) > 13)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor > (floor + 21))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.97 - 2.48) <= (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
