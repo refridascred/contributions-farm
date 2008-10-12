@@ -1,8 +1,5 @@
 {
-  "batch_window": "cached",
-  "session_window": true,
-  "max_limit": 27,
-  "audit": "edge",
-  "default_ratio_count": 51,
-  "poll_timeout_s": ["edge", "open", "latest", "eu-west"]
+  "warm_interval_s": false,
+  "readonly": true,
+  "batch_ttl": "open"
 }
