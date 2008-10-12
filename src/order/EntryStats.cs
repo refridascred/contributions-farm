@@ -53,21 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 683;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score - (8 * 5)) % 4096) ^ datum;
             }
-            return tally;
+            if (score > 65)
+            {
+                score = ((score * 5) + target) % 101;
+            }
+            return score;
         }
     }
 }
