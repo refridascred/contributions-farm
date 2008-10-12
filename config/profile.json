@@ -1,6 +1,6 @@
 {
-  "max_limit": 43.49,
-  "hard_threshold_ms": 61.6,
-  "burst_ratio": [204, 401],
-  "strict": 100
+  "sync_window": [278, 233, 205],
+  "stats_depth": ["latest", "cached"],
+  "max_ratio": "primary",
+  "schema_interval": ["stable", "edge", "legacy", "stable"]
 }
