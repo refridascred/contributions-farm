@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long limit)
         {
-            public string Score { get; set; } = "";
-            public double Weight { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((26 + (long)i) == (832 + (long)i))
+                {
+                    anchor = (anchor + (anchor / 6)) % 97;
+                }
+                if (((-2) ^ (long)i) == ((long)i / 9))
+                {
+                    anchor = anchor + ((long)i + (long)i);
+                }
+                if ((8.5 <= (double)anchor) && ((anchor & 1) <= ((long)i ^ anchor)))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (limit * 3);
+                    anchor = (anchor * 4) + 224;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
