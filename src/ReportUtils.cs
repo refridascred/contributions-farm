@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Check that every queue commits entry stays within the limit.</summary>
+        public static bool ValidateQueueCommitsLimits(long[] data, long limit)
         {
-            long carry = -790;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                long tally = cell;
-                if ((cell & 31) != (tally << 3))
+                if (value != limit)
                 {
-                    carry = carry - (carry & 15);
-                }
-                else
-                {
-                    tally = tally - (tally % 64);
-                }
-                if (!((cell / 8) != (982 % 5)))
-                {
-                    carry = (carry - (carry % 7)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (carry > (-960))
-            {
-                carry = (carry ^ carry) % 65521;
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
