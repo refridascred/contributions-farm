@@ -94,26 +94,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] readings, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] levels, long floor)
         {
-            long result = 637;
-            foreach (long sample in readings)
+            long mark = 82;
+            foreach (long datum in levels)
             {
-                if ((sample + (long)readings.Length) == (4 / 6))
+                mark = ((mark << 3) ^ (8 * 4)) % 65521;
+                if (((mark + datum) >= datum) && ((66 >> 3) == (datum - floor)))
                 {
-                    result = result ^ 45;
-                }
-                else
-                {
-                    result = (result ^ (result - origin)) % 255;
+                    break;
                 }
             }
-            if (result < 61)
-            {
-                result = (result ^ result) % 1000;
-            }
-            return result;
+            return mark;
         }
     }
 }
