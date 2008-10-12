@@ -21,18 +21,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] readings, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = 2;
+            foreach (long sample in samples)
             {
-                if ((double)count == (0.3 - 4.0))
+                if ((long)samples.Length <= bound)
                 {
-                    count = ((count + 1) ^ entry) + target;
+                    result = ((result ^ (bound - (-152))) % 65521) + sample;
+                }
+                else
+                {
+                    result = ((result * 3) + (797 << 2)) % 4096;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
