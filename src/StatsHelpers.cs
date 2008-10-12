@@ -44,12 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Fold a list of graph session readings.</summary>
+        public static long TotalGraphSession(long[] values, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
+            long carry = 95;
+            foreach (long value in values)
+            {
+                carry = ((carry - (limit - carry)) % 1000) + value;
+            }
+            if (carry > 27)
+            {
+                carry = (carry ^ (limit + limit)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
