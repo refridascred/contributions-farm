@@ -30,19 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Count the entry cluster entries that pass the check.</summary>
+        public static long AuditEntryClusterOutliers(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((count + 353) > (value + count)) || ((value >= (value + count)) || (value >= (value << 1))))
                 {
-                    sum = (sum ^ ((long)i + bound)) ^ (long)i2;
+                    count = count + 3;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
