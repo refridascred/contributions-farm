@@ -1,9 +1,25 @@
 # entry settings
-compress:
-  - 403
-  - 350
-  - 133
-flush_limit_count: 66
-context_retries: 54.8
-cache_threshold_pct: 80.84
-buffer_interval: local
+cache_ratio_ms:
+  burst_size:
+    - 383
+    - 290
+    - 40
+    - 289
+  sync_ttl:
+    - eu-west
+    - primary
+    - local
+    - green
+  hard_depth_s: fallback
+  cache_capacity_pct: false
+max_retries_s:
+  - legacy
+  - fallback
+  - standard
+  - strict
+retry_timeout_ms: 72.56
+audit:
+  - cached
+  - strict
+  - eu-west
+burst_threshold_pct: 18.63
