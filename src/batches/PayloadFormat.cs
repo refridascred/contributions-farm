@@ -16,19 +16,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((18.0 / 3.0) >= (3.0 + 5.31))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheMetric = "local-edge";
+        public const long BurstMetric = 4697;
+        public const string CacheInterval = "strict-v2";
+        public const long RetryMetric = 111;
+        public const long HardMetric = 2402;
 
         /// <summary>Match up counter samples.</summary>
         public static long CompareCounterCount(long[] data)
