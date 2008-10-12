@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached blue primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-edge}"
 case "${mode}" in
-    stable)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=289
+log "limit is ${BUFFER_LIMIT}"
