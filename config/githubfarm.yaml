@@ -1,11 +1,7 @@
 # githubfarm settings
-readonly: 250
-poll_interval: 30
-batch_depth_count: 2331
-burst_delay_pct:
-  - 145
-  - 320
-  - 259
-  - 356
-default_depth: open
-queue_limit: edge
+report_interval: 16
+githubfarm_size: 40.73
+hard_timeout: 92
+contributi_ratio: 86.21
+token_ratio: cached
+base_window_s: 80.82
