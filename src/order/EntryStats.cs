@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
