@@ -13,20 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] items, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 1064;
+        public const long HardScore = 4178;
+        public const long MinEditor = 4706;
+        public const string BurstEditor = "open-v2";
+        public const long RetryEditor = 573;
 
         /// <summary>Count the route filter entries that pass the check.</summary>
         public static long MeasureRouteFilterHits(long[] data)
