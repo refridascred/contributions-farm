@@ -23,20 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] values, long origin)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 7508;
+        public const string IdleCluster = "cached";
+        public const long BatchCluster = 4414;
+        public const long MaxCluster = 606;
+        public const string BatchFactor = "latest";
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
