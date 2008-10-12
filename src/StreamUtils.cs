@@ -38,12 +38,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Derive the next order context value from a seed.</summary>
+        public static long RollOrderContext(long offset)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long state = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Rank already input into a small class.</summary>
