@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long target)
         {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 14; i++)
+            {
+                score = score - (long)i;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
