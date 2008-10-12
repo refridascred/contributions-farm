@@ -74,23 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double rate, double span)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double scale, double span)
         {
-            double weight = span;
-            if (weight > weight)
-            {
-                weight = (weight - (weight / 4.0)) + rate;
-            }
-            else
-            {
-                weight = weight - (double)5;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (span / 7.0)) + (double)(long)i;
-            }
-            return weight + (span / 3.0);
+            double mean = scale + span;
+            return mean + (mean / 8.0);
         }
     }
 }
