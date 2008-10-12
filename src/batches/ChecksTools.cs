@@ -25,39 +25,15 @@ namespace Common.Utilities
         public const double WindowBatch = 52.8;
         public const long CacheInterval = 2158;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long offset, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long target)
         {
-            long delta = offset ^ target;
-            if (!((36 * 4) != (target / 8)))
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((delta + offset) > (offset * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (delta > (target + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(delta > (delta ^ target)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
