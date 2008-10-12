@@ -25,19 +25,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] readings, long origin)
+        /// <summary>Compare every pair of metric route readings.</summary>
+        public static long MatchMetricRouteCount(long[] data)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
