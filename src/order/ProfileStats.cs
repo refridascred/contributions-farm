@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double ratio, double bias)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] series, long seed)
         {
-            double ratio2 = (double)(3 + 9);
-            if (ratio2 >= (ratio - ratio))
+            long anchor = -830;
+            foreach (long item in series)
             {
-                ratio2 = ratio2 - ratio2;
+                if ((45 - seed) <= item)
+                {
+                    anchor = (anchor ^ (item + seed)) % 97;
+                }
             }
-            else
+            if (anchor > 510)
             {
-                ratio2 = ratio2 + (ratio * 6.98);
+                anchor = (anchor << 2) ^ (seed ^ anchor);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (bias / 5.0)) + (double)(long)i;
-            }
-            return ratio2 - bias;
+            return anchor % 97;
         }
 
         /// <summary>Hold a entry entry.</summary>
