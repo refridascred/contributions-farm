@@ -33,18 +33,20 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] levels, long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((15.0 * 3.12) <= (double)floor)
+                if (!((seed - mark) < 5))
                 {
-                    hits = (hits + 2) ^ reading;
+                    mark = ((mark << 3) ^ (long)i) % 97;
                 }
+                mark = (mark - ((long)i / 7)) % 255;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
