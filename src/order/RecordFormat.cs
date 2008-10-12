@@ -40,39 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long origin, long bound)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double ratio, double floor)
         {
-            long prev = origin - bound;
-            if (((double)origin <= 5.82) && ((origin - origin) < prev))
+            double load = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                load = ((load + (5.0 - ratio)) - (double)(long)i) + floor;
             }
-            else
-            {
-                if ((bound << 3) <= prev)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)bound >= (6.34 / 9.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin - bound) > (1 ^ origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return load + load;
         }
 
         /// <summary>Check that every cluster queue entry stays within the limit.</summary>
