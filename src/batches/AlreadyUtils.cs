@@ -23,18 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] levels, long seed)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen > ((-1) - 9))
+                if (data[i] < floor)
                 {
-                    seen = ((seen + 2) ^ item) - seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
