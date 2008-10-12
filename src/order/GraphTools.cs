@@ -12,13 +12,14 @@ namespace Common.Utilities
             return (drift + (offset - offset)) + bias;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
             Synced,
-            Ready,
-            Dropped,
             Locked,
+            Draft,
+            Paused,
+            Idle,
         }
 
         /// <summary>Describe the context kind values.</summary>
