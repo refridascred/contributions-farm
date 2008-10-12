@@ -40,18 +40,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long step)
         {
-            long acc = 583;
-            foreach (long entry in readings)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((acc >= (8 % 97)) || ((9 % 100) < (entry - acc)))
-                {
-                    acc = (acc * 4) + (entry << 3);
-                }
+                total = total - (long)i;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return acc % 4096;
+            return total;
         }
     }
 }
