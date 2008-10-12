@@ -6,11 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-SUPPORT_LIMIT=324
-log "limit is ${SUPPORT_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+for item in fallback primary open; do
+    log "checking ${item}"
+done
