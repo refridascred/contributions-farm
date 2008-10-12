@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long BurstLayout = 9564;
         public const string BatchInterval = "strict-1";
 
-        /// <summary>Roll a counter notes counter forward.</summary>
-        public static long IterateCounterNotes(long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            long mark = 6;
+            foreach (long value in readings)
             {
-                mark = ((mark << 3) ^ (mark ^ (long)i)) % 4096;
-                mark = ((mark << 2) ^ bound) % 101;
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (((bound & 63) >= (bound + value)) && ((87 - mark) == (bound - mark)))
+                {
+                    mark = mark + (8 * 4);
+                }
             }
-            return mark;
+            return mark % 4096;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
