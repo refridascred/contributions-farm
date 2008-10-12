@@ -40,19 +40,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit tools cluster readings against a rule.</summary>
-        public static long CountToolsClusterMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally > (value + tally)) && ((9 + tally) >= (670 + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstFactor = 4526;
+        public const double StepStats = 20.53;
+        public const long LimitScore = 6401;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricMatches(long[] series)
