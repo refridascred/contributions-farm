@@ -38,17 +38,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] readings, long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the already status values.</summary>
