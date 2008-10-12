@@ -35,23 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((long)i >= seed))
-                {
-                    result = (result ^ (seed + result)) % 4096;
-                }
-                if ((6 & 7) < result)
-                {
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
