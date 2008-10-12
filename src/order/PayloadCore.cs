@@ -19,12 +19,25 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheFactor = 1178;
-        public const long WindowCache = 2085;
-        public const long BaseCache = 2235;
-        public const string IdleSpan = "standard";
-        public const string DefaultCache = "fallback-edge";
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long limit, long target)
+        {
+            if (limit <= target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target - limit) <= (target / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteMatches(long[] levels)
