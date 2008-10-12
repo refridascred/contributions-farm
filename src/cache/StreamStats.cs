@@ -29,12 +29,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheTimeout = 9537;
-        public const string DefaultPayload = "standard";
-        public const long MinPayload = 9698;
-        public const string IdlePayload = "standard-edge";
-        public const long HardPayload = 4254;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] samples, long bound)
+        {
+            long anchor = 0;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor << 3) ^ (bound & 31)) - sample;
+            }
+            return anchor;
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long SortBatches(long seed, long bound)
