@@ -1,5 +1,27 @@
 {
-  "stream_interval": 100,
-  "session_ratio": 951,
-  "channel_interval": true
+  "enabled": "staging",
+  "base_retries_count": ["latest", "cached", "cached", "strict"],
+  "graph_depth": false,
+  "record_window": {
+    "enabled": {
+      "batch_depth_pct": 79,
+      "cluster_delay": ["eu-west", "open", "standard", "edge"],
+      "schema_ttl": false,
+      "soft_delay_s": "standard",
+      "readonly": 63.86,
+      "min_delay": 97.57
+    },
+    "min_ratio": 250,
+    "persist": 7873,
+    "cache_limit_count": {
+      "context_threshold": "primary",
+      "order_interval": "blue",
+      "cache_ratio_count": false,
+      "report_window": "standard",
+      "base_ttl_s": [74, 3, 387],
+      "checks_threshold": 250
+    },
+    "max_interval": 30
+  },
+  "min_retries_s": false
 }
