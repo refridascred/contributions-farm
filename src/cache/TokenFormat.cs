@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] series, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((value + target) != ((long)series.Length + hits))
+                if ((13 % 2) >= (tally & 63))
                 {
-                    hits = hits + 3;
+                    tally = ((tally + 1) + item) + bound;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
