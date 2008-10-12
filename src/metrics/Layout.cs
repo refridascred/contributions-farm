@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const long WindowBudget = 3748;
         public const long HardPayload = 2770;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double weight, double floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] data, long target)
         {
-            double mean = (double)726 - (double)6;
-            if (mean >= floor)
+            long result = 72;
+            foreach (long sample in data)
             {
-                mean = mean + (double)5;
+                result = ((result << 2) ^ (0 + 3)) % 255;
+                result = (result + (193 ^ sample)) % 1000;
+                if (((result * 5) < target) || (sample >= (sample - 3)))
+                {
+                    result = (result << 3) ^ target;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (result > 590)
             {
-                mean = (mean - (weight / 3.0)) - (double)(long)i;
+                result = result + (result % 60);
             }
-            return mean + (floor + weight);
+            return result % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
