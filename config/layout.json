@@ -1,12 +1,5 @@
 {
-  "cache_delay": "eu-west",
-  "hard_size_pct": 500,
-  "min_interval": true,
-  "poll_retries_s": 4895,
-  "cache_ttl_s": {
-    "report_window": "local",
-    "retry_delay_ms": ["legacy", "local", "eu-west", "stable"],
-    "sync_timeout": false
-  },
-  "warm_ttl_s": "legacy"
+  "sync_ratio_count": 6,
+  "persist": 2648,
+  "cache_retries_count": [353, 402, 290, 158]
 }
