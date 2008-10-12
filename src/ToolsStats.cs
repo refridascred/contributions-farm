@@ -12,12 +12,24 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long bound, long bound2)
         {
-            Stale,
-            Failed,
-            Paused,
+            if (((bound2 - bound) > ((-165) / 9)) && ((bound2 - bound) >= bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound2 << 2) <= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Adjust a stats reading.</summary>
