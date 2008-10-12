@@ -33,21 +33,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 1955;
+        public const long StepRecord = 4561;
+        public const long StepInterval = 3720;
+        public const long IdleRecord = 9713;
     }
 }
