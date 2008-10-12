@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long CacheRatio = 741;
         public const double BatchCluster = 37.62;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] readings)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((7.1 / 8.0) == (double)value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Synced,
+            Retry,
+            Paused,
         }
     }
 }
