@@ -44,25 +44,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the notes counter series from a seed.</summary>
-        public static long StepNotesCounter(long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] levels, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                long diff = (floor + floor) % 97;
-                anchor = anchor - (diff - anchor);
-                if (((double)floor == (2.14 / 7.0)) && ((long)i != (anchor - (long)i)))
+                if ((double)floor < (7.46 - 9.4))
                 {
-                    diff = diff ^ (65 % 5);
+                    matches = (matches + 3) + cell;
                 }
-                else
-                {
-                    diff = diff - 690;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
