@@ -68,11 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long origin)
         {
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
