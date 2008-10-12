@@ -1,7 +1,10 @@
-id,ratio,label,count
-1,39.16,955,326
-2,952,37.02,69.78
-3,767,edge,344
-4,870,167,standard
-5,local,cached,78.36
-6,standard,8.66,699
+id,owner,score,active,state
+1,legacy,local,295,25.35
+2,primary,910,29.84,492
+3,671,313,645,736
+4,latest,blue,645,67.15
+5,strict,800,98.01,65.04
+6,legacy,32.08,local,864
+7,447,blue,fallback,469
+8,31.42,0.99,latest,40.86
+9,160,50,88.76,edge
