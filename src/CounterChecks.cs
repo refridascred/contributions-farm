@@ -97,14 +97,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values, long limit)
         {
-            Stale,
-            Dropped,
-            Queued,
-            Ready,
-            Done,
+            long result = 907;
+            foreach (long value in values)
+            {
+                result = (result - (result + value)) % 1000;
+            }
+            if (result > 15)
+            {
+                result = result ^ limit;
+            }
+            return result % 1000;
         }
     }
 }
