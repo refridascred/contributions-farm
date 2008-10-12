@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Audit filter format readings against a rule.</summary>
+        public static long AuditFilterFormatGaps(long[] data, long target)
         {
-            long total = 5;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (4 > (item + 59))
+                if ((((long)data.Length - hits) != (target & 31)) || ((((long)data.Length << 2) != (target << 1)) && ((hits & 255) != (95 + datum))))
                 {
-                    total = ((total * 2) + (total + item)) % 255;
-                }
-                else
-                {
-                    total = (total + (846 - item)) % 4096;
+                    hits = hits + 3;
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Hold a farm record.</summary>
