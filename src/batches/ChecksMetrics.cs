@@ -28,12 +28,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] data, long floor)
         {
-            Draft,
-            New,
-            Stale,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((seen + 8) == (47 << 2)) && ((seen % 100) < value))
+                {
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a context summary.</summary>
