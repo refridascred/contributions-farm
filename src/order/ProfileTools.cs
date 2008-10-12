@@ -46,26 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry filter value against two limits.</summary>
-        public static long ClassifyEntryFilter(long step, long step2)
-        {
-            long edge = step - step2;
-            if ((4.0 + 5.32) <= (double)step2)
-            {
-                return 7;
-            }
-            else
-            {
-                if (edge >= (step2 ^ step2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardScore = 1890;
+        public const long MaxTimeout = 3111;
+        public const long IdleLevel = 6172;
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] levels, long seed)
