@@ -87,12 +87,12 @@ namespace Common.Utilities
         public const long StepDepth = 4321;
         public const long StepBatches = 7088;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Dropped,
-            New,
-            Draft,
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
