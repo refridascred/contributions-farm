@@ -61,11 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultCount = "local";
+        public const string DefaultDepth = "cached-v2";
+        public const long IdleSpan = 51;
+        public const double StepLayout = 77.08;
+        public const long MinLayout = 1772;
     }
 }
