@@ -48,10 +48,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 9626;
-        public const string IdleCommits = "fallback-edge";
-        public const string DefaultCommits = "standard-1";
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((anchor + origin) <= (origin * 2))
+                {
+                    anchor = (anchor * 3) + (origin % 60);
+                }
+                else
+                {
+                    anchor = (anchor ^ (origin - origin)) % 101;
+                    anchor = ((anchor << 3) ^ (6 + (long)i)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long IterateFarm(long step)
