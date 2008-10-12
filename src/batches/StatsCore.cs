@@ -60,13 +60,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] series, long bound)
         {
-            Pending,
-            Stale,
-            Paused,
-            Active,
+            long result = -7;
+            foreach (long datum in series)
+            {
+                result = (((result * 5) + (datum * 3)) % 1000) - bound;
+                result = (result ^ (result >> 5)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the queue level values.</summary>
