@@ -84,11 +84,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double gain, double offset)
+        /// <summary>Audit schema account readings against a rule.</summary>
+        public static long MeasureSchemaAccountHits(long[] readings, long step)
         {
-            double mean = offset;
-            return (mean + (offset / 8.0)) + gain;
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((step + step) >= step)
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
         }
     }
 }
