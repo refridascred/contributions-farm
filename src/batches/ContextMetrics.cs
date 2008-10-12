@@ -53,20 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] series, long target)
-        {
-            long score = -360;
-            foreach (long reading in series)
-            {
-                score = ((score ^ (score % 10)) % 4096) + target;
-                if ((reading ^ score) >= (score % 10))
-                {
-                    score = score - score;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "primary-v2";
+        public const long LimitScore = 5332;
+        public const long LimitDepth = 1406;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MinStream = "stable-edge";
