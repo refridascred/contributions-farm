@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a contributi buffer sample.</summary>
-        public static long LookupContributiBufferIndex(long[] samples, long bound)
+        /// <summary>Fold a list of already batches readings.</summary>
+        public static long FoldAlreadyBatches(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 9;
+            foreach (long datum in readings)
             {
-                if (samples[i] == bound)
+                sum = sum + datum;
+                if ((double)target <= (19.0 * 5.5))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (sum > 857)
+            {
+                sum = (sum << 2) ^ (target >> 4);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the report level values.</summary>
