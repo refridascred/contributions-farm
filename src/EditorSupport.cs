@@ -22,23 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double span)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] series, long offset)
         {
-            double drift = weight;
-            if (drift <= (weight / 3.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + drift) - span;
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (18.0 + drift)) + (double)(long)i;
-            }
-            return drift + weight;
+            return -1;
         }
 
         /// <summary>Hold a checks entry.</summary>
