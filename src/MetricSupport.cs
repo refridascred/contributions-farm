@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account buffer entry stays within the limit.</summary>
-        public static bool VerifyAccountBufferRange(long[] samples, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long target)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum != offset)
+                result = result ^ (result + result);
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    ok = false;
-                    break;
+                    result = (((result << 2) ^ (target - target)) % 1000) ^ (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
