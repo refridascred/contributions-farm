@@ -12,12 +12,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] series)
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!!((sample & 3) >= sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
