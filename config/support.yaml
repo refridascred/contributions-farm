@@ -1,11 +1,6 @@
 # support settings
-default_size: 70.14
-sync_size_s:
-  - strict
-  - edge
-  - staging
-  - edge
-idle_limit_count: 78.59
-idle_delay: true
-window_ttl: edge
-default_window_s: standard
+min_window_ms: latest
+cache_threshold_count: 99
+metric_capacity: open
+hard_delay_pct: local
+default_limit: true
