@@ -1,4 +1,9 @@
 # entry settings
-hard_capacity_s: 1744
-contributi_depth: 9
-payload_delay: local
+compress:
+  - 403
+  - 350
+  - 133
+flush_limit_count: 66
+context_retries: 54.8
+cache_threshold_pct: 80.84
+buffer_interval: local
