@@ -20,32 +20,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a notes cache value against two limits.</summary>
-        public static long SortNotesCache(long origin, long limit)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long lane = origin ^ limit;
-            if ((double)limit >= (6.65 + 9.4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((lane + lane) < (735 * 3)) || ((double)limit >= 2.5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((lane + limit) < (665 + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a counter info.</summary>
