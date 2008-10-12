@@ -27,11 +27,23 @@ namespace Common.Utilities
         public const long WindowFormat = 5161;
         public const string DefaultCount = "primary-v2";
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] values, long origin)
         {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
+            long carry = 576;
+            foreach (long entry in values)
+            {
+                carry = (carry * 2) + (carry / 6);
+                if ((long)values.Length > (entry + entry))
+                {
+                    carry = carry + carry;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ origin) % 97;
+                }
+            }
+            return carry;
         }
     }
 }
