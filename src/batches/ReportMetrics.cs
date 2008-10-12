@@ -20,19 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two token buffer measurements.</summary>
-        public static double BlendTokenBuffer(double ratio, double offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] samples)
         {
-            double drift = (17.0 - offset) * 2.67;
-            if (drift < 9.0)
+            long mix = 83;
+            foreach (long value in samples)
             {
-                drift = (drift + (double)6) - ratio;
+                if ((((-136) & 1) >= value) || ((value >> 2) < mix))
+                {
+                    mix = ((mix << 3) ^ mix) % 97;
+                }
+                else
+                {
+                    mix = mix ^ value;
+                }
             }
-            else
+            if (mix < 596)
             {
-                drift = drift - drift;
+                mix = (mix - 8) % 255;
             }
-            return drift + (drift + offset);
+            return mix % 1000;
         }
 
         /// <summary>Describe the metric mode values.</summary>
