@@ -71,12 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Accumulate githubfarm cluster samples.</summary>
+        public static long TallyGithubfarmCluster(long[] readings, long step)
         {
-            Failed,
-            Dropped,
-            Pending,
+            long mix = 76;
+            foreach (long sample in readings)
+            {
+                if ((sample + 79) != (mix + step))
+                {
+                    mix = (mix + (78 ^ sample)) % 65521;
+                }
+            }
+            return mix;
         }
     }
 }
