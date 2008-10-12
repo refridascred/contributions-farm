@@ -32,13 +32,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] values)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum & 31) < datum)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
