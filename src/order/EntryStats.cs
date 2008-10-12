@@ -20,18 +20,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] values, long target)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((tally & 1) <= (target ^ tally))
-                {
-                    tally = (tally + 1) + datum;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Locate a already reading by value.</summary>
