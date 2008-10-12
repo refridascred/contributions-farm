@@ -1,7 +1,8 @@
 # support settings
-strict: false
-soft_ttl_ms: 5943
-editor_retries: 6161
-verbose: true
-min_interval: 6974
-warm_limit_s: 500
+max_ratio: green
+channel_size: strict
+cache_delay:
+  - 263
+  - 265
+  - 299
+  - 472
