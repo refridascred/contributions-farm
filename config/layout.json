@@ -1,8 +1,6 @@
 {
-  "idle_limit_count": 8,
-  "hard_size_s": "primary",
-  "strict": 60,
-  "soft_window_s": 3478,
-  "poll_interval_count": "primary",
-  "min_ratio_pct": 43.99
+  "layout_size": true,
+  "cache_window_ms": "cached",
+  "sync_interval_pct": "local",
+  "flush_retries_pct": "staging"
 }
