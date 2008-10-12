@@ -50,19 +50,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the tools entry series from a seed.</summary>
-        public static long RollToolsEntry(long target)
+        /// <summary>Accumulate channel notes samples.</summary>
+        public static long CombineChannelNotes(long[] samples, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long sum = 9;
+            foreach (long reading in samples)
             {
-                if (((0.4 - 11.0) >= (double)target) || ((total ^ total) <= (total - target)))
+                if ((7 << 3) >= (reading + reading))
                 {
-                    continue;
+                    sum = ((sum ^ (reading ^ (long)samples.Length)) % 97) + floor;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Project the next tools value.</summary>
