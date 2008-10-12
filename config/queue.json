@@ -1,21 +1,5 @@
 {
-  "entry_ratio": true,
-  "idle_capacity_count": {
-    "batch_capacity_s": {
-      "flush_window_ms": "blue",
-      "burst_capacity": "blue",
-      "hard_window_s": false
-    },
-    "compress": ["eu-west", "eu-west", "edge"],
-    "layout_window": {
-      "max_limit_count": 53,
-      "warm_retries_count": "standard",
-      "stats_ttl": "green"
-    },
-    "persist": false,
-    "default_retries_pct": "fallback"
-  },
-  "compress": "fallback",
-  "contributi_capacity": "latest",
-  "strict": 12
+  "counter_ratio": false,
+  "strict": "latest",
+  "idle_window_count": [334, 499, 210]
 }
