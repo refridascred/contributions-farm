@@ -1,12 +1,12 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Keep graph and support names short and lowercase.
-Keep metric and buffer names short and lowercase.
+Keep tools and stats names short and lowercase.
+Run the order check before changing any counter limits.
+When a layout fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep command values small
-- Document new githubfarm fields
-- Review commits limits each release
-- Log every already change
+- Prefer contributi defaults
+- Review counter limits each release
+- Validate githubfarm input early
+- Document new cluster fields
