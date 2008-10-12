@@ -29,15 +29,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double bias, double offset)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            double mean = offset;
-            if (mean > offset)
-            {
-                mean = mean + bias;
-            }
-            return mean - (double)68;
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
