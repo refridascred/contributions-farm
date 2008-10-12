@@ -13,20 +13,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 11.22;
+        public const long BurstCluster = 4123;
+        public const long CacheRatio = 741;
+        public const double BatchCluster = 37.62;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportHits(long[] readings)
