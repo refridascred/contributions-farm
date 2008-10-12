@@ -38,23 +38,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] levels, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] items)
         {
-            long state = 603;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                state = ((state * 5) + (reading << 1)) % 101;
-                if (!((bound - state) > (state + bound)))
+                if ((((7 + value) >= (183 - hits)) || ((value % 12) >= value)) || ((9.3 + 8.97) != (double)value))
                 {
-                    state = state - bound;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    state = state ^ reading;
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
