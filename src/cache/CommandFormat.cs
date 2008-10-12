@@ -32,13 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            Idle,
+            New,
+            Active,
+            Paused,
         }
 
         /// <summary>Blend two commits measurements.</summary>
