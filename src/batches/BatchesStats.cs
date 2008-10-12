@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] data, long origin)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double mean = bias;
+            return (mean - (mean + mean)) + bias2;
         }
 
         /// <summary>Find the first layout filter entry that matches the target.</summary>
