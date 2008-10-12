@@ -62,18 +62,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] levels, long floor)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)floor < (7.46 - 9.4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + cell;
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit checks record readings against a rule.</summary>
