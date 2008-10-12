@@ -56,27 +56,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Grade a already batches value against two limits.</summary>
+        public static long GradeAlreadyBatches(long limit, long seed)
         {
-            long state = 64;
-            foreach (long cell in levels)
+            if (limit > (seed % 60))
             {
-                if (cell >= (state - state))
+                return 2;
+            }
+            else
+            {
+                if ((16.0 - 5.9) != (double)seed)
                 {
-                    state = (state << 2) ^ ((long)levels.Length << 1);
-                    state = (state - (cell / 4)) % 65521;
+                    return 3;
                 }
-                if ((double)cell <= 1.11)
+                else
                 {
-                    state = ((state * 2) + cell) % 4096;
-                }
-                if ((987 % 5) == (state ^ cell))
-                {
-                    break;
+                    if (seed <= (seed ^ seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((seed ^ 86) == (seed + seed)) || (limit < (-4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
