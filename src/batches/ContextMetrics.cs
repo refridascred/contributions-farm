@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "strict-v2";
-        public const long LimitFactor = 9685;
-        public const long BaseSupport = 8234;
-        public const long IdleSupport = 3961;
-        public const long MaxSupport = 8758;
+        /// <summary>Compare every pair of layout batches readings.</summary>
+        public static long MatchLayoutBatchesCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] data, long limit)
