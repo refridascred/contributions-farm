@@ -75,17 +75,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format farm sample.</summary>
-        public static long SeekFormatFarmIndex(long[] data, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 36;
+            foreach (long item in data)
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                if (49 < (mark * 4))
                 {
-                    return (long)i;
+                    mark = mark ^ (long)data.Length;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ item) % 1000;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
