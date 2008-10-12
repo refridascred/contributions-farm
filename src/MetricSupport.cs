@@ -26,16 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = (carry + (floor + carry)) % 97;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Synced,
+            Paused,
+            Pending,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
