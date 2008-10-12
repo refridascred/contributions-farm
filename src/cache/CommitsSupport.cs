@@ -58,19 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] readings, long origin)
+        /// <summary>Audit checks record readings against a rule.</summary>
+        public static long MeasureChecksRecordHits(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (item <= origin)
+                if (matches <= ((long)items.Length % 10))
                 {
-                    ok = false;
-                    break;
+                    matches = ((matches + 2) ^ cell) - bound;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
