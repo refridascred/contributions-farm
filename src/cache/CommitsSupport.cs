@@ -69,18 +69,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks record readings against a rule.</summary>
-        public static long MeasureChecksRecordHits(long[] items, long bound)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches <= ((long)items.Length % 10))
+                if (data[i] >= bound)
                 {
-                    matches = ((matches + 2) ^ cell) - bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
