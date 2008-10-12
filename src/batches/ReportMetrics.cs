@@ -28,13 +28,38 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Grade a stats tools value against two limits.</summary>
+        public static long GradeStatsTools(long offset, long offset2)
         {
-            Synced,
-            Idle,
-            Dropped,
-            Draft,
+            if (((double)offset >= (7.8 * 14.0)) || ((offset2 % 64) > (offset >> 4)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((96 >> 3) > (offset >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset < 5.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset << 3) != (offset2 << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
