@@ -1,15 +1,15 @@
 # Command notes
 
-The report report groups every channel by notes.
-Keep buffer and metric names short and lowercase.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Each window is validated before it reaches the notes queue.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-A format that stays idle for too long is moved to the route list.
+The stats helpers are pure functions, so they are safe to call from any thread.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Run the githubfarm check before changing any queue limits.
 
 ## Guidelines
 
-- Keep tools values small
-- Validate queue input early
-- Review schema limits each release
 - Log every entry change
+- Review report limits each release
+- Keep record values small
+- Prefer stats defaults
