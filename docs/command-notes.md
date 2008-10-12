@@ -1,15 +1,12 @@
 # Command notes
 
-Use profile settings to tune how often schema data is refreshed.
-Defaults for counter live in the config folder and can be overridden per environment.
-
-The contributi helpers are pure functions, so they are safe to call from any thread.
-The profile report groups every payload by stats.
-The token module keeps payload values in sync with the checks cache.
+The context report groups every cache by window.
+A session that stays idle for too long is moved to the channel list.
+When a window fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new buffer fields
-- Validate account input early
-- Keep cluster values small
-- Log every command change
+- Document new session fields
+- Log every window change
+- Validate stream input early
+- Keep batches values small
