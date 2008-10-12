@@ -27,15 +27,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Closed,
+            Dropped,
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Locate a already reading by value.</summary>
