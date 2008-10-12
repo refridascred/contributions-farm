@@ -46,17 +46,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] series, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (series[i] == floor)
+                if (hits <= (hits % 60))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next queue value.</summary>
