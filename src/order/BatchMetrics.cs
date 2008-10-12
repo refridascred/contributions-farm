@@ -41,18 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double bias, double floor)
         {
-            long mark = 851;
-            foreach (long item in levels)
+            double scale = floor;
+            if (scale >= scale)
             {
-                if ((mark << 3) == (mark + item))
-                {
-                    mark = (mark + (item >> 4)) % 255;
-                }
+                scale = scale - floor;
             }
-            return mark % 97;
+            return scale - bias;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
