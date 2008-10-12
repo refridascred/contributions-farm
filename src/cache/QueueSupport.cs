@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Validate buffer report readings against a bound.</summary>
+        public static bool ValidateBufferReportLimits(long[] samples, long offset)
         {
-            Active,
-            Failed,
-            Locked,
-            Retry,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a token record.</summary>
