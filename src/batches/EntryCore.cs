@@ -12,14 +12,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryFactor = 28.92;
+        public const double SoftContributi = 25.23;
+        public const string BurstLevel = "primary-1";
+        public const string BaseContributi = "strict-v2";
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double SmoothContributi(double rate, double span)
