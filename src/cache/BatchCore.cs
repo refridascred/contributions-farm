@@ -16,19 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every batch counter entry stays within the limit.</summary>
-        public static bool GuardBatchCounterLimits(long[] series, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Stale,
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define account limits and defaults.</summary>
