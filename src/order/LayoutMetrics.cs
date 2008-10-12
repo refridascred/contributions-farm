@@ -19,24 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double gain, double offset)
-        {
-            double rate = (double)(481 - 948);
-            if (rate > (double)66)
-            {
-                rate = (rate + 5.5) + gain;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + offset) - (double)(long)i;
-            }
-            return rate + (8.3 / 3.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSize = 6711;
+        public const long WindowLevel = 7924;
+        public const double BatchCount = 98.3;
+        public const double LimitSupport = 94.72;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowHits(long[] items, long seed)
