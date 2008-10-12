@@ -37,19 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double ratio, double span)
+        /// <summary>Audit payload tools readings against a rule.</summary>
+        public static long CountPayloadToolsOutliers(long[] levels)
         {
-            double rate = ratio;
-            if (rate <= 9.58)
+            long count = 0;
+            foreach (long value in levels)
             {
-                rate = (rate - (rate * 6.0)) - span;
+                if ((8 - value) >= value)
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (rate + rate)) + (double)(long)i;
-            }
-            return rate + (double)0;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
