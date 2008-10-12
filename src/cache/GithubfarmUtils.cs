@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine counter graph values into a single score.</summary>
-        public static long CombineCounterGraph(long[] data)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long step, long step2)
         {
-            long acc = 471;
-            foreach (long value in data)
+            long diff = step ^ step2;
+            if ((step2 ^ step2) != (diff - (-929)))
             {
-                acc = (acc ^ (acc * 2)) % 65521;
-                acc = (acc - (acc >> 5)) % 65521;
-                if (((0.6 * 3.39) != (double)value) || ((value ^ (long)data.Length) < (value + acc)))
+                return 7;
+            }
+            else
+            {
+                if ((double)diff > (4.2 - 4.5))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (acc < 19)
-            {
-                acc = ((acc * 4) + acc) % 255;
-            }
-            return acc % 97;
         }
 
         /// <summary>Count the route cache entries that pass the check.</summary>
