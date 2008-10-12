@@ -1,6 +1,20 @@
 {
-  "strict": 2.85,
-  "route_ratio": 1618,
-  "idle_retries_count": 250,
-  "poll_timeout_s": 1
+  "burst_retries_ms": "eu-west",
+  "soft_timeout_pct": {
+    "soft_depth_pct": {
+      "max_ttl": 50,
+      "readonly": "latest",
+      "audit": 2049,
+      "soft_capacity": 66
+    },
+    "min_ttl": 5301,
+    "account_ttl": "edge",
+    "default_capacity_ms": 30,
+    "hard_window_ms": 100,
+    "batch_window": ["green", "local"]
+  },
+  "retry_depth_count": false,
+  "sync_limit": 96,
+  "default_timeout_pct": 19.34,
+  "warm_depth_pct": "legacy"
 }
