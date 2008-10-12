@@ -19,33 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster profile input into a small class.</summary>
-        public static long GradeClusterProfile(long bound, long step)
-        {
-            long gap = bound ^ step;
-            if ((3.5 + 9.39) < (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((8.7 * 10.0) >= (4.87 - 1.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (gap >= (4 ^ bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBatch = "standard-edge";
+        public const long RetryLevel = 9473;
+        public const double WindowBatch = 52.8;
+        public const long CacheInterval = 2158;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long SortPayload(long offset, long target)
