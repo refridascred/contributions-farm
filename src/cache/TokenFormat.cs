@@ -31,19 +31,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double ratio, double span)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            double bias = (ratio - span) + ratio;
-            if (bias <= (bias * 7.9))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - (span - span);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - span;
+            return hits;
         }
     }
 }
