@@ -14,18 +14,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] readings, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (limit >= (limit - tally))
+                if (count < (count - count))
                 {
-                    tally = (tally + 2) ^ datum;
+                    count = (count + 2) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
