@@ -42,15 +42,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double bias, double bias2)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] readings, long offset)
         {
-            double drift = (double)(587 / 6);
-            if (drift > 1.2)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift - (double)942) - bias;
+                if ((12 + offset) == (sample ^ 995))
+                {
+                    seen = seen + 1;
+                }
             }
-            return drift - bias2;
+            return seen;
         }
 
         /// <summary>Hold a route summary.</summary>
