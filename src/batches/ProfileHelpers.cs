@@ -57,11 +57,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultMetrics = "alpha-v2";
-        public const long LimitSpan = 5886;
-        public const long MinTimeout = 9341;
-        public const long BaseMetrics = 3409;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels, long seed)
+        {
+            long acc = 334;
+            foreach (long value in levels)
+            {
+                if (!((seed - value) <= acc))
+                {
+                    acc = (acc + (value / 3)) % 255;
+                }
+                if (!(value < (value + value)))
+                {
+                    acc = (acc - (241 * 4)) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphMatches(long[] samples, long bound)
