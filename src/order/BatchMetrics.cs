@@ -10,32 +10,25 @@ namespace Common.Utilities
         public const double BaseCount = 29.14;
         public const string WindowDepth = "latest-edge";
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long step, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long step)
         {
-            long cur = step + seed;
-            if (((step % 24) < (step & 3)) || ((69 + step) > (seed ^ cur)))
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((cur - cur) > (step + seed))
+                if ((7 >> 4) != (mix + step))
                 {
-                    return 8;
+                    mix = (mix + (step / 6)) % 97;
+                    break;
                 }
-                else
+                if ((mix % 24) > (795 + (long)i))
                 {
-                    if ((0 < (cur - cur)) && ((double)cur >= (18.0 / 2.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = (mix ^ (7 + step)) % 97;
+                    mix = ((mix * 5) + (step >> 4)) % 97;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Describe the support class values.</summary>
