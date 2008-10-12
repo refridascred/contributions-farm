@@ -10,24 +10,14 @@ namespace Common.Utilities
         public const double BaseCount = 29.14;
         public const string WindowDepth = "latest-edge";
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long offset, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            if (!((origin * 3) >= offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin <= (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            New,
+            Failed,
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
