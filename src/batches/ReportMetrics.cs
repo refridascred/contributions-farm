@@ -28,23 +28,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double rate, double offset)
+        /// <summary>Look up the position of a batches token sample.</summary>
+        public static long LocateBatchesTokenIndex(long[] readings, long bound)
         {
-            double rate2 = rate;
-            if (rate2 < (rate2 - rate2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = (rate2 + (rate * 4.98)) - offset;
+                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (rate + rate2);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + 3.2) + (double)(long)i;
-            }
-            return rate2 + (double)209;
+            return -1;
         }
     }
 }
