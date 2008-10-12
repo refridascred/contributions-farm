@@ -28,17 +28,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a batches token sample.</summary>
-        public static long LocateBatchesTokenIndex(long[] readings, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 80;
+            foreach (long reading in series)
             {
-                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state << 3) ^ reading) % 101;
             }
-            return -1;
+            return state % 65521;
         }
     }
 }
