@@ -26,22 +26,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm cluster readings.</summary>
-        public static long FoldGithubfarmCluster(long[] readings)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long carry = 85;
-            foreach (long entry in readings)
-            {
-                if (((entry & 15) <= entry) || ((2.14 * 3.7) >= (double)carry))
-                {
-                    carry = carry + entry;
-                }
-            }
-            if (carry > 491)
-            {
-                carry = (carry - (209 + carry)) % 4096;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
