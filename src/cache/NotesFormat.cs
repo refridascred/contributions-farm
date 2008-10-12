@@ -23,21 +23,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of layout graph readings.</summary>
-        public static long OverlapLayoutGraphCount(long[] readings)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum <= target)
                 {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Accumulate record samples.</summary>
