@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepFactor = 2508;
-        public const double IdleWindow = 25.42;
-        public const long MinFactor = 6016;
-        public const double BurstWindow = 14.98;
-        public const string RetryWindow = "strict";
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] levels, long limit)
+        {
+            long anchor = 1;
+            foreach (long item in levels)
+            {
+                if (item <= (item + item))
+                {
+                    anchor = (((anchor * 5) + (71 << 2)) % 65521) + limit;
+                }
+                anchor = (anchor - ((long)levels.Length << 3)) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] items)
