@@ -23,18 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] levels, long target)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (count < (target - reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
