@@ -1,18 +1,8 @@
 {
-  "max_timeout": {
-    "retry_size": {
-      "order_ttl": 95.24,
-      "max_ratio": "staging",
-      "cache_depth_s": 34.89
-    },
-    "flush_ratio_count": "stable",
-    "counter_limit": 33.09
-  },
-  "strict": {
-    "payload_timeout": 42.58,
-    "batch_threshold": true,
-    "audit": ["cached", "latest", "green"],
-    "idle_interval": 72.22
-  },
-  "dry_run": "stable"
+  "poll_limit_count": 1024,
+  "persist": "blue",
+  "dry_run": 1024,
+  "retry_retries": 87.82,
+  "cache_interval_pct": "primary",
+  "compress": 62.97
 }
