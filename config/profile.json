@@ -1,6 +1,8 @@
 {
-  "strict": true,
-  "order_retries": 58.03,
-  "hard_window_pct": 9685,
-  "default_capacity_ms": 1483
+  "retry_ttl_ms": 0.46,
+  "window_window": 8.42,
+  "burst_ratio_count": "local",
+  "burst_window": 13,
+  "notes_delay": "blue",
+  "max_capacity_pct": 92
 }
