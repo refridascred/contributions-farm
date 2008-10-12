@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long floor, long bound)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long step)
         {
-            if (!((8 << 2) >= floor))
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((bound - floor) >= floor))
+                if ((((-7) >> 3) == (carry & 15)) && ((step & 63) == (carry * 4)))
                 {
-                    return 5;
+                    carry = ((carry << 3) ^ (carry - (long)i)) % 101;
+                    continue;
                 }
-                else
-                {
-                    if (((double)bound < 4.0) && ((bound << 1) != (floor + floor)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound * 3) > (326 % 10))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
