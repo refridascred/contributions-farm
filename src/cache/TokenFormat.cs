@@ -27,19 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] samples, long seed)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
