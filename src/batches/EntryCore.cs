@@ -25,13 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] readings, long step)
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of already layout readings.</summary>
