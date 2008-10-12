@@ -1,15 +1,7 @@
 {
-  "context_ttl": [331, 338, 478, 186],
-  "hard_interval_count": true,
-  "cache_delay": {
-    "soft_interval_count": [418, 419, 389, 376],
-    "cache_window_count": "edge",
-    "readonly": ["eu-west", "fallback", "eu-west", "open"],
-    "stats_capacity": "fallback",
-    "warm_timeout_ms": 6137,
-    "account_capacity": 6351
-  },
-  "filter_ttl": "blue",
-  "strict": 1777,
-  "retry_delay": 47
+  "readonly": [164, 361],
+  "stream_capacity": 100,
+  "command_size": 8244,
+  "soft_timeout_s": 37.91,
+  "batch_limit": ["edge", "strict", "local"]
 }
