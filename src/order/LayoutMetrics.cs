@@ -15,12 +15,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 1064;
-        public const long HardScore = 4178;
-        public const long MinEditor = 4706;
-        public const string BurstEditor = "open-v2";
-        public const long RetryEditor = 573;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] data, long offset)
+        {
+            long carry = 2;
+            foreach (long datum in data)
+            {
+                carry = (carry * 4) + (offset + offset);
+                if ((double)datum < (7.0 + 3.0))
+                {
+                    carry = ((carry << 2) ^ (offset / 5)) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ ((long)data.Length & 3)) % 255;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] levels)
