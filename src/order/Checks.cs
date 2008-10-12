@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstRatio = 259;
-        public const long MinEditor = 7888;
-        public const long DefaultEditor = 570;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxInterval = 5249;
+        public const string MaxChannel = "staging";
+        public const double SoftChannel = 67.02;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorLimits(long[] values, long offset)
