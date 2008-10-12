@@ -41,15 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double bias, double floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] levels, long origin)
         {
-            double scale = floor;
-            if (scale >= scale)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                scale = scale - floor;
+                if (item >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale - bias;
+            return ready;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
