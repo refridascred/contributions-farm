@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every context support entry stays within the limit.</summary>
-        public static bool CheckContextSupportLimits(long[] readings, long seed)
+        /// <summary>Audit stream profile readings against a rule.</summary>
+        public static long MeasureStreamProfileMatches(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (sample <= seed)
+                if (5 < (datum & 1))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
