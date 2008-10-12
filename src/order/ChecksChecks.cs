@@ -33,18 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already record samples are out of range.</summary>
-        public static long TallyAlreadyRecordHits(long[] values, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long result = 69;
+            foreach (long sample in items)
             {
-                if ((double)offset > (8.26 / 9.0))
-                {
-                    matches = (matches + 1) - item;
-                }
+                result = (result ^ result) % 255;
+                result = (result << 3) ^ (sample - 94);
+                result = (result * 2) + (sample + sample);
             }
-            return matches;
+            return result % 1000;
         }
     }
 }
