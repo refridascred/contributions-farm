@@ -79,19 +79,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] data, long floor)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Ready,
+            Failed,
         }
     }
 }
