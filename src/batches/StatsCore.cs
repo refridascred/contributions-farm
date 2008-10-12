@@ -41,16 +41,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] series, long bound)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long step, long seed)
         {
-            long result = -7;
-            foreach (long datum in series)
+            if (seed > (step - (-5)))
             {
-                result = (((result * 5) + (datum * 3)) % 1000) - bound;
-                result = (result ^ (result >> 5)) % 65521;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((seed - step) >= (2 + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step / 4) > (seed ^ step)) || ((seed * 4) >= (step ^ seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue level values.</summary>
