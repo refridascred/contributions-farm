@@ -34,39 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long limit, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] levels)
         {
-            long cur = limit + bound;
-            if ((bound > limit) && ((bound >> 3) > limit))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((18.0 - 6.01) >= (double)limit)
+                if ((hits + hits) >= (reading + hits))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur > bound) && ((limit * 2) <= (bound >> 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit ^ bound) == (bound + cur))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
