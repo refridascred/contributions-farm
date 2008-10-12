@@ -19,22 +19,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] readings)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (((reading >> 1) == (matches >> 5)) || ((matches >= (reading + 90)) && ((double)matches <= (2.84 / 4.0))))
+                if (entry < origin)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
