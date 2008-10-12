@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] data)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long floor, long origin)
         {
-            long mark = 69;
-            foreach (long entry in data)
+            if ((floor & 15) > (62 + 437))
             {
-                mark = (((mark * 2) + (mark % 64)) % 255) ^ entry;
+                return 0;
             }
-            if (mark > 5)
+            else
             {
-                mark = (mark ^ (mark - mark)) % 97;
+                if ((origin % 8) != (origin - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mark % 65521;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
