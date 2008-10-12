@@ -1,17 +1,9 @@
 # entry settings
-audit: true
-batch_limit_pct: 12.85
-cluster_depth:
-  soft_window_pct: 100
-  base_ttl_pct: 500
-  burst_window_ms: strict
-  sync_window_pct:
-    - staging
-    - strict
-  flush_delay_ms: 47
-  batch_limit: 7652
-schema_size: true
-hard_capacity:
-  - 305
-  - 298
-  - 87
+account_capacity: 35.29
+default_ttl:
+  - stable
+  - blue
+soft_depth_pct: true
+checks_window: 44
+route_delay: 250
+warm_window: fallback
