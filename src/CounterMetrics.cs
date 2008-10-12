@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "cached-1";
-        public const string BaseInterval = "strict-v2";
-        public const string CacheFactor = "standard";
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long ClassifyRoute(long floor, long offset)
