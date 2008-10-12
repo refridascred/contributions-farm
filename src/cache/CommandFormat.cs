@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] items, long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if ((bound >> 2) > (bound << 1))
             {
-                if (!((seen + 157) == (seen >> 3)))
+                return 2;
+            }
+            else
+            {
+                if ((double)offset <= (double)bound)
                 {
-                    seen = ((seen + 2) ^ item) - step;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((bound << 3) <= 662)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a layout reading.</summary>
