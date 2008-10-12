@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] levels)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (value > (count + count))
+                if (cell > limit)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
