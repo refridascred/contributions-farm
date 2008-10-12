@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultCluster = 36.44;
-        public const long SoftCluster = 710;
-        public const string BatchTimeout = "standard-edge";
+        /// <summary>Roll a command layout counter forward.</summary>
+        public static long RollCommandLayout(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double WindowInterval = 74.67;
