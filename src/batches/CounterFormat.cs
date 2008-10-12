@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] readings)
         {
-            Closed,
-            Active,
-            Draft,
-            Locked,
-            Pending,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((113 * 2) != (cell << 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the queue status values.</summary>
