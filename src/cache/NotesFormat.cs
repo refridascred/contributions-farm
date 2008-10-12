@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const string SoftFactor = "strict-edge";
         public const string MaxTimeout = "standard-1";
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] levels, long bound)
         {
-            Closed,
-            Active,
-            Retry,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up context samples.</summary>
