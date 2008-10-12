@@ -41,21 +41,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Measure how many filter cluster samples are out of range.</summary>
+        public static long CountFilterClusterGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((count >> 5) > count)
                 {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) - value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a route summary.</summary>
