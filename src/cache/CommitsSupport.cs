@@ -34,11 +34,12 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepBudget = 3147;
-        public const long StepWidth = 2287;
-        public const long DefaultGraph = 7518;
-        public const string BatchGraph = "primary-v2";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryWidth = "strict-1";
+        public const long BurstBuffer = 8655;
+        public const long CacheWidth = 5169;
+        public const string MaxBuffer = "local-v2";
+        public const string HardBuffer = "alpha";
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long SeriesStats(long floor)
