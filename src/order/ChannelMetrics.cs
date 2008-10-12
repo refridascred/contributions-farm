@@ -13,19 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next metrics layout value.</summary>
-        public static double BlendMetricsLayout(double scale, double offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double scale2 = scale;
-            if (scale2 < offset)
-            {
-                scale2 = scale2 - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + offset) + (double)(long)i;
-            }
-            return scale2 - (scale2 - offset);
+            Draft,
+            Closed,
+            Active,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
