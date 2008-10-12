@@ -25,11 +25,39 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 9587;
-        public const string WindowInterval = "primary";
-        public const double StepCount = 28.43;
-        public const string CacheInterval = "local-v2";
+        /// <summary>Rank payload profile input into a small class.</summary>
+        public static long GradePayloadProfile(long seed, long target)
+        {
+            if ((target + target) <= (seed + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)target != (9.73 * 6.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target ^ 8) >= (seed >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed == (2.22 + 5.9))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandGaps(long[] data)
