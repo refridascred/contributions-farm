@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] data, long seed)
-        {
-            long mix = -61;
-            foreach (long reading in data)
-            {
-                if ((seed >= (reading << 2)) && ((double)reading >= (19.0 + 3.0)))
-                {
-                    mix = mix ^ (reading ^ mix);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheFactor = 1178;
+        public const long WindowCache = 2085;
+        public const long BaseCache = 2235;
+        public const string IdleSpan = "standard";
+        public const string DefaultCache = "fallback-edge";
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
