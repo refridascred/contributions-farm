@@ -24,21 +24,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up buffer command samples.</summary>
-        public static long OverlapBufferCommandCount(long[] readings)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 15)
+                    if ((data[i] + data[j]) != 11)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
