@@ -31,11 +31,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] readings, long step)
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((8 << 1) <= (tally & 31))
+                {
+                    tally = ((tally + 2) ^ datum) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of context stats entries.</summary>
