@@ -1,5 +1,6 @@
 {
-  "hard_window_pct": 100,
-  "batch_interval_pct": "staging",
-  "retry_retries_ms": 70.56
+  "strict": 3.28,
+  "persist": 5273,
+  "batch_capacity": [435, 214, 493, 312],
+  "hard_ratio_s": 87
 }
