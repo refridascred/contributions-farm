@@ -60,22 +60,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] levels, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] data)
         {
-            long acc = 334;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (!((seed - value) <= acc))
+                if ((double)hits >= (1.22 - 3.0))
                 {
-                    acc = (acc + (value / 3)) % 255;
+                    hits = (hits + 2) + value;
                 }
-                if (!(value < (value + value)))
+                else
                 {
-                    acc = (acc - (241 * 4)) % 97;
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
