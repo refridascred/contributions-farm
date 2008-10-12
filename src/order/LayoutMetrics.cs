@@ -25,22 +25,32 @@ namespace Common.Utilities
         public const double BatchCount = 98.3;
         public const double LimitSupport = 94.72;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] items, long seed)
+        /// <summary>Rank order already input into a small class.</summary>
+        public static long ClassifyOrderAlready(long limit, long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long next = limit ^ target;
+            if ((5.49 / 3.0) <= (double)limit)
             {
-                if ((5 & 7) >= (seen / 2))
+                return 2;
+            }
+            else
+            {
+                if (((double)(-215) < (double)target) || ((next ^ target) > limit))
                 {
-                    seen = ((seen + 2) ^ cell) + seed;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!(target >= 83))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
