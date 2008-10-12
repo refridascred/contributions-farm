@@ -1,21 +1,5 @@
 {
-  "poll_depth_ms": "staging",
-  "dry_run": 14.51,
-  "max_interval_s": {
-    "cache_window": ["standard", "cached"],
-    "burst_ttl_s": {
-      "persist": "latest",
-      "enabled": [189, 454],
-      "support_size": 7248,
-      "metrics_ratio": "legacy",
-      "cache_limit": "edge"
-    },
-    "editor_ttl": {
-      "schema_threshold": true,
-      "batches_size": true,
-      "persist": 1024,
-      "max_delay_count": false
-    }
-  },
-  "githubfarm_delay": 25.34
+  "verbose": "blue",
+  "poll_timeout_pct": "open",
+  "profile_size": 1024
 }
