@@ -1,27 +1,7 @@
 # entry settings
-order_ttl: open
-idle_window_count:
-  batch_threshold: false
-  sync_threshold: open
-  verbose:
-    - strict
-    - stable
-    - staging
-    - eu-west
-warm_timeout_ms:
-  - fallback
-  - local
-  - latest
-context_window:
-  compress: 24.36
-  cache_retries: true
-  burst_delay_s: strict
-  base_size_count: false
-  audit:
-    - legacy
-    - strict
-    - latest
-    - primary
-  verbose:
-    - 112
-    - 213
+burst_ratio: 4071
+poll_size_pct:
+  command_capacity: 100
+  idle_size: 61.39
+  filter_size: 5014
+max_delay_s: 20.05
