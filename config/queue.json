@@ -1,6 +1,17 @@
 {
-  "cache_interval_ms": true,
-  "poll_delay_count": 57.05,
-  "cache_window_s": "blue",
-  "readonly": 30
+  "batch_ratio": {
+    "session_window": 24,
+    "queue_limit": [376, 316],
+    "verbose": {
+      "max_limit": ["blue", "legacy"],
+      "strict": "edge",
+      "warm_limit_count": 8529,
+      "dry_run": 76.44
+    },
+    "burst_interval": false,
+    "counter_depth": 91.48
+  },
+  "support_ttl": 2254,
+  "max_interval_ms": "blue",
+  "retry_limit_pct": true
 }
