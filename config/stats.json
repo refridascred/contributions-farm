@@ -1,6 +1,7 @@
 {
-  "filter_retries": false,
-  "max_size": false,
-  "persist": false,
-  "warm_limit_pct": "latest"
+  "layout_depth": false,
+  "readonly": ["primary", "legacy"],
+  "default_window_s": true,
+  "checks_delay": 250,
+  "record_retries": 60
 }
