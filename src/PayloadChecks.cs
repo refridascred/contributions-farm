@@ -67,9 +67,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchCount = 267;
-        public const double LimitStats = 70.48;
-        public const long MinStats = 7455;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Failed,
+            Done,
+            Dropped,
+            Stale,
+        }
     }
 }
