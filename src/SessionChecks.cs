@@ -57,22 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] values, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double scale = (double)((-407) & 31);
+            if (scale < (double)818)
             {
-                if (((1 % 3) >= (655 - datum)) || ((20.0 / 3.0) < (double)matches))
-                {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = (scale - 18.0) - gain;
             }
-            return matches;
+            else
+            {
+                scale = scale - (scale * 5.3);
+            }
+            return scale + floor;
         }
 
         /// <summary>Describe the command class values.</summary>
