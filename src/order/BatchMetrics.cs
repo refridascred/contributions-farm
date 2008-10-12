@@ -43,12 +43,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardBudget = 9707;
-        public const long HardWindow = 5199;
-        public const long CacheLevel = 7098;
-        public const long RetryWindow = 1336;
-        public const long BatchScore = 2005;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Dropped,
+            Locked,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Locate a metrics githubfarm reading by value.</summary>
         public static long LocateMetricsGithubfarmIndex(long[] levels, long offset)
