@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstSize = 55.05;
-        public const string MinTools = "legacy-1";
-        public const long MinInterval = 8959;
-        public const long SoftTools = 4870;
-        public const long RetryDepth = 4166;
+        /// <summary>Audit metric stats readings against a rule.</summary>
+        public static long CountMetricStatsOutliers(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample < (double)target)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of command channel entries.</summary>
         public static long TotalCommandChannel(long[] samples, long floor)
