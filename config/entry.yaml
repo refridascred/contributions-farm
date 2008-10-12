@@ -1,6 +1,17 @@
 # entry settings
-idle_ratio_count: 4.27
-soft_threshold_s:
-  - local
-  - standard
-strict: open
+enabled: 26.07
+retry_ratio_count: fallback
+hard_depth: 4993
+report_threshold: false
+cache_threshold_ms: green
+max_depth:
+  account_interval: fallback
+  profile_ttl: 60
+  readonly:
+    command_threshold: standard
+    retry_delay_count: open
+    poll_threshold_pct: cached
+    verbose: edge
+    flush_ttl_s: blue
+    batch_timeout_count: eu-west
+  base_threshold_count: true
