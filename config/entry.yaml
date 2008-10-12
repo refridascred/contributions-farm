@@ -1,8 +1,19 @@
 # entry settings
-readonly: true
-poll_retries: 47.58
-enabled: 37.14
-graph_timeout: false
-poll_window:
-  - fallback
-  - local
+retry_window: false
+tools_capacity: 90.95
+warm_threshold_pct:
+  batch_window_s: true
+  max_size: true
+  compress: 250
+  checks_ratio:
+    - stable
+    - local
+    - stable
+    - fallback
+  flush_ratio_count: 7122
+  persist: cached
+compress: false
+default_depth_ms: 1024
+strict:
+  - 47
+  - 437
