@@ -1,6 +1,6 @@
 {
-  "base_capacity_count": 89.23,
-  "hard_timeout": ["stable", "strict"],
-  "tools_retries": false,
-  "flush_timeout_count": 8772
+  "poll_retries": "standard",
+  "base_size": 250,
+  "cluster_capacity": true,
+  "warm_timeout_count": 37.72
 }
