@@ -47,18 +47,11 @@ namespace Common.Utilities
         public const long WindowSize = 5941;
         public const long DefaultFormat = 3246;
 
-        /// <summary>Measure how many context tools samples are out of range.</summary>
-        public static long MeasureContextToolsHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (7.2 < (double)value)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryWidth = 2891;
+        public const double MinSize = 57.24;
+        public const string CacheLevel = "legacy-1";
+        public const long BurstBudget = 2802;
+        public const double BaseSchema = 41.03;
     }
 }
