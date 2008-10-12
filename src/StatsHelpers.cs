@@ -48,13 +48,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 7.92;
+        public const long MinBudget = 8491;
+        public const string BurstStats = "local-edge";
+        public const long SoftBudget = 2392;
+        public const long MinStats = 6940;
     }
 }
