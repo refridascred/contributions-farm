@@ -1,8 +1,8 @@
-id,ratio,token
-1,857,810
-2,standard,895
-3,153,95.66
-4,26.11,859
-5,29.75,eu-west
-6,strict,56.65
-7,997,9.53
+id,state,region,label
+1,41.69,local,primary
+2,438,414,895
+3,151,26.44,fallback
+4,78.49,open,52.99
+5,local,cached,508
+6,85.76,439,183
+7,832,76.21,60.98
