@@ -48,12 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] values, long origin)
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((1 % 3) >= (655 - datum)) || ((20.0 / 3.0) < (double)matches))
+                {
+                    matches = (matches + 1) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the command class values.</summary>
