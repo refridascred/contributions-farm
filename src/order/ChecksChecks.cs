@@ -24,18 +24,15 @@ namespace Common.Utilities
             return scale2 - (0.7 - scale);
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] samples)
+        /// <summary>Roll a farm profile counter forward.</summary>
+        public static long RollFarmProfile(long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long score = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((entry << 1) == (entry - tally))
-                {
-                    tally = tally + 3;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
