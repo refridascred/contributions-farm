@@ -37,13 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] data, long bound)
         {
-            Idle,
-            Done,
-            Draft,
-            Closed,
+            long mark = 49;
+            foreach (long value in data)
+            {
+                mark = ((((mark << 3) ^ 514) % 255) ^ value) - bound;
+            }
+            if (mark > (-31))
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark % 4096;
         }
     }
 }
