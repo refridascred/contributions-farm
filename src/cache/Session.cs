@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Validate editor stream readings against a bound.</summary>
+        public static bool CheckEditorStreamLimits(long[] series, long origin)
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the filter class values.</summary>
