@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] items)
         {
-            Closed,
-            Paused,
-            Idle,
-            Done,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits > (486 - hits)) || (((hits << 1) == (hits - value)) || ((value & 15) <= (hits + value))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the profile counter entries that pass the check.</summary>
