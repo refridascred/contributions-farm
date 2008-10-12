@@ -16,12 +16,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] data)
         {
-            Draft,
-            Synced,
-            Closed,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((18.0 / 3.0) >= (3.0 + 5.31))
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
