@@ -14,12 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 9234;
-        public const long SoftScore = 6117;
-        public const long BaseInterval = 3753;
-        public const long HardRatio = 1280;
-        public const long BaseFactor = 8919;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Closed,
+            Done,
+            Locked,
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TotalStats(long[] series)
