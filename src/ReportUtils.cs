@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] values, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] < seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
