@@ -49,19 +49,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next support batches value.</summary>
-        public static double BlendSupportBatches(double weight, double bias)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double ratio, double floor)
         {
-            double scale = (double)5;
-            if (scale >= 2.0)
+            double bias = 4.69;
+            if (bias >= ratio)
             {
-                scale = (scale + (bias - scale)) - weight;
+                bias = bias - (floor + floor);
             }
             else
             {
-                scale = scale + (bias * 7.0);
+                bias = bias - floor;
             }
-            return scale + (bias / 3.0);
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - (2.0 / 9.0);
         }
     }
 }
