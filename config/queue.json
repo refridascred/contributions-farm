@@ -1,5 +1,7 @@
 {
-  "hard_retries": "open",
-  "command_capacity": 1024,
-  "flush_limit_s": 69
+  "batch_timeout_count": "staging",
+  "soft_capacity": "cached",
+  "base_interval_count": "green",
+  "min_depth_ms": 1988,
+  "record_ratio": "blue"
 }
