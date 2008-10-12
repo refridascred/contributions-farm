@@ -52,21 +52,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 850;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix ^ mix) % 1000) + cell;
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
