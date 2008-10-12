@@ -1,10 +1,7 @@
-id,label,token,count
-1,1.54,3.23,34.47
-2,104,782,896
-3,290,64.62,48.24
-4,79.06,81.97,876
-5,open,662,94.73
-6,28.65,360,596
-7,strict,5.76,59.41
-8,strict,stable,blue
-9,legacy,latest,38.71
+id,label,weight,ratio,token
+1,798,24.26,427,398
+2,standard,501,86.63,329
+3,edge,latest,62.73,staging
+4,794,fallback,750,322
+5,96.35,72.47,26.27,93.92
+6,788,3.64,43,legacy
