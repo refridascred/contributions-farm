@@ -31,28 +31,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of schema command readings.</summary>
-        public static long TotalSchemaCommand(long[] values, long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            long mark = 391;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (mark < (mark - offset))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark << 3) ^ (offset * 3);
-                    mark = (mark + (mark % 24)) % 101;
-                }
-                mark = ((mark * 2) + (mark + cell)) % 4096;
-                if (((offset & 15) > offset) || ((offset * 4) < (700 >> 5)))
-                {
-                    mark = (mark << 3) ^ 53;
-                }
-                else
-                {
-                    mark = mark - (offset & 31);
+                    if ((samples[i] - samples[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
