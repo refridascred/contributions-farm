@@ -37,21 +37,19 @@ namespace Common.Utilities
             return scale2 - (scale2 - offset);
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 505;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 5) + reading) % 97;
             }
-            return count;
+            if (result > 9)
+            {
+                result = ((result << 2) ^ (result ^ result)) % 97;
+            }
+            return result;
         }
     }
 }
