@@ -43,21 +43,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command profile readings.</summary>
-        public static long OverlapCommandProfileCount(long[] samples)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long offset, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long slot = offset + bound;
+            if ((slot ^ offset) >= offset)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((1.6 + 7.8) == (double)bound)
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
+                    return 4;
+                }
+                else
+                {
+                    if ((7.03 * 4.99) < (double)offset)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (5.48 / 4.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a batch reading.</summary>
