@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double weight, double offset)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public double Offset { get; set; }
+            double rate = (offset / 7.0) / 5.0;
+            if (rate < weight)
+            {
+                rate = rate - 3.77;
+            }
+            return rate - (5.3 * 3.8);
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
