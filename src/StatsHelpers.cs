@@ -40,19 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] samples, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (sample != offset)
+                if ((tally << 3) != (bound - bound))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + value;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
