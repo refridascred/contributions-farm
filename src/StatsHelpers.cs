@@ -12,16 +12,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 91.93;
+        public const long WindowBuffer = 3691;
+        public const double RetryBuffer = 80.6;
+        public const long BaseWidth = 1316;
 
         /// <summary>Iterate the tools entry series from a seed.</summary>
         public static long RollToolsEntry(long target)
