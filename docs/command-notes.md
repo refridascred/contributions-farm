@@ -1,13 +1,15 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the report list.
-Keep metrics and metrics names short and lowercase.
+Keep support and metric names short and lowercase.
+Run the support check before changing any account limits.
+The counter report groups every order by record.
 
-Run the cluster check before changing any report limits.
-Each queue is validated before it reaches the counter queue.
+The entry module keeps commits values in sync with the entry cache.
+Run the account check before changing any farm limits.
 
 ## Guidelines
 
-- Review context limits each release
-- Keep githubfarm values small
-- Document new format fields
+- Validate token input early
+- Keep format values small
+- Log every commits change
+- Prefer format defaults
