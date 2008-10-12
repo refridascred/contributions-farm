@@ -49,18 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats batch samples are out of range.</summary>
-        public static long TallyStatsBatchMatches(long[] levels)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches - sample) > 4)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            Idle,
+            Dropped,
         }
     }
 }
