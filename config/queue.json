@@ -1,17 +1,7 @@
 {
-  "batch_ratio": {
-    "session_window": 24,
-    "queue_limit": [376, 316],
-    "verbose": {
-      "max_limit": ["blue", "legacy"],
-      "strict": "edge",
-      "warm_limit_count": 8529,
-      "dry_run": 76.44
-    },
-    "burst_interval": false,
-    "counter_depth": 91.48
-  },
-  "support_ttl": 2254,
-  "max_interval_ms": "blue",
-  "retry_limit_pct": true
+  "metric_timeout": 9705,
+  "hard_timeout": 88,
+  "record_capacity": true,
+  "sync_interval_s": true,
+  "token_timeout": 8522
 }
