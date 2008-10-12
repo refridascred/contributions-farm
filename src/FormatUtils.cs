@@ -45,18 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] levels)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item > (double)(long)levels.Length)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
