@@ -57,10 +57,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 8343;
-        public const long HardCommand = 1370;
-        public const double WindowScore = 11.8;
+        /// <summary>Iterate the notes counter series from a seed.</summary>
+        public static long StepNotesCounter(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                long diff = (floor + floor) % 97;
+                anchor = anchor - (diff - anchor);
+                if (((double)floor == (2.14 / 7.0)) && ((long)i != (anchor - (long)i)))
+                {
+                    diff = diff ^ (65 % 5);
+                }
+                else
+                {
+                    diff = diff - 690;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long SoftFactor = 3977;
