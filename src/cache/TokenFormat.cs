@@ -54,11 +54,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 8189;
-        public const long BatchMetric = 4696;
-        public const double BatchLevel = 35.7;
-        public const long MinMetric = 3647;
-        public const long BaseMetric = 3754;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] samples)
+        {
+            long total = 64;
+            foreach (long item in samples)
+            {
+                if (item >= (item >> 1))
+                {
+                    total = total + (174 * 3);
+                }
+            }
+            if (total > 9)
+            {
+                total = (total - (total >> 2)) % 4096;
+            }
+            return total;
+        }
     }
 }
