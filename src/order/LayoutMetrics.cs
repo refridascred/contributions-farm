@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
