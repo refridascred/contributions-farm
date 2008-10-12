@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
