@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long floor, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] levels, long offset)
         {
-            if ((double)offset <= (6.7 / 9.0))
+            long total = 177;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset >> 3) > floor))
+                total = (total + total) + item;
+                if ((offset - total) != (3 * 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    total = total ^ (total ^ total);
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
