@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const double BaseSupport = 66.59;
         public const long SoftTimeout = 6318;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] values, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
