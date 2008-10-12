@@ -23,21 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = -61;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seed >= (reading << 2)) && ((double)reading >= (19.0 + 3.0)))
                 {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = mix ^ (reading ^ mix);
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
