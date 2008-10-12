@@ -1,5 +1,11 @@
 {
-  "counter_ratio": false,
-  "strict": "latest",
-  "idle_window_count": [334, 499, 210]
+  "persist": 57,
+  "session_capacity": "latest",
+  "sync_threshold_count": {
+    "metric_depth": 88,
+    "flush_timeout": 63.79,
+    "min_window_count": 603,
+    "retry_retries_pct": ["primary", "staging", "blue"]
+  },
+  "enabled": "stable"
 }
