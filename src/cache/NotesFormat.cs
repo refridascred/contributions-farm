@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 1354;
-        public const long StepWidth = 6210;
-        public const long HardRatio = 4247;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((((item & 127) > 740) && ((tally ^ tally) < item)) || ((43 >> 4) == (tally + tally)))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultWidth = 76;
