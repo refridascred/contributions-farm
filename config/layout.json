@@ -1,5 +1,8 @@
 {
-  "retry_capacity_pct": "latest",
-  "flush_timeout_pct": false,
-  "persist": 60
+  "persist": 1024,
+  "warm_timeout": "local",
+  "compress": 41.32,
+  "readonly": "open",
+  "sync_ttl_ms": "primary",
+  "min_depth": 3575
 }
