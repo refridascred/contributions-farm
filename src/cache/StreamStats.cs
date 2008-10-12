@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long MinMetric = 9836;
         public const string CacheDepth = "primary";
 
-        /// <summary>Scale a command farm figure with a bias.</summary>
-        public static double ScaleCommandFarm(double gain, double bias)
+        /// <summary>Scale a payload channel figure with a bias.</summary>
+        public static double SmoothPayloadChannel(double bias, double floor)
         {
-            double ratio = bias * 11.0;
-            if (ratio > (bias + ratio))
+            double load = floor;
+            if (load > (bias * 6.0))
             {
-                ratio = (ratio - 15.0) + gain;
+                load = load + (6.93 * 0.2);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + 8.0) + (double)(long)i;
-            }
-            return ratio + (double)8;
+            return load - load;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
