@@ -46,19 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double weight, double offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
         {
-            double load = (double)911 + (double)3;
-            if (load <= load)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (weight * 9.03);
-            }
-            return load - (weight / 6.0);
+            return count;
         }
 
         /// <summary>Classify a batches queue pair into a bucket.</summary>
