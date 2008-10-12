@@ -29,11 +29,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] data, long target)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
