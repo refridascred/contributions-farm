@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] data, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((((double)datum != (2.4 + 5.44)) && ((limit >> 5) >= (datum - limit))) || ((7 >> 5) >= (hits / 8)))
+                if ((0.73 / 4.0) <= (double)sample)
                 {
-                    hits = hits + 3;
+                    tally = (tally + 3) - seed;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
