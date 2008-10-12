@@ -1,9 +1,9 @@
 # githubfarm settings
-base_threshold:
-  farm_ratio: 7513
-  audit: 60
-  strict: 75
-  persist: fallback
-default_timeout: true
-sync_ratio: true
-persist: 1024
+githubfarm_depth: 95
+warm_threshold_count: 87
+editor_depth: false
+base_ttl_s: 46
+stats_limit:
+  - staging
+  - legacy
+hard_retries_s: 30
