@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] values, long floor)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a already options.</summary>
