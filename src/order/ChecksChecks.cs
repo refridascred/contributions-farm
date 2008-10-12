@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Locked,
-            Closed,
-            Failed,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseRatio = "standard-edge";
+        public const long MaxFarm = 9841;
+        public const long BurstFactor = 7669;
+        public const long LimitTimeout = 1450;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] values)
