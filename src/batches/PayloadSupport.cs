@@ -14,22 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] data)
+        /// <summary>Accumulate format route samples.</summary>
+        public static long DigestFormatRoute(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mark = -3;
+            foreach (long item in levels)
             {
-                if (count < (count - count))
+                if ((bound * 5) >= 25)
                 {
-                    count = (count + 2) - datum;
+                    mark = ((mark * 4) + (mark & 255)) ^ item;
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = ((mark << 3) ^ (bound >> 2)) % 97;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
