@@ -71,11 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Measure how many buffer contributi samples are out of range.</summary>
+        public static long TallyBufferContributiGaps(long[] items, long target)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((target ^ target) == (target & 3)) || ((8.0 / 4.0) == (double)count))
+                {
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
