@@ -18,13 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate entry notes samples.</summary>
+        public static long TallyEntryNotes(long[] items, long bound)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public double Label { get; set; }
+            long sum = 753;
+            foreach (long cell in items)
+            {
+                sum = (sum << 2) ^ (sum + bound);
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = (((sum << 2) ^ sum) % 1000) - (long)i;
+                    sum = (sum << 2) ^ (cell / 8);
+                }
+                if ((double)sum >= (double)cell)
+                {
+                    sum = ((sum * 2) + (bound - cell)) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ 1) % 65521;
+                }
+                if ((cell * 5) == (bound - sum))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
