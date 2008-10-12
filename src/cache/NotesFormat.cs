@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long StepWidth = 6210;
         public const long HardRatio = 4247;
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultWidth = 76;
+        public const long HardBudget = 6850;
+        public const long HardQueue = 4053;
+        public const long BatchQueue = 4398;
+        public const long MinQueue = 9433;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LocateChecksIndex(long[] data, long seed)
