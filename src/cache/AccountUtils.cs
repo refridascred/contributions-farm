@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit payload tools readings against a rule.</summary>
-        public static long TallyPayloadToolsOutliers(long[] readings)
+        /// <summary>Derive the next checks order value from a seed.</summary>
+        public static long SeriesChecksOrder(long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((entry >> 5) <= (1 << 2))
+                if ((bound + 18) <= (38 % 5))
                 {
-                    matches = matches + 1;
+                    score = score - 9;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
