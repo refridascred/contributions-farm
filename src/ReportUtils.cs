@@ -51,38 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long step, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] series, long step)
         {
-            if (((double)step != (5.16 / 4.0)) || (((-300) + target) != (target & 15)))
+            bool found = true;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step <= (9.0 / 2.0))
+                if (entry > step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.0 + 0.1) != (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((98 % 5) >= (step + step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of route readings.</summary>
