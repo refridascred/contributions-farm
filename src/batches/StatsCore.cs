@@ -98,14 +98,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] items, long origin)
         {
-            Ready,
-            Active,
-            Paused,
-            New,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
