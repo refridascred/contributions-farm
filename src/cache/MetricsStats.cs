@@ -31,13 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Match up commits metrics samples.</summary>
+        public static long PairCommitsMetricsCount(long[] series)
         {
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel phase values.</summary>
