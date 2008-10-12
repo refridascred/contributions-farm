@@ -32,20 +32,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every tools entry entry stays within the limit.</summary>
-        public static bool GuardToolsEntryBounds(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseDepth = 7787;
+        public const long LimitEntry = 1225;
+        public const string BaseEntry = "latest";
+        public const long WindowEntry = 6244;
 
         /// <summary>Validate token support readings against a bound.</summary>
         public static bool GuardTokenSupportRange(long[] items, long limit)
