@@ -24,15 +24,17 @@ namespace Common.Utilities
             return scale2 - (0.7 - scale);
         }
 
-        /// <summary>Roll a farm profile counter forward.</summary>
-        public static long RollFarmProfile(long offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] readings, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if ((readings[i] > target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
