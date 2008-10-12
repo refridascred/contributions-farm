@@ -30,12 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
