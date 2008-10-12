@@ -51,12 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public double Mode { get; set; }
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a checks contributi pair into a bucket.</summary>
