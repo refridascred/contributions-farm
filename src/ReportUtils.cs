@@ -93,38 +93,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph filter pair into a bucket.</summary>
-        public static long RankGraphFilter(long target, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long target)
         {
-            if ((origin & 127) >= target)
+            long mix = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (!(4.0 <= (double)origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target >= (target >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((target - origin) != (target ^ 933)) || ((7.41 * 6.0) >= (double)origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
