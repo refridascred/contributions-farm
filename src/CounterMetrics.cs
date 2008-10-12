@@ -18,12 +18,14 @@ namespace Common.Utilities
         public const double WindowSpan = 86.25;
         public const string MinScore = "legacy";
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            Done,
+            Closed,
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a token info.</summary>
