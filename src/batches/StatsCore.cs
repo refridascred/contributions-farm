@@ -52,13 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Queued,
-            Active,
-            Dropped,
+            Retry,
+            Paused,
             New,
+            Locked,
+            Draft,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
