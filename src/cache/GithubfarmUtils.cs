@@ -22,39 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload profile pair into a bucket.</summary>
-        public static long SortPayloadProfile(long limit, long limit2)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long bound = limit + limit2;
-            if ((3.4 - 1.3) <= (double)limit2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit2 <= (1.0 + 6.5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((31 % 2) > (limit ^ 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)bound == (3.6 / 2.0)) && ((bound + bound) == (limit2 & 255)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a already options.</summary>
