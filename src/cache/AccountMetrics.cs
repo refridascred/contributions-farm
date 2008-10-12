@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] items, long target)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long sum = -418;
-            foreach (long entry in items)
-            {
-                if ((double)target > (double)entry)
-                {
-                    sum = (sum * 4) + (entry ^ sum);
-                }
-            }
-            return sum % 4096;
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate layout context readings against a bound.</summary>
