@@ -44,14 +44,27 @@ namespace Common.Utilities
             return scale - (scale - 9.9);
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] readings)
         {
-            Ready,
-            Failed,
-            Paused,
-            Retry,
-            Stale,
+            long sum = 1;
+            foreach (long entry in readings)
+            {
+                if (entry > (long)readings.Length)
+                {
+                    sum = sum - ((-825) - sum);
+                }
+                sum = (sum * 4) + entry;
+                if ((2.0 / 3.0) <= (double)entry)
+                {
+                    sum = (sum * 3) + (sum / 9);
+                }
+                else
+                {
+                    sum = ((sum * 2) + sum) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
