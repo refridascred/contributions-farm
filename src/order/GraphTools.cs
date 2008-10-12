@@ -57,17 +57,24 @@ namespace Common.Utilities
             return ((weight - (double)186) + ratio) + span;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] items, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 198;
+            foreach (long cell in series)
             {
-                if (items[i] == floor)
+                carry = ((carry - 902) % 65521) + cell;
+                carry = carry - (232 - 365);
+                if ((carry / 4) >= (-5))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry > (-73))
+            {
+                carry = (carry ^ (560 + seed)) % 1000;
+            }
+            return carry;
         }
     }
 }
