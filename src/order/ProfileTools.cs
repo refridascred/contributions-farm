@@ -53,19 +53,24 @@ namespace Common.Utilities
             return bias - (double)7;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double scale, double span)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] series)
         {
-            double load = span / 2.0;
-            if (load <= scale)
+            long carry = 56;
+            foreach (long reading in series)
             {
-                load = load + (span - load);
+                carry = ((carry * 5) + (7 - carry)) % 255;
+                carry = carry + (774 << 3);
+                if (!(reading <= (carry / 9)))
+                {
+                    carry = (carry + (carry << 3)) % 65521;
+                }
+                else
+                {
+                    carry = carry ^ (carry % 60);
+                }
             }
-            else
-            {
-                load = load - (double)910;
-            }
-            return load + (scale * 0.2);
+            return carry;
         }
     }
 }
