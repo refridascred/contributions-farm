@@ -1,11 +1,6 @@
-id,label,level
-1,eu-west,666
-2,813,64.76
-3,638,12.63
-4,754,10
-5,latest,920
-6,stable,strict
-7,859,56.98
-8,519,731
-9,28.98,64
-10,873,309
+id,ratio,level,active,score
+1,675,506,667,stable
+2,56.58,standard,13.56,25.85
+3,103,cached,28.72,1.13
+4,645,427,442,fallback
+5,98.62,763,15.43,blue
