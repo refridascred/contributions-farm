@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] readings, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] samples, long offset)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long datum in samples)
             {
-                if (!((entry * 4) != (hits + hits)))
+                if (datum < (hits - datum))
                 {
-                    hits = (hits + 1) - step;
+                    hits = (hits + 1) - offset;
                 }
             }
             return hits;
