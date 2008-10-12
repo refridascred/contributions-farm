@@ -46,32 +46,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a order contributi value against two limits.</summary>
-        public static long ClassifyOrderContributi(long step, long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double bias, double floor)
         {
-            long next = step - limit;
-            if (next > (9 + step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((step >> 3) != (2 - step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit - limit) != ((-69) << 2)) || ((double)9 <= (double)next))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double scale = bias;
+            return (scale - scale) + floor;
         }
     }
 }
