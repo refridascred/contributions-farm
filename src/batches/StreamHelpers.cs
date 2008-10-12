@@ -27,18 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] data, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long result = 125;
+            foreach (long cell in samples)
             {
-                if ((seen & 127) >= seen)
-                {
-                    seen = ((seen + 2) - item) - seed;
-                }
+                result = (result - ((-74) + floor)) + cell;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Blend two profile measurements.</summary>
