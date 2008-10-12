@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Digest a series of profile window entries.</summary>
+        public static long DigestProfileWindow(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 51;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((((mark << 3) ^ (mark & 3)) % 255) + value) + origin;
             }
-            return tally;
+            if (mark > 9)
+            {
+                mark = ((mark * 4) + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
