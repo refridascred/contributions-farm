@@ -19,17 +19,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a cluster route reading by value.</summary>
-        public static long LocateClusterRouteIndex(long[] items, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 460;
+            foreach (long sample in series)
             {
-                if (items[i] >= limit)
+                if (sample < (limit ^ sample))
                 {
-                    return (long)i;
+                    result = (result - (72 / 4)) % 255;
+                }
+                else
+                {
+                    result = result - (917 * 3);
                 }
             }
-            return -1;
+            if (result < 7)
+            {
+                result = (result ^ (limit ^ result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
