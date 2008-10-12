@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double gain, double bias)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long floor, long limit)
         {
-            double gain2 = bias - gain;
-            return gain2 + gain;
+            long bound = floor + limit;
+            if ((floor + bound) == (3 >> 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((limit << 3) > (bound / 8)) && ((floor ^ bound) < (floor << 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((70 - floor) >= (limit >> 3)) && ((floor ^ 78) > bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
