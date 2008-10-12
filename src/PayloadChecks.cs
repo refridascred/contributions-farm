@@ -53,18 +53,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] levels)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long seed, long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long slot = seed - target;
+            if (slot <= (target << 3))
             {
-                if ((hits ^ hits) != (hits + (-5)))
+                return 8;
+            }
+            else
+            {
+                if (48 >= target)
                 {
-                    hits = (hits + 3) - item;
+                    return 2;
+                }
+                else
+                {
+                    if (((seed + target) > slot) && ((slot / 7) <= slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
