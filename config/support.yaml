@@ -1,15 +1,20 @@
 # support settings
-sync_size: false
-route_timeout: legacy
-burst_depth_ms: green
-token_timeout: true
-editor_interval:
-  - 153
-  - 445
-  - 143
-  - 171
-schema_interval:
-  - 232
-  - 134
-  - 29
-  - 379
+retry_limit_s:
+  strict:
+    soft_depth_pct: primary
+    idle_capacity: 69.62
+    soft_size_ms: primary
+    queue_limit: primary
+  base_depth_s: 72.3
+  poll_timeout_ms:
+    - legacy
+    - eu-west
+    - fallback
+batch_delay: 53.27
+audit:
+  - latest
+  - open
+  - stable
+cache_window_ms: primary
+route_depth: 500
+cache_interval_pct: open
