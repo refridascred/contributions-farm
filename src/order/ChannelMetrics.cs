@@ -37,19 +37,9 @@ namespace Common.Utilities
             return scale2 - (scale2 - offset);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series)
-        {
-            long result = 505;
-            foreach (long reading in series)
-            {
-                result = ((result * 5) + reading) % 97;
-            }
-            if (result > 9)
-            {
-                result = ((result << 2) ^ (result ^ result)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetrySize = 46.31;
+        public const long StepChannel = 7624;
+        public const long SoftCount = 101;
     }
 }
