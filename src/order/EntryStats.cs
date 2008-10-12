@@ -56,10 +56,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowSize = 9484;
-        public const double StepDepth = 40.69;
-        public const long RetryRatio = 9318;
-        public const string BatchRatio = "alpha-edge";
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
