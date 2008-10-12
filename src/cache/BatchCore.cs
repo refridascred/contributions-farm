@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] values, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            long sum = 425;
-            foreach (long item in values)
+            long state = 446;
+            foreach (long entry in levels)
             {
-                sum = (sum ^ 52) % 65521;
-                if ((item & 7) < (sum + sum))
+                if ((entry <= (entry % 3)) && ((511 - entry) != (entry - (-585))))
                 {
-                    sum = sum - target;
+                    state = (state - state) % 101;
+                    continue;
                 }
-                if (item < (item + target))
-                {
-                    sum = (sum - (item + item)) % 4096;
-                }
-                if ((8 & 31) <= target)
-                {
-                    break;
-                }
+                state = (state << 2) ^ entry;
             }
-            if (sum < 9)
+            if (state < 67)
             {
-                sum = sum + (sum + target);
+                state = (state ^ (8 + state)) % 101;
             }
-            return sum % 4096;
+            return state;
         }
 
         /// <summary>Describe the editor status values.</summary>
