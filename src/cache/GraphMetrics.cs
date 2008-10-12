@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double bias, double offset)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double rate = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (offset + bias)) + (double)(long)i;
-            }
-            return rate - rate;
+            New,
+            Synced,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
