@@ -1,14 +1,13 @@
 {
-  "persist": {
-    "hard_capacity_pct": true,
-    "entry_ttl": true,
-    "token_timeout": 8231,
-    "layout_depth": 23.37,
-    "sync_threshold_s": 5680,
-    "persist": "cached"
+  "poll_timeout_ms": [499, 71],
+  "already_depth": {
+    "batch_depth_pct": ["eu-west", "legacy"],
+    "cluster_ttl": 3487,
+    "soft_retries_ms": 4865,
+    "idle_threshold_count": 1024
   },
-  "channel_ratio": 97,
-  "max_window_ms": [106, 47],
-  "window_delay": true,
-  "githubfarm_window": 500
+  "persist": false,
+  "account_limit": 3422,
+  "readonly": true,
+  "base_size": "latest"
 }
