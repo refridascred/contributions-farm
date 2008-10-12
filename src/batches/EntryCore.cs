@@ -45,12 +45,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] samples, long step)
         {
-            Synced,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((tally ^ value) >= 659)
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next editor farm value from a seed.</summary>
