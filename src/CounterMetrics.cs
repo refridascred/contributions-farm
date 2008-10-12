@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long CacheContributi = 3282;
         public const long SoftLevel = 9443;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] samples)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if ((double)offset <= (6.7 / 9.0))
             {
-                if (!((cell + hits) < (hits >> 3)))
+                return 5;
+            }
+            else
+            {
+                if (!((offset >> 3) > floor))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
