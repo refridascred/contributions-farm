@@ -27,19 +27,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] values, long step)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Synced,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the metric level values.</summary>
