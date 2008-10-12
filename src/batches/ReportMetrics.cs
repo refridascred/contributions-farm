@@ -28,15 +28,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] series)
-        {
-            long state = 80;
-            foreach (long reading in series)
-            {
-                state = ((state << 3) ^ reading) % 101;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryCount = 2204;
+        public const long MinGithubfarm = 4367;
+        public const long MaxGithubfarm = 9153;
+        public const string SoftCount = "primary-1";
+        public const long MaxWidth = 9815;
     }
 }
