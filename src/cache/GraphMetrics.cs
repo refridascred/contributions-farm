@@ -46,11 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
+            Stale,
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
