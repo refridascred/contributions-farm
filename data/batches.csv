@@ -1,8 +1,9 @@
-id,rank,region,weight,active
-1,539,94.3,72.29,cached
-2,47,cached,143,74.83
-3,87.71,267,595,766
-4,30.8,47,221,697
-5,eu-west,17.63,131,eu-west
-6,latest,stable,local,7.81
-7,primary,532,open,24.82
+id,label,score
+1,853,446
+2,997,297
+3,47.16,100
+4,619,431
+5,84.09,839
+6,100,21.47
+7,legacy,531
+8,168,latest
