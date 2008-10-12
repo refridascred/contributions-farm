@@ -1,7 +1,18 @@
 {
-  "idle_ttl": true,
-  "idle_limit_s": false,
-  "token_timeout": "staging",
-  "soft_limit": 98.14,
-  "cache_threshold_count": [49, 69, 147]
+  "base_retries_s": 1929,
+  "compress": "cached",
+  "checks_timeout": {
+    "hard_timeout_s": 79.65,
+    "retry_retries": "stable",
+    "soft_size": "cached",
+    "schema_ratio": false,
+    "cache_window": 78
+  },
+  "route_capacity": {
+    "metrics_ttl": "latest",
+    "sync_threshold_count": 4736,
+    "filter_interval": 60
+  },
+  "max_retries_ms": "fallback",
+  "base_size": 36.03
 }
