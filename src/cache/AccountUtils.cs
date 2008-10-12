@@ -40,12 +40,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 66.05;
+        public const string StepProfile = "local";
+        public const string HardProfile = "cached-v2";
     }
 }
