@@ -43,18 +43,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] values)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double weight = (6.0 / 8.0) * 3.32;
+            if (weight >= (double)(-2))
             {
-                if ((datum - 725) >= (datum + datum))
-                {
-                    hits = hits + 1;
-                }
+                weight = weight + ratio;
             }
-            return hits;
+            return weight - bias;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
