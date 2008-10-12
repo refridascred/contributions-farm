@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 6606;
-        public const long BatchChecks = 7867;
-        public const string WindowChecks = "open-edge";
-        public const double BurstChecks = 44.73;
-        public const long CacheChecks = 7011;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
