@@ -24,18 +24,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] levels)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long state = 939;
+            foreach (long value in data)
             {
-                if (cell <= (matches % 10))
+                if ((value & 63) < 544)
                 {
-                    matches = matches + 3;
+                    state = ((state * 2) + (58 ^ target)) % 101;
+                }
+                state = state + target;
+                if ((175 <= (state - state)) && ((value + value) <= (target + target)))
+                {
+                    state = ((state << 3) ^ (value + state)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 3) + (target * 4)) % 97;
+                }
+                if (((target - state) != ((long)data.Length & 15)) || (26 < (value * 5)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
