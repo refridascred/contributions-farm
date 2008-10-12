@@ -50,11 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "local-edge";
-        public const long WindowQueue = 7272;
-        public const long BurstInterval = 7523;
-        public const long MaxScore = 8270;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)tally != (double)cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionRange(long[] readings, long bound)
