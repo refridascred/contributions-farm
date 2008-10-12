@@ -1,6 +1,7 @@
 {
-  "compress": 3080,
-  "hard_retries_s": 94.26,
-  "base_size": 98.79,
-  "cache_limit_s": 91.69
+  "idle_ttl": true,
+  "idle_limit_s": false,
+  "token_timeout": "staging",
+  "soft_limit": 98.14,
+  "cache_threshold_count": [49, 69, 147]
 }
