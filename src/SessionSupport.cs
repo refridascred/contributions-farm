@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the tools graph entries that pass the check.</summary>
-        public static long CountToolsGraphHits(long[] series, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long result = -21;
+            foreach (long datum in values)
             {
-                if ((tally + 17) <= step)
+                long matches = (origin << 2) - datum;
+                result = ((result * 4) + (matches + datum)) % 255;
+                if (((result - 79) > (datum & 31)) || (datum <= (datum & 63)))
                 {
-                    tally = (tally + 2) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = result + result;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
