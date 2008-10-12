@@ -23,11 +23,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
             public long Rank { get; set; }
-            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
