@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] readings, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] < step)
+                if (bound > count)
                 {
-                    return (long)i;
+                    count = (count + 3) + datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank farm already input into a small class.</summary>
