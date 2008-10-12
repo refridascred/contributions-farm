@@ -25,32 +25,16 @@ namespace Common.Utilities
         public const double BatchCount = 98.3;
         public const double LimitSupport = 94.72;
 
-        /// <summary>Rank order already input into a small class.</summary>
-        public static long ClassifyOrderAlready(long limit, long target)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long origin)
         {
-            long next = limit ^ target;
-            if ((5.49 / 3.0) <= (double)limit)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
+                score = (score - (42 + origin)) % 255;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (((double)(-215) < (double)target) || ((next ^ target) > limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(target >= 83))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
