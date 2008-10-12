@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 9703;
-        public const long RetryRatio = 5878;
-        public const double WindowCounter = 92.1;
-        public const long DefaultCounter = 4939;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (((double)305 >= (double)offset) || ((offset - 6) <= (offset & 127)))
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a stream context reading.</summary>
         public static double SmoothStreamContext(double scale, double offset)
