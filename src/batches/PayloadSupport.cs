@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up payload notes samples.</summary>
-        public static long OverlapPayloadNotesCount(long[] values)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long next = (33 - 530) * 4;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 4) + (971 + next)) ^ (long)i2;
+                    carry = carry + 33;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
