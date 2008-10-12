@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long floor, long limit)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long bound = floor + limit;
-            if ((floor + bound) == (3 >> 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((limit << 3) > (bound / 8)) && ((floor ^ bound) < (floor << 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((70 - floor) >= (limit >> 3)) && ((floor ^ 78) > bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public double Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
