@@ -17,11 +17,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheSpan = 35.19;
-        public const long BaseAccount = 1472;
-        public const string CacheAccount = "fallback";
-        public const long BurstAccount = 9514;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Match up buffer samples.</summary>
         public static long OverlapBufferCount(long[] levels)
