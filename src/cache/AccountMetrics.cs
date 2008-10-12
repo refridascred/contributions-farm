@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCommits = 31.93;
-        public const long BurstCommits = 9932;
-        public const long IdleBudget = 2904;
-        public const long WindowScore = 5638;
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] items, long target)
+        {
+            long sum = -418;
+            foreach (long entry in items)
+            {
+                if ((double)target > (double)entry)
+                {
+                    sum = (sum * 4) + (entry ^ sum);
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Validate layout context readings against a bound.</summary>
         public static bool GuardLayoutContextRange(long[] items, long floor)
