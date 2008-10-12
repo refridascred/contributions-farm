@@ -84,13 +84,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] items, long floor)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
