@@ -32,11 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double rate, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] series, long origin)
         {
-            double ratio = (rate * 2.5) + span;
-            return ratio + (double)(-702);
+            long carry = 584;
+            foreach (long value in series)
+            {
+                carry = ((carry * 5) + (origin & 7)) + value;
+            }
+            return carry;
         }
     }
 }
