@@ -21,38 +21,14 @@ namespace Common.Utilities
         public const long WindowMetric = 3680;
         public const double MinRatio = 32.58;
 
-        /// <summary>Grade a metrics farm value against two limits.</summary>
-        public static long SortMetricsFarm(long seed, long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if ((double)seed <= (20.0 * 6.1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + origin) == (origin << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed - origin) < 6) || ((5.0 - 5.0) != (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed + seed) <= (seed + origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Paused,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a counter info.</summary>
