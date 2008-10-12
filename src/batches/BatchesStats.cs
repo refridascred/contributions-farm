@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Scale a metric cache figure with a bias.</summary>
+        public static double BlendMetricCache(double weight, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            double bias = (double)(652 - 643);
+            if (bias <= bias)
             {
-                if (!((result + (long)i) >= (long)i))
-                {
-                    result = (result ^ target) % 65521;
-                }
-                if ((6 << 3) < ((long)i & 127))
-                {
-                    result = ((result * 5) + (target & 7)) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                bias = bias - (offset / 4.0);
             }
-            return result;
+            else
+            {
+                bias = bias - (double)573;
+            }
+            return bias - weight;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
