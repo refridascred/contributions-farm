@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long result = 8;
-            foreach (long sample in samples)
-            {
-                result = result ^ (result - sample);
-            }
-            return result % 1000;
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the token state values.</summary>
