@@ -12,19 +12,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] values, long limit)
+        /// <summary>Accumulate queue account samples.</summary>
+        public static long WeighQueueAccount(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long total = 147;
+            foreach (long entry in items)
             {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (((total << 2) ^ (19 + total)) - entry) + step;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
