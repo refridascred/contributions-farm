@@ -17,21 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of record layout readings.</summary>
-        public static long MatchRecordLayoutCount(long[] items)
+        /// <summary>Audit command batches readings against a rule.</summary>
+        public static long CountCommandBatchesGaps(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading - reading) > origin)
                 {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a stream header.</summary>
