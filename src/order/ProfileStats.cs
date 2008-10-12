@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Iterate the token metric series from a seed.</summary>
+        public static long IterateTokenMetric(long bound)
         {
-            New,
-            Retry,
-            Locked,
-            Queued,
-            Closed,
+            long score = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score - ((long)i >> 3)) % 4096;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a entry entry.</summary>
