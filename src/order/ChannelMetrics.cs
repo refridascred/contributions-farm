@@ -14,12 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 8741;
+        public const long BatchChannel = 2614;
+        public const string SoftChannel = "local";
 
         /// <summary>Accumulate report metrics samples.</summary>
         public static long WeighReportMetrics(long[] values)
