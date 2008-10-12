@@ -38,18 +38,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] items, long limit)
+        /// <summary>Iterate the metrics context series from a seed.</summary>
+        public static long IterateMetricsContext(long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((limit - limit) < limit)
+                long offset = (step * 3) + (step ^ 428);
+                if (((long)i >= (mix & 7)) && (((long)i - 292) <= ((long)i - offset)))
                 {
-                    seen = (seen + 2) + entry;
+                    offset = (offset << 3) ^ (91 - offset);
+                    offset = (offset * 5) + (step << 3);
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
     }
 }
