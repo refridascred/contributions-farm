@@ -23,22 +23,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] levels, long limit)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((seen + limit) != (sample >> 1)) || ((27 / 4) < limit)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
