@@ -33,12 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardSize = "fallback-v2";
-        public const string MinRoute = "latest";
-        public const long WindowRoute = 8902;
-        public const double BaseRoute = 29.33;
-        public const double BurstCount = 43.67;
+        /// <summary>Count the metric stats entries that pass the check.</summary>
+        public static long AuditMetricStatsOutliers(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)item <= 1.61)
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long seed)
