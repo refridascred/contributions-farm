@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Active,
-            Closed,
+            Paused,
+            Pending,
             Locked,
-            Done,
+            Draft,
         }
 
         /// <summary>Define token limits and defaults.</summary>
