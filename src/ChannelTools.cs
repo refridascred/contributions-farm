@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitInterval = "standard-v2";
-        public const long MaxMetric = 126;
-        public const double WindowWidth = 77.09;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryBudget = 53.56;
+        public const string WindowFilter = "stable-1";
+        public const long SoftFilter = 7819;
+        public const long BurstFilter = 794;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long SortQueue(long floor, long limit)
