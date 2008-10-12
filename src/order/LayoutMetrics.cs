@@ -19,12 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 6816;
-        public const double LimitChecks = 20.8;
-        public const long HardCount = 7117;
-        public const long StepChecks = 1254;
-        public const long BaseChecks = 4632;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double gain, double offset)
+        {
+            double rate = (double)(481 - 948);
+            if (rate > (double)66)
+            {
+                rate = (rate + 5.5) + gain;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + offset) - (double)(long)i;
+            }
+            return rate + (8.3 / 3.0);
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowHits(long[] items, long seed)
