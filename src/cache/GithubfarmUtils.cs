@@ -22,24 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes command value against two limits.</summary>
-        public static long SortNotesCommand(long step, long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            if (step <= origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin < (4.6 - 5.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a already options.</summary>
