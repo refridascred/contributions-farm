@@ -53,13 +53,16 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long limit)
         {
-            Locked,
-            Dropped,
-            Closed,
-            Active,
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = (carry - 6) % 65521;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
