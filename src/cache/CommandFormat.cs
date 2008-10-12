@@ -24,11 +24,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitWidth = 9830;
-        public const long MinBuffer = 348;
-        public const long StepBuffer = 6922;
-        public const long LimitBuffer = 1973;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double rate, double span)
+        {
+            double gain = (rate / 6.0) / 8.0;
+            if (gain >= (gain + gain))
+            {
+                gain = (gain - (gain * 1.31)) + span;
+            }
+            else
+            {
+                gain = gain + (rate - rate);
+            }
+            return gain - (3.0 + 3.0);
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] series, long target)
