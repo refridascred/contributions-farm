@@ -43,17 +43,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] values, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 525;
+            foreach (long cell in levels)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
+                anchor = ((anchor << 2) ^ (seed % 100)) % 1000;
+                if ((double)0 > (double)cell)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 124)
+            {
+                anchor = ((anchor << 3) ^ (anchor - seed)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of session readings.</summary>
