@@ -37,16 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] data, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long carry = 477;
+            foreach (long entry in data)
             {
-                mark = mark ^ (215 ^ mark);
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((9.1 + 2.8) >= (double)entry)
+                {
+                    carry = ((carry ^ (2 - carry)) % 255) - bound;
+                }
             }
-            return mark;
+            return carry % 65521;
         }
     }
 }
