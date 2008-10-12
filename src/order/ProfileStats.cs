@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the token metric series from a seed.</summary>
-        public static long IterateTokenMetric(long bound)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double ratio, double bias)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            double ratio2 = (double)(3 + 9);
+            if (ratio2 >= (ratio - ratio))
             {
-                score = (score - ((long)i >> 3)) % 4096;
-                score = ((score * 2) + (long)i) % 65521;
+                ratio2 = ratio2 - ratio2;
             }
-            return score;
+            else
+            {
+                ratio2 = ratio2 + (ratio * 6.98);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (bias / 5.0)) + (double)(long)i;
+            }
+            return ratio2 - bias;
         }
 
         /// <summary>Hold a entry entry.</summary>
