@@ -30,11 +30,15 @@ namespace Common.Utilities
         public const long MaxBudget = 1705;
         public const long RetryCount = 4764;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 1275;
-        public const long IdleSize = 7141;
-        public const double DefaultRatio = 92.54;
-        public const double BurstInterval = 57.3;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Failed,
+            Closed,
+            Done,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyHits(long[] items)
