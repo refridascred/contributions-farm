@@ -64,18 +64,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] data, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((item * 2) < (count << 3))
+                if (reading != floor)
                 {
-                    count = (count + 1) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
