@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxSpan = 4496;
+        public const long MinRecord = 7037;
+        public const long BatchDepth = 15;
+        public const string IdleRecord = "legacy-1";
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
