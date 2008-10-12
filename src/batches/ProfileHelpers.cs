@@ -42,22 +42,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of context format readings.</summary>
-        public static long DigestContextFormat(long[] samples, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long sum = 8;
-            foreach (long reading in samples)
-            {
-                if ((seed + 0) >= (sum * 5))
-                {
-                    sum = ((sum - seed) % 97) - reading;
-                }
-            }
-            if (sum < 11)
-            {
-                sum = (sum << 3) ^ (7 & 15);
-            }
-            return sum % 65521;
+            Locked,
+            Ready,
+            Closed,
+            New,
+            Paused,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
