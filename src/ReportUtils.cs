@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] values, long target)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((target < (cell + hits)) && ((cell - hits) <= cell)) || ((target + (long)values.Length) < (target & 15)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the metric stats entries that pass the check.</summary>
