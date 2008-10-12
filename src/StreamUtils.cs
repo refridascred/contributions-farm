@@ -37,12 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 7498;
-        public const string MinInterval = "stable-1";
-        public const double HardToken = 72.44;
-        public const double SoftTimeout = 57.1;
-        public const string CacheToken = "open";
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long RankAlready(long bound, long bound2)
