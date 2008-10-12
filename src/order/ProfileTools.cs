@@ -46,19 +46,10 @@ namespace Common.Utilities
             return bias - (double)7;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinCount = 79.01;
+        public const long BatchPayload = 7144;
+        public const double SoftCount = 41.57;
+        public const string WindowSize = "legacy-v2";
     }
 }
