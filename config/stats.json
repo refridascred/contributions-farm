@@ -1,6 +1,7 @@
 {
-  "sync_interval_count": 44.24,
-  "graph_window": false,
-  "min_capacity_count": "strict",
-  "persist": "legacy"
+  "cluster_interval": ["open", "primary", "standard"],
+  "verbose": "stable",
+  "base_ttl_count": 78,
+  "dry_run": ["green", "strict"],
+  "persist": 4481
 }
