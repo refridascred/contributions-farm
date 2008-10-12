@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryBudget = 53.56;
-        public const string WindowFilter = "stable-1";
-        public const long SoftFilter = 7819;
-        public const long BurstFilter = 794;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] readings, long step)
+        {
+            long sum = 86;
+            foreach (long reading in readings)
+            {
+                if (10.0 < (double)reading)
+                {
+                    sum = ((sum + (sum >> 1)) % 65521) - step;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long SeekContributiIndex(long[] values, long bound)
