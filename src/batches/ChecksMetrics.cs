@@ -80,15 +80,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Ready,
-            Draft,
-            Retry,
-            Done,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinInterval = 8371;
+        public const long MinProfile = 7883;
+        public const double DefaultProfile = 72.2;
+        public const long WindowProfile = 7486;
+        public const long LimitProfile = 5844;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
