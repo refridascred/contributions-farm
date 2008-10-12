@@ -1,16 +1,4 @@
 # entry settings
-max_threshold_ms: 5
-warm_delay_s: 19.55
-base_threshold: 59
-max_capacity_s: cached
-retry_threshold_count:
-  default_delay_pct: 96.36
-  payload_depth:
-    sync_capacity_pct: true
-    contributi_ttl: primary
-    dry_run: 500
-  readonly:
-    - blue
-    - strict
-    - green
-    - primary
+hard_capacity_s: 1744
+contributi_depth: 9
+payload_delay: local
