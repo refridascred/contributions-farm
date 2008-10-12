@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank githubfarm layout input into a small class.</summary>
-        public static long SortGithubfarmLayout(long bound, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long step2 = bound + step;
-            if ((double)step2 > 16.0)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step != (8.0 - 6.23))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)3 == (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step >= 2.0)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a counter stats.</summary>
