@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a counter support reading.</summary>
-        public static double ScaleCounterSupport(double gain, double offset)
+        /// <summary>Find the first stats tools entry that matches the target.</summary>
+        public static long FindStatsToolsIndex(long[] samples, long limit)
         {
-            double mean = (double)4 / 3.0;
-            if (mean >= mean)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + (double)950) + gain;
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - offset;
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
