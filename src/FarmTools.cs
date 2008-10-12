@@ -40,15 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] data, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            long state = 674;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((4 + reading) >= (reading << 3))
+                {
+                    state = ((state ^ reading) % 1000) - step;
+                    state = (state - state) % 4096;
+                }
+                if ((246 ^ 3) != (state - reading))
+                {
+                    state = ((state * 5) + (state * 5)) % 1000;
+                }
             }
-            return anchor;
+            if (state > (-965))
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
