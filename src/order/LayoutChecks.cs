@@ -93,19 +93,12 @@ namespace Common.Utilities
         public const long StepDepth = 4321;
         public const long StepBatches = 7088;
 
-        /// <summary>Check that every channel schema entry stays within the limit.</summary>
-        public static bool CheckChannelSchemaRange(long[] values, long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            New,
+            Draft,
         }
     }
 }
