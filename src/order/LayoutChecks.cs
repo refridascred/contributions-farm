@@ -44,11 +44,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a channel buffer figure with a bias.</summary>
-        public static double AdjustChannelBuffer(double weight, double offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series, long offset)
         {
-            double bias = weight;
-            return (bias + (weight * 20.0)) + offset;
+            long anchor = 801;
+            foreach (long item in series)
+            {
+                if ((item >> 5) != (anchor + item))
+                {
+                    anchor = ((anchor ^ (152 & 7)) % 4096) - offset;
+                }
+            }
+            if (anchor < 5)
+            {
+                anchor = anchor - (54 ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Rank route input into a small class.</summary>
