@@ -48,14 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Stale,
-            Failed,
-            Ready,
-            Active,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 9626;
+        public const string IdleCommits = "fallback-edge";
+        public const string DefaultCommits = "standard-1";
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long IterateFarm(long step)
