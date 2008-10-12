@@ -32,16 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] values, long offset)
         {
-            long total = -7;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long item in values)
             {
-                total = (total * 5) + (reading + 571);
-                total = total ^ (8 >> 3);
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total % 97;
+            return stale;
         }
     }
 }
