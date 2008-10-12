@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "local-edge";
-        public const long BurstMetric = 4697;
-        public const string CacheInterval = "strict-v2";
-        public const long RetryMetric = 111;
-        public const long HardMetric = 2402;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long RankEntry(long bound, long seed)
