@@ -44,18 +44,25 @@ namespace Common.Utilities
         public const double StepStats = 20.53;
         public const long LimitScore = 6401;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] series)
+        /// <summary>Classify a counter metrics pair into a bucket.</summary>
+        public static long ClassifyCounterMetrics(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long gap = offset - bound;
+            if ((6.0 * 11.0) < (double)bound)
             {
-                if (!(((value + value) >= value) && ((value + value) >= value)))
+                return 0;
+            }
+            else
+            {
+                if ((gap <= ((-4) ^ bound)) && ((double)bound < (3.75 * 2.0)))
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
     }
 }
