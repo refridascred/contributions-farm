@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 535;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((1.2 > (double)datum) && ((850 + datum) >= 8)))
                 {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix + (mix + 2);
+                }
+                if ((mix + datum) <= (mix ^ datum))
+                {
+                    mix = (mix - mix) % 255;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
