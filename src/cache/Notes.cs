@@ -31,17 +31,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] items, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long bound, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = bound - limit;
+            if (step <= (bound << 1))
             {
-                if ((items[i] >= step) && ((items[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if (264 < (bound ^ limit))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((limit << 1) <= (919 * 5)) && ((limit & 31) < step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit & 15) == (1 ^ step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate token support readings against a bound.</summary>
