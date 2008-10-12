@@ -23,12 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Project the next metrics layout value.</summary>
+        public static double BlendMetricsLayout(double scale, double offset)
         {
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            double scale2 = scale;
+            if (scale2 < offset)
+            {
+                scale2 = scale2 - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + offset) + (double)(long)i;
+            }
+            return scale2 - (scale2 - offset);
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
