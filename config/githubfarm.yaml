@@ -1,8 +1,7 @@
 # githubfarm settings
-poll_delay_ms: 96.03
-profile_depth:
-  - cached
-  - latest
-  - staging
-  - standard
-soft_ttl_ms: 5440
+retry_capacity_pct: true
+metric_depth: latest
+enabled: fallback
+queue_size: 63
+idle_interval: 7391
+profile_limit: 500
