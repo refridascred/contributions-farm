@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string MaxChannel = "staging";
         public const double SoftChannel = 67.02;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] values, long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Compare every pair of metric route readings.</summary>
