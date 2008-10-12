@@ -35,12 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleCount = 6978;
-        public const long HardSpan = 1869;
-        public const string IdleBudget = "latest-v2";
-        public const long CacheTools = 1180;
-        public const double BaseTools = 12.41;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 5450;
+        public const long SoftRatio = 6097;
+        public const long BatchStream = 2460;
+        public const long RetryStream = 5568;
 
         /// <summary>Audit support checks readings against a rule.</summary>
         public static long AuditSupportChecksMatches(long[] samples)
