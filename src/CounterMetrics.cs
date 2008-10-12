@@ -34,23 +34,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double scale, double bias)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] items, long target)
         {
-            double scale2 = scale * 2.41;
-            if (scale2 >= (double)807)
+            long count = 0;
+            foreach (long entry in items)
             {
-                scale2 = scale2 + (double)3;
+                if (5 > (count ^ entry))
+                {
+                    count = (count + 2) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                scale2 = scale2 - 0.2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + bias) + (double)(long)i;
-            }
-            return scale2 - (scale2 + scale);
+            return count;
         }
 
         /// <summary>Rank session input into a small class.</summary>
