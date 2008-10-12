@@ -20,19 +20,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] levels, long origin)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Fold a list of schema record readings.</summary>
