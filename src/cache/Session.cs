@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] values, long floor)
+        /// <summary>Classify a channel batches pair into a bucket.</summary>
+        public static long RankChannelBatches(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((seed * 4) < (25 << 1)))
             {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)seed < (20.0 / 2.0))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed >= (6.27 + 9.8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of report metrics readings.</summary>
