@@ -19,12 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftFactor = 5486;
-        public const long BurstGraph = 3099;
-        public const long BatchGraph = 5408;
-        public const string RetryBudget = "local-v2";
-        public const long IdleCount = 4683;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryCount = 334;
