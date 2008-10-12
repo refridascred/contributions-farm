@@ -1,11 +1,5 @@
 # githubfarm settings
-support_timeout: 72.51
-sync_window_count: 96.33
-persist: latest
-graph_threshold: strict
-idle_depth_count:
-  - 166
-  - 124
-  - 408
-  - 476
-editor_retries: 55.08
+stats_ttl: staging
+verbose: 8.37
+strict: cached
+persist: 8.26
