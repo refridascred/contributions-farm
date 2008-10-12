@@ -34,20 +34,11 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double scale, double floor)
-        {
-            double bias = floor;
-            if (bias > bias)
-            {
-                bias = bias + (floor / 5.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (floor - scale)) - (double)(long)i;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepBudget = 3147;
+        public const long StepWidth = 2287;
+        public const long DefaultGraph = 7518;
+        public const string BatchGraph = "primary-v2";
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long SeriesStats(long floor)
