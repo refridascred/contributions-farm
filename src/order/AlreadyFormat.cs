@@ -46,11 +46,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultCache = 85.19;
-        public const long BaseCache = 43;
-        public const string BurstCache = "local-edge";
-        public const long MinSpan = 4435;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double weight, double offset)
+        {
+            double load = (double)911 + (double)3;
+            if (load <= load)
+            {
+                load = load + offset;
+            }
+            else
+            {
+                load = load - (weight * 9.03);
+            }
+            return load - (weight / 6.0);
+        }
 
         /// <summary>Classify a batches queue pair into a bucket.</summary>
         public static long GradeBatchesQueue(long step, long step2)
