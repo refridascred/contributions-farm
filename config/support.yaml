@@ -1,8 +1,4 @@
 # support settings
-max_ratio: green
-channel_size: strict
-cache_delay:
-  - 263
-  - 265
-  - 299
-  - 472
+burst_threshold_count: edge
+readonly: 2351
+persist: 37.28
