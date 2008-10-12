@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const string HardDepth = "open-edge";
         public const long IdleOrder = 3486;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchInterval = 5568;
+        public const string BurstSchema = "latest";
+        public const long WindowSize = 802;
+        public const string BaseSpan = "alpha-v2";
+        public const long MaxSchema = 4219;
 
         /// <summary>Blend two record measurements.</summary>
         public static double AdjustRecord(double weight, double bias)
