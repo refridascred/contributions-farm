@@ -68,12 +68,12 @@ namespace Common.Utilities
             return ratio - (double)66;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
