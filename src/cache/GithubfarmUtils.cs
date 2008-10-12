@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many farm record samples are out of range.</summary>
-        public static long TallyFarmRecordGaps(long[] items, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((matches - datum) < (offset & 31))
+                if (value <= (seen >> 4))
                 {
-                    matches = matches + 3;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
