@@ -63,16 +63,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the already payload series from a seed.</summary>
-        public static long RollAlreadyPayload(long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long carry = 66;
+            foreach (long cell in items)
             {
-                mark = ((mark << 3) ^ (mark & 63)) % 255;
-                mark = ((mark * 3) + (long)i) % 1000;
+                carry = ((carry + (carry / 2)) % 101) + cell;
             }
-            return mark;
+            return carry;
         }
     }
 }
