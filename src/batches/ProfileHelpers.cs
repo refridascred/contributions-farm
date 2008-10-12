@@ -28,22 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record githubfarm values into a single score.</summary>
-        public static long CombineRecordGithubfarm(long[] levels, long limit)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long state = -4;
-            foreach (long sample in levels)
-            {
-                if (state >= sample)
-                {
-                    state = (state << 2) ^ (limit % 100);
-                }
-                else
-                {
-                    state = state + (limit >> 2);
-                }
-            }
-            return state % 97;
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
