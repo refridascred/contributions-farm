@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double ratio, double bias)
-        {
-            double rate = 6.4;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (((rate - (double)127) + (double)(long)i) + ratio) + bias;
-            }
-            return rate + (double)22;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 5341;
+        public const long StepBudget = 830;
+        public const string BaseToken = "staging-edge";
+        public const long WindowCount = 9491;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double AdjustCounter(double ratio, double floor)
