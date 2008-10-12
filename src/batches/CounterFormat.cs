@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Check that every record channel entry stays within the limit.</summary>
+        public static bool ValidateRecordChannelLimits(long[] series, long bound)
         {
-            Done,
-            Queued,
-            Active,
-            Synced,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate editor samples.</summary>
