@@ -33,19 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] series, long bound)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Active,
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Accumulate profile samples.</summary>
