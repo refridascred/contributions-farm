@@ -28,22 +28,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] readings, long target)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((((long)readings.Length / 9) >= (249 ^ target)) || ((seen & 31) <= seen))
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Pending,
+            Draft,
+            Locked,
+            Queued,
         }
     }
 }
