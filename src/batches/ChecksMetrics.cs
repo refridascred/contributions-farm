@@ -90,17 +90,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] readings, long step)
+        /// <summary>Check that every batch batches entry stays within the limit.</summary>
+        public static bool CheckBatchBatchesRange(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
+                if (value != limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
