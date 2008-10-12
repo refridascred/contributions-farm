@@ -1,8 +1,7 @@
 {
-  "retry_ttl_ms": 0.46,
-  "window_window": 8.42,
-  "burst_ratio_count": "local",
-  "burst_window": 13,
-  "notes_delay": "blue",
-  "max_capacity_pct": 92
+  "flush_interval": "cached",
+  "readonly": ["fallback", "stable", "local", "standard"],
+  "buffer_window": [30, 346, 19, 441],
+  "channel_window": [361, 301, 102, 50],
+  "stats_timeout": "open"
 }
