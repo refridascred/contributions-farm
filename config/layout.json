@@ -1,5 +1,5 @@
 {
-  "verbose": 14.09,
-  "base_threshold": 56.85,
-  "enabled": 2498
+  "warm_ttl": false,
+  "idle_threshold_pct": 5439,
+  "burst_size_count": "local"
 }
