@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally << 3) != (datum - datum))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardWidth = 10.45;
+        public const long RetryCache = 4809;
+        public const long HardCache = 11;
+        public const string HardCount = "latest";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultCluster = 7508;
