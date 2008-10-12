@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a payload channel figure with a bias.</summary>
-        public static double SmoothPayloadChannel(double bias, double floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] items)
         {
-            double load = floor;
-            if (load > (bias * 6.0))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                load = load + (6.93 * 0.2);
+                if ((573 - hits) > (hits + sample))
+                {
+                    hits = hits + 1;
+                }
             }
-            return load - load;
+            return hits;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
