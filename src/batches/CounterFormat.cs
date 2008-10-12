@@ -5,30 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine channel buffer values into a single score.</summary>
-        public static long TallyChannelBuffer(long[] levels, long bound)
+        /// <summary>Rank command counter input into a small class.</summary>
+        public static long BucketCommandCounter(long bound, long offset)
         {
-            long total = 0;
-            foreach (long value in levels)
+            long edge = bound + offset;
+            if ((bound & 3) <= (offset / 8))
             {
-                if (((long)levels.Length + bound) >= (value + value))
+                return 4;
+            }
+            else
+            {
+                if (!((edge + 4) <= 51))
                 {
-                    total = (total ^ (value * 4)) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    total = ((total * 3) + (total & 15)) % 101;
-                }
-                if ((bound << 3) >= value)
-                {
-                    break;
+                    if (((double)bound > (4.76 * 8.89)) || (6 <= (offset >> 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (total < 28)
-            {
-                total = (total << 3) ^ (total % 97);
-            }
-            return total % 1000;
         }
 
         /// <summary>Roll a token counter forward.</summary>
