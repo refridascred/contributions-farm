@@ -25,23 +25,15 @@ namespace Common.Utilities
         public const long StepCache = 6430;
         public const string IdleWidth = "standard-1";
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double rate, double offset)
+        /// <summary>Combine stats window values into a single score.</summary>
+        public static long FoldStatsWindow(long[] readings, long bound)
         {
-            double scale = rate;
-            if (scale >= (double)128)
+            long sum = 2;
+            foreach (long cell in readings)
             {
-                scale = scale - rate;
+                sum = ((sum + cell) % 101) + bound;
             }
-            else
-            {
-                scale = scale + 0.69;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (offset / 8.0)) + (double)(long)i;
-            }
-            return scale - (scale - 9.9);
+            return sum % 97;
         }
 
         /// <summary>Count the command route entries that pass the check.</summary>
