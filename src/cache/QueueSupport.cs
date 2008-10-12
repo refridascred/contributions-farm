@@ -21,13 +21,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public double Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            Retry,
+            Active,
+            Queued,
+            Dropped,
+            Idle,
         }
     }
 }
