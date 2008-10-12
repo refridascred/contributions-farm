@@ -79,13 +79,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] values, long target)
         {
-            Pending,
-            Done,
-            Active,
-            Paused,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits - value) == (4 - value))
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
     }
 }
