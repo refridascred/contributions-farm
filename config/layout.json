@@ -1,11 +1,23 @@
 {
-  "format_retries": "cached",
-  "cache_threshold_count": true,
-  "compress": {
-    "cache_size": 38,
-    "idle_window": "stable",
-    "tools_limit": 500,
-    "verbose": 30.98,
-    "strict": true
+  "flush_window_count": true,
+  "min_size_count": 5958,
+  "max_depth_pct": "stable",
+  "max_delay_count": {
+    "burst_retries": 6023,
+    "poll_ttl_count": "local",
+    "burst_interval": "legacy",
+    "warm_ratio_count": {
+      "compress": "staging",
+      "order_capacity": [115, 471],
+      "farm_threshold": false
+    },
+    "already_timeout": "cached",
+    "default_capacity_count": 100
+  },
+  "commits_ttl": 54,
+  "farm_timeout": {
+    "poll_interval": 37.89,
+    "hard_ttl_count": "green",
+    "flush_limit": 4737
   }
 }
