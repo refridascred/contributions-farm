@@ -37,11 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleTimeout = 6019;
-        public const string StepWidth = "primary";
-        public const long MinGithubfarm = 2955;
-        public const long CacheGithubfarm = 7595;
-        public const long WindowGithubfarm = 5059;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
