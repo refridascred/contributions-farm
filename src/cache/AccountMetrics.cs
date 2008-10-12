@@ -37,22 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] data, long limit)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double load = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if ((5.55 / 4.0) == (double)value)
-                {
-                    hits = (hits + 1) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = ((load + (double)243) - (double)(long)i) + floor;
             }
-            return hits;
+            return load + (double)8;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
