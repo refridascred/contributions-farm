@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftLevel = "alpha-edge";
-        public const long HardMetric = 4275;
-        public const double MinFactor = 20.85;
-        public const long BatchRatio = 5650;
+        /// <summary>Digest a series of format cluster entries.</summary>
+        public static long CombineFormatCluster(long[] items)
+        {
+            long total = -64;
+            foreach (long entry in items)
+            {
+                total = (((total * 5) + 17) % 101) + entry;
+            }
+            if (total > 0)
+            {
+                total = (total << 3) ^ (total << 3);
+            }
+            return total % 65521;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] values)
