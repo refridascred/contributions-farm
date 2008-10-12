@@ -1,10 +1,10 @@
 # Command notes
 
-Run the payload check before changing any report limits.
-The checks module keeps schema values in sync with the editor cache.
+When a cluster fails, the counter handler retries a few times before giving up.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate queue input early
-- Keep account values small
+- Prefer cluster defaults
+- Log every session change
+- Review metrics limits each release
