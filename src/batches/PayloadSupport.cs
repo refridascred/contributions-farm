@@ -34,21 +34,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count account filter pairs that satisfy a relation.</summary>
-        public static long MatchAccountFilterCount(long[] levels)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long target, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)limit >= (11.0 / 7.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (32 < (limit + limit))
                 {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
