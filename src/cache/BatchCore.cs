@@ -31,18 +31,11 @@ namespace Common.Utilities
         public const string IdleAccount = "legacy-1";
         public const long BatchAccount = 728;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] samples)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long sum = 47;
-            foreach (long sample in samples)
-            {
-                if ((9.0 - 0.59) >= (double)sample)
-                {
-                    sum = ((sum * 3) + (sample / 8)) % 101;
-                }
-            }
-            return sum % 4096;
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
