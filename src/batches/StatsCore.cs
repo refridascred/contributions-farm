@@ -88,22 +88,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] series, long floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (matches >= (matches + 96))
-                {
-                    matches = ((matches + 3) + item) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
