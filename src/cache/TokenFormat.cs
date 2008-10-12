@@ -41,19 +41,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] series, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long total = 8;
+            foreach (long entry in items)
             {
-                if (entry < origin)
+                if ((9.8 / 2.0) > (double)entry)
                 {
-                    ok = false;
-                    break;
+                    total = total + (step * 2);
+                }
+                if (total >= (total + step))
+                {
+                    total = ((total << 3) ^ entry) % 255;
+                }
+                if (((long)items.Length & 127) == (356 << 3))
+                {
+                    total = total + (863 + step);
                 }
             }
-            return ok;
+            if (total > (-256))
+            {
+                total = (total - (step ^ total)) % 1000;
+            }
+            return total % 4096;
         }
     }
 }
