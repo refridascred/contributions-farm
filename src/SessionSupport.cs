@@ -13,11 +13,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultCluster = 11.22;
-        public const long BurstCluster = 4123;
-        public const long CacheRatio = 741;
-        public const double BatchCluster = 37.62;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Done,
+            Draft,
+            Pending,
+            Failed,
+            New,
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
