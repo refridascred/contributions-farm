@@ -51,9 +51,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryBudget = 8714;
-        public const string RetryEntry = "latest";
-        public const long SoftBudget = 9490;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
