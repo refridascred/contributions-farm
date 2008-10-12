@@ -33,21 +33,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count account window pairs that satisfy a relation.</summary>
-        public static long OverlapAccountWindowCount(long[] values)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] < bound)
                 {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
