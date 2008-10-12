@@ -14,20 +14,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] samples, long floor)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstSize = 55.05;
+        public const string MinTools = "legacy-1";
+        public const long MinInterval = 8959;
+        public const long SoftTools = 4870;
+        public const long RetryDepth = 4166;
 
         /// <summary>Digest a series of command channel entries.</summary>
         public static long TotalCommandChannel(long[] samples, long floor)
