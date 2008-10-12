@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Locked,
-            Idle,
-            Dropped,
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
