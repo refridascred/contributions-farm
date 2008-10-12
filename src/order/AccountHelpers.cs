@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 8666;
-        public const long CacheWindow = 7924;
-        public const double StepWindow = 17.53;
-        public const long SoftLevel = 9746;
-        public const double WindowSpan = 37.45;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample / 2) < sample)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the already schema entries that pass the check.</summary>
         public static long MeasureAlreadySchemaGaps(long[] levels, long seed)
