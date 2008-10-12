@@ -93,15 +93,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseDepth = 7601;
+        public const long LimitNotes = 1504;
+        public const double IdleCount = 33.01;
+        public const long MinBudget = 8502;
+        public const long MaxNotes = 6767;
     }
 }
