@@ -14,12 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Validate filter payload readings against a bound.</summary>
+        public static bool CheckFilterPayloadBounds(long[] data, long limit)
         {
-            Active,
-            Paused,
-            Idle,
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the editor state values.</summary>
