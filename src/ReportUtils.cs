@@ -93,9 +93,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryTimeout = 1896;
-        public const string WindowToken = "latest-v2";
-        public const double IdleToken = 30.37;
+        /// <summary>Classify a graph filter pair into a bucket.</summary>
+        public static long RankGraphFilter(long target, long origin)
+        {
+            if ((origin & 127) >= target)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(4.0 <= (double)origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target >= (target >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((target - origin) != (target ^ 933)) || ((7.41 * 6.0) >= (double)origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
