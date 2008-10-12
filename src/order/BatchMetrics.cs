@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleScore = "primary-edge";
-        public const double BaseCount = 29.14;
-        public const string WindowDepth = "latest-edge";
+        /// <summary>Count cluster counter pairs that satisfy a relation.</summary>
+        public static long MatchClusterCounterCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandHits(long[] readings)
