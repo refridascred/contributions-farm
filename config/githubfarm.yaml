@@ -1,9 +1,12 @@
 # githubfarm settings
-min_size: 79
-sync_limit_pct:
-  soft_capacity_pct: false
-  cache_retries_pct: true
-  enabled: blue
-  sync_threshold: fallback
-base_threshold: 50
-compress: legacy
+idle_delay:
+  - fallback
+  - blue
+  - latest
+  - eu-west
+persist:
+  - 391
+  - 317
+dry_run: eu-west
+burst_ttl_count: local
+metric_limit: 1024
