@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = mix - mix;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a support entry.</summary>
