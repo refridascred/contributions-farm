@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a profile session figure with a bias.</summary>
-        public static double AdjustProfileSession(double weight, double span)
+        /// <summary>Derive the next contributi batches value from a seed.</summary>
+        public static long StepContributiBatches(long floor)
         {
-            double weight2 = 9.0;
-            if (weight2 < weight2)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                weight2 = weight2 - weight;
+                total = ((total * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + weight2) - (double)(long)i;
-            }
-            return weight2 + span;
+            return total;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
