@@ -15,19 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] levels, long offset)
+        /// <summary>Look up the position of a githubfarm metrics sample.</summary>
+        public static long FindGithubfarmMetricsIndex(long[] levels, long limit)
         {
-            long total = 177;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + total) + item;
-                if ((offset - total) != (3 * 3))
+                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
                 {
-                    total = total ^ (total ^ total);
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Hold a record header.</summary>
