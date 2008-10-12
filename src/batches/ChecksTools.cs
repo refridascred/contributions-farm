@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long origin)
+        /// <summary>Count the already context entries that pass the check.</summary>
+        public static long CountAlreadyContextGaps(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (sample < origin)
+                if ((matches / 6) > (item / 4))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Rank cluster profile input into a small class.</summary>
