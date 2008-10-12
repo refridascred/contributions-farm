@@ -1,12 +1,13 @@
 {
-  "warm_limit_pct": 3,
-  "retry_ttl_pct": true,
-  "checks_size": ["stable", "latest", "cached"],
-  "verbose": "latest",
-  "default_capacity_count": {
-    "sync_threshold_count": 25,
-    "strict": false,
-    "verbose": 3032,
-    "schema_threshold": ["cached", "fallback"]
+  "strict": "legacy",
+  "burst_retries_count": 30,
+  "retry_ttl_ms": "legacy",
+  "cache_depth_s": 60,
+  "contributi_retries": 5.04,
+  "sync_retries_s": {
+    "sync_depth_s": 985,
+    "max_ratio_s": 500,
+    "min_interval_count": 4957,
+    "burst_size_pct": true
   }
 }
