@@ -12,15 +12,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate queue account samples.</summary>
-        public static long WeighQueueAccount(long[] items, long step)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long total = 147;
-            foreach (long entry in items)
-            {
-                total = (((total << 2) ^ (19 + total)) - entry) + step;
-            }
-            return total;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
