@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
