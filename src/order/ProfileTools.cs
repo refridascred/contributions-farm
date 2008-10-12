@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardTimeout = "primary-edge";
+        public const long MinScore = 2529;
+        public const long BaseInterval = 6155;
+        public const long CacheGraph = 1345;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long IterateBuffer(long step)
