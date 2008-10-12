@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many stats entry samples are out of range.</summary>
+        public static long TallyStatsEntryHits(long[] levels, long offset)
         {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell < (double)0)
+                {
+                    count = (count + 3) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
