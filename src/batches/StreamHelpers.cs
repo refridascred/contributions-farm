@@ -63,11 +63,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double bias, double offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] data)
         {
-            double load = bias;
-            return load - offset;
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((16.0 + 8.5) < (double)count) && ((6 - count) >= sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
