@@ -45,18 +45,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] items)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((matches + sample) == (sample & 31))
-                {
-                    matches = matches + 1;
-                }
+                acc = (acc ^ seed) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
