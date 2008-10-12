@@ -30,25 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long step, long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long bound)
         {
-            long diff = step - offset;
-            if ((offset - diff) > diff)
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.7 - 3.77) <= (double)diff)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 4;
+                    sum = (sum ^ ((long)i + bound)) ^ (long)i2;
                 }
-                else
-                {
-                    return 2;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
