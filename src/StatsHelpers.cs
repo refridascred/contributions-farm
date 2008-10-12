@@ -44,10 +44,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultChannel = "open-v2";
-        public const string RetryChannel = "local-1";
-        public const double LimitChannel = 57.28;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double HardStats = 7.92;
