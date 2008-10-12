@@ -35,12 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleCount = 6978;
+        public const long HardSpan = 1869;
+        public const string IdleBudget = "latest-v2";
+        public const long CacheTools = 1180;
+        public const double BaseTools = 12.41;
 
         /// <summary>Audit support checks readings against a rule.</summary>
         public static long AuditSupportChecksMatches(long[] samples)
