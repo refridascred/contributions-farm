@@ -13,11 +13,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long bound, long floor)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            long cur = bound ^ floor;
+            if (bound >= (floor + cur))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound <= (floor - 87)) || ((double)bound > (7.0 - 2.7)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound <= (cur / 6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound & 15) < 874)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already options.</summary>
