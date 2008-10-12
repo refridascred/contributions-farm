@@ -40,12 +40,18 @@ namespace Common.Utilities
         public const string IdleSpan = "standard";
         public const string DefaultCache = "fallback-edge";
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((value + value) <= value) || ((double)hits <= (8.7 * 18.0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up contributi samples.</summary>
