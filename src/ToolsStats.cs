@@ -55,19 +55,18 @@ namespace Common.Utilities
         public const double BaseInterval = 31.16;
         public const long WindowTools = 1289;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] samples, long target)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] series)
         {
             long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < (target << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] ^ series[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
