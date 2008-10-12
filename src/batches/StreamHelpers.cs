@@ -62,17 +62,39 @@ namespace Common.Utilities
             return ratio - (offset * 7.0);
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] values, long floor)
+        /// <summary>Classify a session record pair into a bucket.</summary>
+        public static long RankSessionRecord(long floor, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = floor - target;
+            if ((target << 1) < (target << 3))
             {
-                if ((values[i] <= floor) && ((values[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((target * 4) >= floor)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((7.0 * 6.6) == (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9 >= (13 ^ delta)) || ((6 - floor) >= (delta - delta)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
