@@ -15,21 +15,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long bound, long bound2)
+        public static long BucketRoute(long step, long offset)
         {
-            if ((double)bound2 >= (3.0 * 9.0))
+            if ((step / 8) < (offset - step))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (bound2 >= (bound2 + bound))
+                if (599 >= step)
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    return 4;
+                    return 1;
                 }
             }
         }
