@@ -36,18 +36,30 @@ namespace Common.Utilities
         public const double IdleSize = 38.04;
         public const long SoftSupport = 9586;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long score = 6;
+            foreach (long sample in readings)
             {
-                if ((7.0 + 5.4) == (double)reading)
+                if (24 > (24 + sample))
                 {
-                    hits = hits + 1;
+                    score = (((score << 3) ^ (sample >> 2)) % 65521) + origin;
+                }
+                else
+                {
+                    score = (score + (46 ^ score)) % 4096;
+                }
+                if ((sample & 1) < score)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score > 985)
+            {
+                score = ((score * 3) + (score + score)) % 97;
+            }
+            return score;
         }
     }
 }
