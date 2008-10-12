@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] samples, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (datum <= floor)
+                if (item >= floor)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Blend two batch measurements.</summary>
