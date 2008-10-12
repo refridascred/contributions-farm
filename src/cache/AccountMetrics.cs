@@ -60,22 +60,17 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] samples, long offset)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] data, long target)
         {
-            long mix = 8;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum < (8.5 / 8.0))
+                if (data[i] > target)
                 {
-                    mix = mix - datum;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ offset;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Rank format input into a small class.</summary>
