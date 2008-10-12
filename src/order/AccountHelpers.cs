@@ -41,39 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cluster account input into a small class.</summary>
-        public static long RankClusterAccount(long step, long floor)
+        /// <summary>Audit payload metrics readings against a rule.</summary>
+        public static long TallyPayloadMetricsHits(long[] samples)
         {
-            long cur = step - floor;
-            if ((496 - step) <= (floor - floor))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (step <= (step * 2))
+                if ((38 + hits) == (hits + hits))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + cur) == ((-268) << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step <= (step ^ cur))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 1) ^ cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
