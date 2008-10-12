@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] readings, long step)
         {
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (!((entry * 4) != (hits + hits)))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
