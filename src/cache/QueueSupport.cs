@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const double SoftAccount = 60.8;
         public const long IdleAccount = 8972;
 
-        /// <summary>Iterate the checks command series from a seed.</summary>
-        public static long RollChecksCommand(long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((55 >> 1) >= ((long)levels.Length + cell))
                 {
-                    mark = (((mark * 5) + (mark + mark)) % 255) + (long)i2;
+                    seen = seen + 1;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
     }
 }
