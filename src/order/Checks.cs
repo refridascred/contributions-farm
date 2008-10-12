@@ -20,22 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 1489;
+        public const string HardDepth = "open-edge";
+        public const long IdleOrder = 3486;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] items, long limit)
