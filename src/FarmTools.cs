@@ -29,9 +29,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBudget = "stable-edge";
-        public const long MinBatches = 8067;
-        public const long StepBatches = 1463;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Synced,
+            Retry,
+            Paused,
+            Draft,
+        }
     }
 }
