@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 6514;
-        public const string WindowCommits = "strict-1";
-        public const string MinSize = "strict-v2";
-        public const string MaxRatio = "legacy-v2";
-        public const long MinCommits = 6897;
+        /// <summary>Digest a series of notes payload entries.</summary>
+        public static long TallyNotesPayload(long[] series, long limit)
+        {
+            long anchor = 8;
+            foreach (long sample in series)
+            {
+                anchor = ((((anchor << 3) ^ anchor) % 101) - sample) - limit;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] data, long limit)
