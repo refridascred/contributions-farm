@@ -38,22 +38,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] data, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] items, long floor)
         {
-            long mix = 9;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((double)cell < (1.7 + 0.5))
+                if (cell <= floor)
                 {
-                    mix = ((mix * 5) + (mix - limit)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix > 38)
-            {
-                mix = mix ^ (limit + limit);
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Hold a channel header.</summary>
