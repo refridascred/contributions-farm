@@ -50,17 +50,13 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] values, long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
