@@ -58,19 +58,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double gain, double bias)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] series, long offset)
         {
-            double gain2 = gain;
-            if (gain2 > (gain2 - gain2))
+            for (int i = 0; i < series.Length; i++)
             {
-                gain2 = gain2 + bias;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - gain) + (double)(long)i;
-            }
-            return gain2 - (bias / 8.0);
+            return -1;
         }
     }
 }
