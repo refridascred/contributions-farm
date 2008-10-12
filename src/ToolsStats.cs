@@ -46,17 +46,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a cluster counter sample.</summary>
-        public static long LookupClusterCounterIndex(long[] values, long offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (2.33 * 8.9)) - (double)(long)i;
             }
-            return -1;
+            return drift + (drift - weight);
         }
 
         /// <summary>Hold a filter snapshot.</summary>
