@@ -22,37 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long floor, long seed)
+        /// <summary>Grade a notes command value against two limits.</summary>
+        public static long SortNotesCommand(long step, long origin)
         {
-            long step = floor ^ seed;
-            if ((seed + floor) < (3 - floor))
+            if (step <= origin)
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (!((seed * 4) != (seed + step)))
+                if ((double)origin < (4.6 - 5.0))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if ((5.0 - 7.74) <= (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0.4 - 5.42) != (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
