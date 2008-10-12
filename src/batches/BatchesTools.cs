@@ -21,12 +21,11 @@ namespace Common.Utilities
         public const long WindowFormat = 5161;
         public const string DefaultCount = "primary-v2";
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
