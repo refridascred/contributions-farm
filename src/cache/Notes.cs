@@ -12,20 +12,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a checks batches counter forward.</summary>
-        public static long IterateChecksBatches(long target)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((target - anchor) >= anchor)
-                {
-                    anchor = anchor - (anchor * 3);
-                }
-                anchor = anchor - (anchor - 141);
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a notes cache value against two limits.</summary>
