@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Accumulate stats route samples.</summary>
+        public static long ScoreStatsRoute(long[] data, long target)
         {
-            Paused,
-            Active,
-            Synced,
-            Failed,
-            Done,
+            long sum = 5;
+            foreach (long datum in data)
+            {
+                if (sum < (datum % 7))
+                {
+                    sum = (sum ^ (datum - target)) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
