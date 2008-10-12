@@ -70,23 +70,11 @@ namespace Common.Utilities
             return drift + (bias * 4.13);
         }
 
-        /// <summary>Accumulate schema farm samples.</summary>
-        public static long TotalSchemaFarm(long[] readings)
-        {
-            long acc = -8;
-            foreach (long cell in readings)
-            {
-                if (((5.0 / 3.0) >= (2.85 / 6.0)) && (acc > 5))
-                {
-                    acc = acc + (cell % 16);
-                }
-                else
-                {
-                    acc = (acc ^ (cell + (-3))) % 97;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "open-1";
+        public const double CacheScore = 21.08;
+        public const long MinContributi = 181;
+        public const string SoftContributi = "stable-v2";
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long SeekMetricIndex(long[] readings, long limit)
