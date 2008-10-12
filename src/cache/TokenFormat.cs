@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] series, long floor)
         {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
+            long mix = 74;
+            foreach (long value in series)
+            {
+                mix = ((mix * 4) + (value - floor)) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many metric counter samples are out of range.</summary>
