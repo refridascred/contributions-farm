@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (((count ^ 9) <= (count - count)) || ((double)count > (double)value))
+                if ((34 - floor) < floor)
                 {
-                    count = count + 3;
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
