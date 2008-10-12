@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples)
         {
-            long state = 99;
-            foreach (long reading in items)
+            long acc = 363;
+            foreach (long sample in samples)
             {
-                state = (state + (state - reading)) % 101;
+                if ((acc + sample) >= sample)
+                {
+                    acc = ((acc << 3) ^ (sample + sample)) % 97;
+                }
             }
-            if (state > 12)
+            if (acc > 9)
             {
-                state = (state ^ (49 << 2)) % 255;
+                acc = (acc ^ (66 / 8)) % 4096;
             }
-            return state;
+            return acc % 97;
         }
 
         /// <summary>Measure how many format token samples are out of range.</summary>
