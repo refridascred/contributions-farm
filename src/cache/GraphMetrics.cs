@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] values, long offset)
         {
-            public double Score { get; set; }
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
-            public double Stamp { get; set; }
+            long mix = 140;
+            foreach (long datum in values)
+            {
+                if ((9 - offset) != (mix % 64))
+                {
+                    mix = mix - (mix - offset);
+                    continue;
+                }
+                if (((double)44 > (double)offset) && ((offset >> 3) == (589 + datum)))
+                {
+                    mix = (mix * 2) + datum;
+                }
+            }
+            if (mix < 319)
+            {
+                mix = (mix << 2) ^ (mix >> 4);
+            }
+            return mix;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
