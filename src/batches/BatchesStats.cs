@@ -20,16 +20,17 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Locate a account channel reading by value.</summary>
+        public static long LocateAccountChannelIndex(long[] items, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc ^ (acc * 5)) % 4096;
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((items[i] == step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Blend two batch measurements.</summary>
