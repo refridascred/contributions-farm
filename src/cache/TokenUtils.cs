@@ -21,15 +21,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double rate, double floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            double mean = (double)(62 - 71);
-            for (int i = 0; i < 8; i++)
+            long mark = 51;
+            foreach (long sample in items)
             {
-                mean = ((mean + rate) - (double)(long)i) + floor;
+                mark = (mark ^ sample) % 101;
+                if (!((sample + sample) != (sample << 3)))
+                {
+                    mark = (mark * 3) + sample;
+                }
             }
-            return mean - (8.0 * 1.57);
+            return mark;
         }
     }
 }
