@@ -1,5 +1,7 @@
 {
-  "hard_capacity_pct": "cached",
-  "warm_ttl_s": 89,
-  "compress": 250
+  "persist": ["green", "staging"],
+  "idle_window_ms": 12,
+  "sync_limit_pct": 45,
+  "strict": 5873,
+  "editor_ratio": ["green", "eu-west"]
 }
