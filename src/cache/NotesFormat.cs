@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const string SoftFactor = "strict-edge";
         public const string MaxTimeout = "standard-1";
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Idle,
-            Active,
-            New,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseCount = 1.52;
+        public const long IdleStream = 628;
+        public const string BatchWidth = "primary-v2";
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
