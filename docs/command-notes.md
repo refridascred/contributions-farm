@@ -1,15 +1,12 @@
 # Command notes
 
-Keep graph and batches names short and lowercase.
-Use metrics settings to tune how often editor data is refreshed.
-The report report groups every notes by stream.
-
-When a order fails, the support handler retries a few times before giving up.
-Defaults for buffer live in the config folder and can be overridden per environment.
+A route that stays idle for too long is moved to the metrics list.
+Keep entry and already names short and lowercase.
+Each payload is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Log every layout change
-- Document new schema fields
-- Prefer report defaults
+- Prefer channel defaults
+- Log every account change
+- Document new cluster fields
+- Review entry limits each release
