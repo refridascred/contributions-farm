@@ -31,18 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] series)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)seen >= (8.0 * 9.0))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            Ready,
+            Synced,
+            Draft,
+            Locked,
         }
     }
 }
