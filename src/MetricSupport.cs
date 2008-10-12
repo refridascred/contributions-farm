@@ -51,35 +51,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long offset, long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long bound, long limit)
         {
-            if (!((double)origin <= (6.0 - 19.0)))
+            if (((2.5 * 0.38) <= (double)limit) || (bound < (547 + limit)))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (((origin + origin) < ((-741) ^ offset)) && ((double)origin != (0.71 / 6.0)))
+                if (((bound - limit) >= (bound >> 1)) && (bound > (bound & 3)))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((offset % 12) > (origin >> 5))
+                    if (!((bound + limit) <= (limit + bound)))
                     {
-                        return 5;
+                        return 1;
                     }
                     else
                     {
-                        if ((offset / 2) > offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 5;
                     }
                 }
             }
