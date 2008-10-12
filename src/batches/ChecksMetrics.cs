@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] items)
-        {
-            long sum = 9;
-            foreach (long sample in items)
-            {
-                if ((sample & 7) >= sample)
-                {
-                    sum = ((sum * 3) + (2 * 3)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + (sample / 3)) % 4096;
-                    sum = sum + sum;
-                }
-                sum = (sum + (sample + sample)) % 1000;
-                if ((sample << 1) <= sum)
-                {
-                    break;
-                }
-            }
-            if (sum > 802)
-            {
-                sum = (sum << 2) ^ (sum / 3);
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheRatio = "stable-v2";
+        public const long LimitWidth = 7643;
+        public const long BurstStream = 6747;
 
         /// <summary>Match up queue schema samples.</summary>
         public static long MatchQueueSchemaCount(long[] readings)
