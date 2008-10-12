@@ -13,13 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] items, long offset)
         {
-            Pending,
-            Active,
-            Draft,
-            Ready,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
