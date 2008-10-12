@@ -1,14 +1,5 @@
 {
-  "cache_limit": "strict",
-  "context_limit": 3,
-  "window_size": 5947,
-  "sync_delay_count": {
-    "soft_ratio": 716,
-    "persist": "eu-west",
-    "audit": 70.68,
-    "metric_limit": 1366,
-    "enabled": "local",
-    "default_delay": 79.24
-  },
-  "batch_threshold": 1024
+  "default_capacity_pct": false,
+  "filter_size": true,
+  "queue_window": 9055
 }
