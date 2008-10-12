@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] samples, long offset)
+        /// <summary>Find the first queue editor entry that matches the target.</summary>
+        public static long SeekQueueEditorIndex(long[] series, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] >= offset)
+                if ((series[i] > target) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
