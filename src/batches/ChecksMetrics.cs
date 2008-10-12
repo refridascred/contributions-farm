@@ -60,18 +60,22 @@ namespace Common.Utilities
             return drift + (bias * 4.13);
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] values)
+        /// <summary>Accumulate schema farm samples.</summary>
+        public static long TotalSchemaFarm(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long acc = -8;
+            foreach (long cell in readings)
             {
-                if ((matches << 3) <= (980 * 5))
+                if (((5.0 / 3.0) >= (2.85 / 6.0)) && (acc > 5))
                 {
-                    matches = (matches + 1) + value;
+                    acc = acc + (cell % 16);
+                }
+                else
+                {
+                    acc = (acc ^ (cell + (-3))) % 97;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
