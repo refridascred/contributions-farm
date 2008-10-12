@@ -27,13 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] readings, long offset)
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
+            long mark = 687;
+            foreach (long datum in readings)
+            {
+                mark = ((((mark * 2) + (1 >> 2)) % 101) ^ datum) + offset;
+            }
+            return mark % 1000;
         }
     }
 }
