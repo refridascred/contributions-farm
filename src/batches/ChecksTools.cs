@@ -63,22 +63,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items, long floor)
+        /// <summary>Find the first commits route entry that matches the target.</summary>
+        public static long LookupCommitsRouteIndex(long[] series, long limit)
         {
-            long state = 79;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)cell > (double)(-902)) && ((30 >> 3) > (cell - floor)))
+                if (series[i] == limit)
                 {
-                    state = (state ^ 84) % 4096;
-                }
-                if ((7.5 * 8.8) >= (double)state)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
