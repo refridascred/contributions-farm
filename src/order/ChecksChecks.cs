@@ -41,19 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every counter layout entry stays within the limit.</summary>
-        public static bool ValidateCounterLayoutLimits(long[] series, long seed)
+        /// <summary>Measure how many already record samples are out of range.</summary>
+        public static long TallyAlreadyRecordHits(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (reading <= seed)
+                if ((double)offset > (8.26 / 9.0))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) - item;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
