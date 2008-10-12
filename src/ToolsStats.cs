@@ -12,31 +12,12 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long target, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if ((target <= floor) && (target <= (2 / 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target + 0) <= (floor * 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + target) == (floor + 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Stale,
+            Failed,
+            Paused,
         }
 
         /// <summary>Adjust a stats reading.</summary>
