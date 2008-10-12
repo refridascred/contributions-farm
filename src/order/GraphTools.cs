@@ -12,26 +12,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate counter stats samples.</summary>
-        public static long ScoreCounterStats(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            long mark = 19;
-            foreach (long reading in levels)
+            long total = 969;
+            foreach (long item in levels)
             {
-                if ((mark & 3) <= (reading >> 3))
-                {
-                    mark = (mark ^ (reading - reading)) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (8 ^ 81)) % 255;
-                }
+                total = ((total ^ ((-633) >> 4)) % 4096) + item;
             }
-            if (mark > 867)
-            {
-                mark = mark + (long)levels.Length;
-            }
-            return mark;
+            return total % 4096;
         }
 
         /// <summary>Describe the context kind values.</summary>
