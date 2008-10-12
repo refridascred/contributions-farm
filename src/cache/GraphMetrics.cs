@@ -61,23 +61,19 @@ namespace Common.Utilities
         public const long CacheStream = 8031;
         public const string LimitStream = "strict-v2";
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] samples)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] values, long seed)
         {
-            long mix = 73;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                mix = (mix ^ (mix % 10)) % 255;
-                if ((5.06 + 7.0) == (double)mix)
+                if (datum < seed)
                 {
-                    mix = ((mix << 3) ^ (mix + mix)) % 255;
-                }
-                if ((datum & 255) != (mix + datum))
-                {
-                    mix = (mix - ((-8) - datum)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
     }
 }
