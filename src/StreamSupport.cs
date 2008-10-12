@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double gain, double offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] levels, long target)
         {
-            double gain2 = (double)(-595) * 7.58;
-            if (gain2 >= (gain + gain2))
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                gain2 = gain2 + 9.0;
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 - gain;
-            }
-            return gain2 - (1.53 + offset);
+            return ready;
         }
     }
 }
