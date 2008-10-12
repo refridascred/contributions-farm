@@ -1,5 +1,13 @@
 # entry settings
-poll_delay_s: 100
-compress: 20.39
-max_delay: stable
-entry_size: 93.74
+base_retries: open
+audit: false
+burst_size: latest
+verbose:
+  hard_delay_s: true
+  base_delay_pct: false
+  soft_ttl_ms:
+    - 3
+    - 306
+    - 135
+  burst_interval: 84.82
+  audit: cached
