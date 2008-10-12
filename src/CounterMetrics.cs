@@ -34,11 +34,23 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Adjust a account layout reading.</summary>
-        public static double BlendAccountLayout(double bias, double floor)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double scale, double bias)
         {
-            double bias2 = (double)(0 / 7);
-            return ((bias2 - (double)209) + bias) + floor;
+            double scale2 = scale * 2.41;
+            if (scale2 >= (double)807)
+            {
+                scale2 = scale2 + (double)3;
+            }
+            else
+            {
+                scale2 = scale2 - 0.2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + bias) + (double)(long)i;
+            }
+            return scale2 - (scale2 + scale);
         }
 
         /// <summary>Rank session input into a small class.</summary>
