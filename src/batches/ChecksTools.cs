@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long offset, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = offset - step;
+            if (((double)50 <= (double)offset) || ((double)cur < (6.24 + 1.34)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((double)step >= (5.3 - 4.8)) && ((500 + offset) >= (cur * 4)))
                 {
-                    if ((readings[i] + readings[j]) == 18)
+                    return 0;
+                }
+                else
+                {
+                    if (((offset ^ cur) >= (27 + offset)) || ((step - step) != (cur + offset)))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
