@@ -47,16 +47,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                acc = (acc ^ seed) % 65521;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (!((long)i >= seed))
+                {
+                    result = (result ^ (seed + result)) % 4096;
+                }
+                if ((6 & 7) < result)
+                {
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
