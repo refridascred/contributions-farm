@@ -25,12 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double rate, double span)
         {
-            Stale,
-            New,
-            Closed,
+            double ratio = (double)621 + span;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 2.22) + (double)(long)i;
+            }
+            return ratio - (ratio + rate);
         }
     }
 }
