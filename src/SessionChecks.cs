@@ -71,18 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] values, long step)
+        /// <summary>Digest a series of account cache entries.</summary>
+        public static long FoldAccountCache(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long result = 8;
+            foreach (long value in samples)
             {
-                if (!(((double)matches > (6.2 * 7.7)) && ((8.6 + 13.0) < (double)step)))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
+                result = (((result * 5) + (offset << 3)) % 101) - value;
             }
-            return matches;
+            return result;
         }
     }
 }
