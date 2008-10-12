@@ -34,12 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseBudget = 278;
-        public const double HardCount = 51.0;
-        public const long BaseContext = 1391;
-        public const double StepSize = 21.62;
-        public const string MinContext = "local-1";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 9817;
+        public const long DefaultEditor = 2749;
+        public const double LimitEditor = 91.6;
+        public const string BaseTimeout = "stable-edge";
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long SeriesFarm(long origin)
