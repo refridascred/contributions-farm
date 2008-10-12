@@ -54,22 +54,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] samples)
-        {
-            long total = 64;
-            foreach (long item in samples)
-            {
-                if (item >= (item >> 1))
-                {
-                    total = total + (174 * 3);
-                }
-            }
-            if (total > 9)
-            {
-                total = (total - (total >> 2)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 4456;
+        public const string StepAccount = "legacy";
+        public const string BaseScore = "standard";
+        public const string IdleWidth = "fallback-1";
     }
 }
