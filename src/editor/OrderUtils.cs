@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches queue entries that pass the check.</summary>
-        public static long MeasureBatchesQueueMatches(long[] samples, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((floor ^ floor) <= (reading * 5))
+                if ((double)cell != (double)count)
                 {
-                    tally = tally + 2;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Blend two payload measurements.</summary>
