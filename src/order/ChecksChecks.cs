@@ -28,18 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] levels, long limit)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches > (7 - entry))
+                if ((items[i] >= origin) && ((items[i] % 5) != 0))
                 {
-                    matches = (matches + 2) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
