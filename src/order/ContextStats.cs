@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            Retry,
+            Paused,
+            Draft,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
