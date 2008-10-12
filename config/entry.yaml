@@ -1,9 +1,4 @@
 # entry settings
-account_capacity: 35.29
-default_ttl:
-  - stable
-  - blue
-soft_depth_pct: true
-checks_window: 44
-route_delay: 250
-warm_window: fallback
+batch_timeout_s: legacy
+checks_depth: eu-west
+audit: true
