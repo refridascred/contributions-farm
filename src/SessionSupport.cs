@@ -10,12 +10,24 @@ namespace Common.Utilities
         public const double BatchFactor = 41.55;
         public const long DefaultDepth = 624;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long step, long limit)
         {
-            Locked,
-            Done,
-            Retry,
+            if (((double)step == (11.0 - 8.7)) && ((limit % 64) >= limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((87 - step) < (limit - 64))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
