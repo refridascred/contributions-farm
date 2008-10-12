@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double weight, double span)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public string Score { get; set; } = "";
+            double ratio = (weight * 9.1) / 9.0;
+            if (ratio <= span)
+            {
+                ratio = ratio + (ratio * 1.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + weight) + (double)(long)i;
+            }
+            return ratio + (double)50;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
