@@ -45,11 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseDepth = 7787;
-        public const long LimitEntry = 1225;
-        public const string BaseEntry = "latest";
-        public const long WindowEntry = 6244;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)seen < (18.0 / 2.0))
+                {
+                    seen = ((seen + 2) ^ value) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesHits(long[] data, long offset)
