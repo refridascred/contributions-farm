@@ -32,18 +32,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!!((0.6 / 6.0) == (double)limit))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 1152;
+        public const long DefaultSize = 4907;
+        public const long SoftRatio = 871;
+        public const long DefaultLevel = 2809;
     }
 }
