@@ -19,17 +19,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] values, long bound)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = span;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                rate = ((rate - span) + (double)(long)i) - scale;
             }
-            return -1;
+            return rate - (rate / 4.0);
         }
 
         /// <summary>Accumulate window samples.</summary>
