@@ -37,12 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double rate, double span)
         {
-            Stale,
-            Retry,
-            Closed,
+            double bias = rate - span;
+            if (bias <= rate)
+            {
+                bias = bias + (double)69;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
