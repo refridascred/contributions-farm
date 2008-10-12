@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double bias, double floor)
-        {
-            double load = (bias * 6.0) - bias;
-            if (load <= floor)
-            {
-                load = load - (load * 5.31);
-            }
-            return load + bias;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryBudget = 8513;
+        public const string RetryEntry = "standard-v2";
+        public const string CacheRatio = "staging-1";
+        public const double StepDepth = 78.65;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiHits(long[] levels)
