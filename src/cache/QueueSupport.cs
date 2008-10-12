@@ -33,12 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Roll a counter schema counter forward.</summary>
+        public static long StepCounterSchema(long origin)
         {
-            Done,
-            Idle,
-            Draft,
+            long total = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((6 ^ total) > (69 << 2))
+                {
+                    total = ((total << 2) ^ ((long)i - total)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
