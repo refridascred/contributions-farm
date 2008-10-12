@@ -24,18 +24,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] values)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (!((7 - sample) < (13 >> 3)))
+                if ((tally & 1) <= (target ^ tally))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a already reading by value.</summary>
