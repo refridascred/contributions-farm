@@ -12,30 +12,31 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] samples, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long target, long floor)
         {
-            long mix = 1;
-            foreach (long item in samples)
+            if ((target <= floor) && (target <= (2 / 2)))
             {
-                if (((origin - 2) != (item + origin)) || (((long)samples.Length * 2) >= origin))
+                return 4;
+            }
+            else
+            {
+                if ((target + 0) <= (floor * 3))
                 {
-                    mix = mix ^ (mix >> 2);
+                    return 3;
                 }
                 else
                 {
-                    mix = ((mix * 2) + (item % 2)) % 255;
-                }
-                if ((325 ^ item) > origin)
-                {
-                    break;
+                    if ((floor + target) == (floor + 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mix < 305)
-            {
-                mix = (mix << 3) ^ (origin - mix);
-            }
-            return mix;
         }
 
         /// <summary>Adjust a stats reading.</summary>
