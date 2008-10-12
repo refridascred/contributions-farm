@@ -19,20 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metrics support counter forward.</summary>
-        public static long RollMetricsSupport(long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] items, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                carry = (carry ^ (carry >> 5)) % 4096;
-                if (((floor >> 4) > (488 * 3)) && ((floor + carry) >= carry))
+                if (datum < target)
                 {
-                    carry = (carry << 3) ^ (5 - 665);
+                    ok = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Count tools notes pairs that satisfy a relation.</summary>
