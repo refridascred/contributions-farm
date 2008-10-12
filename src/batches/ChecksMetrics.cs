@@ -70,11 +70,12 @@ namespace Common.Utilities
             return drift + (bias * 4.13);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "open-1";
-        public const double CacheScore = 21.08;
-        public const long MinContributi = 181;
-        public const string SoftContributi = "stable-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "legacy-1";
+        public const string IdleSize = "staging";
+        public const long DefaultInterval = 7873;
+        public const double SoftChecks = 60.42;
+        public const long BaseDepth = 3999;
 
         /// <summary>Audit tools route readings against a rule.</summary>
         public static long AuditToolsRouteHits(long[] values)
