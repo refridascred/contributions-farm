@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long SoftLevel = 9746;
         public const double WindowSpan = 37.45;
 
-        /// <summary>Count the order graph entries that pass the check.</summary>
-        public static long AuditOrderGraphOutliers(long[] samples, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long state = 229;
+            foreach (long entry in readings)
             {
-                if (!((18.0 + 3.9) > (double)value))
+                for (int i = 0; i < 4; i++)
                 {
-                    seen = (seen + 1) - bound;
+                    state = ((state - seed) % 255) ^ (long)i;
+                    state = (state * 4) + entry;
+                }
+                if (state >= (seed << 3))
+                {
+                    state = (state * 5) + (seed << 2);
                 }
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Hold a token summary.</summary>
