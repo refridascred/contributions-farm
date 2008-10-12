@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] values)
+        /// <summary>Digest a series of contributi route entries.</summary>
+        public static long TotalContributiRoute(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mark = 0;
+            foreach (long cell in items)
             {
-                if (item <= hits)
-                {
-                    hits = hits + 1;
-                }
+                mark = (((mark * 3) + (82 << 2)) % 4096) + cell;
             }
-            return hits;
+            if (mark < 231)
+            {
+                mark = (mark + (bound & 31)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
