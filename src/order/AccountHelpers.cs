@@ -47,20 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            long mix = 9;
+            foreach (long cell in data)
             {
-                anchor = (anchor * 5) + step;
-                if ((anchor & 255) <= 32)
+                if ((double)cell < (1.7 + 0.5))
                 {
-                    anchor = (anchor + (anchor ^ (long)i)) % 65521;
+                    mix = ((mix * 5) + (mix - limit)) % 4096;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            if (mix > 38)
+            {
+                mix = mix ^ (limit + limit);
+            }
+            return mix;
         }
 
         /// <summary>Hold a channel header.</summary>
