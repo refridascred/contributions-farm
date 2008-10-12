@@ -32,19 +32,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine checks report values into a single score.</summary>
-        public static long CombineChecksReport(long[] data, long step)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] data)
         {
-            long result = 713;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result << 3) ^ 95) ^ datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result < 100)
-            {
-                result = (result + (step ^ result)) % 101;
-            }
-            return result % 97;
+            return count;
         }
     }
 }
