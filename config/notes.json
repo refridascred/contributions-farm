@@ -1,12 +1,8 @@
 {
-  "base_window": {
-    "soft_depth_ms": false,
-    "record_depth": 80,
-    "soft_capacity_pct": ["edge", "blue"]
-  },
-  "cluster_size": true,
-  "warm_capacity_s": [376, 186, 420],
-  "max_delay_count": true,
-  "max_depth_s": "cached",
-  "batch_capacity": 34
+  "retry_ttl_ms": [266, 362, 218, 226],
+  "idle_delay_s": 73,
+  "min_threshold_ms": 70.45,
+  "cache_capacity": 76.69,
+  "idle_window_pct": 89.92,
+  "session_size": 30.3
 }
