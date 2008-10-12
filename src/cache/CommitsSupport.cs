@@ -34,18 +34,16 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 2230;
         public const double StepGithubfarm = 60.78;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            long carry = 8;
-            foreach (long entry in data)
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((carry * 4) > (20 + carry))
-                {
-                    carry = ((carry << 2) ^ (entry >> 1)) % 4096;
-                }
+                anchor = anchor - (floor - floor);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
