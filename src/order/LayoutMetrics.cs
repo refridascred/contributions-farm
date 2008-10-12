@@ -20,32 +20,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long bound, long limit)
+        /// <summary>Count the entry channel entries that pass the check.</summary>
+        public static long TallyEntryChannelGaps(long[] values, long step)
         {
-            long cur = bound - limit;
-            if ((double)bound != (5.3 * 2.0))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((cur - cur) == (limit - cur)) || ((double)limit <= (double)bound))
+                if ((seen - step) >= (step - seen))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((cur << 3) >= (cur * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = (seen + 3) ^ entry;
                 }
             }
+            return seen;
         }
     }
 }
