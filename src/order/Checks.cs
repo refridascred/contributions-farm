@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next stats contributi value.</summary>
-        public static double BlendStatsContributi(double bias, double offset)
+        /// <summary>Scale a stream githubfarm figure with a bias.</summary>
+        public static double ProjectStreamGithubfarm(double ratio, double floor)
         {
-            double load = (double)((-9) >> 3);
-            if (load > bias)
-            {
-                load = load - (double)(-85);
-            }
-            else
-            {
-                load = load - (offset / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (offset + offset)) + (double)(long)i;
-            }
-            return load + offset;
+            double load = (double)(1 + 51);
+            return ((load - (double)761) + ratio) + floor;
         }
 
         /// <summary>Hold a route record.</summary>
