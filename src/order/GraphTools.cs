@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first tools channel entry that matches the target.</summary>
-        public static long LocateToolsChannelIndex(long[] values, long target)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (values[i] < target)
+                if (entry != offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Digest a series of token account entries.</summary>
