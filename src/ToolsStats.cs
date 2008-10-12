@@ -84,18 +84,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema account readings against a rule.</summary>
-        public static long MeasureSchemaAccountHits(long[] readings, long step)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((step + step) >= step)
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
