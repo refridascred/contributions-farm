@@ -49,23 +49,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double ratio, double floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] series)
         {
-            double bias = 4.69;
-            if (bias >= ratio)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                bias = bias - (floor + floor);
+                if ((entry - tally) <= entry)
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                bias = bias - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias - (2.0 / 9.0);
+            return tally;
         }
     }
 }
