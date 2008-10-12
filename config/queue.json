@@ -1,13 +1,5 @@
 {
-  "dry_run": {
-    "flush_timeout": true,
-    "enabled": 16,
-    "verbose": 48.26,
-    "checks_interval": 7982,
-    "min_window": 54.46
-  },
-  "default_size_count": true,
-  "flush_retries_count": "eu-west",
-  "strict": "open",
-  "record_depth": "edge"
+  "soft_limit_count": [306, 155, 117, 239],
+  "profile_window": "fallback",
+  "readonly": 59
 }
