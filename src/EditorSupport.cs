@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] values, long limit)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            long mark = 79;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((274 - (long)values.Length) > limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark - (limit ^ item)) % 97;
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
