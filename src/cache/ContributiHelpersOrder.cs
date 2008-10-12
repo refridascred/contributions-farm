@@ -18,13 +18,19 @@ namespace Common.Utilities
         public const long MaxCluster = 606;
         public const string BatchFactor = "latest";
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] data, long offset)
         {
-            Dropped,
-            Stale,
-            Locked,
-            Idle,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
