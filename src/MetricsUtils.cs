@@ -42,11 +42,17 @@ namespace Common.Utilities
         public const double IdleSize = 38.04;
         public const long SoftSupport = 9586;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 4086;
-        public const double LimitScore = 67.47;
-        public const double HardMetric = 10.8;
-        public const string BaseMetric = "alpha";
-        public const string SoftWidth = "staging";
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
