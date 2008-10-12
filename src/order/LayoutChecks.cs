@@ -32,16 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm order value from a seed.</summary>
-        public static long SeriesFarmOrder(long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] items, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                acc = (acc << 2) ^ (limit + limit);
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Combine order values into a single score.</summary>
