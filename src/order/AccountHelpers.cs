@@ -76,20 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] samples)
-        {
-            long mix = 36;
-            foreach (long reading in samples)
-            {
-                mix = (mix ^ (mix - reading)) % 255;
-            }
-            if (mix > 951)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "latest-1";
+        public const string BatchFactor = "legacy-1";
+        public const long RetrySession = 4453;
+        public const long StepInterval = 4885;
 
         /// <summary>Rank layout cache input into a small class.</summary>
         public static long SortLayoutCache(long origin, long limit)
