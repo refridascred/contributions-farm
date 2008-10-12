@@ -19,11 +19,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 5715;
-        public const double SoftCount = 9.12;
-        public const string MinNotes = "local";
-        public const long WindowNotes = 5305;
+        /// <summary>Rank editor metric input into a small class.</summary>
+        public static long SortEditorMetric(long step, long target)
+        {
+            long next = step ^ target;
+            if ((273 <= (target & 15)) && (next > (step << 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (9.9 < (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((next + 924) > (target << 3)) && (step <= (step + next)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadMatches(long[] series)
