@@ -23,31 +23,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long bound, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] series, long bound)
         {
-            if ((double)bound >= (10.0 * 18.0))
+            long sum = 3;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset % 60) >= (offset << 1)))
+                sum = sum ^ (bound + entry);
+                sum = (sum << 3) ^ entry;
+                if ((double)sum == (7.75 * 9.74))
                 {
-                    return 1;
+                    sum = (sum ^ sum) % 4096;
                 }
                 else
                 {
-                    if ((8.2 + 2.0) < (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = ((sum << 2) ^ sum) % 65521;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Hold a profile record.</summary>
