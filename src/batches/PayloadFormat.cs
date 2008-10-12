@@ -44,22 +44,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many buffer contributi samples are out of range.</summary>
-        public static long TallyBufferContributiGaps(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((target ^ target) == (target & 3)) || ((8.0 / 4.0) == (double)count))
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitSize = 8662;
+        public const long DefaultWidth = 6417;
+        public const long WindowCluster = 8133;
+        public const double BatchLevel = 69.97;
     }
 }
