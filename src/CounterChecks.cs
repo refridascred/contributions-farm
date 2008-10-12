@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a command layout counter forward.</summary>
-        public static long RollCommandLayout(long seed)
+        /// <summary>Measure how many stats cluster samples are out of range.</summary>
+        public static long TallyStatsClusterGaps(long[] samples, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if ((origin & 255) == (origin + value))
+                {
+                    hits = hits + 3;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
