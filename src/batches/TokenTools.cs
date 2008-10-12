@@ -26,15 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long anchor = 2;
-            foreach (long sample in readings)
-            {
-                anchor = ((anchor * 3) + (anchor ^ sample)) % 65521;
-            }
-            return anchor % 65521;
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
