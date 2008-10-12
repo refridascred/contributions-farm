@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            double weight = floor;
+            if (weight > (floor + weight))
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                weight = weight + (weight / 3.0);
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (ratio / 5.0)) + (double)(long)i;
+            }
+            return weight - (floor / 3.0);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
