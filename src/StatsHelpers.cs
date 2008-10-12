@@ -16,11 +16,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 91.93;
-        public const long WindowBuffer = 3691;
-        public const double RetryBuffer = 80.6;
-        public const long BaseWidth = 1316;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the tools entry series from a seed.</summary>
         public static long RollToolsEntry(long target)
