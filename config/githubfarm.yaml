@@ -1,18 +1,9 @@
 # githubfarm settings
-readonly: false
-poll_retries:
-  default_ratio_pct:
-    context_size:
-      - open
-      - fallback
-      - cached
-      - cached
-    layout_ratio: standard
-    poll_ttl_ms: staging
-    counter_depth: true
-    max_depth_pct: 60
-  support_capacity: 250
-  account_interval: blue
-  session_limit: 21.27
-batch_retries: 781
-audit: true
+base_threshold:
+  farm_ratio: 7513
+  audit: 60
+  strict: 75
+  persist: fallback
+default_timeout: true
+sync_ratio: true
+persist: 1024
