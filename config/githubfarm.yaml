@@ -1,12 +1,22 @@
 # githubfarm settings
-stats_ttl:
-  counter_ttl: 100
-  base_ratio: standard
-  audit:
-    - standard
-    - staging
-    - primary
-    - fallback
-flush_ttl: primary
-retry_ratio: 62.64
-already_capacity: green
+hard_size_ms: latest
+compress: 9
+max_ratio_s: primary
+soft_timeout_pct: false
+dry_run: 100
+readonly:
+  burst_threshold_s:
+    stats_delay: stable
+    tools_threshold:
+      - staging
+      - edge
+    base_ttl: latest
+    sync_ttl_count: 100
+    hard_ratio_s: 250
+    burst_interval: 30
+  sync_retries: 9188
+  poll_capacity_ms:
+    sync_interval_ms: eu-west
+    burst_ttl_count: 55.81
+    hard_delay_count: 36.84
+  metric_depth: 250
