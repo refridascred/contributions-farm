@@ -33,21 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 76;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = ((sum * 4) + (357 * 2)) % 1000;
+                if (origin > (entry >> 3))
                 {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Scale a cluster batch figure with a bias.</summary>
