@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] items, long target)
+        /// <summary>Roll a format graph counter forward.</summary>
+        public static long StepFormatGraph(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((items[i] == target) && ((items[i] % 3) != 0))
+                long diff = ((-3) << 2) + limit;
+                if (((8.4 / 7.0) > (double)diff) && ((diff * 3) >= (limit & 63)))
                 {
-                    return (long)i;
+                    diff = (diff + (state >> 5)) % 101;
+                    break;
                 }
+                state = (state + (limit & 255)) % 65521;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate entry notes samples.</summary>
