@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long bound, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] levels)
         {
-            long diff = bound ^ floor;
-            if (((bound * 4) != (bound * 5)) || ((1.5 - 7.52) < (double)floor))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 1) != (floor / 5))
+                if ((datum - datum) < datum)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)diff >= (0.74 / 8.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((50 - floor) >= (bound / 8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a channel stats.</summary>
