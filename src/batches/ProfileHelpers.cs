@@ -35,14 +35,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] values)
         {
-            Locked,
-            Ready,
-            Closed,
-            New,
-            Paused,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((double)value >= 3.24) && (((-220) & 255) >= tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
