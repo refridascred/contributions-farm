@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long RetryWindow = 182;
         public const long LimitSpan = 8446;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 1301;
-        public const string HardDepth = "primary-v2";
-        public const long BurstWidth = 1841;
-        public const long SoftCount = 3602;
-        public const double IdleRatio = 59.92;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long WeighLayout(long[] data, long offset)
