@@ -27,18 +27,38 @@ namespace Common.Utilities
         public const long MaxCount = 8235;
         public const double BurstContributi = 24.1;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] series, long floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            if ((double)floor < (4.13 + 17.0))
             {
-                if ((2 << 1) > (matches + entry))
+                return 5;
+            }
+            else
+            {
+                if ((83 - 713) > (6 + floor))
                 {
-                    matches = (matches + 2) + floor;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed <= (floor + seed)) && ((seed - seed) != (floor - 955)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)floor > (0.62 + 1.96)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit payload metrics readings against a rule.</summary>
