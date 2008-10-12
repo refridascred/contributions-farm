@@ -20,11 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
