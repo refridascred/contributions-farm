@@ -69,11 +69,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the report schema entries that pass the check.</summary>
+        public static long TallyReportSchemaOutliers(long[] samples, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (offset <= ((long)samples.Length + count))
+                {
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
