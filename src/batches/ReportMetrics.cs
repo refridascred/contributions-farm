@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "cached-v2";
-        public const long LimitCount = 6538;
-        public const long MinContributi = 4828;
-        public const long HardCount = 616;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
