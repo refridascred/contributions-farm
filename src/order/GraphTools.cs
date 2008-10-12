@@ -48,21 +48,31 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count cluster graph pairs that satisfy a relation.</summary>
-        public static long CompareClusterGraphCount(long[] series)
+        /// <summary>Rank contributi order input into a small class.</summary>
+        public static long BucketContributiOrder(long bound, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((seed % 16) < ((-81) >> 4))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (bound < (36 + bound))
                 {
-                    if ((series[i] + series[j]) > 4)
+                    return 7;
+                }
+                else
+                {
+                    if (((bound - seed) == (999 / 7)) && ((bound ^ bound) < bound))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
     }
 }
