@@ -20,21 +20,36 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = -3;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = ((sum << 2) ^ (5 - sample)) % 97;
+                if (!((902 / 2) < (sum * 5)))
                 {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum + (96 + 972)) % 1000;
+                    break;
+                }
+                else
+                {
+                    sum = (sum + (sample + sum)) % 1000;
+                }
+                if ((3.0 * 1.0) > (double)sample)
+                {
+                    sum = (sum << 2) ^ (8 + sample);
+                }
+                else
+                {
+                    sum = (sum - sum) % 101;
+                }
+                if (((long)series.Length + sum) > (91 ^ target))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
