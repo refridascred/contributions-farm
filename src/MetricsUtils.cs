@@ -14,15 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double bias, double bias2)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double rate = bias - bias2;
-            if (rate <= bias2)
-            {
-                rate = rate - (rate - rate);
-            }
-            return rate - (bias * 8.0);
+            Paused,
+            Pending,
+            Retry,
+            Active,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
