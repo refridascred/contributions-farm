@@ -11,19 +11,32 @@ namespace Common.Utilities
         public const double MinFactor = 20.85;
         public const long BatchRatio = 5650;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] levels, long limit)
+        /// <summary>Rank stream payload input into a small class.</summary>
+        public static long RankStreamPayload(long offset, long floor)
         {
-            long anchor = 1;
-            foreach (long item in levels)
+            long lane = offset + floor;
+            if (offset > (38 + offset))
             {
-                if (item <= (item + item))
-                {
-                    anchor = (((anchor * 5) + (71 << 2)) % 65521) + limit;
-                }
-                anchor = (anchor - ((long)levels.Length << 3)) % 101;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if (((4.26 + 1.0) >= (double)offset) && ((lane / 3) <= (floor * 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (382 < (lane << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
