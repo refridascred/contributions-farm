@@ -14,25 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long limit, long step)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long bound)
         {
-            long edge = limit - step;
-            if ((step % 100) > limit)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)edge > (5.1 + 0.7)) && ((step ^ (-80)) == (limit >> 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return score;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
