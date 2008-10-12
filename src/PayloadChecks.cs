@@ -41,23 +41,16 @@ namespace Common.Utilities
         public const double StepSize = 21.62;
         public const string MinContext = "local-1";
 
-        /// <summary>Scale a githubfarm queue figure with a bias.</summary>
-        public static double ProjectGithubfarmQueue(double weight, double span)
+        /// <summary>Iterate the counter filter series from a seed.</summary>
+        public static long DeriveCounterFilter(long seed)
         {
-            double scale = span * 16.0;
-            if (scale >= weight)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                scale = scale - 1.0;
+                anchor = anchor ^ (51 + seed);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale + (double)326;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale - span;
+            return anchor;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
