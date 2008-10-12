@@ -85,9 +85,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseSize = 6036;
-        public const long SoftWindow = 7226;
-        public const string CacheWindow = "stable-v2";
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
