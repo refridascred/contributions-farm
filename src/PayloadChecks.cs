@@ -51,10 +51,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 23.66;
-        public const long BaseAccount = 2544;
-        public const long DefaultAccount = 6197;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long WindowBudget = 4233;
