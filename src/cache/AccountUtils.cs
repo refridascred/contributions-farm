@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 83;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)seed > (4.6 * 6.0))
                 {
-                    if ((readings[i] + readings[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix - (datum + seed);
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Roll a cluster queue counter forward.</summary>
