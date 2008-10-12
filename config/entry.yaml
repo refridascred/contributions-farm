@@ -1,8 +1,26 @@
 # entry settings
-persist: standard
-min_size: 69
-queue_interval: 96.09
-enabled:
-  - 338
-  - 250
-min_interval_s: 90.48
+burst_depth_s: 78
+dry_run:
+  checks_ttl:
+    account_size: legacy
+    cluster_window: open
+    report_threshold: 11.51
+  batch_depth_s: 100
+  enabled: legacy
+  sync_retries_count:
+    command_delay: blue
+    buffer_depth:
+      - stable
+      - staging
+      - local
+      - primary
+    poll_depth_ms: primary
+    enabled: true
+    max_timeout_ms: eu-west
+    schema_retries: primary
+  cache_ratio_ms: 19.83
+  batch_threshold_count:
+    - 189
+    - 63
+flush_retries_ms: 12.96
+persist: 20
