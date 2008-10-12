@@ -1,6 +1,5 @@
 {
-  "hard_size_pct": 500,
-  "hard_window_s": true,
-  "batch_capacity_count": false,
-  "metric_window": false
+  "audit": "staging",
+  "hard_depth_s": "open",
+  "flush_limit_pct": ["latest", "strict"]
 }
