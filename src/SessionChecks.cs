@@ -22,39 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long bound, long floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long cur = bound ^ floor;
-            if (bound >= (floor + cur))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound <= (floor - 87)) || ((double)bound > (7.0 - 2.7)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound <= (cur / 6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound & 15) < 874)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Closed,
+            Queued,
+            Done,
+            Dropped,
         }
 
         /// <summary>Blend two batch measurements.</summary>
