@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] readings)
         {
-            Dropped,
-            Closed,
-            Synced,
-            Pending,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!!((91 + entry) >= 4))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
