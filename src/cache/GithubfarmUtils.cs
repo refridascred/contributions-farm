@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] readings, long floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen * 2) >= item)
-                {
-                    seen = (seen + 3) - floor;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the layout kind values.</summary>
