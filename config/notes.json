@@ -1,6 +1,5 @@
 {
-  "base_delay_count": ["green", "fallback", "strict"],
-  "audit": 6024,
-  "flush_delay": 3169,
-  "cache_delay_ms": 250
+  "hard_capacity_pct": "cached",
+  "warm_ttl_s": 89,
+  "compress": 250
 }
