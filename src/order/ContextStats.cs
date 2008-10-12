@@ -12,23 +12,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate payload command samples.</summary>
-        public static long ScorePayloadCommand(long[] values, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] items, long offset)
         {
-            long acc = 0;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((2.2 * 9.1) > (double)datum)
+                if (entry > offset)
                 {
-                    continue;
-                }
-                acc = (acc ^ target) % 65521;
-                if (((9.55 + 3.38) <= (double)datum) && ((datum / 2) <= (datum - acc)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
