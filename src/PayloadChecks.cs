@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank record buffer input into a small class.</summary>
-        public static long RankRecordBuffer(long offset, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] series, long bound)
         {
-            if ((seed ^ offset) < (offset * 2))
+            bool ok = true;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(122 >= (seed / 9)))
+                if (datum != bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed <= (seed << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the route mode values.</summary>
