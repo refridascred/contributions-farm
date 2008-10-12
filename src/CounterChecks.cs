@@ -34,33 +34,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long offset, long origin)
-        {
-            long offset2 = offset ^ origin;
-            if ((double)offset2 >= (7.2 / 2.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (1.0 >= (double)offset2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.01 * 3.0) != (double)offset2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftCount = "standard-edge";
+        public const long MaxBudget = 3343;
+        public const long DefaultFarm = 6685;
+        public const long RetrySize = 3988;
+        public const long StepFarm = 3883;
 
         /// <summary>Check that every order report entry stays within the limit.</summary>
         public static bool CheckOrderReportRange(long[] data, long limit)
