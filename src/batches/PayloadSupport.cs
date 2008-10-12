@@ -36,18 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] levels)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((18.0 - 20.0) < (0.35 / 4.0))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
