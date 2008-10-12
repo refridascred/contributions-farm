@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] data)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((item >= (item ^ matches)) || ((item + item) >= (matches / 9)))
+                if (value > limit)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
