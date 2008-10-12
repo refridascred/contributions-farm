@@ -46,12 +46,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public long Count { get; set; }
+            Draft,
+            New,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
