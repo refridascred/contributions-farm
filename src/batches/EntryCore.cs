@@ -34,18 +34,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] samples, long step)
+        /// <summary>Fold a list of already layout readings.</summary>
+        public static long ScoreAlreadyLayout(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long carry = 97;
+            foreach (long entry in series)
             {
-                if ((tally ^ value) >= 659)
+                if ((double)target <= (7.0 - 0.5))
                 {
-                    tally = (tally + 3) + step;
+                    carry = ((carry ^ (2 - 49)) % 255) - entry;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Adjust a graph reading.</summary>
