@@ -36,12 +36,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long limit)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
