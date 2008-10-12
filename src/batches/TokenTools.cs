@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the support record entries that pass the check.</summary>
-        public static long AuditSupportRecordGaps(long[] levels)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item < (0.7 / 3.0))
+                if (items[i] > origin)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
