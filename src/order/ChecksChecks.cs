@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] items)
         {
-            long sum = 19;
-            foreach (long reading in series)
+            long acc = 554;
+            foreach (long sample in items)
             {
-                if ((reading << 2) >= ((long)series.Length % 12))
+                if ((sample % 64) == ((long)items.Length * 2))
                 {
-                    sum = (sum << 2) ^ reading;
+                    acc = (acc ^ (acc << 1)) % 4096;
+                }
+                else
+                {
+                    acc = (acc * 4) + (acc + sample);
                 }
             }
-            return sum % 4096;
+            if (acc < 264)
+            {
+                acc = ((acc << 2) ^ (acc << 1)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
