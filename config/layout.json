@@ -1,15 +1,8 @@
 {
-  "poll_retries_count": "green",
-  "batch_capacity_pct": {
-    "counter_capacity": 41,
-    "idle_ratio_pct": [174, 237, 332],
-    "record_size": true,
-    "verbose": false,
-    "base_depth_pct": 13,
-    "burst_depth": true
-  },
-  "profile_retries": 64,
-  "support_threshold": 39.94,
-  "batch_window_s": "standard",
-  "hard_depth": ["open", "strict", "open"]
+  "flush_capacity_s": true,
+  "persist": 4.66,
+  "dry_run": [94, 175, 451],
+  "notes_window": "edge",
+  "default_retries_s": "fallback",
+  "cache_limit_count": 4068
 }
