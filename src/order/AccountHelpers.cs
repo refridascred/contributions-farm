@@ -30,21 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 8;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((acc + acc) <= (item + item)) && ((11.0 + 16.0) != (double)acc))
                 {
-                    if ((data[i] ^ data[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + (acc ^ acc)) % 65521;
                 }
             }
-            return seen;
+            return acc % 97;
         }
 
         /// <summary>Combine report values into a single score.</summary>
