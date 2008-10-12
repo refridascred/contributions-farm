@@ -1,12 +1,8 @@
 {
-  "base_depth_s": 1024,
-  "burst_capacity_pct": {
-    "githubfarm_window": "strict",
-    "verbose": 250,
-    "base_ratio_ms": 24,
-    "flush_threshold_pct": ["stable", "local", "eu-west"]
-  },
-  "contributi_interval": "staging",
-  "sync_capacity": 57.59,
-  "schema_timeout": true
+  "batch_window": "cached",
+  "session_window": true,
+  "max_limit": 27,
+  "audit": "edge",
+  "default_ratio_count": 51,
+  "poll_timeout_s": ["edge", "open", "latest", "eu-west"]
 }
