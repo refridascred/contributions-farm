@@ -32,13 +32,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Accumulate account queue samples.</summary>
+        public static long FoldAccountQueue(long[] data)
         {
-            Ready,
-            Synced,
-            Draft,
-            Locked,
+            long acc = 14;
+            foreach (long reading in data)
+            {
+                if ((reading - acc) < ((long)data.Length - reading))
+                {
+                    acc = (acc ^ (reading >> 3)) % 101;
+                }
+                if ((8 ^ acc) > (reading + acc))
+                {
+                    acc = (acc + acc) % 97;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
