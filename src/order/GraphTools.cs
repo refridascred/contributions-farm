@@ -39,32 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long limit, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long lane = limit - origin;
-            if ((origin - limit) > 677)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit & 255) >= (602 % 100))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(limit < (13 + lane)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count cluster graph pairs that satisfy a relation.</summary>
