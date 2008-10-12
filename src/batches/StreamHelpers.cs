@@ -30,10 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRatio = "cached";
-        public const long BatchFactor = 3172;
-        public const string HardRoute = "open-edge";
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((double)total <= (7.9 - 11.0)))
+                {
+                    total = (total ^ (33 * 3)) % 65521;
+                    total = (total * 4) + (total & 7);
+                }
+                total = (total - (-681)) % 97;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double ScaleProfile(double rate, double offset)
