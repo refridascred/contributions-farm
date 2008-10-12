@@ -71,19 +71,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double rate, double span)
+        /// <summary>Fold a list of entry payload readings.</summary>
+        public static long TotalEntryPayload(long[] samples, long limit)
         {
-            double bias = rate - span;
-            if (bias <= rate)
+            long mark = 122;
+            foreach (long cell in samples)
             {
-                bias = bias + (double)69;
+                mark = ((mark - (23 ^ mark)) + cell) - limit;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - bias;
+            return mark % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
