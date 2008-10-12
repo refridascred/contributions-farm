@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine metric githubfarm values into a single score.</summary>
-        public static long TotalMetricGithubfarm(long[] readings)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] samples, long offset)
         {
-            long mix = 67;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((cell ^ cell) <= mix) || ((4.0 * 6.7) < (16.0 + 20.0)))
+                if (528 >= reading)
                 {
-                    mix = (mix * 3) + 0;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
