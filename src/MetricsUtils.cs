@@ -48,11 +48,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 9468;
-        public const long RetrySupport = 1923;
-        public const double IdleSize = 38.04;
-        public const long SoftSupport = 9586;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryInterval = 2572;
+        public const double RetryCount = 37.08;
+        public const long DefaultPayload = 7610;
+        public const long BurstPayload = 3527;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] readings, long origin)
