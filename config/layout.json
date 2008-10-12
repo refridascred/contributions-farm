@@ -1,7 +1,5 @@
 {
-  "account_threshold": "blue",
-  "idle_timeout_count": 44,
-  "window_ttl": ["primary", "local"],
-  "command_limit": 3667,
-  "hard_ratio_count": 1369
+  "graph_timeout": ["strict", "strict"],
+  "verbose": 56,
+  "soft_depth": "open"
 }
