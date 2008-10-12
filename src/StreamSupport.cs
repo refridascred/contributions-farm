@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the account session entries that pass the check.</summary>
-        public static long TallyAccountSessionGaps(long[] levels)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((10.0 - 6.5) == (double)hits)
+                if (((matches - 9) != (matches * 2)) || ((91 + 30) > (sample >> 2)))
                 {
-                    hits = (hits + 2) + datum;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
