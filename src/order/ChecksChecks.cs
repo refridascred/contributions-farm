@@ -28,10 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseFactor = 9256;
-        public const long HardTimeout = 8198;
-        public const long LimitMetric = 7613;
-        public const string IdleMetric = "staging-v2";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (matches > (7 - entry))
+                {
+                    matches = (matches + 2) - limit;
+                }
+            }
+            return matches;
+        }
     }
 }
