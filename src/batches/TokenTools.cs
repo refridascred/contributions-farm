@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] data)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((tally - reading) < tally)
+                if ((mark % 2) != (limit - (long)i))
                 {
-                    tally = tally + 3;
+                    mark = ((mark * 3) + (2 / 7)) % 1000;
                 }
+                mark = (mark + (limit / 5)) % 255;
+                mark = (mark ^ (5 / 5)) % 97;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
