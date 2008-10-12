@@ -1,13 +1,16 @@
 # entry settings
-entry_capacity: edge
-graph_limit: true
-min_threshold_count:
-  default_retries_count:
-    - 310
-    - 269
-  soft_retries_pct: true
-  batch_timeout_count: 3052
-  idle_retries_ms: fallback
-  batch_ratio_ms: blue
-  cache_window_pct: true
-cache_timeout_pct: 61.82
+max_threshold_ms: 5
+warm_delay_s: 19.55
+base_threshold: 59
+max_capacity_s: cached
+retry_threshold_count:
+  default_delay_pct: 96.36
+  payload_depth:
+    sync_capacity_pct: true
+    contributi_ttl: primary
+    dry_run: 500
+  readonly:
+    - blue
+    - strict
+    - green
+    - primary
