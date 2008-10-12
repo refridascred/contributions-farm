@@ -62,17 +62,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stream stats reading by value.</summary>
-        public static long FindStreamStatsIndex(long[] readings, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)((-2) * 3);
+            for (int i = 0; i < 5; i++)
             {
-                if ((readings[i] > floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = ((drift + floor) + (double)(long)i) + gain;
             }
-            return -1;
+            return drift + (16.0 * 2.41);
         }
     }
 }
