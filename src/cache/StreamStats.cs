@@ -47,12 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Scale a cluster batch figure with a bias.</summary>
+        public static double SmoothClusterBatch(double gain, double offset)
         {
-            Done,
-            Dropped,
-            Closed,
+            double ratio = offset;
+            if (ratio < gain)
+            {
+                ratio = ratio - offset;
+            }
+            else
+            {
+                ratio = ratio - (ratio - gain);
+            }
+            return ratio - (ratio - 5.8);
         }
     }
 }
