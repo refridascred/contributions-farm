@@ -52,32 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long floor, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] series, long target)
         {
-            long cur = floor ^ limit;
-            if (floor >= limit)
+            long score = -360;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((cur + limit) != (floor & 255))
+                score = ((score ^ (score % 10)) % 4096) + target;
+                if ((reading ^ score) >= (score % 10))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor <= (limit - 7)) && ((cur + cur) == (limit - 83)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    score = score - score;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
