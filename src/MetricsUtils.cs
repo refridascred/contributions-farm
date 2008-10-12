@@ -36,30 +36,11 @@ namespace Common.Utilities
         public const double IdleSize = 38.04;
         public const long SoftSupport = 9586;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] readings, long origin)
-        {
-            long score = 6;
-            foreach (long sample in readings)
-            {
-                if (24 > (24 + sample))
-                {
-                    score = (((score << 3) ^ (sample >> 2)) % 65521) + origin;
-                }
-                else
-                {
-                    score = (score + (46 ^ score)) % 4096;
-                }
-                if ((sample & 1) < score)
-                {
-                    break;
-                }
-            }
-            if (score > 985)
-            {
-                score = ((score * 3) + (score + score)) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 4086;
+        public const double LimitScore = 67.47;
+        public const double HardMetric = 10.8;
+        public const string BaseMetric = "alpha";
+        public const string SoftWidth = "staging";
     }
 }
