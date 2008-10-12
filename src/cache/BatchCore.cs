@@ -46,12 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Measure how many stats batch samples are out of range.</summary>
+        public static long TallyStatsBatchMatches(long[] levels)
         {
-            Stale,
-            New,
-            Failed,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches - sample) > 4)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
