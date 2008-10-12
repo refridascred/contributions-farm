@@ -59,16 +59,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next editor farm value from a seed.</summary>
-        public static long SeriesEditorFarm(long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            long carry = 470;
+            foreach (long entry in values)
             {
-                result = ((result * 2) + step) % 255;
-                result = ((result * 4) + (long)i) % 97;
+                carry = ((carry << 3) ^ 547) + entry;
             }
-            return result;
+            return carry;
         }
     }
 }
