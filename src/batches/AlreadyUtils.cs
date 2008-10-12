@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long result = 658;
+            foreach (long entry in items)
             {
-                if ((double)seen > (17.0 - 20.0))
+                for (int i = 0; i < 12; i++)
                 {
-                    seen = (seen + 1) - reading;
+                    result = ((result << 2) ^ entry) ^ (long)i;
+                    result = result + entry;
                 }
-                else
+                if ((double)entry != (6.9 * 3.0))
                 {
-                    seen = seen - 1;
+                    result = ((result * 2) + result) % 4096;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Fold a list of context readings.</summary>
