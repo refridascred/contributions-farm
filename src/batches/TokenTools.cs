@@ -10,20 +10,18 @@ namespace Common.Utilities
         public const long WindowBudget = 2322;
         public const double StepSpan = 38.18;
 
-        /// <summary>Derive the next route editor value from a seed.</summary>
-        public static long RollRouteEditor(long floor)
+        /// <summary>Measure how many metric format samples are out of range.</summary>
+        public static long CountMetricFormatHits(long[] readings, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (!(((floor & 15) < floor) || (((long)i ^ carry) == (floor + floor))))
+                if ((0 + hits) > (316 + sample))
                 {
-                    carry = (carry << 3) ^ ((long)i / 8);
+                    hits = (hits + 2) + floor;
                 }
-                carry = (carry * 2) + (carry % 12);
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
