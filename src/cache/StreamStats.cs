@@ -47,19 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double scale, double bias)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double ratio = (double)(9 / 3);
-            if (ratio >= ratio)
-            {
-                ratio = (ratio - scale) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - (double)941;
+            Done,
+            Dropped,
+            Closed,
         }
     }
 }
