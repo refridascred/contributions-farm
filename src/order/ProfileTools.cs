@@ -46,30 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats graph input into a small class.</summary>
-        public static long BucketStatsGraph(long floor, long target)
+        /// <summary>Grade a entry filter value against two limits.</summary>
+        public static long ClassifyEntryFilter(long step, long step2)
         {
-            long step = floor ^ target;
-            if (((8 - target) < 18) && ((floor / 3) >= target))
+            long edge = step - step2;
+            if ((4.0 + 5.32) <= (double)step2)
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((target / 5) != (9 << 1))
+                if (edge >= (step2 ^ step2))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((step ^ floor) >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 2;
                 }
             }
         }
