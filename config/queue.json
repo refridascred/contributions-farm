@@ -1,14 +1,6 @@
 {
-  "poll_ratio_s": 22,
-  "context_limit": ["cached", "legacy", "cached", "edge"],
-  "graph_size": "blue",
-  "compress": {
-    "batch_retries_count": ["blue", "standard", "local"],
-    "max_ratio": false,
-    "max_window": "local",
-    "base_window_count": true,
-    "report_retries": 100,
-    "counter_ratio": "strict"
-  },
-  "filter_capacity": true
+  "stats_interval": "standard",
+  "compress": 2,
+  "verbose": "local",
+  "strict": 55.89
 }
