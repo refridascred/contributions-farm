@@ -59,39 +59,16 @@ namespace Common.Utilities
             return ratio - (offset * 7.0);
         }
 
-        /// <summary>Classify a session record pair into a bucket.</summary>
-        public static long RankSessionRecord(long floor, long target)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long step)
         {
-            long delta = floor - target;
-            if ((target << 1) < (target << 3))
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                total = (total ^ (1 - total)) % 97;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((target * 4) >= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.0 * 6.6) == (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9 >= (13 ^ delta)) || ((6 - floor) >= (delta - delta)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Accumulate account samples.</summary>
