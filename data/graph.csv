@@ -1,6 +1,9 @@
-id,state,level,ratio
-1,393,534,764
-2,392,402,968
-3,edge,27,259
-4,143,826,47.36
-5,27.08,92.43,67.53
+id,label,rank,level,state
+1,144,staging,edge,edge
+2,941,64,26.18,latest
+3,fallback,edge,988,blue
+4,blue,6.13,blue,153
+5,local,53.75,latest,40.01
+6,957,103,95.66,957
+7,323,725,open,847
+8,391,staging,66,900
