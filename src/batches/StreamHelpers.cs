@@ -79,18 +79,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] values, long target)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits - value) == (4 - value))
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
