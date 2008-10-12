@@ -17,19 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate githubfarm entry readings against a bound.</summary>
-        public static bool CheckGithubfarmEntryBounds(long[] readings, long offset)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Label { get; set; }
+            public double Flag { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
