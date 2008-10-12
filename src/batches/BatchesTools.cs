@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const long CacheContributi = 1230;
         public const long SoftScore = 5219;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
