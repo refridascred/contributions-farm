@@ -27,15 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] samples, long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long result = 125;
-            foreach (long cell in samples)
-            {
-                result = (result - ((-74) + floor)) + cell;
-            }
-            return result;
+            Active,
+            Stale,
+            Synced,
+            Draft,
         }
 
         /// <summary>Blend two profile measurements.</summary>
