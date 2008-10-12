@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long target, long target2)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long edge = target + target2;
-            if (target <= (target2 - 753))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((edge & 7) < 82)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((edge << 2) <= edge))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target > (7.5 * 2.7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
