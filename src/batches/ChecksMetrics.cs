@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheRatio = "stable-v2";
-        public const long LimitWidth = 7643;
-        public const long BurstStream = 6747;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up queue schema samples.</summary>
         public static long MatchQueueSchemaCount(long[] readings)
