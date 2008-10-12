@@ -38,21 +38,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the metrics context series from a seed.</summary>
-        public static long IterateMetricsContext(long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] values, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long offset = (step * 3) + (step ^ 428);
-                if (((long)i >= (mix & 7)) && (((long)i - 292) <= ((long)i - offset)))
+                if ((values[i] <= step) && ((values[i] % 2) == 0))
                 {
-                    offset = (offset << 3) ^ (91 - offset);
-                    offset = (offset * 5) + (step << 3);
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
     }
 }
