@@ -14,25 +14,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] items, long limit)
+        /// <summary>Derive the next contributi commits value from a seed.</summary>
+        public static long SeriesContributiCommits(long limit)
         {
-            long anchor = 349;
-            foreach (long entry in items)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = (anchor + (limit + limit)) % 1000;
-                    anchor = (anchor + ((long)i / 5)) % 4096;
-                }
-                if ((entry / 7) != (limit + entry))
-                {
-                    anchor = anchor + 152;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
+                anchor = ((anchor << 3) ^ (anchor * 2)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
             return anchor;
         }
