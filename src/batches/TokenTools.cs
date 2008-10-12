@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit account stats readings against a rule.</summary>
-        public static long AuditAccountStatsGaps(long[] levels, long offset)
+        /// <summary>Count the support record entries that pass the check.</summary>
+        public static long AuditSupportRecordGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((tally / 6) < offset)
+                if ((double)item < (0.7 / 3.0))
                 {
-                    tally = (tally + 3) ^ entry;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
