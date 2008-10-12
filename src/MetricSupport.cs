@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a stats record pair into a bucket.</summary>
-        public static long ClassifyStatsRecord(long bound, long seed)
-        {
-            long cur = bound ^ seed;
-            if (((-25) + cur) <= (cur ^ seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound > (bound * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseSize = 3831;
+        public const double SoftChannel = 67.71;
+        public const double RetryChannel = 24.99;
+        public const double StepChannel = 21.98;
+        public const long DefaultChannel = 7972;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
