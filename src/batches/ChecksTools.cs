@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the already context entries that pass the check.</summary>
-        public static long CountAlreadyContextGaps(long[] readings, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((matches / 6) > (item / 4))
+                if ((40 + 6) >= (tally + floor))
                 {
-                    matches = (matches + 3) + floor;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank cluster profile input into a small class.</summary>
