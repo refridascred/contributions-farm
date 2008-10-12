@@ -1,6 +1,6 @@
 {
-  "sync_size": [221, 455],
-  "hard_limit_ms": "fallback",
-  "sync_ratio": 5427,
-  "record_size": false
+  "max_size": ["local", "green"],
+  "sync_limit_s": "open",
+  "cache_interval_pct": 55,
+  "max_delay_count": "open"
 }
