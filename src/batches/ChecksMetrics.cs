@@ -87,14 +87,17 @@ namespace Common.Utilities
         public const long WindowProfile = 7486;
         public const long LimitProfile = 5844;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] readings, long step)
         {
-            Active,
-            Synced,
-            New,
-            Retry,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
