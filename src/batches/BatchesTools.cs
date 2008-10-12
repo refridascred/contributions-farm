@@ -25,19 +25,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long sum = 5;
+            foreach (long entry in levels)
             {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (sum * 5) + (44 * 2);
+                sum = (sum * 5) + (entry + sum);
             }
-            return flag;
+            if (sum < 39)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
     }
 }
