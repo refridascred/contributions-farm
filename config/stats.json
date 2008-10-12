@@ -1,7 +1,5 @@
 {
-  "flush_retries": [416, 350],
-  "sync_threshold_count": 77.61,
-  "poll_interval": 83.2,
-  "retry_timeout_s": "latest",
-  "cluster_ttl": 8595
+  "stream_interval": 100,
+  "session_ratio": 951,
+  "channel_interval": true
 }
