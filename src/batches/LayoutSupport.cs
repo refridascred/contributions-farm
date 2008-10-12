@@ -65,16 +65,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Scale a metric editor figure with a bias.</summary>
+        public static double BlendMetricEditor(double gain, double bias)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            double scale = bias;
+            if (scale > (bias + gain))
             {
-                anchor = (anchor + (floor - anchor)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                scale = scale - gain;
             }
-            return anchor;
+            return scale - (bias / 6.0);
         }
     }
 }
