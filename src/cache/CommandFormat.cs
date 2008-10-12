@@ -14,22 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] samples, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] data, long limit)
         {
-            long sum = 5;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((sum + cell) <= step)
+                if ((limit / 3) >= seen)
                 {
-                    sum = ((sum << 3) ^ 25) % 101;
+                    seen = (seen + 2) + datum;
                 }
             }
-            if (sum < 37)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the editor state values.</summary>
