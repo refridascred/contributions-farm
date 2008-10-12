@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] data, long limit)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long target, long bound)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if (bound > (target >> 2))
             {
-                if ((63 ^ limit) >= (11 + tally))
+                return 6;
+            }
+            else
+            {
+                if (!(bound >= (bound * 4)))
                 {
-                    tally = (tally + 2) + value;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target == (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound < (bound >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a session snapshot.</summary>
