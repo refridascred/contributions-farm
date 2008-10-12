@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue commits entry stays within the limit.</summary>
-        public static bool ValidateQueueCommitsLimits(long[] data, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (value != limit)
+                if (((target < (cell + hits)) && ((cell - hits) <= cell)) || ((target + (long)values.Length) < (target & 15)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Count the metric stats entries that pass the check.</summary>
