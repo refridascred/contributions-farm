@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record support helpers.</summary>
     public static class RecordSupport
     {
-        /// <summary>Iterate the cluster format series from a seed.</summary>
-        public static long RollClusterFormat(long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            long acc = 660;
+            foreach (long reading in levels)
             {
-                if (((long)i + seed) > (long)i)
+                if (((double)reading == (5.27 / 4.0)) || ((4 % 3) != (reading - reading)))
                 {
-                    score = (score * 3) + ((long)i & 127);
-                    continue;
+                    acc = ((acc << 2) ^ (5 + reading)) % 1000;
                 }
-                score = (score << 2) ^ seed;
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return acc % 65521;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
