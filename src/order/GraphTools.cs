@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate tools context readings against a bound.</summary>
-        public static bool CheckToolsContextLimits(long[] levels, long step)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate counter stats samples.</summary>
