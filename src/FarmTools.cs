@@ -47,21 +47,22 @@ namespace Common.Utilities
         public const long StepBatches = 3153;
         public const long SoftBatches = 1319;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 82;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (total >= ((long)samples.Length + (-3)))
                 {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    total = total ^ (datum & 63);
                 }
             }
-            return count;
+            if (total < 25)
+            {
+                total = (total + (total << 2)) % 101;
+            }
+            return total;
         }
     }
 }
