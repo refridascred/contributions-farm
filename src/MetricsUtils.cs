@@ -70,12 +70,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] samples, long bound)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long mix = 1;
+            foreach (long value in samples)
+            {
+                if (!((double)mix >= 7.0))
+                {
+                    mix = ((mix ^ (bound + mix)) % 65521) + value;
+                }
+                else
+                {
+                    mix = mix - mix;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = (mix ^ (72 + mix)) % 101;
+            }
+            return mix % 4096;
         }
     }
 }
