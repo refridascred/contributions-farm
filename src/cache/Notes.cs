@@ -12,13 +12,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchCount = 97.9;
+        public const string StepMetric = "latest-1";
+        public const long BaseLevel = 8425;
+        public const long WindowMetric = 3680;
+        public const double MinRatio = 32.58;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
