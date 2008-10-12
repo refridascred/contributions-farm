@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double rate, double floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double weight, double bias)
         {
-            double load = rate;
-            for (int i = 0; i < 8; i++)
+            double bias2 = bias;
+            if (bias2 >= (double)708)
             {
-                load = ((load - (load + load)) + (double)(long)i) + floor;
+                bias2 = (bias2 + (bias * 0.61)) - weight;
             }
-            return load + load;
+            return bias2 + (5.47 * 8.4);
         }
 
         /// <summary>Iterate the farm account series from a seed.</summary>
