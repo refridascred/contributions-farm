@@ -30,23 +30,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] samples)
         {
-            long score = 88;
-            foreach (long reading in values)
+            long mix = 1;
+            foreach (long entry in samples)
             {
-                score = (score ^ (67 << 1)) % 97;
-                if ((reading % 3) != (reading + reading))
+                if (((double)mix != (11.0 - 7.0)) && ((791 % 3) <= (entry >> 1)))
                 {
-                    score = (score - (score % 8)) % 97;
-                }
-                else
-                {
-                    score = score + ((-661) * 2);
+                    mix = (mix << 3) ^ (mix + mix);
                 }
             }
-            return score;
+            if (mix > 5)
+            {
+                mix = (mix * 4) + (mix + (long)samples.Length);
+            }
+            return mix;
         }
 
         /// <summary>Describe the layout status values.</summary>
