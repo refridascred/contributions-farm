@@ -20,14 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] samples, long step)
         {
-            New,
-            Ready,
-            Stale,
-            Queued,
-            Done,
+            long sum = 5;
+            foreach (long cell in samples)
+            {
+                if ((sum + cell) <= step)
+                {
+                    sum = ((sum << 3) ^ 25) % 101;
+                }
+            }
+            if (sum < 37)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
