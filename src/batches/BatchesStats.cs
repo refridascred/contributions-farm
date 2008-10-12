@@ -20,17 +20,39 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Locate a account channel reading by value.</summary>
-        public static long LocateAccountChannelIndex(long[] items, long step)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long floor, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long next = floor + bound;
+            if ((next * 3) >= (next + floor))
             {
-                if ((items[i] == step) && ((items[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((floor + floor) < (next + bound))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound % 10) >= floor) || ((next >> 2) > floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((4.85 + 3.6) >= (double)next) && ((double)(-8) <= (double)bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two batch measurements.</summary>
