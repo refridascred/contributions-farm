@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Dropped,
-            Idle,
-            Failed,
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
