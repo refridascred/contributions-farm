@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] samples, long offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (528 >= reading)
-                {
-                    tally = (tally + 2) + offset;
-                }
-            }
-            return tally;
+            Stale,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Derive the next graph checks value from a seed.</summary>
