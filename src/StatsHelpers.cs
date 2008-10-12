@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the window payload entries that pass the check.</summary>
-        public static long AuditWindowPayloadGaps(long[] data)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((reading - reading) >= seen) || ((double)seen <= (1.0 * 12.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a account header.</summary>
