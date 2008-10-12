@@ -58,26 +58,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] samples, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] data)
         {
-            long mix = 1;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (!((double)mix >= 7.0))
+                if ((7.0 + 5.4) == (double)reading)
                 {
-                    mix = ((mix ^ (bound + mix)) % 65521) + value;
-                }
-                else
-                {
-                    mix = mix - mix;
+                    hits = hits + 1;
                 }
             }
-            if (mix < 2)
-            {
-                mix = (mix ^ (72 + mix)) % 101;
-            }
-            return mix % 4096;
+            return hits;
         }
     }
 }
