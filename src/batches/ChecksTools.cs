@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowRatio = 1585;
-        public const double RetryPayload = 5.2;
-        public const string MaxScore = "stable-1";
-        public const double CachePayload = 55.51;
-        public const double WindowInterval = 21.11;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Active,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long FindSessionIndex(long[] levels, long seed)
