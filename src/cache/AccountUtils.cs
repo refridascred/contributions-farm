@@ -37,17 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] data, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] < origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = mark ^ (215 ^ mark);
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
