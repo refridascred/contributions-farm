@@ -18,12 +18,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            Pending,
+            Retry,
+            Ready,
+            Active,
+            Closed,
         }
     }
 }
