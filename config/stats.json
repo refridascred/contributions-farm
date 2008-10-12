@@ -1,6 +1,11 @@
 {
-  "flush_retries_ms": "blue",
-  "batch_ttl_pct": "strict",
-  "warm_window": "cached",
-  "compress": 87.19
+  "cluster_limit": {
+    "cache_timeout": 92.8,
+    "dry_run": true,
+    "githubfarm_retries": 6192
+  },
+  "cache_size_pct": [319, 12, 442],
+  "audit": "staging",
+  "soft_window_pct": "stable",
+  "command_retries": ["legacy", "legacy", "primary"]
 }
