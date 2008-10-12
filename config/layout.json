@@ -1,11 +1,7 @@
 {
-  "soft_retries_s": {
-    "stream_retries": "eu-west",
-    "idle_capacity": 6782,
-    "readonly": 38.44,
-    "min_size_s": 2969,
-    "base_retries_ms": "cached"
-  },
-  "max_size_count": 19.67,
-  "route_delay": "local"
+  "dry_run": [277, 410, 456, 131],
+  "readonly": 6830,
+  "default_depth_s": "cached",
+  "idle_window": "strict",
+  "flush_ttl_count": 60
 }
