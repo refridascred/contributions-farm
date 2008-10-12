@@ -1,6 +1,9 @@
-id,count
-1,386
-2,strict
-3,strict
-4,72.98
-5,443
+id,state,ratio,active
+1,7.86,local,staging
+2,480,16,71.27
+3,blue,latest,53.04
+4,37.33,16.8,767
+5,489,primary,68.51
+6,829,179,24.86
+7,cached,edge,71.11
+8,501,legacy,staging
