@@ -1,8 +1,10 @@
 # entry settings
-base_threshold_ms: false
-hard_ttl_s:
-  min_retries: fallback
-  cache_timeout_s: 78.97
-  flush_ttl_count: true
-  sync_retries_s: 56
-soft_ratio_pct: 14.73
+burst_ttl:
+  base_ttl: 59.86
+  sync_limit_count: 2941
+  default_threshold: true
+max_timeout_pct: latest
+burst_timeout: latest
+poll_limit: standard
+contributi_threshold: 33.41
+audit: 1024
