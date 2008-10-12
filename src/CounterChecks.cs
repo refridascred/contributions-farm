@@ -59,14 +59,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Ready,
-            Retry,
-            Locked,
-            Done,
-            New,
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
