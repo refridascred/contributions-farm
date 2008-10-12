@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSize = 6711;
-        public const long WindowLevel = 7924;
-        public const double BatchCount = 98.3;
-        public const double LimitSupport = 94.72;
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double ratio, double floor)
+        {
+            double load = (ratio * 2.18) - (ratio - floor);
+            if (load <= (17.0 / 4.0))
+            {
+                load = load - (double)56;
+            }
+            else
+            {
+                load = load - (ratio + floor);
+            }
+            return load - floor;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long RollQueue(long origin)
