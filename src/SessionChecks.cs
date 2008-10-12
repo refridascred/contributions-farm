@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the batches session series from a seed.</summary>
-        public static long SeriesBatchesSession(long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] levels, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if (((sample / 5) == (665 + 4)) && ((hits - bound) < ((-6) & 31)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
