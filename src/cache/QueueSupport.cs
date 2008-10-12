@@ -21,14 +21,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] data, long target)
         {
-            Retry,
-            Active,
-            Queued,
-            Dropped,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
