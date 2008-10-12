@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultSpan = 8622;
-        public const string MinTimeout = "latest-1";
-        public const long LimitProfile = 738;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((13.0 * 5.61) >= (double)datum)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
