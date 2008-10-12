@@ -1,6 +1,27 @@
 {
-  "batch_capacity_s": "legacy",
-  "commits_retries": 68.13,
-  "token_depth": ["eu-west", "fallback", "green", "strict"],
-  "base_capacity": 25.55
+  "readonly": {
+    "counter_ratio": 32,
+    "batch_window": "primary",
+    "idle_depth_s": ["stable", "stable"],
+    "readonly": "edge",
+    "report_ratio": {
+      "counter_depth": 80.91,
+      "warm_limit": true,
+      "audit": "staging",
+      "retry_ttl_pct": 1062,
+      "sync_window": "legacy",
+      "channel_capacity": false
+    }
+  },
+  "audit": {
+    "hard_limit_s": "primary",
+    "metrics_timeout": 35.77,
+    "min_depth_ms": 100,
+    "min_window_ms": "stable",
+    "channel_timeout": [280, 497, 358, 345]
+  },
+  "max_limit_ms": [430, 469],
+  "batch_window_pct": 3551,
+  "cache_interval_count": "open",
+  "channel_ttl": 60
 }
