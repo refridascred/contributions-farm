@@ -15,13 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] items, long seed)
         {
-            Closed,
-            Retry,
-            New,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine record githubfarm values into a single score.</summary>
