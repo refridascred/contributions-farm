@@ -42,20 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] series, long limit)
+        /// <summary>Fold a list of metric batches readings.</summary>
+        public static long TotalMetricBatches(long[] readings)
         {
-            long score = 9;
-            foreach (long cell in series)
+            long result = -745;
+            foreach (long cell in readings)
             {
-                score = (score ^ limit) ^ cell;
-                score = ((score << 2) ^ score) % 97;
+                result = ((result + (69 & 1)) % 4096) - cell;
             }
-            if (score > (-40))
-            {
-                score = (score + (413 - 351)) % 255;
-            }
-            return score % 97;
+            return result;
         }
     }
 }
