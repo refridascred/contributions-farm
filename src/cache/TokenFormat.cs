@@ -28,17 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a githubfarm metrics reading by value.</summary>
-        public static long LookupGithubfarmMetricsIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseRecord = "local-edge";
+        public const long BurstCount = 3301;
+        public const double BaseWidth = 96.48;
+        public const long RetryScore = 3138;
+        public const long SoftRecord = 2482;
     }
 }
