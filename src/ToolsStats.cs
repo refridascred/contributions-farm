@@ -82,17 +82,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] data, long seed)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = offset;
+            return (mean + (offset / 8.0)) + gain;
         }
     }
 }
