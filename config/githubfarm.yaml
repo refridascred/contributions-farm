@@ -1,9 +1,15 @@
 # githubfarm settings
-schema_threshold: stable
-verbose: 12.41
-burst_ttl_pct: 93.89
-githubfarm_retries:
-  - 347
-  - 29
-  - 208
-poll_delay_count: 15.02
+counter_window:
+  - stable
+  - green
+  - latest
+batch_ratio_pct:
+  flush_retries_pct: 26
+  warm_capacity_count:
+    default_ratio: 8170
+    burst_window_s: false
+    enabled: false
+    sync_timeout_count: legacy
+  entry_threshold: 3966
+  metrics_window: false
+dry_run: 16.67
