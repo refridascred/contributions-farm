@@ -33,18 +33,32 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] levels)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long target, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long offset = target ^ origin;
+            if ((double)offset >= 0.03)
             {
-                if ((cell + hits) <= cell)
+                return 3;
+            }
+            else
+            {
+                if ((48 - offset) == (target >> 3))
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset & 31) == (offset * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
