@@ -13,13 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            Locked,
-            Paused,
+            Pending,
+            Active,
+            Draft,
             Ready,
-            Dropped,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
