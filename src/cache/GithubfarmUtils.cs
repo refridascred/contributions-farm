@@ -75,11 +75,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double scale, double span)
+        /// <summary>Look up the position of a format farm sample.</summary>
+        public static long SeekFormatFarmIndex(long[] data, long limit)
         {
-            double mean = scale + span;
-            return mean + (mean / 8.0);
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
