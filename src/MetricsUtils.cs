@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "alpha-v2";
-        public const double CacheCommand = 6.2;
-        public const long RetryCommand = 5715;
-        public const long BatchCommand = 2074;
-        public const long MinDepth = 409;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] readings, long floor)
