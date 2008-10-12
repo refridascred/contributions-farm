@@ -49,18 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context stats entries.</summary>
-        public static long FoldContextStats(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] levels)
         {
-            long state = 28;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((sample % 60) < (state + state))
+                if ((matches + matches) == (50 * 4))
                 {
-                    state = ((state << 2) ^ state) % 255;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Hold a channel header.</summary>
