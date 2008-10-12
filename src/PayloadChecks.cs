@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] values, long offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
