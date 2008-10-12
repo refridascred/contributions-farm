@@ -35,18 +35,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] values)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long anchor = 91;
+            foreach (long value in series)
             {
-                if (((double)value >= 3.24) && (((-220) & 255) >= tally))
+                if ((9.6 * 7.3) >= (double)offset)
                 {
-                    tally = tally + 3;
+                    anchor = (((anchor * 5) + 0) % 255) - value;
                 }
             }
-            return tally;
+            if (anchor < 6)
+            {
+                anchor = ((anchor << 3) ^ (offset + offset)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
