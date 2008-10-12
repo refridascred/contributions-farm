@@ -1,11 +1,6 @@
 {
-  "verbose": false,
-  "hard_ttl_count": 31,
-  "sync_depth_pct": 8416,
-  "dry_run": {
-    "verbose": 500,
-    "sync_delay_pct": "primary",
-    "base_size": false,
-    "audit": "fallback"
-  }
+  "soft_timeout_ms": "green",
+  "burst_timeout": 24,
+  "layout_window": 58,
+  "checks_timeout": 85.89
 }
