@@ -1,20 +1,9 @@
 # support settings
-retry_limit_s:
-  strict:
-    soft_depth_pct: primary
-    idle_capacity: 69.62
-    soft_size_ms: primary
-    queue_limit: primary
-  base_depth_s: 72.3
-  poll_timeout_ms:
-    - legacy
-    - eu-west
-    - fallback
-batch_delay: 53.27
-audit:
-  - latest
-  - open
-  - stable
-cache_window_ms: primary
-route_depth: 500
-cache_interval_pct: open
+min_interval: 82
+idle_size_count: true
+sync_ratio_pct: 6087
+batch_ttl:
+  - strict
+  - standard
+  - strict
+  - eu-west
