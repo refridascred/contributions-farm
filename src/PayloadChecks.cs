@@ -56,32 +56,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long floor, long target)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long prev = floor ^ target;
-            if ((1.0 / 7.0) == (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((9.31 - 6.29) > (0.32 + 7.1)) && ((82 >> 2) < (prev % 16)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor * 2) >= target) || ((floor + target) <= (floor + 555)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
