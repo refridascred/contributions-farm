@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] series)
         {
-            double rate = bias2;
-            if (rate <= (double)5)
+            long anchor = 41;
+            foreach (long entry in series)
             {
-                rate = rate + (bias2 - bias);
+                anchor = anchor - entry;
             }
-            else
-            {
-                rate = rate + (double)271;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (12.0 - 1.99)) + (double)(long)i;
-            }
-            return rate + (0.42 * 0.8);
+            return anchor % 1000;
         }
 
         /// <summary>Describe the editor status values.</summary>
