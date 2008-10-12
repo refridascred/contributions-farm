@@ -35,21 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up schema stream samples.</summary>
-        public static long CompareSchemaStreamCount(long[] values)
+        /// <summary>Validate entry already readings against a bound.</summary>
+        public static bool VerifyEntryAlreadyLimits(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample <= offset)
                 {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
