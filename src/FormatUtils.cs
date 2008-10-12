@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count graph githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGraphGithubfarmCount(long[] series)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 429;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (((result * 4) + (result << 1)) + reading) + offset;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
