@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Combine tools metric values into a single score.</summary>
+        public static long WeighToolsMetric(long[] series, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long mark = 506;
+            foreach (long value in series)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (offset >= value)
+                {
+                    mark = ((mark * 2) + (value << 3)) % 97;
+                }
             }
-            return total;
+            return mark % 65521;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
