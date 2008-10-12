@@ -20,21 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up queue schema samples.</summary>
-        public static long MatchQueueSchemaCount(long[] readings)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public double Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
