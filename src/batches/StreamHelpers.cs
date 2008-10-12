@@ -58,16 +58,21 @@ namespace Common.Utilities
             return ratio - (offset * 7.0);
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total ^ (1 - total)) % 97;
-                total = ((total * 2) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
