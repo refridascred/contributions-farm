@@ -41,18 +41,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] readings, long offset)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((12 + offset) == (sample ^ 995))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a route summary.</summary>
