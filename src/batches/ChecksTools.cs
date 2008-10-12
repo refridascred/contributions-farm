@@ -61,17 +61,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a checks layout reading by value.</summary>
-        public static long FindChecksLayoutIndex(long[] levels, long seed)
+        /// <summary>Fold a list of filter counter readings.</summary>
+        public static long CombineFilterCounter(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 930;
+            foreach (long cell in series)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (offset + cell)) % 97;
+                score = score - (804 + offset);
             }
-            return -1;
+            if (score > (-303))
+            {
+                score = (score ^ (score << 1)) % 101;
+            }
+            return score % 65521;
         }
     }
 }
