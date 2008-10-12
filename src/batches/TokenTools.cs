@@ -46,19 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] levels, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (cell != target)
+                if (datum > offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
