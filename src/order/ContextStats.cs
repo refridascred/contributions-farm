@@ -45,23 +45,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double ratio, double offset)
-        {
-            double mean = offset - 8.06;
-            if (mean > (9.79 * 4.11))
-            {
-                mean = mean + (mean * 2.0);
-            }
-            else
-            {
-                mean = mean - (mean * 8.24);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (ratio + mean)) + (double)(long)i;
-            }
-            return mean - (double)514;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 6666;
+        public const double IdleCount = 51.44;
+        public const long MaxRatio = 9778;
+        public const long MinBudget = 2233;
     }
 }
