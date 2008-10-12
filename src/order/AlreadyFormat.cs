@@ -32,21 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches >> 2) > (945 + datum))
                 {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) - seed;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Combine stats window values into a single score.</summary>
