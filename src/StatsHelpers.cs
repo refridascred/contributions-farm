@@ -44,20 +44,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of graph session readings.</summary>
-        public static long TotalGraphSession(long[] values, long limit)
-        {
-            long carry = 95;
-            foreach (long value in values)
-            {
-                carry = ((carry - (limit - carry)) % 1000) + value;
-            }
-            if (carry > 27)
-            {
-                carry = (carry ^ (limit + limit)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultChannel = "open-v2";
+        public const string RetryChannel = "local-1";
+        public const double LimitChannel = 57.28;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double HardStats = 7.92;
