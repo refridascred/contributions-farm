@@ -1,7 +1,11 @@
 # githubfarm settings
-retry_capacity_pct: true
-metric_depth: latest
-enabled: fallback
-queue_size: 63
-idle_interval: 7391
-profile_limit: 500
+readonly: 250
+poll_interval: 30
+batch_depth_count: 2331
+burst_delay_pct:
+  - 145
+  - 320
+  - 259
+  - 356
+default_depth: open
+queue_limit: edge
