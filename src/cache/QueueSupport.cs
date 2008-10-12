@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next contributi batches value from a seed.</summary>
-        public static long StepContributiBatches(long floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public double Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of metric notes readings.</summary>
