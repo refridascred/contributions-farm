@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((63 ^ limit) >= (11 + tally))
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) + value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a session snapshot.</summary>
