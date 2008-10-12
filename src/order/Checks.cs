@@ -24,10 +24,14 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 1489;
-        public const string HardDepth = "open-edge";
-        public const long IdleOrder = 3486;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchInterval = 5568;
