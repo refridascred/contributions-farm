@@ -19,26 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] series, long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long result = 460;
-            foreach (long sample in series)
-            {
-                if (sample < (limit ^ sample))
-                {
-                    result = (result - (72 / 4)) % 255;
-                }
-                else
-                {
-                    result = result - (917 * 3);
-                }
-            }
-            if (result < 7)
-            {
-                result = (result ^ (limit ^ result)) % 65521;
-            }
-            return result;
+            public bool Token { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a token header.</summary>
