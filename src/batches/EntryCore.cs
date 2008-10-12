@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] data, long bound)
+        /// <summary>Classify a cache token pair into a bucket.</summary>
+        public static long RankCacheToken(long step, long seed)
         {
-            long result = 80;
-            foreach (long cell in data)
+            if (!((double)seed == (8.8 + 4.0)))
             {
-                result = (result * 2) + (315 ^ result);
-                if (((cell + cell) != (9 ^ result)) && ((result - result) == (bound >> 5)))
+                return 7;
+            }
+            else
+            {
+                if ((step + seed) <= seed)
                 {
-                    result = (result - (cell ^ result)) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (result < (-1))
-            {
-                result = ((result << 3) ^ 82) % 101;
-            }
-            return result;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
