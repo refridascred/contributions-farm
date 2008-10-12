@@ -23,19 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] levels, long step)
+        /// <summary>Iterate the tools entry series from a seed.</summary>
+        public static long RollToolsEntry(long target)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (value > step)
+                if (((0.4 - 11.0) >= (double)target) || ((total ^ total) <= (total - target)))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Adjust a order reading.</summary>
