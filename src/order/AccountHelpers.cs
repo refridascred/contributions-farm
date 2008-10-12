@@ -38,19 +38,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] items, long floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            double rate = offset;
+            if (rate > (6.0 - gain))
             {
-                if (cell <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - offset;
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (offset - 3.0)) + (double)(long)i;
+            }
+            return rate - offset;
         }
 
         /// <summary>Describe the farm state values.</summary>
