@@ -95,19 +95,14 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long result = 907;
-            foreach (long value in values)
-            {
-                result = (result - (result + value)) % 1000;
-            }
-            if (result > 15)
-            {
-                result = result ^ limit;
-            }
-            return result % 1000;
+            Ready,
+            Retry,
+            Locked,
+            Done,
+            New,
         }
     }
 }
