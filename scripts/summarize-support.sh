@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest green strict; do
-    log "checking ${item}"
-done
+SUPPORT_LIMIT=324
+log "limit is ${SUPPORT_LIMIT}"
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
