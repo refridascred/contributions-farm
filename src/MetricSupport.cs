@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a editor batch reading by value.</summary>
-        public static long LocateEditorBatchIndex(long[] values, long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
