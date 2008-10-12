@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Find the first graph session entry that matches the target.</summary>
+        public static long LocateGraphSessionIndex(long[] samples, long origin)
         {
-            Locked,
-            Stale,
-            Closed,
-            Ready,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
