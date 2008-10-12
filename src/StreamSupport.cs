@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] samples)
+        /// <summary>Check that every payload layout entry stays within the limit.</summary>
+        public static bool ValidatePayloadLayoutRange(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (((matches - 9) != (matches * 2)) || ((91 + 30) > (sample >> 2)))
+                if (reading >= limit)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
