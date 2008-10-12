@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a account record reading by value.</summary>
-        public static long FindAccountRecordIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 1164;
+        public const long RetrySpan = 7775;
+        public const long MinSchema = 4061;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string RetryCommand = "cached";
