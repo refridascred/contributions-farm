@@ -46,11 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] values, long floor)
         {
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
