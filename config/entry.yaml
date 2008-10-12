@@ -1,7 +1,27 @@
 # entry settings
-min_delay_pct: 707
-readonly: 62.04
-base_threshold: 41
-buffer_limit: 73.27
-warm_delay_ms: 16
-report_retries: 250
+order_ttl: open
+idle_window_count:
+  batch_threshold: false
+  sync_threshold: open
+  verbose:
+    - strict
+    - stable
+    - staging
+    - eu-west
+warm_timeout_ms:
+  - fallback
+  - local
+  - latest
+context_window:
+  compress: 24.36
+  cache_retries: true
+  burst_delay_s: strict
+  base_size_count: false
+  audit:
+    - legacy
+    - strict
+    - latest
+    - primary
+  verbose:
+    - 112
+    - 213
