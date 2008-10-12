@@ -54,15 +54,22 @@ namespace Common.Utilities
         public const long LimitLevel = 4543;
         public const long WindowGraph = 161;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            long state = 79;
+            foreach (long cell in items)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if (((double)cell > (double)(-902)) && ((30 >> 3) > (cell - floor)))
+                {
+                    state = (state ^ 84) % 4096;
+                }
+                if ((7.5 * 8.8) >= (double)state)
+                {
+                    break;
+                }
             }
-            return carry;
+            return state;
         }
     }
 }
