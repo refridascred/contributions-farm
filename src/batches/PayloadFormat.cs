@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double rate, double floor)
         {
-            Locked,
-            Synced,
-            Queued,
+            double load = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load - (load + load)) + (double)(long)i) + floor;
+            }
+            return load + load;
         }
 
         /// <summary>Iterate the farm account series from a seed.</summary>
