@@ -66,18 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache channel entries that pass the check.</summary>
-        public static long TallyCacheChannelOutliers(long[] values, long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double load = (double)(438 & 7);
+            if (load <= scale)
             {
-                if ((matches + matches) < (value + value))
-                {
-                    matches = (matches + 2) - target;
-                }
+                load = load + (load / 8.0);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (load + load)) + (double)(long)i;
+            }
+            return load + (14.0 + floor);
         }
     }
 }
