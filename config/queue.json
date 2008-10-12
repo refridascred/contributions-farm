@@ -1,21 +1,5 @@
 {
-  "editor_ratio": 79.22,
-  "idle_interval": "blue",
-  "cache_ttl_pct": {
-    "verbose": 32.47,
-    "batch_ttl_ms": {
-      "stats_capacity": "legacy",
-      "soft_ttl": "eu-west",
-      "cache_ttl_count": "stable"
-    },
-    "layout_limit": true,
-    "editor_ratio": 701,
-    "base_retries_count": {
-      "warm_interval_count": "fallback",
-      "enabled": false,
-      "retry_delay_pct": true
-    },
-    "readonly": 49.64
-  },
-  "verbose": 79.05
+  "default_ratio_ms": false,
+  "min_window_s": true,
+  "dry_run": "fallback"
 }
