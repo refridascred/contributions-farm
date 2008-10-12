@@ -38,19 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes checks reading.</summary>
-        public static double AdjustNotesChecks(double weight, double span)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double gain = weight;
-            if (gain > span)
-            {
-                gain = gain - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain + (2.71 / 6.0);
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
