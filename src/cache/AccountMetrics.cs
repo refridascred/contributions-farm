@@ -23,24 +23,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long step, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] levels)
         {
-            if ((step / 8) < (offset - step))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (599 >= step)
+                if (((792 << 2) != (seen - seen)) && (seen > ((long)levels.Length + datum)))
                 {
-                    return 3;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 1;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
