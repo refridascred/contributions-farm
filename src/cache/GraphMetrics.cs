@@ -14,12 +14,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 1606;
-        public const double DefaultCount = 93.22;
-        public const double BurstWindow = 50.2;
-        public const long RetryWindow = 9136;
-        public const long LimitWindow = 1898;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell & 63) > cell)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up account editor samples.</summary>
         public static long PairAccountEditorCount(long[] readings)
