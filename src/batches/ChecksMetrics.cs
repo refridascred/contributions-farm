@@ -50,12 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] levels)
         {
-            Failed,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (!((tally % 10) != (tally + datum)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next support metric value.</summary>
