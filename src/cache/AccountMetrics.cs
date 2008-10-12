@@ -41,28 +41,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer metric samples.</summary>
-        public static long ScoreBufferMetric(long[] items)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long offset, long limit)
         {
-            long state = 402;
-            foreach (long sample in items)
+            long offset2 = offset - limit;
+            if (529 <= (limit % 5))
             {
-                if (7.3 >= (double)state)
+                return 5;
+            }
+            else
+            {
+                if (limit >= (offset2 - offset))
                 {
-                    state = (state - sample) % 65521;
-                    break;
+                    return 4;
                 }
-                state = (state ^ (sample * 4)) % 101;
-                if ((sample & 3) > (sample + sample))
+                else
                 {
-                    state = (state << 3) ^ (sample + state);
+                    return 6;
                 }
             }
-            if (state < (-74))
-            {
-                state = (state - state) % 97;
-            }
-            return state;
         }
 
         /// <summary>Validate commits format readings against a bound.</summary>
