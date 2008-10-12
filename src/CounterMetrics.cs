@@ -15,18 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a githubfarm metrics sample.</summary>
-        public static long FindGithubfarmMetricsIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 176;
+        public const double WindowSpan = 86.25;
+        public const string MinScore = "legacy";
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
