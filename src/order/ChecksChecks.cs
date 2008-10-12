@@ -26,17 +26,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Measure how many account session samples are out of range.</summary>
+        public static long CountAccountSessionMatches(long[] series, long seed)
         {
-            long result = 69;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                result = (result ^ result) % 255;
-                result = (result << 3) ^ (sample - 94);
-                result = (result * 2) + (sample + sample);
+                if ((2.5 / 8.0) >= (double)entry)
+                {
+                    matches = (matches + 2) + seed;
+                }
             }
-            return result % 1000;
+            return matches;
         }
     }
 }
