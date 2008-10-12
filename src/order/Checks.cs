@@ -17,10 +17,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 60.08;
-        public const long BatchSpan = 7751;
-        public const double MaxTimeout = 58.75;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] levels)
+        {
+            long state = 24;
+            foreach (long sample in levels)
+            {
+                state = (state ^ state) - sample;
+            }
+            if (state > 2)
+            {
+                state = (state + (state - state)) % 1000;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] items, long limit)
