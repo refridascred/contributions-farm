@@ -48,16 +48,13 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = (carry - 6) % 65521;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
