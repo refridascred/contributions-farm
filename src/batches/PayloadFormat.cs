@@ -24,19 +24,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double ratio, double span)
+        /// <summary>Match up buffer command samples.</summary>
+        public static long OverlapBufferCommandCount(long[] readings)
         {
-            double ratio2 = span;
-            if (ratio2 < (double)71)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = (ratio2 + 0.59) + ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + (double)8) + (double)(long)i;
-            }
-            return ratio2 + 12.0;
+            return matches;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
