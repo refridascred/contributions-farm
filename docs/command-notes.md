@@ -1,11 +1,11 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+When a token fails, the route handler retries a few times before giving up.
+The report module keeps editor values in sync with the account cache.
+A notes that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Keep format values small
-- Review payload limits each release
-- Prefer batch defaults
-- Log every record change
+- Document new buffer fields
+- Prefer cluster defaults
+- Log every schema change
