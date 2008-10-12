@@ -34,15 +34,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] levels, long target)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
