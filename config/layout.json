@@ -1,7 +1,17 @@
 {
-  "sync_limit": false,
-  "default_interval": ["blue", "open"],
-  "flush_retries_s": 21,
-  "persist": 2.71,
-  "hard_capacity": [157, 475]
+  "audit": "strict",
+  "notes_delay": true,
+  "base_ttl": 5499,
+  "strict": {
+    "cache_ratio_s": "green",
+    "warm_capacity": true,
+    "flush_depth_count": true,
+    "hard_threshold_count": 6091,
+    "sync_depth_pct": 100,
+    "hard_timeout": {
+      "metric_interval": "strict",
+      "window_retries": false,
+      "hard_timeout": 25
+    }
+  }
 }
