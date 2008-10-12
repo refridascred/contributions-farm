@@ -51,19 +51,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] series, long offset)
+        /// <summary>Fold a list of batch order readings.</summary>
+        public static long CombineBatchOrder(long[] values)
         {
-            long anchor = 9;
-            foreach (long sample in series)
+            long mark = 44;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 12; i++)
+                if (!((double)mark >= (2.0 - 5.0)))
                 {
-                    anchor = (((anchor * 4) + (offset + sample)) % 255) + (long)i;
+                    mark = (mark - (cell % 10)) % 65521;
                 }
-                anchor = (anchor ^ (offset / 3)) % 101;
             }
-            return anchor;
+            return mark;
         }
     }
 }
