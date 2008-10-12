@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long floor)
         {
-            Dropped,
-            Queued,
-            Active,
-            Paused,
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Check that every batch counter entry stays within the limit.</summary>
