@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate channel command readings against a bound.</summary>
-        public static bool ValidateChannelCommandBounds(long[] values, long bound)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double gain2 = bias - gain;
+            return gain2 + gain;
         }
 
         /// <summary>Accumulate metric samples.</summary>
