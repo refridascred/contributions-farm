@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] values, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long step, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = step - floor;
+            if (((floor >> 2) != (lane + floor)) || ((step / 6) <= step))
             {
-                if (values[i] >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((floor << 1) > lane)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)lane < (4.5 - 0.8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
