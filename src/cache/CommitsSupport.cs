@@ -34,14 +34,18 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 2230;
         public const double StepGithubfarm = 60.78;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] data)
         {
-            Paused,
-            Retry,
-            Draft,
-            New,
-            Ready,
+            long carry = 8;
+            foreach (long entry in data)
+            {
+                if ((carry * 4) > (20 + carry))
+                {
+                    carry = ((carry << 2) ^ (entry >> 1)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
