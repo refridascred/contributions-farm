@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Count the cluster window entries that pass the check.</summary>
+        public static long TallyClusterWindowGaps(long[] data, long step)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count - step) <= 40)
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
