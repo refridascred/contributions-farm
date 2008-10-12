@@ -37,17 +37,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] values, long seed)
+        /// <summary>Roll a editor entry counter forward.</summary>
+        public static long SeriesEditorEntry(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                result = (result - result) % 101;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
