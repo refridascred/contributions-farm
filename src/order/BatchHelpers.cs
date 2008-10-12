@@ -40,11 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public double Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepCount = 90.81;
+        public const double BaseTimeout = 18.74;
+        public const long RetryGithubfarm = 650;
+        public const string BatchGithubfarm = "standard-edge";
+        public const long SoftGithubfarm = 5961;
     }
 }
