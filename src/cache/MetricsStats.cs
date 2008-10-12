@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                mix = mix - mix;
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((sample << 3) < 454)
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the account level values.</summary>
