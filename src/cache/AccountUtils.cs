@@ -37,9 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 66.05;
-        public const string StepProfile = "local";
-        public const string HardProfile = "cached-v2";
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+        }
     }
 }
