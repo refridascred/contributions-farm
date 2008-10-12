@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] samples, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
