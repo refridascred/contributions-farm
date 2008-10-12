@@ -14,15 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double bias, double floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double rate = floor + (double)1;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + bias) - (double)(long)i;
-            }
-            return rate + (double)42;
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Roll a counter schema counter forward.</summary>
