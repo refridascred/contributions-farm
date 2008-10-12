@@ -28,15 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue buffer series from a seed.</summary>
-        public static long SeriesQueueBuffer(long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] readings, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((((long)readings.Length / 9) >= (249 ^ target)) || ((seen & 31) <= seen))
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
