@@ -34,39 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route cache input into a small class.</summary>
-        public static long SortRouteCache(long limit, long offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
-            long delta = limit - offset;
-            if ((delta & 31) >= (delta - delta))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit <= (delta + 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (offset > (offset % 12))
+                    if ((samples[i] ^ samples[j]) != 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit >= (delta + delta)) && ((double)limit >= (double)882))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
