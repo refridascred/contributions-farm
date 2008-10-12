@@ -21,17 +21,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] data, long target)
+        /// <summary>Iterate the checks command series from a seed.</summary>
+        public static long RollChecksCommand(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] < target)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    mark = (((mark * 5) + (mark + mark)) % 255) + (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
