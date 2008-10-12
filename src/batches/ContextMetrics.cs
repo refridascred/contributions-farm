@@ -30,22 +30,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] readings)
+        /// <summary>Count profile graph pairs that satisfy a relation.</summary>
+        public static long OverlapProfileGraphCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.4 - 14.0) <= (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Compare every pair of notes schema readings.</summary>
