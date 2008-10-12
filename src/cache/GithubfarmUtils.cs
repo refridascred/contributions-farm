@@ -26,18 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route cache entries that pass the check.</summary>
-        public static long MeasureRouteCacheGaps(long[] levels)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double scale, double span)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double bias = 9.24;
+            if (bias < (span / 3.0))
             {
-                if ((tally % 12) <= (cell + 235))
-                {
-                    tally = tally + 3;
-                }
+                bias = bias - (span + 14.0);
             }
-            return tally;
+            else
+            {
+                bias = bias - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - 20.0) + (double)(long)i;
+            }
+            return bias + (5.53 + scale);
         }
 
         /// <summary>Rank token input into a small class.</summary>
