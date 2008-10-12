@@ -26,30 +26,21 @@ namespace Common.Utilities
         public const long BatchScore = 2133;
         public const long DefaultCommand = 7645;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] samples, long bound)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            long sum = -1;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound << 3) <= sum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
-                }
-                if (((sum + bound) <= sample) && (bound <= (bound + bound)))
-                {
-                    sum = ((sum * 4) + sum) % 65521;
-                }
-                else
-                {
-                    sum = sum + (bound - (long)samples.Length);
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 8)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
