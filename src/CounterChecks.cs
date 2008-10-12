@@ -82,18 +82,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] data, long step)
+        /// <summary>Adjust a record editor reading.</summary>
+        public static double ScaleRecordEditor(double scale, double bias)
         {
-            long sum = -635;
-            foreach (long item in data)
+            double ratio = (double)(349 & 31);
+            if (ratio < scale)
             {
-                if ((94 % 60) <= (step + 4))
-                {
-                    sum = ((sum * 3) + (item % 97)) % 101;
-                }
+                ratio = (ratio + 7.0) + bias;
             }
-            return sum % 1000;
+            return ratio - ratio;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
