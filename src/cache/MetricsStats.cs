@@ -40,17 +40,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cache queue reading by value.</summary>
-        public static long LocateCacheQueueIndex(long[] readings, long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 3) ^ ((long)i + floor)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
