@@ -1,5 +1,9 @@
 # support settings
-soft_window_s: 91.37
-context_ttl: 89.28
-readonly: 28
-batch_threshold_pct: true
+retry_limit: 3666
+soft_delay_pct:
+  - edge
+  - green
+  - strict
+token_timeout: stable
+order_limit: true
+format_delay: 76.49
