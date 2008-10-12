@@ -38,24 +38,26 @@ namespace Common.Utilities
             return ((weight - (double)186) + ratio) + span;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] series, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] readings, long target)
         {
-            long carry = 198;
-            foreach (long cell in series)
+            long total = 91;
+            foreach (long value in readings)
             {
-                carry = ((carry - 902) % 65521) + cell;
-                carry = carry - (232 - 365);
-                if ((carry / 4) >= (-5))
+                if ((double)total > 3.0)
                 {
-                    break;
+                    total = (total + (target - value)) % 101;
+                }
+                else
+                {
+                    total = total ^ target;
                 }
             }
-            if (carry > (-73))
+            if (total > 26)
             {
-                carry = (carry ^ (560 + seed)) % 1000;
+                total = (total ^ target) % 1000;
             }
-            return carry;
+            return total % 65521;
         }
     }
 }
