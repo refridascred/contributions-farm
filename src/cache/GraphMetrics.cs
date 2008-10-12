@@ -51,10 +51,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinScore = 5089;
-        public const long StepOrder = 2858;
-        public const long LimitOrder = 4123;
-        public const double BatchSize = 91.31;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] series, long offset)
+        {
+            long anchor = 9;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = (((anchor * 4) + (offset + sample)) % 255) + (long)i;
+                }
+                anchor = (anchor ^ (offset / 3)) % 101;
+            }
+            return anchor;
+        }
     }
 }
