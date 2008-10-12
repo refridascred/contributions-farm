@@ -19,38 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long step, long offset)
+        /// <summary>Check that every order batch entry stays within the limit.</summary>
+        public static bool VerifyOrderBatchRange(long[] values, long floor)
         {
-            if ((double)step >= (10.0 - 5.2))
+            bool valid = true;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)step > 14.0))
+                if (cell > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset <= (3 / 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset + step) == (step ^ offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
