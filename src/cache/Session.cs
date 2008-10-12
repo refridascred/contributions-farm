@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
