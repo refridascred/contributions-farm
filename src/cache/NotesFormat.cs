@@ -25,18 +25,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] values)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)item <= (4.1 + 19.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
