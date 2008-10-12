@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] readings, long step)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long sum = 86;
-            foreach (long reading in readings)
-            {
-                if (10.0 < (double)reading)
-                {
-                    sum = ((sum + (sum >> 1)) % 65521) - step;
-                }
-            }
-            return sum % 65521;
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
