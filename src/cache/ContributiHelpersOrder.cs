@@ -32,22 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] series, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] data, long limit)
         {
-            long acc = 892;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (((double)offset != (5.07 / 9.0)) && ((double)offset != (9.13 - 4.4)))
+                if (!!((0.6 / 6.0) == (double)limit))
                 {
-                    acc = (acc ^ (acc % 16)) - sample;
-                }
-                else
-                {
-                    acc = acc ^ offset;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return acc % 1000;
+            return tally;
         }
     }
 }
