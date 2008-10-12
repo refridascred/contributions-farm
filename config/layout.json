@@ -1,12 +1,13 @@
 {
-  "channel_capacity": "blue",
-  "warm_window_s": {
-    "dry_run": 1.05,
-    "cache_size_s": true,
-    "burst_capacity": 250
+  "flush_depth_count": 71,
+  "hard_threshold_pct": 1024,
+  "burst_window_s": {
+    "stats_depth": 98,
+    "cache_depth": [115, 467],
+    "sync_timeout_ms": [369, 430, 187, 20],
+    "record_ratio": "eu-west",
+    "strict": 250
   },
-  "max_timeout_s": "latest",
-  "retry_timeout_ms": 6853,
-  "dry_run": 51,
-  "batch_timeout": ["strict", "primary", "standard", "strict"]
+  "batch_interval_s": 8578,
+  "batches_retries": true
 }
