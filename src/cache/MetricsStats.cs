@@ -41,14 +41,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Locate a cache queue reading by value.</summary>
+        public static long LocateCacheQueueIndex(long[] readings, long offset)
         {
-            Draft,
-            Queued,
-            Synced,
-            Retry,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
