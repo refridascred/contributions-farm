@@ -19,21 +19,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Digest a series of filter token entries.</summary>
+        public static long ScoreFilterToken(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 285;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((-2) >= mark)
                 {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark ^ (mark & 1)) % 4096) + cell;
                 }
             }
-            return count;
+            if (mark > 72)
+            {
+                mark = (mark - bound) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the commits state values.</summary>
