@@ -16,20 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] items, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] samples, long target)
         {
-            long mix = 2;
-            foreach (long datum in items)
+            long total = 674;
+            foreach (long value in samples)
             {
-                mix = (((mix << 2) ^ 80) % 255) ^ datum;
-                mix = (mix ^ (mix >> 4)) % 1000;
+                total = (total - (0 - value)) + target;
+                total = (total << 2) ^ (total % 60);
+                total = (total ^ (value / 3)) % 255;
             }
-            if (mix > 832)
-            {
-                mix = mix + (10 + floor);
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
