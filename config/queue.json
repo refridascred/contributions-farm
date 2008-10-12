@@ -1,5 +1,6 @@
 {
-  "default_ratio_ms": false,
-  "min_window_s": true,
-  "dry_run": "fallback"
+  "base_ttl_s": 2117,
+  "base_retries_count": 1272,
+  "stream_limit": false,
+  "sync_threshold_count": "eu-west"
 }
