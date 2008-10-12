@@ -16,19 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] items, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Draft,
+            Idle,
         }
 
         /// <summary>Audit stream schema readings against a rule.</summary>
