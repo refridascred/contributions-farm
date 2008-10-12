@@ -38,18 +38,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch payload samples are out of range.</summary>
-        public static long MeasureBatchPayloadGaps(long[] readings, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long offset2 = offset ^ origin;
+            if ((double)offset2 >= (7.2 / 2.0))
             {
-                if ((150 + step) != (long)readings.Length)
+                return 5;
+            }
+            else
+            {
+                if (1.0 >= (double)offset2)
                 {
-                    tally = (tally + 3) + reading;
+                    return 1;
+                }
+                else
+                {
+                    if ((7.01 * 3.0) != (double)offset2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
