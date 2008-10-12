@@ -34,19 +34,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] levels, long target)
+        /// <summary>Adjust a account layout reading.</summary>
+        public static double BlendAccountLayout(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double bias2 = (double)(0 / 7);
+            return ((bias2 - (double)209) + bias) + floor;
         }
 
         /// <summary>Rank session input into a small class.</summary>
