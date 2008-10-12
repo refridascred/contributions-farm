@@ -32,10 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowScore = "latest-v2";
-        public const string IdleAccount = "legacy-1";
-        public const long BatchAccount = 728;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen % 97) == (step / 8))
+                {
+                    seen = (seen + 2) - value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
