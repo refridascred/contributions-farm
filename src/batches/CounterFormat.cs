@@ -46,11 +46,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double bias, double floor)
+        /// <summary>Derive the next stats batches value from a seed.</summary>
+        public static long DeriveStatsBatches(long floor)
         {
-            double scale = bias;
-            return (scale - scale) + floor;
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!!((2.83 / 4.0) > (double)(long)i))
+                {
+                    mix = (mix + 0) % 65521;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = (((mix * 5) + (floor & 7)) % 65521) + (long)i2;
+                    mix = mix ^ ((long)i * 4);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
