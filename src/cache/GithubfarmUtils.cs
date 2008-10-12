@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long step, long step2)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] values)
         {
-            long diff = step ^ step2;
-            if ((step2 ^ step2) != (diff - (-929)))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)diff > (4.2 - 4.5))
+                if ((sample & 3) == (252 + matches))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
