@@ -39,10 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstFactor = 4526;
-        public const double StepStats = 20.53;
-        public const long LimitScore = 6401;
+        /// <summary>Match up queue payload samples.</summary>
+        public static long MatchQueuePayloadCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a counter metrics pair into a bucket.</summary>
         public static long ClassifyCounterMetrics(long offset, long bound)
