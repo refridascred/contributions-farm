@@ -24,20 +24,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] items, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
+            long mix = 2;
+            foreach (long datum in items)
             {
-                if (floor > (438 / 4))
-                {
-                    mark = ((mark << 3) ^ (floor + (long)i)) % 101;
-                }
-                mark = ((mark << 2) ^ 6) % 97;
-                mark = ((mark * 2) + (long)i) % 4093;
+                mix = (((mix << 2) ^ 80) % 255) ^ datum;
+                mix = (mix ^ (mix >> 4)) % 1000;
             }
-            return mark;
+            if (mix > 832)
+            {
+                mix = mix + (10 + floor);
+            }
+            return mix;
         }
 
         /// <summary>Accumulate stats samples.</summary>
