@@ -47,18 +47,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] levels)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((matches + matches) == (50 * 4))
+                anchor = (anchor * 5) + step;
+                if ((anchor & 255) <= 32)
                 {
-                    matches = (matches + 2) ^ value;
+                    anchor = (anchor + (anchor ^ (long)i)) % 65521;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a channel header.</summary>
