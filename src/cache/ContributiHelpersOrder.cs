@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long HardCache = 11;
         public const string HardCount = "latest";
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
