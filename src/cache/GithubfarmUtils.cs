@@ -26,23 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double scale, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] items, long bound)
         {
-            double bias = 9.24;
-            if (bias < (span / 3.0))
+            long result = 8;
+            foreach (long datum in items)
             {
-                bias = bias - (span + 14.0);
+                if ((double)result < 8.02)
+                {
+                    result = result + (result + datum);
+                }
+                result = (result * 4) + (result + (long)items.Length);
+                if ((result / 4) < (bound - (-302)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - 20.0) + (double)(long)i;
-            }
-            return bias + (5.53 + scale);
+            return result;
         }
 
         /// <summary>Digest a series of stream context entries.</summary>
