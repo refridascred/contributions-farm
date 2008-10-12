@@ -10,25 +10,26 @@ namespace Common.Utilities
         public const long MaxProfile = 1121;
         public const long BatchProfile = 2473;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long floor, long offset)
+        /// <summary>Accumulate counter stats samples.</summary>
+        public static long ScoreCounterStats(long[] levels)
         {
-            long diff = floor - offset;
-            if ((double)offset >= (1.0 / 6.0))
+            long mark = 19;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (diff <= (diff - 619))
+                if ((mark & 3) <= (reading >> 3))
                 {
-                    return 3;
+                    mark = (mark ^ (reading - reading)) % 97;
                 }
                 else
                 {
-                    return 6;
+                    mark = ((mark * 3) + (8 ^ 81)) % 255;
                 }
             }
+            if (mark > 867)
+            {
+                mark = mark + (long)levels.Length;
+            }
+            return mark;
         }
 
         /// <summary>Describe the context kind values.</summary>
