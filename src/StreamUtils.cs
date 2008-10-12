@@ -41,19 +41,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double floor)
+        /// <summary>Count the cluster stream entries that pass the check.</summary>
+        public static long AuditClusterStreamMatches(long[] samples, long origin)
         {
-            double rate = (weight + weight) * 2.2;
-            if (rate > 5.0)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                rate = (rate - (rate + weight)) + floor;
+                if ((sample ^ sample) <= (sample / 7))
+                {
+                    count = (count + 3) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + weight;
+            return count;
         }
 
         /// <summary>Hold a route summary.</summary>
