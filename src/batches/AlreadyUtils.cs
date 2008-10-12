@@ -45,12 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches + sample) == (sample & 31))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
