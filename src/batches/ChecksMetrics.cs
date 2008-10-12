@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] readings, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long carry = 18;
+            foreach (long item in items)
             {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (((carry + (699 % 24)) % 255) ^ item) + bound;
             }
-            return stale;
+            if (carry < 97)
+            {
+                carry = carry + (carry & 31);
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a contributi record.</summary>
