@@ -52,16 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry + (1 >> 2)) % 1000;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine counter notes values into a single score.</summary>
