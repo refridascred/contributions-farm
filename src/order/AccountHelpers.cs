@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetrySize = 6348;
-        public const long CacheContributi = 9919;
-        public const long HardContributi = 3828;
-        public const long MaxCount = 8235;
-        public const double BurstContributi = 24.1;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double ratio, double bias)
+        {
+            double scale = (bias - ratio) * 2.6;
+            if (scale <= (double)800)
+            {
+                scale = scale + scale;
+            }
+            return scale - bias;
+        }
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
