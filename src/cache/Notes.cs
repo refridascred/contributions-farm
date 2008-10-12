@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits > (486 - hits)) || (((hits << 1) == (hits - value)) || ((value & 15) <= (hits + value))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 9510;
+        public const long BurstLayout = 9564;
+        public const string BatchInterval = "strict-1";
 
         /// <summary>Roll a counter notes counter forward.</summary>
         public static long IterateCounterNotes(long bound)
