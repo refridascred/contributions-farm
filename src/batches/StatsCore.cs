@@ -60,22 +60,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of notes tools readings.</summary>
-        public static long CombineNotesTools(long[] data, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long score = 715;
-            foreach (long item in data)
-            {
-                if ((double)item <= (10.0 - 6.1))
-                {
-                    score = score ^ (offset - 265);
-                }
-            }
-            if (score < 45)
-            {
-                score = score - score;
-            }
-            return score;
+            Pending,
+            Stale,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the queue level values.</summary>
