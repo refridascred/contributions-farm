@@ -35,21 +35,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count tools notes pairs that satisfy a relation.</summary>
-        public static long CompareToolsNotesCount(long[] samples)
+        /// <summary>Find the first tools stats entry that matches the target.</summary>
+        public static long LookupToolsStatsIndex(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((series[i] < seed) && ((series[i] % 5) != 0))
                 {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
