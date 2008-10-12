@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 295;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)value < 4.0)
                 {
-                    if ((values[i] - values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark << 3) ^ (bound >> 5)) % 101;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
