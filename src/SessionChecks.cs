@@ -16,22 +16,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] values, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long limit, long step)
         {
-            long carry = -26;
-            foreach (long sample in values)
+            long edge = limit - step;
+            if ((step % 100) > limit)
             {
-                if ((6.7 * 7.07) != (double)sample)
+                return 1;
+            }
+            else
+            {
+                if (((double)edge > (5.1 + 0.7)) && ((step ^ (-80)) == (limit >> 1)))
                 {
-                    carry = (carry ^ (step - 454)) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (carry < 261)
-            {
-                carry = carry ^ (carry - carry);
-            }
-            return carry;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
