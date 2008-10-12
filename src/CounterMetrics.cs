@@ -34,19 +34,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] values, long seed)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long value in readings)
             {
                 if (value < seed)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Rank session input into a small class.</summary>
