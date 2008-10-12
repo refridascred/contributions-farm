@@ -76,12 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 6900;
-        public const string LimitDepth = "strict-v2";
-        public const long MinBatches = 6717;
-        public const long StepDepth = 4321;
-        public const long StepBatches = 7088;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Stale,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
