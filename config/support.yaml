@@ -1,4 +1,32 @@
 # support settings
-max_ratio_count: stable
-audit: 5763
-default_retries: 2942
+idle_depth_s: 2
+graph_depth: strict
+verbose: 96.48
+burst_delay: false
+context_window:
+  - fallback
+  - fallback
+soft_threshold:
+  retry_window:
+    - legacy
+    - latest
+    - standard
+    - blue
+  max_depth_ms: false
+  dry_run: 56.47
+  queue_interval: primary
+  compress: 97
+  retry_depth_pct:
+    retry_depth_ms: blue
+    record_threshold:
+      - edge
+      - legacy
+      - edge
+      - green
+    strict: 6535
+    readonly: 19.3
+    hard_retries_ms:
+      - local
+      - blue
+      - blue
+      - staging
