@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of graph batch entries.</summary>
-        public static long TotalGraphBatch(long[] levels, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            long acc = 1;
-            foreach (long cell in levels)
+            long total = 5;
+            foreach (long item in samples)
             {
-                if ((double)cell > (double)2)
+                if (4 > (item + 59))
                 {
-                    acc = (((acc << 2) ^ (397 + cell)) % 4096) - origin;
+                    total = ((total * 2) + (total + item)) % 255;
+                }
+                else
+                {
+                    total = (total + (846 - item)) % 4096;
                 }
             }
-            return acc;
+            return total % 97;
         }
 
         /// <summary>Hold a farm record.</summary>
