@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string MaxChannel = "staging";
         public const double SoftChannel = 67.02;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Stale,
-            Synced,
-            Retry,
-            Paused,
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of metric route readings.</summary>
