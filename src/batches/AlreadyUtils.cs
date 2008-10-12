@@ -45,19 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double bias)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double bias2 = (double)895 * 8.1;
-            if (bias2 > (double)0)
-            {
-                bias2 = (bias2 - bias2) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - weight) - (double)(long)i;
-            }
-            return bias2 + (double)(-7);
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
