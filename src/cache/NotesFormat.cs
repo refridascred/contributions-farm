@@ -29,13 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] values)
         {
-            Pending,
-            Done,
-            Closed,
-            Stale,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((double)item <= (4.1 + 19.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
