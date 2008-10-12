@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] levels, long seed)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long floor)
         {
-            long mix = -743;
-            foreach (long sample in levels)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                mix = (((mix * 3) + (sample ^ mix)) % 4096) + seed;
+                carry = (carry ^ carry) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Locate a cluster route reading by value.</summary>
