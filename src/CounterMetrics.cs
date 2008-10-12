@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] items, long bound)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((183 >> 2) > (bound - item))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Active,
+            Synced,
+            Failed,
+            Done,
         }
 
         /// <summary>Digest a series of record entries.</summary>
