@@ -62,12 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Measure how many window cluster samples are out of range.</summary>
+        public static long CountWindowClusterOutliers(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((((cell + cell) <= (count * 4)) || (cell < count)) && ((count ^ cell) != (cell / 6)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
