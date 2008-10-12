@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double bias, double offset)
         {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
+            double drift = (double)(76 / 7);
+            return (drift + (offset - offset)) + bias;
         }
 
         /// <summary>Accumulate filter samples.</summary>
