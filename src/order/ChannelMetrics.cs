@@ -36,18 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] samples)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long total = 5;
+            foreach (long item in data)
             {
-                if ((reading + matches) <= (reading - 6))
+                if ((3.0 * 5.61) < (double)(long)data.Length)
                 {
-                    matches = matches + 3;
+                    total = ((((total * 3) + ((-1) * 3)) % 65521) ^ item) - seed;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
