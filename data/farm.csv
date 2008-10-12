@@ -1,8 +1,7 @@
-id,level
-1,134
-2,eu-west
-3,510
-4,staging
-5,961
-6,541
-7,501
+id,level,state
+1,741,open
+2,46.19,27
+3,62.02,stable
+4,965,fallback
+5,353,38.63
+6,212,70
