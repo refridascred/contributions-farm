@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const double BatchFactor = 41.55;
         public const long DefaultDepth = 624;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long step, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] series, long seed)
         {
-            if (((double)step == (11.0 - 8.7)) && ((limit % 64) >= limit))
+            bool flag = true;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((87 - step) < (limit - 64))
+                if (reading != seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
