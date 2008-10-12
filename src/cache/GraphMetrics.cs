@@ -42,13 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] items)
         {
-            Stale,
-            Synced,
-            Retry,
-            Failed,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - hits) == (hits + sample))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
