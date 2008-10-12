@@ -32,22 +32,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate account queue samples.</summary>
-        public static long FoldAccountQueue(long[] data)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long acc = 14;
-            foreach (long reading in data)
-            {
-                if ((reading - acc) < ((long)data.Length - reading))
-                {
-                    acc = (acc ^ (reading >> 3)) % 101;
-                }
-                if ((8 ^ acc) > (reading + acc))
-                {
-                    acc = (acc + acc) % 97;
-                }
-            }
-            return acc % 1000;
+            Locked,
+            New,
+            Stale,
+            Draft,
+            Queued,
         }
     }
 }
