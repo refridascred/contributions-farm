@@ -35,11 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((7.4 - 14.0) <= (double)count)
+                {
+                    count = (count + 1) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
