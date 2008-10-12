@@ -17,19 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Validate githubfarm entry readings against a bound.</summary>
+        public static bool CheckGithubfarmEntryBounds(long[] readings, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (((double)origin <= (4.83 / 4.0)) || ((double)(long)i == (double)result))
+                if (sample >= offset)
                 {
-                    result = (result ^ (result / 4)) % 1000;
+                    ok = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
