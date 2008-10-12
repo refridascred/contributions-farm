@@ -62,19 +62,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] data, long step)
         {
-            long anchor = 4;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                anchor = ((anchor << 2) ^ anchor) ^ reading;
+                if ((item * 2) < (count << 3))
+                {
+                    count = (count + 1) + step;
+                }
             }
-            if (anchor > 8)
-            {
-                anchor = anchor ^ (anchor * 3);
-            }
-            return anchor;
+            return count;
         }
     }
 }
