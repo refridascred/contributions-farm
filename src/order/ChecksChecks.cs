@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] readings)
         {
-            long anchor = 7;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (value >= (value + value))
+                if ((tally - tally) != (cell / 6))
                 {
-                    anchor = (anchor - anchor) % 1000;
-                }
-                if ((38 - anchor) <= (anchor & 127))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor + anchor) % 255;
-            }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
