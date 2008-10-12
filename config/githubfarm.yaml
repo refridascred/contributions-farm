@@ -1,8 +1,9 @@
 # githubfarm settings
-warm_size_ms: 53.21
-verbose:
-  - cached
-  - stable
-batches_interval:
-  - local
-  - strict
+batch_size_count: strict
+base_window_pct: 60
+warm_limit_s: 24.16
+counter_limit:
+  - 247
+  - 218
+  - 141
+  - 407
