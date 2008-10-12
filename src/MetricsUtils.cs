@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const long SoftCount = 3602;
         public const double IdleRatio = 59.92;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] series)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits > ((long)series.Length >> 3)) && (5.8 <= (double)hits))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a profile record.</summary>
