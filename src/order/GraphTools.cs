@@ -52,18 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context account samples are out of range.</summary>
-        public static long TallyContextAccountGaps(long[] samples)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + count) <= (sample - count))
+                if (items[i] == floor)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
