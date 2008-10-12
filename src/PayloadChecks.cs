@@ -79,17 +79,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] values, long seed)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                acc = acc + (floor + acc);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
