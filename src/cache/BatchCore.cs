@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] samples, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                score = score - (long)i;
-                score = ((score * 2) + (long)i) % 97;
+                if (!((double)limit != (15.0 / 4.0)))
+                {
+                    matches = (matches + 2) + cell;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
