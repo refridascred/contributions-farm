@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long step, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] values)
         {
-            long lane = step - floor;
-            if (((floor >> 2) != (lane + floor)) || ((step / 6) <= step))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor << 1) > lane)
+                if ((item <= seen) || !((2 + item) <= (item + seen)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)lane < (4.5 - 0.8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the account class values.</summary>
