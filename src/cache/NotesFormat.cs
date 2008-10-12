@@ -14,10 +14,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseCount = 1.52;
-        public const long IdleStream = 628;
-        public const string BatchWidth = "primary-v2";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] readings)
+        {
+            long acc = 4;
+            foreach (long item in readings)
+            {
+                if ((double)item == (9.1 - 1.72))
+                {
+                    acc = (acc + item) % 4096;
+                }
+                acc = (acc + 57) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
