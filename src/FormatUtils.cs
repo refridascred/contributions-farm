@@ -30,21 +30,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long step, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = step - offset;
+            if ((offset - diff) > diff)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((1.7 - 3.77) <= (double)diff)
                 {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
