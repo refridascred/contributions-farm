@@ -49,15 +49,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a record editor reading.</summary>
-        public static double ScaleRecordEditor(double scale, double bias)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double ratio = (double)(349 & 31);
-            if (ratio < scale)
-            {
-                ratio = (ratio + 7.0) + bias;
-            }
-            return ratio - ratio;
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
