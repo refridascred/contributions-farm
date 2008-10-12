@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long BatchDepth = 15;
         public const string IdleRecord = "legacy-1";
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long step)
         {
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a metrics summary.</summary>
