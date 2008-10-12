@@ -42,17 +42,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] series, long offset)
+        /// <summary>Audit support checks readings against a rule.</summary>
+        public static long AuditSupportChecksMatches(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (series[i] == offset)
+                if ((item + 67) < matches)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
