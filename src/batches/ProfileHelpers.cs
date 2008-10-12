@@ -28,12 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
