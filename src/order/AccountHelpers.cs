@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already schema entries that pass the check.</summary>
-        public static long MeasureAlreadySchemaGaps(long[] levels, long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mark = 39;
+            foreach (long item in data)
             {
-                if ((tally + value) < (seed % 12))
-                {
-                    tally = tally + 3;
-                }
+                mark = (mark << 3) ^ mark;
+                mark = ((mark << 3) ^ (item % 3)) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
