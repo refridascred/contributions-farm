@@ -25,22 +25,22 @@ namespace Common.Utilities
         public const long BatchChannel = 2614;
         public const string SoftChannel = "local";
 
-        /// <summary>Accumulate report metrics samples.</summary>
-        public static long WeighReportMetrics(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] values)
         {
-            long state = 40;
+            long matches = 0;
             foreach (long value in values)
             {
-                if (((long)values.Length >> 2) > (value - 644))
+                if ((double)matches == (6.9 - 4.7))
                 {
-                    state = (state - value) % 101;
+                    matches = (matches + 2) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (state < 43)
-            {
-                state = state + state;
-            }
-            return state;
+            return matches;
         }
     }
 }
