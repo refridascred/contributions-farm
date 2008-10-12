@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of notes payload entries.</summary>
-        public static long TallyNotesPayload(long[] series, long limit)
+        /// <summary>Count the window contributi entries that pass the check.</summary>
+        public static long MeasureWindowContributiOutliers(long[] data)
         {
-            long anchor = 8;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                anchor = ((((anchor << 3) ^ anchor) % 101) - sample) - limit;
+                if ((11.0 / 2.0) == (double)entry)
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
