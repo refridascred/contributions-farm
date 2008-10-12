@@ -56,10 +56,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheSpan = 56.41;
-        public const long StepCount = 1;
-        public const long SoftCommits = 4657;
-        public const long DefaultTimeout = 7776;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinScore = 5089;
+        public const long StepOrder = 2858;
+        public const long LimitOrder = 4123;
+        public const double BatchSize = 91.31;
     }
 }
