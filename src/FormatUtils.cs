@@ -53,18 +53,38 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] data)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            if ((limit >> 4) > (206 ^ offset))
             {
-                if ((reading & 127) < (reading << 3))
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) <= (limit & 15))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (9.13 >= (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((offset << 1) != (45 % 60)) || ((limit >> 3) >= (offset % 100)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the cache channel entries that pass the check.</summary>
