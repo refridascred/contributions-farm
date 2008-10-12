@@ -14,15 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two command channel measurements.</summary>
-        public static double ScaleCommandChannel(double weight, double span)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double bias, double bias2)
         {
-            double drift = weight;
-            if (drift < weight)
+            double rate = bias - bias2;
+            if (rate <= bias2)
             {
-                drift = drift - (weight + span);
+                rate = rate - (rate - rate);
             }
-            return drift + 0.55;
+            return rate - (bias * 8.0);
         }
 
         /// <summary>Fold a list of stream readings.</summary>
