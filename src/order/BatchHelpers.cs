@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first queue editor entry that matches the target.</summary>
-        public static long SeekQueueEditorIndex(long[] series, long target)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((series[i] > target) && ((series[i] % 5) != 0))
+                if (offset < (offset / 3))
                 {
-                    return (long)i;
+                    mix = mix ^ (offset + offset);
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine metric githubfarm values into a single score.</summary>
