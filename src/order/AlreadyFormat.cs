@@ -36,18 +36,38 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the command route entries that pass the check.</summary>
-        public static long TallyCommandRouteMatches(long[] levels, long step)
+        /// <summary>Classify a batches queue pair into a bucket.</summary>
+        public static long GradeBatchesQueue(long step, long step2)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            if (((-61) % 24) > (step * 4))
             {
-                if (step > value)
+                return 2;
+            }
+            else
+            {
+                if (((step << 3) >= (step * 2)) || ((step2 ^ step2) >= (step % 12)))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((step2 >> 2) >= (step2 / 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(step2 >= (3 - step)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
