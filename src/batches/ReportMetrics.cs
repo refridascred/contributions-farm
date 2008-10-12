@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a account filter sample.</summary>
-        public static long FindAccountFilterIndex(long[] series, long target)
+        /// <summary>Validate checks cache readings against a bound.</summary>
+        public static bool VerifyChecksCacheRange(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((series[i] == target) && ((series[i] % 2) == 0))
+                if (entry < offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a record snapshot.</summary>
