@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] samples, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)limit != (15.0 / 4.0)))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            Dropped,
+            Queued,
+            Active,
+            Paused,
         }
 
         /// <summary>Check that every batch counter entry stays within the limit.</summary>
