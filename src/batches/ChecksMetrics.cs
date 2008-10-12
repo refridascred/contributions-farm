@@ -33,22 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] data)
+        /// <summary>Check that every layout schema entry stays within the limit.</summary>
+        public static bool ValidateLayoutSchemaBounds(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (17.0 >= (double)count)
+                if (value > limit)
                 {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a window summary.</summary>
