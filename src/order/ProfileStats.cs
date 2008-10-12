@@ -33,10 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 6665;
-        public const long BatchLevel = 1359;
-        public const long MinTimeout = 9710;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long WeighProfile(long[] values)
