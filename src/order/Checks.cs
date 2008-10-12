@@ -35,17 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] data, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = bias;
+            if (bias2 > bias)
             {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 - bias) + weight;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (12.0 - bias2)) + (double)(long)i;
+            }
+            return bias2 - (double)18;
         }
 
         /// <summary>Define record limits and defaults.</summary>
