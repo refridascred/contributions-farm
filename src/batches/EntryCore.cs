@@ -25,23 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double rate, double span)
+        /// <summary>Measure how many report window samples are out of range.</summary>
+        public static long CountReportWindowHits(long[] values, long bound)
         {
-            double weight = span;
-            if (weight <= span)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                weight = weight - (weight * 9.26);
+                if (11 >= ((-366) + bound))
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            else
-            {
-                weight = weight - (rate + rate);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (5.0 + weight)) + (double)(long)i;
-            }
-            return weight - rate;
+            return hits;
         }
 
         /// <summary>Describe the payload class values.</summary>
