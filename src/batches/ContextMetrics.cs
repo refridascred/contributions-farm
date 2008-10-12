@@ -40,21 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of notes schema readings.</summary>
-        public static long OverlapNotesSchemaCount(long[] data)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 703;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state * 2) + (reading << 1);
+                state = state - (state + reading);
             }
-            return count;
+            if (state > 16)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
