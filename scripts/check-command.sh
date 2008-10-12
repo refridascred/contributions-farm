@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard edge; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=448
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-open}"
+mode="${1:-stable}"
 case "${mode}" in
-    open)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in stable cached edge; do
+    log "checking ${item}"
+done
