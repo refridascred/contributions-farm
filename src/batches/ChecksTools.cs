@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a format stream figure with a bias.</summary>
-        public static double AdjustFormatStream(double rate, double bias)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] series)
         {
-            double scale = 4.6 + (bias + bias);
-            if (scale < (rate + rate))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (bias * 5.03);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (8.02 - 2.81);
-            }
-            return scale + (double)3;
+            return matches;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
