@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
+            Dropped,
+            New,
+            Done,
+            Stale,
             Paused,
-            Pending,
-            Active,
-            Retry,
         }
 
         /// <summary>Roll a order counter forward.</summary>
