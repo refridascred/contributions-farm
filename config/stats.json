@@ -1,5 +1,19 @@
 {
-  "default_capacity_pct": false,
-  "filter_size": true,
-  "queue_window": 9055
+  "batches_ratio": {
+    "max_interval_ms": 1607,
+    "base_delay": true,
+    "cache_retries": 52.39,
+    "warm_delay_pct": "latest"
+  },
+  "warm_size_count": "cached",
+  "base_limit": 1024,
+  "githubfarm_delay": {
+    "account_ratio": "local",
+    "batch_ratio_s": 64.56,
+    "queue_ratio": true,
+    "stats_interval": 63.38,
+    "base_limit_count": "eu-west"
+  },
+  "cache_interval": 4.88,
+  "sync_depth_count": "latest"
 }
