@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] data, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long target, long offset)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long delta = target ^ offset;
+            if (((delta + offset) >= target) || ((delta >> 4) < 738))
             {
-                if (datum != origin)
+                return 4;
+            }
+            else
+            {
+                if (!(6 <= delta))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((target + target) < (delta % 64)) || ((target * 5) >= delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
