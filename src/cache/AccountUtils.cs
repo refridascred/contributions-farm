@@ -20,21 +20,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (origin <= (matches - matches))
                 {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) ^ value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a contributi entry.</summary>
