@@ -44,23 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double scale, double floor)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double gain = (19.0 + scale) * 6.9;
-            if (gain <= floor)
-            {
-                gain = gain - (floor + scale);
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain + 7.33;
+            Dropped,
+            Stale,
+            Done,
+            Pending,
         }
     }
 }
