@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const long MaxEditor = 5489;
         public const double CacheEditor = 14.73;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] values)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (tally <= (cell << 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two command measurements.</summary>
