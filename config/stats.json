@@ -1,7 +1,6 @@
 {
-  "warm_size": 23,
-  "max_ratio_s": 1024,
-  "hard_retries": ["blue", "primary", "primary", "latest"],
-  "idle_retries_s": 8901,
-  "tools_delay": "stable"
+  "verbose": false,
+  "warm_timeout_count": false,
+  "burst_size": false,
+  "sync_depth_s": "local"
 }
