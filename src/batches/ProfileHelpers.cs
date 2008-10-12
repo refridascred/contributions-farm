@@ -70,18 +70,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] samples, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long state = 64;
+            foreach (long cell in levels)
             {
-                if (!!((matches / 3) <= (16 * 3)))
+                if (cell >= (state - state))
                 {
-                    matches = ((matches + 1) + cell) - bound;
+                    state = (state << 2) ^ ((long)levels.Length << 1);
+                    state = (state - (cell / 4)) % 65521;
+                }
+                if ((double)cell <= 1.11)
+                {
+                    state = ((state * 2) + cell) % 4096;
+                }
+                if ((987 % 5) == (state ^ cell))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
