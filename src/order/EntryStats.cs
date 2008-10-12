@@ -27,14 +27,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings, long floor)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Done,
-            Pending,
+            long score = 1;
+            foreach (long datum in readings)
+            {
+                score = (((score + (score / 9)) % 65521) - datum) + floor;
+            }
+            if (score < 773)
+            {
+                score = (score - (score << 1)) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Roll a editor entry counter forward.</summary>
