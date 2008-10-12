@@ -1,5 +1,12 @@
 {
-  "warm_interval_s": false,
-  "readonly": true,
-  "batch_ttl": "open"
+  "session_ratio": "eu-west",
+  "batch_size_s": "edge",
+  "audit": {
+    "cache_threshold": [412, 150, 340],
+    "hard_window_ms": true,
+    "base_ttl": 37,
+    "verbose": "fallback"
+  },
+  "enabled": 100,
+  "entry_size": [84, 412]
 }
