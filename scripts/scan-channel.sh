@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached strict green; do
+for item in strict green; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
-
-CHANNEL_LIMIT=27
-log "limit is ${CHANNEL_LIMIT}"
+log "total ${total}"
