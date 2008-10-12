@@ -75,12 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Check that every cluster queue entry stays within the limit.</summary>
+        public static bool ValidateClusterQueueBounds(long[] items, long step)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
