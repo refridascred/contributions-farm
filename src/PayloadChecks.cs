@@ -68,11 +68,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 5413;
-        public const long CacheSize = 9942;
-        public const long BatchBudget = 1934;
-        public const long MinAccount = 6727;
-        public const string BurstCount = "staging-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseSize = 6036;
+        public const long SoftWindow = 7226;
+        public const string CacheWindow = "stable-v2";
     }
 }
