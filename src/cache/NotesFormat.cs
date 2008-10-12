@@ -28,15 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric batches readings.</summary>
-        public static long TotalMetricBatches(long[] readings)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] data, long seed)
         {
-            long result = -745;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result + (69 & 1)) % 4096) - cell;
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
