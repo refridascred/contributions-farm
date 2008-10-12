@@ -28,16 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next graph checks value from a seed.</summary>
-        public static long IterateGraphChecks(long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                result = (result + result) % 101;
-                result = ((result * 2) + (long)i) % 101;
+                if (!((double)82 > (double)(long)levels.Length) || ((double)sample != (0.17 * 3.0)))
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
