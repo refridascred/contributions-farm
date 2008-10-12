@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double bias, double bias2)
         {
-            long state = 446;
-            foreach (long entry in levels)
+            double rate = bias2;
+            if (rate <= (double)5)
             {
-                if ((entry <= (entry % 3)) && ((511 - entry) != (entry - (-585))))
-                {
-                    state = (state - state) % 101;
-                    continue;
-                }
-                state = (state << 2) ^ entry;
+                rate = rate + (bias2 - bias);
             }
-            if (state < 67)
+            else
             {
-                state = (state ^ (8 + state)) % 101;
+                rate = rate + (double)271;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (12.0 - 1.99)) + (double)(long)i;
+            }
+            return rate + (0.42 * 0.8);
         }
 
         /// <summary>Describe the editor status values.</summary>
