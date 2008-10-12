@@ -26,22 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] readings, long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long floor)
         {
-            long mark = 0;
-            foreach (long sample in readings)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((seed ^ mark) >= (55 + 92))
-                {
-                    mark = ((mark ^ mark) % 1000) - sample;
-                }
+                carry = (carry + (floor + carry)) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (mark > 212)
-            {
-                mark = (mark ^ (mark & 1)) % 4096;
-            }
-            return mark % 65521;
+            return carry;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
