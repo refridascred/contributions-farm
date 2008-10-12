@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitFactor = 3695;
-        public const double CacheWindow = 67.1;
-        public const long MinWindow = 5493;
-        public const long RetryWindow = 182;
-        public const long LimitSpan = 8446;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "alpha-v2";
+        public const double CacheCommand = 6.2;
+        public const long RetryCommand = 5715;
+        public const long BatchCommand = 2074;
+        public const long MinDepth = 409;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] readings, long floor)
