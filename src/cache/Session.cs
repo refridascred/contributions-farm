@@ -36,15 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double weight, double offset)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] levels, long floor)
         {
-            double mean = (double)(56 * 2);
-            if (mean >= 8.76)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - (5.2 / 3.0)) + weight;
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return mean - offset;
+            return -1;
         }
     }
 }
