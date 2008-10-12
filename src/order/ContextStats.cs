@@ -12,39 +12,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long origin, long step)
-        {
-            if ((1 - origin) < origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 5) <= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step >= (step + 741))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step >= (origin & 3)) || (origin >= (origin % 7)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftWidth = 9350;
+        public const string CacheScore = "primary";
+        public const long RetrySize = 8171;
+        public const long IdleCommand = 5599;
+        public const double LimitLevel = 41.99;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long RollWindow(long bound)
