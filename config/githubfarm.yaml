@@ -1,11 +1,11 @@
 # githubfarm settings
-compress: 39.59
-warm_retries_ms:
-  - blue
-  - stable
-  - eu-west
-  - primary
-default_delay: edge
-account_interval: 17.88
-already_depth: 96
-base_capacity_count: 62.22
+enabled:
+  token_limit:
+    format_limit: 94
+    retry_delay_pct: true
+    tools_ratio: 73.07
+    max_retries_ms: false
+  sync_depth_ms: 46
+  githubfarm_threshold: 56
+editor_interval: local
+hard_depth: 500
