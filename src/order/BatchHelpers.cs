@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] items)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((matches <= (matches & 7)) || ((5.0 + 9.7) != (double)datum)) && ((matches >= datum) && ((datum & 1) >= matches)))
+                if (values[i] == step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the schema mode values.</summary>
