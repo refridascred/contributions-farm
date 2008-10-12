@@ -37,14 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count stats profile pairs that satisfy a relation.</summary>
+        public static long CompareStatsProfileCount(long[] readings)
         {
-            Paused,
-            New,
-            Closed,
-            Ready,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every metric session entry stays within the limit.</summary>
