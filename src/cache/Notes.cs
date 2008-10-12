@@ -67,19 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] levels, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Roll a account counter forward.</summary>
