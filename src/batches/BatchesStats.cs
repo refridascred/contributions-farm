@@ -33,18 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 1145;
+        public const long SoftTimeout = 1111;
+        public const long BaseDepth = 9537;
+        public const long MinLevel = 9634;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long FoldReport(long[] values)
