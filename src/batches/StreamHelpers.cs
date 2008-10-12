@@ -79,18 +79,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] data)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long sum = 3;
+            foreach (long cell in items)
             {
-                if (((16.0 + 8.5) < (double)count) && ((6 - count) >= sample))
+                if ((7 + 90) < (long)items.Length)
                 {
-                    count = count + 3;
+                    sum = ((((sum << 2) ^ 762) % 1000) ^ cell) + floor;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
