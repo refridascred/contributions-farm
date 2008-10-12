@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseTimeout = 5954;
+        public const long StepCluster = 8949;
+        public const string BatchDepth = "legacy-1";
+        public const double SoftCluster = 1.55;
+        public const double BurstCluster = 40.28;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
