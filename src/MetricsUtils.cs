@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first graph session entry that matches the target.</summary>
-        public static long LocateGraphSessionIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitFactor = 3695;
+        public const double CacheWindow = 67.1;
+        public const long MinWindow = 5493;
+        public const long RetryWindow = 182;
+        public const long LimitSpan = 8446;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long IdleAlready = 1301;
