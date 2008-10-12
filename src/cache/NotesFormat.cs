@@ -23,12 +23,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultWidth = 76;
-        public const long HardBudget = 6850;
-        public const long HardQueue = 4053;
-        public const long BatchQueue = 4398;
-        public const long MinQueue = 9433;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 2573;
+        public const long DefaultToken = 3017;
+        public const double BaseToken = 78.44;
+        public const string SoftToken = "staging-edge";
 
         /// <summary>Accumulate record samples.</summary>
         public static long ScoreRecord(long[] levels, long bound)
