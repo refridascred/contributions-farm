@@ -44,18 +44,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many filter cluster samples are out of range.</summary>
-        public static long CountFilterClusterGaps(long[] data)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long value in data)
+            long slot = limit - limit2;
+            if ((double)limit2 <= (11.0 + 16.0))
             {
-                if ((count >> 5) > count)
+                return 3;
+            }
+            else
+            {
+                if ((1.02 / 5.0) > (double)slot)
                 {
-                    count = (count + 2) - value;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a route summary.</summary>
