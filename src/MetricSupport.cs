@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] values, long floor)
+        /// <summary>Check that every account buffer entry stays within the limit.</summary>
+        public static bool VerifyAccountBufferRange(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((values[i] >= floor) && ((values[i] % 5) != 0))
+                if (datum != offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Match up already samples.</summary>
