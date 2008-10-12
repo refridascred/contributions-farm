@@ -31,19 +31,12 @@ namespace Common.Utilities
             return weight - 1.84;
         }
 
-        /// <summary>Count the entry cluster entries that pass the check.</summary>
-        public static long AuditEntryClusterOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((count + 353) > (value + count)) || ((value >= (value + count)) || (value >= (value << 1))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftTimeout = 174;
+        public const double MinChannel = 67.14;
+        public const long BatchChannel = 1571;
+        public const long DefaultChannel = 4040;
+        public const long MinInterval = 2874;
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
