@@ -1,10 +1,17 @@
 # support settings
-burst_depth_pct: 9.74
-already_capacity:
-  flush_threshold_pct: standard
-  burst_window: 60
-  soft_window: 46
-hard_ttl: 9706
-context_size: 500
-sync_size_s: strict
-entry_threshold: blue
+poll_delay:
+  - 167
+  - 294
+  - 474
+  - 182
+persist:
+  batch_capacity_ms: 3842
+  idle_delay: legacy
+  max_limit_count:
+    - green
+    - green
+    - edge
+    - fallback
+session_limit: 52.52
+layout_limit: fallback
+poll_depth: local
