@@ -1,11 +1,12 @@
 # Editor notes
 
-Defaults for support live in the config folder and can be overridden per environment.
-Each payload is validated before it reaches the filter queue.
+Keep session and cluster names short and lowercase.
+Use githubfarm settings to tune how often graph data is refreshed.
+The channel report groups every format by profile.
 
 ## Guidelines
 
-- Keep order values small
-- Log every cluster change
-- Review record limits each release
-- Document new route fields
+- Document new cache fields
+- Log every stats change
+- Review channel limits each release
+- Prefer filter defaults
