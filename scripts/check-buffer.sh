@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging fallback green latest; do
+for item in stable latest fallback; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-primary}"
+mode="${1:-open}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
