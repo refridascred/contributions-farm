@@ -70,15 +70,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] data, long limit)
-        {
-            long carry = 86;
-            foreach (long item in data)
-            {
-                carry = (carry + (item * 4)) + limit;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardSpan = 21.92;
+        public const long SoftFactor = 1974;
+        public const long WindowSize = 1458;
     }
 }
