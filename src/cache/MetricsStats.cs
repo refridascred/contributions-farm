@@ -20,12 +20,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double bias2)
-        {
-            double mean = bias2 + bias;
-            return mean - bias;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "cached-edge";
+        public const double StepBatches = 69.54;
+        public const long MaxBudget = 1705;
+        public const long RetryCount = 4764;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long WindowStream = 1275;
