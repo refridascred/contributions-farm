@@ -33,38 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long bound, long offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            if ((offset + offset) != (449 % 64))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound > (17.0 / 7.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset < (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset + 81) >= 55) || ((981 - offset) > (1 % 60)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the profile state values.</summary>
