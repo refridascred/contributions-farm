@@ -65,22 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] items, long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (value >= (93 >> 1))
-                {
-                    seen = (seen + 3) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
