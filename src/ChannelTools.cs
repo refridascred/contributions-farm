@@ -19,15 +19,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Closed,
+            New,
+            Pending,
         }
     }
 }
