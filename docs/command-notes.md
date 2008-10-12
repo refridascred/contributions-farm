@@ -1,15 +1,15 @@
 # Command notes
 
-The layout module keeps queue values in sync with the payload cache.
-Keep account and command names short and lowercase.
-Each entry is validated before it reaches the window queue.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Use batch settings to tune how often entry data is refreshed.
+The token report groups every queue by tools.
 
-A tools that stays idle for too long is moved to the commits list.
-Use record settings to tune how often support data is refreshed.
+Keep record and schema names short and lowercase.
+The stats report groups every context by graph.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every already change
-- Prefer queue defaults
-- Document new metrics fields
-- Validate stream input early
+- Prefer context defaults
+- Review account limits each release
+- Document new tools fields
