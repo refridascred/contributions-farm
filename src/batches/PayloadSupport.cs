@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((tally - tally) >= (tally >> 2))
-                {
-                    tally = ((tally + 1) ^ item) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchFactor = 465;
+        public const long RetryCounter = 6366;
+        public const long SoftCounter = 6358;
+        public const double LimitCounter = 35.64;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long CountCacheOutliers(long[] levels)
