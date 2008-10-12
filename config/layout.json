@@ -1,17 +1,7 @@
 {
-  "notes_retries": true,
-  "base_threshold_ms": {
-    "profile_ttl": 89,
-    "poll_ttl_ms": 28.02,
-    "window_retries": 9078,
-    "record_limit": 2.25,
-    "poll_threshold_pct": {
-      "retry_interval": 1024,
-      "poll_capacity_pct": 27.33,
-      "editor_ratio": 68,
-      "retry_interval_s": 4.92
-    }
-  },
-  "burst_delay_ms": false,
-  "burst_limit": 25
+  "sync_limit": false,
+  "default_interval": ["blue", "open"],
+  "flush_retries_s": 21,
+  "persist": 2.71,
+  "hard_capacity": [157, 475]
 }
