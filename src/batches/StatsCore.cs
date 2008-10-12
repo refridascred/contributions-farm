@@ -38,31 +38,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long step, long seed)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] readings, long step)
         {
-            if (seed > (step - (-5)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - step) >= (2 + seed))
+                if (readings[i] >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((step / 4) > (seed ^ step)) || ((seed * 4) >= (step ^ seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the already status values.</summary>
