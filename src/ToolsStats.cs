@@ -81,31 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics batch pair into a bucket.</summary>
-        public static long GradeMetricsBatch(long origin, long step)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            if ((origin ^ step) == (step >> 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step > (step - origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin > (origin ^ origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a route stats.</summary>
