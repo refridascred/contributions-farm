@@ -49,18 +49,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] series)
+        /// <summary>Look up the position of a counter queue sample.</summary>
+        public static long FindCounterQueueIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry - tally) <= entry)
+                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
