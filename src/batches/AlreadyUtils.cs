@@ -45,19 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] series, long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            double bias2 = (double)895 * 8.1;
+            if (bias2 > (double)0)
             {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = (bias2 - bias2) + bias;
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - weight) - (double)(long)i;
+            }
+            return bias2 + (double)(-7);
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
