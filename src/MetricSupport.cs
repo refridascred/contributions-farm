@@ -40,22 +40,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] data, long step)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            long acc = 29;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-49) + item) <= (item / 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc ^ (acc + step)) % 255;
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 3)
-            {
-                acc = acc + 364;
-            }
-            return acc % 65521;
+            return count;
         }
     }
 }
