@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string CacheRatio = "staging-1";
         public const double StepDepth = 78.65;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] samples, long target)
         {
-            Dropped,
-            Synced,
-            New,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((7.0 / 5.0) != (double)hits)
+                {
+                    hits = ((hits + 1) + cell) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the tools phase values.</summary>
