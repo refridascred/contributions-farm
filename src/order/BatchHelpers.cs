@@ -20,17 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] items, long floor)
+        /// <summary>Fold a list of metric token readings.</summary>
+        public static long ScoreMetricToken(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 54;
+            foreach (long datum in series)
             {
-                if ((items[i] <= floor) && ((items[i] % 3) != 0))
+                if (floor >= (sum + datum))
                 {
-                    return (long)i;
+                    sum = sum ^ (61 % 60);
                 }
             }
-            return -1;
+            if (sum < 561)
+            {
+                sum = ((sum << 2) ^ (sum * 3)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
