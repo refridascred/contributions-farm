@@ -1,5 +1,36 @@
 {
-  "warm_ttl": 97,
-  "commits_limit": 7.25,
-  "soft_size_ms": 11.33
+  "flush_limit_count": {
+    "queue_size": {
+      "hard_size_count": 82.64,
+      "stream_retries": "staging",
+      "persist": "primary",
+      "dry_run": "latest",
+      "hard_delay_count": "latest"
+    },
+    "enabled": true,
+    "buffer_retries": {
+      "warm_capacity": "legacy",
+      "support_retries": 72.44,
+      "batch_size_count": "local",
+      "cluster_ttl": ["open", "staging", "eu-west", "blue"],
+      "verbose": 1949
+    },
+    "strict": false
+  },
+  "verbose": 3739,
+  "audit": "green",
+  "default_delay_s": {
+    "burst_interval_pct": false,
+    "warm_capacity_ms": 87.14,
+    "contributi_threshold": "primary",
+    "graph_retries": 60,
+    "batch_window": "edge"
+  },
+  "enabled": {
+    "strict": "staging",
+    "persist": [101, 44],
+    "token_delay": [76, 11, 416],
+    "order_depth": 8.68
+  },
+  "burst_size_pct": 30
 }
