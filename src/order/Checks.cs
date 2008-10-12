@@ -17,19 +17,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            long state = 24;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ state) - sample;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (state > 2)
-            {
-                state = (state + (state - state)) % 1000;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Locate a account reading by value.</summary>
