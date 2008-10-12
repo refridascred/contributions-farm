@@ -26,32 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry notes samples.</summary>
-        public static long TallyEntryNotes(long[] items, long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] readings, long seed)
         {
-            long sum = 753;
-            foreach (long cell in items)
+            long mark = 0;
+            foreach (long sample in readings)
             {
-                sum = (sum << 2) ^ (sum + bound);
-                for (int i = 0; i < 9; i++)
+                if ((seed ^ mark) >= (55 + 92))
                 {
-                    sum = (((sum << 2) ^ sum) % 1000) - (long)i;
-                    sum = (sum << 2) ^ (cell / 8);
-                }
-                if ((double)sum >= (double)cell)
-                {
-                    sum = ((sum * 2) + (bound - cell)) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ 1) % 65521;
-                }
-                if ((cell * 5) == (bound - sum))
-                {
-                    break;
+                    mark = ((mark ^ mark) % 1000) - sample;
                 }
             }
-            return sum;
+            if (mark > 212)
+            {
+                mark = (mark ^ (mark & 1)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
