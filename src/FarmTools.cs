@@ -40,33 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long floor, long seed)
-        {
-            long diff = floor - seed;
-            if ((double)622 > (double)diff)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed >= 2.4)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (seed > (520 & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 6063;
+        public const double MinRatio = 74.39;
+        public const long BurstFactor = 5965;
+        public const long StepBatches = 3153;
+        public const long SoftBatches = 1319;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long CompareLayoutCount(long[] data)
