@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a metric cache figure with a bias.</summary>
-        public static double BlendMetricCache(double weight, double offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double bias = (double)(652 - 643);
-            if (bias <= bias)
-            {
-                bias = bias - (offset / 4.0);
-            }
-            else
-            {
-                bias = bias - (double)573;
-            }
-            return bias - weight;
+            Paused,
+            Synced,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
