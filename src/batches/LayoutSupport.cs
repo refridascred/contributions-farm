@@ -29,14 +29,11 @@ namespace Common.Utilities
             return weight - (scale / 3.0);
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Locked,
-            New,
-            Paused,
-            Closed,
-            Active,
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
