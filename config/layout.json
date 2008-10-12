@@ -1,5 +1,11 @@
 {
-  "warm_ttl": false,
-  "idle_threshold_pct": 5439,
-  "burst_size_count": "local"
+  "soft_retries_s": {
+    "stream_retries": "eu-west",
+    "idle_capacity": 6782,
+    "readonly": 38.44,
+    "min_size_s": 2969,
+    "base_retries_ms": "cached"
+  },
+  "max_size_count": 19.67,
+  "route_delay": "local"
 }
