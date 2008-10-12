@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = (total ^ (origin * 3)) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Done,
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Derive the next stats batches value from a seed.</summary>
