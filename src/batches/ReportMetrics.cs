@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long MinContributi = 4828;
         public const long HardCount = 616;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftMetric = "standard-v2";
-        public const long WindowInterval = 2343;
-        public const long StepTimeout = 5334;
-        public const long BatchLevel = 7850;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
