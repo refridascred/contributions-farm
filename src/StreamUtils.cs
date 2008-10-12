@@ -23,12 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
