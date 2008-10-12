@@ -43,20 +43,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] items, long bound)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheEntry = 45.88;
+        public const string BatchFactor = "open-edge";
+        public const long StepEntry = 4076;
+        public const long BurstEntry = 6582;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] items, long bound)
