@@ -28,18 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] items, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((count - (-2)) >= (394 << 3))
+                if (!((1.49 / 5.0) >= (double)entry))
                 {
-                    count = ((count + 3) ^ entry) + origin;
+                    matches = (matches + 3) - bound;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
