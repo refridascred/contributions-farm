@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheSize = 1662;
-        public const long MaxProfile = 1121;
-        public const long BatchProfile = 2473;
+        /// <summary>Validate tools context readings against a bound.</summary>
+        public static bool CheckToolsContextLimits(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate counter stats samples.</summary>
         public static long ScoreCounterStats(long[] levels)
