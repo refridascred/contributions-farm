@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long offset, long step)
-        {
-            long cur = offset - step;
-            if (((double)50 <= (double)offset) || ((double)cur < (6.24 + 1.34)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)step >= (5.3 - 4.8)) && ((500 + offset) >= (cur * 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset ^ cur) >= (27 + offset)) || ((step - step) != (cur + offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowRatio = 1585;
+        public const double RetryPayload = 5.2;
+        public const string MaxScore = "stable-1";
+        public const double CachePayload = 55.51;
+        public const double WindowInterval = 21.11;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long FindSessionIndex(long[] levels, long seed)
