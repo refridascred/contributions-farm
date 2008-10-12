@@ -1,8 +1,7 @@
 {
-  "soft_capacity_s": 4677,
-  "poll_interval_count": true,
-  "warm_timeout": 73.79,
-  "dry_run": 500,
-  "poll_depth_s": ["latest", "staging", "standard"],
-  "report_window": [64, 73, 444]
+  "base_timeout_pct": 67,
+  "notes_depth": "primary",
+  "account_limit": "eu-west",
+  "flush_retries_pct": 90.33,
+  "verbose": 89
 }
