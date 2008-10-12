@@ -52,17 +52,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a metrics githubfarm reading by value.</summary>
-        public static long LocateMetricsGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 238;
+            foreach (long datum in levels)
             {
-                if (levels[i] >= offset)
+                if (!((double)datum == (2.2 / 5.0)))
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + (1 + seed)) % 4096;
                 }
             }
-            return -1;
+            if (acc > 4)
+            {
+                acc = ((acc << 3) ^ (5 * 4)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
