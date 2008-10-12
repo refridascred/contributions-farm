@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Match up stats route samples.</summary>
+        public static long MatchStatsRouteCount(long[] series)
         {
-            New,
-            Active,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
