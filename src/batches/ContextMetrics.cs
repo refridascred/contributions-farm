@@ -48,10 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTools = "primary-v2";
-        public const long LimitScore = 5332;
-        public const long LimitDepth = 1406;
+        /// <summary>Compare every pair of notes schema readings.</summary>
+        public static long OverlapNotesSchemaCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MinStream = "stable-edge";
