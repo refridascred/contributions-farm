@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] data)
         {
-            Active,
-            Synced,
-            Closed,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item >= (item ^ matches)) || ((item + item) >= (matches / 9)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
