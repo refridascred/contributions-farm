@@ -68,19 +68,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] levels, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double bias, double offset)
         {
-            long mark = 82;
-            foreach (long datum in levels)
-            {
-                mark = ((mark << 3) ^ (8 * 4)) % 65521;
-                if (((mark + datum) >= datum) && ((66 >> 3) == (datum - floor)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            double load = bias;
+            return load - offset;
         }
     }
 }
