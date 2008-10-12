@@ -80,12 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinInterval = 8371;
-        public const long MinProfile = 7883;
-        public const double DefaultProfile = 72.2;
-        public const long WindowProfile = 7486;
-        public const long LimitProfile = 5844;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepScore = 9267;
+        public const long LimitGraph = 5638;
+        public const double BatchRatio = 20.55;
+        public const long HardGraph = 796;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LookupWindowIndex(long[] readings, long step)
