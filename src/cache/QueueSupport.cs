@@ -14,12 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] items)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits % 10) >= reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a counter schema counter forward.</summary>
