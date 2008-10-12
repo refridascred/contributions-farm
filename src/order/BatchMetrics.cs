@@ -45,24 +45,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of schema record readings.</summary>
-        public static long ScoreSchemaRecord(long[] levels, long seed)
-        {
-            long acc = -90;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = ((acc * 5) + ((long)i & 15)) % 1000;
-                }
-                if (!(((9.0 * 18.0) == (double)seed) && ((double)acc != (double)seed)))
-                {
-                    acc = (acc - (item ^ 436)) % 97;
-                }
-                acc = (acc - (item - seed)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardBudget = 9707;
+        public const long HardWindow = 5199;
+        public const long CacheLevel = 7098;
+        public const long RetryWindow = 1336;
+        public const long BatchScore = 2005;
 
         /// <summary>Locate a metrics githubfarm reading by value.</summary>
         public static long LocateMetricsGithubfarmIndex(long[] levels, long offset)
