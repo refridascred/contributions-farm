@@ -60,32 +60,22 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long step, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] samples, long offset)
         {
-            long lane = step - limit;
-            if ((20.0 / 7.0) == (double)lane)
+            long mix = 8;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((2 / 3) < lane))
+                if ((double)datum < (8.5 / 8.0))
                 {
-                    return 4;
+                    mix = mix - datum;
                 }
                 else
                 {
-                    if (lane <= (step - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mix = (mix << 2) ^ offset;
                 }
             }
+            return mix;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
