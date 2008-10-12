@@ -1,7 +1,9 @@
-id,level,state
-1,741,open
-2,46.19,27
-3,62.02,stable
-4,965,fallback
-5,353,38.63
-6,212,70
+id,token,region,ratio,score
+1,legacy,21.82,87.34,edge
+2,443,14.26,35.86,870
+3,eu-west,local,86,80.39
+4,427,87.59,33.44,50.31
+5,445,602,eu-west,427
+6,local,76.65,5.42,latest
+7,969,744,primary,27
+8,571,94.57,23.98,29.87
