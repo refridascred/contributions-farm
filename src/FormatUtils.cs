@@ -53,38 +53,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long limit, long offset)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] series, long floor)
         {
-            if ((limit >> 4) > (206 ^ offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) <= (limit & 15))
+                if (series[i] == floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (9.13 >= (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((offset << 1) != (45 % 60)) || ((limit >> 3) >= (offset % 100)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the cache channel entries that pass the check.</summary>
