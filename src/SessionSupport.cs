@@ -29,13 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Closed,
-            Synced,
-            Retry,
+            Dropped,
+            New,
             Paused,
+            Retry,
+            Active,
         }
     }
 }
