@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseSize = 3831;
-        public const double SoftChannel = 67.71;
-        public const double RetryChannel = 24.99;
-        public const double StepChannel = 21.98;
-        public const long DefaultChannel = 7972;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long origin, long floor)
+        {
+            if ((double)origin > (2.7 / 2.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((364 >= (floor - origin)) && ((double)12 > (double)floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(origin > (56 + floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
