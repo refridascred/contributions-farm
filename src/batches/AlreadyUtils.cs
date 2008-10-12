@@ -23,17 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] data, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 0;
+            foreach (long value in values)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                score = ((score - value) % 65521) + limit;
             }
-            return -1;
+            if (score > 143)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
