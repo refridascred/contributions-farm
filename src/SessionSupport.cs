@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitLevel = 630;
-        public const double BatchFactor = 41.55;
-        public const long DefaultDepth = 624;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsBounds(long[] series, long seed)
