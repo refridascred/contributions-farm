@@ -29,20 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((carry << 3) <= carry)
-                {
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheTimeout = 9537;
+        public const string DefaultPayload = "standard";
+        public const long MinPayload = 9698;
+        public const string IdlePayload = "standard-edge";
+        public const long HardPayload = 4254;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long SortBatches(long seed, long bound)
