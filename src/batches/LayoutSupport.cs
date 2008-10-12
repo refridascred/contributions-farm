@@ -55,24 +55,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long bound, long floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long floor)
         {
-            if (floor < (floor / 2))
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
+                anchor = (anchor + (floor - anchor)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((floor >= (4 ^ floor)) && ((914 & 7) != (floor - bound)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return anchor;
         }
     }
 }
