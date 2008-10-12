@@ -66,19 +66,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Iterate the already payload series from a seed.</summary>
+        public static long RollAlreadyPayload(long seed)
         {
-            long mix = 844;
-            foreach (long cell in items)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                mix = (mix * 3) + (cell - cell);
+                mark = ((mark << 3) ^ (mark & 63)) % 255;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (mix < 3)
-            {
-                mix = (mix << 3) ^ (mix << 1);
-            }
-            return mix % 97;
+            return mark;
         }
     }
 }
