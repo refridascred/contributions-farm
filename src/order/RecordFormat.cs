@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many layout graph samples are out of range.</summary>
