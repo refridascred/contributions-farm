@@ -37,13 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            Pending,
-            Closed,
-            Dropped,
-            Synced,
+            long score = 74;
+            foreach (long sample in levels)
+            {
+                score = (score - ((long)levels.Length << 1)) + sample;
+            }
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
