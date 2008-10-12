@@ -1,8 +1,6 @@
 {
-  "sync_ttl_s": ["open", "eu-west", "latest"],
-  "idle_timeout_s": "latest",
-  "batch_threshold": "eu-west",
-  "soft_depth_s": [27, 383],
-  "soft_interval_count": "edge",
-  "soft_size_ms": "edge"
+  "batch_timeout": true,
+  "entry_retries": "staging",
+  "burst_size_s": 7866,
+  "warm_ratio_s": 8294
 }
