@@ -1,17 +1,28 @@
 # entry settings
-batch_ttl: 4875
-batch_threshold:
-  poll_window_pct: false
-  flush_window:
-    - 61
-    - 452
-    - 390
-  metric_timeout: 41.68
-  retry_capacity: stable
-base_limit_pct:
-  - green
-  - cached
-  - green
-  - cached
-retry_capacity_pct: eu-west
-strict: strict
+sync_interval_s:
+  support_window:
+    payload_limit: 493
+    hard_size: 67.5
+    idle_size: 75.61
+  support_ttl: 30
+  layout_window: 9920
+  flush_threshold:
+    retry_interval_count: 50.07
+    batch_timeout:
+      - 161
+      - 192
+      - 166
+      - 11
+    command_capacity: 35.97
+    cache_timeout: 69
+verbose: 8710
+buffer_depth: 30
+strict:
+  sync_interval: primary
+  token_delay: 1024
+  max_capacity: false
+  dry_run: 250
+  schema_size:
+    batch_retries: 51.44
+    default_capacity_pct: latest
+    report_interval: true
