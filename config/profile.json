@@ -1,8 +1,21 @@
 {
-  "poll_limit_count": 1024,
-  "persist": "blue",
-  "dry_run": 1024,
-  "retry_retries": 87.82,
-  "cache_interval_pct": "primary",
-  "compress": 62.97
+  "batch_interval_ms": 100,
+  "batch_window": {
+    "warm_capacity": "latest",
+    "burst_limit_ms": "staging",
+    "counter_capacity": ["strict", "fallback"],
+    "compress": "green",
+    "format_ratio": {
+      "command_interval": 3885,
+      "hard_window": true,
+      "poll_capacity_s": 4,
+      "dry_run": "eu-west",
+      "base_limit_s": 98.75
+    },
+    "batch_capacity": ["local", "standard", "open", "strict"]
+  },
+  "verbose": [132, 76],
+  "window_interval": "standard",
+  "strict": 11.99,
+  "readonly": true
 }
