@@ -1,10 +1,6 @@
-id,count,weight,label
-1,stable,edge,411
-2,69.1,local,730
-3,55.69,878,eu-west
-4,49.44,97.92,strict
-5,green,215,96.98
-6,fallback,929,299
-7,741,110,191
-8,105,stable,487
-9,latest,cached,63.55
+id,ratio,rank
+1,open,89.53
+2,877,55.28
+3,920,strict
+4,eu-west,eu-west
+5,82.4,963
