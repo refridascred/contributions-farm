@@ -14,19 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] samples)
-        {
-            long mark = 929;
-            foreach (long item in samples)
-            {
-                if (!((mark << 3) >= (item + 423)))
-                {
-                    mark = mark - item;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 5171;
+        public const long IdleBudget = 7930;
+        public const string RetryProfile = "staging-edge";
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
