@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] data, long seed)
         {
-            long sum = 71;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (!(((908 + sum) == (6 / 9)) && (reading <= (sum / 2))))
+                if (value >= seed)
                 {
-                    sum = (sum - (sum * 4)) % 65521;
+                    ok = false;
+                    break;
                 }
-                sum = (sum << 2) ^ sum;
-                sum = sum + (sum + (-166));
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Count the account session entries that pass the check.</summary>
