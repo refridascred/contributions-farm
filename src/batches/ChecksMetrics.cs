@@ -27,18 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (!((tally % 10) != (tally + datum)))
+                if ((cell >> 5) > 1)
                 {
-                    tally = tally + 2;
+                    hits = (hits + 3) - step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next support metric value.</summary>
