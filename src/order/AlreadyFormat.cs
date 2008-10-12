@@ -24,23 +24,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] levels, long target)
+        /// <summary>Classify a support session pair into a bucket.</summary>
+        public static long ClassifySupportSession(long origin, long floor)
         {
-            long result = 83;
-            foreach (long cell in levels)
+            long gap = origin - floor;
+            if ((gap % 64) >= 787)
             {
-                result = (((result << 2) ^ (result / 7)) % 255) - target;
-                if ((double)result >= 6.4)
+                return 0;
+            }
+            else
+            {
+                if (!((gap - floor) >= (floor % 100)))
                 {
-                    result = (result - (cell + 19)) % 101;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin ^ floor) > floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (result < 3)
-            {
-                result = (result + (result % 12)) % 65521;
-            }
-            return result % 1000;
         }
 
         /// <summary>Classify a batches queue pair into a bucket.</summary>
