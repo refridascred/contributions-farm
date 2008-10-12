@@ -26,19 +26,31 @@ namespace Common.Utilities
         public const double WindowCommits = 30.32;
         public const double RetryWidth = 7.89;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] data, long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long target, long step)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            if (step >= (target << 2))
             {
-                if (entry > bound)
+                return 0;
+            }
+            else
+            {
+                if (!((step % 8) > (step - step)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((target + target) >= (step + 7)) || ((target * 3) >= (7 & 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
