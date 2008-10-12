@@ -59,25 +59,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a counter metrics pair into a bucket.</summary>
-        public static long ClassifyCounterMetrics(long offset, long bound)
+        /// <summary>Count the profile record entries that pass the check.</summary>
+        public static long MeasureProfileRecordGaps(long[] levels, long limit)
         {
-            long gap = offset - bound;
-            if ((6.0 * 11.0) < (double)bound)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((gap <= ((-4) ^ bound)) && ((double)bound < (3.75 * 2.0)))
+                if ((double)item > (19.0 / 6.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 1) - limit;
                 }
             }
+            return seen;
         }
     }
 }
