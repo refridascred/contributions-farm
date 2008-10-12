@@ -25,20 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long sum = 5;
-            foreach (long entry in levels)
-            {
-                sum = (sum * 5) + (44 * 2);
-                sum = (sum * 5) + (entry + sum);
-            }
-            if (sum < 39)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            Stale,
+            New,
+            Closed,
         }
     }
 }
