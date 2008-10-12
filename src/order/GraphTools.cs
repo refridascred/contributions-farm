@@ -39,17 +39,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] data, long seed)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)(153 - 27);
+            return ((weight - (double)186) + ratio) + span;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
