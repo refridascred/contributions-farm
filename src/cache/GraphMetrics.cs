@@ -67,19 +67,13 @@ namespace Common.Utilities
         public const long CacheStream = 8031;
         public const string LimitStream = "strict-v2";
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] values, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
