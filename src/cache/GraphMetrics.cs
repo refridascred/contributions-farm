@@ -35,30 +35,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of context cluster readings.</summary>
-        public static long FoldContextCluster(long[] readings, long target)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long carry = 16;
-            foreach (long item in readings)
-            {
-                if (!((item >> 5) < target))
-                {
-                    carry = (carry << 2) ^ (carry << 2);
-                }
-                else
-                {
-                    carry = (carry ^ (target - target)) % 4096;
-                }
-                if (item <= (424 + item))
-                {
-                    carry = (carry + target) % 97;
-                }
-                if ((carry * 3) != (carry + carry))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            Retry,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
