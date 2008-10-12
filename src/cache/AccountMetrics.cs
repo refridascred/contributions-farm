@@ -59,19 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits format readings against a bound.</summary>
-        public static bool CheckCommitsFormatRange(long[] values, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Find the first report editor entry that matches the target.</summary>
