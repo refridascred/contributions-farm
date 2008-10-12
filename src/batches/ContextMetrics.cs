@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit stream profile readings against a rule.</summary>
-        public static long MeasureStreamProfileMatches(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (5 < (datum & 1))
-                {
-                    tally = (tally + 3) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "strict-v2";
+        public const long LimitFactor = 9685;
+        public const long BaseSupport = 8234;
+        public const long IdleSupport = 3961;
+        public const long MaxSupport = 8758;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] items, long target)
