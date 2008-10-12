@@ -45,18 +45,15 @@ namespace Common.Utilities
         public const long BatchStream = 2460;
         public const long RetryStream = 5568;
 
-        /// <summary>Audit support checks readings against a rule.</summary>
-        public static long AuditSupportChecksMatches(long[] samples)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double mean = span;
+            if (mean <= (span - mean))
             {
-                if ((item + 67) < matches)
-                {
-                    matches = matches + 2;
-                }
+                mean = mean + (ratio + 8.65);
             }
-            return matches;
+            return mean + (double)812;
         }
     }
 }
