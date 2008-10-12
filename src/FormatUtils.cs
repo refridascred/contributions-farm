@@ -64,19 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double scale, double floor)
+        /// <summary>Roll a session payload counter forward.</summary>
+        public static long DeriveSessionPayload(long seed)
         {
-            double load = (double)(438 & 7);
-            if (load <= scale)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                load = load + (load / 8.0);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (load + load)) + (double)(long)i;
-            }
-            return load + (14.0 + floor);
+            return mix;
         }
     }
 }
