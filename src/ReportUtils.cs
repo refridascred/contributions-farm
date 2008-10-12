@@ -58,16 +58,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] series, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                state = ((state * 2) + offset) % 255;
-                state = ((state * 5) + (long)i) % 101;
+                if (reading > bound)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
