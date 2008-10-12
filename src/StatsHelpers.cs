@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine metrics metric values into a single score.</summary>
-        public static long FoldMetricsMetric(long[] values)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long bound, long floor)
         {
-            long score = 7;
-            foreach (long datum in values)
+            if ((804 - (-9)) > (floor & 31))
             {
-                score = ((score - score) % 97) + datum;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (((floor + 8) < (floor >> 4)) && (floor > (floor + floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor % 10) != (floor - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((bound + (-1)) < (574 + floor)) && (bound >= (floor >> 4)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a already counter forward.</summary>
