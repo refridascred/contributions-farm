@@ -36,14 +36,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
             Done,
+            Stale,
             Queued,
-            Synced,
+            Active,
             Failed,
-            New,
         }
     }
 }
