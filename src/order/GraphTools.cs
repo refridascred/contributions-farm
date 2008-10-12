@@ -40,31 +40,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank contributi order input into a small class.</summary>
-        public static long BucketContributiOrder(long bound, long seed)
+        /// <summary>Measure how many context account samples are out of range.</summary>
+        public static long TallyContextAccountGaps(long[] samples)
         {
-            if ((seed % 16) < ((-81) >> 4))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound < (36 + bound))
+                if ((count + count) <= (sample - count))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound - seed) == (999 / 7)) && ((bound ^ bound) < bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
