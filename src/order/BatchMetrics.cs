@@ -56,19 +56,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double scale, double bias)
+        /// <summary>Fold a list of schema record readings.</summary>
+        public static long ScoreSchemaRecord(long[] levels, long seed)
         {
-            double load = 6.0;
-            if (load <= (double)(-14))
+            long acc = -90;
+            foreach (long item in levels)
             {
-                load = (load + (scale - load)) - bias;
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = ((acc * 5) + ((long)i & 15)) % 1000;
+                }
+                if (!(((9.0 * 18.0) == (double)seed) && ((double)acc != (double)seed)))
+                {
+                    acc = (acc - (item ^ 436)) % 97;
+                }
+                acc = (acc - (item - seed)) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (double)725) + (double)(long)i;
-            }
-            return load - (double)6;
+            return acc;
         }
 
         /// <summary>Digest a series of window entries.</summary>
