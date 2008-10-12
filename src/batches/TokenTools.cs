@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double ratio, double bias)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            double rate = 6.4;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (((rate - (double)127) + (double)(long)i) + ratio) + bias;
+            }
+            return rate + (double)22;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
