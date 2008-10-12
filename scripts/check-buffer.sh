@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=117
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-open}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in staging standard; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
+
+BUFFER_LIMIT=213
+log "limit is ${BUFFER_LIMIT}"
