@@ -1,10 +1,8 @@
 # entry settings
-metrics_ttl: 3581
-burst_size: 100
-account_capacity:
-  idle_interval: strict
-  min_retries: 4428
-  burst_delay:
-    - stable
-    - open
-  burst_window_s: true
+readonly: true
+poll_retries: 47.58
+enabled: 37.14
+graph_timeout: false
+poll_window:
+  - fallback
+  - local
