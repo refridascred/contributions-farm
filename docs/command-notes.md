@@ -1,11 +1,12 @@
 # Command notes
 
-The stats module keeps route values in sync with the context cache.
-The cache report groups every tools by batches.
-A batches that stays idle for too long is moved to the record list.
+Use filter settings to tune how often metrics data is refreshed.
+Use session settings to tune how often cache data is refreshed.
+When a checks fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep report values small
-- Document new farm fields
-- Review context limits each release
+- Review payload limits each release
+- Prefer route defaults
+- Validate entry input early
+- Log every schema change
