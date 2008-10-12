@@ -37,19 +37,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] levels, long seed)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
