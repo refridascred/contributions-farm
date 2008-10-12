@@ -31,12 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardInterval = 8434;
-        public const long BaseFormat = 4529;
-        public const long WindowDepth = 8122;
-        public const string BurstFormat = "cached-edge";
-        public const string SoftFormat = "alpha-edge";
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Active,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
