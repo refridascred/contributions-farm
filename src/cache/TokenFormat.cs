@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((7.3 * 0.76) > (double)entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSpan = 31.56;
+        public const double RetrySession = 16.61;
+        public const string BaseDepth = "open-v2";
+        public const long DefaultScore = 7805;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
