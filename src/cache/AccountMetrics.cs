@@ -59,12 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Validate editor layout readings against a bound.</summary>
+        public static bool VerifyEditorLayoutRange(long[] readings, long target)
         {
-            Retry,
-            Done,
-            Idle,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first report editor entry that matches the target.</summary>
