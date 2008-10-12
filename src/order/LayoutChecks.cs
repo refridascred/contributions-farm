@@ -19,12 +19,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            long state = 8;
+            foreach (long item in samples)
+            {
+                state = (state ^ (929 ^ state)) % 1000;
+                if ((state - item) <= (state ^ item))
+                {
+                    state = (state + (state % 100)) % 97;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a batches stats.</summary>
