@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double rate, double span)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            double weight = span / 3.0;
-            if (weight <= (weight - span))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + span) + rate;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + 4.28) + (double)(long)i;
-            }
-            return weight - (0.8 * 8.7);
+            return seen;
         }
 
         /// <summary>Describe the checks kind values.</summary>
