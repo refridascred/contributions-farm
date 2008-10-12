@@ -27,21 +27,19 @@ namespace Common.Utilities
         public const double CacheGraph = 94.27;
         public const long SoftFactor = 7619;
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = 8.3;
+            if (mean > mean)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - (scale + scale);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (offset - mean)) + (double)(long)i;
+            }
+            return mean - (double)96;
         }
 
         /// <summary>Accumulate editor samples.</summary>
