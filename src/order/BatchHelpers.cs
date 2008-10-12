@@ -38,18 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] samples)
+        /// <summary>Adjust a notes checks reading.</summary>
+        public static double AdjustNotesChecks(double weight, double span)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double gain = weight;
+            if (gain > span)
             {
-                if (((hits - hits) == (126 + value)) && ((value / 7) == (hits % 12)))
-                {
-                    hits = hits + 1;
-                }
+                gain = gain - weight;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain + (2.71 / 6.0);
         }
     }
 }
