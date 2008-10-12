@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const double DefaultSize = 55.25;
         public const long BaseBatch = 853;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] data, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (datum > target)
+                if (!((963 - value) >= (value / 7)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
