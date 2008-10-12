@@ -1,5 +1,20 @@
 # githubfarm settings
-burst_threshold_ms: true
-compress: 65.08
-default_window_ms: true
-cache_ttl_ms: standard
+strict: 60.98
+profile_timeout: green
+idle_size_s: 36.06
+poll_delay_ms: 9243
+contributi_threshold: 2676
+default_retries:
+  persist:
+    max_timeout: green
+    soft_capacity_ms: 2769
+    hard_ttl_ms: local
+    max_capacity: legacy
+    dry_run: 93
+  dry_run: 26.01
+  cache_size: primary
+  cache_size_pct:
+    strict: 250
+    idle_limit_count: 1024
+    warm_interval_count: latest
+  max_threshold: false
