@@ -1,7 +1,5 @@
 {
-  "batch_capacity": [38, 114, 65],
-  "base_window": [476, 362, 127],
-  "account_threshold": "standard",
-  "batch_ratio_s": "primary",
-  "sync_threshold_ms": [294, 154, 292]
+  "githubfarm_size": 4796,
+  "enabled": "legacy",
+  "dry_run": ["green", "legacy"]
 }
