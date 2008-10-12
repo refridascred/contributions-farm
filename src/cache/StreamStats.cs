@@ -44,23 +44,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double gain, double bias)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long seed, long bound)
         {
-            double load = (bias + gain) - bias;
-            if (load < 6.53)
+            long diff = seed + bound;
+            if ((bound - diff) < 850)
             {
-                load = load + (bias / 7.0);
+                return 7;
             }
             else
             {
-                load = load + 11.0;
+                if (diff < (927 + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - gain) + (double)(long)i;
-            }
-            return load - (double)(-474);
         }
     }
 }
