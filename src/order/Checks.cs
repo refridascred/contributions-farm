@@ -55,19 +55,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] values, long step)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 4875;
+        public const long LimitLevel = 5007;
+        public const long IdleInterval = 9998;
+        public const long BurstFactor = 3544;
     }
 }
