@@ -32,14 +32,23 @@ namespace Common.Utilities
         public const double SoftCache = 97.07;
         public const long BaseTimeout = 9021;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Scale a githubfarm queue figure with a bias.</summary>
+        public static double ProjectGithubfarmQueue(double weight, double span)
         {
-            Idle,
-            Retry,
-            New,
-            Stale,
-            Pending,
+            double scale = span * 16.0;
+            if (scale >= weight)
+            {
+                scale = scale - 1.0;
+            }
+            else
+            {
+                scale = scale + (double)326;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
