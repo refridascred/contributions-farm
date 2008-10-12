@@ -62,21 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = -75;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((9.0 / 3.0) != (double)cell)
                 {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state - cell) % 65521;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the window class values.</summary>
