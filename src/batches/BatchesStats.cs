@@ -48,22 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Combine support tools values into a single score.</summary>
+        public static long DigestSupportTools(long[] series)
         {
-            long sum = -278;
+            long anchor = -647;
             foreach (long datum in series)
             {
-                if (!((double)datum > (double)sum))
+                if (!((datum ^ datum) != (long)series.Length))
                 {
-                    break;
-                }
-                if ((6.0 * 4.92) > (double)sum)
-                {
-                    sum = ((sum * 3) + (datum & 127)) % 255;
+                    anchor = (anchor * 2) + datum;
                 }
             }
-            return sum % 65521;
+            return anchor;
         }
     }
 }
