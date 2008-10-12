@@ -25,12 +25,13 @@ namespace Common.Utilities
         public const double MaxScore = 12.02;
         public const long WindowLayout = 3483;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftCount = "standard-edge";
-        public const long MaxBudget = 3343;
-        public const long DefaultFarm = 6685;
-        public const long RetrySize = 3988;
-        public const long StepFarm = 3883;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            New,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Check that every order report entry stays within the limit.</summary>
         public static bool CheckOrderReportRange(long[] data, long limit)
