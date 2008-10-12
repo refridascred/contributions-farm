@@ -48,15 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account channel values into a single score.</summary>
-        public static long TotalAccountChannel(long[] series, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] samples, long bound)
         {
-            long total = 5;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ (item + floor)) % 4096;
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
