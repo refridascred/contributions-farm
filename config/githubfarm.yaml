@@ -1,22 +1,13 @@
 # githubfarm settings
-hard_size_ms: latest
-compress: 9
-max_ratio_s: primary
-soft_timeout_pct: false
-dry_run: 100
-readonly:
-  burst_threshold_s:
-    stats_delay: stable
-    tools_threshold:
-      - staging
-      - edge
-    base_ttl: latest
-    sync_ttl_count: 100
-    hard_ratio_s: 250
-    burst_interval: 30
-  sync_retries: 9188
-  poll_capacity_ms:
-    sync_interval_ms: eu-west
-    burst_ttl_count: 55.81
-    hard_delay_count: 36.84
-  metric_depth: 250
+max_window_count: primary
+base_limit: edge
+persist: green
+readonly: 100
+audit: 16
+dry_run:
+  readonly: staging
+  batch_size: 9342
+  poll_interval: 80.16
+  compress: 46.58
+  warm_window_s: staging
+  already_limit: 0.54
