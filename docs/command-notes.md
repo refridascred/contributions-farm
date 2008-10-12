@@ -1,15 +1,14 @@
 # Command notes
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Use batch settings to tune how often entry data is refreshed.
-The token report groups every queue by tools.
+Each profile is validated before it reaches the format queue.
+Run the batch check before changing any schema limits.
 
-Keep record and schema names short and lowercase.
-The stats report groups every context by graph.
-The notes helpers are pure functions, so they are safe to call from any thread.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the token check before changing any record limits.
+When a stats fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer context defaults
-- Review account limits each release
-- Document new tools fields
+- Keep account values small
+- Review session limits each release
+- Validate record input early
