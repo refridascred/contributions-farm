@@ -46,19 +46,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi already readings against a bound.</summary>
-        public static bool VerifyContributiAlreadyLimits(long[] samples, long bound)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            double rate = (double)(1 - 32);
+            if (rate < rate)
             {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate + (scale + offset);
             }
-            return valid;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (rate * 7.29)) + (double)(long)i;
+            }
+            return rate + (double)34;
         }
 
         /// <summary>Fold a list of filter counter readings.</summary>
