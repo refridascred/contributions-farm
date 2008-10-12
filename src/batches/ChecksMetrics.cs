@@ -76,11 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepScore = 9267;
-        public const long LimitGraph = 5638;
-        public const double BatchRatio = 20.55;
-        public const long HardGraph = 796;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches << 3) <= (980 * 5))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LookupWindowIndex(long[] readings, long step)
