@@ -67,22 +67,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (reading > bound)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryTimeout = 1896;
+        public const string WindowToken = "latest-v2";
+        public const double IdleToken = 30.37;
     }
 }
