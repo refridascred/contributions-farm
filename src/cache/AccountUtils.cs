@@ -20,15 +20,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Roll a cluster queue counter forward.</summary>
+        public static long SeriesClusterQueue(long limit)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                anchor = anchor ^ (anchor << 3);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the window state values.</summary>
