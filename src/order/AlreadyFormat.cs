@@ -44,27 +44,18 @@ namespace Common.Utilities
             return scale - (scale - 9.9);
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Count the command route entries that pass the check.</summary>
+        public static long TallyCommandRouteMatches(long[] levels, long step)
         {
-            long sum = 1;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (entry > (long)readings.Length)
+                if (step > value)
                 {
-                    sum = sum - ((-825) - sum);
-                }
-                sum = (sum * 4) + entry;
-                if ((2.0 / 3.0) <= (double)entry)
-                {
-                    sum = (sum * 3) + (sum / 9);
-                }
-                else
-                {
-                    sum = ((sum * 2) + sum) % 255;
+                    matches = matches + 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
