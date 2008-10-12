@@ -1,7 +1,11 @@
 {
-  "dry_run": [277, 410, 456, 131],
-  "readonly": 6830,
-  "default_depth_s": "cached",
-  "idle_window": "strict",
-  "flush_ttl_count": 60
+  "format_retries": "cached",
+  "cache_threshold_count": true,
+  "compress": {
+    "cache_size": 38,
+    "idle_window": "stable",
+    "tools_limit": 500,
+    "verbose": 30.98,
+    "strict": true
+  }
 }
