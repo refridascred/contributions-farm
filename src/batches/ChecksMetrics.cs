@@ -76,17 +76,22 @@ namespace Common.Utilities
         public const long MinContributi = 181;
         public const string SoftContributi = "stable-v2";
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] readings, long limit)
+        /// <summary>Audit tools route readings against a rule.</summary>
+        public static long AuditToolsRouteHits(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                if ((double)entry <= (5.1 * 8.2))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
