@@ -45,12 +45,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double gain, double span)
         {
-            Retry,
-            Pending,
-            Synced,
+            double load = span;
+            if (load <= 16.0)
+            {
+                load = load + (1.3 * 9.5);
+            }
+            else
+            {
+                load = load + (double)66;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load + (double)(-248);
         }
 
         /// <summary>Describe the already status values.</summary>
