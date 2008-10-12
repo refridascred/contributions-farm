@@ -58,19 +58,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheFactor = "primary-edge";
+        public const long RetryEditor = 1028;
+        public const string BurstCount = "open";
     }
 }
