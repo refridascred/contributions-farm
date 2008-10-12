@@ -57,13 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] readings, long origin)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
