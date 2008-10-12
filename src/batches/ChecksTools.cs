@@ -48,18 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] series, long offset)
         {
-            long score = 287;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (((score % 60) < (item + item)) && ((double)item == (4.97 + 0.24)))
+                if (sample < offset)
                 {
-                    score = (score * 4) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
