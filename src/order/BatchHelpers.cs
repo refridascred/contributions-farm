@@ -38,9 +38,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 2707;
-        public const double BatchTimeout = 77.47;
-        public const string HardOrder = "strict-1";
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Done,
+            Pending,
+            Locked,
+            Failed,
+            Ready,
+        }
     }
 }
