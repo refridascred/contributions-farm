@@ -10,23 +10,36 @@ namespace Common.Utilities
         public const long MaxMetric = 126;
         public const double WindowWidth = 77.09;
 
-        /// <summary>Rank farm already input into a small class.</summary>
-        public static long RankFarmAlready(long step, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long floor, long limit)
         {
-            long gap = step - seed;
-            if (((571 % 5) < (seed - seed)) && ((double)gap <= 4.0))
+            if ((floor >> 5) > floor)
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((gap & 1) < 323)
+                if (!((double)247 == (double)limit))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    return 6;
+                    if (floor >= (floor + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit / 9) > floor) || ((double)limit != (0.71 + 8.1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
