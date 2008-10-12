@@ -45,21 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = -2;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value + total) == (441 ^ value))
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 2) ^ value) - limit;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
