@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheTimeout = 6960;
-        public const long WindowBudget = 2322;
-        public const double StepSpan = 38.18;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally - reading) < tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamBounds(long[] values, long floor)
