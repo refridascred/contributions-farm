@@ -70,13 +70,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public double Label { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "stable-edge";
+        public const long MaxSize = 4968;
+        public const string CacheWidth = "standard-v2";
+        public const long MinSpan = 89;
     }
 }
