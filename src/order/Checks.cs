@@ -47,19 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double weight, double bias)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double bias2 = bias;
-            if (bias2 > bias)
-            {
-                bias2 = (bias2 - bias) + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (12.0 - bias2)) + (double)(long)i;
-            }
-            return bias2 - (double)18;
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
