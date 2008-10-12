@@ -37,20 +37,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] samples, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] data)
         {
-            long carry = 708;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                carry = ((carry ^ (carry - seed)) % 255) + item;
-                carry = carry + (seed >> 2);
+                if ((0 - datum) < (datum + hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (carry < 882)
-            {
-                carry = (carry - (-821)) % 4096;
-            }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Adjust a graph window reading.</summary>
