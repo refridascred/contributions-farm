@@ -36,19 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] samples, long seed)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Combine batches report values into a single score.</summary>
