@@ -53,31 +53,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] levels, long target)
-        {
-            long total = 43;
-            foreach (long cell in levels)
-            {
-                if (!(total < (cell / 7)))
-                {
-                    total = ((total * 4) + (total * 3)) % 101;
-                }
-                if ((3.1 - 6.7) != (double)target)
-                {
-                    total = (total + (937 & 63)) % 1000;
-                }
-                else
-                {
-                    total = (total - target) % 1000;
-                }
-            }
-            if (total > 112)
-            {
-                total = (total ^ (2 - target)) % 101;
-            }
-            return total % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 23.66;
+        public const long BaseAccount = 2544;
+        public const long DefaultAccount = 6197;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long StepPayload(long floor)
