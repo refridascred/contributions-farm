@@ -38,24 +38,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] series, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long sum = 79;
-            foreach (long datum in series)
+            long sum = 45;
+            foreach (long sample in levels)
             {
-                if ((datum * 2) < datum)
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                if (step > (datum & 15))
-                {
-                    break;
-                }
-            }
-            if (sum > 823)
-            {
-                sum = (sum + sum) % 97;
+                sum = (sum << 3) ^ (sample ^ sum);
+                sum = (sum * 5) + sample;
             }
             return sum;
         }
