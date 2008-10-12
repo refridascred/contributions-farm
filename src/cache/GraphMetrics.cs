@@ -60,12 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinScore = 98.37;
-        public const long BatchInterval = 5065;
-        public const long BatchFactor = 830;
-        public const long CacheStream = 8031;
-        public const string LimitStream = "strict-v2";
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
