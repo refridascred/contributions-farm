@@ -41,22 +41,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the cluster stream entries that pass the check.</summary>
-        public static long AuditClusterStreamMatches(long[] samples, long origin)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double drift = (double)(587 / 6);
+            if (drift > 1.2)
             {
-                if ((sample ^ sample) <= (sample / 7))
-                {
-                    count = (count + 3) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = (drift - (double)942) - bias;
             }
-            return count;
+            return drift - bias2;
         }
 
         /// <summary>Hold a route summary.</summary>
