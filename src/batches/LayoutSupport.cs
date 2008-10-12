@@ -12,12 +12,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "local-edge";
-        public const long MinFactor = 9750;
-        public const double DefaultNotes = 79.94;
-        public const double WindowNotes = 33.41;
-        public const long BaseNotes = 9029;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 9703;
+        public const long RetryRatio = 5878;
+        public const double WindowCounter = 92.1;
+        public const long DefaultCounter = 4939;
 
         /// <summary>Adjust a stream context reading.</summary>
         public static double SmoothStreamContext(double scale, double offset)
