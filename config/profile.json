@@ -1,7 +1,7 @@
 {
-  "flush_interval": "cached",
-  "readonly": ["fallback", "stable", "local", "standard"],
-  "buffer_window": [30, 346, 19, 441],
-  "channel_window": [361, 301, 102, 50],
-  "stats_timeout": "open"
+  "hard_size_pct": "strict",
+  "sync_interval_s": 48,
+  "enabled": ["stable", "legacy", "blue"],
+  "default_size_ms": true,
+  "dry_run": "strict"
 }
