@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] series)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (!!((sample & 3) >= sample))
+                if (datum != limit)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
