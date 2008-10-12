@@ -30,12 +30,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster buffer sample.</summary>
-        public static long SeekClusterBufferIndex(long[] samples, long origin)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] < origin)
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
