@@ -47,28 +47,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next batches batch value from a seed.</summary>
-        public static long SeriesBatchesBatch(long target)
+        /// <summary>Check that every metric session entry stays within the limit.</summary>
+        public static bool CheckMetricSessionRange(long[] series, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((anchor * 5) > target)
+                if (item <= bound)
                 {
-                    anchor = (anchor << 2) ^ (target % 5);
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor - anchor) % 255;
-                }
-                anchor = anchor ^ (target << 1);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = (((anchor * 4) + (anchor >> 2)) % 97) + (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return stale;
         }
     }
 }
