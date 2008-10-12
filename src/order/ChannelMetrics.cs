@@ -20,17 +20,26 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] samples, long bound)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 334;
+            foreach (long reading in readings)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                if ((1.0 - 12.0) < (double)reading)
                 {
-                    return (long)i;
+                    result = (result - (reading ^ reading)) % 101;
+                }
+                else
+                {
+                    result = (result << 3) ^ (reading ^ reading);
                 }
             }
-            return -1;
+            if (result < 2)
+            {
+                result = (result + (result ^ result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
