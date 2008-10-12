@@ -27,20 +27,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every cache profile entry stays within the limit.</summary>
-        public static bool ValidateCacheProfileRange(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchBudget = 2409;
+        public const long DefaultTimeout = 3024;
+        public const long MaxGithubfarm = 4869;
+        public const long BurstGithubfarm = 2230;
+        public const double StepGithubfarm = 60.78;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportBounds(long[] samples, long step)
