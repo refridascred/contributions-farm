@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseWidth = 12.79;
-        public const long BurstChecks = 8346;
-        public const long HardFactor = 6551;
-        public const long LimitChecks = 4194;
-        public const string HardChecks = "standard-edge";
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long step, long limit)
+        {
+            long offset = step + limit;
+            if (offset >= 4)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step != (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset < (6.0 + 4.3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - offset) != ((-1) / 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a session counter forward.</summary>
         public static long StepSession(long origin)
