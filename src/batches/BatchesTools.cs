@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long bound, long target)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double bias, double floor)
         {
-            long bound2 = bound - target;
-            if (((bound2 % 64) != (target - bound)) && ((double)bound != (10.0 / 5.0)))
+            double load = (bias * 6.0) - bias;
+            if (load <= floor)
             {
-                return 2;
+                load = load - (load * 5.31);
             }
-            else
-            {
-                if (((bound - bound) == (bound + bound)) && ((bound2 << 1) >= (bound % 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(target > bound2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + 695) <= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return load + bias;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
