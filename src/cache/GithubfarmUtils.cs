@@ -19,23 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] items, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] data)
         {
-            long result = 8;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((double)result < 8.02)
+                if ((6.02 < (double)seen) || (((seen - 507) >= (entry - seen)) && ((seen - entry) >= (entry - seen))))
                 {
-                    result = result + (result + datum);
-                }
-                result = (result * 4) + (result + (long)items.Length);
-                if ((result / 4) < (bound - (-302)))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a already options.</summary>
