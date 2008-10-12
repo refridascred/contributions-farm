@@ -19,21 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report checks samples.</summary>
-        public static long PairReportChecksCount(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 57;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((11.0 > (double)sample) && ((sample ^ sample) >= ((-58) ^ sample)))
                 {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark + (4 - mark);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (6 >> 2)) % 4096;
                 }
             }
-            return tally;
+            if (mark < 411)
+            {
+                mark = (mark << 2) ^ (mark + (long)items.Length);
+            }
+            return mark;
         }
 
         /// <summary>Derive the next farm already value from a seed.</summary>
