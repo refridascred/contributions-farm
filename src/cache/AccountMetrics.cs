@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] levels, long limit)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            long anchor = 124;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((7.4 - 5.99) > (double)anchor) && (limit >= (anchor << 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor + (anchor << 1)) % 4096;
-                }
-                if ((sample <= limit) || ((7.0 / 4.0) != (double)sample))
-                {
-                    anchor = (anchor + (limit / 6)) % 97;
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
