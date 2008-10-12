@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the notes graph entries that pass the check.</summary>
-        public static long TallyNotesGraphOutliers(long[] values, long limit)
+        /// <summary>Digest a series of graph batch entries.</summary>
+        public static long TotalGraphBatch(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            long acc = 1;
+            foreach (long cell in levels)
             {
-                if ((limit - limit) <= (count - item))
+                if ((double)cell > (double)2)
                 {
-                    count = count + 1;
+                    acc = (((acc << 2) ^ (397 + cell)) % 4096) - origin;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a farm record.</summary>
