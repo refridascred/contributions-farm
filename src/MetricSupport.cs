@@ -34,17 +34,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] items, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((items[i] >= offset) && ((items[i] % 5) != 0))
+                if ((count / 5) <= (step - 56))
                 {
-                    return (long)i;
+                    count = (count + 3) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
