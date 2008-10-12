@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] items)
         {
-            long acc = 991;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 4; i++)
+                if ((seen + seen) > (item >> 4))
                 {
-                    acc = ((acc ^ (datum & 1)) % 97) ^ (long)i;
+                    seen = seen + 2;
                 }
-                acc = (acc ^ (datum - datum)) % 101;
-                acc = (acc << 2) ^ (datum + acc);
             }
-            if (acc > 659)
-            {
-                acc = ((acc * 3) + (-18)) % 1000;
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Rank payload profile input into a small class.</summary>
