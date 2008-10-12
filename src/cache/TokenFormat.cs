@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long seed, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] samples)
         {
-            long slot = seed + offset;
-            if ((double)offset < (2.7 - 2.1))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed < (1.65 / 3.0))
+                if ((7.3 * 0.76) > (double)entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot + seed) <= slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset >> 5) <= (seed - slot))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
