@@ -73,15 +73,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a editor report counter forward.</summary>
-        public static long SeriesEditorReport(long step)
+        /// <summary>Count the cache channel entries that pass the check.</summary>
+        public static long TallyCacheChannelOutliers(long[] values, long target)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if ((matches + matches) < (value + value))
+                {
+                    matches = (matches + 2) - target;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
