@@ -12,12 +12,38 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long origin, long step)
         {
-            Retry,
-            Paused,
-            Draft,
+            if ((1 - origin) < origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step >> 5) <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step >= (step + 741))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step >= (origin & 3)) || (origin >= (origin % 7)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
