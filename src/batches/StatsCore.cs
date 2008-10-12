@@ -51,39 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric batches input into a small class.</summary>
-        public static long GradeMetricBatches(long seed, long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long offset = seed + limit;
-            if (((limit ^ seed) == (offset / 4)) || ((seed ^ seed) < (seed + 12)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (552 >= ((-883) + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit & 127) >= (limit + limit)) || ((seed + seed) == (limit - offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset <= (offset << 1)) || ((10.0 * 3.86) == (double)limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Fold a list of notes tools readings.</summary>
