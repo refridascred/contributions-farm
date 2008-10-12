@@ -65,24 +65,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long seed, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] levels, long origin)
         {
-            if ((6.9 + 6.74) > (5.9 - 10.0))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 31) != (78 - seed))
+                if (origin <= count)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 2) ^ item;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a editor report counter forward.</summary>
