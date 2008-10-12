@@ -53,18 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Derive the next queue format value from a seed.</summary>
+        public static long SeriesQueueFormat(long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (((9.32 - 16.0) > (17.0 / 9.0)) && ((6.9 - 2.0) != (double)cell))
-                {
-                    count = count + 2;
-                }
+                carry = (carry + ((long)i % 16)) % 97;
+                carry = (carry + floor) % 65521;
+                carry = ((carry << 3) ^ (floor >> 1)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
     }
 }
