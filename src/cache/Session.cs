@@ -37,21 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                long offset = mark;
-                if ((double)mark > (7.19 + 11.0))
-                {
-                    mark = (mark ^ offset) % 1000;
-                }
-                mark = (mark - (bound + mark)) % 65521;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
