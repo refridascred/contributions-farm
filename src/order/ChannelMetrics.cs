@@ -42,21 +42,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long limit, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = limit + bound;
+            if ((bound > limit) && ((bound >> 3) > limit))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((18.0 - 6.01) >= (double)limit)
                 {
-                    if ((series[i] ^ series[j]) == 4)
+                    return 8;
+                }
+                else
+                {
+                    if ((cur > bound) && ((limit * 2) <= (bound >> 1)))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit ^ bound) == (bound + cur))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
