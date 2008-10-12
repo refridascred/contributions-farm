@@ -1,7 +1,8 @@
 {
-  "retry_ratio": 3.05,
-  "counter_timeout": false,
-  "payload_window": 41,
-  "account_limit": 87.58,
-  "sync_timeout_ms": "staging"
+  "compress": ["stable", "primary", "cached"],
+  "enabled": "open",
+  "idle_depth_count": false,
+  "retry_threshold_count": 1880,
+  "flush_ratio_ms": "local",
+  "sync_limit": false
 }
