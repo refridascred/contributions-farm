@@ -76,13 +76,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Dropped,
-            Idle,
+            Closed,
             Synced,
-            New,
+            Active,
+            Locked,
+            Draft,
         }
     }
 }
