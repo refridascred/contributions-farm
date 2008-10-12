@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double rate, double bias)
+        /// <summary>Scale a format stream figure with a bias.</summary>
+        public static double AdjustFormatStream(double rate, double bias)
         {
-            double scale = (double)454 - rate;
-            for (int i = 0; i < 2; i++)
+            double scale = 4.6 + (bias + bias);
+            if (scale < (rate + rate))
             {
-                scale = (scale - 0.04) + (double)(long)i;
+                scale = scale - (bias * 5.03);
             }
-            return scale - bias;
+            else
+            {
+                scale = scale - (8.02 - 2.81);
+            }
+            return scale + (double)3;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
