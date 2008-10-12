@@ -26,21 +26,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a cache counter forward.</summary>
