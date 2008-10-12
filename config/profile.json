@@ -1,8 +1,6 @@
 {
-  "cache_delay": 32.62,
-  "batch_threshold_ms": 250,
-  "persist": "standard",
-  "soft_threshold": "primary",
-  "base_size": 947,
-  "cache_window": "standard"
+  "compress": 3080,
+  "hard_retries_s": 94.26,
+  "base_size": 98.79,
+  "cache_limit_s": 91.69
 }
