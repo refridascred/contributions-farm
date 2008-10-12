@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double weight, double bias)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] values)
         {
-            double bias2 = bias;
-            if (bias2 >= (double)708)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                bias2 = (bias2 + (bias * 0.61)) - weight;
+                if (!((6.0 / 7.0) <= (double)seen))
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias2 + (5.47 * 8.4);
+            return seen;
         }
 
         /// <summary>Match up queue samples.</summary>
