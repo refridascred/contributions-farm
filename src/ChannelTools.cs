@@ -23,21 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 317;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (((acc << 3) ^ (step << 3)) % 255) ^ reading;
             }
-            return seen;
+            if (acc < 190)
+            {
+                acc = acc - (step >> 2);
+            }
+            return acc % 97;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
