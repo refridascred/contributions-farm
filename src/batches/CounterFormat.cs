@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank command counter input into a small class.</summary>
-        public static long BucketCommandCounter(long bound, long offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long edge = bound + offset;
-            if ((bound & 3) <= (offset / 8))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((edge + 4) <= 51))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)bound > (4.76 * 8.89)) || (6 <= (offset >> 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Closed,
+            Active,
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the queue status values.</summary>
