@@ -1,12 +1,8 @@
 # githubfarm settings
-idle_delay:
-  - fallback
-  - blue
+poll_delay_ms: 96.03
+profile_depth:
+  - cached
   - latest
-  - eu-west
-persist:
-  - 391
-  - 317
-dry_run: eu-west
-burst_ttl_count: local
-metric_limit: 1024
+  - staging
+  - standard
+soft_ttl_ms: 5440
