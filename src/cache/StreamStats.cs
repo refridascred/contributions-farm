@@ -29,22 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] series, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((hits > (item ^ offset)) && ((3.71 + 2.65) < (double)item))
+                if ((carry << 3) <= carry)
                 {
-                    hits = hits + 2;
+                    break;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Blend two metric measurements.</summary>
