@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 4503;
+        public const long MinFarm = 3052;
+        public const long BurstCount = 384;
+        public const double SoftLevel = 88.48;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
