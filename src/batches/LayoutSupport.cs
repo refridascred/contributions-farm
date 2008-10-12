@@ -12,20 +12,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double ratio, double floor)
-        {
-            double weight = ratio;
-            if (weight < (floor + floor))
-            {
-                weight = weight + (weight - weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight - 5.0;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "local-edge";
+        public const long MinFactor = 9750;
+        public const double DefaultNotes = 79.94;
+        public const double WindowNotes = 33.41;
+        public const long BaseNotes = 9029;
 
         /// <summary>Adjust a stream context reading.</summary>
         public static double SmoothStreamContext(double scale, double offset)
