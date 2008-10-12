@@ -33,22 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long offset, long floor)
         {
-            long mix = 708;
-            foreach (long entry in values)
+            if ((11.0 + 8.45) >= (double)floor)
             {
-                if (((double)mix >= 1.4) || ((mix % 3) < (mix >> 2)))
+                return 7;
+            }
+            else
+            {
+                if ((offset * 2) <= (offset << 3))
                 {
-                    mix = ((mix ^ mix) % 255) ^ entry;
+                    return 8;
+                }
+                else
+                {
+                    if ((326 << 1) >= floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((14.0 * 4.12) == (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mix > 4)
-            {
-                mix = ((mix * 2) + (mix ^ mix)) % 4096;
-            }
-            return mix;
         }
 
         /// <summary>Combine account channel values into a single score.</summary>
