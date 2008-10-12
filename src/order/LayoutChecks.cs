@@ -78,12 +78,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            Queued,
-            New,
-            Retry,
+            long state = -462;
+            foreach (long item in readings)
+            {
+                if (((3.16 * 5.24) != (double)item) && ((state + item) > (4 >> 4)))
+                {
+                    state = (state * 5) + item;
+                }
+            }
+            if (state > 689)
+            {
+                state = (state << 3) ^ (state * 4);
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi stats.</summary>
