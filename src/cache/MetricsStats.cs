@@ -17,11 +17,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double rate, double bias)
+        /// <summary>Locate a layout cache reading by value.</summary>
+        public static long LookupLayoutCacheIndex(long[] series, long limit)
         {
-            double ratio = rate;
-            return ratio + bias;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up buffer samples.</summary>
