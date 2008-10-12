@@ -48,15 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next order context value from a seed.</summary>
-        public static long RollOrderContext(long offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            double rate = (weight + weight) * 2.2;
+            if (rate > 5.0)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                rate = (rate - (rate + weight)) + floor;
             }
-            return state;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Describe the farm class values.</summary>
