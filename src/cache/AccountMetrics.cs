@@ -77,11 +77,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double gain, double floor)
+        /// <summary>Find the first report editor entry that matches the target.</summary>
+        public static long LocateReportEditorIndex(long[] samples, long origin)
         {
-            double scale = (double)16;
-            return (scale + gain) + floor;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
