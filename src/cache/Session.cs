@@ -35,22 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] data, long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((entry - entry) == (bound - seen)) && ((seen + seen) != (bound - seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
