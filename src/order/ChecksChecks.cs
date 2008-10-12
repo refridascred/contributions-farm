@@ -28,10 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 94;
-        public const double LimitStream = 85.88;
-        public const double CacheScore = 72.48;
-        public const string CacheBudget = "local";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseFactor = 9256;
+        public const long HardTimeout = 8198;
+        public const long LimitMetric = 7613;
+        public const string IdleMetric = "staging-v2";
     }
 }
