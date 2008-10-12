@@ -1,4 +1,15 @@
 # entry settings
-batch_timeout_s: legacy
-checks_depth: eu-west
-audit: true
+burst_timeout:
+  - fallback
+  - open
+  - fallback
+  - standard
+compress: 3430
+dry_run: 13
+commits_threshold:
+  - 487
+  - 298
+  - 90
+  - 232
+sync_size_count: 8131
+layout_delay: legacy
