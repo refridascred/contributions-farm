@@ -26,18 +26,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many account session samples are out of range.</summary>
-        public static long CountAccountSessionMatches(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((2.5 / 8.0) >= (double)entry)
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 94;
+        public const double LimitStream = 85.88;
+        public const double CacheScore = 72.48;
+        public const string CacheBudget = "local";
     }
 }
