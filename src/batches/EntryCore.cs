@@ -66,20 +66,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Fold a list of farm githubfarm readings.</summary>
+        public static long ScoreFarmGithubfarm(long[] series)
         {
-            long anchor = 0;
-            foreach (long datum in items)
+            long carry = 710;
+            foreach (long datum in series)
             {
-                anchor = (anchor + (anchor ^ anchor)) % 4096;
-                if (((long)items.Length >> 4) >= anchor)
+                if ((carry ^ carry) <= (carry >> 5))
                 {
-                    continue;
+                    carry = ((carry ^ carry) % 1000) + datum;
                 }
-                anchor = anchor - datum;
             }
-            return anchor;
+            return carry;
         }
     }
 }
