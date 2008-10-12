@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Accumulate tools metric samples.</summary>
+        public static long FoldToolsMetric(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 94;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(366 >= (datum - 277)))
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result * 4) + (datum - datum)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (result * 4)) % 65521;
+                }
+                if (91 > (datum / 3))
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a format info.</summary>
