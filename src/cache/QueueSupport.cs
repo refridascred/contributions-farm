@@ -28,19 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter schema counter forward.</summary>
-        public static long StepCounterSchema(long origin)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((6 ^ total) > (69 << 2))
-                {
-                    total = ((total << 2) ^ ((long)i - total)) % 255;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
