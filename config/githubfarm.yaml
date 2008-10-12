@@ -1,4 +1,9 @@
 # githubfarm settings
-cache_depth_s: staging
-batch_interval_ms: true
-stats_timeout: 16.97
+min_size: 79
+sync_limit_pct:
+  soft_capacity_pct: false
+  cache_retries_pct: true
+  enabled: blue
+  sync_threshold: fallback
+base_threshold: 50
+compress: legacy
