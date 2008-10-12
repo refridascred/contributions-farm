@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every payload layout entry stays within the limit.</summary>
-        public static bool ValidatePayloadLayoutRange(long[] levels, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (reading >= limit)
+                if (!((datum / 5) >= (302 + tally)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
