@@ -1,5 +1,8 @@
 {
-  "graph_timeout": ["strict", "strict"],
-  "verbose": 56,
-  "soft_depth": "open"
+  "base_retries_count": true,
+  "base_threshold_s": "edge",
+  "idle_interval_pct": [64, 201, 380, 40],
+  "flush_ttl": 4761,
+  "idle_threshold": 1024,
+  "poll_limit": "green"
 }
