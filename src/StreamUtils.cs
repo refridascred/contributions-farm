@@ -55,12 +55,23 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            Active,
-            Ready,
-            Draft,
+            long score = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)score != (8.0 / 9.0))
+                {
+                    score = (score - (52 - floor)) % 101;
+                }
+                if (!(4.71 >= (double)score))
+                {
+                    score = ((score << 3) ^ score) % 255;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
