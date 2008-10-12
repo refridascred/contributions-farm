@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] values, long offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((double)305 >= (double)offset) || ((offset - 6) <= (offset & 127)))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            Stale,
+            Active,
+            New,
+            Idle,
         }
 
         /// <summary>Adjust a stream context reading.</summary>
