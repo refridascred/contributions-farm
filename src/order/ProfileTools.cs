@@ -29,18 +29,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] values)
+        /// <summary>Rank stats graph input into a small class.</summary>
+        public static long BucketStatsGraph(long floor, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long step = floor ^ target;
+            if (((8 - target) < 18) && ((floor / 3) >= target))
             {
-                if (tally <= (cell << 2))
+                return 0;
+            }
+            else
+            {
+                if ((target / 5) != (9 << 1))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((step ^ floor) >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate account samples.</summary>
