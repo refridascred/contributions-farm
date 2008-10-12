@@ -78,18 +78,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] readings, long floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((floor / 5) > hits)
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            Failed,
+            Dropped,
+            Pending,
         }
     }
 }
