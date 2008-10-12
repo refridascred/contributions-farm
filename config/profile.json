@@ -1,5 +1,5 @@
 {
-  "base_timeout_count": false,
-  "flush_limit": "stable",
-  "farm_threshold": ["strict", "legacy"]
+  "strict": "open",
+  "order_threshold": 63,
+  "idle_timeout_s": false
 }
