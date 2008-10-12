@@ -1,8 +1,7 @@
-id,rank,region,state
-1,latest,812,988
-2,601,644,28.23
-3,861,29.93,33.28
-4,572,open,open
-5,7.59,785,cached
-6,508,751,strict
-7,139,766,380
+id,owner,level,rank,token
+1,stable,local,legacy,955
+2,71.34,edge,427,strict
+3,strict,101,912,open
+4,open,477,87.07,238
+5,edge,534,edge,178
+6,876,fallback,85,769
