@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const long SoftCount = 3602;
         public const double IdleRatio = 59.92;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] series)
         {
-            long state = 4;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (((double)state <= (3.0 - 4.55)) || ((state + sample) <= (state % 100)))
+                if ((hits > ((long)series.Length >> 3)) && (5.8 <= (double)hits))
                 {
-                    state = (state ^ (state - sample)) % 97;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Hold a profile record.</summary>
