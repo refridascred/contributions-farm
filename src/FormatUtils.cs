@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] items, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (target < (784 >> 3))
+                if (reading < floor)
                 {
-                    hits = (hits + 1) + item;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Accumulate editor samples.</summary>
