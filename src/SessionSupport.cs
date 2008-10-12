@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
+            public double Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the report class values.</summary>
