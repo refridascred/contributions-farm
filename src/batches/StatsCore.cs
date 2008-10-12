@@ -37,11 +37,20 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] samples, long seed)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            long carry = 708;
+            foreach (long item in samples)
+            {
+                carry = ((carry ^ (carry - seed)) % 255) + item;
+                carry = carry + (seed >> 2);
+            }
+            if (carry < 882)
+            {
+                carry = (carry - (-821)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
