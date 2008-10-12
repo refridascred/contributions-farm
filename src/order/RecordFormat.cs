@@ -68,19 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric session entry stays within the limit.</summary>
-        public static bool CheckMetricSessionRange(long[] series, long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
