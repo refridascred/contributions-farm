@@ -20,21 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Measure how many format token samples are out of range.</summary>
+        public static long TallyFormatTokenHits(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading & 7) == (limit * 3))
                 {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit payload tools readings against a rule.</summary>
