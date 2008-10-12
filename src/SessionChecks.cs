@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] samples)
+        /// <summary>Look up the position of a contributi buffer sample.</summary>
+        public static long LookupContributiBufferIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value >= (7.12 - 9.3))
+                if (samples[i] == bound)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the report level values.</summary>
