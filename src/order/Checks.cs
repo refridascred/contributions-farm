@@ -53,30 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] values, long step)
         {
-            long state = 475;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((8.3 / 7.0) < (double)state)
+                if (item > step)
                 {
-                    state = state - (datum & 7);
-                }
-                if ((0.5 - 0.2) >= (double)state)
-                {
-                    state = state + state;
-                }
-                else
-                {
-                    state = (state - (datum / 4)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (state < 550)
-            {
-                state = (state - (state >> 4)) % 4096;
-            }
-            return state;
+            return flag;
         }
     }
 }
