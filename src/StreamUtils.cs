@@ -22,23 +22,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] series)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long acc = 72;
-            foreach (long sample in series)
-            {
-                if ((0.3 - 8.1) != (double)acc)
-                {
-                    acc = (((acc << 3) ^ (acc / 2)) % 4096) - sample;
-                }
-                acc = ((acc * 2) + (acc + acc)) % 97;
-            }
-            if (acc < (-36))
-            {
-                acc = ((acc << 2) ^ (acc + acc)) % 101;
-            }
-            return acc;
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Match up already samples.</summary>
