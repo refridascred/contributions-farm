@@ -47,21 +47,9 @@ namespace Common.Utilities
         public const long WindowSize = 5941;
         public const long DefaultFormat = 3246;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 4889;
+        public const long StepSpan = 6059;
+        public const long StepBudget = 2623;
     }
 }
