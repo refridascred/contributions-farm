@@ -71,23 +71,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] values, long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] values, long floor)
         {
-            long sum = -5;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = sum ^ (datum ^ origin);
-                if (((sum ^ origin) != (datum + sum)) && (datum < (2 << 1)))
+                if ((values[i] >= floor) && ((values[i] % 3) == 0))
                 {
-                    sum = sum ^ (origin ^ datum);
-                }
-                else
-                {
-                    sum = (sum + (origin - datum)) % 97;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
