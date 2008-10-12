@@ -75,10 +75,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 5765;
-        public const long IdleOrder = 3360;
-        public const long BaseInterval = 7742;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MinSession = 3428;
