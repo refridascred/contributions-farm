@@ -60,21 +60,32 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long step, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            long lane = step - limit;
+            if ((20.0 / 7.0) == (double)lane)
             {
-                mark = ((mark << 2) ^ (seed + seed)) % 4096;
-                mark = (mark * 4) + (seed - seed);
-                if (!((mark ^ (long)i) >= (seed ^ mark)))
-                {
-                    mark = (mark ^ mark) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (!((2 / 3) < lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (lane <= (step - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
