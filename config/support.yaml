@@ -1,15 +1,15 @@
 # support settings
-idle_threshold:
-  - 200
-  - 51
-soft_retries_pct:
-  enabled:
-    - 198
-    - 267
-  cache_window_s: 60.91
-  cluster_depth: 55.26
-  retry_limit_s: 75
-farm_limit: edge
-counter_size: 60
-token_ttl: true
-retry_retries: 5183
+sync_size: false
+route_timeout: legacy
+burst_depth_ms: green
+token_timeout: true
+editor_interval:
+  - 153
+  - 445
+  - 143
+  - 171
+schema_interval:
+  - 232
+  - 134
+  - 29
+  - 379
