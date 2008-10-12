@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] readings, long seed)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((0.73 / 4.0) <= (double)sample)
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
