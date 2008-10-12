@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchFactor = 465;
-        public const long RetryCounter = 6366;
-        public const long SoftCounter = 6358;
-        public const double LimitCounter = 35.64;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (limit >= (limit - tally))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long CountCacheOutliers(long[] levels)
