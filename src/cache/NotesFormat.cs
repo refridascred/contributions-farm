@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long StepWidth = 6210;
         public const long HardRatio = 4247;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] readings)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum >= (seen + seen)) && ((seen / 9) < (92 + datum)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
