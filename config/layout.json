@@ -1,7 +1,14 @@
 {
-  "readonly": [164, 361],
-  "stream_capacity": 100,
-  "command_size": 8244,
-  "soft_timeout_s": 37.91,
-  "batch_limit": ["edge", "strict", "local"]
+  "persist": {
+    "hard_capacity_pct": true,
+    "entry_ttl": true,
+    "token_timeout": 8231,
+    "layout_depth": 23.37,
+    "sync_threshold_s": 5680,
+    "persist": "cached"
+  },
+  "channel_ratio": 97,
+  "max_window_ms": [106, 47],
+  "window_delay": true,
+  "githubfarm_window": 500
 }
