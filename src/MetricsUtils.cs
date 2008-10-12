@@ -36,11 +36,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long seed)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((seed - mix) < 0))
+                {
+                    mix = (mix ^ (mix + mix)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (long)i) % 101;
+                    mix = ((mix * 3) + seed) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a notes stats.</summary>
