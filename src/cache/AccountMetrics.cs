@@ -38,25 +38,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long offset, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long offset2 = offset - limit;
-            if (529 <= (limit % 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit >= (offset2 - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate editor layout readings against a bound.</summary>
