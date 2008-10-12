@@ -35,22 +35,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] series, long offset)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long anchor = 91;
-            foreach (long value in series)
-            {
-                if ((9.6 * 7.3) >= (double)offset)
-                {
-                    anchor = (((anchor * 5) + 0) % 255) - value;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = ((anchor << 3) ^ (offset + offset)) % 65521;
-            }
-            return anchor % 4096;
+            public bool Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
