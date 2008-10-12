@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 73.8;
-        public const long MaxFactor = 7750;
-        public const long CacheContributi = 3282;
-        public const long SoftLevel = 9443;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "cached-1";
+        public const string BaseInterval = "strict-v2";
+        public const string CacheFactor = "standard";
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long ClassifyRoute(long floor, long offset)
