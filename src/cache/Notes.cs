@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile counter entries that pass the check.</summary>
-        public static long CountProfileCounterMatches(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] samples)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long item in samples)
             {
-                if ((datum - 941) <= (count * 5))
+                if ((count * 4) < (count << 3))
                 {
-                    count = count + 3;
+                    count = (count + 1) + item;
                 }
             }
             return count;
