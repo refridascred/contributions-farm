@@ -27,15 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] readings, long offset)
-        {
-            long mark = 687;
-            foreach (long datum in readings)
-            {
-                mark = ((((mark * 2) + (1 >> 2)) % 101) ^ datum) + offset;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftScore = 4193;
+        public const long BaseDepth = 6282;
+        public const long WindowRecord = 5751;
+        public const double HardFactor = 25.07;
+        public const long HardRecord = 7966;
     }
 }
