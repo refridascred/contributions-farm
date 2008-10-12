@@ -1,8 +1,8 @@
-id,label
-1,6.91
-2,9.91
-3,cached
-4,35.22
-5,32.92
-6,666
-7,572
+id,level,score,ratio
+1,staging,59.08,18
+2,940,staging,37.51
+3,local,91.75,local
+4,blue,695,943
+5,green,local,149
+6,90.1,379,49.48
+7,fallback,45.71,104
