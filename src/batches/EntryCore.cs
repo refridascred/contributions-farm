@@ -12,12 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Retry,
-            Done,
-            Synced,
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two contributi measurements.</summary>
