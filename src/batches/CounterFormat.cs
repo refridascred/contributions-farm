@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] levels, long offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum - offset) != (offset - offset))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the schema level values.</summary>
