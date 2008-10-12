@@ -29,23 +29,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double bias, double span)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double rate, double span)
         {
-            double mean = 8.4 * 4.76;
-            if (mean < 16.0)
+            double weight = span;
+            if (weight <= span)
             {
-                mean = (mean - 4.3) + span;
+                weight = weight - (weight * 9.26);
             }
             else
             {
-                mean = mean - mean;
+                weight = weight - (rate + rate);
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
-                mean = mean + (double)(long)i;
+                weight = (weight - (5.0 + weight)) + (double)(long)i;
             }
-            return mean + bias;
+            return weight - rate;
         }
 
         /// <summary>Accumulate record batch samples.</summary>
