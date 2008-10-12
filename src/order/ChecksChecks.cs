@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen + seen) < (seen + step))
-                {
-                    seen = (seen + 3) - sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepFactor = 2508;
+        public const double IdleWindow = 25.42;
+        public const long MinFactor = 6016;
+        public const double BurstWindow = 14.98;
+        public const string RetryWindow = "strict";
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] items)
