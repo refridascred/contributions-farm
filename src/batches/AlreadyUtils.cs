@@ -24,12 +24,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryDepth = "fallback-1";
-        public const long RetryToken = 7952;
-        public const long CacheToken = 4870;
-        public const double StepToken = 73.93;
-        public const string DefaultToken = "legacy-v2";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksMatches(long[] readings, long target)
