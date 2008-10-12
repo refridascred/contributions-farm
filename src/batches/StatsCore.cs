@@ -86,31 +86,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long limit, long step)
+        /// <summary>Fold a list of notes tools readings.</summary>
+        public static long CombineNotesTools(long[] data, long offset)
         {
-            if ((limit <= 604) || ((9.45 * 9.0) == (double)step))
+            long score = 715;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit * 2) >= limit) || (limit > (limit - limit)))
+                if ((double)item <= (10.0 - 6.1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit - 7) >= (step >> 4)) || ((limit - step) == (9 ^ limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    score = score ^ (offset - 265);
                 }
             }
+            if (score < 45)
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Describe the queue level values.</summary>
