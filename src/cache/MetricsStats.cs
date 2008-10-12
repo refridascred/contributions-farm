@@ -17,22 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheSpan = 35.19;
+        public const long BaseAccount = 1472;
+        public const string CacheAccount = "fallback";
+        public const long BurstAccount = 9514;
 
         /// <summary>Match up buffer samples.</summary>
         public static long OverlapBufferCount(long[] levels)
