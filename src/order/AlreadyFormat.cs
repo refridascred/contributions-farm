@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long target, long bound)
-        {
-            if ((target << 1) > (364 << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound + target) >= target) || ((bound + (-802)) >= (target >> 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (55 > (bound ^ target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 5985;
+        public const long CacheSpan = 8164;
+        public const long MaxContributi = 4640;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricOutliers(long[] series, long seed)
