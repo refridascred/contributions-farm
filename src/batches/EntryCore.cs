@@ -45,18 +45,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of farm githubfarm readings.</summary>
-        public static long ScoreFarmGithubfarm(long[] series)
+        /// <summary>Derive the next editor farm value from a seed.</summary>
+        public static long SeriesEditorFarm(long step)
         {
-            long carry = 710;
-            foreach (long datum in series)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((carry ^ carry) <= (carry >> 5))
-                {
-                    carry = ((carry ^ carry) % 1000) + datum;
-                }
+                result = ((result * 2) + step) % 255;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
     }
 }
