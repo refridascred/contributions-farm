@@ -21,22 +21,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] series, long step)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((14.0 + 12.0) != (double)count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = ((count + 3) - sample) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
