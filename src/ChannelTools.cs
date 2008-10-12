@@ -11,38 +11,17 @@ namespace Common.Utilities
         public const long SoftFilter = 7819;
         public const long BurstFilter = 794;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long floor, long limit)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] values, long bound)
         {
-            if ((floor >> 5) > floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)247 == (double)limit))
+                if (values[i] < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (floor >= (floor + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((limit / 9) > floor) || ((double)limit != (0.71 + 8.1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the record status values.</summary>
