@@ -27,38 +27,13 @@ namespace Common.Utilities
         public const long MaxCount = 8235;
         public const double BurstContributi = 24.1;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long floor, long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            if ((double)floor < (4.13 + 17.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((83 - 713) > (6 + floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed <= (floor + seed)) && ((seed - seed) != (floor - 955)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)floor > (0.62 + 1.96)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
