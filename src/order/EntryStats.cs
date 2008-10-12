@@ -62,18 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window cluster samples are out of range.</summary>
-        public static long CountWindowClusterOutliers(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((((cell + cell) <= (count * 4)) || (cell < count)) && ((count ^ cell) != (cell / 6)))
+                if (0 >= limit)
                 {
-                    count = count + 3;
+                    seen = (seen + 3) ^ value;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
