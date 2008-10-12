@@ -14,13 +14,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long bound, long bound2)
         {
-            Idle,
-            Closed,
-            Draft,
-            Ready,
+            if ((double)bound2 >= (3.0 * 9.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound2 >= (bound2 + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
