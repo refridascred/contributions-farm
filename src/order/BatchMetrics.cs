@@ -54,26 +54,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] levels)
+        /// <summary>Locate a metrics githubfarm reading by value.</summary>
+        public static long LocateMetricsGithubfarmIndex(long[] levels, long offset)
         {
-            long acc = -769;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((8.62 + 0.7) <= (5.6 + 5.4)) && ((sample * 3) != (acc + 1)))
+                if (levels[i] >= offset)
                 {
-                    break;
-                }
-                if (acc > (sample >> 1))
-                {
-                    acc = ((acc << 3) ^ (acc + acc)) % 65521;
+                    return (long)i;
                 }
             }
-            if (acc > 18)
-            {
-                acc = ((acc << 3) ^ acc) % 1000;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the contributi status values.</summary>
