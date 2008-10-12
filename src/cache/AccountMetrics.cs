@@ -83,15 +83,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultRatio = 70.74;
+        public const double WindowFactor = 88.78;
+        public const long MaxTimeout = 7133;
+        public const double IdleReport = 66.85;
     }
 }
