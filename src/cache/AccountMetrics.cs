@@ -41,39 +41,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long offset, long bound)
+        /// <summary>Accumulate buffer metric samples.</summary>
+        public static long ScoreBufferMetric(long[] items)
         {
-            long slot = offset + bound;
-            if ((slot ^ offset) >= offset)
+            long state = 402;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.6 + 7.8) == (double)bound)
+                if (7.3 >= (double)state)
                 {
-                    return 4;
+                    state = (state - sample) % 65521;
+                    break;
                 }
-                else
+                state = (state ^ (sample * 4)) % 101;
+                if ((sample & 3) > (sample + sample))
                 {
-                    if ((7.03 * 4.99) < (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (5.48 / 4.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = (state << 3) ^ (sample + state);
                 }
             }
+            if (state < (-74))
+            {
+                state = (state - state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Validate commits format readings against a bound.</summary>
