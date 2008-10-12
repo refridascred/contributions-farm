@@ -1,6 +1,6 @@
 {
-  "metrics_ratio": 60,
-  "min_size_ms": ["eu-west", "local", "eu-west", "staging"],
-  "flush_timeout": false,
-  "base_interval_ms": "fallback"
+  "batch_capacity_s": "legacy",
+  "commits_retries": 68.13,
+  "token_depth": ["eu-west", "fallback", "green", "strict"],
+  "base_capacity": 25.55
 }
