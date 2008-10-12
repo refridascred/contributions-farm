@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryBudget = 8513;
-        public const string RetryEntry = "standard-v2";
-        public const string CacheRatio = "staging-1";
-        public const double StepDepth = 78.65;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] levels)
+        {
+            long mix = 69;
+            foreach (long datum in levels)
+            {
+                if ((mix <= datum) || (290 >= (mix << 3)))
+                {
+                    mix = (mix - (datum ^ datum)) % 65521;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstContributi = 5231;
