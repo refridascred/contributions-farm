@@ -98,31 +98,18 @@ namespace Common.Utilities
             return (scale + gain) + floor;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long seed, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] samples)
         {
-            if ((floor + seed) == (704 - seed))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (3.3 < (double)floor)
+                if (!(((matches * 4) == (matches + 5)) && ((double)matches <= 5.3)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (seed >= (floor & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = (matches + 1) ^ value;
                 }
             }
+            return matches;
         }
     }
 }
