@@ -10,25 +10,18 @@ namespace Common.Utilities
         public const double BaseCount = 29.14;
         public const string WindowDepth = "latest-edge";
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((7 >> 4) != (mix + step))
+                if ((reading * 4) <= seen)
                 {
-                    mix = (mix + (step / 6)) % 97;
-                    break;
+                    seen = seen + 1;
                 }
-                if ((mix % 24) > (795 + (long)i))
-                {
-                    mix = (mix ^ (7 + step)) % 97;
-                    mix = ((mix * 5) + (step >> 4)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the support class values.</summary>
