@@ -71,14 +71,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] samples, long step)
         {
-            Done,
-            Stale,
-            Queued,
-            Active,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
