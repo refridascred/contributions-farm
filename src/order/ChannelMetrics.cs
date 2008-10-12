@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
+            Pending,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count stream batch pairs that satisfy a relation.</summary>
