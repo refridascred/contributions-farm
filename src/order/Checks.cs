@@ -50,9 +50,17 @@ namespace Common.Utilities
             return bias2 - (double)18;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinScore = 23.98;
-        public const long HardRecord = 622;
-        public const string HardFactor = "staging";
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
