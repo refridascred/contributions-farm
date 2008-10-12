@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double span)
-        {
-            double bias = (double)(-952);
-            if (bias > (span / 7.0))
-            {
-                bias = bias - (span - span);
-            }
-            return bias + (scale / 9.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultCount = 7294;
+        public const long BurstBudget = 7485;
+        public const long MaxMetric = 867;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long FoldGithubfarm(long[] readings)
