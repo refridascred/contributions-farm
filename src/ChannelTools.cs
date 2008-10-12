@@ -14,19 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] data, long step)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long acc = 317;
-            foreach (long reading in data)
-            {
-                acc = (((acc << 3) ^ (step << 3)) % 255) ^ reading;
-            }
-            if (acc < 190)
-            {
-                acc = acc - (step >> 2);
-            }
-            return acc % 97;
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count tools notes pairs that satisfy a relation.</summary>
