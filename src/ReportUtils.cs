@@ -51,9 +51,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowDepth = 4290;
-        public const string MinLevel = "standard-1";
-        public const long HardBuffer = 8733;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 2) + offset) % 255;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
