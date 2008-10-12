@@ -22,13 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series, long floor)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            long sum = 86;
+            foreach (long value in series)
+            {
+                sum = sum - ((long)series.Length - value);
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = ((sum - floor) % 255) - (long)i;
+                }
+                sum = (sum + (7 / 5)) % 65521;
+            }
+            if (sum < (-382))
+            {
+                sum = ((sum << 2) ^ floor) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the already kind values.</summary>
