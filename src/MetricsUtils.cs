@@ -25,15 +25,31 @@ namespace Common.Utilities
             return rate - (bias * 8.0);
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long bound, long offset)
         {
-            long anchor = 8;
-            foreach (long item in series)
+            if ((double)bound >= (10.0 * 18.0))
             {
-                anchor = ((anchor << 2) ^ (anchor - (long)series.Length)) ^ item;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (!((offset % 60) >= (offset << 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((8.2 + 2.0) < (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
