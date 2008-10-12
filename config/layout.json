@@ -1,8 +1,7 @@
 {
-  "soft_ttl_ms": 250,
-  "sync_delay_ms": 7925,
-  "default_timeout": 9715,
-  "persist": "local",
-  "poll_limit_ms": "green",
-  "payload_ratio": 7600
+  "account_threshold": "blue",
+  "idle_timeout_count": 44,
+  "window_ttl": ["primary", "local"],
+  "command_limit": 3667,
+  "hard_ratio_count": 1369
 }
