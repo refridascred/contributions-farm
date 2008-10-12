@@ -53,19 +53,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] samples, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (cell < limit)
+                if ((hits ^ hits) != (hits + (-5)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - item;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
