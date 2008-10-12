@@ -39,38 +39,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a batches queue pair into a bucket.</summary>
-        public static long GradeBatchesQueue(long step, long step2)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] series)
         {
-            if (((-61) % 24) > (step * 4))
+            long state = -5;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step << 3) >= (step * 2)) || ((step2 ^ step2) >= (step % 12)))
+                if ((state ^ item) > ((long)series.Length / 7))
                 {
-                    return 5;
+                    state = ((state * 5) + state) % 1000;
                 }
-                else
+                if ((item * 4) >= (state + 434))
                 {
-                    if ((step2 >> 2) >= (step2 / 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(step2 >= (3 - step)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = state - (723 % 8);
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
