@@ -31,11 +31,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double ratio, double span)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] data)
         {
-            double weight = (double)(153 - 27);
-            return ((weight - (double)186) + ratio) + span;
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum * 5) < seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
