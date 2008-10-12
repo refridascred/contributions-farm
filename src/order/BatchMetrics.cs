@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] samples)
-        {
-            long mix = 77;
-            foreach (long sample in samples)
-            {
-                mix = (mix - (sample - 4)) % 97;
-                mix = ((mix << 3) ^ 418) % 1000;
-            }
-            if (mix > 91)
-            {
-                mix = mix - (mix % 64);
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleScore = "primary-edge";
+        public const double BaseCount = 29.14;
+        public const string WindowDepth = "latest-edge";
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long SortReport(long offset, long origin)
