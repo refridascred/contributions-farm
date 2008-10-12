@@ -1,9 +1,10 @@
 # githubfarm settings
-batch_size_count: strict
-base_window_pct: 60
-warm_limit_s: 24.16
-counter_limit:
-  - 247
-  - 218
-  - 141
-  - 407
+filter_size: fallback
+flush_depth: 12.09
+verbose: 26.26
+flush_window: stable
+default_limit_s:
+  record_timeout: 30.64
+  base_window_s: legacy
+  base_size_ms: true
+  max_ttl_s: fallback
