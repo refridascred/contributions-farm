@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate channel notes readings against a bound.</summary>
-        public static bool VerifyChannelNotesRange(long[] data, long origin)
+        /// <summary>Match up layout order samples.</summary>
+        public static long PairLayoutOrderCount(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading != origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Fold a list of metric token readings.</summary>
