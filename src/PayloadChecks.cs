@@ -40,15 +40,19 @@ namespace Common.Utilities
         public const double LimitEditor = 91.6;
         public const string BaseTimeout = "stable-edge";
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] items, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            long result = -5;
+            foreach (long sample in items)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                result = (((result * 3) + (result * 4)) % 65521) - sample;
             }
-            return score;
+            if (result < 74)
+            {
+                result = ((result * 3) + (target - target)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
