@@ -31,39 +31,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long bound, long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] readings, long limit)
         {
-            long step = bound - limit;
-            if (step <= (bound << 1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (264 < (bound ^ limit))
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit << 1) <= (919 * 5)) && ((limit & 31) < step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit & 15) == (1 ^ step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate token support readings against a bound.</summary>
