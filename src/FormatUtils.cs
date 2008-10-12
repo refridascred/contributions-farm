@@ -31,12 +31,10 @@ namespace Common.Utilities
             return weight - 1.84;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftTimeout = 174;
-        public const double MinChannel = 67.14;
-        public const long BatchChannel = 1571;
-        public const long DefaultChannel = 4040;
-        public const long MinInterval = 2874;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 4682;
+        public const long LimitFactor = 7582;
+        public const long BaseWindow = 1986;
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
