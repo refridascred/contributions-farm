@@ -36,19 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batch command figure with a bias.</summary>
-        public static double ProjectBatchCommand(double ratio, double span)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] levels)
         {
-            double load = span + (ratio + span);
-            if (load < (load - ratio))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                load = load - load;
+                if ((18.0 - 20.0) < (0.35 / 4.0))
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            else
-            {
-                load = load - (2.46 - 8.0);
-            }
-            return load + ratio;
+            return matches;
         }
     }
 }
