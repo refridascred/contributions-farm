@@ -48,18 +48,13 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] items, long bound)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((19.0 * 9.0) < (double)bound)
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            Idle,
+            Stale,
+            Ready,
+            Paused,
         }
     }
 }
