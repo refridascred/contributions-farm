@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Filter stats helpers.</summary>
     public static class FilterStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] values)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)matches <= 1.45)
-                {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the filter mode values.</summary>
