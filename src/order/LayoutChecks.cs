@@ -96,13 +96,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Retry,
-            Done,
-            Stale,
-            Locked,
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
