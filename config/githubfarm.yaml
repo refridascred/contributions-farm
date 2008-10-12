@@ -1,5 +1,4 @@
 # githubfarm settings
-stats_ttl: staging
-verbose: 8.37
-strict: cached
-persist: 8.26
+cache_depth_s: staging
+batch_interval_ms: true
+stats_timeout: 16.97
