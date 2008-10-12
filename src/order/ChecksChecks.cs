@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally - tally) != (cell / 6))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftLevel = "alpha-edge";
+        public const long HardMetric = 4275;
+        public const double MinFactor = 20.85;
+        public const long BatchRatio = 5650;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long CombineRecord(long[] levels, long limit)
