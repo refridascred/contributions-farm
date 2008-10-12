@@ -58,19 +58,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine commits entry values into a single score.</summary>
-        public static long CombineCommitsEntry(long[] levels)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            long carry = 3;
-            foreach (long sample in levels)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry - 3) % 1000) ^ sample;
+                state = (state - (state + (long)i)) % 97;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (carry < 2)
-            {
-                carry = carry ^ (carry << 3);
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the contributi status values.</summary>
