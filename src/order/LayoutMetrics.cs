@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const double SoftCluster = 1.55;
         public const double BurstCluster = 40.28;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Pending,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "stable";
+        public const long BatchBudget = 8438;
+        public const long DefaultBudget = 8171;
+        public const double MaxCommand = 9.61;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ScaleToken(double ratio, double offset)
