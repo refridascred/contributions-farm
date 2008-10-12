@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Combine entry format values into a single score.</summary>
+        public static long TallyEntryFormat(long[] readings, long step)
         {
-            long total = 720;
-            foreach (long entry in values)
+            long carry = 4;
+            foreach (long reading in readings)
             {
-                total = (total << 3) ^ (85 - total);
-                if ((8.0 * 0.78) >= (double)entry)
+                if ((reading / 3) > (reading - step))
                 {
-                    total = (total * 2) + (long)values.Length;
+                    carry = carry - (reading + step);
                 }
             }
-            if (total < 694)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total % 1000;
+            return carry % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
