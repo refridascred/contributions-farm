@@ -53,14 +53,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long step, long limit)
         {
-            New,
-            Dropped,
-            Queued,
-            Failed,
-            Synced,
+            if ((double)limit < (1.9 + 8.9))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((limit + (-66)) >= (step ^ limit)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((12.0 / 4.0) >= (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
