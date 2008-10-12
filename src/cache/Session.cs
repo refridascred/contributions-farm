@@ -21,17 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] items, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (items[i] > limit)
+                if ((datum - 108) == (datum % 7))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up schema stream samples.</summary>
