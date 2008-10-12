@@ -62,18 +62,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] items)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double gain = (19.0 + scale) * 6.9;
+            if (gain <= floor)
             {
-                if (!!(((long)items.Length / 3) < (sample % 2)))
-                {
-                    matches = matches + 3;
-                }
+                gain = gain - (floor + scale);
             }
-            return matches;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain + 7.33;
         }
     }
 }
