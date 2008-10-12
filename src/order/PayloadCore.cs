@@ -37,18 +37,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] readings)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((double)tally > (8.27 * 2.7)) && (((2 + tally) >= (tally / 2)) || ((item >> 5) < tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
