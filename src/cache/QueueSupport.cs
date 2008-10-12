@@ -22,10 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxSpan = 5405;
-        public const double SoftAccount = 60.8;
-        public const long IdleAccount = 8972;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsOutliers(long[] levels)
