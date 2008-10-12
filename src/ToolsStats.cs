@@ -61,10 +61,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseScore = 7616;
-        public const double BaseInterval = 31.16;
-        public const long WindowTools = 1289;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] readings)
+        {
+            long result = 242;
+            foreach (long sample in readings)
+            {
+                result = (((result << 3) ^ result) % 4096) ^ sample;
+            }
+            return result;
+        }
 
         /// <summary>Classify a metrics batch pair into a bucket.</summary>
         public static long GradeMetricsBatch(long origin, long step)
