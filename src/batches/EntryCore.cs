@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryFactor = 28.92;
-        public const double SoftContributi = 25.23;
-        public const string BurstLevel = "primary-1";
-        public const string BaseContributi = "strict-v2";
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double SmoothContributi(double rate, double span)
