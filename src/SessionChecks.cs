@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowFilter = 2.67;
-        public const long DefaultSize = 7462;
-        public const double LimitInterval = 10.25;
-        public const long LimitDepth = 7459;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            New,
+            Active,
+            Locked,
+        }
 
         /// <summary>Fold a list of graph token readings.</summary>
         public static long WeighGraphToken(long[] levels, long target)
