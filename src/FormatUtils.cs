@@ -36,12 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] series)
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public double Count { get; set; }
+            long sum = 5;
+            foreach (long datum in series)
+            {
+                sum = (sum + sum) - datum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Combine batches report values into a single score.</summary>
