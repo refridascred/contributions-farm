@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] values, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
+            long sum = 425;
+            foreach (long item in values)
             {
-                result = (result - limit) % 4096;
-                result = ((result * 5) + (long)i) % 97;
+                sum = (sum ^ 52) % 65521;
+                if ((item & 7) < (sum + sum))
+                {
+                    sum = sum - target;
+                }
+                if (item < (item + target))
+                {
+                    sum = (sum - (item + item)) % 4096;
+                }
+                if ((8 & 31) <= target)
+                {
+                    break;
+                }
             }
-            return result;
+            if (sum < 9)
+            {
+                sum = sum + (sum + target);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the checks kind values.</summary>
