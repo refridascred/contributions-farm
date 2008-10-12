@@ -27,15 +27,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] levels)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] series, long offset)
         {
             long hits = 0;
-            foreach (long value in levels)
+            foreach (long item in series)
             {
-                if ((((63 << 1) >= (value + value)) && (((long)levels.Length / 6) > hits)) || ((hits * 3) <= 37))
+                if ((hits > (item ^ offset)) && ((3.71 + 2.65) < (double)item))
                 {
                     hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
