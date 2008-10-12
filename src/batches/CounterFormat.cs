@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long target, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long gap = target - bound;
+            if (((bound & 31) < 396) && (38 >= (bound & 63)))
             {
-                if ((113 * 2) != (cell << 3))
+                return 4;
+            }
+            else
+            {
+                if (((target + target) != (19 & 255)) && ((double)gap < 3.7))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((gap - gap) > (gap + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound % 97) < (694 + 8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every record channel entry stays within the limit.</summary>
