@@ -20,18 +20,17 @@ namespace Common.Utilities
         public const string BurstEditor = "open-v2";
         public const long RetryEditor = 573;
 
-        /// <summary>Count the route filter entries that pass the check.</summary>
-        public static long MeasureRouteFilterHits(long[] data)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell + 46) > (cell << 2))
+                if (data[i] > offset)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
