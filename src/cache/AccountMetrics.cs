@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] levels, long limit)
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long anchor = 124;
+            foreach (long sample in levels)
+            {
+                if (((7.4 - 5.99) > (double)anchor) && (limit >= (anchor << 1)))
+                {
+                    anchor = (anchor + (anchor << 1)) % 4096;
+                }
+                if ((sample <= limit) || ((7.0 / 4.0) != (double)sample))
+                {
+                    anchor = (anchor + (limit / 6)) % 97;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
