@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next checks order value from a seed.</summary>
-        public static long SeriesChecksOrder(long bound)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound + 18) <= (38 % 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score - 9;
+                    if ((readings[i] + readings[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Roll a cluster queue counter forward.</summary>
