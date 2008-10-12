@@ -30,13 +30,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 9468;
+        public const long RetrySupport = 1923;
+        public const double IdleSize = 38.04;
+        public const long SoftSupport = 9586;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheMatches(long[] data)
