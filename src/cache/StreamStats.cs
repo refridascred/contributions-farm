@@ -37,16 +37,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] samples, long bound)
-        {
-            long anchor = 0;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor << 3) ^ (bound & 31)) - sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 5835;
+        public const long WindowSize = 5941;
+        public const long DefaultFormat = 3246;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
