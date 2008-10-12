@@ -21,17 +21,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] values, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (values[i] >= bound)
+                if ((14.0 + 12.0) != (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 3) - sample) - step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
