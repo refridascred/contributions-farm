@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleDepth = 60.14;
-        public const long WindowContributi = 9848;
-        public const long MaxSize = 1041;
+        /// <summary>Rank githubfarm layout input into a small class.</summary>
+        public static long SortGithubfarmLayout(long bound, long step)
+        {
+            long step2 = bound + step;
+            if ((double)step2 > 16.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step != (8.0 - 6.23))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)3 == (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step >= 2.0)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
