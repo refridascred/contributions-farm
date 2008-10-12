@@ -47,11 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Locate a token queue reading by value.</summary>
+        public static long FindTokenQueueIndex(long[] levels, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
