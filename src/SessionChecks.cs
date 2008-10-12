@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Paused,
-            Active,
-            New,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 2.67;
+        public const long DefaultSize = 7462;
+        public const double LimitInterval = 10.25;
+        public const long LimitDepth = 7459;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
