@@ -1,8 +1,9 @@
 {
-  "dry_run": [376, 293],
-  "retry_limit_s": 78,
-  "min_ttl": 3.11,
-  "max_ratio_ms": "staging",
-  "profile_ratio": "fallback",
-  "cache_interval_s": false
+  "githubfarm_ttl": [36, 36, 161, 370],
+  "compress": {
+    "batch_retries_count": 250,
+    "retry_delay_s": "edge",
+    "support_ratio": "blue"
+  },
+  "hard_timeout": ["green", "blue", "blue"]
 }
