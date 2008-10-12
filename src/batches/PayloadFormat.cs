@@ -20,11 +20,33 @@ namespace Common.Utilities
         public const long RetryMetric = 111;
         public const long HardMetric = 2402;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 9170;
-        public const string BaseDepth = "stable-edge";
-        public const double WindowCommits = 30.32;
-        public const double RetryWidth = 7.89;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long bound, long seed)
+        {
+            long next = bound ^ seed;
+            if (next > (700 << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)bound > 20.0) || (next >= (seed + next)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed % 16) <= (bound + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
