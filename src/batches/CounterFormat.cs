@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowInterval = 37.26;
+        public const long BatchInterval = 3772;
+        public const string BurstGraph = "legacy";
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
