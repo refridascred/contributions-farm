@@ -59,11 +59,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 7.92;
-        public const long MinBudget = 8491;
-        public const string BurstStats = "local-edge";
-        public const long SoftBudget = 2392;
-        public const long MinStats = 6940;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 9525;
+        public const double SoftFactor = 57.44;
+        public const long RetryBudget = 9482;
+        public const double LimitRatio = 9.3;
     }
 }
