@@ -48,13 +48,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public double Token { get; set; }
+            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Classify a checks contributi pair into a bucket.</summary>
