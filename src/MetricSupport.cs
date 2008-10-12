@@ -20,22 +20,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] series, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long acc = 583;
+            foreach (long entry in readings)
             {
-                if ((count / 5) <= (step - 56))
+                if ((acc >= (8 % 97)) || ((9 % 100) < (entry - acc)))
                 {
-                    count = (count + 3) - datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc * 4) + (entry << 3);
                 }
             }
-            return count;
+            return acc % 4096;
         }
     }
 }
