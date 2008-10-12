@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] levels, long bound)
         {
-            Active,
-            Paused,
-            Synced,
-            Closed,
-            Draft,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((bound - 1) >= (reading / 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the schema level values.</summary>
