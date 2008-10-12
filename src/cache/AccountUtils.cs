@@ -23,18 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] values, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (origin <= (matches - matches))
+                if (count < (target - reading))
                 {
-                    matches = (matches + 1) ^ value;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a contributi entry.</summary>
