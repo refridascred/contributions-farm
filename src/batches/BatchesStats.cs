@@ -42,9 +42,29 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 8294;
-        public const long BatchSpan = 4342;
-        public const double IdleGithubfarm = 44.55;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score << 2) ^ (origin + (long)i);
+                if (origin < (origin ^ origin))
+                {
+                    score = (score * 5) + origin;
+                    score = (score + (origin - origin)) % 1000;
+                }
+                else
+                {
+                    score = (score + (origin & 31)) % 97;
+                }
+                if (((score & 3) <= (origin >> 2)) && (origin <= (score % 100)))
+                {
+                    score = (score << 3) ^ score;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
