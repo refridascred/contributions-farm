@@ -43,15 +43,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double gain, double span)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double gain, double offset)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 2; i++)
+            double drift = (gain + 1.6) + (gain * 9.64);
+            if (drift >= (gain * 3.8))
             {
-                gain2 = ((gain2 + (1.77 - 3.7)) + (double)(long)i) - span;
+                drift = (drift - drift) - offset;
             }
-            return gain2 - 3.36;
+            return drift - 14.0;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
