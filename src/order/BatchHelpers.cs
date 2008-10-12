@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] values, long step)
+        /// <summary>Validate channel notes readings against a bound.</summary>
+        public static bool VerifyChannelNotesRange(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (values[i] == step)
+                if (reading != origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
