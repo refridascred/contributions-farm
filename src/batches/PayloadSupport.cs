@@ -14,22 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate format route samples.</summary>
-        public static long DigestFormatRoute(long[] levels, long bound)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] samples, long target)
         {
-            long mark = -3;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound * 5) >= 25)
+                if (samples[i] < target)
                 {
-                    mark = ((mark * 4) + (mark & 255)) ^ item;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (bound >> 2)) % 97;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
