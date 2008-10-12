@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long step)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long prev = limit ^ step;
-            if ((double)limit != (2.0 - 1.9))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((limit - prev) < (limit >> 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step / 4) < limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            New,
+            Retry,
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
