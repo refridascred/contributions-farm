@@ -13,38 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long origin, long seed)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            if (seed < (seed & 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((8 % 100) == (origin & 127))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + seed) < origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (0.6 / 7.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the record status values.</summary>
