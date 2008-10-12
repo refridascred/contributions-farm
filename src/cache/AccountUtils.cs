@@ -31,19 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every tools layout entry stays within the limit.</summary>
-        public static bool GuardToolsLayoutLimits(long[] data, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (value > bound)
+                if ((double)seen >= (8.0 * 9.0))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + item;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
