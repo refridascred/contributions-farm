@@ -23,13 +23,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 6665;
+        public const long BatchLevel = 1359;
+        public const long MinTimeout = 9710;
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
