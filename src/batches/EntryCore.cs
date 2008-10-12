@@ -48,15 +48,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double gain, double span)
         {
-            long carry = 470;
-            foreach (long entry in values)
+            double mean = gain - (span / 7.0);
+            if (mean < (double)7)
             {
-                carry = ((carry << 3) ^ 547) + entry;
+                mean = mean - (double)659;
             }
-            return carry;
+            else
+            {
+                mean = mean - (mean * 1.88);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + gain) - (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
