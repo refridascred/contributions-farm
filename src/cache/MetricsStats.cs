@@ -17,13 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] items, long floor)
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
