@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] data, long bound)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long limit)
         {
-            long mark = 49;
-            foreach (long value in data)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((((mark << 3) ^ 514) % 255) ^ value) - bound;
+                if ((mix % 7) < (limit - 2))
+                {
+                    mix = (mix ^ (limit * 4)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (mark > (-31))
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark % 4096;
+            return mix;
         }
     }
 }
