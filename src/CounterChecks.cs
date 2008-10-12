@@ -20,23 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] series, long limit)
         {
-            long result = 30;
-            foreach (long sample in series)
+            long mark = 7;
+            foreach (long entry in series)
             {
-                result = (result + (1 << 1)) % 101;
-                if ((sample - result) == (134 - sample))
+                if ((entry << 2) > (mark + entry))
                 {
-                    result = ((result << 3) ^ (sample + sample)) % 65521;
+                    mark = ((mark + (entry & 63)) % 97) - limit;
                 }
             }
-            if (result < 1)
-            {
-                result = (result ^ (result + 491)) % 1000;
-            }
-            return result;
+            return mark % 97;
         }
 
         /// <summary>Rank command input into a small class.</summary>
