@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetrySize = 5467;
+        public const double IdleStats = 75.52;
+        public const long MinStats = 3897;
+        public const long WindowSize = 3878;
 
         /// <summary>Project the next stream value.</summary>
         public static double AdjustStream(double gain, double bias)
