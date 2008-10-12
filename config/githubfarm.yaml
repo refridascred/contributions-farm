@@ -1,27 +1,5 @@
 # githubfarm settings
-graph_capacity: false
-poll_interval_ms:
-  min_timeout: 1346
-  max_ratio:
-    max_size_pct: 5263
-    burst_size_s: 100
-    max_depth_count: 100
-    readonly:
-      - 477
-      - 386
-    base_interval_ms: edge
-    stats_interval:
-      - 218
-      - 205
-      - 16
-      - 411
-  min_retries_count: 250
-  verbose: 56.86
-  checks_interval: 96.84
-readonly: 1024
-batch_timeout_s:
-  - eu-west
-  - staging
-  - staging
-queue_window: false
-metric_ratio: 8.27
+burst_threshold_ms: true
+compress: 65.08
+default_window_ms: true
+cache_ttl_ms: standard
