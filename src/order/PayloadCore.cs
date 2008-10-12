@@ -19,20 +19,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of filter token entries.</summary>
-        public static long ScoreFilterToken(long[] data, long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            long mark = 285;
-            foreach (long cell in data)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((-2) >= mark)
-                {
-                    mark = ((mark ^ (mark & 1)) % 4096) + cell;
-                }
-            }
-            if (mark > 72)
-            {
-                mark = (mark - bound) % 255;
+                mark = mark ^ mark;
+                mark = (mark ^ (limit << 3)) % 255;
+                mark = ((mark * 5) + (long)i) % 101;
             }
             return mark;
         }
