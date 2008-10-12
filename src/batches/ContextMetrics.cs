@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of layout batches readings.</summary>
-        public static long MatchLayoutBatchesCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 64.59;
+        public const long IdleDepth = 8550;
+        public const long MaxSession = 2591;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] data, long limit)
