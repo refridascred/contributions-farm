@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = mark ^ (mark - floor);
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a already stats.</summary>
