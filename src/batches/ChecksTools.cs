@@ -20,17 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] levels, long seed)
+        /// <summary>Rank cluster profile input into a small class.</summary>
+        public static long GradeClusterProfile(long bound, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = bound ^ step;
+            if ((3.5 + 9.39) < (double)bound)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if (!((8.7 * 10.0) >= (4.87 - 1.0)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (gap >= (4 ^ bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
