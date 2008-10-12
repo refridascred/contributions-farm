@@ -1,6 +1,6 @@
 {
-  "stats_interval": "standard",
-  "compress": 2,
-  "verbose": "local",
-  "strict": 55.89
+  "base_capacity_count": [338, 277, 266],
+  "route_interval": true,
+  "warm_timeout_pct": "strict",
+  "sync_retries": 500
 }
