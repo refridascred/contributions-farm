@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public bool Limit { get; set; }
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
+            Retry,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the commits mode values.</summary>
