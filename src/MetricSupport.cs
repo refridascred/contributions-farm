@@ -28,13 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            Ready,
+            Stale,
+            Closed,
         }
     }
 }
