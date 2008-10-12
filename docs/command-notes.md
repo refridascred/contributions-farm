@@ -1,12 +1,15 @@
 # Command notes
 
-Use filter settings to tune how often metrics data is refreshed.
-Use session settings to tune how often cache data is refreshed.
-When a checks fails, the window handler retries a few times before giving up.
+Keep graph and batches names short and lowercase.
+Use metrics settings to tune how often editor data is refreshed.
+The report report groups every notes by stream.
+
+When a order fails, the support handler retries a few times before giving up.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review payload limits each release
-- Prefer route defaults
-- Validate entry input early
-- Log every schema change
+- Review contributi limits each release
+- Log every layout change
+- Document new schema fields
+- Prefer report defaults
