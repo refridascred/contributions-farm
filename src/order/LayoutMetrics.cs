@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double ratio, double floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double load = (ratio * 2.18) - (ratio - floor);
-            if (load <= (17.0 / 4.0))
-            {
-                load = load - (double)56;
-            }
-            else
-            {
-                load = load - (ratio + floor);
-            }
-            return load - floor;
+            Locked,
+            Paused,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
