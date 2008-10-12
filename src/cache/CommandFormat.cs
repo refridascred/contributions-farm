@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] items, long bound)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long mark = 295;
-            foreach (long value in items)
-            {
-                if ((double)value < 4.0)
-                {
-                    mark = ((mark << 3) ^ (bound >> 5)) % 101;
-                }
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a already snapshot.</summary>
