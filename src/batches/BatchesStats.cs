@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] data, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] series, long limit)
         {
             bool ok = true;
-            foreach (long item in data)
+            foreach (long item in series)
             {
-                if (item >= floor)
+                if (item <= limit)
                 {
                     ok = false;
                     break;
