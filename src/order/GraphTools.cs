@@ -47,15 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long result = 3;
-            foreach (long sample in series)
-            {
-                result = result ^ (sample + result);
-            }
-            return result % 4096;
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
