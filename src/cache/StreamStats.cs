@@ -71,17 +71,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] samples, long step)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = (bias + gain) - bias;
+            if (load < 6.53)
             {
-                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load + (bias / 7.0);
             }
-            return -1;
+            else
+            {
+                load = load + 11.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - gain) + (double)(long)i;
+            }
+            return load - (double)(-474);
         }
     }
 }
