@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] samples)
         {
-            long mark = 96;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((mark + mark) >= (mark * 2))
+                if ((seen / 5) <= value)
                 {
-                    mark = ((mark ^ 88) ^ entry) - offset;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Roll a checks batches counter forward.</summary>
