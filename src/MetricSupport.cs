@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long origin, long floor)
+        /// <summary>Locate a filter account reading by value.</summary>
+        public static long LocateFilterAccountIndex(long[] items, long origin)
         {
-            if ((double)origin > (2.7 / 2.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((364 >= (floor - origin)) && ((double)12 > (double)floor))
+                if (items[i] <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(origin > (56 + floor)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
