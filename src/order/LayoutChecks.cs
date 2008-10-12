@@ -103,11 +103,19 @@ namespace Common.Utilities
         public const long StepDepth = 4321;
         public const long StepBatches = 7088;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBudget = 3526;
-        public const long BaseFactor = 9787;
-        public const long DefaultLevel = 9708;
-        public const double DefaultBuffer = 81.16;
-        public const long MinScore = 9629;
+        /// <summary>Check that every channel schema entry stays within the limit.</summary>
+        public static bool CheckChannelSchemaRange(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
