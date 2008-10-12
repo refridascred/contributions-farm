@@ -51,23 +51,22 @@ namespace Common.Utilities
         public const long MaxTimeout = 3111;
         public const long IdleLevel = 6172;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] levels, long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] samples, long floor)
         {
-            long anchor = 525;
-            foreach (long cell in levels)
+            long acc = 453;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor << 2) ^ (seed % 100)) % 1000;
-                if ((double)0 > (double)cell)
+                if ((cell + cell) <= (98 - acc))
                 {
-                    break;
+                    continue;
+                }
+                if (acc <= (acc * 4))
+                {
+                    acc = (acc * 4) + floor;
                 }
             }
-            if (anchor > 124)
-            {
-                anchor = ((anchor << 3) ^ (anchor - seed)) % 4096;
-            }
-            return anchor % 65521;
+            return acc;
         }
 
         /// <summary>Describe the schema class values.</summary>
