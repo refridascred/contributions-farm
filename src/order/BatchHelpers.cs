@@ -28,18 +28,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (!((double)82 > (double)(long)levels.Length) || ((double)sample != (0.17 * 3.0)))
+                if (reading >= step)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
