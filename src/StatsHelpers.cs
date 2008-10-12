@@ -12,22 +12,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] series)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long acc = 7;
+            foreach (long sample in samples)
             {
-                if (!((datum << 2) > count))
+                if ((offset & 7) < 69)
                 {
-                    count = count + 2;
+                    acc = acc + acc;
                 }
-                else
+                if (((offset & 255) != (acc * 4)) && ((sample & 255) >= (sample + acc)))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Accumulate channel notes samples.</summary>
