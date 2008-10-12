@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 80;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result * 2) + (315 ^ result);
+                if (((cell + cell) != (9 ^ result)) && ((result - result) == (bound >> 5)))
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (cell ^ result)) % 65521;
                 }
             }
-            return hits;
+            if (result < (-1))
+            {
+                result = ((result << 3) ^ 82) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
