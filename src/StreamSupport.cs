@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] data, long step)
         {
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up record samples.</summary>
