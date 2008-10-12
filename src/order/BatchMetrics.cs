@@ -68,20 +68,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] levels, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((double)score > (8.0 * 7.43))
+                if (sample <= seed)
                 {
-                    continue;
+                    found = false;
+                    break;
                 }
-                score = (score + (score * 5)) % 1000;
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Accumulate editor samples.</summary>
