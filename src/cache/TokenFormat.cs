@@ -14,13 +14,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Measure how many metric counter samples are out of range.</summary>
+        public static long MeasureMetricCounterHits(long[] readings, long seed)
         {
-            Ready,
-            Closed,
-            Active,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!(((double)seed == (5.1 * 9.03)) && (seed > (seed + matches))))
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a githubfarm metrics reading by value.</summary>
