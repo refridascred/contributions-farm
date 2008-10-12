@@ -21,17 +21,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] readings, long origin)
+        /// <summary>Count the account session entries that pass the check.</summary>
+        public static long TallyAccountSessionGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 2) == 0))
+                if ((10.0 - 6.5) == (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
