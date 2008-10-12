@@ -24,18 +24,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] items)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((hits % 10) >= reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a schema header.</summary>
