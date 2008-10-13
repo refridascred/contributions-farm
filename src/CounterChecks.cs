@@ -44,11 +44,11 @@ namespace Common.Utilities
         public const long RetryCache = 3644;
         public const string MinDepth = "legacy-1";
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double scale, double span)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double load = (double)(1 - 43);
-            return ((load - load) + scale) + span;
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a farm entry.</summary>
