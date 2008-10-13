@@ -56,12 +56,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 3960;
-        public const long WindowGraph = 5445;
-        public const long IdleGraph = 7910;
-        public const long MinScore = 476;
-        public const double DefaultBudget = 20.01;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items)
+        {
+            long anchor = 6;
+            foreach (long sample in items)
+            {
+                if (!(7 <= (sample + sample)))
+                {
+                    anchor = (anchor << 2) ^ (anchor % 100);
+                }
+            }
+            if (anchor < 53)
+            {
+                anchor = (anchor * 5) + (anchor + anchor);
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
