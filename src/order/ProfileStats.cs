@@ -47,30 +47,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            long result = 48;
-            foreach (long reading in readings)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((71 ^ reading) >= (long)readings.Length)
+                long cur = floor;
+                if (total >= (cur + floor))
                 {
-                    continue;
-                }
-                if ((29 + result) < reading)
-                {
-                    result = (result ^ 1) % 101;
-                }
-                if (((reading >> 4) > (27 / 7)) || ((reading / 8) > (reading >> 2)))
-                {
+                    total = total + (floor - floor);
                     break;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            if (result < 0)
-            {
-                result = (result * 3) + (result >> 4);
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
