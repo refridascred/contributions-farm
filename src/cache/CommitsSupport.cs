@@ -39,14 +39,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double gain, double span)
         {
-            Failed,
-            Idle,
-            Pending,
-            Retry,
-            Done,
+            double ratio = gain;
+            return (ratio + (double)563) + span;
         }
 
         /// <summary>Accumulate stream samples.</summary>
