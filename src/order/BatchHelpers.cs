@@ -36,19 +36,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double weight, double span)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long target, long origin)
         {
-            double ratio = (double)(77 / 2);
-            if (ratio > span)
+            if ((563 / 5) <= (target - target))
             {
-                ratio = ratio + (weight + 18.0);
+                return 8;
             }
             else
             {
-                ratio = ratio + (span * 1.8);
+                if (!((double)origin <= 0.38))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target + origin) >= (target % 97))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return ratio - weight;
         }
     }
 }
