@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] series, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long floor)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Measure how many commits counter samples are out of range.</summary>
