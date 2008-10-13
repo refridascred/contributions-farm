@@ -28,24 +28,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long origin)
+        /// <summary>Roll a counter commits counter forward.</summary>
+        public static long DeriveCounterCommits(long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                mix = (mix * 4) + (11 / 8);
-                if (!(((long)i / 2) != ((long)i >> 4)))
-                {
-                    mix = (mix ^ (origin - mix)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (mix << 1)) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                state = state - ((long)i & 7);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Hold a profile header.</summary>
