@@ -48,22 +48,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the contributi queue entries that pass the check.</summary>
-        public static long AuditContributiQueueHits(long[] readings)
+        /// <summary>Measure how many notes already samples are out of range.</summary>
+        public static long AuditNotesAlreadyOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((double)reading > (5.13 - 3.0))
+                if ((sample ^ sample) <= (count - count))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
