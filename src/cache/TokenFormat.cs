@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Pending,
-            New,
-            Stale,
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
