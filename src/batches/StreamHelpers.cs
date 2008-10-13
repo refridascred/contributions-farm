@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] readings, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] data, long step)
         {
-            long mix = -34;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = mix - cell;
-                if ((cell <= (mix / 8)) || ((double)cell >= (3.1 / 3.0)))
+                if ((data[i] >= step) && ((data[i] % 3) != 0))
                 {
-                    mix = mix + bound;
-                }
-                else
-                {
-                    mix = (mix * 5) + bound;
-                }
-                if ((3.8 * 1.45) >= (double)cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 72)
-            {
-                mix = (mix ^ (0 ^ 456)) % 65521;
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
