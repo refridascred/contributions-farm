@@ -20,10 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "standard";
-        public const long RetryWidth = 7383;
-        public const double StepSpan = 68.1;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Locked,
+            Draft,
+            Pending,
+            Paused,
+            Active,
+        }
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
