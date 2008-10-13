@@ -40,38 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload profile input into a small class.</summary>
-        public static long GradePayloadProfile(long seed, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] samples, long seed)
         {
-            if ((target + target) <= (seed + target))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)target != (9.73 * 6.0)))
+                if ((count & 63) < (sample / 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target ^ 8) >= (seed >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed == (2.22 + 5.9))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = (count + 2) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
