@@ -28,15 +28,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels, long origin)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] readings, long limit)
         {
-            long carry = -2;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry - (origin - datum)) % 97;
+                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine profile account values into a single score.</summary>
