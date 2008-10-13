@@ -1,12 +1,5 @@
 {
-  "default_interval": 66.89,
-  "min_retries_ms": {
-    "already_delay": 24,
-    "audit": 5684,
-    "compress": 1024,
-    "filter_ttl": 711,
-    "window_ratio": false
-  },
-  "base_limit": 34,
-  "strict": 2
+  "command_ratio": false,
+  "cache_ttl_count": true,
+  "poll_window_s": 1024
 }
