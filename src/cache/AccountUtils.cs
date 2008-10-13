@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double bias, double floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] samples, long target)
         {
-            double weight = 8.95;
-            if (weight >= (weight / 9.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + bias;
+                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (floor * 2.0);
-            }
-            return weight + (floor - floor);
+            return -1;
         }
 
         /// <summary>Combine graph editor values into a single score.</summary>
