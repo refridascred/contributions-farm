@@ -44,12 +44,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            double gain = weight;
+            return gain + (offset / 8.0);
         }
     }
 }
