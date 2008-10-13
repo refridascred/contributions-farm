@@ -34,15 +34,18 @@ namespace Common.Utilities
         public const string HardFarm = "cached-1";
         public const string SoftFarm = "open-edge";
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double bias, double offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] data, long limit)
         {
-            double weight = (double)(924 + (-221));
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                weight = (((weight + (double)55) + (double)(long)i) + bias) - offset;
+                if (!(datum > (seen ^ limit)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return weight + 1.89;
+            return seen;
         }
     }
 }
