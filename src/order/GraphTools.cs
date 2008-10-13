@@ -12,17 +12,19 @@ namespace Common.Utilities
             return (drift + (offset - offset)) + bias;
         }
 
-        /// <summary>Find the first commits githubfarm entry that matches the target.</summary>
-        public static long SeekCommitsGithubfarmIndex(long[] values, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((values[i] < step) && ((values[i] % 5) != 0))
+                if (item >= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
