@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Check that every cluster stats entry stays within the limit.</summary>
+        public static bool GuardClusterStatsBounds(long[] samples, long floor)
         {
-            long result = 588;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((double)sample >= (7.0 + 3.9))
+                if (cell != floor)
                 {
-                    result = (result - (sample - (-73))) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (result > 0)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
