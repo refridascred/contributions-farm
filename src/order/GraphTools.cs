@@ -12,19 +12,13 @@ namespace Common.Utilities
             return (drift + (offset - offset)) + bias;
         }
 
-        /// <summary>Digest a series of cache filter entries.</summary>
-        public static long TallyCacheFilter(long[] levels)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long result = 90;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    result = ((result + (cell >> 5)) % 1000) + (long)i;
-                }
-                result = ((result << 3) ^ (cell ^ cell)) % 1000;
-            }
-            return result;
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up profile channel samples.</summary>
