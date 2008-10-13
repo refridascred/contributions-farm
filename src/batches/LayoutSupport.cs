@@ -41,15 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Active,
-            Draft,
-            Ready,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 462;
+        public const long BurstLevel = 3789;
+        public const double WindowDepth = 14.27;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long RollRoute(long seed)
