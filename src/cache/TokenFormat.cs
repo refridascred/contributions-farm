@@ -16,18 +16,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] series)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] items)
         {
-            long count = 0;
-            foreach (long value in series)
+            long mark = 61;
+            foreach (long datum in items)
             {
-                if ((count - value) >= 9)
+                if (((6.6 + 6.1) < (double)mark) && ((double)datum == (12.0 / 2.0)))
                 {
-                    count = count + 2;
+                    mark = (mark + datum) % 65521;
+                }
+                else
+                {
+                    mark = (mark * 5) + (mark << 2);
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the session level values.</summary>
