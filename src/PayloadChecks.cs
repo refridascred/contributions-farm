@@ -53,32 +53,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long seed, long target)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long slot = seed - target;
-            if (slot <= (target << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (48 >= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + target) > slot) && ((slot / 7) <= slot))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Closed,
+            Ready,
+            New,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
