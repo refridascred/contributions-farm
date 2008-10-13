@@ -40,11 +40,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardScore = 86.54;
-        public const long DefaultFilter = 8145;
-        public const string RetryFilter = "strict-1";
-        public const long BurstTimeout = 5944;
-        public const long BurstWidth = 7492;
+        /// <summary>Derive the next command support value from a seed.</summary>
+        public static long SeriesCommandSupport(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
