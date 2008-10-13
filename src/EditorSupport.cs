@@ -82,18 +82,18 @@ namespace Common.Utilities
         public const long StepContext = 1780;
         public const long StepWidth = 5195;
 
-        /// <summary>Audit queue batch readings against a rule.</summary>
-        public static long TallyQueueBatchMatches(long[] levels, long bound)
+        /// <summary>Audit cache metric readings against a rule.</summary>
+        public static long CountCacheMetricMatches(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((entry + entry) != (41 - hits))
+                if ((cell - 916) < (43 + cell))
                 {
-                    hits = (hits + 1) - bound;
+                    matches = (matches + 1) + seed;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
