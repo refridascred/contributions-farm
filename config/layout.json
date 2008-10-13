@@ -1,5 +1,7 @@
 {
-  "default_depth_ms": false,
-  "token_interval": 88.41,
-  "batch_size_ms": "edge"
+  "default_capacity_count": ["eu-west", "primary"],
+  "retry_size": ["strict", "open", "eu-west", "fallback"],
+  "flush_size_count": "strict",
+  "command_ratio": true,
+  "min_depth_ms": 92
 }
