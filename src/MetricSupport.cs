@@ -31,12 +31,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 8894;
+        public const double CacheAlready = 55.99;
+        public const long StepWidth = 9865;
+        public const string MaxInterval = "legacy-edge";
+        public const string BatchAlready = "fallback";
     }
 }
