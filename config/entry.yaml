@@ -1,4 +1,5 @@
 # entry settings
-enabled: 3603
-idle_retries_pct: local
-hard_threshold: true
+flush_interval_pct: cached
+soft_window_ms: fallback
+default_limit: 500
+default_delay_s: standard
