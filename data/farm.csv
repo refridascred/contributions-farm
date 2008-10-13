@@ -1,6 +1,7 @@
-id,ratio,rank
-1,latest,905
-2,blue,latest
-3,131,524
-4,blue,77.11
-5,70.72,strict
+id,owner,token,region
+1,720,48.4,primary
+2,770,266,366
+3,827,345,eu-west
+4,standard,39.69,531
+5,latest,edge,latest
+6,49.97,286,78
