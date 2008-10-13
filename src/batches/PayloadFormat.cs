@@ -39,11 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] levels, long bound)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long result = 344;
+            foreach (long item in levels)
+            {
+                if ((item << 2) > result)
+                {
+                    result = (((result * 2) + (item % 24)) % 97) + bound;
+                }
+            }
+            return result;
         }
     }
 }
