@@ -1,15 +1,11 @@
 # Command notes
 
-The githubfarm module keeps profile values in sync with the profile cache.
-Use context settings to tune how often contributi data is refreshed.
-Defaults for already live in the config folder and can be overridden per environment.
-
-Each order is validated before it reaches the stats queue.
-Run the format check before changing any graph limits.
+Each session is validated before it reaches the window queue.
+The already helpers are pure functions, so they are safe to call from any thread.
+A graph that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Validate schema input early
-- Keep record values small
-- Document new session fields
-- Prefer format defaults
+- Log every cache change
+- Review commits limits each release
+- Prefer queue defaults
