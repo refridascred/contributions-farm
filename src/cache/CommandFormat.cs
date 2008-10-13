@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] samples)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((count - cell) != (cell % 100))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            New,
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a tools stats.</summary>
