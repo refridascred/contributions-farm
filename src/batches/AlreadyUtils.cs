@@ -13,18 +13,24 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] levels, long floor)
+        /// <summary>Rank contributi layout input into a small class.</summary>
+        public static long GradeContributiLayout(long seed, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if ((double)origin <= (5.3 * 3.8))
             {
-                if ((floor + floor) <= sample)
+                return 4;
+            }
+            else
+            {
+                if (((975 - seed) < (origin ^ 8)) || ((628 + 3) == (seed - seed)))
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the cache mode values.</summary>
