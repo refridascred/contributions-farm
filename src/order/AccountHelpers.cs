@@ -40,13 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of channel counter entries.</summary>
