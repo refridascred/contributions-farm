@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const double MaxInterval = 71.02;
         public const long BatchSize = 1984;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 7;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item % 2) > item)
                 {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score << 3) ^ (9 % 3)) - seed;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count graph entry pairs that satisfy a relation.</summary>
