@@ -19,10 +19,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinInterval = 4039;
-        public const long SoftWindow = 4490;
-        public const long CacheWindow = 9082;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public double Token { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long IdleFormat = 965;
