@@ -1,8 +1,18 @@
 {
-  "max_capacity_ms": 100,
-  "batch_timeout_pct": "green",
-  "batch_threshold_pct": 21,
-  "warm_delay_ms": 46.29,
-  "compress": "green",
-  "flush_window": "edge"
+  "hard_limit_count": 97.97,
+  "route_ttl": 45,
+  "min_ttl_pct": true,
+  "hard_ratio_ms": [127, 35],
+  "filter_timeout": {
+    "burst_ratio": 250,
+    "cache_window": "standard",
+    "farm_window": {
+      "min_window_pct": "standard",
+      "audit": 60.74,
+      "sync_timeout": "fallback",
+      "report_ratio": 36.34,
+      "readonly": 33.92
+    }
+  },
+  "commits_ratio": [127, 68]
 }
