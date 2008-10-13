@@ -33,12 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Compare every pair of githubfarm token readings.</summary>
+        public static long OverlapGithubfarmTokenCount(long[] samples)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a command stats.</summary>
