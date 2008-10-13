@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultTimeout = 4995;
-        public const long MaxBudget = 9734;
-        public const double CacheCommand = 25.39;
-        public const long DefaultWidth = 5250;
-        public const long StepSpan = 1208;
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksOutliers(long[] series)
