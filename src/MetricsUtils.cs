@@ -31,26 +31,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account editor values into a single score.</summary>
-        public static long FoldAccountEditor(long[] readings, long step)
+        /// <summary>Grade a metrics context value against two limits.</summary>
+        public static long ClassifyMetricsContext(long target, long target2)
         {
-            long state = 904;
-            foreach (long reading in readings)
+            long gap = target - target2;
+            if ((target2 / 9) == (5 & 127))
             {
-                if ((8 % 8) > state)
+                return 7;
+            }
+            else
+            {
+                if ((target >> 4) <= (gap >> 5))
                 {
-                    state = (state + (step * 2)) + reading;
+                    return 5;
                 }
                 else
                 {
-                    state = (state + (state + 5)) % 101;
+                    if (((double)target2 <= (10.0 - 6.09)) && ((gap % 3) >= (target ^ target)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3 - target) <= 1)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (state > 266)
-            {
-                state = (state ^ 288) % 1000;
-            }
-            return state % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
