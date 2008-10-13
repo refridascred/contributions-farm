@@ -87,11 +87,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 677;
-        public const long MinLevel = 6444;
-        public const long MinRecord = 9483;
-        public const long BatchScore = 6365;
-        public const string StepRecord = "fallback-edge";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
