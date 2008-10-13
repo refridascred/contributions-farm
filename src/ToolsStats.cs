@@ -34,14 +34,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Stale,
             Paused,
-            Ready,
+            Locked,
             Closed,
-            Pending,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a batches stats.</summary>
