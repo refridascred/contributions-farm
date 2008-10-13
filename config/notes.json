@@ -1,19 +1,6 @@
 {
-  "max_ttl": {
-    "readonly": "standard",
-    "farm_ttl": 3292,
-    "default_interval": 40,
-    "min_timeout_s": false
-  },
-  "persist": 41.63,
-  "sync_timeout_ms": "fallback",
-  "flush_interval_s": true,
-  "already_capacity": "staging",
-  "order_window": {
-    "cluster_interval": 1024,
-    "idle_timeout": "open",
-    "verbose": true,
-    "persist": 93,
-    "metric_delay": 47.28
-  }
+  "base_size": "local",
+  "burst_size_pct": 15,
+  "idle_size_ms": "legacy",
+  "readonly": 59.33
 }
