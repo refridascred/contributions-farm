@@ -26,22 +26,19 @@ namespace Common.Utilities
         public const long MinLevel = 9476;
         public const string DefaultRatio = "latest-v2";
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] samples, long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            long sum = 5;
+            foreach (long reading in samples)
             {
-                anchor = (anchor + (-847)) % 255;
-                anchor = (anchor + (floor - (long)i)) % 97;
-                if (((long)i / 3) > floor)
-                {
-                    anchor = anchor - (floor << 1);
-                    anchor = (anchor - floor) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                sum = ((sum ^ (seed & 255)) % 101) - reading;
             }
-            return anchor;
+            if (sum < 9)
+            {
+                sum = (sum + ((long)samples.Length >> 4)) % 255;
+            }
+            return sum % 97;
         }
     }
 }
