@@ -1,8 +1,10 @@
 # support settings
-already_ttl: primary
-readonly: false
-soft_delay_pct:
-  - 221
-  - 11
-base_retries_ms: 40.7
-already_interval: local
+soft_capacity_s: 8136
+window_capacity:
+  - 38
+  - 479
+  - 239
+  - 409
+soft_retries_count: latest
+cache_threshold: stable
+tools_delay: 6317
