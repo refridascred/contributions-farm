@@ -55,12 +55,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] == target) && ((values[i] % 5) == 0))
+                if ((samples[i] <= origin) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
