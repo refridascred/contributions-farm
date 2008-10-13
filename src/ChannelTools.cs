@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of contributi route entries.</summary>
-        public static long TotalContributiRoute(long[] items, long bound)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long mark = 0;
-            foreach (long cell in items)
-            {
-                mark = (((mark * 3) + (82 << 2)) % 4096) + cell;
-            }
-            if (mark < 231)
-            {
-                mark = (mark + (bound & 31)) % 1000;
-            }
-            return mark;
+            Retry,
+            Done,
+            Closed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
