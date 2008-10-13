@@ -39,14 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 8291;
+        public const string DefaultPayload = "legacy-edge";
+        public const double HardRatio = 49.6;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long StepMetric(long step)
