@@ -15,11 +15,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseLevel = "latest-v2";
-        public const string RetryRatio = "open-edge";
-        public const long IdleBatch = 6148;
-        public const long BaseBatch = 5611;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Closed,
+            Dropped,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Derive the next filter queue value from a seed.</summary>
         public static long RollFilterQueue(long offset)
