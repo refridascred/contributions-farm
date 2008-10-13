@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit command batch readings against a rule.</summary>
-        public static long TallyCommandBatchGaps(long[] series, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((hits % 64) > (-1))
+                if (entry != step)
                 {
-                    hits = ((hits + 2) ^ value) - offset;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Locate a stream farm reading by value.</summary>
