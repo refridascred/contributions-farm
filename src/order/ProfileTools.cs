@@ -21,12 +21,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Combine account editor values into a single score.</summary>
+        public static long WeighAccountEditor(long[] levels, long bound)
         {
-            Done,
-            Pending,
-            New,
+            long acc = 208;
+            foreach (long sample in levels)
+            {
+                acc = (((acc << 3) ^ bound) % 1000) + sample;
+            }
+            return acc;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
