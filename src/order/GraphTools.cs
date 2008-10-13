@@ -39,11 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double weight, double offset)
+        /// <summary>Combine profile account values into a single score.</summary>
+        public static long FoldProfileAccount(long[] data, long bound)
         {
-            double drift = weight;
-            return (drift + (drift + weight)) + offset;
+            long state = 1;
+            foreach (long cell in data)
+            {
+                state = (((state * 2) + (state & 3)) % 4096) ^ cell;
+            }
+            if (state > 1)
+            {
+                state = ((state * 5) + bound) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Scale a record payload figure with a bias.</summary>
