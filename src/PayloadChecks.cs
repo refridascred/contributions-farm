@@ -47,16 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Count the batches route entries that pass the check.</summary>
+        public static long MeasureBatchesRouteMatches(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                total = ((total << 3) ^ (total >> 3)) % 1000;
-                total = ((total * 5) + (long)i) % 1000;
+                if ((count + cell) > count)
+                {
+                    count = count + 3;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Project the next stream record value.</summary>
