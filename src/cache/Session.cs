@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Level { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultTimeout = 4995;
+        public const long MaxBudget = 9734;
+        public const double CacheCommand = 25.39;
+        public const long DefaultWidth = 5250;
+        public const long StepSpan = 1208;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksOutliers(long[] series)
