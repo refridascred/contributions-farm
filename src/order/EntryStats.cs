@@ -36,12 +36,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Ready,
-            Closed,
-            Paused,
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
