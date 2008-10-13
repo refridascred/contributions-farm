@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Find the first session account entry that matches the target.</summary>
+        public static long LocateSessionAccountIndex(long[] values, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if ((values[i] <= offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of already entries.</summary>
