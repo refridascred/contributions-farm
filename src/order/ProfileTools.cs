@@ -40,19 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] samples, long bound)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a contributi options.</summary>
