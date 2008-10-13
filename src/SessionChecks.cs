@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] readings)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!((687 - sample) < (matches << 3)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
