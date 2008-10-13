@@ -55,38 +55,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long limit, long origin)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            if (origin < (404 ^ origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin != (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit != (18.0 - 6.92))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6.8 < (double)origin) || (13 >= (origin & 31)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Stale,
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the command status values.</summary>
