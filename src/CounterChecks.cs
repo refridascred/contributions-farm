@@ -29,17 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] items, long floor)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a batch header.</summary>
