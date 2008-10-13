@@ -57,15 +57,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double bias, double floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] levels, long target)
         {
-            double rate = bias;
-            for (int i = 0; i < 3; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                rate = (rate + bias) + (double)(long)i;
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate - (floor * 20.0);
+            return ready;
         }
     }
 }
