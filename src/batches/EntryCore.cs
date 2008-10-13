@@ -16,20 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every githubfarm tools entry stays within the limit.</summary>
-        public static bool CheckGithubfarmToolsRange(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryFactor = 1361;
+        public const string SoftCommits = "cached-1";
+        public const long RetryCommits = 3100;
+        public const string CacheCommits = "cached-1";
+        public const long LimitWidth = 4248;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaLimits(long[] readings, long step)
