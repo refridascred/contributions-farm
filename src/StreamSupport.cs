@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of already account readings.</summary>
-        public static long ScoreAlreadyAccount(long[] readings)
-        {
-            long result = 8;
-            foreach (long item in readings)
-            {
-                result = (result + item) % 101;
-            }
-            if (result > 12)
-            {
-                result = (result ^ (result << 3)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitScore = 6246;
+        public const long CacheFactor = 170;
+        public const string RetryGraph = "staging-1";
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long GradeSchema(long seed, long seed2)
