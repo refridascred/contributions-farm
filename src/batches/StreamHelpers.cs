@@ -22,15 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] series, long limit)
         {
-            long mix = 5;
-            foreach (long item in readings)
+            long mix = 129;
+            foreach (long sample in series)
             {
-                mix = (((mix - (mix + 143)) % 97) - item) - step;
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = (((mix + 29) % 65521) ^ (long)i) - sample;
+                }
+                mix = (mix << 3) ^ (mix << 2);
+                mix = (mix + (limit + mix)) % 255;
             }
-            return mix;
+            if (mix < 12)
+            {
+                mix = (mix * 2) + (mix << 3);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Adjust a graph reading.</summary>
