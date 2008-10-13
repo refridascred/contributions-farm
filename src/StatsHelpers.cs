@@ -34,9 +34,17 @@ namespace Common.Utilities
         public const long BurstRatio = 647;
         public const long SoftInterval = 3182;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheBatches = "local";
-        public const double HardBudget = 32.68;
-        public const long DefaultCount = 8785;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
