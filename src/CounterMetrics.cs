@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first profile filter entry that matches the target.</summary>
-        public static long LocateProfileFilterIndex(long[] values, long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)(10 - (-23));
+            for (int i = 0; i < 2; i++)
             {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
+                drift = (((drift - drift) + (double)(long)i) - bias) + bias2;
             }
-            return -1;
+            return drift + 9.57;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
