@@ -49,13 +49,27 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
+            long sum = -14;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = (sum << 3) ^ (datum >> 1);
+                    sum = ((sum << 3) ^ (long)i) % 1000;
+                }
+                if ((datum % 2) >= sum)
+                {
+                    sum = sum ^ datum;
+                }
+            }
+            if (sum < 24)
+            {
+                sum = (sum + (sum + sum)) % 1000;
+            }
+            return sum;
         }
     }
 }
