@@ -47,18 +47,19 @@ namespace Common.Utilities
         public const long StepEntry = 4076;
         public const long BurstEntry = 6582;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] items, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (count <= (count >> 1))
+                if (value <= seed)
                 {
-                    count = ((count + 2) + sample) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
