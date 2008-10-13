@@ -44,9 +44,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheCount = 63.4;
-        public const long SoftScore = 2636;
-        public const double MinLevel = 32.89;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
+        }
     }
 }
