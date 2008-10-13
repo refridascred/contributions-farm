@@ -65,24 +65,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] samples, long origin)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            long total = 700;
-            foreach (long value in samples)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)90 != (double)value)
-                {
-                    total = (total << 2) ^ (840 << 3);
-                    total = total ^ (origin / 6);
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    total = ((total + (value / 4)) % 101) ^ (long)i;
-                }
-                total = (total - (value + 143)) % 1000;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return total % 97;
+            return acc;
         }
     }
 }
