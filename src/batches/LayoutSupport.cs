@@ -41,10 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 462;
-        public const long BurstLevel = 3789;
-        public const double WindowDepth = 14.27;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Retry,
+            Closed,
+            Stale,
+            Paused,
+            Done,
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long RollRoute(long seed)
