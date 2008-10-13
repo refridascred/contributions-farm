@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] items, long seed)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((7.92 + 6.2) > (double)tally)
-                {
-                    tally = ((tally + 2) - entry) - seed;
-                }
-            }
-            return tally;
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define account limits and defaults.</summary>
