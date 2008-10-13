@@ -45,15 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double bias, double bias2)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] values)
         {
-            double bias3 = (double)(481 + (-4));
-            if (bias3 <= (double)(-56))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias3 = (bias3 + (5.0 + bias2)) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias3 - 7.34;
+            return seen;
         }
 
         /// <summary>Hold a contributi options.</summary>
