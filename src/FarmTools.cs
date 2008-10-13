@@ -21,9 +21,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultCount = 8734;
-        public const long BaseInterval = 2214;
-        public const string IdleChannel = "strict-v2";
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = ((mix + (18 >> 3)) % 4096) + (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
