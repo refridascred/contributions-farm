@@ -50,11 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
