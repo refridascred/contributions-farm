@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = acc ^ (acc % 64);
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first account window entry that matches the target.</summary>
