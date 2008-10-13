@@ -1,21 +1,16 @@
 # githubfarm settings
-already_depth: 30
-cache_interval: 8625
-max_interval_pct:
-  - local
-  - primary
-window_size:
-  batch_interval_pct:
-    soft_depth: edge
-    route_ratio: local
-    idle_retries_count:
-      - 132
-      - 313
-    default_capacity_pct: primary
-    warm_ratio_count:
-      - 211
-      - 182
-    compress: 82
-  record_ttl: 47.71
-  poll_delay: standard
-batch_interval: staging
+command_size: 43.81
+persist: 31.59
+queue_interval: 30
+cache_threshold_ms:
+  sync_retries: legacy
+  notes_delay: edge
+  retry_delay_ms: local
+  compress: 45
+  route_timeout: blue
+tools_ttl:
+  - 294
+  - 66
+  - 25
+  - 415
+max_delay_s: 500
