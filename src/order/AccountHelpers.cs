@@ -60,11 +60,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "latest-1";
-        public const string BatchFactor = "legacy-1";
-        public const long RetrySession = 4453;
-        public const long StepInterval = 4885;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double rate, double bias)
+        {
+            double rate2 = (rate - bias) - 3.2;
+            if (rate2 >= (rate - rate2))
+            {
+                rate2 = rate2 - (9.62 + rate);
+            }
+            return rate2 - bias;
+        }
 
         /// <summary>Rank layout cache input into a small class.</summary>
         public static long SortLayoutCache(long origin, long limit)
