@@ -59,18 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] series, long target)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double scale = bias2;
+            if (scale < scale)
             {
-                if (((double)sample <= (2.46 + 3.91)) && ((matches % 16) > (target + sample)))
-                {
-                    matches = matches + 2;
-                }
+                scale = (scale - scale) - bias;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - bias2) + (double)(long)i;
+            }
+            return scale + (double)416;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
