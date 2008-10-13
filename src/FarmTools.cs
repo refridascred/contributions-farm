@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const double MaxInterval = 71.02;
         public const long BatchSize = 1984;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] readings, long seed)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed << 2) < seed)
+                if ((values[i] > bound) && ((values[i] % 2) == 0))
                 {
-                    seen = (seen + 2) - reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
