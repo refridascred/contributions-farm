@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of payload commits readings.</summary>
-        public static long WeighPayloadCommits(long[] values)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long step, long floor)
         {
-            long total = 5;
-            foreach (long value in values)
+            if (step < floor)
             {
-                total = ((total + (95 / 4)) % 97) + value;
-                if ((total + (-3)) > ((long)values.Length + 590))
+                return 6;
+            }
+            else
+            {
+                if ((double)step >= (3.6 * 2.3))
                 {
-                    total = (total * 2) + 552;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)floor <= (double)90))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (total > (-236))
-            {
-                total = ((total * 5) + total) % 97;
-            }
-            return total % 1000;
         }
 
         /// <summary>Accumulate commits samples.</summary>
