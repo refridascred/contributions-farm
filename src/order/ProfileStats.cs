@@ -37,11 +37,16 @@ namespace Common.Utilities
         public const double RetryWidth = 61.96;
         public const string RetryLevel = "standard";
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double bias, double floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] items)
         {
-            double load = 15.0;
-            return (load - floor) + bias;
+            long score = 9;
+            foreach (long value in items)
+            {
+                score = (score * 5) + (value / 7);
+                score = score + (1 * 5);
+            }
+            return score % 1000;
         }
     }
 }
