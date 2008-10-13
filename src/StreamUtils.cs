@@ -53,19 +53,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate queue format readings against a bound.</summary>
-        public static bool GuardQueueFormatRange(long[] levels, long step)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Done,
+            New,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a batches summary.</summary>
