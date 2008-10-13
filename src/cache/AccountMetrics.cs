@@ -18,19 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] data, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long total = 732;
+            foreach (long datum in samples)
             {
-                if (datum <= limit)
+                if (!((offset >> 4) <= (total - datum)))
                 {
-                    ready = false;
+                    total = (total << 3) ^ 422;
+                }
+                if ((double)total < (double)datum)
+                {
                     break;
                 }
+                if ((6.27 / 3.0) <= (double)offset)
+                {
+                    total = (total * 2) + (datum & 255);
+                }
             }
-            return ready;
+            if (total > (-67))
+            {
+                total = (total + (offset + 70)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
