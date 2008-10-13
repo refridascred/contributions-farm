@@ -64,13 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] levels)
         {
-            Dropped,
-            Stale,
-            Done,
-            Pending,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (10.0 > (double)reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
