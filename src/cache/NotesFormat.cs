@@ -23,15 +23,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long mark = -82;
-            foreach (long sample in samples)
-            {
-                mark = ((mark + 87) % 1000) - sample;
-            }
-            return mark % 65521;
+            Done,
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
