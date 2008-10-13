@@ -1,5 +1,4 @@
 # entry settings
-checks_capacity: true
-metric_window: 128
-batch_size: false
-warm_window_pct: 6017
+strict: true
+hard_capacity_pct: 81.34
+default_depth_s: standard
