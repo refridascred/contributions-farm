@@ -61,12 +61,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long origin, long bound)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
+            long gap = origin - bound;
+            if ((8 ^ gap) < (bound ^ gap))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin >> 5) <= 3)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((550 + bound) < (-4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
