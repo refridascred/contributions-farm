@@ -22,21 +22,17 @@ namespace Common.Utilities
         public const long IdleSchema = 649;
         public const double BatchBudget = 33.82;
 
-        /// <summary>Match up channel layout samples.</summary>
-        public static long PairChannelLayoutCount(long[] values)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] values, long floor)
         {
-            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((values[i] < floor) && ((values[i] % 2) == 0))
                 {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
