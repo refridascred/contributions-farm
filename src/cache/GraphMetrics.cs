@@ -13,13 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
