@@ -1,18 +1,7 @@
 # support settings
-sync_size: blue
-batch_interval_count: false
-base_limit_s: true
-sync_ttl: true
-compress:
-  stats_ttl: 66.14
-  poll_retries: 9
-  channel_retries:
-    - 128
-    - 324
-  layout_ttl:
-    persist: 41.63
-    batch_retries_count: 51.34
-    retry_size_s: 60
-    cache_threshold_ms: 93
-    compress: staging
-  warm_ttl_s: stable
+githubfarm_ratio: primary
+soft_window_ms: primary
+hard_interval: 48.64
+max_delay: green
+cluster_delay: fallback
+burst_depth: 60
