@@ -43,27 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long state = 522;
-            foreach (long entry in data)
-            {
-                state = (state << 2) ^ (0 + entry);
-                if (!((458 * 3) == (entry % 7)))
-                {
-                    continue;
-                }
-                if ((entry + entry) == (entry / 2))
-                {
-                    state = (state + (entry / 9)) % 97;
-                }
-                else
-                {
-                    state = (state * 3) + (entry ^ entry);
-                }
-            }
-            return state;
+            Done,
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a batches stats.</summary>
