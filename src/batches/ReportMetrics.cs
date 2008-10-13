@@ -35,14 +35,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long origin, long origin2)
         {
-            New,
-            Pending,
-            Draft,
-            Locked,
-            Queued,
+            if ((origin - origin) < origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin2 - origin2) >= (origin - origin2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin2 + origin) > origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((origin2 - (-821)) > (1 << 2)) && ((96 ^ origin) >= (origin + origin)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
