@@ -30,13 +30,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitWidth = "fallback-edge";
+        public const string BurstInterval = "legacy-edge";
+        public const long BaseNotes = 7208;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] data, long limit)
