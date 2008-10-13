@@ -44,11 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 1526;
-        public const string BaseSupport = "primary";
-        public const long CacheLevel = 8809;
-        public const string WindowSupport = "stable";
-        public const long BurstSupport = 9718;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+        }
     }
 }
