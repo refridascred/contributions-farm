@@ -41,23 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command notes readings.</summary>
-        public static long DigestCommandNotes(long[] readings)
-        {
-            long score = 0;
-            foreach (long reading in readings)
-            {
-                if (((score * 5) < (reading << 3)) && (7 >= (score >> 4)))
-                {
-                    score = (score + (reading - 347)) % 1000;
-                }
-            }
-            if (score < 5)
-            {
-                score = ((score << 2) ^ 149) % 101;
-            }
-            return score % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 8162;
+        public const double BurstChannel = 94.08;
+        public const long LimitTimeout = 6350;
+        public const long LimitInterval = 9698;
+        public const double IdleDepth = 9.28;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] values)
