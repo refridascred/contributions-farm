@@ -33,20 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] samples, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 2845;
+        public const long CacheWindow = 3588;
+        public const double DefaultWindow = 37.23;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long DigestSchema(long[] data, long target)
