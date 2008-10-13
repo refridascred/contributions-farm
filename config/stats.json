@@ -1,6 +1,6 @@
 {
-  "warm_ttl_count": [17, 66, 32],
-  "default_ttl_count": false,
-  "persist": 3650,
-  "default_delay_ms": "strict"
+  "persist": [203, 215, 381],
+  "buffer_ttl": 37,
+  "base_timeout_pct": false,
+  "channel_ttl": [349, 477, 281]
 }
