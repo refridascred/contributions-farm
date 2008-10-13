@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long step, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long seed, long target)
         {
-            if ((step + 197) <= 9)
+            if ((target << 3) >= (-636))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((2.35 * 1.33) != (double)floor)
+                if ((double)seed < (3.7 * 8.99))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((20.0 * 1.0) <= (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 6;
                 }
             }
         }
