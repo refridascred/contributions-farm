@@ -23,12 +23,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowQueue = 21.2;
-        public const long MinDepth = 5677;
-        public const long BaseScore = 416;
-        public const long RetryBudget = 3690;
-        public const long DefaultQueue = 2774;
+        /// <summary>Grade a support payload value against two limits.</summary>
+        public static long BucketSupportPayload(long step, long step2)
+        {
+            long diff = step ^ step2;
+            if ((323 << 1) < (diff + diff))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step2 & 63) > step2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double LimitWidth = 75.57;
