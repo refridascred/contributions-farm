@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            New,
-            Stale,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseWidth = 2.06;
+        public const long BurstRecord = 5631;
+        public const long CacheLevel = 9709;
+        public const long MaxRecord = 3916;
+        public const double StepSize = 21.25;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinRatio = 5070;
