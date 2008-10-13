@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long BaseFactor = 4901;
         public const long SoftScore = 8959;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!(entry >= (entry - entry)) || (matches > (5 << 2)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 2804;
+        public const double BurstBudget = 64.43;
+        public const long DefaultOrder = 1595;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long FoldChecks(long[] readings, long origin)
