@@ -41,17 +41,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a editor entry counter forward.</summary>
-        public static long SeriesEditorEntry(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result - result) % 101;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepWidth = 5987;
+        public const long StepMetrics = 122;
+        public const string IdleMetrics = "legacy";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BatchFilter = 32.37;
