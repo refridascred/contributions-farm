@@ -29,15 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Stale,
+            Idle,
+            Closed,
+            Queued,
+            Active,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
