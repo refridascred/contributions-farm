@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            Synced,
-            Stale,
-            Pending,
+            long total = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((limit + limit) <= 646)
+                {
+                    total = total - (total - total);
+                    total = total ^ total;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Find the first metric layout entry that matches the target.</summary>
