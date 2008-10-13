@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long target, long limit)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long bound = target ^ limit;
-            if (((double)limit > (8.3 - 9.0)) || ((double)target <= (double)limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target - bound) == (bound + 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Stale,
+            Paused,
+            Retry,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the account class values.</summary>
