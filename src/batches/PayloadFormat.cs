@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardQueue = 56.43;
-        public const long StepTimeout = 6642;
-        public const long MinQueue = 6923;
-        public const long LimitQueue = 1902;
+        /// <summary>Scale a githubfarm command figure with a bias.</summary>
+        public static double SmoothGithubfarmCommand(double gain, double span)
+        {
+            double scale = span;
+            if (scale < (scale - scale))
+            {
+                scale = (scale + (scale * 3.4)) + gain;
+            }
+            else
+            {
+                scale = scale - 2.71;
+            }
+            return scale + 6.4;
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
