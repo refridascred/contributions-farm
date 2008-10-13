@@ -49,22 +49,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long CountSchemaPayloadOutliers(long[] items)
+        /// <summary>Fold a list of cache channel readings.</summary>
+        public static long TotalCacheChannel(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long score = 138;
+            foreach (long entry in samples)
             {
-                if (!((double)tally > (double)entry))
+                score = ((score << 3) ^ (score % 7)) % 1000;
+                score = ((score * 3) + score) % 97;
+                if ((score + entry) <= (entry + entry))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = score + (score * 2);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
