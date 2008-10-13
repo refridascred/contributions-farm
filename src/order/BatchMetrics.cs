@@ -51,18 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue window entries that pass the check.</summary>
-        public static long MeasureQueueWindowHits(long[] readings)
+        /// <summary>Measure how many token order samples are out of range.</summary>
+        public static long TallyTokenOrderOutliers(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((matches * 3) < sample)
+                if (offset <= (entry & 31))
                 {
-                    matches = matches + 2;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
