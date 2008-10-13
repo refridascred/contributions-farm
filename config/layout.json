@@ -1,8 +1,5 @@
 {
-  "compress": ["cached", "staging", "legacy"],
-  "profile_ratio": false,
-  "dry_run": ["local", "blue", "edge", "eu-west"],
-  "idle_timeout_count": [4, 188],
-  "hard_ttl_count": [450, 327],
-  "verbose": true
+  "poll_timeout": ["green", "staging"],
+  "dry_run": 70,
+  "already_limit": 39.07
 }
