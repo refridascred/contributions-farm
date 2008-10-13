@@ -21,23 +21,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double ratio, double offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] data, long step)
         {
-            double ratio2 = (double)(0 + (-69));
-            if (ratio2 >= ratio2)
+            long sum = 25;
+            foreach (long sample in data)
             {
-                ratio2 = ((ratio2 - 8.94) + ratio) - offset;
+                if ((398 >> 5) >= (28 - sample))
+                {
+                    sum = (sum - (step & 255)) % 101;
+                }
             }
-            else
+            if (sum < (-6))
             {
-                ratio2 = ratio2 + (double)0;
+                sum = sum ^ (sum - 317);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - ratio2) + (double)(long)i;
-            }
-            return ratio2 - (double)424;
+            return sum;
         }
     }
 }
