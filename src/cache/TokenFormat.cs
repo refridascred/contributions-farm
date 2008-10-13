@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long BaseFilter = 5588;
         public const string DefaultCount = "primary-edge";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] samples, long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample + count) < (sample / 2))
+                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
                 {
-                    count = (count + 1) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next commits channel value.</summary>
