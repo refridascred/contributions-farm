@@ -1,8 +1,9 @@
 {
-  "batch_retries": true,
-  "cache_capacity_pct": "open",
-  "idle_ratio": 20,
-  "readonly": 36.58,
-  "window_size": "edge",
-  "schema_size": "edge"
+  "burst_interval_ms": "open",
+  "soft_capacity_s": {
+    "burst_depth": "strict",
+    "readonly": "eu-west",
+    "hard_delay_pct": 6346
+  },
+  "checks_interval": [375, 456, 218, 75]
 }
