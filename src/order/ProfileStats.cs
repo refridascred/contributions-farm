@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long target, long bound)
+        /// <summary>Grade a record order value against two limits.</summary>
+        public static long ClassifyRecordOrder(long limit, long step)
         {
-            long lane = target + bound;
-            if (lane > (bound % 97))
+            long prev = limit + step;
+            if ((double)step >= (double)prev)
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if (target <= (4 >> 3))
+                if (!((9 ^ limit) > step))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (!(lane >= (target / 7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 2;
                 }
             }
         }
