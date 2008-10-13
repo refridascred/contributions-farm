@@ -1,8 +1,6 @@
 {
-  "soft_limit_ms": false,
-  "cache_window_count": 11.26,
-  "max_capacity_pct": 67.17,
-  "cache_retries": 95.27,
-  "metrics_interval": [139, 350],
-  "sync_threshold_s": [126, 413, 256]
+  "retry_ratio": "latest",
+  "hard_retries_s": [398, 361],
+  "min_threshold_count": "staging",
+  "burst_ttl": 36
 }
