@@ -44,15 +44,12 @@ namespace Common.Utilities
         public const long HardTools = 342;
         public const double MinLevel = 81.58;
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double rate, double span)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double drift = (rate / 4.0) / 2.0;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)24) + (double)(long)i;
-            }
-            return drift + (span + drift);
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
