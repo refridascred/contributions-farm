@@ -73,27 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] items, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] series)
         {
-            long anchor = 61;
-            foreach (long reading in items)
+            long score = 83;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 3; i++)
+                if (reading < (reading + score))
                 {
-                    anchor = (((anchor * 2) + reading) % 65521) + (long)i;
-                    anchor = (anchor ^ (201 + bound)) % 4096;
-                }
-                if ((reading ^ anchor) < anchor)
-                {
-                    anchor = anchor + reading;
+                    score = (score - score) % 97;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = anchor + (bound % 2);
-            }
-            return anchor % 1000;
+            return score;
         }
     }
 }
