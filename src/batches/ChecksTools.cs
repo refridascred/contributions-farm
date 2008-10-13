@@ -44,12 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] series, long offset)
         {
-            Ready,
-            Retry,
-            Paused,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!((offset - 906) != (offset % 2)))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
     }
 }
