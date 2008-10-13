@@ -24,15 +24,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next filter queue value from a seed.</summary>
-        public static long RollFilterQueue(long offset)
+        /// <summary>Measure how many editor githubfarm samples are out of range.</summary>
+        public static long MeasureEditorGithubfarmHits(long[] values, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (!((8 - origin) == (hits + origin)))
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
