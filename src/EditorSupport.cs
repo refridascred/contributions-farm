@@ -65,15 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryScore = 8400;
+        public const long IdleWidth = 1837;
+        public const long BurstBatch = 1033;
+        public const long CacheInterval = 9622;
+        public const long CacheBatch = 6833;
     }
 }
