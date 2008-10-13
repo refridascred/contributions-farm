@@ -59,18 +59,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] values, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long offset, long target)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if (!((offset / 4) == (target ^ target)))
             {
-                if ((origin + seen) < origin)
+                return 0;
+            }
+            else
+            {
+                if ((18.0 * 6.0) != (double)target)
                 {
-                    seen = (seen + 3) + item;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
