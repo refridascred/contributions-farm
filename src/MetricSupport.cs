@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] data)
+        /// <summary>Adjust a order layout reading.</summary>
+        public static double ProjectOrderLayout(double gain, double span)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double scale = gain / 8.0;
+            if (scale > scale)
             {
-                if (!((double)count <= 9.0))
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = (scale - 1.0) + span;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (scale * 6.1)) + (double)(long)i;
+            }
+            return scale + 6.0;
         }
 
         /// <summary>Look up the position of a contributi order sample.</summary>
