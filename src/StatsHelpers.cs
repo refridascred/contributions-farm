@@ -34,18 +34,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] readings, long bound)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((tally << 3) != (bound - bound))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Draft,
+            Idle,
+            Pending,
         }
 
         /// <summary>Locate a format reading by value.</summary>
