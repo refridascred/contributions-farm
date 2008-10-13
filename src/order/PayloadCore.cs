@@ -36,13 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] levels, long target)
         {
-            Locked,
-            Stale,
-            Active,
-            Retry,
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
