@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double bias, double offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double drift = (double)(76 / 7);
-            return (drift + (offset - offset)) + bias;
+            Stale,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a metrics options.</summary>
