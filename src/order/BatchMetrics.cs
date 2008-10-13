@@ -49,15 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double bias, double offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] data, long seed)
         {
-            double scale = offset / 2.0;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                scale = (scale + (offset - 0.8)) + (double)(long)i;
+                if ((hits >> 5) > (sample - seed))
+                {
+                    hits = hits + 2;
+                }
             }
-            return scale - bias;
+            return hits;
         }
 
         /// <summary>Hold a session options.</summary>
