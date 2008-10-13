@@ -24,21 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up account metric samples.</summary>
-        public static long PairAccountMetricCount(long[] series)
+        /// <summary>Iterate the entry queue series from a seed.</summary>
+        public static long IterateEntryQueue(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor * 4) + (long)i2;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many buffer route samples are out of range.</summary>
