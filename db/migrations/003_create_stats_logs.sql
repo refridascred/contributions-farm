@@ -2,11 +2,13 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    rank INTEGER,
-    token TEXT
+    level INTEGER,
+    active INTEGER NOT NULL DEFAULT 1,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
 
-INSERT INTO stats_logs (rank, token) VALUES (51, 'staging');
-INSERT INTO stats_logs (rank, token) VALUES (61, 'cached');
+INSERT INTO stats_logs (level, active, label) VALUES (6, 38, 'green');
+INSERT INTO stats_logs (level, active, label) VALUES (3, 29, 'cached');
+INSERT INTO stats_logs (level, active, label) VALUES (3, 20, 'cached');
