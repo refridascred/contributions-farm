@@ -33,11 +33,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
