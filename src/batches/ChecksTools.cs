@@ -20,11 +20,20 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 88.6;
-        public const long SoftNotes = 9745;
-        public const double SoftDepth = 77.14;
-        public const long BaseNotes = 3990;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
