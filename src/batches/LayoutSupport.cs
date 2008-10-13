@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 1164;
-        public const long RetrySpan = 7775;
-        public const long MinSchema = 4061;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LookupCounterIndex(long[] values, long floor)
