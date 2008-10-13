@@ -1,15 +1,8 @@
 # githubfarm settings
-retry_capacity_s: 61
-strict: legacy
-base_depth_ms: green
-audit:
-  cache_ttl_pct: edge
-  dry_run: false
-  readonly:
-    - staging
-    - eu-west
-  warm_threshold_count:
-    - 414
-    - 82
-  min_limit_s: 7821
-  checks_delay: 5.84
+retry_ttl: true
+sync_timeout:
+  - 450
+  - 98
+  - 404
+token_threshold: 85.63
+retry_delay_ms: edge
