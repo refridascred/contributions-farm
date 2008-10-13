@@ -19,21 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
