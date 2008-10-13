@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double weight, double floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long bound, long floor)
         {
-            double gain = (weight + 3.1) - (double)995;
-            for (int i = 0; i < 2; i++)
+            if (8.0 < (double)floor)
             {
-                gain = (gain - (double)(long)i) - floor;
+                return 6;
             }
-            return gain + (gain / 3.0);
+            else
+            {
+                if ((2 + bound) >= (bound + 739))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
