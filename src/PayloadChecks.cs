@@ -18,13 +18,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long origin)
         {
-            Active,
-            New,
-            Done,
-            Failed,
+            long state = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)(long)i <= (1.3 / 8.0))
+                {
+                    break;
+                }
+                else
+                {
+                    state = ((state * 4) + state) % 97;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
