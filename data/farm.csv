@@ -1,7 +1,8 @@
-id,rank
-1,73.78
-2,edge
-3,50
-4,local
-5,37.32
-6,strict
+id,label,ratio
+1,fallback,85.56
+2,371,275
+3,80.82,212
+4,93.13,412
+5,80.32,5.16
+6,cached,fallback
+7,186,500
