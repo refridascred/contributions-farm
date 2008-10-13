@@ -53,19 +53,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] levels, long target)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
-            long score = 683;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score - (8 * 5)) % 4096) ^ datum;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score > 65)
-            {
-                score = ((score * 5) + target) % 101;
-            }
-            return score;
+            return tally;
         }
     }
 }
