@@ -36,12 +36,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long bound)
         {
-            Closed,
-            Paused,
-            Retry,
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Combine channel commits values into a single score.</summary>
