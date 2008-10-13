@@ -45,12 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double bias, double bias2)
         {
-            Stale,
-            Failed,
-            Retry,
+            double bias3 = (double)(481 + (-4));
+            if (bias3 <= (double)(-56))
+            {
+                bias3 = (bias3 + (5.0 + bias2)) - bias;
+            }
+            return bias3 - 7.34;
         }
 
         /// <summary>Hold a contributi options.</summary>
