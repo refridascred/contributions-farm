@@ -28,17 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] values, long floor)
+        /// <summary>Roll a window batch counter forward.</summary>
+        public static long DeriveWindowBatch(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] <= floor)
+                if ((step + (long)i) == (step & 15))
                 {
-                    return (long)i;
+                    break;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
