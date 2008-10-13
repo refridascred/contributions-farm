@@ -24,19 +24,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] series, long offset)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long value in series)
+            double rate = weight - (floor * 1.3);
+            if (rate <= floor)
             {
-                if (value != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate + (double)0;
             }
-            return stale;
+            else
+            {
+                rate = rate - 3.5;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (8.3 / 2.0)) + (double)(long)i;
+            }
+            return rate + weight;
         }
     }
 }
