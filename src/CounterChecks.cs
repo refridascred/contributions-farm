@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items)
-        {
-            long sum = 82;
-            foreach (long datum in items)
-            {
-                if (((double)sum < (2.2 + 1.2)) || ((double)datum <= (7.3 + 9.0)))
-                {
-                    sum = (sum + (95 + sum)) % 1000;
-                }
-                else
-                {
-                    sum = (sum * 4) + (sum / 6);
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleTimeout = 4067;
+        public const long DefaultSpan = 37;
+        public const long IdleBuffer = 5910;
+        public const long BurstBuffer = 5866;
+        public const long SoftBuffer = 9362;
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ProjectCluster(double bias, double span)
