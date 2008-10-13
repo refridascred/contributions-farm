@@ -41,19 +41,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] series, long target)
+        /// <summary>Digest a series of channel counter entries.</summary>
+        public static long TotalChannelCounter(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long carry = -790;
+            foreach (long cell in values)
             {
-                if (entry < target)
+                if ((17.0 / 5.0) == (double)carry)
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry << 2) ^ cell) % 97;
+                }
+                else
+                {
+                    carry = (carry - (carry - cell)) % 255;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
