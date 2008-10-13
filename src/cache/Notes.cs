@@ -33,12 +33,19 @@ namespace Common.Utilities
         public const double SoftMetric = 27.72;
         public const string BurstLevel = "staging-1";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxBudget = 629;
-        public const double RetryLevel = 91.18;
-        public const long MinChecks = 3478;
-        public const long WindowInterval = 5224;
-        public const long LimitInterval = 4472;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((seed >> 5) >= (seed + matches))
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyMatches(long[] levels)
