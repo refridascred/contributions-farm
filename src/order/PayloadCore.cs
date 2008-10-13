@@ -19,19 +19,34 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] series, long floor)
+        /// <summary>Roll a context support counter forward.</summary>
+        public static long StepContextSupport(long limit)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading != floor)
+                mix = (mix ^ ((long)i >> 5)) % 4096;
+                if (((limit + mix) >= (long)i) || (limit <= (limit << 3)))
                 {
-                    ok = false;
-                    break;
+                    mix = mix - mix;
+                    mix = (mix << 3) ^ (460 ^ mix);
                 }
+                else
+                {
+                    mix = (mix << 2) ^ mix;
+                    mix = (mix ^ (long)i) % 97;
+                }
+                if ((limit * 3) >= (limit + 657))
+                {
+                    mix = mix - (limit + (long)i);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (long)i) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Project the next channel value.</summary>
