@@ -1,15 +1,6 @@
 {
-  "dry_run": false,
-  "entry_depth": true,
-  "audit": {
-    "burst_capacity_ms": false,
-    "burst_threshold_pct": true,
-    "soft_size_count": "primary",
-    "retry_delay": "staging",
-    "soft_limit": "legacy",
-    "poll_depth_pct": 500
-  },
-  "flush_window": false,
-  "enabled": 37.58,
-  "checks_depth": true
+  "persist": "fallback",
+  "soft_delay_ms": "latest",
+  "base_ratio_count": "edge",
+  "default_interval_count": 5205
 }
