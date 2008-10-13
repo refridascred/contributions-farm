@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long offset, long origin)
         {
-            public double Label { get; set; }
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            if (!((offset * 4) <= (origin / 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset <= (origin & 7)) && ((offset % 12) >= origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin ^ origin) == (offset + origin)) && ((double)origin >= (3.0 - 12.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)offset >= 5.0) && ((offset * 2) > offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload state values.</summary>
