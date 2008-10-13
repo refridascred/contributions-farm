@@ -60,18 +60,16 @@ namespace Common.Utilities
         public const long BatchCache = 6794;
         public const long RetryBudget = 5181;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] levels, long floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long seed)
         {
-            long carry = 575;
-            foreach (long entry in levels)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((floor ^ entry) != (entry - entry))
-                {
-                    carry = (carry << 2) ^ entry;
-                }
+                anchor = anchor - anchor;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Blend two window measurements.</summary>
