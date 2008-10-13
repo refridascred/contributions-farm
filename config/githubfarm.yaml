@@ -1,9 +1,14 @@
 # githubfarm settings
-warm_ttl_pct: cached
-hard_size:
-  retry_delay_ms: green
-  soft_size: false
-  idle_retries_s: cached
-support_window: 9354
-githubfarm_capacity: true
-batch_delay_pct: fallback
+poll_ttl_ms:
+  - eu-west
+  - latest
+hard_timeout:
+  - legacy
+  - staging
+  - open
+  - staging
+stream_window:
+  - 3
+  - 411
+  - 271
+  - 329
