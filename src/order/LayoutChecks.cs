@@ -41,18 +41,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 5927;
+        public const double DefaultBudget = 17.92;
+        public const long SoftCache = 7798;
+        public const long BatchCache = 6794;
+        public const long RetryBudget = 5181;
 
         /// <summary>Fold a list of commits channel readings.</summary>
         public static long FoldCommitsChannel(long[] levels)
