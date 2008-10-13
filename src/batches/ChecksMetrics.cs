@@ -61,15 +61,30 @@ namespace Common.Utilities
         public const long StepScore = 1174;
         public const long WindowTools = 9044;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] readings, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
+            long score = 987;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (((2 + target) >= (long)readings.Length) && ((score + entry) >= (target - entry)))
+                {
+                    score = score - (target / 8);
+                }
+                else
+                {
+                    score = (score * 3) + 99;
+                }
+                if ((target - score) >= (568 ^ 44))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (score > 71)
+            {
+                score = score ^ (score - score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Check that every graph batch entry stays within the limit.</summary>
