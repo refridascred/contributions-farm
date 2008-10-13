@@ -51,18 +51,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] items)
+        /// <summary>Blend two support cluster measurements.</summary>
+        public static double BlendSupportCluster(double scale, double span)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double rate = span;
+            if (rate > (double)811)
             {
-                if ((62 >> 5) < tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
+                rate = rate - (scale * 4.5);
             }
-            return tally;
+            else
+            {
+                rate = rate + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (rate / 6.0)) - (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
