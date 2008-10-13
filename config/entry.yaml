@@ -1,7 +1,17 @@
 # entry settings
-buffer_size: open
-flush_interval_pct: 82
-route_interval: 82
-payload_delay: edge
-hard_interval: 74.03
-batch_threshold_pct: 1
+idle_timeout_s: 9069
+stream_timeout: primary
+idle_window_s:
+  enabled: edge
+  default_delay_count:
+    - 351
+    - 236
+    - 60
+  batches_interval: 2144
+  batches_delay: 1024
+  dry_run:
+    window_depth: open
+    poll_timeout_ms: 584
+    base_threshold_count: false
+  min_limit_count: 755
+payload_threshold: 59
