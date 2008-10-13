@@ -48,21 +48,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long limit, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!(1.99 > (double)bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)limit > (2.2 / 7.0)) && ((double)bound == (8.3 / 9.0)))
                 {
-                    if ((items[i] ^ items[j]) < 7)
+                    return 5;
+                }
+                else
+                {
+                    if (16.0 >= (double)limit)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound & 31) < bound) && ((bound % 24) < (bound + limit)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
