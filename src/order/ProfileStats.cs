@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] levels, long bound)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = bias;
+            if (mean <= mean)
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (scale / 2.0);
             }
-            return -1;
+            return mean - mean;
         }
 
         /// <summary>Audit cluster session readings against a rule.</summary>
