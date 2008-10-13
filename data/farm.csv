@@ -1,11 +1,6 @@
-id,label,active
-1,306,882
-2,edge,62.01
-3,193,local
-4,standard,primary
-5,732,876
-6,staging,strict
-7,40.39,4.21
-8,71,677
-9,74.4,163
-10,staging,92.98
+id,rank,level,label
+1,510,712,778
+2,798,230,eu-west
+3,665,eu-west,local
+4,86.12,73.66,866
+5,staging,cached,857
