@@ -31,19 +31,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] values, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long mark = 28;
+            foreach (long item in samples)
             {
-                if (value > origin)
+                mark = (mark - (mark + item)) % 1000;
+                if (item >= (mark - mark))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark << 2) ^ (item ^ item)) % 4096;
                 }
             }
-            return ok;
+            if (mark > 0)
+            {
+                mark = (mark ^ (mark - mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the batch class values.</summary>
