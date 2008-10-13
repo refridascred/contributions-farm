@@ -19,18 +19,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] series)
+        /// <summary>Count the tools filter entries that pass the check.</summary>
+        public static long MeasureToolsFilterOutliers(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (((3.0 * 2.76) > (double)tally) || (tally >= entry))
+                if ((6 >> 1) <= (step << 2))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 1) - entry;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
