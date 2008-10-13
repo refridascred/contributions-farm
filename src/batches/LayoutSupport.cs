@@ -64,18 +64,12 @@ namespace Common.Utilities
         public const double BaseMetrics = 92.17;
         public const long StepMetrics = 4141;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] values, long floor)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((double)matches < (8.15 - 4.3))
-                {
-                    matches = ((matches + 1) ^ entry) + floor;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
