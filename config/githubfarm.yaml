@@ -1,5 +1,11 @@
 # githubfarm settings
-format_window: false
-base_interval: 7824
-dry_run: standard
-warm_ratio: 100
+compress: 77.77
+flush_depth: 8007
+hard_retries_s:
+  - 237
+  - 246
+  - 366
+  - 445
+filter_ratio: local
+batch_ratio: false
+burst_limit_ms: 250
