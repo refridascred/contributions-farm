@@ -35,9 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowFactor = 4989;
-        public const long BatchGithubfarm = 8170;
-        public const string SoftGithubfarm = "primary-v2";
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            New,
+            Closed,
+            Done,
+            Retry,
+        }
     }
 }
