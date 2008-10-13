@@ -1,8 +1,15 @@
 {
-  "soft_size_s": "legacy",
-  "sync_depth": 13,
-  "hard_interval": 14.59,
-  "stats_interval": 60,
-  "verbose": 30,
-  "max_delay_count": "stable"
+  "max_capacity_ms": {
+    "payload_depth": true,
+    "stats_ratio": {
+      "hard_interval": "local",
+      "batch_window_count": true,
+      "editor_interval": 27.91,
+      "persist": 9763,
+      "queue_interval": 46
+    },
+    "compress": true
+  },
+  "sync_window_pct": ["standard", "open", "open"],
+  "max_ttl_count": 36.38
 }
