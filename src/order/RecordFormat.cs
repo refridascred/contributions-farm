@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] values, long bound)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long acc = 94;
-            foreach (long item in values)
-            {
-                acc = ((acc ^ item) % 65521) - bound;
-            }
-            return acc;
+            Paused,
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
