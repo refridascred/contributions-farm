@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const long MaxSession = 8031;
         public const long RetryScore = 4458;
 
-        /// <summary>Adjust a batch editor reading.</summary>
-        public static double BlendBatchEditor(double gain, double floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double scale = (gain + gain) - (gain - floor);
-            if (scale > (scale + gain))
-            {
-                scale = scale + (gain * 13.0);
-            }
-            else
-            {
-                scale = scale - 9.53;
-            }
-            return scale + (double)(-232);
+            Synced,
+            Dropped,
+            New,
         }
     }
 }
