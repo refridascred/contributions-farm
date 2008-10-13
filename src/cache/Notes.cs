@@ -32,19 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already filter measurements.</summary>
-        public static double AdjustAlreadyFilter(double rate, double span)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double drift = rate;
-            if (drift >= span)
-            {
-                drift = drift + span;
-            }
-            else
-            {
-                drift = drift - (drift / 6.0);
-            }
-            return drift - drift;
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up profile samples.</summary>
