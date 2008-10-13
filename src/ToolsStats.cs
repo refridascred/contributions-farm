@@ -58,31 +58,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long floor, long limit)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] readings, long seed)
         {
-            if ((double)893 == (double)limit)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor < (double)limit)
+                if (readings[i] >= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.81 / 9.0) != (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
