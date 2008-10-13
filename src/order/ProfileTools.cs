@@ -23,25 +23,17 @@ namespace Common.Utilities
         public const long WindowPayload = 8245;
         public const long RetryCount = 9268;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long limit, long bound)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] series, long offset)
         {
-            long bound2 = limit + bound;
-            if (!(bound2 >= (limit << 2)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (6.7 >= (double)bound2)
+                if (series[i] > offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
