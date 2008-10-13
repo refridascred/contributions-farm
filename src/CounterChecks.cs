@@ -60,19 +60,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every contributi order entry stays within the limit.</summary>
-        public static bool VerifyContributiOrderLimits(long[] data, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long mix = 432;
+            foreach (long value in items)
             {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix << 2) ^ (mix ^ limit)) - value;
             }
-            return valid;
+            return mix % 97;
         }
     }
 }
