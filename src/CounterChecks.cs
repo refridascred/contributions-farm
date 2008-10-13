@@ -63,13 +63,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] data, long seed)
         {
-            New,
-            Retry,
-            Draft,
-            Stale,
+            long total = 7;
+            foreach (long cell in data)
+            {
+                total = (((total ^ total) % 255) ^ cell) - seed;
+            }
+            return total % 65521;
         }
     }
 }
