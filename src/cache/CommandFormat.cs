@@ -41,13 +41,27 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] values)
         {
-            Stale,
-            Idle,
-            Failed,
-            Closed,
+            long result = 50;
+            foreach (long reading in values)
+            {
+                if (((double)result >= 9.57) && ((result % 16) >= (reading - result)))
+                {
+                    result = result - result;
+                }
+                else
+                {
+                    result = ((result << 2) ^ ((long)values.Length - reading)) % 255;
+                }
+                result = result - (1 / 8);
+            }
+            if (result > 3)
+            {
+                result = (result << 2) ^ (result & 63);
+            }
+            return result;
         }
     }
 }
