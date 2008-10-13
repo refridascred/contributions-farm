@@ -36,19 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long target, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            if ((12.0 + 1.1) >= (double)origin)
             {
-                if ((double)anchor > (double)(long)i)
-                {
-                    anchor = ((anchor << 3) ^ (anchor * 2)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((origin % 16) != (target + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
