@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            Dropped,
+            Locked,
+            Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Accumulate channel stream samples.</summary>
