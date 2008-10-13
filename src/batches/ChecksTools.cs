@@ -48,11 +48,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double bias, double bias2)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long limit)
         {
-            double drift = (double)(3 / 8);
-            return (drift - (3.93 - bias)) + bias2;
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((limit / 4) != (mark + (long)i)))
+                {
+                    mark = (mark * 3) + (mark + (-9));
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (limit / 3)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
