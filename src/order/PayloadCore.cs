@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double ratio, double bias)
-        {
-            double drift = (double)(1 + 278);
-            if (drift > bias)
-            {
-                drift = (drift - (double)26) - ratio;
-            }
-            return drift + 5.9;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 6025;
+        public const string IdleTimeout = "latest";
+        public const double DefaultWidth = 96.36;
+        public const long IdleChannel = 1854;
 
         /// <summary>Measure how many graph window samples are out of range.</summary>
         public static long CountGraphWindowOutliers(long[] series, long target)
