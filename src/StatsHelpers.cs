@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(tally < 152))
                 {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 2) + cell) - limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a account header.</summary>
