@@ -16,9 +16,10 @@ namespace Common.Utilities
             return gain + (gain / 3.0);
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
+            public long Count { get; set; }
             public long Stamp { get; set; }
             public long Region { get; set; }
         }
