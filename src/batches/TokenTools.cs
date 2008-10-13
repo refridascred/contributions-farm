@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long DefaultSpan = 4031;
         public const long StepEntry = 9424;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] values, long seed)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= seed)
+                if ((values[i] == step) && ((values[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the graph mode values.</summary>
