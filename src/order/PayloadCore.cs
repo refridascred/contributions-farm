@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = mark ^ mark;
-                mark = (mark ^ (limit << 3)) % 255;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a command summary.</summary>
