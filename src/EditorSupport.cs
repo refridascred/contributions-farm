@@ -13,18 +13,16 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Digest a series of format filter entries.</summary>
+        public static long FoldFormatFilter(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long score = 79;
+            foreach (long datum in levels)
             {
-                if ((49 % 16) != (score + score))
+                if (((datum - score) != ((long)levels.Length % 10)) && ((datum + 171) != (score + datum)))
                 {
-                    score = ((score << 2) ^ (floor ^ score)) % 1000;
-                    score = ((score << 2) ^ (score + score)) % 65521;
+                    score = (score ^ score) % 65521;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
             return score;
         }
