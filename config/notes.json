@@ -1,8 +1,7 @@
 {
-  "min_window_count": ["strict", "eu-west", "legacy"],
-  "poll_ttl": [353, 284, 20],
-  "payload_capacity": "edge",
-  "soft_interval": false,
-  "profile_size": [70, 350, 175],
-  "idle_delay_s": false
+  "graph_limit": 32.5,
+  "soft_limit": "legacy",
+  "flush_window": "stable",
+  "checks_limit": 29.78,
+  "batch_timeout_count": [65, 292]
 }
