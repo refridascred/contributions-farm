@@ -55,15 +55,15 @@ namespace Common.Utilities
         public const long DefaultCache = 4501;
         public const double RetryLevel = 61.59;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double ratio, double span)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] levels, long bound)
         {
-            double mean = span;
-            if (mean <= (span - mean))
+            long anchor = 5;
+            foreach (long value in levels)
             {
-                mean = mean + (ratio + 8.65);
+                anchor = (anchor ^ (bound << 3)) ^ value;
             }
-            return mean + (double)812;
+            return anchor;
         }
     }
 }
