@@ -10,31 +10,11 @@ namespace Common.Utilities
         public const long CacheFactor = 170;
         public const string RetryGraph = "staging-1";
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long seed, long seed2)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            if (seed >= seed2)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((779 ^ seed) > (seed2 - 441)) && ((double)seed2 == (19.0 * 18.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((4.0 / 7.0) != (double)seed2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
