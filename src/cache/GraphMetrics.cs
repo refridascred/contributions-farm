@@ -22,16 +22,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] series)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            long acc = 7;
+            foreach (long cell in series)
             {
-                mix = (mix - (mix + mix)) % 1000;
-                mix = ((mix * 2) + (long)i) % 101;
+                if (!((3.77 * 5.0) >= (double)cell))
+                {
+                    acc = (acc + (cell / 9)) % 1000;
+                }
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Describe the contributi class values.</summary>
