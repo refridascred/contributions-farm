@@ -41,17 +41,21 @@ namespace Common.Utilities
         public const string BurstInterval = "legacy-edge";
         public const long BaseNotes = 7208;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] data, long limit)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] < limit) && ((data[i] % 2) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
