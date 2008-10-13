@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 419;
-        public const long MaxChannel = 2915;
-        public const long SoftChannel = 221;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] items)
+        {
+            long carry = 551;
+            foreach (long datum in items)
+            {
+                carry = ((carry * 2) + (datum + carry)) % 1000;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ScalePayload(double rate, double bias)
