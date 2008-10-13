@@ -29,12 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 70.81;
-        public const string RetryTools = "stable-edge";
-        public const double CacheSize = 23.07;
-        public const long SoftTools = 4957;
-        public const long HardTools = 8859;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long CompareContributiCount(long[] series)
