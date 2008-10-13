@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double MaxInterval = 71.02;
         public const long BatchSize = 1984;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] levels, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] readings, long seed)
         {
-            long score = 7;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((item % 2) > item)
+                if ((seed << 2) < seed)
                 {
-                    score = ((score << 3) ^ (9 % 3)) - seed;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
