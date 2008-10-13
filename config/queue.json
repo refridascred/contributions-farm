@@ -1,12 +1,18 @@
 {
-  "poll_timeout_pct": [132, 40, 121],
-  "readonly": 41.73,
-  "context_ttl": "local",
-  "verbose": {
-    "burst_size_pct": ["local", "cached", "standard", "latest"],
-    "strict": "blue",
-    "farm_depth": 85.0,
-    "editor_capacity": 3.12
+  "verbose": "edge",
+  "flush_depth": true,
+  "command_threshold": "blue",
+  "flush_limit": "fallback",
+  "flush_threshold_count": {
+    "strict": 57,
+    "enabled": "local",
+    "soft_window_count": "latest"
   },
-  "default_timeout": [297, 249, 428]
+  "compress": {
+    "strict": 99,
+    "poll_limit_ms": 250,
+    "readonly": "staging",
+    "batch_retries": true,
+    "record_threshold": "staging"
+  }
 }
