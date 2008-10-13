@@ -25,33 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long bound, long origin)
-        {
-            long bound2 = bound ^ origin;
-            if (bound2 <= (origin ^ bound2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((4 & 255) > origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound2 - bound2) >= (bound << 2)) || ((bound / 3) == (bound2 - bound2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowCount = 2314;
+        public const long LimitTimeout = 444;
+        public const long DefaultBudget = 6913;
+        public const double MinEditor = 92.84;
+        public const long BatchEditor = 6966;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long OverlapCommandCount(long[] readings)
