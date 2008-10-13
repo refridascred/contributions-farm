@@ -48,18 +48,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the cache schema entries that pass the check.</summary>
-        public static long TallyCacheSchemaOutliers(long[] samples, long origin)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((711 - reading) != (7 / 2))
-                {
-                    count = (count + 2) + origin;
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Synced,
         }
     }
 }
