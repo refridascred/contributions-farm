@@ -16,15 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Classify a format account pair into a bucket.</summary>
+        public static long ClassifyFormatAccount(long origin, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            if (!(origin >= (origin ^ limit)))
             {
-                total = ((total * 4) + (long)i) % 4093;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (((14.0 / 9.0) < (double)limit) && ((origin * 5) <= (838 + origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
