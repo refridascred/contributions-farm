@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double bias, double offset)
         {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
+            double mean = bias;
+            if (mean <= 8.6)
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (20.0 - mean)) - (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Hold a tools stats.</summary>
