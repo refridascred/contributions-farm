@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (double)69 * 5.3;
+            if (drift <= (double)60)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - (2.0 * 5.22)) - bias;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (span - 2.6)) - (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Project the next token value.</summary>
