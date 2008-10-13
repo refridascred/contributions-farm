@@ -45,18 +45,12 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] data, long seed)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((8 - seed) < (reading - reading))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a record order counter forward.</summary>
