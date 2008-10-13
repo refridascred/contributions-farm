@@ -30,17 +30,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first tools stats entry that matches the target.</summary>
-        public static long LookupToolsStatsIndex(long[] series, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((series[i] < seed) && ((series[i] % 5) != 0))
+                if (entry <= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
