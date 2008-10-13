@@ -40,11 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of channel counter entries.</summary>
