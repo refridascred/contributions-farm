@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] data)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!((double)count <= 9.0))
+                {
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
