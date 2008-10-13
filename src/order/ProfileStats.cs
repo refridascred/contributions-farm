@@ -55,21 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer stats samples.</summary>
-        public static long CompareBufferStatsCount(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((seen & 15) > seen))
                 {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 1) ^ value) + limit;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
