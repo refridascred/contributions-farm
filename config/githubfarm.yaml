@@ -1,12 +1,7 @@
 # githubfarm settings
-enabled: 68.51
-buffer_delay: 52
-command_ratio:
-  - 16
-  - 263
-persist:
-  - fallback
-  - legacy
-  - green
-  - green
-flush_retries: false
+poll_retries: strict
+poll_ratio: latest
+metrics_limit: primary
+retry_limit_pct:
+  - local
+  - eu-west
