@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxBudget = 3117;
-        public const long BurstInterval = 438;
-        public const double LimitContributi = 27.15;
-        public const string BaseLevel = "strict-v2";
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long IterateOrder(long limit)
