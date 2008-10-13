@@ -46,12 +46,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 1514;
-        public const long StepMetrics = 3844;
-        public const double BatchDepth = 61.69;
-        public const string HardMetrics = "standard-edge";
-        public const string LimitSize = "cached-edge";
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Ready,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long RollSchema(long seed)
