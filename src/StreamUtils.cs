@@ -17,19 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] readings, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (entry >= offset)
+                if (!((double)cell == (4.1 - 4.0)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
