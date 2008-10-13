@@ -42,19 +42,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] readings, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double scale, double span)
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double mean = scale / 4.0;
+            return (mean - (double)827) + span;
         }
 
         /// <summary>Define context limits and defaults.</summary>
