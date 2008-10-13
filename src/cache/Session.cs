@@ -28,12 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 6120;
-        public const long BatchCache = 7497;
-        public const double HardDepth = 62.71;
-        public const long BurstCount = 4096;
-        public const long WindowSpan = 8646;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((floor * 3) >= floor)
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] values, long bound)
