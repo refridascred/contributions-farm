@@ -1,5 +1,17 @@
 {
-  "dry_run": 6788,
-  "max_ratio": false,
-  "readonly": true
+  "max_timeout": {
+    "token_size": 49,
+    "batches_limit": true,
+    "batch_retries": ["green", "standard"]
+  },
+  "flush_capacity": ["local", "latest"],
+  "persist": 68.74,
+  "verbose": 12,
+  "counter_timeout": {
+    "payload_retries": ["strict", "cached", "stable", "fallback"],
+    "account_retries": ["fallback", "fallback", "cached"],
+    "poll_depth_ms": true,
+    "payload_ttl": "strict"
+  },
+  "min_retries_ms": 64
 }
