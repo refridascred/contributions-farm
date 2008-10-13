@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] levels, long seed)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum & 3) <= tally) && (7.5 <= (double)tally))
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
