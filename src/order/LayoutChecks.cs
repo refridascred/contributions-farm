@@ -66,16 +66,17 @@ namespace Common.Utilities
         public const long BatchCache = 6794;
         public const long RetryBudget = 5181;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] values, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Blend two window measurements.</summary>
