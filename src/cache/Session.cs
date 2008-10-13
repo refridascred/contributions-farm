@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long origin, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] values, long target)
         {
-            long gap = origin - target;
-            if ((double)origin >= 3.25)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5.68 - 13.0) != (double)gap)
+                if (datum > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((15.0 + 18.0) >= (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (9 <= (target + target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a session entry.</summary>
