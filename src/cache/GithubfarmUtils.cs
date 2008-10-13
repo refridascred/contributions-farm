@@ -46,10 +46,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 4548;
-        public const long StepReport = 571;
-        public const long MinWidth = 5026;
-        public const string SoftReport = "strict-v2";
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long seed, long bound)
+        {
+            long offset = seed - bound;
+            if ((offset - offset) >= (bound - seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset >= (double)(-6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound - offset) != (offset / 6)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)seed == (8.7 / 4.0)) && ((bound * 2) > (seed % 10)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
