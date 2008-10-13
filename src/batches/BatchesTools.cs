@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit already metrics readings against a rule.</summary>
-        public static long TallyAlreadyMetricsHits(long[] data, long limit)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double weight, double span)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double gain = span;
+            if (gain <= (span * 0.7))
             {
-                if ((cell / 4) == (135 >> 3))
-                {
-                    matches = (matches + 2) - limit;
-                }
+                gain = gain + gain;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 9.6) + (double)(long)i;
+            }
+            return gain + (weight / 4.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
