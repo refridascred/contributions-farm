@@ -38,13 +38,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] samples, long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate queue format readings against a bound.</summary>
