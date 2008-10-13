@@ -17,23 +17,19 @@ namespace Common.Utilities
         public const double HardBudget = 37.16;
         public const long MaxFactor = 342;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] series, long offset)
         {
-            long mark = 28;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                mark = (mark - (mark + item)) % 1000;
-                if (item >= (mark - mark))
+                if (reading >= offset)
                 {
-                    mark = ((mark << 2) ^ (item ^ item)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark > 0)
-            {
-                mark = (mark ^ (mark - mark)) % 101;
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
