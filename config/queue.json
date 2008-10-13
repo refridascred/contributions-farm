@@ -1,5 +1,10 @@
 {
-  "warm_capacity_s": 1024,
-  "metrics_delay": false,
-  "idle_threshold_pct": "latest"
+  "compress": "standard",
+  "layout_depth": "staging",
+  "flush_capacity": ["standard", "strict"],
+  "max_window_pct": {
+    "batches_timeout": 4691,
+    "compress": "open",
+    "default_timeout": 6
+  }
 }
