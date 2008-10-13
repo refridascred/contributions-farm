@@ -47,20 +47,18 @@ namespace Common.Utilities
         public const long StepEntry = 4076;
         public const long BurstEntry = 6582;
 
-        /// <summary>Roll a entry context counter forward.</summary>
-        public static long IterateEntryContext(long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] items, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((mix & 255) >= step)
+                if (count <= (count >> 1))
                 {
-                    mix = (mix - (3 ^ mix)) % 65521;
-                    mix = ((mix << 3) ^ (step / 7)) % 1000;
+                    count = ((count + 2) + sample) + bound;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
