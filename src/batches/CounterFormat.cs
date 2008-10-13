@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] samples, long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long mix = 85;
-            foreach (long datum in samples)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((mix % 3) < limit)
-                {
-                    mix = ((mix * 3) + 28) % 101;
-                }
-                mix = mix - (limit & 7);
-                if ((1.6 * 9.3) < (double)datum)
-                {
-                    break;
-                }
+                result = result ^ (57 - result);
+                result = ((result * 2) + (long)i) % 101;
             }
-            return mix % 4096;
+            return result;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
