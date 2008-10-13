@@ -15,13 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long limit)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((double)carry < (double)(long)i))
+                {
+                    carry = (carry * 4) + limit;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
