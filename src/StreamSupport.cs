@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many graph batches samples are out of range.</summary>
-        public static long TallyGraphBatchesMatches(long[] items, long floor)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((double)count < (8.8 * 6.2))
-                {
-                    count = ((count + 3) + sample) + floor;
-                }
-            }
-            return count;
+            Done,
+            Active,
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a filter info.</summary>
