@@ -19,21 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double bias2 = bias - (double)89;
+            return (bias2 - (bias2 / 2.0)) + weight;
         }
 
         /// <summary>Hold a cluster header.</summary>
