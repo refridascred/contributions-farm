@@ -1,6 +1,7 @@
-id,owner,level,count
-1,20.81,836,559
-2,973,blue,19.51
-3,68.81,69.65,primary
-4,49.58,228,staging
-5,eu-west,strict,500
+id,rank,weight,active
+1,open,66,55.15
+2,local,53.58,local
+3,edge,27.28,89.02
+4,91.05,edge,348
+5,329,fallback,883
+6,cached,71.5,864
