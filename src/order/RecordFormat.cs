@@ -14,12 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Ready,
-            Paused,
-            Synced,
+            Draft,
+            Retry,
             New,
         }
 
