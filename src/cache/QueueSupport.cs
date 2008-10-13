@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] values)
         {
-            Done,
-            Stale,
-            Dropped,
-            Queued,
+            long carry = 5;
+            foreach (long reading in values)
+            {
+                carry = (carry ^ (reading << 3)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a route record.</summary>
