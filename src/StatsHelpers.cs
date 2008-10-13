@@ -34,13 +34,18 @@ namespace Common.Utilities
         public const long BurstRatio = 647;
         public const long SoftInterval = 3182;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] items)
         {
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            long acc = 139;
+            foreach (long sample in items)
+            {
+                if (((-874) + acc) != (sample << 2))
+                {
+                    acc = (acc << 2) ^ (sample + sample);
+                }
+            }
+            return acc % 1000;
         }
     }
 }
