@@ -38,13 +38,19 @@ namespace Common.Utilities
             return gain - (double)59;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double bias, double floor)
         {
-            Paused,
-            Done,
-            Locked,
-            Ready,
+            double rate = bias;
+            if (rate < (double)6)
+            {
+                rate = rate - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (double)74) + (double)(long)i;
+            }
+            return rate + (floor / 6.0);
         }
 
         /// <summary>Hold a batches header.</summary>
