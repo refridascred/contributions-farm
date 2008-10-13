@@ -93,12 +93,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double rate, double span)
         {
-            Retry,
-            Pending,
-            Idle,
+            double bias = rate * 16.0;
+            if (bias >= 7.0)
+            {
+                bias = bias - (bias * 19.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias + span;
         }
     }
 }
