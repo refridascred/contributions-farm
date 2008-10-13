@@ -1,10 +1,7 @@
 {
-  "base_ratio_ms": {
-    "context_delay": "blue",
-    "strict": 8564,
-    "schema_size": "standard",
-    "dry_run": [202, 497]
-  },
-  "already_threshold": 77,
-  "checks_window": true
+  "route_limit": "local",
+  "batch_size_ms": ["strict", "standard"],
+  "retry_timeout": false,
+  "cache_delay_pct": "local",
+  "soft_threshold_ms": 73
 }
