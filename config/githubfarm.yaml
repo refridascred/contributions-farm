@@ -1,16 +1,4 @@
 # githubfarm settings
-command_size: 43.81
-persist: 31.59
-queue_interval: 30
-cache_threshold_ms:
-  sync_retries: legacy
-  notes_delay: edge
-  retry_delay_ms: local
-  compress: 45
-  route_timeout: blue
-tools_ttl:
-  - 294
-  - 66
-  - 25
-  - 415
-max_delay_s: 500
+persist: stable
+cache_interval_count: standard
+compress: true
