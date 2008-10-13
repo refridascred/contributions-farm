@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] levels, long origin)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long seed, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = seed ^ target;
+            if (!((988 + next) > (target ^ seed)))
             {
-                if ((levels[i] == origin) && ((levels[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if (((9.8 - 10.0) != (double)next) && ((double)seed >= (3.06 + 5.8)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the farm state values.</summary>
