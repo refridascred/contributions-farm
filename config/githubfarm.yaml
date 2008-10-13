@@ -1,11 +1,21 @@
 # githubfarm settings
-format_delay: 3050
-hard_interval_s: green
-batch_limit: true
-soft_size_pct: local
-dry_run:
-  idle_timeout_pct: true
-  batch_delay_s: green
-  strict: 60
-  persist: eu-west
-  retry_ttl_pct: 1558
+already_depth: 30
+cache_interval: 8625
+max_interval_pct:
+  - local
+  - primary
+window_size:
+  batch_interval_pct:
+    soft_depth: edge
+    route_ratio: local
+    idle_retries_count:
+      - 132
+      - 313
+    default_capacity_pct: primary
+    warm_ratio_count:
+      - 211
+      - 182
+    compress: 82
+  record_ttl: 47.71
+  poll_delay: standard
+batch_interval: staging
