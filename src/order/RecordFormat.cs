@@ -29,12 +29,13 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
