@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Find the first account window entry that matches the target.</summary>
