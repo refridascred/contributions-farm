@@ -39,22 +39,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] series, long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long floor, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if ((floor - 79) < target)
             {
-                if ((double)tally <= 5.6)
+                return 0;
+            }
+            else
+            {
+                if (target < (target - 0))
                 {
-                    tally = ((tally + 1) + entry) - offset;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)floor > (17.0 + 8.97))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)target <= (0.7 / 4.0)) || ((target % 100) >= (target - floor)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
