@@ -35,12 +35,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Stale,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "strict-edge";
+        public const long RetryWindow = 6850;
+        public const string BaseWindow = "open";
+        public const long DefaultWindow = 596;
     }
 }
