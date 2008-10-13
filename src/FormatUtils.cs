@@ -75,11 +75,19 @@ namespace Common.Utilities
         public const long StepCount = 1515;
         public const string LimitFactor = "primary";
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double ratio, double span)
         {
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            double gain = span * 5.03;
+            if (gain > gain)
+            {
+                gain = (gain + gain) - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (gain - gain)) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Hold a contributi options.</summary>
