@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (93 >= (carry << 3))
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (limit << 3)) % 4096;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
