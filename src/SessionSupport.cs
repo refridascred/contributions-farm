@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] items, long bound)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long result = 4;
-            foreach (long entry in items)
-            {
-                if ((entry + bound) > (result + entry))
-                {
-                    result = (result - (entry + bound)) % 97;
-                }
-            }
-            return result;
+            Failed,
+            Paused,
+            Active,
+            Done,
+            Queued,
         }
 
         /// <summary>Adjust a schema reading.</summary>
