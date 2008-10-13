@@ -53,25 +53,18 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long target, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] values, long target)
         {
-            long span = target - seed;
-            if ((span - 48) <= (seed - span))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (span <= target)
+                if (tally > (sample % 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 2) - target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next commits value.</summary>
