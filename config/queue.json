@@ -1,7 +1,13 @@
 {
-  "session_size": [352, 142, 200, 179],
-  "tools_threshold": ["standard", "local"],
-  "idle_ttl_count": "green",
-  "format_capacity": "stable",
-  "strict": "green"
+  "burst_ttl_pct": {
+    "min_retries_count": "staging",
+    "max_window_ms": false,
+    "verbose": [23, 328, 168, 13],
+    "cluster_ttl": true,
+    "layout_ratio": false
+  },
+  "warm_timeout_ms": [289, 392, 90, 333],
+  "stream_ratio": "stable",
+  "persist": 250,
+  "hard_ratio": "open"
 }
