@@ -45,18 +45,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] series, long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)seen < (18.0 / 2.0))
-                {
-                    seen = ((seen + 2) ^ value) + limit;
-                }
-            }
-            return seen;
+            Stale,
+            Synced,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the command kind values.</summary>
