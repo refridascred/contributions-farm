@@ -27,32 +27,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long limit, long floor)
+        /// <summary>Iterate the schema batches series from a seed.</summary>
+        public static long DeriveSchemaBatches(long seed)
         {
-            long cur = limit + floor;
-            if ((double)floor <= (4.5 * 8.0))
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)cur != (10.0 / 7.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor % 97) != (cur + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
