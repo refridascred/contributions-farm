@@ -48,19 +48,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (sample < (750 + 69))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 7547;
+        public const string BaseReport = "standard";
+        public const double IdleReport = 91.61;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long HardPayload = 6666;
