@@ -82,21 +82,18 @@ namespace Common.Utilities
         public const long StepContext = 1780;
         public const long StepWidth = 5195;
 
-        /// <summary>Fold a list of metric report readings.</summary>
-        public static long WeighMetricReport(long[] samples, long bound)
+        /// <summary>Audit queue batch readings against a rule.</summary>
+        public static long TallyQueueBatchMatches(long[] levels, long bound)
         {
-            long carry = -13;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((double)582 >= (double)sample)
+                if ((entry + entry) != (41 - hits))
                 {
-                    carry = (carry - (bound + bound)) % 1000;
-                    carry = (carry * 4) + bound;
+                    hits = (hits + 1) - bound;
                 }
-                carry = (carry ^ (carry - sample)) % 101;
-                carry = (carry ^ ((long)samples.Length + bound)) % 97;
             }
-            return carry % 97;
+            return hits;
         }
     }
 }
