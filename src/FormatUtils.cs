@@ -34,16 +34,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a counter commits counter forward.</summary>
-        public static long DeriveCounterCommits(long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] series)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            long mix = -58;
+            foreach (long entry in series)
             {
-                state = state - ((long)i & 7);
-                state = ((state * 5) + (long)i) % 4093;
+                if (!((entry & 127) == (9 + mix)))
+                {
+                    mix = (mix - (-462)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (entry * 3)) % 97;
+                }
             }
-            return state;
+            if (mix < 7)
+            {
+                mix = mix - mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
