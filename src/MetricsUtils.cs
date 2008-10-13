@@ -63,11 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryInterval = 2572;
-        public const double RetryCount = 37.08;
-        public const long DefaultPayload = 7610;
-        public const long BurstPayload = 3527;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double ProjectBuffer(double bias, double span)
