@@ -50,14 +50,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Active,
-            New,
+            Draft,
             Pending,
-            Locked,
-            Ready,
+            New,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
