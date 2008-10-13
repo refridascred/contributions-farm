@@ -25,14 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Active,
-            Locked,
-            Stale,
-            Failed,
-            Synced,
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a githubfarm header.</summary>
