@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long IdleAlready = 9543;
         public const long MaxAlready = 7623;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] samples)
+        /// <summary>Look up the position of a editor notes sample.</summary>
+        public static long SeekEditorNotesIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen / 2) > (seen % 97))
+                if (samples[i] == bound)
                 {
-                    seen = (seen + 3) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
