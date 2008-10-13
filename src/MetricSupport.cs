@@ -20,21 +20,31 @@ namespace Common.Utilities
             return scale + 6.0;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] levels)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 5;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor * 3) + (anchor + anchor)) + (long)i;
+                }
+                anchor = (anchor * 2) + (datum * 2);
+                if (((19 ^ datum) != ((long)items.Length - anchor)) || ((double)datum < (3.61 / 5.0)))
+                {
+                    anchor = ((anchor << 3) ^ (anchor * 3)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (2 & 63);
                 }
             }
-            return hits;
+            if (anchor > 10)
+            {
+                anchor = (anchor * 2) + (836 % 24);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the counter level values.</summary>
