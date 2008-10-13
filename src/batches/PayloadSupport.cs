@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] samples, long bound)
+        /// <summary>Find the first session token entry that matches the target.</summary>
+        public static long LocateSessionTokenIndex(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample < bound)
+                if (values[i] == target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Rank format input into a small class.</summary>
