@@ -34,11 +34,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 5286;
-        public const long MinSpan = 2629;
-        public const long MaxCount = 8693;
-        public const long BatchBuffer = 2550;
-        public const long RetryBuffer = 6321;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Retry,
+            Locked,
+            Queued,
+            Draft,
+            Dropped,
+        }
     }
 }
