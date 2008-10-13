@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const long BurstBuffer = 5866;
         public const long SoftBuffer = 9362;
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double bias, double span)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long step)
         {
-            double load = span;
-            for (int i = 0; i < 6; i++)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                load = (load + 8.0) - (double)(long)i;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return load + bias;
+            return carry;
         }
 
         /// <summary>Roll a window profile counter forward.</summary>
