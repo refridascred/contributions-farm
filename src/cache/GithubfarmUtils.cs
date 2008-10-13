@@ -19,19 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] values, long floor)
+        /// <summary>Adjust a profile route reading.</summary>
+        public static double SmoothProfileRoute(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            double gain = (double)(201 - 32);
+            if (gain <= (gain * 1.7))
             {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain - 9.2;
             }
-            return stale;
+            else
+            {
+                gain = gain - (gain - floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - weight) - (double)(long)i;
+            }
+            return gain - (double)59;
         }
 
         /// <summary>Describe the record status values.</summary>
