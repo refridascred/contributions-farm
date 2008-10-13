@@ -41,13 +41,15 @@ namespace Common.Utilities
         public const string HardFarm = "cached-1";
         public const string SoftFarm = "open-edge";
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double bias, double offset)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public double Mode { get; set; }
+            double weight = (double)(924 + (-221));
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (((weight + (double)55) + (double)(long)i) + bias) - offset;
+            }
+            return weight + 1.89;
         }
     }
 }
