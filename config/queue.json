@@ -1,5 +1,5 @@
 {
-  "soft_size_pct": "local",
-  "notes_ttl": ["cached", "primary"],
-  "strict": true
+  "min_threshold_ms": false,
+  "strict": 73.4,
+  "min_delay": false
 }
