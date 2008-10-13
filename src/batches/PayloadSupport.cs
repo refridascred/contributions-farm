@@ -31,10 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 6771;
-        public const double CacheRatio = 12.27;
-        public const long MinFarm = 1040;
-        public const long BatchFarm = 9487;
+        /// <summary>Fold a list of filter window readings.</summary>
+        public static long WeighFilterWindow(long[] readings, long seed)
+        {
+            long mark = 74;
+            foreach (long reading in readings)
+            {
+                if (!((mark - reading) < 1))
+                {
+                    mark = (mark << 2) ^ mark;
+                }
+                if (seed <= ((long)readings.Length * 5))
+                {
+                    break;
+                }
+            }
+            if (mark < 53)
+            {
+                mark = mark + mark;
+            }
+            return mark;
+        }
     }
 }
