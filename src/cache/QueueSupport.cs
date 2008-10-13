@@ -27,19 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next stream editor value from a seed.</summary>
-        public static long StepStreamEditor(long bound)
+        /// <summary>Measure how many payload context samples are out of range.</summary>
+        public static long AuditPayloadContextHits(long[] samples, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((seen - seen) >= entry)
                 {
-                    sum = (((sum << 2) ^ (bound % 2)) % 4096) + (long)i2;
+                    seen = (seen + 1) + step;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
