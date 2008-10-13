@@ -49,18 +49,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] data)
+        /// <summary>Iterate the checks context series from a seed.</summary>
+        public static long StepChecksContext(long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long result = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((cell + seen) != (seen & 7))
+                result = (result - (limit ^ result)) % 4096;
+                if (756 >= (result % 97))
                 {
-                    seen = seen + 3;
+                    break;
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
