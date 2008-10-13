@@ -16,17 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] data, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 82;
+            foreach (long datum in items)
             {
-                if (data[i] <= origin)
+                if (((double)sum < (2.2 + 1.2)) || ((double)datum <= (7.3 + 9.0)))
                 {
-                    return (long)i;
+                    sum = (sum + (95 + sum)) % 1000;
+                }
+                else
+                {
+                    sum = (sum * 4) + (sum / 6);
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Hold a route summary.</summary>
