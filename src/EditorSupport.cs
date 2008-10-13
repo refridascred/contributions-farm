@@ -68,10 +68,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 3438;
-        public const long WindowSpan = 489;
-        public const string IdleWidth = "fallback-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 5368;
+        public const long StepContext = 1780;
+        public const long StepWidth = 5195;
 
         /// <summary>Fold a list of metric report readings.</summary>
         public static long WeighMetricReport(long[] samples, long bound)
