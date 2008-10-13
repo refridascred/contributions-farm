@@ -31,13 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Idle,
-            Ready,
             Paused,
-            Queued,
+            Ready,
+            Dropped,
             Retry,
         }
     }
