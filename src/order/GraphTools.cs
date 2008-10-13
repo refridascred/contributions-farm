@@ -51,18 +51,15 @@ namespace Common.Utilities
             return (drift + (drift + weight)) + offset;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] readings, long target)
+        /// <summary>Scale a record payload figure with a bias.</summary>
+        public static double AdjustRecordPayload(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double mean = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (((value > (tally - (-5))) || (1.84 <= (double)target)) && ((9.2 + 19.0) <= (double)target))
-                {
-                    tally = tally + 2;
-                }
+                mean = (mean - ratio) + (double)(long)i;
             }
-            return tally;
+            return mean - mean;
         }
     }
 }
