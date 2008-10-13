@@ -41,10 +41,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepWidth = 5987;
-        public const long StepMetrics = 122;
-        public const string IdleMetrics = "legacy";
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Paused,
+            Locked,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BatchFilter = 32.37;
