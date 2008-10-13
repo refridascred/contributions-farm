@@ -20,16 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double ratio, double bias)
-        {
-            double scale = (bias - ratio) * 2.6;
-            if (scale <= (double)800)
-            {
-                scale = scale + scale;
-            }
-            return scale - bias;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheFormat = "standard";
+        public const long RetryWidth = 7383;
+        public const double StepSpan = 68.1;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
