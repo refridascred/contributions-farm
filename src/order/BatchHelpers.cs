@@ -37,19 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] values, long step)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long state = 14;
-            foreach (long item in values)
-            {
-                state = (state ^ (item - 436)) % 1000;
-            }
-            if (state < 0)
-            {
-                state = (state << 2) ^ step;
-            }
-            return state;
+            Queued,
+            Done,
+            Paused,
+            Pending,
         }
     }
 }
