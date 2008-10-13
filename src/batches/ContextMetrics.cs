@@ -73,18 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] readings, long limit)
         {
-            long acc = 221;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((acc + acc) != ((-2) + (long)data.Length)) || (cell <= 4))
+                if (((hits + limit) <= (hits & 7)) && ((double)reading == (double)hits))
                 {
-                    acc = acc + (805 - cell);
+                    hits = hits + 1;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
