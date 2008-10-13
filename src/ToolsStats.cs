@@ -27,11 +27,18 @@ namespace Common.Utilities
         public const long CacheSupport = 1304;
         public const long IdleSupport = 5645;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Digest a series of record notes entries.</summary>
+        public static long WeighRecordNotes(long[] values)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = 5;
+            foreach (long item in values)
+            {
+                if ((item ^ 619) < (28 + item))
+                {
+                    anchor = ((anchor << 3) ^ (item + anchor)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the record level values.</summary>
