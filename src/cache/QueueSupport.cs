@@ -14,12 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheCount = 9910;
+        public const long IdleTimeout = 2646;
+        public const string SoftSize = "open-edge";
+        public const long MaxSession = 8031;
+        public const long RetryScore = 4458;
 
         /// <summary>Adjust a batch editor reading.</summary>
         public static double BlendBatchEditor(double gain, double floor)
