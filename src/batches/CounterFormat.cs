@@ -16,12 +16,26 @@ namespace Common.Utilities
             return gain + (gain / 3.0);
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] data, long limit)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long mix = 875;
+            foreach (long value in data)
+            {
+                if ((4 >> 3) <= value)
+                {
+                    mix = mix + (mix + mix);
+                }
+                if (mix < (limit + value))
+                {
+                    mix = mix ^ value;
+                }
+            }
+            if (mix > 534)
+            {
+                mix = ((mix << 3) ^ (mix + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
