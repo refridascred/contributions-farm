@@ -73,17 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] values, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((values[i] < limit) && ((values[i] % 5) == 0))
+                if ((double)seen != (double)88)
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + entry) - step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
