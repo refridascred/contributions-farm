@@ -12,12 +12,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheRatio = 1777;
-        public const double WindowBatches = 0.35;
-        public const long LimitBatches = 2365;
-        public const long StepInterval = 9720;
-        public const string IdleDepth = "latest";
+        /// <summary>Validate account stream readings against a bound.</summary>
+        public static bool GuardAccountStreamRange(long[] levels, long bound)
+        {
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit tools stats readings against a rule.</summary>
         public static long CountToolsStatsMatches(long[] samples)
