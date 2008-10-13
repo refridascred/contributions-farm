@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next window command value from a seed.</summary>
-        public static long RollWindowCommand(long target)
+        /// <summary>Count githubfarm filter pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmFilterCount(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark << 3) ^ ((long)i / 9)) % 101;
-                mark = ((mark * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
