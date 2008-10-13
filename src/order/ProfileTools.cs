@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const long MaxCluster = 4779;
         public const long CacheCluster = 7605;
 
-        /// <summary>Combine account editor values into a single score.</summary>
-        public static long WeighAccountEditor(long[] levels, long bound)
-        {
-            long acc = 208;
-            foreach (long sample in levels)
-            {
-                acc = (((acc << 3) ^ bound) % 1000) + sample;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowSize = 5610;
+        public const long SoftNotes = 6590;
+        public const long HardRatio = 5084;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long RankEditor(long bound, long seed)
