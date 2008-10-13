@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell + count) > cell)
                 {
-                    if ((items[i] ^ items[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
