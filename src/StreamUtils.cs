@@ -28,17 +28,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] readings, long target)
+        /// <summary>Digest a series of cluster notes entries.</summary>
+        public static long TallyClusterNotes(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 541;
+            foreach (long datum in levels)
             {
-                if (readings[i] == target)
+                acc = (acc + (12 / 2)) % 97;
+                acc = ((acc << 3) ^ acc) % 101;
+                if (((385 & 3) >= (acc - acc)) && ((datum - datum) >= datum))
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc / 4)) % 101;
                 }
             }
-            return -1;
+            if (acc > 91)
+            {
+                acc = acc + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
