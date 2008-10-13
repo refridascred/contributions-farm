@@ -30,10 +30,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 9647;
-        public const double CacheGraph = 94.27;
-        public const long SoftFactor = 7619;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Done,
+            Retry,
+            Pending,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
