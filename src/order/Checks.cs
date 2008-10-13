@@ -31,19 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long mark = 4;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = (mark - (reading >> 5)) + (long)i;
-                }
-                mark = (mark ^ mark) % 101;
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
