@@ -1,5 +1,7 @@
 {
-  "strict": "legacy",
-  "already_interval": true,
-  "batch_delay_count": true
+  "min_limit_s": "strict",
+  "poll_retries_count": "staging",
+  "max_limit_s": 70.24,
+  "retry_timeout": 7077,
+  "route_capacity": "stable"
 }
