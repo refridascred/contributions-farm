@@ -1,15 +1,10 @@
 # githubfarm settings
-min_limit_count: stable
-retry_interval_ms:
-  - 77
-  - 441
-  - 392
-min_retries: fallback
-poll_retries_s:
-  metric_ratio: true
-  record_retries:
-    - local
-    - legacy
-  route_interval: false
-cache_timeout: 1811
-max_timeout_count: eu-west
+batch_threshold_ms: staging
+dry_run: 9479
+poll_capacity_pct: 30.63
+entry_window:
+  - 257
+  - 434
+  - 369
+  - 134
+default_depth_s: 3
