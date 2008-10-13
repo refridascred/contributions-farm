@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Done,
-            Active,
-            Ready,
-            Draft,
-            Synced,
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the token phase values.</summary>
