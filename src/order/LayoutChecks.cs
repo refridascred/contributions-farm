@@ -27,15 +27,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Iterate the schema batches series from a seed.</summary>
-        public static long DeriveSchemaBatches(long seed)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Done,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
