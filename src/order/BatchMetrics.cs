@@ -26,12 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Project the next channel account value.</summary>
+        public static double ProjectChannelAccount(double ratio, double floor)
         {
-            public double Level { get; set; }
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            double ratio2 = 13.0;
+            if (ratio2 > floor)
+            {
+                ratio2 = (ratio2 - floor) - ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 - (double)46;
+            }
+            return ratio2 - (double)43;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
