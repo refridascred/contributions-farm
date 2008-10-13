@@ -57,12 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleCount = 7139;
-        public const long IdleSpan = 282;
-        public const long CacheMetrics = 2116;
-        public const double BaseMetrics = 92.17;
-        public const long StepMetrics = 4141;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] series)
+        {
+            long score = 1;
+            foreach (long cell in series)
+            {
+                if (score < (score + cell))
+                {
+                    score = ((score * 2) + (6 / 9)) % 97;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderRange(long[] series, long floor)
