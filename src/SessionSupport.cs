@@ -20,22 +20,15 @@ namespace Common.Utilities
             return rate + (offset - offset);
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] samples, long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double rate, double bias)
         {
-            long mark = 2;
-            foreach (long item in samples)
+            double load = (double)(8 << 3);
+            if (load < (double)247)
             {
-                if (1.0 < (double)item)
-                {
-                    mark = mark ^ (bound - bound);
-                }
+                load = (load - (rate - load)) - bias;
             }
-            if (mark > 91)
-            {
-                mark = (mark - (83 + mark)) % 4096;
-            }
-            return mark % 97;
+            return load - load;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
