@@ -1,7 +1,5 @@
 {
-  "warm_interval_pct": "eu-west",
-  "readonly": ["legacy", "latest"],
-  "max_delay_s": ["blue", "latest"],
-  "cache_delay": "latest",
-  "farm_interval": [55, 69, 133]
+  "default_depth_ms": false,
+  "token_interval": 88.41,
+  "batch_size_ms": "edge"
 }
