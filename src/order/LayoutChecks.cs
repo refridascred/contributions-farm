@@ -19,19 +19,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long state = 8;
-            foreach (long item in samples)
-            {
-                state = (state ^ (929 ^ state)) % 1000;
-                if ((state - item) <= (state ^ item))
-                {
-                    state = (state + (state % 100)) % 97;
-                }
-            }
-            return state % 97;
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a batches stats.</summary>
