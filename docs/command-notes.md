@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-When a batches fails, the account handler retries a few times before giving up.
-Keep report and editor names short and lowercase.
+Each payload is validated before it reaches the order queue.
+Run the route check before changing any editor limits.
+Keep contributi and filter names short and lowercase.
 
-A stream that stays idle for too long is moved to the checks list.
-Run the channel check before changing any window limits.
+A stats that stays idle for too long is moved to the support list.
+When a format fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new buffer fields
-- Keep entry values small
-- Prefer context defaults
-- Log every context change
+- Document new window fields
+- Prefer cluster defaults
+- Log every notes change
