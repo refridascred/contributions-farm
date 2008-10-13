@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] readings, long target)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target % 100) > ((long)i ^ 0))
+                if (readings[i] >= target)
                 {
-                    result = (result ^ (target ^ 891)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    result = ((result << 2) ^ (result + 5)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Iterate the entry queue series from a seed.</summary>
