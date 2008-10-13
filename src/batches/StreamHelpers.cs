@@ -62,11 +62,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowSpan = 1373;
-        public const long RetryTimeout = 4940;
-        public const long CacheGraph = 3590;
-        public const long LimitSize = 4301;
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double gain, double floor)
+        {
+            double drift = 0.4 + (floor + 3.0);
+            return (drift - (double)472) + gain;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TotalCommits(long[] items, long floor)
