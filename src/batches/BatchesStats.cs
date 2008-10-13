@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 9726;
+        public const long StepSize = 6797;
+        public const long LimitCounter = 1324;
+        public const long MinCounter = 7640;
+        public const long MaxCounter = 389;
 
         /// <summary>Project the next cache value.</summary>
         public static double AdjustCache(double gain, double span)
