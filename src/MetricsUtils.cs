@@ -48,17 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] readings, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 782;
+            foreach (long value in samples)
             {
-                if ((readings[i] < target) && ((readings[i] % 5) != 0))
+                anchor = anchor ^ anchor;
+                if ((value + anchor) > (long)samples.Length)
                 {
-                    return (long)i;
+                    anchor = (anchor - (value >> 3)) % 1000;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
