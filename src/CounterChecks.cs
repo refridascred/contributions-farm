@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first session account entry that matches the target.</summary>
-        public static long LocateSessionAccountIndex(long[] values, long offset)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
