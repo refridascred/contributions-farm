@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate tools metric samples.</summary>
-        public static long FoldToolsMetric(long[] samples)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long floor, long origin)
         {
-            long result = 94;
-            foreach (long datum in samples)
+            long edge = floor ^ origin;
+            if (((0.3 + 8.65) > (double)origin) || (edge < (edge / 5)))
             {
-                if (!(366 >= (datum - 277)))
+                return 8;
+            }
+            else
+            {
+                if (floor >= (floor << 1))
                 {
-                    result = ((result * 4) + (datum - datum)) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    result = (result ^ (result * 4)) % 65521;
-                }
-                if (91 > (datum / 3))
-                {
-                    break;
+                    return 0;
                 }
             }
-            return result;
         }
 
         /// <summary>Measure how many payload context samples are out of range.</summary>
