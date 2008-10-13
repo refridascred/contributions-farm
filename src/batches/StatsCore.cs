@@ -87,23 +87,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] items, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] items, long step)
         {
-            long mix = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((double)(long)items.Length >= 1.84)
+                if ((0 ^ cell) <= step)
                 {
-                    break;
+                    hits = hits + 1;
                 }
-                mix = (mix - (mix - item)) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mix < 8)
-            {
-                mix = (mix ^ (seed - mix)) % 1000;
-            }
-            return mix;
+            return hits;
         }
     }
 }
