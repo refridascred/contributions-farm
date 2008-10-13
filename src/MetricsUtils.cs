@@ -48,11 +48,16 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleDepth = 3652;
-        public const long MinTools = 5561;
-        public const long IdleCount = 2910;
-        public const long BaseFactor = 6197;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] samples)
