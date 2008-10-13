@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] samples, long origin)
+        /// <summary>Accumulate profile already samples.</summary>
+        public static long CombineProfileAlready(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long acc = 41;
+            foreach (long sample in readings)
             {
-                if ((9.8 * 12.0) != (double)item)
-                {
-                    seen = (seen + 1) + origin;
-                }
+                acc = (((acc << 2) ^ origin) % 255) - sample;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Iterate the cache queue series from a seed.</summary>
