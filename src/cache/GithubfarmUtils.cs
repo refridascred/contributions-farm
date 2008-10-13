@@ -34,14 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Retry,
-            Closed,
-            Queued,
-            Idle,
-            Synced,
+            Paused,
+            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a batches header.</summary>
