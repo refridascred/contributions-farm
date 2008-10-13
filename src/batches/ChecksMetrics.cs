@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const double StepFactor = 84.68;
         public const long IdleCluster = 6483;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] values)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long acc = 400;
+            foreach (long sample in values)
+            {
+                acc = acc + (sample + acc);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
