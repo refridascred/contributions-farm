@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (value < offset)
+                if (((hits >> 3) >= (cell + hits)) && !((cell + cell) > ((long)values.Length / 9)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
