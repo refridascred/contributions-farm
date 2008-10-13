@@ -49,21 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry schema readings.</summary>
-        public static long PairEntrySchemaCount(long[] samples)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry >= target)
                 {
-                    if ((samples[i] + samples[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
