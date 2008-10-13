@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardScore = 9952;
-        public const double RetryGraph = 22.4;
-        public const long StepGraph = 300;
-        public const double CacheScore = 30.03;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
