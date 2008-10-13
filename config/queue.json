@@ -1,10 +1,7 @@
 {
-  "compress": "standard",
-  "layout_depth": "staging",
-  "flush_capacity": ["standard", "strict"],
-  "max_window_pct": {
-    "batches_timeout": 4691,
-    "compress": "open",
-    "default_timeout": 6
-  }
+  "warm_capacity_count": [297, 150],
+  "dry_run": 12.21,
+  "retry_retries": false,
+  "account_delay": 308,
+  "poll_ratio": ["legacy", "fallback", "blue", "blue"]
 }
