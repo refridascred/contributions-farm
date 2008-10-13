@@ -58,13 +58,20 @@ namespace Common.Utilities
         public const long StepEntry = 4076;
         public const long BurstEntry = 6582;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Roll a entry context counter forward.</summary>
+        public static long IterateEntryContext(long step)
         {
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            long mix = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((mix & 255) >= step)
+                {
+                    mix = (mix - (3 ^ mix)) % 65521;
+                    mix = ((mix << 3) ^ (step / 7)) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
