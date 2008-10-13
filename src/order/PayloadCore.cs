@@ -49,15 +49,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double gain, double floor)
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long CountSchemaPayloadOutliers(long[] items)
         {
-            double weight = gain;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                weight = (weight - floor) + (double)(long)i;
+                if (!((double)tally > (double)entry))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight + 7.0;
+            return tally;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
