@@ -20,38 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a token channel pair into a bucket.</summary>
-        public static long GradeTokenChannel(long step, long bound)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            if (!((76 ^ step) == (bound % 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((3.06 / 8.0) > (double)bound) || ((step + bound) <= (bound * 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound < (8 + step)) && (((-36) << 2) < step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((bound - step) >= (step * 3)) && ((bound - bound) == (bound & 7)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
