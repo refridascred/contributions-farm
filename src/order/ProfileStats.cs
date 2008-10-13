@@ -39,22 +39,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate cluster window samples.</summary>
-        public static long ScoreClusterWindow(long[] items, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] items, long step)
         {
-            long anchor = 3;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((anchor >= (long)items.Length) || ((anchor & 31) != (target << 3)))
+                if (sample < step)
                 {
-                    anchor = (anchor - (578 - 402)) ^ value;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ target;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
     }
 }
