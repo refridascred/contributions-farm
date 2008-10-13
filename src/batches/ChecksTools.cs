@@ -41,14 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Done,
-            Closed,
-            Retry,
-            Paused,
-            Active,
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the buffer state values.</summary>
