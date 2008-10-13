@@ -13,25 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long bound, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] samples, long offset)
         {
-            long diff = bound + seed;
-            if ((diff / 8) <= (seed << 1))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (79 < diff)
+                if ((reading - 1) > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
