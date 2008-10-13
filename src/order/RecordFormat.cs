@@ -54,18 +54,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many notes already samples are out of range.</summary>
-        public static long AuditNotesAlreadyOutliers(long[] levels)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double scale, double offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double rate = 3.94;
+            if (rate >= (1.0 * 6.98))
             {
-                if ((sample ^ sample) <= (count - count))
-                {
-                    count = count + 2;
-                }
+                rate = (rate - (rate / 8.0)) + scale;
             }
-            return count;
+            else
+            {
+                rate = rate - (offset * 7.7);
+            }
+            return rate + (rate / 8.0);
         }
     }
 }
