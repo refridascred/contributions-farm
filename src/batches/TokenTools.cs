@@ -31,13 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] readings)
         {
-            New,
-            Closed,
-            Done,
-            Retry,
+            long sum = 6;
+            foreach (long datum in readings)
+            {
+                if (8.0 >= (double)sum)
+                {
+                    sum = (((sum << 3) ^ (sum + (-694))) % 1000) ^ datum;
+                }
+            }
+            if (sum < 396)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
     }
 }
