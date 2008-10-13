@@ -39,18 +39,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (((long)values.Length + item) < 615)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 7273;
+        public const long CacheCluster = 9914;
+        public const long LimitCluster = 3497;
     }
 }
