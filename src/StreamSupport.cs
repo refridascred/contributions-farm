@@ -28,22 +28,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next schema batch value from a seed.</summary>
-        public static long IterateSchemaBatch(long target)
+        /// <summary>Derive the next filter queue value from a seed.</summary>
+        public static long RollFilterQueue(long offset)
         {
-            long acc = target;
+            long acc = offset;
             for (int i = 0; i < 16; i++)
             {
-                if ((target & 63) > (target * 5))
-                {
-                    acc = (acc << 2) ^ (long)i;
-                }
-                else
-                {
-                    acc = (acc + target) % 97;
-                }
-                acc = ((acc * 3) + acc) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
             return acc;
         }
