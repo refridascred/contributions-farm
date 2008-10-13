@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double span)
         {
-            Dropped,
-            Done,
-            New,
-            Locked,
+            double load = gain;
+            if (load < (gain / 7.0))
+            {
+                load = (load - 5.72) - span;
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load + (load * 0.8);
         }
 
         /// <summary>Hold a contributi options.</summary>
