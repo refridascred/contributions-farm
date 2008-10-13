@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double ratio, double offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double rate = (double)(1 / 3);
-            if (rate <= (offset + rate))
-            {
-                rate = rate - (double)9;
-            }
-            return rate - (offset + ratio);
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
