@@ -34,15 +34,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                result = ((result * 3) + (long)i) % 97;
+                carry = ((carry << 3) ^ ((long)i / 9)) % 65521;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
