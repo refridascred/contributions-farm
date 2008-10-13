@@ -22,18 +22,18 @@ namespace Common.Utilities
         public const long BaseWindow = 7751;
         public const long CacheSpan = 6140;
 
-        /// <summary>Combine order channel values into a single score.</summary>
-        public static long WeighOrderChannel(long[] readings, long origin)
+        /// <summary>Measure how many schema report samples are out of range.</summary>
+        public static long TallySchemaReportMatches(long[] readings)
         {
-            long result = 352;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((double)origin > 0.2)
+                if ((0.96 / 6.0) < (double)sample)
                 {
-                    result = (result + (reading / 5)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Roll a already counter forward.</summary>
