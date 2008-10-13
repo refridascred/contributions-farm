@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] samples, long floor)
         {
-            Idle,
-            Closed,
-            Paused,
-            Locked,
-            Pending,
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every notes contributi entry stays within the limit.</summary>
