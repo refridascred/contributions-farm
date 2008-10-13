@@ -15,11 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public bool Score { get; set; }
-            public long Count { get; set; }
+            Stale,
+            Closed,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
