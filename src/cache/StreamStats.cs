@@ -26,10 +26,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryNotes = "strict-v2";
-        public const string CacheNotes = "primary-edge";
-        public const string BatchNotes = "alpha-v2";
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Paused,
+            Done,
+            Active,
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] items, long bound)
