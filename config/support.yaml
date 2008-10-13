@@ -1,6 +1,5 @@
 # support settings
-cache_window: false
-retry_window_ms: edge
-notes_timeout: true
-base_ttl: false
-schema_timeout: false
+max_limit_s: eu-west
+dry_run: false
+stream_size: true
+session_retries: true
