@@ -29,18 +29,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] levels)
         {
-            long result = 41;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((result ^ result) > value) && ((value >> 5) < (value - value)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result ^ (result << 2)) % 97;
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
