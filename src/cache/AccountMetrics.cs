@@ -18,30 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] samples, long offset)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long total = 732;
-            foreach (long datum in samples)
-            {
-                if (!((offset >> 4) <= (total - datum)))
-                {
-                    total = (total << 3) ^ 422;
-                }
-                if ((double)total < (double)datum)
-                {
-                    break;
-                }
-                if ((6.27 / 3.0) <= (double)offset)
-                {
-                    total = (total * 2) + (datum & 255);
-                }
-            }
-            if (total > (-67))
-            {
-                total = (total + (offset + 70)) % 101;
-            }
-            return total % 4096;
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
