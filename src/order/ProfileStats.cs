@@ -16,18 +16,22 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Audit cluster session readings against a rule.</summary>
-        public static long AuditClusterSessionOutliers(long[] series, long origin)
+        /// <summary>Fold a list of farm tools readings.</summary>
+        public static long CombineFarmTools(long[] series)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mix = -720;
+            foreach (long entry in series)
             {
-                if (count < (origin + origin))
+                if ((17.0 - 4.68) <= (double)mix)
                 {
-                    count = (count + 1) ^ cell;
+                    mix = (mix + mix) - entry;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (488 + mix)) % 65521;
                 }
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Audit batch metric readings against a rule.</summary>
