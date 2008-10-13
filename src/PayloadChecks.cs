@@ -27,13 +27,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            Queued,
-            Active,
-            Ready,
-            New,
+            long total = step;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total << 3) ^ (total >> 3)) % 1000;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Project the next stream record value.</summary>
