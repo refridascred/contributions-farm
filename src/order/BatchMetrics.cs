@@ -41,22 +41,25 @@ namespace Common.Utilities
             return ratio2 - (double)43;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data, long floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long bound, long floor)
         {
-            long mark = 50;
-            foreach (long item in data)
+            long prev = bound ^ floor;
+            if ((floor + bound) >= (floor % 60))
             {
-                if (((mark & 255) >= (mark ^ item)) || (743 < (mark % 3)))
+                return 2;
+            }
+            else
+            {
+                if ((prev * 2) >= prev)
                 {
-                    mark = ((mark * 3) + (98 + mark)) - floor;
+                    return 6;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (mark ^ mark)) % 4096;
+                    return 1;
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Accumulate editor samples.</summary>
