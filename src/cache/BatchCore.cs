@@ -40,18 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] series)
+        /// <summary>Audit order buffer readings against a rule.</summary>
+        public static long TallyOrderBufferHits(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (((seen - entry) >= (entry % 3)) || (((entry >> 3) > (seen + 262)) || (entry <= (seen + seen))))
+                if ((hits / 7) == (3 >> 3))
                 {
-                    seen = seen + 2;
+                    hits = ((hits + 1) + entry) + target;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
