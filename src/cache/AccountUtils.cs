@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] levels, long seed)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] readings, long origin)
         {
-            long mix = 83;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seed > (4.6 * 6.0))
+                if (readings[i] == origin)
                 {
-                    mix = mix - (datum + seed);
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Describe the commits mode values.</summary>
