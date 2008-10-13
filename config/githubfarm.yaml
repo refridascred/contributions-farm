@@ -1,11 +1,5 @@
 # githubfarm settings
-compress: 77.77
-flush_depth: 8007
-hard_retries_s:
-  - 237
-  - 246
-  - 366
-  - 445
-filter_ratio: local
-batch_ratio: false
-burst_limit_ms: 250
+audit: 52.33
+readonly: blue
+retry_capacity: 250
+commits_ttl: stable
