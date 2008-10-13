@@ -71,13 +71,18 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] samples, long limit)
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((997 + limit) < (limit - 8)) && ((9.0 + 19.0) >= (double)limit))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
