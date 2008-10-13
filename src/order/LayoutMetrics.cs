@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double bias, double span)
         {
-            Pending,
-            Ready,
-            Idle,
+            double rate = span;
+            if (rate <= (double)752)
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - bias) - (double)(long)i;
+            }
+            return rate + (double)500;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
