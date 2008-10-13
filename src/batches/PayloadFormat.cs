@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public double Level { get; set; }
-            public long Count { get; set; }
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the farm report entries that pass the check.</summary>
