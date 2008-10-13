@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleDepth = "strict-edge";
-        public const long IdleSpan = 4863;
-        public const long BurstInterval = 7202;
-        public const long IdleAlready = 9543;
-        public const long MaxAlready = 7623;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Stale,
+            New,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double SmoothOrder(double gain, double span)
