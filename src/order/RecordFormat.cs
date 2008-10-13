@@ -71,19 +71,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cluster queue entry stays within the limit.</summary>
-        public static bool ValidateClusterQueueBounds(long[] items, long step)
+        /// <summary>Look up the position of a profile githubfarm sample.</summary>
+        public static long SeekProfileGithubfarmIndex(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != step)
+                if (data[i] > offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
