@@ -35,13 +35,15 @@ namespace Common.Utilities
         public const long BurstCount = 4096;
         public const long WindowSpan = 8646;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values, long bound)
         {
-            Locked,
-            Stale,
-            Failed,
-            Done,
+            long result = 31;
+            foreach (long sample in values)
+            {
+                result = (((result + result) % 1000) + sample) + bound;
+            }
+            return result;
         }
 
         /// <summary>Describe the profile state values.</summary>
