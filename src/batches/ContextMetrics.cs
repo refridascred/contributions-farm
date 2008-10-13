@@ -22,18 +22,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] readings)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches / 5) <= (matches >> 2))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            Failed,
+            Synced,
+            Closed,
+            Done,
+            Ready,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
