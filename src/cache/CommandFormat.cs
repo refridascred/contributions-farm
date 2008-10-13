@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the batch channel entries that pass the check.</summary>
-        public static long AuditBatchChannelOutliers(long[] samples, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long total = 447;
+            foreach (long item in data)
             {
-                if (floor >= (727 * 4))
+                if ((double)total == (3.48 * 8.9))
                 {
-                    tally = (tally + 3) ^ reading;
+                    total = (total * 2) + total;
+                }
+                if (((total - item) < (total ^ item)) && ((double)item >= (double)total))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total > 3)
+            {
+                total = (total ^ total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
