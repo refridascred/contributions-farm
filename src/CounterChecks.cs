@@ -53,21 +53,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a record order counter forward.</summary>
-        public static long StepRecordOrder(long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            long state = 1;
+            foreach (long cell in samples)
             {
-                if (((double)target < (double)anchor) && ((27 ^ anchor) >= (-495)))
-                {
-                    long delta = (anchor * 2) >> 4;
-                    anchor = (anchor ^ (delta + delta)) % 97;
-                }
-                anchor = anchor - (anchor & 7);
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                state = (state << 2) ^ cell;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Audit stream account readings against a rule.</summary>
