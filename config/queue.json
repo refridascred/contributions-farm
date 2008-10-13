@@ -1,12 +1,5 @@
 {
-  "persist": false,
-  "default_ttl_ms": "legacy",
-  "default_interval": {
-    "flush_limit_pct": "primary",
-    "retry_window_pct": "legacy",
-    "hard_threshold_count": ["green", "local", "primary", "local"],
-    "burst_window_pct": "primary"
-  },
-  "readonly": false,
-  "max_ttl_count": 250
+  "support_ratio": true,
+  "burst_limit_pct": "stable",
+  "batch_delay_ms": "primary"
 }
