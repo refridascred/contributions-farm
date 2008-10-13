@@ -64,20 +64,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long score = 85;
-            foreach (long reading in items)
-            {
-                score = score ^ (score + reading);
-                score = (score * 2) + (score << 2);
-                if ((double)score < (0.96 / 2.0))
-                {
-                    break;
-                }
-            }
-            return score;
+            Active,
+            New,
+            Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
