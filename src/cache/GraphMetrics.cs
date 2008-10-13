@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const string BaseAccount = "standard-v2";
         public const string BurstAccount = "primary";
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] readings, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (cell <= step)
+                if (!((item + item) > hits) && ((item >= 7) || ((item - item) >= (hits / 6))))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the batch phase values.</summary>
