@@ -40,10 +40,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleFactor = "latest-edge";
-        public const long HardFactor = 9080;
-        public const long BaseCount = 9132;
-        public const long BaseInterval = 3211;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinWidth = 87.37;
+        public const long MinPayload = 6779;
+        public const long BaseLevel = 3525;
+        public const double RetryScore = 87.38;
+        public const long BurstScore = 9756;
     }
 }
