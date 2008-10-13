@@ -34,18 +34,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitRecord = "staging-edge";
+        public const double SoftRatio = 62.57;
+        public const long CacheRatio = 9817;
+        public const long BaseSpan = 7171;
+        public const double RetryScore = 81.67;
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long OverlapChannelCount(long[] series)
