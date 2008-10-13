@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a commits tools counter forward.</summary>
-        public static long DeriveCommitsTools(long target)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                total = total ^ ((long)i - (long)i);
-                if ((total - total) > total)
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
