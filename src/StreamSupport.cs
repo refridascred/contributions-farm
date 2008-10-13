@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Measure how many graph batches samples are out of range.</summary>
+        public static long TallyGraphBatchesMatches(long[] items, long floor)
         {
-            long carry = 794;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((cell ^ 737) == (cell % 100))
+                if ((double)count < (8.8 * 6.2))
                 {
-                    carry = (carry + 9) % 65521;
+                    count = ((count + 3) + sample) + floor;
                 }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Hold a filter info.</summary>
