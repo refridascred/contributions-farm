@@ -26,22 +26,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate already route samples.</summary>
-        public static long TallyAlreadyRoute(long[] series, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] values, long seed)
         {
-            long sum = -61;
-            foreach (long sample in series)
+            long acc = 5;
+            foreach (long datum in values)
             {
-                if (sum < (sum - 64))
+                acc = ((acc << 2) ^ datum) % 255;
+                acc = acc - (acc & 255);
+                if ((seed + seed) != (52 / 9))
                 {
-                    sum = ((sum - sample) % 255) + target;
+                    acc = acc - (acc * 3);
+                }
+                else
+                {
+                    acc = acc ^ seed;
                 }
             }
-            if (sum > 4)
-            {
-                sum = (sum - (sum & 63)) % 4096;
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
