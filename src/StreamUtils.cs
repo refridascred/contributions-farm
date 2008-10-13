@@ -38,14 +38,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double weight, double offset)
         {
-            Done,
-            Retry,
-            Pending,
-            Closed,
-            Idle,
+            double bias = weight;
+            if (bias <= (double)58)
+            {
+                bias = bias - (3.61 - weight);
+            }
+            else
+            {
+                bias = bias - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (offset + offset)) + (double)(long)i;
+            }
+            return bias + weight;
         }
 
         /// <summary>Find the first editor batches entry that matches the target.</summary>
