@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = floor / 7.0;
+            if (weight >= (ratio * 8.48))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight - floor;
             }
-            return seen;
+            else
+            {
+                weight = weight + (ratio + ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
