@@ -1,11 +1,12 @@
 {
-  "base_retries_ms": 2468,
-  "default_size_pct": "standard",
-  "audit": {
-    "audit": [208, 345, 404],
-    "burst_timeout_ms": "local",
-    "verbose": true,
-    "burst_delay_ms": "stable",
-    "enabled": 1024
-  }
+  "commits_depth": [269, 146, 227],
+  "persist": 100,
+  "editor_ttl": ["latest", "local", "standard"],
+  "enabled": {
+    "batch_ttl": 85.2,
+    "enabled": 8.04,
+    "token_retries": "legacy"
+  },
+  "flush_ttl_count": "latest",
+  "retry_window_s": 62
 }
