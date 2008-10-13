@@ -1,5 +1,6 @@
 {
-  "stats_delay": 1120,
-  "record_ttl": 96,
-  "window_delay": 2854
+  "poll_delay_ms": 5593,
+  "max_capacity_s": false,
+  "flush_delay": 91.99,
+  "batch_interval_s": 35
 }
