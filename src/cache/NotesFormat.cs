@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] series, long floor)
-        {
-            long mark = 20;
-            foreach (long cell in series)
-            {
-                if (cell < (821 & 63))
-                {
-                    mark = ((mark << 3) ^ (mark % 3)) % 101;
-                }
-                else
-                {
-                    mark = mark + (floor % 60);
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 4532;
+        public const string SoftToken = "cached";
+        public const string BatchToken = "standard-1";
+        public const long SoftInterval = 241;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
