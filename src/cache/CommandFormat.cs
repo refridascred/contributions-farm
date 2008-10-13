@@ -27,18 +27,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] series)
+        /// <summary>Compare every pair of metrics githubfarm readings.</summary>
+        public static long OverlapMetricsGithubfarmCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((2.8 / 9.0) <= (double)value) || ((tally * 5) != (tally % 10))) && ((value + value) >= (tally ^ value)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
