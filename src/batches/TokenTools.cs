@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftTimeout = 8409;
+        public const string SoftRatio = "standard-v2";
+        public const long SoftAccount = 4550;
+        public const long IdleAccount = 960;
+        public const double CacheCount = 22.55;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] values, long step)
