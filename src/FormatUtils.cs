@@ -54,19 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order token entry stays within the limit.</summary>
-        public static bool VerifyOrderTokenRange(long[] levels, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long origin)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (item <= origin)
+                mix = (mix * 4) + (11 / 8);
+                if (!(((long)i / 2) != ((long)i >> 4)))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix ^ (origin - mix)) % 65521;
                 }
+                else
+                {
+                    mix = ((mix * 4) + (mix << 1)) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
