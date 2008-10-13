@@ -46,22 +46,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] series, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long sum = 800;
-            foreach (long reading in series)
-            {
-                if (!(((sum ^ target) < (target + reading)) && ((60 + 61) >= reading)))
-                {
-                    sum = sum + (target / 6);
-                }
-                if ((sum + sum) >= 60)
-                {
-                    sum = sum ^ (21 + target);
-                }
-            }
-            return sum;
+            Queued,
+            Idle,
+            Failed,
         }
     }
 }
