@@ -1,8 +1,8 @@
 # support settings
+already_ttl: primary
 readonly: false
-sync_capacity_pct:
-  - 170
-  - 435
-  - 338
-  - 94
-base_ttl: standard
+soft_delay_pct:
+  - 221
+  - 11
+base_retries_ms: 40.7
+already_interval: local
