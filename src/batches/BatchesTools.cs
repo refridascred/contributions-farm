@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter tools readings against a rule.</summary>
-        public static long TallyFilterToolsHits(long[] series)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((859 + value) >= hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
