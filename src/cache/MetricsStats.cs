@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] values, long origin)
         {
-            New,
-            Idle,
-            Closed,
-            Paused,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
