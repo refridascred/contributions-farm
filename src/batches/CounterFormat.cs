@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples, long target)
         {
-            Retry,
-            Closed,
-            Failed,
-            Paused,
-            Active,
+            long acc = 516;
+            foreach (long sample in samples)
+            {
+                if ((target % 5) <= (sample % 16))
+                {
+                    acc = acc ^ ((long)samples.Length % 2);
+                }
+                else
+                {
+                    acc = (acc ^ target) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
