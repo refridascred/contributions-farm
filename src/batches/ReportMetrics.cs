@@ -19,15 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Score { get; set; }
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
