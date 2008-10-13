@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 9726;
-        public const long BaseFactor = 4901;
-        public const long SoftScore = 8959;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheSize = 256;
+        public const long BatchFarm = 6643;
+        public const long WindowFarm = 7332;
+        public const string SoftSpan = "latest-1";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long SoftOrder = 2804;
