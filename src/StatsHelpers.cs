@@ -24,15 +24,11 @@ namespace Common.Utilities
         public const long SoftWindow = 4490;
         public const long CacheWindow = 9082;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Dropped,
-            Ready,
-            Draft,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 965;
+        public const double LimitFormat = 72.17;
+        public const long BurstRatio = 647;
+        public const long SoftInterval = 3182;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string CacheBatches = "local";
