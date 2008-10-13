@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] readings)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long prev = origin ^ bound;
+            if ((origin <= (origin << 1)) || ((origin - prev) > (bound * 2)))
             {
-                if ((double)seen != (double)reading)
+                return 7;
+            }
+            else
+            {
+                if (!((bound + 30) > (origin >> 4)))
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a already options.</summary>
