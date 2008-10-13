@@ -54,12 +54,12 @@ namespace Common.Utilities
         public const long DefaultPayload = 7610;
         public const long BurstPayload = 3527;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] readings, long origin)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] == origin)
+                if (data[i] < step)
                 {
                     return (long)i;
                 }
