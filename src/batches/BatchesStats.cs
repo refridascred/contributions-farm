@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 9726;
-        public const long StepSize = 6797;
-        public const long LimitCounter = 1324;
-        public const long MinCounter = 7640;
-        public const long MaxCounter = 389;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
+        {
+            long total = 9;
+            foreach (long reading in readings)
+            {
+                if ((total >= reading) || ((reading + 59) >= reading))
+                {
+                    total = (total + (total & 31)) % 4096;
+                }
+            }
+            if (total > 8)
+            {
+                total = total + (total % 24);
+            }
+            return total;
+        }
 
         /// <summary>Locate a support session reading by value.</summary>
         public static long SeekSupportSessionIndex(long[] readings, long target)
