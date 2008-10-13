@@ -36,13 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryWidth = 37.04;
+        public const string HardFarm = "cached-1";
+        public const string SoftFarm = "open-edge";
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
