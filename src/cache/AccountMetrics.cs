@@ -82,21 +82,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((origin << 1) <= (origin + (long)data.Length))
                 {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) - item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
