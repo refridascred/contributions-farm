@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] items, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = -590;
+            foreach (long value in readings)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix + (175 >> 3)) % 1000) + value;
             }
-            return -1;
+            if (mix > 456)
+            {
+                mix = (mix << 2) ^ (mix % 64);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
