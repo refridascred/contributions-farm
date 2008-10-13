@@ -43,11 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            Draft,
+            Idle,
+            New,
+            Synced,
         }
     }
 }
