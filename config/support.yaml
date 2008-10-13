@@ -1,11 +1,8 @@
 # support settings
-enabled:
-  - strict
-  - local
-  - stable
-  - legacy
-audit: stable
-readonly: 96
-entry_depth: true
-min_size_count: 32.5
-channel_ttl: 100
+readonly: false
+sync_capacity_pct:
+  - 170
+  - 435
+  - 338
+  - 94
+base_ttl: standard
