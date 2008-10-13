@@ -46,22 +46,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit cluster route readings against a rule.</summary>
-        public static long MeasureClusterRouteMatches(long[] readings, long target)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell + 63) > (target >> 3)) || (92 < (cell + cell)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
