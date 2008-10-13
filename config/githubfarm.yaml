@@ -1,18 +1,24 @@
 # githubfarm settings
-flush_depth_pct:
-  base_size:
-    - 247
-    - 252
-    - 263
-  schema_capacity: local
-  burst_ratio: false
-  warm_ttl_pct:
-    - 451
-    - 493
-  base_threshold_count: 48.45
-  flush_delay_ms: 250
-cluster_limit: false
-audit: 77.31
-compress: legacy
-schema_threshold: 25
-min_timeout_count: true
+base_retries_pct: fallback
+burst_ratio: cached
+hard_threshold:
+  cache_limit_pct: staging
+  verbose: 6329
+  compress: 50.44
+  enabled:
+    readonly: local
+    token_ttl: cached
+    retry_depth_s: 1160
+    min_depth_count: legacy
+  default_limit_count:
+    sync_ttl_s: eu-west
+    max_depth_count: 7.4
+    base_retries_count: fallback
+    report_window: 64
+    persist: true
+    soft_window: blue
+  soft_ratio_s:
+    - strict
+    - latest
+audit: true
+max_threshold: 250
