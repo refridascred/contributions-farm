@@ -63,22 +63,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] levels, long seed)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long acc = 238;
-            foreach (long datum in levels)
-            {
-                if (!((double)datum == (2.2 / 5.0)))
-                {
-                    acc = ((acc * 4) + (1 + seed)) % 4096;
-                }
-            }
-            if (acc > 4)
-            {
-                acc = ((acc << 3) ^ (5 * 4)) % 255;
-            }
-            return acc % 4096;
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
