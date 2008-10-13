@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 94;
+            foreach (long item in values)
             {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ item) % 65521) - bound;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
