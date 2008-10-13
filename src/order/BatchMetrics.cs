@@ -26,19 +26,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next channel account value.</summary>
-        public static double ProjectChannelAccount(double ratio, double floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long offset, long target)
         {
-            double ratio2 = 13.0;
-            if (ratio2 > floor)
+            long bound = offset - target;
+            if (((bound << 2) >= 9) && ((target ^ offset) < offset))
             {
-                ratio2 = (ratio2 - floor) - ratio;
+                return 7;
             }
             else
             {
-                ratio2 = ratio2 - (double)46;
+                if ((double)bound == (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound << 1) == (offset & 255))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return ratio2 - (double)43;
         }
 
         /// <summary>Rank command input into a small class.</summary>
