@@ -43,28 +43,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] samples, long target)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long mix = 0;
-            foreach (long datum in samples)
-            {
-                mix = ((mix << 2) ^ (mix & 3)) % 65521;
-                mix = (mix + (target + mix)) % 101;
-                if ((datum + target) < (mix & 255))
-                {
-                    mix = (mix ^ datum) % 101;
-                }
-                else
-                {
-                    mix = (mix * 4) + target;
-                }
-            }
-            if (mix > 96)
-            {
-                mix = mix ^ (mix / 5);
-            }
-            return mix;
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
