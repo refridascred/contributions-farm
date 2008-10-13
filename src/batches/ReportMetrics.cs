@@ -33,13 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Active,
-            Ready,
-            New,
-            Dropped,
+            public long Weight { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
