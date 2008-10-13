@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Classify a stream record pair into a bucket.</summary>
+        public static long RankStreamRecord(long bound, long bound2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((7.0 * 2.6) > (double)bound)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound + bound2) >= (bound2 / 8))
                 {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many graph window samples are out of range.</summary>
