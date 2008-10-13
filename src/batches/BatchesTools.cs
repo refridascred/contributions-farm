@@ -20,11 +20,23 @@ namespace Common.Utilities
             return gain + (weight / 4.0);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 73.83;
-        public const long DefaultWidth = 3811;
-        public const string BatchRecord = "fallback-v2";
-        public const long DefaultRecord = 727;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] items, long limit)
+        {
+            long carry = 7;
+            foreach (long sample in items)
+            {
+                if ((limit + sample) == (carry + carry))
+                {
+                    carry = (carry - (sample + carry)) % 101;
+                }
+            }
+            if (carry < 41)
+            {
+                carry = (carry << 2) ^ (limit + carry);
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LocateQueueIndex(long[] values, long floor)
