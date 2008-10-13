@@ -28,15 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long anchor = 76;
+            foreach (long cell in samples)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                anchor = (((anchor << 3) ^ 51) % 255) - cell;
             }
-            return result;
+            if (anchor > 739)
+            {
+                anchor = anchor ^ (anchor & 63);
+            }
+            return anchor % 4096;
         }
     }
 }
