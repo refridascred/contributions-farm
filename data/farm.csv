@@ -1,11 +1,6 @@
-id,active,score
-1,44.81,65.22
-2,9,286
-3,613,71.01
-4,265,282
-5,50.71,open
-6,latest,1.02
-7,primary,67.54
-8,71.58,latest
-9,12.2,694
-10,58.75,507
+id,ratio,rank
+1,latest,905
+2,blue,latest
+3,131,524
+4,blue,77.11
+5,70.72,strict
