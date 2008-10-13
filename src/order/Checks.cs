@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitInterval = 5331;
-        public const long DefaultBatches = 476;
-        public const string IdleBatches = "cached-edge";
-        public const long WindowWidth = 7814;
+        /// <summary>Classify a filter cluster pair into a bucket.</summary>
+        public static long ClassifyFilterCluster(long offset, long target)
+        {
+            long diff = offset + target;
+            if ((offset << 2) < (offset % 60))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target < (diff + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
