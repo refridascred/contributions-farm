@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed + mix) != (seed >> 5))
                 {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix ^ (mix + seed)) - entry;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
