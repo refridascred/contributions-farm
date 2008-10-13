@@ -24,15 +24,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Pending,
+            Locked,
+            Active,
+            Synced,
+            Failed,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
