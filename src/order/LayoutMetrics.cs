@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double bias, double span)
-        {
-            double rate = span;
-            if (rate <= (double)752)
-            {
-                rate = rate - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - bias) - (double)(long)i;
-            }
-            return rate + (double)500;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "standard";
+        public const long BatchSupport = 7026;
+        public const string LimitSupport = "legacy-edge";
+        public const string StepDepth = "local-edge";
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
