@@ -40,25 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a format checks value against two limits.</summary>
-        public static long ClassifyFormatChecks(long offset, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] series)
         {
-            long gap = offset - step;
-            if ((step + gap) < (offset >> 5))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ offset) < (offset - gap))
+                if (((seen - entry) >= (entry % 3)) || (((entry >> 3) > (seen + 262)) || (entry <= (seen + seen))))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
