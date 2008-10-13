@@ -13,12 +13,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Derive the next farm report value from a seed.</summary>
+        public static long StepFarmReport(long step)
         {
-            Draft,
-            Pending,
-            Failed,
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                score = score ^ (step * 2);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    score = ((score + (-96)) % 65521) + (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
