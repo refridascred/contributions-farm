@@ -1,7 +1,8 @@
 {
-  "graph_limit": 32.5,
-  "soft_limit": "legacy",
-  "flush_window": "stable",
-  "checks_limit": 29.78,
-  "batch_timeout_count": [65, 292]
+  "graph_ttl": "blue",
+  "readonly": 94.88,
+  "batch_threshold": 24.61,
+  "audit": 36.11,
+  "soft_retries_ms": 3165,
+  "layout_threshold": 2050
 }
