@@ -48,17 +48,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] values, long limit)
+        /// <summary>Count the cache schema entries that pass the check.</summary>
+        public static long TallyCacheSchemaOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (values[i] <= limit)
+                if ((711 - reading) != (7 / 2))
                 {
-                    return (long)i;
+                    count = (count + 2) + origin;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
