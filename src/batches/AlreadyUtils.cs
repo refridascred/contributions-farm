@@ -42,18 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] values, long floor)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long state = 2;
-            foreach (long cell in values)
-            {
-                if (state < (8 << 2))
-                {
-                    state = ((state + (state + floor)) % 4096) - cell;
-                }
-            }
-            return state;
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the layout kind values.</summary>
