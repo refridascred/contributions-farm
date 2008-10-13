@@ -37,16 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double gain, double bias)
-        {
-            double weight = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = ((weight - (5.73 - 7.58)) + (double)(long)i) - gain;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseCache = 61.31;
+        public const double DefaultCache = 22.53;
+        public const long SoftCache = 7939;
+        public const long RetryCache = 3644;
+        public const string MinDepth = "legacy-1";
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double SmoothCommand(double scale, double span)
