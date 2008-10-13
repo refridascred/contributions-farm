@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] items, long seed)
         {
-            long acc = 554;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample % 64) == ((long)items.Length * 2))
+                if (items[i] <= seed)
                 {
-                    acc = (acc ^ (acc << 1)) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 4) + (acc + sample);
+                    return (long)i;
                 }
             }
-            if (acc < 264)
-            {
-                acc = ((acc << 2) ^ (acc << 1)) % 65521;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
