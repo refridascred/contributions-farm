@@ -13,20 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 4772;
+        public const long RetryChannel = 5605;
+        public const string LimitChannel = "cached";
+        public const long SoftRatio = 4254;
+        public const long HardChannel = 8711;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
