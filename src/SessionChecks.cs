@@ -17,23 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((count >> 5) <= (619 + sample))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 3413;
+        public const double RetryRatio = 10.86;
+        public const long LimitFactor = 3770;
+        public const long StepCount = 5445;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
