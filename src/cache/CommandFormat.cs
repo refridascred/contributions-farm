@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long target, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] readings, long step)
         {
-            if (bound > (bound * 2))
+            long state = 9;
+            foreach (long item in readings)
             {
-                return 4;
+                state = ((state ^ step) % 255) - item;
+                state = ((state * 2) + (-83)) % 1000;
             }
-            else
+            if (state < 87)
             {
-                if (378 <= (target + target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + 784) < (target * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound % 8) <= (6 << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                state = state + (state << 2);
             }
+            return state;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
