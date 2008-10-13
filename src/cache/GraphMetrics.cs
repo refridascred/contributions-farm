@@ -50,19 +50,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double bias, double floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double rate = 7.8;
-            if (rate < (floor - 0.66))
-            {
-                rate = rate + (20.0 / 4.0);
-            }
-            else
-            {
-                rate = rate - floor;
-            }
-            return rate + bias;
+            Retry,
+            Dropped,
+            New,
+            Idle,
+            Active,
         }
     }
 }
