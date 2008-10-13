@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every metrics notes entry stays within the limit.</summary>
-        public static bool GuardMetricsNotesLimits(long[] levels, long bound)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Roll a support counter forward.</summary>
