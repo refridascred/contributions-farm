@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long target, long limit)
         {
-            Done,
-            Ready,
-            Dropped,
-            Active,
+            if ((59 >> 5) <= (limit - target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0.9 + 0.1) != (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit & 15) < (limit + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
