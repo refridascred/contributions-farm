@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long bound, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings)
         {
-            if (8.0 < (double)floor)
+            long sum = 9;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2 + bound) >= (bound + 739))
+                if (((sample + sum) == (sum >> 1)) || ((sample - sample) == (sum - 37)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    sum = sum - ((-300) >> 3);
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
