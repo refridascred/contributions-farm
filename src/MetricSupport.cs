@@ -31,13 +31,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Closed,
-            Paused,
-            Idle,
-            Active,
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
