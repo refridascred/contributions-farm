@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 4772;
-        public const long RetryChannel = 5605;
-        public const string LimitChannel = "cached";
-        public const long SoftRatio = 4254;
-        public const long HardChannel = 8711;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinScore = "primary";
+        public const double WindowSpan = 55.83;
+        public const long StepAccount = 2120;
+        public const long DefaultInterval = 638;
+        public const long BaseAccount = 9876;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
