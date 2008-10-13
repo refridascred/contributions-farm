@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long IdleAlready = 9543;
         public const long MaxAlready = 7623;
 
-        /// <summary>Look up the position of a editor notes sample.</summary>
-        public static long SeekEditorNotesIndex(long[] samples, long bound)
+        /// <summary>Validate farm entry readings against a bound.</summary>
+        public static bool GuardFarmEntryRange(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (samples[i] == bound)
+                if (value < bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
