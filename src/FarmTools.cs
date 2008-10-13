@@ -41,12 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long mix = 6;
+            foreach (long datum in readings)
+            {
+                mix = (((mix * 3) + (93 + (long)readings.Length)) % 255) - datum;
+                if (((-68) - mix) > mix)
+                {
+                    mix = mix ^ (mix + mix);
+                }
+            }
+            return mix;
         }
     }
 }
