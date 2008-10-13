@@ -12,23 +12,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a graph account counter forward.</summary>
-        public static long IterateGraphAccount(long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long sum = 661;
+            foreach (long item in readings)
             {
-                if ((double)mix == (12.0 / 4.0))
+                if (((double)offset < (double)261) || ((offset * 4) < (offset / 3)))
                 {
-                    mix = mix ^ mix;
+                    sum = ((sum * 3) + (item >> 5)) % 97;
                 }
                 else
                 {
-                    mix = (mix ^ (floor * 2)) % 101;
+                    sum = ((sum << 3) ^ (sum % 5)) % 1000;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
