@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] items)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (4.6 < (double)entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine counter report values into a single score.</summary>
