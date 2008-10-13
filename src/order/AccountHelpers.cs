@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Combine counter report values into a single score.</summary>
