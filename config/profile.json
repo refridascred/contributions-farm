@@ -1,15 +1,6 @@
 {
-  "cache_threshold": 2257,
-  "hard_retries_s": 26.01,
-  "soft_ttl_pct": {
-    "burst_ttl": "primary",
-    "cache_size_s": 100,
-    "schema_window": 18.88,
-    "poll_size": 21.62,
-    "audit": "eu-west",
-    "cache_interval_ms": 8047
-  },
-  "idle_retries_count": 60,
-  "hard_threshold": 7087,
-  "cache_depth_ms": 60
+  "poll_depth_ms": "green",
+  "soft_limit": 6335,
+  "sync_depth_s": "fallback",
+  "idle_retries_count": false
 }
