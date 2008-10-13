@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long origin)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a token githubfarm sample.</summary>
