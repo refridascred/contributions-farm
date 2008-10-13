@@ -38,24 +38,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] data)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] levels, long origin)
         {
-            long carry = 719;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long span = (61 & 1) + (entry * 3);
-                for (int i = 0; i < 12; i++)
+                if (levels[i] <= origin)
                 {
-                    carry = ((carry << 2) ^ (carry << 3)) % 65521;
-                    carry = carry + ((long)i - span);
-                }
-                if ((carry + carry) > carry)
-                {
-                    carry = (carry + (carry * 2)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
