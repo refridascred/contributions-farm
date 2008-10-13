@@ -37,19 +37,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every layout order entry stays within the limit.</summary>
-        public static bool GuardLayoutOrderRange(long[] levels, long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Stale,
+            Synced,
+            Pending,
+            Active,
         }
     }
 }
