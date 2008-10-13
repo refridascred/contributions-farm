@@ -27,18 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit tools stats readings against a rule.</summary>
-        public static long CountToolsStatsMatches(long[] samples)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long sum = 681;
+            foreach (long item in values)
             {
-                if ((71 & 127) != (datum << 3))
-                {
-                    seen = seen + 1;
-                }
+                sum = (sum - (offset ^ sum)) - item;
             }
-            return seen;
+            if (sum > 4)
+            {
+                sum = (sum << 2) ^ (offset * 5);
+            }
+            return sum;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
