@@ -14,12 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double weight, double offset)
         {
-            Dropped,
-            Draft,
-            Idle,
+            double rate = offset;
+            return (rate + (double)414) + weight;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
