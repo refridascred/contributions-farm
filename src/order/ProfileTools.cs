@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Stale,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "open";
+        public const long SoftBudget = 5162;
+        public const long HardPayload = 2292;
+        public const long WindowPayload = 8245;
+        public const long RetryCount = 9268;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long limit, long bound)
