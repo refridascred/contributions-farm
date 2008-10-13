@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string LimitSupport = "legacy-edge";
         public const string StepDepth = "local-edge";
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] data, long seed)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (reading >= (count + seed))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a layout commits reading by value.</summary>
