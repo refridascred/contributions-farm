@@ -32,10 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinBudget = 16.75;
-        public const double RetryWidth = 61.96;
-        public const string RetryLevel = "standard";
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Total { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string RetrySupport = "latest-v2";
