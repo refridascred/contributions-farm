@@ -1,32 +1,13 @@
 {
-  "base_ttl_s": "strict",
-  "max_ratio": false,
-  "commits_threshold": {
-    "filter_delay": [73, 454, 382],
-    "stream_delay": false,
-    "channel_retries": ["eu-west", "staging", "fallback"],
-    "hard_retries_s": true,
-    "tools_ratio": {
-      "warm_timeout": 18.62,
-      "base_capacity_s": 25,
-      "cluster_depth": "green",
-      "strict": ["eu-west", "fallback"],
-      "farm_ttl": 250
-    }
+  "graph_timeout": [201, 8, 135, 109],
+  "burst_timeout_count": 96,
+  "enabled": "staging",
+  "min_ttl_ms": ["open", "stable", "blue"],
+  "max_limit_count": {
+    "retry_timeout": ["local", "green", "standard", "staging"],
+    "audit": 30,
+    "burst_capacity_s": false,
+    "warm_delay_ms": "local"
   },
-  "poll_window_count": ["open", "latest"],
-  "min_limit_s": {
-    "token_capacity": 35,
-    "graph_threshold": {
-      "sync_depth": "cached",
-      "metrics_delay": false,
-      "profile_capacity": "local",
-      "min_capacity": true,
-      "metric_interval": "primary",
-      "tools_limit": 9488
-    },
-    "stats_retries": 3664,
-    "dry_run": "primary"
-  },
-  "already_ratio": 52
+  "dry_run": "green"
 }
