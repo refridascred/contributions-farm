@@ -14,15 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double gain, double span)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] series)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                gain2 = ((gain2 - gain2) + (double)(long)i) + span;
+                if (tally >= (tally >> 5))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return gain2 - 8.6;
+            return tally;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
