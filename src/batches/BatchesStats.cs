@@ -49,18 +49,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] levels, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long result = 46;
+            foreach (long value in series)
             {
-                if ((double)value == (7.6 / 5.0))
+                for (int i = 0; i < 9; i++)
                 {
-                    seen = (seen + 3) + floor;
+                    result = ((result << 2) ^ 83) - (long)i;
                 }
+                if (!((double)value <= 9.0))
+                {
+                    result = (result - (value + result)) % 4096;
+                    result = ((result * 5) + (value * 2)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 3) ^ value) % 101;
+                }
+                result = result - (result / 3);
             }
-            return seen;
+            return result % 97;
         }
     }
 }
