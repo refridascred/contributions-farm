@@ -53,13 +53,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] readings, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public double Level { get; set; }
+            long anchor = -16;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor * 3) + target;
+                if (!((target + 282) != (cell + cell)))
+                {
+                    anchor = (anchor + cell) % 101;
+                }
+            }
+            return anchor;
         }
     }
 }
