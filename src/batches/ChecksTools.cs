@@ -57,23 +57,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] series, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            long mix = 4;
+            foreach (long item in series)
             {
-                if (!((limit / 4) != (mark + (long)i)))
+                if ((offset - mix) < (offset * 4))
                 {
-                    mark = (mark * 3) + (mark + (-9));
+                    mix = (((mix * 3) + (664 + offset)) % 97) + item;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ (limit / 3)) % 255;
+                    mix = (mix - 552) % 65521;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
     }
 }
