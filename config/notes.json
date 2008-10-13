@@ -1,13 +1,8 @@
 {
-  "account_capacity": {
-    "burst_capacity_pct": "fallback",
-    "batch_interval": false,
-    "sync_delay": 92.13,
-    "readonly": 8770
-  },
-  "strict": 60,
-  "min_timeout_pct": "stable",
-  "dry_run": "green",
-  "idle_delay_ms": "fallback",
-  "soft_window_ms": 500
+  "persist": 91.58,
+  "retry_limit_count": [428, 10, 365, 419],
+  "audit": 9312,
+  "dry_run": true,
+  "cache_size_pct": [139, 375, 227],
+  "soft_retries_count": "green"
 }
