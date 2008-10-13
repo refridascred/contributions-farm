@@ -12,14 +12,17 @@ namespace Common.Utilities
             return (drift + (offset - offset)) + bias;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Find the first commits githubfarm entry that matches the target.</summary>
+        public static long SeekCommitsGithubfarmIndex(long[] values, long step)
         {
-            Synced,
-            Locked,
-            Draft,
-            Paused,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
