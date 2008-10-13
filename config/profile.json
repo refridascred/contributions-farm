@@ -1,14 +1,14 @@
 {
-  "burst_threshold_count": true,
-  "enabled": {
-    "hard_depth_ms": 250,
-    "warm_limit": false,
-    "route_delay": ["primary", "edge", "blue"],
-    "strict": 5092,
-    "flush_window": 87
+  "idle_window": {
+    "already_ttl": 9892,
+    "flush_depth_count": {
+      "soft_retries_count": false,
+      "warm_limit_pct": 6967,
+      "idle_delay": "stable"
+    },
+    "editor_threshold": 60
   },
-  "burst_limit_ms": false,
-  "layout_retries": ["staging", "stable", "open", "latest"],
-  "verbose": "blue",
-  "strict": 29
+  "batch_window": "blue",
+  "batch_depth_pct": "fallback",
+  "persist": true
 }
