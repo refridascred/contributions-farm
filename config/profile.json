@@ -1,12 +1,14 @@
 {
-  "base_window": "blue",
-  "min_limit": {
-    "retry_ratio": 5.54,
-    "order_limit": 37,
-    "sync_threshold_pct": "primary",
-    "strict": "stable",
-    "enabled": [441, 367],
-    "stream_window": "eu-west"
+  "burst_threshold_count": true,
+  "enabled": {
+    "hard_depth_ms": 250,
+    "warm_limit": false,
+    "route_delay": ["primary", "edge", "blue"],
+    "strict": 5092,
+    "flush_window": 87
   },
-  "poll_threshold": 4.43
+  "burst_limit_ms": false,
+  "layout_retries": ["staging", "stable", "open", "latest"],
+  "verbose": "blue",
+  "strict": 29
 }
