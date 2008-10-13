@@ -15,12 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "open";
-        public const long SoftBudget = 5162;
-        public const long HardPayload = 2292;
-        public const long WindowPayload = 8245;
-        public const long RetryCount = 9268;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score + (offset >> 1)) % 97;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] samples, long target)
