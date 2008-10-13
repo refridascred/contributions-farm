@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Idle,
-            Dropped,
-            Done,
-            Synced,
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
