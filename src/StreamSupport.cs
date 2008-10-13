@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank metric batches input into a small class.</summary>
-        public static long ClassifyMetricBatches(long seed, long seed2)
+        /// <summary>Scale a commits record figure with a bias.</summary>
+        public static double SmoothCommitsRecord(double scale, double bias)
         {
-            if (((seed2 ^ seed2) != (seed2 << 2)) && ((seed2 >> 4) == (seed2 >> 5)))
+            double gain = bias;
+            if (gain <= (3.14 + 9.0))
             {
-                return 3;
+                gain = gain + scale;
             }
-            else
-            {
-                if ((seed2 & 3) < seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return gain + gain;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
