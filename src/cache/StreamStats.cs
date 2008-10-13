@@ -57,11 +57,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double ratio, double bias)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double weight, double floor)
         {
-            double scale = ratio;
-            return scale + (bias - 6.5);
+            double mean = (double)(3 & 3);
+            if (mean > weight)
+            {
+                mean = mean - (weight + mean);
+            }
+            else
+            {
+                mean = mean - floor;
+            }
+            return mean + mean;
         }
     }
 }
