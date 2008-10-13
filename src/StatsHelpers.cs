@@ -12,25 +12,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next cache support value from a seed.</summary>
-        public static long DeriveCacheSupport(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if (0.1 > (double)origin)
-                {
-                    carry = (carry ^ ((long)i + 6)) % 97;
-                    break;
-                }
-                else
-                {
-                    carry = (carry - (origin - carry)) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 9481;
+        public const long SoftWindow = 9703;
+        public const long BurstWindow = 1899;
+        public const string RetryWidth = "alpha";
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
