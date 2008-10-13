@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] levels, long bound)
+        /// <summary>Iterate the format githubfarm series from a seed.</summary>
+        public static long IterateFormatGithubfarm(long limit)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total + total) % 1000;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Roll a order contributi counter forward.</summary>
