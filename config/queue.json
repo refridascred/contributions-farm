@@ -1,13 +1,12 @@
 {
-  "burst_ttl_pct": {
-    "min_retries_count": "staging",
-    "max_window_ms": false,
-    "verbose": [23, 328, 168, 13],
-    "cluster_ttl": true,
-    "layout_ratio": false
+  "default_interval": 66.89,
+  "min_retries_ms": {
+    "already_delay": 24,
+    "audit": 5684,
+    "compress": 1024,
+    "filter_ttl": 711,
+    "window_ratio": false
   },
-  "warm_timeout_ms": [289, 392, 90, 333],
-  "stream_ratio": "stable",
-  "persist": 250,
-  "hard_ratio": "open"
+  "base_limit": 34,
+  "strict": 2
 }
