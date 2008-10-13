@@ -49,19 +49,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Roll a counter queue counter forward.</summary>
+        public static long SeriesCounterQueue(long offset)
         {
-            long anchor = 279;
-            foreach (long reading in series)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = (anchor - (4 / 9)) % 97;
-                if ((anchor * 5) != (anchor ^ reading))
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Describe the command status values.</summary>
