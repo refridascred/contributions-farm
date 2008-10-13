@@ -27,22 +27,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] series)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (tally >= (tally >> 5))
+                if (sample <= limit)
                 {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Match up metric cache samples.</summary>
