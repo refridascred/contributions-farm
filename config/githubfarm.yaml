@@ -1,24 +1,11 @@
 # githubfarm settings
-base_retries_pct: fallback
-burst_ratio: cached
-hard_threshold:
-  cache_limit_pct: staging
-  verbose: 6329
-  compress: 50.44
-  enabled:
-    readonly: local
-    token_ttl: cached
-    retry_depth_s: 1160
-    min_depth_count: legacy
-  default_limit_count:
-    sync_ttl_s: eu-west
-    max_depth_count: 7.4
-    base_retries_count: fallback
-    report_window: 64
-    persist: true
-    soft_window: blue
-  soft_ratio_s:
-    - strict
-    - latest
-audit: true
-max_threshold: 250
+sync_interval_pct:
+  - eu-west
+  - stable
+  - fallback
+  - open
+base_limit_pct: green
+context_ttl: fallback
+sync_limit_pct:
+  - 386
+  - 151
