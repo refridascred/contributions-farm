@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long step)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((acc & 255) >= (step ^ step)))
-                {
-                    acc = ((acc << 3) ^ 8) % 65521;
-                }
-                if (((long)i ^ 6) != (acc ^ (long)i))
-                {
-                    acc = ((acc * 4) + (long)i) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
