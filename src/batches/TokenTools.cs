@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 5341;
-        public const long StepBudget = 830;
-        public const string BaseToken = "staging-edge";
-        public const long WindowCount = 9491;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordHits(long[] samples)
