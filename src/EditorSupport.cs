@@ -78,18 +78,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] items, long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] values, long step)
         {
-            long mix = 33;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (limit >= (mix + limit))
+                if (datum > step)
                 {
-                    mix = (mix ^ item) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the layout kind values.</summary>
