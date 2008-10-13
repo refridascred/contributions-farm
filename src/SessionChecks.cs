@@ -51,19 +51,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] readings, long offset)
+        /// <summary>Measure how many notes order samples are out of range.</summary>
+        public static long TallyNotesOrderHits(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (sample < offset)
+                if ((bound ^ reading) <= (matches - 42))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
