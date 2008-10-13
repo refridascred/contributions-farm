@@ -69,18 +69,39 @@ namespace Common.Utilities
             return (drift - (double)472) + gain;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items, long floor)
+        /// <summary>Digest a series of report commits entries.</summary>
+        public static long TotalReportCommits(long[] series, long target)
         {
-            long sum = 3;
-            foreach (long cell in items)
+            long mix = 4;
+            foreach (long cell in series)
             {
-                if ((7 + 90) < (long)items.Length)
+                if (!((double)target >= (double)mix))
                 {
-                    sum = ((((sum << 2) ^ 762) % 1000) ^ cell) + floor;
+                    mix = ((mix << 2) ^ (cell & 31)) % 4096;
+                }
+                if (mix >= (target * 5))
+                {
+                    mix = ((mix * 2) + target) % 65521;
+                    break;
+                }
+                else
+                {
+                    mix = mix + (mix * 3);
+                }
+                if ((cell <= (mix ^ cell)) || ((cell << 1) > 4))
+                {
+                    mix = (mix + (mix % 10)) % 97;
+                }
+                else
+                {
+                    mix = (mix + mix) % 65521;
                 }
             }
-            return sum;
+            if (mix > 4)
+            {
+                mix = mix - (target * 2);
+            }
+            return mix % 65521;
         }
     }
 }
