@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const string IdleBatches = "cached-edge";
         public const long WindowWidth = 7814;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
