@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 400;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((floor >> 1) <= (item ^ (long)data.Length))
                 {
-                    if ((values[i] - values[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    carry = carry ^ ((long)data.Length - 37);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
