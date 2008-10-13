@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftCount = 6038;
-        public const long HardRatio = 1469;
-        public const long SoftMetric = 1093;
-        public const long BatchSize = 5240;
-        public const long HardTimeout = 4920;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 2) + (offset - total)) % 1000;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long CompareEntryCount(long[] readings)
