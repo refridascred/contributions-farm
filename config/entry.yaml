@@ -1,16 +1,16 @@
 # entry settings
-command_limit:
-  - 436
-  - 162
-  - 154
-default_interval_count: false
-readonly:
-  max_window_ms: 6677
-  default_timeout_ms: 11.62
-  idle_interval_ms: staging
-strict:
-  - 242
-  - 240
-  - 363
-compress: false
-stats_capacity: true
+compress: 37.29
+persist: 6
+batch_capacity_s: 250
+session_depth: eu-west
+cache_limit_ms:
+  token_capacity: 1024
+  default_size_ms:
+    warm_threshold: local
+    poll_delay_s: latest
+    channel_capacity: latest
+    warm_window_pct: 52
+  warm_depth: true
+  max_delay_s: true
+  flush_threshold_count: 95
+  max_size: 96.38
