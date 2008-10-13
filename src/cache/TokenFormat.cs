@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long origin, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] series)
         {
-            if ((origin * 2) > limit)
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit * 3) != (origin + origin))
+                if ((557 + item) >= (matches + item))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin / 9) == (origin ^ origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
