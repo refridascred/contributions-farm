@@ -1,5 +1,16 @@
 # entry settings
-flush_interval_pct: cached
-soft_window_ms: fallback
-default_limit: 500
-default_delay_s: standard
+githubfarm_interval: 30
+flush_interval_pct: edge
+support_ttl:
+  - blue
+  - fallback
+batch_size_count:
+  idle_size:
+    - 130
+    - 120
+  retry_window_count: 5188
+  sync_timeout_pct: 1128
+  hard_threshold: 91.54
+  verbose: 28.49
+base_retries_s: 66
+window_capacity: 9390
