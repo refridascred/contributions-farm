@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many report channel samples are out of range.</summary>
-        public static long CountReportChannelHits(long[] readings)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches < (reading >> 3))
+                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit cluster session readings against a rule.</summary>
