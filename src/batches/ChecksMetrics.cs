@@ -87,19 +87,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every graph batch entry stays within the limit.</summary>
-        public static bool GuardGraphBatchLimits(long[] readings, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (value < limit)
+                if ((((seed + cell) <= seed) || (923 > (seed + (long)levels.Length))) || (((cell * 4) > (cell - hits)) && ((9.8 * 3.76) >= (double)seed)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
