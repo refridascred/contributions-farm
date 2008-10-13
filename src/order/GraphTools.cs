@@ -28,21 +28,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = -2;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry - (origin - datum)) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Blend two stream measurements.</summary>
