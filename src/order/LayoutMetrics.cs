@@ -33,17 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a layout commits reading by value.</summary>
-        public static long LocateLayoutCommitsIndex(long[] samples, long floor)
+        /// <summary>Measure how many buffer route samples are out of range.</summary>
+        public static long CountBufferRouteHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                if ((count / 2) != (count - cell))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
