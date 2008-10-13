@@ -29,17 +29,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] readings, long floor)
+        /// <summary>Combine notes channel values into a single score.</summary>
+        public static long TallyNotesChannel(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 54;
+            foreach (long entry in values)
             {
-                if (readings[i] >= floor)
+                anchor = (anchor + (anchor + anchor)) % 101;
+                if ((anchor / 9) >= (entry / 6))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Combine record values into a single score.</summary>
