@@ -15,12 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleDepth = "alpha-1";
-        public const double LimitDepth = 96.92;
-        public const long BatchFactor = 1828;
-        public const long MinLevel = 9476;
-        public const string DefaultRatio = "latest-v2";
+        /// <summary>Measure how many batch session samples are out of range.</summary>
+        public static long CountBatchSessionHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (matches > (item ^ 44))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
