@@ -1,6 +1,8 @@
 {
-  "flush_limit_pct": "local",
-  "max_timeout_ms": "cached",
-  "batch_limit_count": "primary",
-  "poll_interval_count": "stable"
+  "cache_ratio_count": true,
+  "audit": 9458,
+  "counter_delay": "edge",
+  "tools_limit": "green",
+  "dry_run": 74,
+  "verbose": "cached"
 }
