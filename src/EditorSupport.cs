@@ -27,19 +27,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a stats session figure with a bias.</summary>
-        public static double BlendStatsSession(double rate, double offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] values, long floor)
         {
-            double ratio = offset;
-            if (ratio > (rate + rate))
+            long seen = 0;
+            foreach (long item in values)
             {
-                ratio = ratio + offset;
+                if (item < (666 / 2))
+                {
+                    seen = (seen + 2) + floor;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) - (double)(long)i;
-            }
-            return ratio + (double)(-91);
+            return seen;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
