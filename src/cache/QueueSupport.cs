@@ -26,12 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 58;
-        public const long IdleRatio = 8571;
-        public const long BaseCount = 9163;
-        public const long IdleBudget = 3101;
-        public const double DefaultScore = 48.22;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            New,
+            Draft,
+            Closed,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Count already tools pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyToolsCount(long[] items)
