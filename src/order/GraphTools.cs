@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] readings)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)seen != (double)reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metrics options.</summary>
