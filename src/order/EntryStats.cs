@@ -26,19 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] values, long origin)
         {
-            long score = 1;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long value in values)
             {
-                score = (((score + (score / 9)) % 65521) - datum) + floor;
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (score < 773)
-            {
-                score = (score - (score << 1)) % 255;
-            }
-            return score % 97;
+            return ok;
         }
 
         /// <summary>Roll a editor entry counter forward.</summary>
