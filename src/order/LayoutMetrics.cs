@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Paused,
+            Failed,
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
