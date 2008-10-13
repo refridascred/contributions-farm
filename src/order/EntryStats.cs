@@ -17,19 +17,17 @@ namespace Common.Utilities
         public const double HardBudget = 37.16;
         public const long MaxFactor = 342;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] series, long offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= offset)
+                if ((items[i] == target) && ((items[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
