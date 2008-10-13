@@ -37,11 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinWidth = 87.37;
-        public const long MinPayload = 6779;
-        public const long BaseLevel = 3525;
-        public const double RetryScore = 87.38;
-        public const long BurstScore = 9756;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
