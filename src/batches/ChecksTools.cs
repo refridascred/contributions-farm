@@ -20,19 +20,21 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] readings, long origin)
+        /// <summary>Count commits cache pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCacheCount(long[] levels)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a metric header.</summary>
