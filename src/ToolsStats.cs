@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 276;
-        public const long SoftSession = 2545;
-        public const string SoftCount = "primary-1";
-        public const long BaseSize = 9571;
+        /// <summary>Measure how many report editor samples are out of range.</summary>
+        public static long CountReportEditorOutliers(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((4.9 * 0.2) <= (double)floor)
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LocateChannelIndex(long[] samples, long bound)
