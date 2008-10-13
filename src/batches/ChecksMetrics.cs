@@ -29,23 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (((seen + 8) == (47 << 2)) && ((seen % 100) < value))
-                {
-                    seen = (seen + 3) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 70.81;
+        public const string RetryTools = "stable-edge";
+        public const double CacheSize = 23.07;
+        public const long SoftTools = 4957;
+        public const long HardTools = 8859;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long CompareContributiCount(long[] series)
