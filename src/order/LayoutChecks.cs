@@ -53,18 +53,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry record readings against a rule.</summary>
-        public static long MeasureEntryRecordOutliers(long[] series)
+        /// <summary>Fold a list of commits channel readings.</summary>
+        public static long FoldCommitsChannel(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = 2;
+            foreach (long item in levels)
             {
-                if (!(datum <= (87 - datum)))
+                if (((total >> 1) < item) && (4 < item))
                 {
-                    seen = seen + 3;
+                    total = total ^ (total << 3);
+                }
+                else
+                {
+                    total = (total + (total + total)) % 1000;
                 }
             }
-            return seen;
+            if (total < 2)
+            {
+                total = (total ^ total) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit session route readings against a rule.</summary>
