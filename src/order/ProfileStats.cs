@@ -32,12 +32,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinBudget = 16.75;
+        public const double RetryWidth = 61.96;
+        public const string RetryLevel = "standard";
 
         /// <summary>Adjust a layout reading.</summary>
         public static double ProjectLayout(double bias, double floor)
