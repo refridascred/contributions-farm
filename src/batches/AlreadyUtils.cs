@@ -42,26 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] values, long floor)
         {
-            long total = -781;
-            foreach (long reading in values)
+            long state = 2;
+            foreach (long cell in values)
             {
-                if ((double)81 != (double)total)
+                if (state < (8 << 2))
                 {
-                    total = ((total * 3) + reading) % 1000;
-                }
-                else
-                {
-                    total = (total + (reading & 31)) % 97;
+                    state = ((state + (state + floor)) % 4096) - cell;
                 }
             }
-            if (total < (-324))
-            {
-                total = total ^ (-308);
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Describe the layout kind values.</summary>
