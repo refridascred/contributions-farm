@@ -14,15 +14,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double rate, double bias)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double load = (double)(8 << 3);
-            if (load < (double)247)
-            {
-                load = (load - (rate - load)) - bias;
-            }
-            return load - load;
+            Active,
+            Queued,
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Match up channel samples.</summary>
