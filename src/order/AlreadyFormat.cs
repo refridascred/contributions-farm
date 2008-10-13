@@ -55,14 +55,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long floor, long floor2)
         {
-            Failed,
-            Ready,
-            Draft,
-            Active,
-            Closed,
+            long delta = floor - floor2;
+            if (20 > delta)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((9.9 + 1.3) < (double)delta) && ((double)floor2 != (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
