@@ -13,14 +13,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Done,
-            Locked,
-            Active,
-            Failed,
-            Paused,
+            Queued,
+            Closed,
+            New,
+            Draft,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
