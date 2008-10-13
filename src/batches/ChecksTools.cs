@@ -20,21 +20,19 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Count commits cache pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCacheCount(long[] levels)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading <= bound)
                 {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a metric header.</summary>
