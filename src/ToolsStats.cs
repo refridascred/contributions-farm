@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] levels, long target)
+        /// <summary>Match up report already samples.</summary>
+        public static long PairReportAlreadyCount(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell < target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
