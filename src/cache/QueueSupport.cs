@@ -31,12 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] data, long seed)
         {
-            Synced,
-            Dropped,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
