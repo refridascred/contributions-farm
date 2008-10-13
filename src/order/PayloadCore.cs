@@ -19,18 +19,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many graph window samples are out of range.</summary>
-        public static long CountGraphWindowOutliers(long[] series, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((double)value <= 7.66)
+                if (reading != floor)
                 {
-                    count = (count + 1) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Project the next channel value.</summary>
