@@ -44,17 +44,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first farm format entry that matches the target.</summary>
-        public static long FindFarmFormatIndex(long[] readings, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    mix = (mix ^ (mix - 90)) ^ (long)i2;
                 }
+                mix = (mix + (72 + mix)) % 1000;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
     }
 }
