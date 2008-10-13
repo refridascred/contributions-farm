@@ -64,32 +64,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long step, long floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long cur = step ^ floor;
-            if ((double)step == (9.9 - 1.8))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 4) < (floor - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((step * 4) == ((-4) + cur)) || (5.1 < (double)step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            New,
+            Retry,
+            Draft,
+            Stale,
         }
     }
 }
