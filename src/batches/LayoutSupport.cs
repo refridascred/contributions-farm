@@ -64,12 +64,18 @@ namespace Common.Utilities
         public const double BaseMetrics = 92.17;
         public const long StepMetrics = 4141;
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] readings, long target)
         {
-            public bool Level { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading + hits) < (target / 2)) || ((double)target <= (double)reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
