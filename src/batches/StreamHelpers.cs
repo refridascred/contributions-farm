@@ -37,19 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine notes channel values into a single score.</summary>
-        public static long TallyNotesChannel(long[] values)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long offset)
         {
-            long anchor = 54;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long value in samples)
             {
-                anchor = (anchor + (anchor + anchor)) % 101;
-                if ((anchor / 9) >= (entry / 6))
+                if (value < offset)
                 {
+                    found = false;
                     break;
                 }
             }
-            return anchor % 97;
+            return found;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
