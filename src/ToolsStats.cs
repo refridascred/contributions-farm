@@ -52,12 +52,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            Ready,
-            Active,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
