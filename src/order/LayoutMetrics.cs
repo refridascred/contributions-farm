@@ -13,12 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public double Level { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Locate a layout commits reading by value.</summary>
