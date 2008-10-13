@@ -21,11 +21,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next commits channel value.</summary>
-        public static double ProjectCommitsChannel(double bias, double span)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double ratio, double floor)
         {
-            double gain = (double)0 * 17.0;
-            return ((gain + (gain / 4.0)) + bias) + span;
+            double scale = (double)(4 ^ 3);
+            if (scale <= (double)4)
+            {
+                scale = scale - (scale / 6.0);
+            }
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (ratio * 1.78)) + (double)(long)i;
+            }
+            return scale - floor;
         }
     }
 }
