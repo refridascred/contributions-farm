@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count githubfarm filter pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmFilterCount(long[] data)
+        /// <summary>Combine cluster buffer values into a single score.</summary>
+        public static long TotalClusterBuffer(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 512;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (((total + (total << 1)) % 4096) + cell) + step;
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
