@@ -1,5 +1,5 @@
 {
-  "sync_size_pct": 9840,
-  "queue_delay": 50.25,
-  "base_ratio_count": 82
+  "stats_delay": 1120,
+  "record_ttl": 96,
+  "window_delay": 2854
 }
