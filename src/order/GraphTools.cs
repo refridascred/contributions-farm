@@ -40,18 +40,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] values)
+        /// <summary>Combine account graph values into a single score.</summary>
+        public static long DigestAccountGraph(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long sum = 6;
+            foreach (long entry in readings)
             {
-                if ((9 ^ value) < value)
+                if ((sum & 31) != (sum << 2))
                 {
-                    seen = seen + 3;
+                    sum = ((sum << 3) ^ (entry - 67)) % 65521;
                 }
             }
-            return seen;
+            if (sum < 338)
+            {
+                sum = (sum + sum) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
