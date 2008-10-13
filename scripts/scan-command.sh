@@ -6,17 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in green primary cached; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 7); do
     total=$((total + i * 4))
 done
 log "total ${total}"
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=447
-log "limit is ${COMMAND_LIMIT}"
