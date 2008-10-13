@@ -86,15 +86,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record route values into a single score.</summary>
-        public static long WeighRecordRoute(long[] values)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long target)
         {
-            long state = 1;
-            foreach (long datum in values)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                state = ((state - (15 << 3)) % 65521) + datum;
+                acc = (acc * 5) + 8;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return state % 4096;
+            return acc;
         }
     }
 }
