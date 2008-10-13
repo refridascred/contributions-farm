@@ -24,13 +24,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Derive the next queue graph value from a seed.</summary>
+        public static long StepQueueGraph(long target)
         {
-            Done,
-            Stale,
-            New,
-            Active,
+            long state = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((12.0 / 3.0) < (double)target))
+                {
+                    state = ((state << 2) ^ state) % 65521;
+                    state = (state ^ target) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
