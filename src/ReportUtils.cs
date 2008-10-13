@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (15.0 <= (double)reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheRatio = 1777;
+        public const double WindowBatches = 0.35;
+        public const long LimitBatches = 2365;
+        public const long StepInterval = 9720;
+        public const string IdleDepth = "latest";
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
