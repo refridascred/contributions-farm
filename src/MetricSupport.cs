@@ -24,11 +24,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((seen + sample) > 50) || ((0 >> 4) >= seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support record.</summary>
