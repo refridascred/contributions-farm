@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstLevel = 5897;
-        public const long IdleSpan = 4641;
-        public const long IdleAlready = 6261;
-        public const long WindowAlready = 3227;
-        public const string HardFactor = "open-v2";
+        /// <summary>Validate support buffer readings against a bound.</summary>
+        public static bool GuardSupportBufferRange(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long SeekStreamIndex(long[] levels, long seed)
