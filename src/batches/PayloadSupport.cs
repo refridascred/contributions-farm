@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] series)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry != (2.35 * 5.4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
