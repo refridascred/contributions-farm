@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseTimeout = 5954;
-        public const long StepCluster = 8949;
-        public const string BatchDepth = "legacy-1";
-        public const double SoftCluster = 1.55;
-        public const double BurstCluster = 40.28;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string RetryCommand = "stable";
