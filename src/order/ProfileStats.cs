@@ -44,13 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Match up buffer stats samples.</summary>
+        public static long CompareBufferStatsCount(long[] samples)
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
