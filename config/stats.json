@@ -1,6 +1,8 @@
 {
-  "persist": [203, 215, 381],
-  "buffer_ttl": 37,
-  "base_timeout_pct": false,
-  "channel_ttl": [349, 477, 281]
+  "max_capacity_ms": 100,
+  "batch_timeout_pct": "green",
+  "batch_threshold_pct": 21,
+  "warm_delay_ms": 46.29,
+  "compress": "green",
+  "flush_window": "edge"
 }
