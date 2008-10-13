@@ -23,21 +23,19 @@ namespace Common.Utilities
         public const double LimitDepth = 93.64;
         public const double HardFactor = 5.76;
 
-        /// <summary>Compare every pair of command farm readings.</summary>
-        public static long CompareCommandFarmCount(long[] data)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value <= target)
                 {
-                    if ((data[i] ^ data[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
