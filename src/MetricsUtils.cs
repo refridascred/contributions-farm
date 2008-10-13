@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Pending,
-            Failed,
-            Active,
-            Dropped,
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
