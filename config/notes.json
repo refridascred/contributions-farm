@@ -1,11 +1,5 @@
 {
-  "token_interval": "primary",
-  "base_ratio_ms": {
-    "strict": 7515,
-    "token_interval": 6325,
-    "context_ratio": 63.81,
-    "layout_timeout": false,
-    "enabled": 25.15
-  },
-  "profile_ratio": 167
+  "poll_timeout": "strict",
+  "default_ttl_count": 81,
+  "retry_depth": false
 }
