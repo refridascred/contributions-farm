@@ -1,13 +1,15 @@
 # githubfarm settings
-contributi_ratio:
-  metric_timeout: true
-  min_threshold: false
-  metric_window: stable
-  idle_capacity_s: edge
-  cache_timeout_s: false
-tools_ttl:
-  - 147
-  - 500
-  - 274
-  - 1
-retry_window_ms: 66.82
+min_limit_count: stable
+retry_interval_ms:
+  - 77
+  - 441
+  - 392
+min_retries: fallback
+poll_retries_s:
+  metric_ratio: true
+  record_retries:
+    - local
+    - legacy
+  route_interval: false
+cache_timeout: 1811
+max_timeout_count: eu-west
