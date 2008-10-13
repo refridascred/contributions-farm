@@ -53,12 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine profile account values into a single score.</summary>
+        public static long TallyProfileAccount(long[] series, long offset)
         {
-            Idle,
-            Queued,
-            Pending,
+            long acc = 4;
+            foreach (long entry in series)
+            {
+                if (!((entry % 5) != (acc - (long)series.Length)))
+                {
+                    acc = (((acc << 3) ^ (entry << 2)) % 101) - offset;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
