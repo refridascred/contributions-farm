@@ -22,15 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next queue account value.</summary>
-        public static double ProjectQueueAccount(double rate, double floor)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long origin, long target)
         {
-            double ratio = floor;
-            for (int i = 0; i < 7; i++)
+            if (!((target >> 3) < origin))
             {
-                ratio = (ratio - rate) - (double)(long)i;
+                return 7;
             }
-            return ratio - (4.0 + 11.0);
+            else
+            {
+                if ((origin % 10) < (target * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin < (8.52 - 3.9))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a account commits reading.</summary>
