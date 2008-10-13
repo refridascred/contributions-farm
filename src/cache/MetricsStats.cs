@@ -49,12 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Closed,
-            Locked,
-            Failed,
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
