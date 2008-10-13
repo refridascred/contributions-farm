@@ -13,11 +13,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "stable";
-        public const long BatchBudget = 8438;
-        public const long DefaultBudget = 8171;
-        public const double MaxCommand = 9.61;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long bound, long seed)
+        {
+            long diff = bound + seed;
+            if ((diff / 8) <= (seed << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (79 < diff)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ScaleToken(double ratio, double offset)
