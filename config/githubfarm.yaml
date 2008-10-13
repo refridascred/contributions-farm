@@ -1,7 +1,11 @@
 # githubfarm settings
-poll_retries: strict
-poll_ratio: latest
-metrics_limit: primary
-retry_limit_pct:
-  - local
-  - eu-west
+format_delay: 3050
+hard_interval_s: green
+batch_limit: true
+soft_size_pct: local
+dry_run:
+  idle_timeout_pct: true
+  batch_delay_s: green
+  strict: 60
+  persist: eu-west
+  retry_ttl_pct: 1558
