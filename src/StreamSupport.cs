@@ -47,26 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm notes readings.</summary>
-        public static long CombineGithubfarmNotes(long[] data)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long total = 1;
-            foreach (long value in data)
-            {
-                if ((value & 7) < total)
-                {
-                    total = total - (29 + total);
-                }
-                else
-                {
-                    total = (total + 76) % 1000;
-                }
-                if (((value - 798) < ((-7) - value)) || ((total % 2) < (total & 63)))
-                {
-                    break;
-                }
-            }
-            return total;
+            Retry,
+            Failed,
+            Paused,
         }
     }
 }
