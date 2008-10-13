@@ -23,31 +23,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a record queue value against two limits.</summary>
-        public static long SortRecordQueue(long origin, long origin2)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] series, long floor)
         {
-            if ((origin + origin) <= origin2)
+            bool stale = true;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)origin != (2.17 - 3.0)))
+                if (value <= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >> 2) == (origin * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
