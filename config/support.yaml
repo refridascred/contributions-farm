@@ -1,17 +1,6 @@
 # support settings
-audit: standard
-flush_size: open
-session_interval:
-  cache_size_count: 8716
-  idle_delay:
-    sync_size: primary
-    warm_size: cached
-    route_interval: 60
-    burst_threshold_s: false
-  batch_ttl_count: false
-  cache_delay_pct: 60
-  verbose: 74.77
-  stream_size: open
-max_ttl_count: open
-burst_capacity_s: false
-batch_limit: primary
+flush_depth: true
+channel_capacity: fallback
+dry_run: true
+stream_depth: 100
+poll_ttl_ms: 60
