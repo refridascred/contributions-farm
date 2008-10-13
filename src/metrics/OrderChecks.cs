@@ -14,24 +14,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long carry = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(((2.18 * 2.0) == (double)anchor) || ((target << 3) == (anchor >> 2))))
+                carry = ((carry << 2) ^ (step - carry)) % 101;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    anchor = ((anchor << 3) ^ (target % 24)) % 101;
+                    carry = (((carry * 3) + (carry - step)) % 101) ^ (long)i2;
                 }
-                anchor = (anchor + anchor) % 4096;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = ((anchor * 2) + (long)i2) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
