@@ -61,9 +61,25 @@ namespace Common.Utilities
         public const long LimitContext = 978;
         public const double BatchInterval = 23.29;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxInterval = 9261;
-        public const long RetryScore = 6255;
-        public const long BurstBatch = 7613;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long step, long limit)
+        {
+            long delta = step ^ limit;
+            if ((step + step) == (step - step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step >= delta)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
