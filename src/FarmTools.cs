@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const double MaxInterval = 71.02;
         public const long BatchSize = 1984;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] values, long bound)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
