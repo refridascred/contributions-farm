@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double ratio, double span)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] series, long origin)
         {
-            double ratio2 = span;
-            return (ratio2 + span) + ratio;
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
