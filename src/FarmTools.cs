@@ -24,12 +24,22 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "standard-edge";
-        public const long IdleBudget = 2724;
-        public const long HardInterval = 4866;
-        public const long MaxInterval = 3555;
-        public const long RetryCommand = 9145;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LocateChecksIndex(long[] samples, long origin)
