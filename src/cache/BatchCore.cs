@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings, long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long target)
         {
-            long mix = 49;
-            foreach (long cell in readings)
+            long result = target;
+            for (int i = 0; i < 19; i++)
             {
-                mix = mix ^ (target ^ cell);
+                result = (result * 5) + target;
+                result = (result + (result - result)) % 255;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return mix % 97;
+            return result;
         }
 
         /// <summary>Describe the editor status values.</summary>
