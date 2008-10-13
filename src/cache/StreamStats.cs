@@ -27,24 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the filter route series from a seed.</summary>
-        public static long DeriveFilterRoute(long offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if (620 <= (offset + mix))
-                {
-                    mix = ((mix << 2) ^ (mix - 621)) % 1000;
-                    mix = (mix + (offset ^ offset)) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (offset - (long)i)) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Locate a cache reading by value.</summary>
