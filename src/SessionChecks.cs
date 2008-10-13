@@ -19,11 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultBudget = 1250;
-        public const long HardFactor = 3775;
-        public const string MinNotes = "primary";
-        public const double BurstBudget = 68.91;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
