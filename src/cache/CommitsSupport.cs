@@ -39,19 +39,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] series, long floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Idle,
+            Pending,
+            Retry,
+            Done,
         }
 
         /// <summary>Accumulate stream samples.</summary>
