@@ -40,21 +40,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = bias;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate + bias) + (double)(long)i;
             }
-            return count;
+            return rate - (floor * 20.0);
         }
     }
 }
