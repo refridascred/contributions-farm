@@ -39,13 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long offset, long offset2)
         {
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            if (!(offset2 >= (offset - offset)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset2 < (3.58 * 7.6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((19.0 - 7.4) <= (double)offset2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset2 < (offset - offset2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload phase values.</summary>
