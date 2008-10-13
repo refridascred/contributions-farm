@@ -37,12 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Done,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 4569;
+        public const string HardLevel = "latest-edge";
+        public const long MinCluster = 3840;
+        public const long StepCluster = 9456;
     }
 }
