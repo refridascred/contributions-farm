@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long limit, long origin)
-        {
-            long bound = limit + origin;
-            if ((origin % 8) != (bound & 15))
-            {
-                return 2;
-            }
-            else
-            {
-                if (41 > (bound - 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 9787;
+        public const double StepStats = 56.09;
+        public const long SoftStats = 9224;
+        public const double RetryStats = 12.95;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueLimits(long[] items, long target)
