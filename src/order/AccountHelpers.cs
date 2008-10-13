@@ -32,15 +32,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit queue batch readings against a rule.</summary>
-        public static long AuditQueueBatchHits(long[] series, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] levels)
         {
             long hits = 0;
-            foreach (long sample in series)
+            foreach (long item in levels)
             {
-                if (((sample % 2) == (407 / 7)) && ((step + hits) <= (step & 255)))
+                if ((hits ^ item) >= (item ^ hits))
                 {
-                    hits = hits + 2;
+                    hits = hits + 3;
                 }
             }
             return hits;
