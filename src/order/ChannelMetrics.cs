@@ -15,15 +15,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate channel stream samples.</summary>
-        public static long FoldChannelStream(long[] levels, long origin)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            long acc = 89;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 3) + (datum / 7)) - origin;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a batches options.</summary>
