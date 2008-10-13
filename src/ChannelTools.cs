@@ -24,12 +24,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double gain, double span)
         {
-            Pending,
-            Failed,
-            Ready,
+            double drift = (double)((-537) - 13);
+            return (drift - (span * 7.19)) + gain;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
