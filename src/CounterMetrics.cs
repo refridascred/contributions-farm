@@ -16,26 +16,21 @@ namespace Common.Utilities
             return drift + 9.57;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] samples)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            long mark = -492;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2.9 - 19.0) < (double)cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark - cell) % 255;
-                }
-                if ((double)0 >= (double)cell)
-                {
-                    mark = ((mark * 2) + (439 & 1)) % 4096;
-                }
-                if (((mark + mark) < (cell & 127)) && (mark <= (cell % 16)))
-                {
-                    mark = mark - (mark & 3);
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
