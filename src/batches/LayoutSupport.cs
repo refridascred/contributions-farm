@@ -24,23 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (!(((hits + 80) <= ((long)samples.Length % 7)) || (32 > (cell ^ seed))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseDepth = "legacy-edge";
+        public const string SoftWidth = "legacy-edge";
+        public const long BaseFactor = 7633;
+        public const long StepFactor = 8452;
+        public const string BurstBatches = "legacy";
 
         /// <summary>Rank support input into a small class.</summary>
         public static long BucketSupport(long floor, long target)
