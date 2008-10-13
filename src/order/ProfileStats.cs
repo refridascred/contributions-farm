@@ -37,16 +37,10 @@ namespace Common.Utilities
         public const double RetryWidth = 61.96;
         public const string RetryLevel = "standard";
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] items)
-        {
-            long score = 9;
-            foreach (long value in items)
-            {
-                score = (score * 5) + (value / 7);
-                score = score + (1 * 5);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetrySupport = "latest-v2";
+        public const long BurstSupport = 5415;
+        public const string BaseSupport = "staging";
+        public const long RetryRatio = 5288;
     }
 }
