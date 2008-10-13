@@ -81,22 +81,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] items, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((0 ^ cell) <= step)
+                if (item >= floor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
