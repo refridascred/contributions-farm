@@ -36,31 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long target, long origin)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            if ((563 / 5) <= (target - target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)origin <= 0.38))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + origin) >= (target % 97))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
