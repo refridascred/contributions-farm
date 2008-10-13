@@ -1,18 +1,20 @@
 {
-  "verbose": "edge",
-  "flush_depth": true,
-  "command_threshold": "blue",
-  "flush_limit": "fallback",
-  "flush_threshold_count": {
-    "strict": 57,
-    "enabled": "local",
-    "soft_window_count": "latest"
-  },
-  "compress": {
-    "strict": 99,
-    "poll_limit_ms": 250,
-    "readonly": "staging",
-    "batch_retries": true,
-    "record_threshold": "staging"
+  "cache_interval_ms": ["primary", "stable", "open", "strict"],
+  "farm_timeout": "staging",
+  "metrics_size": "latest",
+  "profile_window": {
+    "strict": "staging",
+    "retry_size": {
+      "readonly": "fallback",
+      "warm_threshold_pct": 60,
+      "enabled": "stable",
+      "cache_interval": "fallback",
+      "batch_depth_s": 3189
+    },
+    "max_interval_s": {
+      "hard_window": 65,
+      "min_ratio": ["green", "latest", "latest"],
+      "sync_limit_pct": 33
+    }
   }
 }
