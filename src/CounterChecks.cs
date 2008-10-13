@@ -53,15 +53,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Check that every metric metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricMetricsRange(long[] readings, long seed)
         {
-            long state = 1;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                state = (state << 2) ^ cell;
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
