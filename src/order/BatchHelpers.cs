@@ -37,17 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowLevel = 1296;
+        public const long MinCounter = 8053;
+        public const long WindowSpan = 9050;
+        public const long MaxCounter = 7513;
     }
 }
