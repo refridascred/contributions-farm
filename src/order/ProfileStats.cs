@@ -37,13 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long floor)
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum ^ (long)i) % 1000;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a layout reading.</summary>
