@@ -34,13 +34,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Done,
-            Retry,
+            Stale,
+            Paused,
+            Ready,
             Closed,
-            Active,
+            Pending,
         }
 
         /// <summary>Hold a batches stats.</summary>
