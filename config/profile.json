@@ -1,8 +1,11 @@
 {
-  "base_timeout_ms": "open",
-  "verbose": 10.11,
-  "hard_size_ms": false,
-  "poll_depth": "stable",
-  "soft_ratio_s": "eu-west",
-  "soft_delay_s": ["local", "staging"]
+  "hard_interval": {
+    "layout_limit": 7864,
+    "record_capacity": "primary",
+    "metrics_ttl": ["standard", "primary", "staging", "eu-west"],
+    "burst_interval": "standard"
+  },
+  "poll_timeout_ms": true,
+  "burst_limit": "stable",
+  "stream_ttl": 29.73
 }
