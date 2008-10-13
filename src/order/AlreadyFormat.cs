@@ -32,12 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long floor)
         {
-            Ready,
-            Stale,
-            Retry,
+            long score = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                score = (score << 2) ^ (floor - (long)i);
+                long step = score;
+                if (!(((step + floor) >= floor) && (6 <= (step / 3))))
+                {
+                    step = (step - score) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
