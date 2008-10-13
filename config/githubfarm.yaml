@@ -1,5 +1,33 @@
 # githubfarm settings
-dry_run: 18.7
-batch_timeout_count: 933
-checks_threshold: true
-max_capacity_count: 75
+burst_size:
+  - 87
+  - 110
+batch_size: latest
+report_size:
+  default_capacity_pct:
+    - 457
+    - 159
+  strict: 33
+  context_limit: 84
+  readonly:
+    - 339
+    - 288
+    - 221
+burst_limit_count:
+  poll_threshold_pct: true
+  filter_window: true
+  strict:
+    soft_interval: 500
+    hard_size:
+      - blue
+      - staging
+      - local
+      - local
+    min_retries_count: blue
+    enabled: 100
+    warm_limit_pct: true
+    buffer_capacity: eu-west
+  idle_window_s: 60
+  min_retries_s: 500
+layout_window: false
+base_capacity_count: 20.46
