@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long LimitBatch = 9679;
         public const long RetryWidth = 7499;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowWidth = 7568;
+        public const long StepSize = 8547;
+        public const long MaxScore = 1070;
+        public const long IdleSize = 5232;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
