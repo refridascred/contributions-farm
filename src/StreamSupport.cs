@@ -14,15 +14,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Accumulate stats farm samples.</summary>
