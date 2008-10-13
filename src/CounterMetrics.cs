@@ -27,23 +27,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double bias, double offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long offset)
         {
-            double ratio = (offset / 2.0) - (offset * 1.5);
-            if (ratio >= offset)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = ratio - (bias / 7.0);
+                total = ((total * 4) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - bias) - (double)(long)i;
-            }
-            return ratio - offset;
+            return total;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
