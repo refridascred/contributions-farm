@@ -1,6 +1,5 @@
 {
-  "metrics_delay": "strict",
-  "base_threshold": "fallback",
-  "warm_window_pct": 26.22,
-  "queue_size": [431, 419]
+  "audit": "cached",
+  "warm_window_s": "eu-west",
+  "default_threshold_count": "stable"
 }
