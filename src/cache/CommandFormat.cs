@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first filter metric entry that matches the target.</summary>
-        public static long SeekFilterMetricIndex(long[] levels, long offset)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Accumulate commits samples.</summary>
