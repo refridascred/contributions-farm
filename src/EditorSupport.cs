@@ -46,20 +46,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 3438;
+        public const long WindowSpan = 489;
+        public const string IdleWidth = "fallback-v2";
 
         /// <summary>Fold a list of metric report readings.</summary>
         public static long WeighMetricReport(long[] samples, long bound)
