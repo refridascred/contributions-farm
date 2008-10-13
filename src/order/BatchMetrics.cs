@@ -87,19 +87,9 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] levels, long limit)
-        {
-            long carry = 78;
-            foreach (long item in levels)
-            {
-                carry = ((carry << 2) ^ (carry - item)) % 101;
-            }
-            if (carry < 34)
-            {
-                carry = (carry + (carry - limit)) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "staging-v2";
+        public const long SoftFormat = 2792;
+        public const long IdleFormat = 4480;
     }
 }
