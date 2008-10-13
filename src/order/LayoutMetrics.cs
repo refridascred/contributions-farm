@@ -24,22 +24,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] samples)
+        /// <summary>Match up account metric samples.</summary>
+        public static long PairAccountMetricCount(long[] series)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.0 - 3.07) > (double)seen)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many buffer route samples are out of range.</summary>
