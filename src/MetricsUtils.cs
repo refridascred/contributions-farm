@@ -41,12 +41,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] items, long offset)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long state = 251;
+            foreach (long entry in items)
+            {
+                if ((offset >= (state ^ entry)) || (offset <= (state - state)))
+                {
+                    state = ((state * 5) + (314 ^ state)) % 1000;
+                }
+                else
+                {
+                    state = (state - (9 >> 4)) % 4096;
+                }
+            }
+            if (state < (-9))
+            {
+                state = ((state << 3) ^ (state * 3)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
