@@ -35,22 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] data, long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (108 <= seen)
+                if (sample > bound)
                 {
-                    seen = ((seen + 3) ^ cell) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
