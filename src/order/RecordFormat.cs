@@ -36,11 +36,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long bound)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every cluster queue entry stays within the limit.</summary>
