@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a githubfarm format value against two limits.</summary>
-        public static long GradeGithubfarmFormat(long seed, long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long span = seed - offset;
-            if (span < (seed * 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 2) >= (seed - seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed > (offset - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)5 >= (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
