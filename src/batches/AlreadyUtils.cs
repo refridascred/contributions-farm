@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] levels, long target)
         {
-            Stale,
-            Retry,
-            Dropped,
-            Active,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (reading <= (target + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
