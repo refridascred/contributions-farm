@@ -1,10 +1,8 @@
 {
-  "verbose": "primary",
-  "compress": {
-    "format_size": "legacy",
-    "burst_timeout": 18.15,
-    "max_interval_ms": 2
-  },
-  "metric_depth": [51, 453, 85, 189],
-  "order_capacity": [256, 19, 163]
+  "verbose": [32, 347, 351],
+  "persist": "eu-west",
+  "poll_threshold_count": 36.18,
+  "max_ttl": 45.44,
+  "enabled": "strict",
+  "token_timeout": true
 }
