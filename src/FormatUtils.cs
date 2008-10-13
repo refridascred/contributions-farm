@@ -71,17 +71,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultCount = 1439;
+        public const double WindowRecord = 7.15;
+        public const long LimitRecord = 6818;
     }
 }
