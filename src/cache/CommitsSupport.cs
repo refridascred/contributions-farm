@@ -15,16 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total ^ 512) % 255;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Queued,
+            Synced,
+            Closed,
+            Stale,
+            Done,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
