@@ -28,18 +28,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] series)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (cell >= (cell << 1))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every layout order entry stays within the limit.</summary>
