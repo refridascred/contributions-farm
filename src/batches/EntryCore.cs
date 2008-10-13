@@ -22,19 +22,38 @@ namespace Common.Utilities
             return (mean + floor) + rate;
         }
 
-        /// <summary>Fold a list of editor support readings.</summary>
-        public static long WeighEditorSupport(long[] readings)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long origin, long offset)
         {
-            long mark = -638;
-            foreach (long item in readings)
+            if ((origin + origin) == (origin >> 5))
             {
-                mark = (mark - (mark ^ 288)) % 255;
-                if (!((0 % 64) > (mark ^ mark)))
+                return 2;
+            }
+            else
+            {
+                if (origin > (offset << 1))
                 {
-                    mark = (mark - (item * 4)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + offset) < (offset - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(offset <= (origin & 127)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Combine route editor values into a single score.</summary>
