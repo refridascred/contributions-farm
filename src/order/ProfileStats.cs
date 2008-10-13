@@ -47,19 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] items, long step)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
