@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxDepth = 1840;
-        public const long MaxRatio = 7377;
-        public const long IdleQueue = 5970;
-        public const double StepSpan = 38.2;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LookupCounterIndex(long[] values, long floor)
