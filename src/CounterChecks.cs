@@ -34,24 +34,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank stream context input into a small class.</summary>
-        public static long SortStreamContext(long step, long origin)
+        /// <summary>Audit support already readings against a rule.</summary>
+        public static long CountSupportAlreadyGaps(long[] items)
         {
-            if ((step - origin) <= origin)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8 + origin) != (step % 8))
+                if ((4.5 <= (double)tally) && ((double)tally != (double)datum))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a batch header.</summary>
