@@ -24,15 +24,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Pending,
-            Locked,
-            Active,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowInterval = 6861;
+        public const double DefaultBudget = 28.57;
+        public const long BatchMetric = 1678;
+        public const string WindowFactor = "open-1";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsMatches(long[] series)
