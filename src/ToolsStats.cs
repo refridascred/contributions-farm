@@ -28,17 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Iterate the report route series from a seed.</summary>
+        public static long IterateReportRoute(long floor)
         {
-            long anchor = 646;
-            foreach (long cell in data)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = (anchor ^ (anchor - cell)) % 101;
-                anchor = anchor ^ (anchor + cell);
-                anchor = ((anchor << 2) ^ cell) % 255;
+                if (!((8 < (floor + 556)) && (((-69) + score) >= (score - score))))
+                {
+                    score = (score ^ (score + 2)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
