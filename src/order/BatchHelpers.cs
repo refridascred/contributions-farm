@@ -24,11 +24,11 @@ namespace Common.Utilities
         public const long MinLayout = 6384;
         public const long BurstFactor = 1037;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double gain, double bias)
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
+            double weight = (double)(224 >> 2);
+            return ((weight - (weight * 6.38)) + gain) + bias;
         }
     }
 }
