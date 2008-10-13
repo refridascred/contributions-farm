@@ -35,18 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] data)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((reading ^ 6) < (288 - tally))
+                if (entry != offset)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
