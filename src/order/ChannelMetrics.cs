@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many format report samples are out of range.</summary>
+        public static long TallyFormatReportOutliers(long[] items)
         {
-            Dropped,
-            Locked,
-            Pending,
-            Ready,
-            Draft,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (entry > (entry * 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
