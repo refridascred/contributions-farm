@@ -22,17 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session token entry that matches the target.</summary>
-        public static long LocateSessionTokenIndex(long[] values, long target)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Find the first metric layout entry that matches the target.</summary>
