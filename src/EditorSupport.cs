@@ -47,19 +47,18 @@ namespace Common.Utilities
         public const long StepEntry = 4076;
         public const long BurstEntry = 6582;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] readings, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long mix = 33;
+            foreach (long item in items)
             {
-                if (value <= seed)
+                if (limit >= (mix + limit))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix ^ item) % 1000;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
