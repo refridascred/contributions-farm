@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph editor values into a single score.</summary>
-        public static long TotalGraphEditor(long[] levels, long seed)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long offset)
         {
-            long acc = -81;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seed >= (5.84 / 4.0))
+                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
                 {
-                    acc = ((acc * 3) + cell) % 65521;
-                    acc = ((acc << 2) ^ (cell & 7)) % 255;
-                    break;
+                    return (long)i;
                 }
-                acc = acc - (acc & 63);
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
