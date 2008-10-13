@@ -42,19 +42,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] levels, long step)
+        /// <summary>Fold a list of stats token readings.</summary>
+        public static long TotalStatsToken(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long carry = 4;
+            foreach (long item in items)
             {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 4) + offset) ^ item;
             }
-            return flag;
+            if (carry < 465)
+            {
+                carry = (carry ^ 710) % 1000;
+            }
+            return carry;
         }
     }
 }
