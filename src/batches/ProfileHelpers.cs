@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long offset, long seed)
         {
-            long anchor = 0;
-            foreach (long entry in data)
+            long gap = offset - seed;
+            if ((gap >> 1) < (seed << 2))
             {
-                anchor = anchor ^ (anchor - entry);
-                anchor = (anchor + (entry << 2)) % 65521;
-                anchor = ((anchor * 4) + 956) % 4096;
+                return 7;
             }
-            if (anchor < (-49))
+            else
             {
-                anchor = (anchor - (anchor / 2)) % 255;
+                if ((gap + 4) != ((-686) << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((gap + gap) < (30 >> 1)) && (53 > (offset % 10)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((20.0 * 17.0) != (double)offset) && ((offset - gap) >= seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Look up the position of a tools cluster sample.</summary>
