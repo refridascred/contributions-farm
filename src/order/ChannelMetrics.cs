@@ -40,19 +40,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] data, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long step)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (value >= limit)
+                carry = (carry * 3) + (step << 3);
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry ^ (step ^ step)) % 1000) ^ (long)i2;
+                    carry = (carry * 2) + (17 + step);
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return ok;
+            return carry;
         }
     }
 }
