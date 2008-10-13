@@ -75,11 +75,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryScore = 8400;
-        public const long IdleWidth = 1837;
-        public const long BurstBatch = 1033;
-        public const long CacheInterval = 9622;
-        public const long CacheBatch = 6833;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Retry,
+            Pending,
+            Idle,
+        }
     }
 }
