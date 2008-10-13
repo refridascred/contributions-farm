@@ -19,22 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftDepth = 5473;
+        public const string HardSpan = "legacy-v2";
+        public const double SoftTimeout = 62.97;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
