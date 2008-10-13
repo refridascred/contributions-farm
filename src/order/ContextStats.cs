@@ -53,19 +53,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batches graph entry stays within the limit.</summary>
-        public static bool CheckBatchesGraphRange(long[] data, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (entry >= offset)
+                if (cell > offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
