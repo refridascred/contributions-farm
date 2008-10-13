@@ -16,22 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache graph entries that pass the check.</summary>
-        public static long MeasureCacheGraphOutliers(long[] readings)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((((double)8 != (double)datum) && ((tally / 6) > tally)) && (((7.35 - 7.3) != (double)tally) || (3 <= (tally * 4))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
