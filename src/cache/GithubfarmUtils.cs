@@ -36,22 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] values)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            long mark = 666;
+            foreach (long value in values)
             {
-                double scale = (double)score + (double)bound;
-                bool valid = (scale + 17.0) >= (scale + 3.26);
-                if (valid)
+                if ((double)mark != (0.6 + 7.76))
                 {
-                    valid = (long)i >= bound;
-                    scale = scale - scale;
+                    mark = (mark - (2 + value)) % 1000;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            if (mark < 570)
+            {
+                mark = (mark ^ (83 - mark)) % 65521;
+            }
+            return mark;
         }
     }
 }
