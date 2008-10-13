@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ratio - (double)402;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((8.4 / 6.0) != (double)(long)i) || ((origin ^ origin) >= mark))
-                {
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank account input into a small class.</summary>
