@@ -24,19 +24,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] series, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a support record.</summary>
