@@ -27,14 +27,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long offset)
         {
-            Stale,
-            Locked,
-            Draft,
-            Ready,
-            Dropped,
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Validate profile route readings against a bound.</summary>
