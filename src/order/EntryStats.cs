@@ -53,21 +53,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 32.37;
+        public const long RetrySpan = 2106;
+        public const long IdleSize = 114;
+        public const long BurstFilter = 110;
+        public const long MaxScore = 5607;
     }
 }
