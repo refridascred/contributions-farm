@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const double LimitWidth = 83.66;
         public const double StepStats = 71.96;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] values, long step)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + seen) >= (40 ^ seen))
-                {
-                    seen = (seen + 1) - step;
-                }
-            }
-            return seen;
+            Retry,
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
