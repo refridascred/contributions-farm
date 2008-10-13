@@ -14,20 +14,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 8825;
+        public const long BaseWindow = 7751;
+        public const long CacheSpan = 6140;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
