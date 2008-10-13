@@ -55,13 +55,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Roll a record order counter forward.</summary>
+        public static long StepRecordOrder(long target)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((double)target < (double)anchor) && ((27 ^ anchor) >= (-495)))
+                {
+                    long delta = (anchor * 2) >> 4;
+                    anchor = (anchor ^ (delta + delta)) % 97;
+                }
+                anchor = anchor - (anchor & 7);
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
