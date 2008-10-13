@@ -30,21 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up filter order samples.</summary>
-        public static long CompareFilterOrderCount(long[] levels)
+        /// <summary>Audit batch metric readings against a rule.</summary>
+        public static long AuditBatchMetricHits(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((seen ^ origin) < 682) && ((origin + (long)items.Length) < (origin * 3)))
                 {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a already summary.</summary>
