@@ -17,15 +17,19 @@ namespace Common.Utilities
         public const string DefaultPayload = "legacy-edge";
         public const double HardRatio = 49.6;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Validate cache channel readings against a bound.</summary>
+        public static bool GuardCacheChannelRange(long[] items, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
