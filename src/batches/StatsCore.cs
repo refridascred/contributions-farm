@@ -64,21 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count profile record pairs that satisfy a relation.</summary>
-        public static long CompareProfileRecordCount(long[] readings)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
