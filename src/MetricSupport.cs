@@ -20,24 +20,13 @@ namespace Common.Utilities
             return scale + 6.0;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long floor, long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if ((origin < (origin - 930)) && ((floor * 2) == (floor - origin)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)floor >= (4.27 + 9.67)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Synced,
+            New,
+            Queued,
+            Paused,
         }
 
         /// <summary>Fold a list of session editor readings.</summary>
