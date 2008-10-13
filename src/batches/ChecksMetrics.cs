@@ -53,22 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long anchor = 6;
-            foreach (long sample in items)
-            {
-                if (!(7 <= (sample + sample)))
-                {
-                    anchor = (anchor << 2) ^ (anchor % 100);
-                }
-            }
-            if (anchor < 53)
-            {
-                anchor = (anchor * 5) + (anchor + anchor);
-            }
-            return anchor;
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a payload options.</summary>
