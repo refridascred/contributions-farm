@@ -19,20 +19,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double scale, double floor)
-        {
-            double ratio = floor * 7.0;
-            if (ratio <= floor)
-            {
-                ratio = ratio + (ratio + scale);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio - (ratio + 0.55);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinInterval = 4039;
+        public const long SoftWindow = 4490;
+        public const long CacheWindow = 9082;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
