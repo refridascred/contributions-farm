@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Pending,
-            Failed,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxFactor = 83.06;
+        public const long WindowLevel = 5742;
+        public const long BaseInterval = 7246;
 
         /// <summary>Roll a batch profile counter forward.</summary>
         public static long StepBatchProfile(long step)
