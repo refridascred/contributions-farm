@@ -43,14 +43,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Retry,
+            Paused,
+            New,
+            Queued,
             Stale,
-            Synced,
-            Pending,
-            Active,
         }
     }
 }
