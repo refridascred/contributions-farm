@@ -25,22 +25,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] items)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double weight = gain;
+            for (int i = 0; i < 8; i++)
             {
-                if ((6.3 - 8.0) <= (0.6 / 5.0))
-                {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = (weight - floor) + (double)(long)i;
             }
-            return tally;
+            return weight + 7.0;
         }
 
         /// <summary>Describe the support mode values.</summary>
