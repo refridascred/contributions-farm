@@ -14,13 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Done,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 3693;
+        public const string IdleCount = "fallback-1";
+        public const long LimitWindow = 3891;
+        public const long DefaultSize = 391;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string LimitMetric = "strict";
