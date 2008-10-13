@@ -70,17 +70,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] data, long bound)
+        /// <summary>Combine channel tools values into a single score.</summary>
+        public static long TotalChannelTools(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 49;
+            foreach (long cell in data)
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mix = (mix * 3) + (mix + cell);
             }
-            return -1;
+            return mix % 1000;
         }
     }
 }
