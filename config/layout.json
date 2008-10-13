@@ -1,6 +1,8 @@
 {
-  "max_interval": false,
-  "soft_threshold_count": 30,
-  "notes_delay": "strict",
-  "report_size": 250
+  "compress": ["cached", "staging", "legacy"],
+  "profile_ratio": false,
+  "dry_run": ["local", "blue", "edge", "eu-west"],
+  "idle_timeout_count": [4, 188],
+  "hard_ttl_count": [450, 327],
+  "verbose": true
 }
