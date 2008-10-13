@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] levels, long target)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)matches < (3.7 + 2.4))
-                {
-                    matches = ((matches + 3) ^ item) - target;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate filter samples.</summary>
