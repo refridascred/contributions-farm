@@ -34,18 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the account notes entries that pass the check.</summary>
-        public static long TallyAccountNotesMatches(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((item - item) != (count - item))
+                if ((20.0 / 3.0) < (1.0 * 5.4))
                 {
-                    count = count + 3;
+                    hits = ((hits + 3) - entry) - target;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
