@@ -1,9 +1,6 @@
 {
-  "cache_threshold_ms": "edge",
-  "warm_delay": {
-    "sync_ratio_count": "eu-west",
-    "report_interval": 18,
-    "verbose": "eu-west"
-  },
-  "soft_size": 56.69
+  "burst_capacity_pct": "open",
+  "default_depth_ms": "cached",
+  "layout_interval": 8983,
+  "editor_interval": 30
 }
