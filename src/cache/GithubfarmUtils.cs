@@ -22,19 +22,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] series, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (value <= floor)
+                if ((seen + seen) <= (2 << 3))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
