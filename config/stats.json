@@ -1,7 +1,15 @@
 {
-  "sync_interval": false,
-  "batch_retries_s": 89.38,
-  "dry_run": "cached",
-  "audit": 100,
-  "layout_interval": 36.22
+  "dry_run": false,
+  "entry_depth": true,
+  "audit": {
+    "burst_capacity_ms": false,
+    "burst_threshold_pct": true,
+    "soft_size_count": "primary",
+    "retry_delay": "staging",
+    "soft_limit": "legacy",
+    "poll_depth_pct": 500
+  },
+  "flush_window": false,
+  "enabled": 37.58,
+  "checks_depth": true
 }
