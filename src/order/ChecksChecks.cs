@@ -22,13 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            Paused,
-            Closed,
-            Dropped,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
