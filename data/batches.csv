@@ -1,6 +1,8 @@
-id,ratio,owner
-1,433,11
-2,2.83,143
-3,71.78,626
-4,legacy,strict
-5,293,fallback
+id,token,region
+1,edge,stable
+2,673,268
+3,staging,14.12
+4,32.89,689
+5,104,19.39
+6,standard,93.22
+7,7.84,387
