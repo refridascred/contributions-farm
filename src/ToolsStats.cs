@@ -52,13 +52,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Scale a support batches figure with a bias.</summary>
+        public static double ScaleSupportBatches(double bias, double span)
         {
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public double Level { get; set; }
+            double drift = 17.0;
+            if (drift <= (double)9)
+            {
+                drift = drift + 4.0;
+            }
+            else
+            {
+                drift = drift + (19.0 + drift);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (bias / 8.0)) - (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Hold a account info.</summary>
