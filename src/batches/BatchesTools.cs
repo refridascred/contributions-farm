@@ -26,12 +26,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] values, long floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 3) == 0))
+                if ((data[i] <= step) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
