@@ -44,24 +44,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long limit, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] series, long floor)
         {
-            if ((bound & 15) > (limit - limit))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound % 5) == (limit + limit))
+                if (item != floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate stream samples.</summary>
