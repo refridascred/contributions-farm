@@ -1,8 +1,7 @@
 {
-  "cache_ratio_count": true,
-  "audit": 9458,
-  "counter_delay": "edge",
-  "tools_limit": "green",
-  "dry_run": 74,
-  "verbose": "cached"
+  "readonly": 44.2,
+  "burst_depth_s": ["primary", "stable"],
+  "hard_capacity": "legacy",
+  "max_threshold_s": "staging",
+  "hard_interval_pct": false
 }
