@@ -36,17 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first stream payload entry that matches the target.</summary>
-        public static long LookupStreamPayloadIndex(long[] levels, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 0;
+            foreach (long value in samples)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
+                carry = ((carry - (60 ^ carry)) % 97) + value;
+                if ((target * 3) < carry)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
