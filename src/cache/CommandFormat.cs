@@ -59,22 +59,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] values)
         {
-            long result = 70;
-            foreach (long value in levels)
+            long result = -751;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    result = ((result * 4) + (value - 791)) ^ (long)i;
-                }
-                if ((result >> 1) == (result / 7))
-                {
-                    result = (result ^ (2 << 1)) % 4096;
-                }
+                result = ((result * 2) + (cell + cell)) % 1000;
             }
-            return result;
+            return result % 97;
         }
     }
 }
