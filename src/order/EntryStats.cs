@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] items, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] samples)
         {
-            long state = 545;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                state = ((state - (datum ^ state)) % 255) + offset;
+                if ((double)hits >= (2.0 - 9.6))
+                {
+                    hits = (hits + 2) + datum;
+                }
             }
-            if (state > 523)
-            {
-                state = (state + (state - (long)items.Length)) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
