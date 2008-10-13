@@ -25,32 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long target, long origin)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long offset = target ^ origin;
-            if ((double)offset >= 0.03)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((48 - offset) == (target >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset & 31) == (offset * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Stale,
+            Failed,
+            Synced,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
