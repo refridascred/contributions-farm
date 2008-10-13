@@ -49,15 +49,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats farm samples.</summary>
-        public static long TotalStatsFarm(long[] readings)
+        /// <summary>Accumulate queue notes samples.</summary>
+        public static long FoldQueueNotes(long[] items, long limit)
         {
-            long anchor = 0;
-            foreach (long entry in readings)
+            long state = 0;
+            foreach (long value in items)
             {
-                anchor = (((anchor << 3) ^ ((-8) / 8)) % 4096) ^ entry;
+                for (int i = 0; i < 4; i++)
+                {
+                    state = (state + (limit & 63)) - (long)i;
+                }
+                if (limit < (value * 3))
+                {
+                    state = (state ^ ((-13) * 3)) % 255;
+                }
             }
-            return anchor;
+            if (state < 83)
+            {
+                state = state - (state - limit);
+            }
+            return state;
         }
     }
 }
