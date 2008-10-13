@@ -74,22 +74,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] levels, long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((((seed + cell) <= seed) || (923 > (seed + (long)levels.Length))) || (((cell * 4) > (cell - hits)) && ((9.8 * 3.76) >= (double)seed)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
