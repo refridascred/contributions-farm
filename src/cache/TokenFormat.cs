@@ -13,10 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 1512;
-        public const long RetryTimeout = 1771;
-        public const string DefaultDepth = "stable";
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a window batch counter forward.</summary>
         public static long DeriveWindowBatch(long step)
