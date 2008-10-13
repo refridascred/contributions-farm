@@ -1,4 +1,7 @@
 # entry settings
-base_size: true
-burst_interval_count: 3666
-base_limit_count: fallback
+idle_threshold_ms: 250
+profile_threshold: true
+checks_window: stable
+hard_capacity:
+  - edge
+  - open
