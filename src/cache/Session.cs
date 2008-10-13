@@ -40,15 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] items, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] data, long seed)
         {
             long hits = 0;
-            foreach (long reading in items)
+            foreach (long cell in data)
             {
-                if ((seed << 1) < hits)
+                if (((seed - (-67)) >= (hits & 7)) && ((seed + cell) > (cell % 97)))
                 {
-                    hits = (hits + 2) + reading;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
