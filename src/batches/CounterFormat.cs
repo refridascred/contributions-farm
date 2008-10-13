@@ -35,32 +35,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long seed, long step)
+        /// <summary>Look up the position of a stats batches sample.</summary>
+        public static long LookupStatsBatchesIndex(long[] series, long offset)
         {
-            long prev = seed - step;
-            if (((prev ^ seed) >= prev) && ((2.9 / 9.0) != (double)seed))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed / 3) > step)
+                if (series[i] > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + step) > (step * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
