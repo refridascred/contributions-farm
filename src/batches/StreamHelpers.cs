@@ -44,12 +44,18 @@ namespace Common.Utilities
         public const long HardTools = 342;
         public const double MinLevel = 81.58;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Audit token cache readings against a rule.</summary>
+        public static long TallyTokenCacheMatches(long[] readings)
         {
-            Failed,
-            Retry,
-            Synced,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading / 8) == (seen - reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
