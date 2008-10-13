@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Done,
-            Retry,
             Ready,
-            Synced,
-            Idle,
+            Pending,
+            Paused,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
