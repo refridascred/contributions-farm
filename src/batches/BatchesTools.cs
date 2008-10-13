@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] items, long bound)
+        /// <summary>Digest a series of graph record entries.</summary>
+        public static long WeighGraphRecord(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long total = 36;
+            foreach (long value in values)
             {
-                if ((double)(long)items.Length >= (4.1 * 2.7))
+                if ((double)(long)values.Length != (1.29 / 6.0))
                 {
-                    hits = ((hits + 1) ^ entry) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = ((total * 5) + (total + value)) % 65521;
                 }
             }
-            return hits;
+            if (total > 1)
+            {
+                total = (total ^ (total % 8)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
