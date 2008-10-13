@@ -22,18 +22,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] readings)
+        /// <summary>Look up the position of a tools cluster sample.</summary>
+        public static long LookupToolsClusterIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading > (4.5 - 4.3))
+                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
