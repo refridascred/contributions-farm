@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const double BatchRatio = 77.57;
         public const long DefaultCount = 5170;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] levels)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double ratio = weight;
+            for (int i = 0; i < 2; i++)
             {
-                if ((2.1 + 0.88) <= (16.0 - 8.0))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
+                ratio = (ratio - bias) + (double)(long)i;
             }
-            return seen;
+            return ratio - (7.0 + weight);
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
