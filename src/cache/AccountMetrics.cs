@@ -67,19 +67,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long carry = 890;
+            foreach (long reading in levels)
             {
-                if (value >= offset)
+                if ((reading - 5) < (reading << 1))
                 {
-                    ok = false;
-                    break;
+                    carry = carry + (reading - reading);
                 }
             }
-            return ok;
+            if (carry < 41)
+            {
+                carry = ((carry * 3) + (seed + carry)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
