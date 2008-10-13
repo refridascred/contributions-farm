@@ -73,15 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] readings, long limit)
+        /// <summary>Compare every pair of entry schema readings.</summary>
+        public static long PairEntrySchemaCount(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((hits + limit) <= (hits & 7)) && ((double)reading == (double)hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
