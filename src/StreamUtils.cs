@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Locked,
+            Idle,
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
