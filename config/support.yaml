@@ -1,5 +1,4 @@
 # support settings
-audit: 96.84
-min_capacity_ms: 5978
-context_ttl: 6963
-entry_ttl: 1024
+max_ratio: 100
+base_size_ms: 94
+default_ttl: 5111
