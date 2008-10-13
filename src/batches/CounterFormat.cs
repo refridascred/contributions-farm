@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a support payload value against two limits.</summary>
