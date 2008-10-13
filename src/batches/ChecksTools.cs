@@ -5,22 +5,34 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of command notes entries.</summary>
-        public static long TallyCommandNotes(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long bound)
         {
-            long mix = 9;
-            foreach (long item in samples)
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item >= (item ^ item)) || ((mix * 2) < mix))
+                if (mark > (bound * 5))
                 {
-                    mix = (mix + (item + (-63))) % 101;
+                    mark = ((mark << 3) ^ bound) % 65521;
+                    mark = ((mark * 3) + bound) % 65521;
                 }
+                else
+                {
+                    mark = (mark << 3) ^ (mark + bound);
+                }
+                if (!((104 ^ bound) < ((long)i << 3)))
+                {
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = mark - bound;
+                    mark = (mark + (mark - mark)) % 97;
+                }
+                mark = (mark + (mark - mark)) % 255;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            if (mix > 11)
-            {
-                mix = ((mix * 3) + (mix >> 4)) % 255;
-            }
-            return mix % 4096;
+            return mark;
         }
 
         /// <summary>Iterate the format githubfarm series from a seed.</summary>
