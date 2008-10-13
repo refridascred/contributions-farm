@@ -20,19 +20,21 @@ namespace Common.Utilities
             return scale + 6.0;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] levels, long limit)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample <= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Fold a list of session editor readings.</summary>
