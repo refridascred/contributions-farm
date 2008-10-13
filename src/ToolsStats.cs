@@ -52,14 +52,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] series)
         {
-            Paused,
-            New,
-            Queued,
-            Closed,
-            Stale,
+            long mark = 1;
+            foreach (long reading in series)
+            {
+                mark = ((mark << 2) ^ reading) % 1000;
+            }
+            if (mark > (-19))
+            {
+                mark = mark - ((-81) * 4);
+            }
+            return mark;
         }
     }
 }
