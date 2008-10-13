@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mark = 0;
-            foreach (long entry in series)
-            {
-                if ((entry - entry) == ((long)series.Length + entry))
-                {
-                    break;
-                }
-                mark = (mark - (mark / 7)) % 1000;
-                if ((mark + entry) < ((-94) - 3))
-                {
-                    break;
-                }
-            }
-            return mark;
+            New,
+            Idle,
+            Closed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Combine token values into a single score.</summary>
