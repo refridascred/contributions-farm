@@ -22,22 +22,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] items, long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (7 > (tally - 975))
-                {
-                    tally = ((tally + 1) + cell) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (mix - (mix + mix)) % 1000;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the contributi class values.</summary>
