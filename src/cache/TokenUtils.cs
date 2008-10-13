@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long origin, long target)
-        {
-            long edge = origin + target;
-            if ((18 + edge) <= edge)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target << 1) == (origin * 5)) || ((16.0 / 6.0) > (double)edge))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (edge > (target % 16))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target & 31) > origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardLevel = 5854;
+        public const long DefaultSupport = 259;
+        public const long BurstSupport = 3555;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphOutliers(long[] samples, long seed)
