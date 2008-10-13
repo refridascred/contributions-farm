@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] samples, long bound)
         {
-            long mark = 61;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (((6.6 + 6.1) < (double)mark) && ((double)datum == (12.0 / 2.0)))
+                if (value <= bound)
                 {
-                    mark = (mark + datum) % 65521;
-                }
-                else
-                {
-                    mark = (mark * 5) + (mark << 2);
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Describe the session level values.</summary>
