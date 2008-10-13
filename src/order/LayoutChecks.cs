@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] values)
         {
-            Retry,
-            Failed,
-            Synced,
-            Locked,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell / 4) >= (long)values.Length)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
