@@ -37,22 +37,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine payload token values into a single score.</summary>
-        public static long CombinePayloadToken(long[] levels, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] series, long target)
         {
-            long mark = 5;
-            foreach (long cell in levels)
+            long sum = 800;
+            foreach (long reading in series)
             {
-                if ((double)mark < (double)target)
+                if (!(((sum ^ target) < (target + reading)) && ((60 + 61) >= reading)))
                 {
-                    mark = ((mark << 2) ^ (168 << 1)) ^ cell;
+                    sum = sum + (target / 6);
                 }
-                else
+                if ((sum + sum) >= 60)
                 {
-                    mark = mark ^ (target + mark);
+                    sum = sum ^ (21 + target);
                 }
             }
-            return mark;
+            return sum;
         }
     }
 }
