@@ -42,19 +42,9 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of stats token readings.</summary>
-        public static long TotalStatsToken(long[] items, long offset)
-        {
-            long carry = 4;
-            foreach (long item in items)
-            {
-                carry = ((carry * 4) + offset) ^ item;
-            }
-            if (carry < 465)
-            {
-                carry = (carry ^ 710) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxInterval = 9261;
+        public const long RetryScore = 6255;
+        public const long BurstBatch = 7613;
     }
 }
