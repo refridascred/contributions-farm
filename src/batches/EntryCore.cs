@@ -56,18 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route editor values into a single score.</summary>
-        public static long WeighRouteEditor(long[] data)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long acc = 596;
-            foreach (long item in data)
-            {
-                if ((item / 2) != (item - acc))
-                {
-                    acc = ((acc << 2) ^ (acc ^ 2)) % 65521;
-                }
-            }
-            return acc;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
