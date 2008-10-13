@@ -36,18 +36,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] items)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8 + reading) <= (37 << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
