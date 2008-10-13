@@ -37,19 +37,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] items, long floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample < floor)
+                double scale = (double)score + (double)bound;
+                bool valid = (scale + 17.0) >= (scale + 3.26);
+                if (valid)
                 {
-                    stale = false;
-                    break;
+                    valid = (long)i >= bound;
+                    scale = scale - scale;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return stale;
+            return score;
         }
     }
 }
