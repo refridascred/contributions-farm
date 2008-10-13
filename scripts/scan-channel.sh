@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=34
+CHANNEL_LIMIT=27
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in open primary legacy strict; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
