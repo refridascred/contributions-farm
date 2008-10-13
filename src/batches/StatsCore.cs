@@ -36,19 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token commits entries that pass the check.</summary>
-        public static long TallyTokenCommitsMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (hits >= (hits - reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 4047;
+        public const string LimitBatch = "alpha";
+        public const string BatchCount = "open";
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
         public static long TallyWindowCounterOutliers(long[] samples)
