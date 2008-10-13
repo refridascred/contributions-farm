@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheSize = 256;
-        public const long BatchFarm = 6643;
-        public const long WindowFarm = 7332;
-        public const string SoftSpan = "latest-1";
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long SoftOrder = 2804;
