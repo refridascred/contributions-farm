@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long seed, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            if (offset < (seed + seed))
             {
-                total = (total + total) % 97;
-                total = ((total * 4) + (long)i) % 65521;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((double)offset >= (10.0 / 9.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((597 ^ 940) <= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + offset) == (offset & 31))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
