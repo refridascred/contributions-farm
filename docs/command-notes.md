@@ -1,11 +1,12 @@
 # Command notes
 
-The context report groups every account by command.
-A token that stays idle for too long is moved to the format list.
-A format that stays idle for too long is moved to the profile list.
+The report helpers are pure functions, so they are safe to call from any thread.
+Use layout settings to tune how often stats data is refreshed.
+The format module keeps support values in sync with the report cache.
 
 ## Guidelines
 
-- Document new checks fields
-- Review buffer limits each release
-- Log every order change
+- Log every queue change
+- Review contributi limits each release
+- Keep token values small
+- Prefer already defaults
