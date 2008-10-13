@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double scale, double offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            double rate = (double)426 / 5.0;
-            if (rate <= (double)6)
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                rate = (rate - rate) - scale;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return rate + offset;
+            return mark;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
