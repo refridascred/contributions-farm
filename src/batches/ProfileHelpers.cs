@@ -81,17 +81,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 4782;
+        public const string LimitScore = "local-edge";
+        public const double WindowFarm = 13.82;
+        public const long MaxRatio = 6498;
+        public const double IdleFarm = 36.25;
     }
 }
