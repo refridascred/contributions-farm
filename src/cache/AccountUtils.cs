@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] samples, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
+                if ((matches >> 1) > (bound / 5))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
