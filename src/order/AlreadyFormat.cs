@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Measure how many already stream samples are out of range.</summary>
+        public static long CountAlreadyStreamMatches(long[] levels)
         {
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count % 64) < 576)
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a support counter forward.</summary>
