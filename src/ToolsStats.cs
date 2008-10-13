@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many report editor samples are out of range.</summary>
-        public static long CountReportEditorOutliers(long[] levels, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((4.9 * 0.2) <= (double)floor)
+                if (matches >= (origin << 3))
                 {
-                    hits = (hits + 2) + cell;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
