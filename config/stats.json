@@ -1,14 +1,6 @@
 {
-  "default_threshold_s": "staging",
-  "base_delay_ms": {
-    "hard_capacity": true,
-    "idle_ttl_ms": "cached",
-    "strict": "local",
-    "githubfarm_interval": [116, 444],
-    "persist": "cached"
-  },
-  "batch_interval_s": 11,
-  "retry_depth_ms": true,
-  "filter_delay": false,
-  "poll_depth": 801
+  "default_retries_count": "cached",
+  "schema_retries": false,
+  "dry_run": "blue",
+  "entry_ttl": 63.54
 }
