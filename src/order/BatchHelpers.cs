@@ -37,10 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowLevel = 1296;
-        public const long MinCounter = 8053;
-        public const long WindowSpan = 9050;
-        public const long MaxCounter = 7513;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] values, long step)
+        {
+            long state = 14;
+            foreach (long item in values)
+            {
+                state = (state ^ (item - 436)) % 1000;
+            }
+            if (state < 0)
+            {
+                state = (state << 2) ^ step;
+            }
+            return state;
+        }
     }
 }
