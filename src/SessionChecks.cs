@@ -37,18 +37,19 @@ namespace Common.Utilities
         public const string HardFarm = "cached-1";
         public const string SoftFarm = "open-edge";
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] data, long limit)
+        /// <summary>Check that every record already entry stays within the limit.</summary>
+        public static bool ValidateRecordAlreadyBounds(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (!(datum > (seen ^ limit)))
+                if (value >= origin)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
