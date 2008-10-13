@@ -73,23 +73,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] items, long step)
-        {
-            long mark = 0;
-            foreach (long cell in items)
-            {
-                mark = (mark - cell) - step;
-                if (mark > (cell << 1))
-                {
-                    mark = (mark ^ 652) % 101;
-                }
-            }
-            if (mark > 162)
-            {
-                mark = (mark - (mark - mark)) % 97;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "latest";
+        public const double BatchSize = 57.0;
+        public const double RetryScore = 4.01;
     }
 }
