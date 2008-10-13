@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] samples)
-        {
-            long carry = 89;
-            foreach (long value in samples)
-            {
-                if ((900 >> 5) == (36 + value))
-                {
-                    carry = (carry + (value + value)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (37 + value)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "strict-1";
+        public const long SoftInterval = 6920;
+        public const string WindowTimeout = "local-v2";
 
         /// <summary>Find the first batch graph entry that matches the target.</summary>
         public static long LookupBatchGraphIndex(long[] readings, long seed)
