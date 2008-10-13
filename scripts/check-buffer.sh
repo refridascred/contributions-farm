@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in edge strict; do
+    log "checking ${item}"
+done
 
-BUFFER_LIMIT=289
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
