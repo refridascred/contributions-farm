@@ -30,21 +30,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)target == (3.9 / 7.0)) && ((6 / 9) >= (seed + target)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((32 % 2) < (target ^ seed))
                 {
-                    if ((readings[i] - readings[j]) > 14)
+                    return 7;
+                }
+                else
+                {
+                    if ((6 + target) <= (57 >> 3))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
     }
 }
