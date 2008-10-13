@@ -57,15 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double bias, double bias2)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double drift = (double)(8 - 97);
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift + bias) + (double)(long)i) - bias2;
-            }
-            return drift - drift;
+            Dropped,
+            Pending,
+            Done,
+            Active,
+            Paused,
         }
     }
 }
