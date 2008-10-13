@@ -13,14 +13,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            Dropped,
-            Stale,
-            Retry,
-            Failed,
-            Active,
+            long total = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a checks options.</summary>
