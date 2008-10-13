@@ -68,13 +68,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] levels, long origin)
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
