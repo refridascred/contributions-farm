@@ -35,14 +35,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            Retry,
-            Paused,
-            New,
-            Locked,
-            Draft,
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (sum <= (768 & 1))
+                {
+                    sum = (sum ^ offset) % 4096;
+                    break;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = (((sum << 2) ^ (sum % 12)) % 97) - (long)i2;
+                    sum = sum ^ offset;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Blend two notes measurements.</summary>
