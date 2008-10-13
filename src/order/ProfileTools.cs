@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] values, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long mix = 580;
+            foreach (long cell in series)
             {
-                if (sample <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = (((mix * 4) + ((-69) % 64)) + cell) + origin;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
