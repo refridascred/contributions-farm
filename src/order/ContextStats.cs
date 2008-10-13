@@ -39,38 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long offset, long offset2)
+        /// <summary>Check that every notes contributi entry stays within the limit.</summary>
+        public static bool CheckNotesContributiBounds(long[] data, long offset)
         {
-            if (!(offset2 >= (offset - offset)))
+            bool ok = true;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset2 < (3.58 * 7.6))
+                if (datum < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((19.0 - 7.4) <= (double)offset2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset2 < (offset - offset2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
