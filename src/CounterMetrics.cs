@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] items, long step)
         {
-            long state = 457;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((double)state < (7.0 + 19.0))
+                if (item <= step)
                 {
-                    state = ((state << 3) ^ (state & 127)) % 65521;
-                }
-                if ((state + state) != (item & 255))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (state < (-97))
-            {
-                state = ((state * 4) + (state / 2)) % 4096;
-            }
-            return state;
+            return found;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
