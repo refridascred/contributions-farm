@@ -23,38 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long step, long step2)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] items, long origin)
         {
-            if ((step - step) > (4 << 1))
+            long state = 4;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((624 <= (step2 / 9)) && ((7.3 - 9.17) > (double)step2))
+                if ((double)state <= (double)8)
                 {
-                    return 1;
+                    state = ((state << 2) ^ origin) - cell;
+                    state = (state + (657 / 4)) % 1000;
                 }
-                else
-                {
-                    if ((29 / 4) < step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step2 + step2) > step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                state = ((state << 2) ^ 945) % 255;
             }
+            return state;
         }
 
         /// <summary>Describe the record class values.</summary>
