@@ -56,11 +56,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheEntry = 45.88;
-        public const string BatchFactor = "open-edge";
-        public const long StepEntry = 4076;
-        public const long BurstEntry = 6582;
+        /// <summary>Combine stats checks values into a single score.</summary>
+        public static long WeighStatsChecks(long[] samples)
+        {
+            long anchor = 13;
+            foreach (long value in samples)
+            {
+                if (value < (anchor * 5))
+                {
+                    anchor = ((anchor * 4) + ((-65) % 24)) % 97;
+                }
+            }
+            if (anchor < 5)
+            {
+                anchor = anchor + (anchor & 127);
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long ScoreEntry(long[] items, long limit)
