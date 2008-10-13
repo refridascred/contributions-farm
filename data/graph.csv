@@ -1,7 +1,6 @@
-id,level,weight,region,rank
-1,89,fallback,394,stable
-2,staging,26.7,local,primary
-3,677,193,legacy,87.22
-4,456,254,fallback,934
-5,527,92,439,296
-6,eu-west,659,91,latest
+id,state,owner
+1,82,30.82
+2,406,97.66
+3,green,333
+4,660,14.65
+5,53.61,green
