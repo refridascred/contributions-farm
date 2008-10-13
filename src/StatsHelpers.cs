@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit checks profile readings against a rule.</summary>
-        public static long AuditChecksProfileGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((tally * 5) == (entry ^ entry))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 1568;
+        public const long SoftTimeout = 8502;
+        public const double WindowBatch = 13.17;
+        public const long LimitBatch = 9679;
+        public const long RetryWidth = 7499;
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
