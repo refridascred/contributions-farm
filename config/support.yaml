@@ -1,11 +1,10 @@
 # support settings
-layout_ttl:
-  - 247
-  - 26
-  - 225
-  - 164
-enabled: false
-warm_depth_count: standard
-persist: 1.46
-batch_depth_s: 11.93
-base_capacity: 9568
+hard_ttl:
+  compress: 1831
+  min_ttl: 3732
+  githubfarm_timeout: 36.76
+checks_delay: legacy
+session_delay: 20
+default_delay_count:
+  - 76
+  - 109
