@@ -1,7 +1,15 @@
 {
-  "default_capacity_count": ["eu-west", "primary"],
-  "retry_size": ["strict", "open", "eu-west", "fallback"],
-  "flush_size_count": "strict",
-  "command_ratio": true,
-  "min_depth_ms": 92
+  "base_ttl_s": {
+    "sync_ttl": false,
+    "contributi_retries": 42.66,
+    "strict": {
+      "compress": 60,
+      "max_limit": 30,
+      "sync_window_ms": 23.35,
+      "max_capacity_s": "staging",
+      "default_threshold_s": 250
+    }
+  },
+  "compress": "staging",
+  "idle_ratio_pct": [257, 85, 112]
 }
