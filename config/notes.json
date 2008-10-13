@@ -1,6 +1,11 @@
 {
-  "warm_ttl_s": "stable",
-  "idle_interval_s": "green",
-  "base_window": "legacy",
-  "cluster_threshold": false
+  "base_retries_ms": 2468,
+  "default_size_pct": "standard",
+  "audit": {
+    "audit": [208, 345, 404],
+    "burst_timeout_ms": "local",
+    "verbose": true,
+    "burst_delay_ms": "stable",
+    "enabled": 1024
+  }
 }
