@@ -37,16 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum ^ (long)i) % 1000;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Adjust a layout reading.</summary>
