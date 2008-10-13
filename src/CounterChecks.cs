@@ -64,15 +64,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] items, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] items, long seed)
         {
-            long mix = 432;
-            foreach (long value in items)
+            long score = 289;
+            foreach (long sample in items)
             {
-                mix = ((mix << 2) ^ (mix ^ limit)) - value;
+                if ((61 + score) < seed)
+                {
+                    score = (((score << 2) ^ seed) % 97) ^ sample;
+                }
             }
-            return mix % 97;
+            if (score > 752)
+            {
+                score = (score + seed) % 65521;
+            }
+            return score;
         }
     }
 }
