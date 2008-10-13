@@ -23,12 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryInterval = 7671;
-        public const double MaxDepth = 18.61;
-        public const double BaseQueue = 52.22;
-        public const string CacheQueue = "staging-1";
-        public const long HardQueue = 442;
+        /// <summary>Validate metrics entry readings against a bound.</summary>
+        public static bool GuardMetricsEntryBounds(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
