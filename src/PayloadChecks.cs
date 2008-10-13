@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] items, long origin)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long sum = 13;
-            foreach (long item in items)
-            {
-                sum = ((sum + (origin / 2)) % 1000) - item;
-            }
-            return sum % 4096;
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
