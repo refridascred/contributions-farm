@@ -1,5 +1,16 @@
 # githubfarm settings
-audit: 52.33
-readonly: blue
-retry_capacity: 250
-commits_ttl: stable
+cache_timeout_pct: 78.18
+burst_window_count:
+  - staging
+  - edge
+  - fallback
+  - eu-west
+batch_interval_ms: legacy
+dry_run: fallback
+hard_window:
+  metric_interval:
+    - 478
+    - 400
+  flush_timeout_ms: green
+  min_size: green
+  retry_ttl: false
