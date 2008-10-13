@@ -68,17 +68,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] readings, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 61;
+            foreach (long reading in items)
             {
-                if ((readings[i] < step) && ((readings[i] % 5) != 0))
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    anchor = (((anchor * 2) + reading) % 65521) + (long)i;
+                    anchor = (anchor ^ (201 + bound)) % 4096;
+                }
+                if ((reading ^ anchor) < anchor)
+                {
+                    anchor = anchor + reading;
                 }
             }
-            return -1;
+            if (anchor > 0)
+            {
+                anchor = anchor + (bound % 2);
+            }
+            return anchor % 1000;
         }
     }
 }
