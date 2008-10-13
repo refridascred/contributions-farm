@@ -61,20 +61,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the checks context series from a seed.</summary>
-        public static long StepChecksContext(long limit)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result - (limit ^ result)) % 4096;
-                if (756 >= (result % 97))
-                {
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
