@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Retry,
-            Failed,
-            Dropped,
+            Synced,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a metric header.</summary>
