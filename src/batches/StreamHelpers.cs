@@ -61,14 +61,39 @@ namespace Common.Utilities
             return drift + (span + drift);
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long limit, long limit2)
         {
-            Paused,
-            Retry,
-            Queued,
-            Dropped,
-            Ready,
+            long span = limit + limit2;
+            if (((limit2 - limit) <= (span + span)) || (limit >= (952 >> 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit > (limit + span)) || ((span ^ limit) >= (992 - 0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.0 * 0.2) >= (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit2 / 9) != (20 + span))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
