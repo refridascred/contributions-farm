@@ -1,7 +1,23 @@
 {
-  "min_interval_ms": 62,
-  "sync_threshold_pct": "staging",
-  "sync_limit": 33.57,
-  "notes_threshold": "cached",
-  "persist": "cached"
+  "default_window_count": {
+    "flush_limit_pct": ["latest", "cached"],
+    "audit": "cached",
+    "metrics_ttl": ["staging", "strict"],
+    "max_retries_pct": true,
+    "batch_capacity_pct": {
+      "default_delay_pct": "stable",
+      "support_delay": true,
+      "context_depth": false,
+      "hard_ratio": false,
+      "base_ttl": "green",
+      "batch_delay_pct": false
+    }
+  },
+  "dry_run": {
+    "compress": "latest",
+    "contributi_retries": false,
+    "filter_ratio": 24.7
+  },
+  "base_limit": 19,
+  "min_window_pct": true
 }
