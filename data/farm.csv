@@ -1,10 +1,6 @@
-id,region,active
-1,342,59
-2,open,976
-3,10,1
-4,edge,19.27
-5,581,50.81
-6,21.38,578
-7,legacy,89.94
-8,970,edge
-9,113,90.73
+id,owner,level,count
+1,20.81,836,559
+2,973,blue,19.51
+3,68.81,69.65,primary
+4,49.58,228,staging
+5,eu-west,strict,500
