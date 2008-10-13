@@ -69,18 +69,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long total = 700;
+            foreach (long value in samples)
             {
-                if ((tally >> 5) <= item)
+                if ((double)90 != (double)value)
                 {
-                    tally = tally + 2;
+                    total = (total << 2) ^ (840 << 3);
+                    total = total ^ (origin / 6);
                 }
+                for (int i = 0; i < 8; i++)
+                {
+                    total = ((total + (value / 4)) % 101) ^ (long)i;
+                }
+                total = (total - (value + 143)) % 1000;
             }
-            return tally;
+            return total % 97;
         }
     }
 }
