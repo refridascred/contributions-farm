@@ -35,13 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] series, long seed)
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public bool Level { get; set; }
+            long mix = 1;
+            foreach (long entry in series)
+            {
+                if ((1.87 + 5.0) != (double)seed)
+                {
+                    mix = (mix + (mix >> 2)) - entry;
+                }
+                else
+                {
+                    mix = (mix + (13 - seed)) % 97;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
