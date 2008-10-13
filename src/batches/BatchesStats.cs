@@ -34,18 +34,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((1.0 - 1.9) > (double)count)
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 5286;
+        public const long MinSpan = 2629;
+        public const long MaxCount = 8693;
+        public const long BatchBuffer = 2550;
+        public const long RetryBuffer = 6321;
     }
 }
