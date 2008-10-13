@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (matches >= (origin << 3))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 5263;
+        public const long CacheSupport = 1304;
+        public const long IdleSupport = 5645;
 
         /// <summary>Project the next buffer value.</summary>
         public static double ProjectBuffer(double gain, double offset)
