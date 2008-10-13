@@ -39,15 +39,38 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long seed, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            if (seed < (seed >> 1))
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (!((40 / 9) == (seed % 24)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed < 9.9)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (5.34 / 2.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many notes already samples are out of range.</summary>
