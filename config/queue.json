@@ -1,7 +1,18 @@
 {
-  "hard_size": "edge",
-  "enabled": [343, 209],
-  "retry_capacity_s": 4926,
-  "hard_limit": 54.47,
-  "commits_delay": 1997
+  "min_retries_s": 46.59,
+  "contributi_threshold": 4653,
+  "warm_delay_pct": {
+    "cache_window": ["fallback", "eu-west"],
+    "persist": {
+      "flush_delay_pct": "strict",
+      "idle_limit_ms": "cached",
+      "persist": 82.16,
+      "base_size_pct": 100,
+      "batches_depth": "primary"
+    },
+    "soft_delay_pct": ["open", "latest", "local", "fallback"]
+  },
+  "retry_threshold_pct": false,
+  "min_ttl_pct": true,
+  "poll_size_ms": [424, 95, 465, 243]
 }
