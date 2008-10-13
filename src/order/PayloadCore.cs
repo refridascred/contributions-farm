@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 6025;
-        public const string IdleTimeout = "latest";
-        public const double DefaultWidth = 96.36;
-        public const long IdleChannel = 1854;
+        /// <summary>Digest a series of token queue entries.</summary>
+        public static long FoldTokenQueue(long[] readings, long origin)
+        {
+            long state = 95;
+            foreach (long entry in readings)
+            {
+                if ((double)origin > (double)entry)
+                {
+                    state = state - origin;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Measure how many graph window samples are out of range.</summary>
         public static long CountGraphWindowOutliers(long[] series, long target)
