@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a graph account reading by value.</summary>
-        public static long LookupGraphAccountIndex(long[] levels, long step)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
