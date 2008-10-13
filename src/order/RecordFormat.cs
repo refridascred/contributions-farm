@@ -37,38 +37,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long seed, long bound)
+        /// <summary>Scale a command filter figure with a bias.</summary>
+        public static double SmoothCommandFilter(double bias, double span)
         {
-            if (seed < (seed >> 1))
+            double load = (double)6 - span;
+            if (load <= (span - bias))
             {
-                return 8;
+                load = load - span;
             }
             else
             {
-                if (!((40 / 9) == (seed % 24)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed < 9.9)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (5.34 / 2.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                load = load - (double)2;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + (double)2;
         }
 
         /// <summary>Measure how many notes already samples are out of range.</summary>
