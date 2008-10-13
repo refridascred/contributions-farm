@@ -1,6 +1,15 @@
 {
-  "audit": 5373,
-  "cache_ratio": 2074,
-  "default_threshold": "legacy",
-  "hard_size_ms": "blue"
+  "soft_depth_ms": "primary",
+  "min_ttl": [69, 159],
+  "format_timeout": true,
+  "min_retries_s": {
+    "persist": "green",
+    "batch_size_count": 60,
+    "verbose": false,
+    "sync_timeout_count": "edge",
+    "tools_depth": ["edge", "cached", "blue"],
+    "poll_depth_s": true
+  },
+  "report_delay": 60,
+  "compress": [443, 468, 296, 354]
 }
