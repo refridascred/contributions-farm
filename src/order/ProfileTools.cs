@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] series, long origin)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mix = 580;
-            foreach (long cell in series)
-            {
-                mix = (((mix * 4) + ((-69) % 64)) + cell) + origin;
-            }
-            return mix;
+            Pending,
+            New,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
