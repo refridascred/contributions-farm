@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] samples, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 5) + 403) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (((-23) + 0) > tally)
+                {
+                    tally = ((tally + 2) + entry) + step;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the checks state values.</summary>
