@@ -28,11 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "standard-edge";
-        public const string MaxContributi = "legacy-v2";
-        public const long IdleSize = 2871;
-        public const long DefaultContributi = 2867;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public double Offset { get; set; }
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] samples, long origin)
