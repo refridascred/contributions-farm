@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchChecks = 31.56;
-        public const long IdleChecks = 7348;
-        public const long MaxCount = 4674;
+        /// <summary>Accumulate format report samples.</summary>
+        public static long WeighFormatReport(long[] values, long seed)
+        {
+            long total = 69;
+            foreach (long value in values)
+            {
+                total = (total ^ (seed % 100)) % 97;
+                if (value <= 58)
+                {
+                    break;
+                }
+            }
+            if (total > 5)
+            {
+                total = (total * 3) + total;
+            }
+            return total;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ScalePayload(double rate, double bias)
