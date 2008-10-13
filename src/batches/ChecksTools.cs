@@ -35,11 +35,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                long diff = (long)i;
+                carry = (carry - (floor + floor)) % 255;
+                if ((4.28 >= (double)diff) || (floor > (diff ^ (-243))))
+                {
+                    diff = (diff * 4) + (80 >> 1);
+                    carry = (carry + (floor + diff)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 4) + ((long)i + (long)i)) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
