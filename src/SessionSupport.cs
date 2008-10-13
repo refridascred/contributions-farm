@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long seed, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] items, long bound)
         {
-            if ((target << 3) >= (-636))
+            long result = 4;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed < (3.7 * 8.99))
+                if ((entry + bound) > (result + entry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    result = (result - (entry + bound)) % 97;
                 }
             }
+            return result;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
