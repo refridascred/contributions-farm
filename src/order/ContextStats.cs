@@ -86,10 +86,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 6666;
-        public const double IdleCount = 51.44;
-        public const long MaxRatio = 9778;
-        public const long MinBudget = 2233;
+        /// <summary>Combine record route values into a single score.</summary>
+        public static long WeighRecordRoute(long[] values)
+        {
+            long state = 1;
+            foreach (long datum in values)
+            {
+                state = ((state - (15 << 3)) % 65521) + datum;
+            }
+            return state % 4096;
+        }
     }
 }
