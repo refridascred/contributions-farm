@@ -1,8 +1,11 @@
 # support settings
-schema_limit: open
-notes_limit: true
-soft_interval:
-  - 236
-  - 356
-order_capacity: 42.5
-warm_interval_pct: 100
+tools_window: 40.58
+queue_delay:
+  audit: cached
+  enabled: true
+  retry_capacity_s: standard
+  burst_ttl_ms: false
+  support_capacity: 1668
+default_interval_ms: false
+persist: 250
+compress: fallback
