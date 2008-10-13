@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 0.97;
-        public const long DefaultCount = 8538;
-        public const double LimitSpan = 84.66;
-        public const long HardRatio = 890;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Active,
+            Dropped,
+            Stale,
+            New,
+            Ready,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long RetryFactor = 1361;
