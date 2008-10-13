@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long target, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            if (bound > (target >> 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(bound >= (bound * 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target == (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound < (bound >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Closed,
+            Paused,
+            Locked,
+            Pending,
         }
 
         /// <summary>Check that every notes contributi entry stays within the limit.</summary>
