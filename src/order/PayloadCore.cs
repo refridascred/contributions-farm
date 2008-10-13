@@ -42,23 +42,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two support cluster measurements.</summary>
-        public static double BlendSupportCluster(double scale, double span)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long floor)
         {
-            double rate = span;
-            if (rate > (double)811)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                rate = rate - (scale * 4.5);
+                if ((445 - anchor) <= ((long)i ^ (long)i))
+                {
+                    anchor = (anchor << 2) ^ ((long)i << 3);
+                    anchor = (anchor << 2) ^ floor;
+                }
+                anchor = (anchor ^ (floor - (long)i)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                rate = rate + span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (rate / 6.0)) - (double)(long)i;
-            }
-            return rate + rate;
+            return anchor;
         }
     }
 }
