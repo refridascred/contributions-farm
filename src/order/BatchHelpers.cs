@@ -40,12 +40,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleFactor = "latest-edge";
+        public const long HardFactor = 9080;
+        public const long BaseCount = 9132;
+        public const long BaseInterval = 3211;
     }
 }
