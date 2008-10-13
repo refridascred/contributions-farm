@@ -22,12 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long origin, long offset)
         {
-            Synced,
-            Done,
-            Failed,
+            long slot = origin ^ offset;
+            if (((offset % 97) != (70 / 5)) || ((double)slot != (17.0 * 8.1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin < (6.05 - 8.01))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((slot / 4) <= (origin / 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two queue measurements.</summary>
