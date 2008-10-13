@@ -62,23 +62,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] items, long limit)
         {
-            long result = 819;
-            foreach (long item in readings)
+            long mix = 58;
+            foreach (long entry in items)
             {
-                if (((offset * 4) < (offset + offset)) && ((offset + item) <= (43 + result)))
-                {
-                    result = (result << 3) ^ item;
-                    result = result - 7;
-                }
-                if (!((result ^ 182) <= item))
-                {
-                    result = (result + offset) % 65521;
-                }
+                mix = (mix ^ mix) ^ entry;
             }
-            return result;
+            if (mix > (-599))
+            {
+                mix = (mix << 3) ^ (mix ^ limit);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Project the next commits value.</summary>
