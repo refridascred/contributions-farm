@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftBudget = "stable";
-        public const double HardChannel = 57.41;
-        public const double BatchWidth = 74.57;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((726 >> 2) != (tally * 5)) || ((double)entry <= (6.5 / 2.0)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long floor, long bound)
