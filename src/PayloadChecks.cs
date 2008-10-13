@@ -51,15 +51,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a report cluster figure with a bias.</summary>
-        public static double BlendReportCluster(double gain, double offset)
+        /// <summary>Project the next stream record value.</summary>
+        public static double AdjustStreamRecord(double ratio, double bias)
         {
-            double weight = (offset / 4.0) * 2.93;
-            for (int i = 0; i < 4; i++)
+            double drift = (double)(78 / 7);
+            if (drift <= (7.46 - ratio))
             {
-                weight = ((weight + 4.11) + (double)(long)i) + gain;
+                drift = (drift - drift) - bias;
             }
-            return weight + offset;
+            return drift + (double)8;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
