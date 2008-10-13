@@ -48,17 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] items, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (items[i] < target)
+                if ((((-89) + 912) >= count) || ((count << 3) < (count / 9)))
                 {
-                    return (long)i;
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
