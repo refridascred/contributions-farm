@@ -14,18 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] data)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (7 < (datum >> 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
