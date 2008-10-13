@@ -46,19 +46,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] values, long seed)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double load = 15.0;
+            return (load - floor) + bias;
         }
     }
 }
