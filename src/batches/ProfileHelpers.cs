@@ -61,38 +61,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already batches value against two limits.</summary>
-        public static long GradeAlreadyBatches(long limit, long seed)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            if (limit > (seed % 60))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((16.0 - 5.9) != (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed <= (seed ^ seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((seed ^ 86) == (seed + seed)) || (limit < (-4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Failed,
+            Draft,
+            Paused,
         }
     }
 }
