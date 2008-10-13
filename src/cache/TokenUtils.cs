@@ -24,15 +24,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] items, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] levels, long seed)
         {
-            long mark = 778;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                mark = ((mark + (item - mark)) % 101) + origin;
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
     }
 }
