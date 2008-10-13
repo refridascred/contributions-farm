@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine cluster buffer values into a single score.</summary>
-        public static long TotalClusterBuffer(long[] samples, long step)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long step)
         {
-            long total = 512;
-            foreach (long cell in samples)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                total = (((total + (total << 1)) % 4096) + cell) + step;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return total % 4096;
+            return carry;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
