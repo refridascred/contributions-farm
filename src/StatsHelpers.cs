@@ -37,17 +37,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheBatches = "local";
+        public const double HardBudget = 32.68;
+        public const long DefaultCount = 8785;
     }
 }
