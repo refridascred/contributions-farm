@@ -28,19 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] levels)
         {
-            long anchor = 782;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                anchor = anchor ^ anchor;
-                if ((value + anchor) > (long)samples.Length)
+                if ((long)levels.Length < (seen % 7))
                 {
-                    anchor = (anchor - (value >> 3)) % 1000;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
