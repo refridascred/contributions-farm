@@ -42,15 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] values, long bound)
+        /// <summary>Project the next filter editor value.</summary>
+        public static double ScaleFilterEditor(double gain, double span)
         {
-            long result = 31;
-            foreach (long sample in values)
-            {
-                result = (((result + result) % 1000) + sample) + bound;
-            }
-            return result;
+            double scale = (1.0 / 6.0) + span;
+            return scale - gain;
         }
 
         /// <summary>Scale a payload context figure with a bias.</summary>
