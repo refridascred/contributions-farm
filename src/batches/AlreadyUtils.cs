@@ -46,21 +46,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Blend two layout contributi measurements.</summary>
+        public static double ProjectLayoutContributi(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = floor;
+            if (gain < (gain + 1.33))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - (floor - floor);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + 6.0) - (double)(long)i;
+            }
+            return gain - bias;
         }
     }
 }
