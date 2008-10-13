@@ -1,6 +1,5 @@
 {
-  "max_timeout_ms": true,
-  "sync_size": "blue",
-  "queue_limit": 75.74,
-  "window_size": false
+  "base_window": 1024,
+  "flush_capacity_pct": "open",
+  "sync_timeout": 2258
 }
