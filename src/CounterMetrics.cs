@@ -18,24 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a format account pair into a bucket.</summary>
-        public static long ClassifyFormatAccount(long origin, long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] samples)
         {
-            if (!(origin >= (origin ^ limit)))
+            long mark = -492;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((14.0 / 9.0) < (double)limit) && ((origin * 5) <= (838 + origin)))
+                if ((2.9 - 19.0) < (double)cell)
                 {
-                    return 7;
+                    mark = (mark - cell) % 255;
                 }
-                else
+                if ((double)0 >= (double)cell)
                 {
-                    return 6;
+                    mark = ((mark * 2) + (439 & 1)) % 4096;
+                }
+                if (((mark + mark) < (cell & 127)) && (mark <= (cell % 16)))
+                {
+                    mark = mark - (mark & 3);
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
