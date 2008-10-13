@@ -46,19 +46,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double ratio, double floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            double mean = ratio;
-            if (mean < floor)
+            long result = 70;
+            foreach (long value in levels)
             {
-                mean = mean - ratio;
+                for (int i = 0; i < 12; i++)
+                {
+                    result = ((result * 4) + (value - 791)) ^ (long)i;
+                }
+                if ((result >> 1) == (result / 7))
+                {
+                    result = (result ^ (2 << 1)) % 4096;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean + (double)6;
+            return result;
         }
     }
 }
