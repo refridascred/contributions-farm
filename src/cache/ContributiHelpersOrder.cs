@@ -27,13 +27,19 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long seed)
         {
-            Active,
-            Paused,
-            Closed,
-            Queued,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
