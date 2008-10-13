@@ -15,19 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
+            long total = 977;
+            foreach (long value in values)
             {
-                if (!((double)carry < (double)(long)i))
+                if (value > (2 + 61))
                 {
-                    carry = (carry * 4) + limit;
+                    total = (total ^ (total ^ total)) % 1000;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            if (total > 791)
+            {
+                total = total ^ (0 + total);
+            }
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
