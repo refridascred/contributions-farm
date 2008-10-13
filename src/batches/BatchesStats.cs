@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] levels, long target)
         {
-            long total = 9;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if ((total >= reading) || ((reading + 59) >= reading))
+                if (reading >= target)
                 {
-                    total = (total + (total & 31)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (total > 8)
-            {
-                total = total + (total % 24);
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Accumulate editor route samples.</summary>
