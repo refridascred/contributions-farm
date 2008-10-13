@@ -12,21 +12,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count token queue pairs that satisfy a relation.</summary>
-        public static long CompareTokenQueueCount(long[] values)
+        /// <summary>Look up the position of a token githubfarm sample.</summary>
+        public static long FindTokenGithubfarmIndex(long[] values, long seed)
         {
-            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] <= seed)
                 {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
