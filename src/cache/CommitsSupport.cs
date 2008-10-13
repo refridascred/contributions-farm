@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] samples)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)entry <= 2.35))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Dropped,
+            Failed,
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
