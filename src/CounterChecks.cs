@@ -77,15 +77,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] data, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] series, long step)
         {
-            long total = 7;
-            foreach (long cell in data)
+            long carry = 659;
+            foreach (long reading in series)
             {
-                total = (((total ^ total) % 255) ^ cell) - seed;
+                carry = (carry ^ step) ^ reading;
             }
-            return total % 65521;
+            if (carry > 5)
+            {
+                carry = carry ^ step;
+            }
+            return carry;
         }
     }
 }
