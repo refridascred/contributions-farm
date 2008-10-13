@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long seed, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] samples)
         {
-            if ((83 << 1) > (step / 9))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed + step) == (step ^ seed)) || (3.0 > (double)seed))
+                if (!(((double)seen <= (19.0 / 3.0)) || ((sample & 3) < (sample % 3))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a record snapshot.</summary>
