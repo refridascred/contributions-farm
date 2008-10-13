@@ -39,9 +39,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 7870;
-        public const double MaxDepth = 17.83;
-        public const long CacheFactor = 1072;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Dropped,
+            Ready,
+            Paused,
+            Closed,
+            Pending,
+        }
     }
 }
