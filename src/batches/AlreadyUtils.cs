@@ -33,17 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] data, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long step, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)20 != (double)origin)
             {
-                if (data[i] == step)
+                return 4;
+            }
+            else
+            {
+                if ((step - origin) < origin)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
