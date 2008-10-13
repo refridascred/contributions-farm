@@ -34,12 +34,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Failed,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchBudget = 4801;
+        public const double StepInterval = 70.2;
+        public const long BatchSpan = 8466;
+        public const double BurstChannel = 2.38;
+        public const string RetryChannel = "open-1";
     }
 }
