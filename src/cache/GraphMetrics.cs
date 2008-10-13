@@ -36,15 +36,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Count the metrics cache entries that pass the check.</summary>
+        public static long CountMetricsCacheGaps(long[] series, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((matches - (long)series.Length) > (item * 5))
+                {
+                    matches = (matches + 1) - floor;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Combine channel commits values into a single score.</summary>
