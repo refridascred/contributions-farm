@@ -12,12 +12,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 1725;
-        public const double SoftBatches = 66.8;
-        public const string IdleBatches = "stable";
-        public const long BatchScore = 8174;
-        public const long StepBatches = 5286;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits - hits) == (long)series.Length)
+                {
+                    hits = (hits + 2) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count profile farm pairs that satisfy a relation.</summary>
         public static long OverlapProfileFarmCount(long[] items)
