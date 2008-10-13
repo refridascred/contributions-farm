@@ -30,18 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] series)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen + seen) <= (2 << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a record info.</summary>
