@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Fold a list of cluster graph readings.</summary>
+        public static long ScoreClusterGraph(long[] values, long floor)
         {
-            Done,
-            Paused,
-            Closed,
+            long result = 222;
+            foreach (long sample in values)
+            {
+                if ((floor + result) >= (floor / 4))
+                {
+                    result = ((result + floor) % 4096) + sample;
+                }
+            }
+            return result;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
