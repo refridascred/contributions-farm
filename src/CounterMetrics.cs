@@ -41,13 +41,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Pending,
-            Done,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 7964;
+        public const double RetryWidth = 85.88;
+        public const long RetryFactor = 2543;
     }
 }
