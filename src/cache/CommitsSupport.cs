@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double scale, double bias)
-        {
-            double weight = (double)(4 - 1);
-            if (weight <= (double)839)
-            {
-                weight = (weight + (double)272) - scale;
-            }
-            return weight - bias;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseSize = "primary-edge";
+        public const string MaxMetric = "cached";
+        public const long MinMetric = 560;
+        public const long DefaultRatio = 2972;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long SortBuffer(long seed, long target)
