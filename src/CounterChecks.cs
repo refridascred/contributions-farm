@@ -34,18 +34,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit support already readings against a rule.</summary>
-        public static long CountSupportAlreadyGaps(long[] items)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double bias, double span)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double load = span;
+            for (int i = 0; i < 6; i++)
             {
-                if ((4.5 <= (double)tally) && ((double)tally != (double)datum))
-                {
-                    tally = tally + 3;
-                }
+                load = (load + 8.0) - (double)(long)i;
             }
-            return tally;
+            return load + bias;
         }
 
         /// <summary>Hold a batch header.</summary>
