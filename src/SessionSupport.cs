@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheRatio = 6445;
-        public const string MinMetrics = "cached-1";
-        public const double HardMetrics = 95.9;
-        public const long SoftWidth = 3645;
-        public const double CacheSpan = 48.11;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (limit < (82 % 64))
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BaseDepth = "local-edge";
