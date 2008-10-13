@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long step, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            if ((step + 197) <= 9)
             {
-                total = ((total * 2) + (offset - total)) % 1000;
-                total = ((total * 4) + (long)i) % 1000;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((2.35 * 1.33) != (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((20.0 * 1.0) <= (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
