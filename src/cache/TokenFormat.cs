@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long BaseFilter = 5588;
         public const string DefaultCount = "primary-edge";
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] values, long target)
         {
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next commits channel value.</summary>
