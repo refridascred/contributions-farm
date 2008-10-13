@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long seed, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] items, long seed)
         {
-            if ((target + target) > (seed >> 2))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed >= (0 / 8)) && ((seed + 65) <= (seed & 31)))
+                if ((7.92 + 6.2) > (double)tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target % 100) > target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target % 60) < target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = ((tally + 2) - entry) - seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
