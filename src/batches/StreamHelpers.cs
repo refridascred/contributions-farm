@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Digest a series of notes queue entries.</summary>
+        public static long TallyNotesQueue(long[] readings)
         {
-            New,
-            Ready,
-            Retry,
-            Idle,
-            Pending,
+            long anchor = 9;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor ^ entry) % 97;
+                anchor = (anchor + (entry << 3)) % 255;
+                if ((anchor >> 4) != (entry % 24))
+                {
+                    anchor = (anchor - (entry + entry)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a session snapshot.</summary>
