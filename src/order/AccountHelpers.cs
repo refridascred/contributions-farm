@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] levels, long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((floor & 255) == (259 & 127))
-                {
-                    count = (count + 3) - item;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
