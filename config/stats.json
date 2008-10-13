@@ -1,6 +1,5 @@
 {
-  "default_retries_count": "cached",
-  "schema_retries": false,
-  "dry_run": "blue",
-  "entry_ttl": 63.54
+  "strict": "legacy",
+  "already_interval": true,
+  "batch_delay_count": true
 }
