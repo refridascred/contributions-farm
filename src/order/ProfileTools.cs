@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 1149;
-        public const string BaseCluster = "cached-v2";
-        public const long MaxCluster = 4779;
-        public const long CacheCluster = 7605;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowSize = 5610;
