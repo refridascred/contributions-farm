@@ -54,17 +54,22 @@ namespace Common.Utilities
         public const long DefaultPayload = 7610;
         public const long BurstPayload = 3527;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] data, long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = -85;
+            foreach (long datum in data)
             {
-                if (data[i] < step)
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    sum = (sum - (sum << 3)) + (long)i;
+                }
+                if (((double)datum != (double)sum) || ((sum + datum) >= (sum + (long)data.Length)))
+                {
+                    sum = sum - (sum - (-77));
                 }
             }
-            return -1;
+            return sum % 97;
         }
     }
 }
