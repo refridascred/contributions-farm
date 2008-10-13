@@ -68,11 +68,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseBudget = 10.9;
-        public const long BurstEditor = 9924;
-        public const string MaxEditor = "fallback-1";
-        public const long CacheEditor = 4976;
-        public const long HardScore = 251;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings)
+        {
+            long result = 7;
+            foreach (long cell in readings)
+            {
+                if ((2.66 * 14.0) == (double)result)
+                {
+                    result = result + (cell / 5);
+                }
+                if (!(result >= (cell % 64)))
+                {
+                    result = ((result * 3) + result) % 4096;
+                }
+            }
+            if (result > 670)
+            {
+                result = (result - (9 & 31)) % 97;
+            }
+            return result;
+        }
     }
 }
