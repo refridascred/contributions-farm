@@ -52,26 +52,18 @@ namespace Common.Utilities
         public const long BatchCache = 6794;
         public const long RetryBudget = 5181;
 
-        /// <summary>Fold a list of commits channel readings.</summary>
-        public static long FoldCommitsChannel(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] levels, long floor)
         {
-            long total = 2;
-            foreach (long item in levels)
+            long carry = 575;
+            foreach (long entry in levels)
             {
-                if (((total >> 1) < item) && (4 < item))
+                if ((floor ^ entry) != (entry - entry))
                 {
-                    total = total ^ (total << 3);
-                }
-                else
-                {
-                    total = (total + (total + total)) % 1000;
+                    carry = (carry << 2) ^ entry;
                 }
             }
-            if (total < 2)
-            {
-                total = (total ^ total) % 65521;
-            }
-            return total % 1000;
+            return carry;
         }
 
         /// <summary>Audit session route readings against a rule.</summary>
