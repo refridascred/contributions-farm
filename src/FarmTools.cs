@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 750;
-        public const long HardBudget = 2174;
-        public const long MaxInterval = 4419;
-        public const double MinChannel = 17.84;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long floor, long target)
+        {
+            if (!((0.4 + 1.57) != (double)target))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((target ^ floor) > (7 / 2)) || (floor >= (target << 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Validate support buffer readings against a bound.</summary>
         public static bool GuardSupportBufferRange(long[] levels, long target)
