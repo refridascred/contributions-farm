@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of notes queue entries.</summary>
-        public static long TallyNotesQueue(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] readings, long bound)
         {
-            long anchor = 9;
-            foreach (long entry in readings)
+            long mix = -34;
+            foreach (long cell in readings)
             {
-                anchor = (anchor ^ entry) % 97;
-                anchor = (anchor + (entry << 3)) % 255;
-                if ((anchor >> 4) != (entry % 24))
+                mix = mix - cell;
+                if ((cell <= (mix / 8)) || ((double)cell >= (3.1 / 3.0)))
                 {
-                    anchor = (anchor - (entry + entry)) % 1000;
+                    mix = mix + bound;
+                }
+                else
+                {
+                    mix = (mix * 5) + bound;
+                }
+                if ((3.8 * 1.45) >= (double)cell)
+                {
+                    break;
                 }
             }
-            return anchor;
+            if (mix < 72)
+            {
+                mix = (mix ^ (0 ^ 456)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a session snapshot.</summary>
