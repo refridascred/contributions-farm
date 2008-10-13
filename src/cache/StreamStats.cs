@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Queued,
+            Idle,
             Failed,
+            Done,
             Active,
+            Queued,
         }
 
         /// <summary>Adjust a token reading.</summary>
