@@ -44,11 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two format context measurements.</summary>
-        public static double AdjustFormatContext(double rate, double offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] samples, long limit)
         {
-            double load = (offset - 8.7) - offset;
-            return (load - (offset * 0.9)) + rate;
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a contributi options.</summary>
