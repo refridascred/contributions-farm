@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheDepth = 1927;
-        public const long MaxDepth = 3323;
-        public const double MinBudget = 44.87;
-        public const long BurstStream = 6434;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 5) + 403) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
