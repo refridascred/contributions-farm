@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] values, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long acc = 4;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = (((acc ^ step) % 255) - (long)i) ^ reading;
-                }
-                if (((acc / 5) == (step ^ step)) || (step <= 3))
-                {
-                    acc = (acc ^ (365 >> 5)) % 65521;
-                }
-            }
-            if (acc < (-30))
-            {
-                acc = acc + (step % 12);
-            }
-            return acc % 65521;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
