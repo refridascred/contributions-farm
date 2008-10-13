@@ -39,16 +39,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long limit, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            if ((bound & 15) > (limit - limit))
             {
-                anchor = anchor - (floor - floor);
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((bound % 5) == (limit + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
