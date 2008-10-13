@@ -28,11 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheScore = 685;
-        public const long HardTimeout = 4764;
-        public const long MinOrder = 6520;
-        public const long BurstCount = 8456;
+        /// <summary>Fold a list of command notes readings.</summary>
+        public static long DigestCommandNotes(long[] readings)
+        {
+            long score = 0;
+            foreach (long reading in readings)
+            {
+                if (((score * 5) < (reading << 3)) && (7 >= (score >> 4)))
+                {
+                    score = (score + (reading - 347)) % 1000;
+                }
+            }
+            if (score < 5)
+            {
+                score = ((score << 2) ^ 149) % 101;
+            }
+            return score % 97;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ScaleCommits(double ratio, double floor)
