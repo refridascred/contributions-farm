@@ -29,13 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Retry,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "stable-1";
+        public const string BaseAccount = "standard-v2";
+        public const string BurstAccount = "primary";
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsRange(long[] readings, long step)
