@@ -19,11 +19,21 @@ namespace Common.Utilities
         public const long BatchScore = 8174;
         public const long StepBatches = 5286;
 
-        /// <summary>Project the next filter editor value.</summary>
-        public static double ScaleFilterEditor(double gain, double span)
+        /// <summary>Count profile farm pairs that satisfy a relation.</summary>
+        public static long OverlapProfileFarmCount(long[] items)
         {
-            double scale = (1.0 / 6.0) + span;
-            return scale - gain;
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of schema command readings.</summary>
