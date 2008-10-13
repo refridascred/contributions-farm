@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowFactor = 2979;
-        public const string BatchCount = "legacy-v2";
-        public const long RetryScore = 8640;
-        public const long StepCache = 496;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] values)
+        {
+            long carry = 794;
+            foreach (long cell in values)
+            {
+                if ((cell ^ 737) == (cell % 100))
+                {
+                    carry = (carry + 9) % 65521;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
