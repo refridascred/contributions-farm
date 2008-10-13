@@ -1,8 +1,20 @@
 # githubfarm settings
-commits_retries: 3230
-batches_limit: legacy
-strict:
-  - eu-west
-  - edge
-retry_capacity_ms: standard
-burst_ratio_pct: 500
+sync_limit_count: eu-west
+metric_retries: 69.16
+sync_retries_s:
+  record_timeout: 1024
+  dry_run: 6329
+  default_interval:
+    stats_limit: edge
+    hard_size: true
+    cache_timeout: latest
+    readonly: 100
+    warm_delay_ms: false
+  hard_window: false
+  default_interval_s: 95.32
+  strict:
+    - stable
+    - cached
+    - fallback
+warm_ratio_s: false
+min_depth: standard
