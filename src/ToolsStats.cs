@@ -41,24 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel format value against two limits.</summary>
-        public static long GradeChannelFormat(long step, long step2)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] items, long limit)
         {
-            if (69 < step2)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)step < (9.82 - 12.0)) || ((step + step2) >= step2))
+                if (items[i] > limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batches stats.</summary>
