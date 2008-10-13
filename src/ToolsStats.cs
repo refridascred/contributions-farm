@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] levels, long target)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public double Level { get; set; }
-            public bool Token { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many report editor samples are out of range.</summary>
