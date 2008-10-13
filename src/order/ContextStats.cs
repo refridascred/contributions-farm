@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
