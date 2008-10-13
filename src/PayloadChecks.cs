@@ -18,23 +18,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Match up channel layout samples.</summary>
+        public static long PairChannelLayoutCount(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(long)i <= (1.3 / 8.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    state = ((state * 4) + state) % 97;
-                }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
