@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] items)
         {
-            long carry = 638;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (item < (item - carry))
+                if (!(matches < (cell & 15)) || (matches < (cell ^ matches)))
                 {
-                    carry = (carry - (item + 19)) % 255;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
