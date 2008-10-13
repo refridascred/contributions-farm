@@ -30,11 +30,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowInterval = 6861;
-        public const double DefaultBudget = 28.57;
-        public const long BatchMetric = 1678;
-        public const string WindowFactor = "open-1";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseCount = "alpha-edge";
+        public const long IdleChannel = 5336;
+        public const long WindowSize = 7253;
 
         /// <summary>Count the checks stream entries that pass the check.</summary>
         public static long AuditChecksStreamMatches(long[] series)
