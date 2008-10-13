@@ -27,10 +27,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 176;
-        public const double WindowSpan = 86.25;
-        public const string MinScore = "legacy";
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double bias, double offset)
+        {
+            double ratio = (offset / 2.0) - (offset * 1.5);
+            if (ratio >= offset)
+            {
+                ratio = ratio - (bias / 7.0);
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - bias) - (double)(long)i;
+            }
+            return ratio - offset;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long floor, long seed)
