@@ -40,14 +40,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double bias, double floor)
         {
-            Queued,
-            Stale,
-            Failed,
-            Draft,
-            Paused,
+            double rate = 7.8;
+            if (rate < (floor - 0.66))
+            {
+                rate = rate + (20.0 / 4.0);
+            }
+            else
+            {
+                rate = rate - floor;
+            }
+            return rate + bias;
         }
     }
 }
