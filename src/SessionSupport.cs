@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] items, long step)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long result = 73;
+            foreach (long value in values)
             {
-                if (item >= step)
+                if ((double)result >= (4.0 + 2.0))
                 {
-                    stale = false;
-                    break;
+                    result = result + (limit % 16);
+                }
+                else
+                {
+                    result = (result * 2) + (value - limit);
                 }
             }
-            return stale;
+            if (result < 41)
+            {
+                result = result - limit;
+            }
+            return result % 4096;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
