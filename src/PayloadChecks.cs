@@ -57,16 +57,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the account route series from a seed.</summary>
-        public static long SeriesAccountRoute(long seed)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state + (seed % 24)) % 101;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
