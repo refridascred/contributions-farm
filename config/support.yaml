@@ -1,21 +1,4 @@
 # support settings
-retry_delay_s: fallback
-idle_retries_pct:
-  persist: legacy
-  default_ttl: legacy
-  batch_size_pct:
-    soft_delay_pct: legacy
-    audit: open
-    retry_interval: 597
-  warm_limit:
-    - latest
-    - local
-    - fallback
-poll_depth_ms: fallback
-default_ttl: 64.69
-idle_timeout_ms: legacy
-max_ttl_count:
-  - 431
-  - 325
-  - 454
-  - 207
+graph_interval: eu-west
+max_window_ms: 34.14
+readonly: 4326
