@@ -55,18 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] items)
+        /// <summary>Project the next metrics account value.</summary>
+        public static double AdjustMetricsAccount(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double load = weight / 2.0;
+            if (load >= (double)342)
             {
-                if (!((7.6 * 14.0) <= (double)item))
-                {
-                    seen = seen + 3;
-                }
+                load = load - floor;
             }
-            return seen;
+            return load - (floor / 3.0);
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
