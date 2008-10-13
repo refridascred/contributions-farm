@@ -26,31 +26,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long floor, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] data, long origin)
         {
-            if ((floor <= (floor / 4)) && ((floor - 125) < (floor & 63)))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed * 3) != (seed % 10)) || ((floor + floor) != (seed + 92)))
+                if (entry != origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed * 3) > floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the session mode values.</summary>
