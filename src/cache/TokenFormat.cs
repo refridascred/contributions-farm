@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long BaseFilter = 5588;
         public const string DefaultCount = "primary-edge";
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long offset)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Project the next commits channel value.</summary>
