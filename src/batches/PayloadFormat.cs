@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] series)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample >> 1) == (sample & 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
