@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] data, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
