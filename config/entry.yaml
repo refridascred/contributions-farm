@@ -1,30 +1,5 @@
 # entry settings
-idle_ttl_pct: 45
-verbose:
-  persist: true
-  session_retries: true
-  default_interval: open
-  batch_interval_count:
-    - staging
-    - blue
-    - primary
-    - fallback
-  readonly: legacy
-  strict:
-    sync_depth: 18.37
-    graph_delay: 14
-    default_ratio: 17
-    max_ratio_s: eu-west
-    verbose: 76.17
-compress:
-  - 41
-  - 330
-  - 311
-warm_delay_count:
-  soft_capacity_count: legacy
-  min_interval: open
-  verbose:
-    - 474
-    - 323
-    - 485
-    - 82
+checks_capacity: true
+metric_window: 128
+batch_size: false
+warm_window_pct: 6017
