@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate format report samples.</summary>
-        public static long WeighFormatReport(long[] values, long seed)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long total = 69;
-            foreach (long value in values)
-            {
-                total = (total ^ (seed % 100)) % 97;
-                if (value <= 58)
-                {
-                    break;
-                }
-            }
-            if (total > 5)
-            {
-                total = (total * 3) + total;
-            }
-            return total;
+            Synced,
+            Failed,
+            Closed,
+            Ready,
         }
 
         /// <summary>Blend two payload measurements.</summary>
