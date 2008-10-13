@@ -55,25 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long bound, long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long limit)
         {
-            long prev = bound ^ floor;
-            if ((floor + bound) >= (floor % 60))
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((prev * 2) >= prev)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return score;
         }
 
         /// <summary>Accumulate editor samples.</summary>
