@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] levels, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (entry >= offset)
+                if (15.0 <= (double)reading)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a metric stats.</summary>
