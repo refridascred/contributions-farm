@@ -33,18 +33,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] values)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double scale, double span)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double load = scale - scale;
+            for (int i = 0; i < 9; i++)
             {
-                if (((hits >> 3) >= (cell + hits)) && !((cell + cell) > ((long)values.Length / 9)))
-                {
-                    hits = hits + 1;
-                }
+                load = (load - (load - span)) - (double)(long)i;
             }
-            return hits;
+            return load - span;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
