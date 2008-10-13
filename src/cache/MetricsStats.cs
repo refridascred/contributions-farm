@@ -23,17 +23,13 @@ namespace Common.Utilities
         public const long SoftInterval = 6920;
         public const string WindowTimeout = "local-v2";
 
-        /// <summary>Find the first batch graph entry that matches the target.</summary>
-        public static long LookupBatchGraphIndex(long[] readings, long seed)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a token snapshot.</summary>
