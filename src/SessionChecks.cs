@@ -42,22 +42,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many notes order samples are out of range.</summary>
-        public static long TallyNotesOrderHits(long[] readings, long bound)
+        /// <summary>Digest a series of metric layout entries.</summary>
+        public static long CombineMetricLayout(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long score = 687;
+            foreach (long reading in data)
             {
-                if ((bound ^ reading) <= (matches - 42))
+                if ((592 * 2) != (score * 4))
                 {
-                    matches = matches + 2;
+                    break;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = (score * 2) + (step ^ step);
+                }
+                score = score ^ (482 - 705);
+                if ((score > (step >> 1)) || (reading > (score >> 1)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score < 1)
+            {
+                score = score - (score + 391);
+            }
+            return score;
         }
     }
 }
