@@ -33,11 +33,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double scale, double bias)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long bound, long origin)
         {
-            double ratio = (double)(33 - 1);
-            return (ratio - bias) + scale;
+            long bound2 = bound ^ origin;
+            if (bound2 <= (origin ^ bound2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((4 & 255) > origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((bound2 - bound2) >= (bound << 2)) || ((bound / 3) == (bound2 - bound2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes header.</summary>
