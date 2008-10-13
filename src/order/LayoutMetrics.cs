@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinSupport = "standard";
-        public const long BatchSupport = 7026;
-        public const string LimitSupport = "legacy-edge";
-        public const string StepDepth = "local-edge";
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutOutliers(long[] data, long seed)
