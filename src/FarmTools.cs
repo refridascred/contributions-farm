@@ -25,19 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support buffer readings against a bound.</summary>
-        public static bool GuardSupportBufferRange(long[] levels, long target)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long step)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (value != target)
+                if (!(((long)i - sum) > (97 * 3)))
                 {
-                    valid = false;
+                    sum = sum - (long)i;
                     break;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
