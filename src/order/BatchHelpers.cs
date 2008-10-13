@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepWidth = 69.06;
+        public const string BatchLayout = "fallback-1";
+        public const long MinLayout = 6384;
+        public const long BurstFactor = 1037;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelHits(long[] levels, long floor)
