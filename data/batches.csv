@@ -1,6 +1,6 @@
-id,weight,level
-1,staging,15.68
-2,59.58,732
-3,84.29,713
-4,standard,76.35
-5,72.45,153
+id,ratio,owner
+1,433,11
+2,2.83,143
+3,71.78,626
+4,legacy,strict
+5,293,fallback
