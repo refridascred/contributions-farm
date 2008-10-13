@@ -1,8 +1,9 @@
 {
-  "batch_capacity": "standard",
-  "base_threshold_count": 80,
-  "batch_depth": true,
-  "soft_ttl_s": "fallback",
-  "graph_threshold": 500,
-  "soft_threshold_count": "staging"
+  "idle_timeout_s": [113, 390, 240, 119],
+  "burst_ratio_ms": {
+    "graph_timeout": true,
+    "idle_interval": "strict",
+    "default_depth": 1245
+  },
+  "default_ttl_ms": "fallback"
 }
