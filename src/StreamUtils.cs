@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -716;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)reading == (9.4 * 7.2))
                 {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state * 3) + (state + reading)) % 97;
                 }
             }
-            return tally;
+            if (state > 52)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Describe the profile level values.</summary>
