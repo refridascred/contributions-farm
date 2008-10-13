@@ -1,5 +1,13 @@
 {
-  "poll_timeout": ["green", "staging"],
-  "dry_run": 70,
-  "already_limit": 39.07
+  "retry_size": "staging",
+  "compress": 1612,
+  "token_ratio": {
+    "min_interval": "cached",
+    "strict": "green",
+    "warm_ttl_s": "latest",
+    "checks_threshold": "staging",
+    "sync_depth_ms": "blue"
+  },
+  "retry_timeout": false,
+  "channel_window": "cached"
 }
