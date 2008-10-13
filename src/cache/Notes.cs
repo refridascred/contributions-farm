@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] samples)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((item + item) <= (683 - item)) || ((tally <= ((-26) << 3)) && ((2.2 + 4.0) <= (double)tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Dropped,
+            Pending,
+            Paused,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
