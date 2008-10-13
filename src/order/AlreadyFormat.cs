@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long state = 16;
-            foreach (long item in samples)
-            {
-                if ((755 & 63) >= (state - state))
-                {
-                    state = (state + (state & 3)) ^ item;
-                }
-            }
-            return state % 4096;
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
