@@ -1,7 +1,5 @@
 {
-  "warm_interval_s": 100,
-  "metric_ratio": ["legacy", "fallback", "blue"],
-  "hard_limit_ms": 90.67,
-  "idle_ttl": 59,
-  "base_delay_count": 5272
+  "flush_timeout_pct": [347, 25, 27, 246],
+  "layout_window": "local",
+  "strict": 64.22
 }
