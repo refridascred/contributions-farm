@@ -1,7 +1,5 @@
 {
-  "warm_capacity_count": [297, 150],
-  "dry_run": 12.21,
-  "retry_retries": false,
-  "account_delay": 308,
-  "poll_ratio": ["legacy", "fallback", "blue", "blue"]
+  "soft_size_pct": "local",
+  "notes_ttl": ["cached", "primary"],
+  "strict": true
 }
