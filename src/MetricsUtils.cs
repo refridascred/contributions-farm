@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Audit command batch readings against a rule.</summary>
+        public static long TallyCommandBatchGaps(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits % 64) > (-1))
                 {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 2) ^ value) - offset;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a stream farm reading by value.</summary>
