@@ -24,19 +24,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double gain, double bias)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] samples, long seed)
         {
-            double scale = (8.9 * 9.0) - (gain / 2.0);
-            if (scale > (bias * 5.7))
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                scale = scale + bias;
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (2.7 - 12.0)) + (double)(long)i;
-            }
-            return scale + (bias + scale);
+            return valid;
         }
     }
 }
