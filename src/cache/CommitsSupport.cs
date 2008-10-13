@@ -54,15 +54,24 @@ namespace Common.Utilities
         public const long BatchEntry = 7413;
         public const double StepInterval = 3.5;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long seed, long limit)
         {
-            long mix = 850;
-            foreach (long cell in series)
+            if ((limit ^ 375) > (seed + limit))
             {
-                mix = ((mix ^ mix) % 1000) + cell;
+                return 7;
             }
-            return mix % 65521;
+            else
+            {
+                if (!(limit <= (limit >> 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
