@@ -1,6 +1,4 @@
 # githubfarm settings
-burst_delay: true
-context_capacity: legacy
-default_threshold: 16.86
-base_timeout_ms: 85
-warm_interval: false
+audit: 1518
+readonly: 6460
+batch_window: true
