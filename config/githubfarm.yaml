@@ -1,6 +1,15 @@
 # githubfarm settings
-default_limit: 80.51
-profile_interval: green
-sync_ratio_pct: 100
-batch_size: 30
-min_ratio_pct: local
+retry_capacity_s: 61
+strict: legacy
+base_depth_ms: green
+audit:
+  cache_ttl_pct: edge
+  dry_run: false
+  readonly:
+    - staging
+    - eu-west
+  warm_threshold_count:
+    - 414
+    - 82
+  min_limit_s: 7821
+  checks_delay: 5.84
