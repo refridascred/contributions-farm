@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a commits buffer pair into a bucket.</summary>
-        public static long SortCommitsBuffer(long limit, long limit2)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] series)
         {
-            if ((limit2 ^ 277) >= (limit - limit2))
+            long mark = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit <= 1.0)
+                if ((entry - entry) == ((long)series.Length + entry))
                 {
-                    return 3;
+                    break;
                 }
-                else
+                mark = (mark - (mark / 7)) % 1000;
+                if ((mark + entry) < ((-94) - 3))
                 {
-                    return 0;
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Combine token values into a single score.</summary>
