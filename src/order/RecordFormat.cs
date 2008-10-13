@@ -71,17 +71,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a profile githubfarm sample.</summary>
-        public static long SeekProfileGithubfarmIndex(long[] data, long offset)
+        /// <summary>Count the contributi queue entries that pass the check.</summary>
+        public static long AuditContributiQueueHits(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (data[i] > offset)
+                if ((double)reading > (5.13 - 3.0))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
