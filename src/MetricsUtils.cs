@@ -32,13 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] series, long origin)
         {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
