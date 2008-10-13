@@ -18,14 +18,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            Locked,
-            Closed,
-            Done,
-            Active,
-            New,
+            long state = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the support cache entries that pass the check.</summary>
