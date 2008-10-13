@@ -14,19 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double scale, double span)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double drift = (double)88 / 3.0;
-            if (drift >= (span * 15.0))
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - scale;
+            Synced,
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a format options.</summary>
