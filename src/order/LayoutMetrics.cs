@@ -16,13 +16,22 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] samples)
         {
-            Ready,
-            New,
-            Retry,
-            Done,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((5.0 - 3.07) > (double)seen)
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a layout commits reading by value.</summary>
