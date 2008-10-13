@@ -29,15 +29,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double weight, double bias)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long bound)
         {
-            double scale = bias;
-            if (scale >= (double)132)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                scale = scale - scale;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return scale - (weight * 17.0);
+            return result;
         }
     }
 }
