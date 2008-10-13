@@ -51,14 +51,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Validate metrics window readings against a bound.</summary>
+        public static bool VerifyMetricsWindowBounds(long[] series, long target)
         {
-            Ready,
-            Done,
-            New,
-            Retry,
-            Closed,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a batches summary.</summary>
