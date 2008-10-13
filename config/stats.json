@@ -1,8 +1,6 @@
 {
-  "warm_ratio": "edge",
-  "session_timeout": "blue",
-  "support_size": "green",
-  "editor_interval": 500,
-  "poll_delay_pct": true,
-  "warm_limit_count": 82
+  "warm_ttl_count": [17, 66, 32],
+  "default_ttl_count": false,
+  "persist": 3650,
+  "default_delay_ms": "strict"
 }
