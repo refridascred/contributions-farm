@@ -18,14 +18,31 @@ namespace Common.Utilities
         public const double WindowSpan = 86.25;
         public const string MinScore = "legacy";
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long floor, long seed)
         {
-            Done,
-            Closed,
-            Active,
-            Ready,
-            Pending,
+            if ((floor <= (floor / 4)) && ((floor - 125) < (floor & 63)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed * 3) != (seed % 10)) || ((floor + floor) != (seed + 92)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed * 3) > floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
