@@ -40,16 +40,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series)
         {
-            long total = 1;
-            foreach (long sample in values)
+            long mark = 1;
+            foreach (long cell in series)
             {
-                total = (((total * 4) + seed) % 1000) + sample;
-                total = ((total * 2) + total) % 4096;
+                mark = ((mark + (mark + mark)) % 4096) - cell;
+                mark = mark ^ (mark % 3);
             }
-            return total;
+            if (mark > 5)
+            {
+                mark = (mark + (mark + mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate batches context samples.</summary>
