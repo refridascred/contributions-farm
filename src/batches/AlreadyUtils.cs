@@ -40,24 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long bound, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            if (limit > (limit ^ limit))
+            long total = -781;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.4 >= (double)bound) || ((1.8 * 3.48) <= (double)bound))
+                if ((double)81 != (double)total)
                 {
-                    return 5;
+                    total = ((total * 3) + reading) % 1000;
                 }
                 else
                 {
-                    return 7;
+                    total = (total + (reading & 31)) % 97;
                 }
             }
+            if (total < (-324))
+            {
+                total = total ^ (-308);
+            }
+            return total;
         }
 
         /// <summary>Accumulate commits samples.</summary>
