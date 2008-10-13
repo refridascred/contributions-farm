@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Grade a metric filter value against two limits.</summary>
+        public static long ClassifyMetricFilter(long step, long floor)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            long cur = step ^ floor;
+            if ((cur - cur) == (39 * 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor - cur) >= cur) && ((36 & 63) >= (floor ^ 0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a contributi record.</summary>
