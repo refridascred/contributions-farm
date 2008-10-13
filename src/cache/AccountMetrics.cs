@@ -54,12 +54,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "open";
-        public const string WindowCount = "local";
-        public const long CacheChannel = 2741;
-        public const string WindowDepth = "open-edge";
-        public const double RetryWidth = 43.8;
+        /// <summary>Compare every pair of support graph readings.</summary>
+        public static long CompareSupportGraphCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of account support entries.</summary>
         public static long TallyAccountSupport(long[] data)
