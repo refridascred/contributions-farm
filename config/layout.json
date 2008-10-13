@@ -1,15 +1,8 @@
 {
-  "cache_ratio_s": 2886,
-  "burst_delay_s": {
-    "record_window": 14,
-    "persist": {
-      "burst_size_ms": "eu-west",
-      "burst_capacity": "eu-west",
-      "max_size_count": 9744
-    },
-    "burst_interval_pct": 8803,
-    "base_ratio": [50, 268, 30],
-    "layout_ttl": false
-  },
-  "poll_ratio_count": 8896
+  "base_retries_s": 6336,
+  "cache_delay": 1024,
+  "flush_delay_ms": "open",
+  "cluster_interval": "edge",
+  "retry_capacity_pct": "green",
+  "idle_depth_ms": "open"
 }
