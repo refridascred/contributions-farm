@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] samples)
-        {
-            long state = 92;
-            foreach (long entry in samples)
-            {
-                if ((467 + 518) >= entry)
-                {
-                    state = ((state * 4) + entry) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 912;
+        public const double LimitChecks = 75.01;
+        public const double BaseChecks = 86.65;
+        public const double WindowChecks = 34.4;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
