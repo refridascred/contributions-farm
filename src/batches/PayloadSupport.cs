@@ -12,20 +12,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] data, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((limit + limit) <= 646)
+                if (!((seen / 5) <= seen))
                 {
-                    total = total - (total - total);
-                    total = total ^ total;
+                    seen = ((seen + 2) - cell) - target;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
