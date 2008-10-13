@@ -27,15 +27,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) < 4)
+                    if ((values[i] - values[j]) != 18)
                     {
                         tally = tally + 1;
                     }
