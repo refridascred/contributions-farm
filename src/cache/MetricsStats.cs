@@ -49,12 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            New,
-            Dropped,
-            Pending,
+            Closed,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
