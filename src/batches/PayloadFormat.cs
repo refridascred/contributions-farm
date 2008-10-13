@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryWidth = 1758;
-        public const long BatchFactor = 5441;
-        public const double BatchRatio = 77.57;
-        public const long DefaultCount = 5170;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] data)
+        {
+            long mark = 61;
+            foreach (long item in data)
+            {
+                if ((mark * 3) > item)
+                {
+                    mark = ((mark << 2) ^ ((-6) ^ mark)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 2) + ((-68) % 8)) % 97;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double BlendQueue(double weight, double bias)
