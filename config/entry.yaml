@@ -1,7 +1,7 @@
 # entry settings
-idle_threshold_ms: 250
-profile_threshold: true
-checks_window: stable
-hard_capacity:
-  - edge
-  - open
+buffer_size: open
+flush_interval_pct: 82
+route_interval: 82
+payload_delay: edge
+hard_interval: 74.03
+batch_threshold_pct: 1
