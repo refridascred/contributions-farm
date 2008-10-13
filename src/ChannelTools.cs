@@ -24,11 +24,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long limit)
         {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
