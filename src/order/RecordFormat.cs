@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank entry counter input into a small class.</summary>
-        public static long ClassifyEntryCounter(long offset, long bound)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long limit)
         {
-            long bound2 = offset - bound;
-            if ((6.14 * 7.1) <= (double)offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ bound) != (89 - offset))
+                if (items[i] <= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset & 1) < bound2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
