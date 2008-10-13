@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double scale, double offset)
-        {
-            double rate = (double)(939 + 55);
-            if (rate < offset)
-            {
-                rate = (rate - rate) - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate + (offset - offset);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 419;
+        public const long MaxChannel = 2915;
+        public const long SoftChannel = 221;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ScalePayload(double rate, double bias)
