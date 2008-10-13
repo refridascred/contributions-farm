@@ -61,18 +61,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] data)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (tally <= (entry & 7))
+                if ((data[i] < limit) && ((data[i] % 2) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
