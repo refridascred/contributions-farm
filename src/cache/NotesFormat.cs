@@ -14,20 +14,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next queue graph value from a seed.</summary>
-        public static long StepQueueGraph(long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((12.0 / 3.0) < (double)target))
-                {
-                    state = ((state << 2) ^ state) % 65521;
-                    state = (state ^ target) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Done,
+            Idle,
+            Synced,
+            Failed,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
