@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Synced,
-            Failed,
-            Closed,
-            Ready,
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
