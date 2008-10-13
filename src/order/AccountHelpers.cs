@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftToken = "local-edge";
+        public const long MinToken = 1655;
+        public const double RetryScore = 86.62;
 
         /// <summary>Combine counter report values into a single score.</summary>
         public static long ScoreCounterReport(long[] values)
