@@ -61,22 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 19.8;
+        public const long HardInterval = 5391;
+        public const long MinLevel = 216;
+        public const string MaxMetric = "stable-edge";
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenMatches(long[] levels)
