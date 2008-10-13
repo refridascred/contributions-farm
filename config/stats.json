@@ -1,6 +1,12 @@
 {
-  "already_ttl": false,
-  "githubfarm_delay": 54,
-  "max_interval_count": ["strict", "blue", "cached", "standard"],
-  "metrics_threshold": "cached"
+  "max_window_s": 100,
+  "report_ratio": false,
+  "soft_depth_pct": {
+    "graph_retries": ["local", "green"],
+    "record_capacity": false,
+    "warm_depth": [407, 140, 48],
+    "max_window_s": "cached",
+    "min_threshold": 49
+  },
+  "idle_size_count": 10.24
 }
