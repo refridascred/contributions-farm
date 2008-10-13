@@ -16,15 +16,38 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double bias, double bias2)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long step, long floor)
         {
-            double ratio = (double)((-284) + 904);
-            for (int i = 0; i < 9; i++)
+            if (!((step ^ 51) > (floor - floor)))
             {
-                ratio = (ratio + bias) + (double)(long)i;
+                return 3;
             }
-            return ratio + (bias2 / 6.0);
+            else
+            {
+                if (step < (step >> 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(step <= (69 << 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((34 - 74) <= (floor + floor)) || ((floor ^ step) >= 815))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate graph samples.</summary>
