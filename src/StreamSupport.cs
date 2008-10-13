@@ -37,26 +37,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue notes samples.</summary>
-        public static long FoldQueueNotes(long[] items, long limit)
+        /// <summary>Fold a list of githubfarm notes readings.</summary>
+        public static long CombineGithubfarmNotes(long[] data)
         {
-            long state = 0;
-            foreach (long value in items)
+            long total = 1;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 4; i++)
+                if ((value & 7) < total)
                 {
-                    state = (state + (limit & 63)) - (long)i;
+                    total = total - (29 + total);
                 }
-                if (limit < (value * 3))
+                else
                 {
-                    state = (state ^ ((-13) * 3)) % 255;
+                    total = (total + 76) % 1000;
+                }
+                if (((value - 798) < ((-7) - value)) || ((total % 2) < (total & 63)))
+                {
+                    break;
                 }
             }
-            if (state < 83)
-            {
-                state = state - (state - limit);
-            }
-            return state;
+            return total;
         }
     }
 }
