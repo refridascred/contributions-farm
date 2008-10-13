@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long bound, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] items)
         {
-            long next = bound - limit;
-            if (limit <= (next + next))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit == (9.55 / 8.0))
+                if (!(cell <= (count ^ cell)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound - next) >= (next ^ next))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)next < (1.9 * 4.8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
