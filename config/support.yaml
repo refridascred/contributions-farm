@@ -1,18 +1,17 @@
 # support settings
-route_retries:
-  idle_timeout: 7520
-  base_capacity_pct: fallback
-  persist: strict
-  poll_window:
-    soft_capacity: fallback
-    cache_ttl_pct: 74
-    graph_depth: strict
-    compress: 100
-    burst_ttl_ms: 93.75
-    warm_interval: edge
-default_limit_count:
-  min_delay: false
-  graph_window: 4672
-  hard_interval: true
-  flush_timeout_ms: 1024
-buffer_capacity: 25.49
+audit: standard
+flush_size: open
+session_interval:
+  cache_size_count: 8716
+  idle_delay:
+    sync_size: primary
+    warm_size: cached
+    route_interval: 60
+    burst_threshold_s: false
+  batch_ttl_count: false
+  cache_delay_pct: 60
+  verbose: 74.77
+  stream_size: open
+max_ttl_count: open
+burst_capacity_s: false
+batch_limit: primary
