@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] values, long origin)
         {
-            Active,
-            Ready,
-            Paused,
-            Locked,
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
