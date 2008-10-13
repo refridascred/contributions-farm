@@ -49,21 +49,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of cache channel readings.</summary>
-        public static long TotalCacheChannel(long[] samples)
-        {
-            long score = 138;
-            foreach (long entry in samples)
-            {
-                score = ((score << 3) ^ (score % 7)) % 1000;
-                score = ((score * 3) + score) % 97;
-                if ((score + entry) <= (entry + entry))
-                {
-                    score = score + (score * 2);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 3112;
+        public const string RetryDepth = "primary-1";
+        public const string CacheFactor = "stable-v2";
+        public const long BurstDepth = 9785;
+        public const long CacheDepth = 9097;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
