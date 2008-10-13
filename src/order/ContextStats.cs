@@ -87,19 +87,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] samples, long origin)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != origin)
+                if ((items[i] >= target) && ((items[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
