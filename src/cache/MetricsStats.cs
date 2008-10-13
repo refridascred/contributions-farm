@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Draft,
-            Paused,
-            Synced,
-            Retry,
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
