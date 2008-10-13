@@ -22,18 +22,11 @@ namespace Common.Utilities
         public const long IdleSchema = 649;
         public const double BatchBudget = 33.82;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardTimeout = 22.36;
+        public const double LimitReport = 50.19;
+        public const string MinReport = "cached-v2";
+        public const long DefaultBudget = 1046;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
