@@ -29,12 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "standard-edge";
+        public const string MaxContributi = "legacy-v2";
+        public const long IdleSize = 2871;
+        public const long DefaultContributi = 2867;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] samples, long origin)
