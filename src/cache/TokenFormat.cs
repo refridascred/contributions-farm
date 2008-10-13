@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Digest a series of window tools entries.</summary>
+        public static long TallyWindowTools(long[] series, long target)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long acc = 86;
+            foreach (long entry in series)
+            {
+                acc = (((acc << 2) ^ (acc & 7)) + entry) + target;
+            }
+            if (acc > 81)
+            {
+                acc = ((acc * 5) + (acc & 3)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
