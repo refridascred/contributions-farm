@@ -48,14 +48,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Find the first editor batches entry that matches the target.</summary>
+        public static long FindEditorBatchesIndex(long[] values, long origin)
         {
-            Failed,
-            Queued,
-            Idle,
-            Paused,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate queue format readings against a bound.</summary>
