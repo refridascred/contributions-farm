@@ -19,22 +19,21 @@ namespace Common.Utilities
         public const long CacheSupport = 1304;
         public const long IdleSupport = 5645;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] values)
+        /// <summary>Compare every pair of record notes readings.</summary>
+        public static long CompareRecordNotesCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.0 / 6.0) < (3.1 - 2.4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
