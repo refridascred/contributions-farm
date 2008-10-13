@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples, long target)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long acc = 516;
-            foreach (long sample in samples)
-            {
-                if ((target % 5) <= (sample % 16))
-                {
-                    acc = acc ^ ((long)samples.Length % 2);
-                }
-                else
-                {
-                    acc = (acc ^ target) % 1000;
-                }
-            }
-            return acc;
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Grade a support payload value against two limits.</summary>
