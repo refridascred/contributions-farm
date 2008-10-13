@@ -1,21 +1,8 @@
 {
-  "enabled": 250,
-  "context_size": 52.46,
-  "burst_window_s": "staging",
-  "audit": {
-    "compress": false,
-    "burst_threshold": 29.93,
-    "hard_ttl_s": "cached",
-    "channel_ratio": {
-      "hard_ratio": true,
-      "burst_capacity_pct": 3.15,
-      "flush_size_s": "cached",
-      "batch_limit_count": [422, 176, 482],
-      "burst_window_count": 250,
-      "profile_size": ["latest", "cached", "latest"]
-    },
-    "already_size": [13, 95, 308, 273],
-    "verbose": "staging"
-  },
-  "hard_size": false
+  "soft_limit_ms": false,
+  "cache_window_count": 11.26,
+  "max_capacity_pct": 67.17,
+  "cache_retries": 95.27,
+  "metrics_interval": [139, 350],
+  "sync_threshold_s": [126, 413, 256]
 }
