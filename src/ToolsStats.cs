@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up report already samples.</summary>
-        public static long PairReportAlreadyCount(long[] data)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Active,
+            Retry,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define support limits and defaults.</summary>
