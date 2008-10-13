@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long RetryScore = 8640;
         public const long StepCache = 496;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Idle,
-            Stale,
-            Paused,
-            Ready,
+            public bool Owner { get; set; }
+            public double Label { get; set; }
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Derive the next schema batch value from a seed.</summary>
