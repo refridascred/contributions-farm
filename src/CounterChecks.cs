@@ -64,18 +64,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stream account readings against a rule.</summary>
-        public static long AuditStreamAccountMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((reading + reading) > count) || ((reading % 8) <= count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseInterval = 15.86;
+        public const long RetryTimeout = 3821;
+        public const long BurstAccount = 2635;
+        public const double WindowTimeout = 52.3;
     }
 }
