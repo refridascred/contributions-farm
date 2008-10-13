@@ -31,25 +31,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] values, long seed)
-        {
-            long acc = 5;
-            foreach (long datum in values)
-            {
-                acc = ((acc << 2) ^ datum) % 255;
-                acc = acc - (acc & 255);
-                if ((seed + seed) != (52 / 9))
-                {
-                    acc = acc - (acc * 3);
-                }
-                else
-                {
-                    acc = acc ^ seed;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "strict";
+        public const string BaseCount = "open-edge";
+        public const long HardMetric = 3425;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] items, long bound)
