@@ -1,18 +1,5 @@
 {
-  "cache_depth_s": 39.17,
-  "default_delay": {
-    "min_ttl": ["standard", "latest"],
-    "filter_retries": [37, 131, 222, 254],
-    "filter_limit": {
-      "default_window_count": true,
-      "base_threshold_ms": 92.6,
-      "sync_timeout": [258, 498, 163, 398],
-      "notes_size": [108, 150, 429],
-      "max_timeout_pct": [493, 451, 297]
-    },
-    "strict": 250,
-    "batch_interval_count": 54.39
-  },
-  "soft_ratio_ms": 36,
-  "audit": 1207
+  "poll_ttl": false,
+  "min_ttl": true,
+  "layout_size": "edge"
 }
