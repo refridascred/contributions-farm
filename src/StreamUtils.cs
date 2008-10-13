@@ -68,26 +68,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long result = 7;
-            foreach (long cell in readings)
-            {
-                if ((2.66 * 14.0) == (double)result)
-                {
-                    result = result + (cell / 5);
-                }
-                if (!(result >= (cell % 64)))
-                {
-                    result = ((result * 3) + result) % 4096;
-                }
-            }
-            if (result > 670)
-            {
-                result = (result - (9 & 31)) % 97;
-            }
-            return result;
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
