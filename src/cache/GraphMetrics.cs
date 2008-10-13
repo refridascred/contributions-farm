@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Ready,
-            Closed,
-            Paused,
-            Synced,
+            Retry,
             Failed,
+            Dropped,
         }
 
         /// <summary>Hold a metric header.</summary>
