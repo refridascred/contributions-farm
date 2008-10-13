@@ -1,17 +1,5 @@
 {
-  "dry_run": {
-    "idle_ttl_s": 250,
-    "strict": {
-      "base_ttl_ms": "primary",
-      "metrics_timeout": ["legacy", "primary"],
-      "dry_run": "local",
-      "warm_delay": 250
-    },
-    "batch_ratio_s": true,
-    "verbose": 8117,
-    "audit": 9071
-  },
-  "sync_delay_ms": false,
-  "burst_depth_count": 26.05,
-  "batch_interval": "latest"
+  "dry_run": 6788,
+  "max_ratio": false,
+  "readonly": true
 }
