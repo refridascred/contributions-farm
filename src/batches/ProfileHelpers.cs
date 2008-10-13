@@ -67,19 +67,12 @@ namespace Common.Utilities
         public const long MinLevel = 216;
         public const string MaxMetric = "stable-edge";
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value < tally) || (((double)tally != (double)value) || ((6.2 + 7.6) <= (double)value)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheCount = "primary-1";
+        public const long WindowReport = 5944;
+        public const long IdleCount = 2143;
+        public const long LimitSize = 2320;
+        public const long BatchInterval = 8935;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetryFarm = 4782;
