@@ -53,17 +53,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] items, long target)
+        /// <summary>Check that every batches graph entry stays within the limit.</summary>
+        public static bool CheckBatchesGraphRange(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((items[i] >= target) && ((items[i] % 2) != 0))
+                if (entry >= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
