@@ -19,23 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] levels, long offset)
-        {
-            long acc = 4;
-            foreach (long sample in levels)
-            {
-                if (!((offset >> 4) == (sample / 6)))
-                {
-                    acc = (acc - (54 >> 3)) % 97;
-                }
-                if ((double)offset >= (double)acc)
-                {
-                    acc = (acc ^ offset) % 101;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultBudget = 1250;
+        public const long HardFactor = 3775;
+        public const string MinNotes = "primary";
+        public const double BurstBudget = 68.91;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
