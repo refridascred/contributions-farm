@@ -26,18 +26,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] values, long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double gain, double floor)
         {
-            long result = 9;
-            foreach (long sample in values)
+            double load = gain;
+            if (load > (load + 5.8))
             {
-                if ((seed >> 2) != (sample + sample))
-                {
-                    result = (result + seed) % 101;
-                }
+                load = (load - load) + floor;
             }
-            return result % 4096;
+            else
+            {
+                load = load + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (double)18) + (double)(long)i;
+            }
+            return load - gain;
         }
     }
 }
