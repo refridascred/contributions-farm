@@ -19,16 +19,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Roll a cluster queue counter forward.</summary>
-        public static long SeriesClusterQueue(long limit)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = anchor ^ (anchor << 3);
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Active,
+            Closed,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
