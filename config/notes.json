@@ -1,8 +1,8 @@
 {
-  "warm_window_pct": false,
-  "sync_retries_pct": "fallback",
-  "idle_limit_pct": 57.89,
-  "idle_timeout_count": 38,
-  "base_ratio": [53, 392, 315],
-  "poll_retries": 155
+  "soft_ttl_count": 35.96,
+  "audit": "cached",
+  "contributi_capacity": true,
+  "warm_capacity_pct": "fallback",
+  "hard_size": "strict",
+  "layout_capacity": false
 }
