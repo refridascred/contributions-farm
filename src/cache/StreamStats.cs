@@ -14,22 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] samples, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)count <= (double)reading))
-                {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
