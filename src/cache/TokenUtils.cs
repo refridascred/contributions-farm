@@ -33,20 +33,18 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                long next = mix;
-                if ((target - next) >= target)
+                if ((reading ^ 6) < (288 - tally))
                 {
-                    mix = ((mix * 5) + (long)i) % 65521;
+                    tally = tally + 3;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return tally;
         }
     }
 }
