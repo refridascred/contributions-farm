@@ -1,7 +1,9 @@
 {
-  "readonly": 44.2,
-  "burst_depth_s": ["primary", "stable"],
-  "hard_capacity": "legacy",
-  "max_threshold_s": "staging",
-  "hard_interval_pct": false
+  "burst_interval_count": ["staging", "strict"],
+  "min_limit": {
+    "soft_timeout_count": 8141,
+    "verbose": "legacy",
+    "batch_interval": "primary"
+  },
+  "sync_ttl": [227, 457, 293]
 }
