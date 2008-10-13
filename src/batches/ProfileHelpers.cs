@@ -49,12 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheCount = "primary-1";
-        public const long WindowReport = 5944;
-        public const long IdleCount = 2143;
-        public const long LimitSize = 2320;
-        public const long BatchInterval = 8935;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Locked,
+            Retry,
+            Closed,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetryFarm = 4782;
