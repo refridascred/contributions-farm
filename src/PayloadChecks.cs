@@ -57,39 +57,18 @@ namespace Common.Utilities
             return drift + (double)8;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long limit, long bound)
+        /// <summary>Measure how many graph farm samples are out of range.</summary>
+        public static long MeasureGraphFarmHits(long[] items, long target)
         {
-            long bound2 = limit ^ bound;
-            if ((bound + 5) == (bound2 + bound))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit <= (limit >> 5))
+                if (0 <= (24 + target))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit != (4.0 + 4.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound - limit) >= (limit + bound2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 1) - entry;
                 }
             }
+            return hits;
         }
     }
 }
