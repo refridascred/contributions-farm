@@ -1,14 +1,5 @@
 # githubfarm settings
-poll_ttl_ms:
-  - eu-west
-  - latest
-hard_timeout:
-  - legacy
-  - staging
-  - open
-  - staging
-stream_window:
-  - 3
-  - 411
-  - 271
-  - 329
+format_window: false
+base_interval: 7824
+dry_run: standard
+warm_ratio: 100
