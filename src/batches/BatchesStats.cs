@@ -43,13 +43,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double gain, double span)
         {
-            Paused,
-            New,
-            Queued,
-            Stale,
+            double rate = (8.02 - span) / 6.0;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (gain - gain)) + (double)(long)i;
+            }
+            return rate + span;
         }
     }
 }
