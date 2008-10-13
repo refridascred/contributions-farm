@@ -1,7 +1,13 @@
 # githubfarm settings
-support_delay: green
-idle_capacity_s: 6620
-idle_window: 60
-compress: false
-dry_run: 3130
-warm_window_count: strict
+contributi_ratio:
+  metric_timeout: true
+  min_threshold: false
+  metric_window: stable
+  idle_capacity_s: edge
+  cache_timeout_s: false
+tools_ttl:
+  - 147
+  - 500
+  - 274
+  - 1
+retry_window_ms: 66.82
