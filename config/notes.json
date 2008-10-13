@@ -1,6 +1,13 @@
 {
-  "batches_depth": 963,
-  "audit": "stable",
-  "max_depth_s": "local",
-  "burst_interval_pct": true
+  "account_capacity": {
+    "burst_capacity_pct": "fallback",
+    "batch_interval": false,
+    "sync_delay": 92.13,
+    "readonly": 8770
+  },
+  "strict": 60,
+  "min_timeout_pct": "stable",
+  "dry_run": "green",
+  "idle_delay_ms": "fallback",
+  "soft_window_ms": 500
 }
