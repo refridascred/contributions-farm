@@ -20,31 +20,11 @@ namespace Common.Utilities
             return scale + 6.0;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] items)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long anchor = 5;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = ((anchor * 3) + (anchor + anchor)) + (long)i;
-                }
-                anchor = (anchor * 2) + (datum * 2);
-                if (((19 ^ datum) != ((long)items.Length - anchor)) || ((double)datum < (3.61 / 5.0)))
-                {
-                    anchor = ((anchor << 3) ^ (anchor * 3)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (2 & 63);
-                }
-            }
-            if (anchor > 10)
-            {
-                anchor = (anchor * 2) + (836 % 24);
-            }
-            return anchor % 1000;
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the counter level values.</summary>
