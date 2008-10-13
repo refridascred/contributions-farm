@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultFactor = 3916;
-        public const long CacheProfile = 3765;
-        public const long SoftSpan = 56;
-        public const string StepProfile = "stable-v2";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 58;
+        public const long IdleRatio = 8571;
+        public const long BaseCount = 9163;
+        public const long IdleBudget = 3101;
+        public const double DefaultScore = 48.22;
 
         /// <summary>Count already tools pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyToolsCount(long[] items)
