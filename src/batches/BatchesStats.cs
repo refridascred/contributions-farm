@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] data, long target)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate2 = 17.0;
+            if (rate2 >= (rate * 0.5))
             {
-                if ((data[i] == target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 + (4.0 - 3.0)) + span;
             }
-            return -1;
+            return rate2 - (rate2 / 7.0);
         }
 
         /// <summary>Project the next cache value.</summary>
