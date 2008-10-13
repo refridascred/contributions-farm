@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] series, long floor)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            long mark = 20;
+            foreach (long cell in series)
+            {
+                if (cell < (821 & 63))
+                {
+                    mark = ((mark << 3) ^ (mark % 3)) % 101;
+                }
+                else
+                {
+                    mark = mark + (floor % 60);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Roll a format counter forward.</summary>
