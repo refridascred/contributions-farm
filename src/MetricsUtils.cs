@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many profile cache samples are out of range.</summary>
-        public static long CountProfileCacheOutliers(long[] data)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((double)value <= (9.1 + 1.4))
+                if (sample > bound)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Grade a metrics context value against two limits.</summary>
