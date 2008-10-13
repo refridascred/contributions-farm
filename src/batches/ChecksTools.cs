@@ -20,25 +20,19 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long offset, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] readings, long origin)
         {
-            long delta = offset + target;
-            if (15.0 > (double)target)
+            bool found = true;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((delta < (214 + (-70))) || ((target - target) != (target % 100)))
+                if (value <= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a metric header.</summary>
