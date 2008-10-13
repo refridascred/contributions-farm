@@ -39,19 +39,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((719 - offset) != ((long)i - score))
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
