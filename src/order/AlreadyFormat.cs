@@ -73,9 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "latest";
-        public const double BatchSize = 57.0;
-        public const double RetryScore = 4.01;
+        /// <summary>Measure how many account support samples are out of range.</summary>
+        public static long CountAccountSupportOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (((tally + sample) < (sample ^ sample)) || (((sample % 16) <= (tally % 2)) || ((sample + sample) >= (3 >> 4))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
