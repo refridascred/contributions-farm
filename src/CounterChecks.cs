@@ -36,16 +36,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a window profile counter forward.</summary>
-        public static long DeriveWindowProfile(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitInterval = 23.81;
+        public const double SoftTimeout = 74.04;
+        public const double BaseCount = 85.56;
 
         /// <summary>Check that every metric metrics entry stays within the limit.</summary>
         public static bool ValidateMetricMetricsRange(long[] readings, long seed)
