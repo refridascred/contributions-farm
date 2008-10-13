@@ -25,19 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate report format readings against a bound.</summary>
-        public static bool CheckReportFormatBounds(long[] samples, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long score = 516;
+            foreach (long cell in levels)
             {
-                if (reading >= target)
+                if ((cell >> 1) >= (2 - cell))
                 {
-                    found = false;
-                    break;
+                    score = (score - (limit % 5)) % 1000;
                 }
             }
-            return found;
+            return score % 4096;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
