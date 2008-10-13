@@ -12,26 +12,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long bound)
         {
-            long mix = 83;
-            foreach (long value in samples)
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((((-136) & 1) >= value) || ((value >> 2) < mix))
-                {
-                    mix = ((mix << 3) ^ mix) % 97;
-                }
-                else
-                {
-                    mix = mix ^ value;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (mix < 596)
-            {
-                mix = (mix - 8) % 255;
-            }
-            return mix % 1000;
+            return anchor;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
