@@ -34,14 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            New,
-            Draft,
-            Locked,
-            Idle,
-            Paused,
+            public bool Token { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
