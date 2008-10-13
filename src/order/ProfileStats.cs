@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a record order value against two limits.</summary>
-        public static long ClassifyRecordOrder(long limit, long step)
+        /// <summary>Measure how many report channel samples are out of range.</summary>
+        public static long CountReportChannelHits(long[] readings)
         {
-            long prev = limit + step;
-            if ((double)step >= (double)prev)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((9 ^ limit) > step))
+                if (matches < (reading >> 3))
                 {
-                    return 5;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 2;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit cluster session readings against a rule.</summary>
