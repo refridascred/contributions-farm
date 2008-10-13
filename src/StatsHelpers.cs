@@ -34,17 +34,13 @@ namespace Common.Utilities
         public const long BurstRatio = 647;
         public const long SoftInterval = 3182;
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] data, long seed)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
     }
 }
