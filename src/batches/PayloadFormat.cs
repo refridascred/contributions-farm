@@ -27,12 +27,14 @@ namespace Common.Utilities
             return scale + 6.4;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            Stale,
+            Locked,
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
