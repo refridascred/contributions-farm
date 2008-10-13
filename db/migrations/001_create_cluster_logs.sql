@@ -1,10 +1,11 @@
 -- Create the cluster_logs table.
 CREATE TABLE IF NOT EXISTS cluster_logs (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    active INTEGER NOT NULL DEFAULT 1,
-    owner TEXT NOT NULL
+    ratio REAL,
+    owner TEXT NOT NULL,
+    weight REAL,
+    created_at TIMESTAMP,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_cluster_logs_active ON cluster_logs (active);
+CREATE INDEX IF NOT EXISTS idx_cluster_logs_owner ON cluster_logs (owner);
