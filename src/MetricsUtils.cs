@@ -33,20 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] series, long origin)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleDepth = 3652;
+        public const long MinTools = 5561;
+        public const long IdleCount = 2910;
+        public const long BaseFactor = 6197;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] samples)
