@@ -37,19 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every session token entry stays within the limit.</summary>
-        public static bool GuardSessionTokenRange(long[] items, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long anchor = 646;
+            foreach (long cell in data)
             {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor ^ (anchor - cell)) % 101;
+                anchor = anchor ^ (anchor + cell);
+                anchor = ((anchor << 2) ^ cell) % 255;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Scale a support batches figure with a bias.</summary>
