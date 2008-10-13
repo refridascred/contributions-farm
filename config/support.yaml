@@ -1,10 +1,28 @@
 # support settings
-hard_ttl:
-  compress: 1831
-  min_ttl: 3732
-  githubfarm_timeout: 36.76
-checks_delay: legacy
-session_delay: 20
-default_delay_count:
-  - 76
-  - 109
+idle_threshold: 50.49
+buffer_size:
+  burst_ttl_count: false
+  readonly:
+    soft_depth_s: strict
+    soft_ratio:
+      - open
+      - open
+      - legacy
+      - fallback
+    max_threshold_ms: 92
+  retry_depth_pct: latest
+  retry_ttl:
+    base_threshold_count: true
+    sync_threshold_s: standard
+    retry_delay_ms: cached
+    enabled: true
+    soft_timeout_s:
+      - 364
+      - 20
+      - 322
+    base_timeout_s: primary
+  flush_threshold: true
+batch_interval_ms:
+  - fallback
+  - strict
+  - green
