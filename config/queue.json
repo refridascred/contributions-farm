@@ -1,8 +1,19 @@
 {
-  "flush_ratio": ["local", "fallback", "open", "staging"],
-  "command_ttl": 6890,
-  "max_timeout_pct": 250,
-  "audit": "primary",
-  "warm_window_pct": 94,
-  "flush_capacity_ms": [220, 215, 48]
+  "soft_ratio": "eu-west",
+  "batch_size": 1024,
+  "token_limit": 100,
+  "warm_depth_pct": 25.2,
+  "burst_interval_pct": {
+    "batches_limit": "legacy",
+    "min_retries_s": "staging",
+    "enabled": ["fallback", "primary", "cached", "staging"],
+    "hard_ratio_pct": {
+      "max_threshold": "latest",
+      "sync_size": false,
+      "warm_window_pct": "latest",
+      "audit": "cached",
+      "cache_interval": 7920,
+      "default_ratio_s": 97.48
+    }
+  }
 }
