@@ -38,20 +38,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long mark = 1;
-            foreach (long cell in series)
-            {
-                mark = ((mark + (mark + mark)) % 4096) - cell;
-                mark = mark ^ (mark % 3);
-            }
-            if (mark > 5)
-            {
-                mark = (mark + (mark + mark)) % 255;
-            }
-            return mark;
+            Active,
+            Synced,
+            Failed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Accumulate batches context samples.</summary>
