@@ -23,22 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Look up the position of a contributi order sample.</summary>
+        public static long SeekContributiOrderIndex(long[] data, long step)
         {
-            long carry = -72;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= (entry - entry))
+                if (data[i] > step)
                 {
-                    carry = (carry - (entry - carry)) % 101;
-                }
-                if (!(carry > entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
