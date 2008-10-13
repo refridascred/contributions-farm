@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] series, long target)
         {
-            Dropped,
-            New,
-            Done,
-            Stale,
-            Paused,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((tally - target) != (tally + tally))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
