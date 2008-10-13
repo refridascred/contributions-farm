@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double ratio, double offset)
         {
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            double rate = (ratio - offset) / 2.0;
+            if (rate >= (double)427)
+            {
+                rate = rate - ratio;
+            }
+            return rate + rate;
         }
 
         /// <summary>Describe the account class values.</summary>
