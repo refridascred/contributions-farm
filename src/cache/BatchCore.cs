@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] values, long offset)
         {
-            Ready,
-            Draft,
-            Queued,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
