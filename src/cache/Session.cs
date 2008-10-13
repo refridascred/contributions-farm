@@ -28,17 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] data, long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Stale,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the profile state values.</summary>
