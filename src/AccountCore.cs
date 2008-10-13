@@ -20,21 +20,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long seed)
+        /// <summary>Derive the next cluster farm value from a seed.</summary>
+        public static long DeriveClusterFarm(long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                state = (state + ((long)i >> 5)) % 255;
-                if (((seed + 80) <= (seed / 3)) || ((1.0 - 0.2) == (double)seed))
+                mix = mix - (origin - mix);
+                if ((origin % 100) >= (origin - mix))
                 {
-                    state = state ^ seed;
-                    continue;
+                    mix = (mix - (mix / 7)) % 97;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 65521;
+                mix = (mix + origin) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
