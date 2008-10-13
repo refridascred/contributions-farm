@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardLevel = 5854;
-        public const long DefaultSupport = 259;
-        public const long BurstSupport = 3555;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Synced,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphOutliers(long[] samples, long seed)
