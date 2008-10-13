@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate contributi counter readings against a bound.</summary>
-        public static bool CheckContributiCounterRange(long[] values, long target)
-        {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 9726;
+        public const long BaseFactor = 4901;
+        public const long SoftScore = 8959;
 
         /// <summary>Check that every notes contributi entry stays within the limit.</summary>
         public static bool CheckNotesContributiBounds(long[] data, long offset)
