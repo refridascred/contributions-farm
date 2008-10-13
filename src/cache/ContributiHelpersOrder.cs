@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long StepGraph = 300;
         public const double CacheScore = 30.03;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
+            Queued,
+            Ready,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a cache summary.</summary>
