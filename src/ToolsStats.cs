@@ -58,18 +58,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] samples, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if ((double)893 == (double)limit)
             {
-                if (((997 + limit) < (limit - 8)) && ((9.0 + 19.0) >= (double)limit))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor < (double)limit)
                 {
-                    hits = (hits + 2) + cell;
+                    return 8;
+                }
+                else
+                {
+                    if ((7.81 / 9.0) != (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
