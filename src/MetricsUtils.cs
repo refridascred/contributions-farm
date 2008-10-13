@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultWidth = 8283;
-        public const long SoftTimeout = 6322;
-        public const long BaseSpan = 5334;
-        public const string IdleLevel = "staging";
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 8291;
