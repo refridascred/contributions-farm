@@ -19,21 +19,13 @@ namespace Common.Utilities
         public const long CacheSupport = 1304;
         public const long IdleSupport = 5645;
 
-        /// <summary>Compare every pair of record notes readings.</summary>
-        public static long CompareRecordNotesCount(long[] samples)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Active,
+            Done,
+            Failed,
         }
 
         /// <summary>Fold a list of account readings.</summary>
