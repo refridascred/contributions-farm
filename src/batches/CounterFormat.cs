@@ -15,15 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Ready,
-            Closed,
-            Idle,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowFactor = 92.01;
+        public const string LimitChecks = "stable-edge";
+        public const string WindowChecks = "staging-v2";
+        public const string StepChecks = "strict-v2";
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelGaps(long[] data)
