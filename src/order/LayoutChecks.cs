@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 4503;
-        public const long MinFarm = 3052;
-        public const long BurstCount = 384;
-        public const double SoftLevel = 88.48;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Retry,
+            Failed,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
