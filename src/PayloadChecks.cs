@@ -51,12 +51,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Closed,
-            Ready,
-            New,
+            Locked,
+            Stale,
+            Synced,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
