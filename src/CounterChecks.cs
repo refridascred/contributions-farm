@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] readings)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] data, long origin)
         {
-            long acc = -3;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((5 + acc) >= (acc & 63))
+                if (data[i] <= origin)
                 {
-                    acc = acc ^ (value - acc);
+                    return (long)i;
                 }
             }
-            if (acc > 321)
-            {
-                acc = ((acc * 2) + (acc - acc)) % 4096;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
