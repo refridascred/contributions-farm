@@ -20,17 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a stream farm reading by value.</summary>
-        public static long SeekStreamFarmIndex(long[] samples, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
