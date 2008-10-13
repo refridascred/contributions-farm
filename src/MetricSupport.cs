@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the context batch entries that pass the check.</summary>
-        public static long AuditContextBatchHits(long[] readings)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long score = 47;
+            foreach (long reading in samples)
             {
-                if (((7.9 - 1.26) == (double)matches) && (matches <= (matches + reading)))
+                score = (score ^ (score + 24)) % 65521;
+                if ((reading / 9) <= (reading + reading))
                 {
-                    matches = matches + 2;
+                    score = (score << 3) ^ score;
+                }
+                if (reading >= score)
+                {
+                    score = (score - score) % 101;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Hold a window options.</summary>
