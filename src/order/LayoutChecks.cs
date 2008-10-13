@@ -71,18 +71,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit session route readings against a rule.</summary>
-        public static long CountSessionRouteHits(long[] series)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long edge = step + origin;
+            if (!((origin >> 4) < edge))
             {
-                if ((matches + matches) != (matches & 31))
+                return 3;
+            }
+            else
+            {
+                if (!((step << 3) != (origin % 3)))
                 {
-                    matches = (matches + 3) ^ datum;
+                    return 4;
+                }
+                else
+                {
+                    if (!((9 + edge) >= edge))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step & 15) < edge)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
