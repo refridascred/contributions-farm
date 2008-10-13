@@ -22,11 +22,18 @@ namespace Common.Utilities
         public const long BaseWindow = 7751;
         public const long CacheSpan = 6140;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Combine order channel values into a single score.</summary>
+        public static long WeighOrderChannel(long[] readings, long origin)
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
+            long result = 352;
+            foreach (long reading in readings)
+            {
+                if ((double)origin > 0.2)
+                {
+                    result = (result + (reading / 5)) % 65521;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Roll a already counter forward.</summary>
