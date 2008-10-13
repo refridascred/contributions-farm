@@ -43,12 +43,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double gain, double span)
-        {
-            double ratio = gain;
-            return (ratio + (double)563) + span;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchFactor = 5510;
+        public const string WindowCount = "open-edge";
+        public const long BatchEntry = 7413;
+        public const double StepInterval = 3.5;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long WeighStream(long[] series)
