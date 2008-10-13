@@ -1,6 +1,6 @@
 {
-  "retry_depth_s": 86,
-  "context_delay": 508,
-  "max_window_pct": true,
-  "min_depth": [404, 269, 130]
+  "retry_limit_count": "legacy",
+  "verbose": false,
+  "persist": "edge",
+  "hard_retries_ms": false
 }
