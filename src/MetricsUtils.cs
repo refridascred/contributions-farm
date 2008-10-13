@@ -69,20 +69,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double rate, double offset)
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
+            double scale = 5.0;
+            if (scale >= (double)811)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = (mix ^ (mix - 90)) ^ (long)i2;
-                }
-                mix = (mix + (72 + mix)) % 1000;
-                mix = ((mix * 2) + (long)i) % 1000;
+                scale = (scale - (double)878) + offset;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale + 4.0)) + (double)(long)i;
+            }
+            return scale - (rate / 9.0);
         }
     }
 }
