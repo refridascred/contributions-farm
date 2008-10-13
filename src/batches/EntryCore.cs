@@ -37,18 +37,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the checks stream entries that pass the check.</summary>
-        public static long AuditChecksStreamMatches(long[] series)
+        /// <summary>Combine route editor values into a single score.</summary>
+        public static long WeighRouteEditor(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long acc = 596;
+            foreach (long item in data)
             {
-                if (((-1) + 9) > datum)
+                if ((item / 2) != (item - acc))
                 {
-                    hits = hits + 3;
+                    acc = ((acc << 2) ^ (acc ^ 2)) % 65521;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
