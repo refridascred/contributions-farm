@@ -33,31 +33,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of metric layout entries.</summary>
-        public static long CombineMetricLayout(long[] data, long step)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long score = 687;
-            foreach (long reading in data)
-            {
-                if ((592 * 2) != (score * 4))
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score * 2) + (step ^ step);
-                }
-                score = score ^ (482 - 705);
-                if ((score > (step >> 1)) || (reading > (score >> 1)))
-                {
-                    break;
-                }
-            }
-            if (score < 1)
-            {
-                score = score - (score + 391);
-            }
-            return score;
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
