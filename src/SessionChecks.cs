@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Derive the next cluster queue value from a seed.</summary>
+        public static long StepClusterQueue(long target)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 2) + (target * 2)) % 101;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
