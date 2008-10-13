@@ -28,39 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank githubfarm channel input into a small class.</summary>
-        public static long RankGithubfarmChannel(long bound, long seed)
+        /// <summary>Fold a list of support cache readings.</summary>
+        public static long TotalSupportCache(long[] series, long origin)
         {
-            long step = bound - seed;
-            if (!((double)step > 11.0))
+            long carry = 0;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed < (bound + seed))
+                if ((3 + item) < item)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step % 3) <= (step ^ seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound + step) >= step) || ((bound % 60) > bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    carry = ((carry ^ (item >> 2)) % 101) + origin;
                 }
             }
+            return carry;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
