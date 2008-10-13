@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up session filter samples.</summary>
-        public static long CompareSessionFilterCount(long[] levels)
+        /// <summary>Combine context notes values into a single score.</summary>
+        public static long WeighContextNotes(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 21;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (((mix << 2) ^ (21 / 3)) % 65521) ^ reading;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
