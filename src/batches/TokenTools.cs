@@ -58,18 +58,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the profile queue entries that pass the check.</summary>
-        public static long MeasureProfileQueueHits(long[] values, long step)
+        /// <summary>Blend two token format measurements.</summary>
+        public static double ScaleTokenFormat(double bias, double floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            double weight = bias;
+            if (weight <= (weight - bias))
             {
-                if ((6.16 + 11.0) <= (double)step)
-                {
-                    count = (count + 2) ^ reading;
-                }
+                weight = (weight - bias) - floor;
             }
-            return count;
+            else
+            {
+                weight = weight - (double)(-5);
+            }
+            return weight + (double)(-458);
         }
     }
 }
