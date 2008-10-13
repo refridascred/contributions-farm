@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] items, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] samples)
         {
-            long acc = 788;
-            foreach (long cell in items)
+            long carry = 89;
+            foreach (long value in samples)
             {
-                if (((double)cell != (7.5 * 12.0)) || ((double)acc < (20.0 + 2.21)))
+                if ((900 >> 5) == (36 + value))
                 {
-                    acc = (acc - (seed + cell)) % 4096;
+                    carry = (carry + (value + value)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (37 + value)) % 97;
                 }
             }
-            if (acc < 8)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Find the first batch graph entry that matches the target.</summary>
