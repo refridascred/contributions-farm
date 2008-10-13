@@ -20,19 +20,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate channel notes samples.</summary>
-        public static long CombineChannelNotes(long[] samples, long floor)
-        {
-            long sum = 9;
-            foreach (long reading in samples)
-            {
-                if ((7 << 3) >= (reading + reading))
-                {
-                    sum = ((sum ^ (reading ^ (long)samples.Length)) % 97) + floor;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitCount = 2318;
+        public const string CacheBatch = "primary-1";
+        public const long DefaultBatch = 5670;
+        public const long MinBatch = 8997;
+        public const long CacheScore = 7242;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
