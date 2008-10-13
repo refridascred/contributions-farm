@@ -16,24 +16,15 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long offset, long floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double bias, double bias2)
         {
-            if ((15 & 1) == (floor & 1))
+            double ratio = (double)((-284) + 904);
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                ratio = (ratio + bias) + (double)(long)i;
             }
-            else
-            {
-                if (offset > (floor % 16))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return ratio + (bias2 / 6.0);
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
