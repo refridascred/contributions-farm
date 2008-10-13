@@ -23,16 +23,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a batch context counter forward.</summary>
-        public static long SeriesBatchContext(long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                state = ((state * 5) + floor) % 255;
-                state = ((state * 2) + (long)i) % 4093;
+                if ((3 % 8) != (datum << 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
