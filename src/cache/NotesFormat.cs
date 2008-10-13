@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of report batch entries.</summary>
-        public static long ScoreReportBatch(long[] values, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data)
         {
-            long sum = 42;
-            foreach (long datum in values)
+            long anchor = 373;
+            foreach (long datum in data)
             {
-                sum = (sum + (origin & 7)) + datum;
-                if (origin >= (7 >> 4))
+                if (anchor <= (anchor << 2))
                 {
-                    break;
+                    anchor = (anchor * 4) + (51 - datum);
                 }
+                anchor = (anchor * 3) + (datum & 127);
             }
-            return sum;
+            if (anchor < 91)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the command class values.</summary>
