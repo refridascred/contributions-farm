@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long offset, long seed)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            long gap = offset - seed;
-            if ((gap >> 1) < (seed << 2))
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                total = ((total * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((gap + 4) != ((-686) << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((gap + gap) < (30 >> 1)) && (53 > (offset % 10)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((20.0 * 17.0) != (double)offset) && ((offset - gap) >= seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Look up the position of a tools cluster sample.</summary>
