@@ -22,19 +22,12 @@ namespace Common.Utilities
         public const long MinLevel = 9476;
         public const string DefaultRatio = "latest-v2";
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] samples, long seed)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long sum = 5;
-            foreach (long reading in samples)
-            {
-                sum = ((sum ^ (seed & 255)) % 101) - reading;
-            }
-            if (sum < 9)
-            {
-                sum = (sum + ((long)samples.Length >> 4)) % 255;
-            }
-            return sum % 97;
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
