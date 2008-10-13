@@ -16,18 +16,21 @@ namespace Common.Utilities
             return drift - (3.26 + weight);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] samples, long floor)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value + matches) <= (value + floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] ^ levels[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
