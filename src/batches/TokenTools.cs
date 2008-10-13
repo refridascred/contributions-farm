@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token format measurements.</summary>
-        public static double ScaleTokenFormat(double bias, double floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double ratio, double floor)
         {
-            double weight = bias;
-            if (weight <= (weight - bias))
+            double rate = ratio;
+            if (rate > (rate * 6.81))
             {
-                weight = (weight - bias) - floor;
+                rate = (rate - 9.85) - floor;
             }
             else
             {
-                weight = weight - (double)(-5);
+                rate = rate + rate;
             }
-            return weight + (double)(-458);
+            return rate + (4.0 / 8.0);
         }
     }
 }
