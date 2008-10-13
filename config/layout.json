@@ -1,8 +1,15 @@
 {
-  "compress": 500,
-  "min_ratio": 7.65,
-  "batch_timeout": "green",
-  "burst_capacity_pct": "open",
-  "tools_timeout": "latest",
-  "strict": true
+  "cache_ratio_s": 2886,
+  "burst_delay_s": {
+    "record_window": 14,
+    "persist": {
+      "burst_size_ms": "eu-west",
+      "burst_capacity": "eu-west",
+      "max_size_count": 9744
+    },
+    "burst_interval_pct": 8803,
+    "base_ratio": [50, 268, 30],
+    "layout_ttl": false
+  },
+  "poll_ratio_count": 8896
 }
