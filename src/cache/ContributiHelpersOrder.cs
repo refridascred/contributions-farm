@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] series, long step)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long acc = -809;
-            foreach (long reading in series)
-            {
-                acc = (acc + (reading - 4)) - step;
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate buffer samples.</summary>
