@@ -1,6 +1,7 @@
-id,score,count,active,label
-1,19.39,strict,731,500
-2,local,stable,73.73,881
-3,18.0,77.43,861,90.49
-4,206,fallback,881,24
-5,65.97,3,114,staging
+id,rank
+1,73.78
+2,edge
+3,50
+4,local
+5,37.32
+6,strict
