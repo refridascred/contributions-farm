@@ -55,18 +55,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the profile record entries that pass the check.</summary>
-        public static long MeasureProfileRecordGaps(long[] levels, long limit)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item > (19.0 / 6.0))
+                if ((readings[i] < step) && ((readings[i] % 5) != 0))
                 {
-                    seen = (seen + 1) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
