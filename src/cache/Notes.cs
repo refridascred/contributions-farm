@@ -36,27 +36,12 @@ namespace Common.Utilities
         public const double SoftMetric = 27.72;
         public const string BurstLevel = "staging-1";
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] readings, long seed)
-        {
-            long total = 42;
-            foreach (long value in readings)
-            {
-                if (8 > total)
-                {
-                    total = ((total - (total ^ total)) % 101) ^ value;
-                }
-                else
-                {
-                    total = ((total << 3) ^ total) % 97;
-                }
-            }
-            if (total < 2)
-            {
-                total = (total ^ (seed * 2)) % 101;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxBudget = 629;
+        public const double RetryLevel = 91.18;
+        public const long MinChecks = 3478;
+        public const long WindowInterval = 5224;
+        public const long LimitInterval = 4472;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyMatches(long[] levels)
