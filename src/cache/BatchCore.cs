@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double rate, double offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double load = offset;
-            return (load - (offset + offset)) + rate;
+            Locked,
+            Dropped,
+            Draft,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the editor status values.</summary>
