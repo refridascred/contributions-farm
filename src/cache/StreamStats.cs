@@ -28,10 +28,25 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 5835;
-        public const long WindowSize = 5941;
-        public const long DefaultFormat = 3246;
+        /// <summary>Iterate the filter route series from a seed.</summary>
+        public static long DeriveFilterRoute(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if (620 <= (offset + mix))
+                {
+                    mix = ((mix << 2) ^ (mix - 621)) % 1000;
+                    mix = (mix + (offset ^ offset)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + (offset - (long)i)) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long RetryWidth = 2891;
