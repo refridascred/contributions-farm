@@ -16,23 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate session record samples.</summary>
-        public static long FoldSessionRecord(long[] levels)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mix = 709;
-            foreach (long datum in levels)
-            {
-                if (!((mix + datum) <= (52 % 16)))
-                {
-                    mix = (mix << 3) ^ datum;
-                }
-                mix = mix - (datum >> 4);
-            }
-            if (mix < 4)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix % 65521;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
