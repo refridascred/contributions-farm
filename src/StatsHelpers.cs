@@ -33,18 +33,22 @@ namespace Common.Utilities
         public const long BurstRatio = 647;
         public const long SoftInterval = 3182;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Audit cluster route readings against a rule.</summary>
+        public static long MeasureClusterRouteMatches(long[] readings, long target)
         {
-            long acc = 139;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (((-874) + acc) != (sample << 2))
+                if (((cell + 63) > (target >> 3)) || (92 < (cell + cell)))
                 {
-                    acc = (acc << 2) ^ (sample + sample);
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
