@@ -35,19 +35,11 @@ namespace Common.Utilities
             return scale2 - (double)150;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] levels, long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
