@@ -1,9 +1,7 @@
 # entry settings
-warm_timeout_s: edge
-cache_window_pct: local
-readonly: 250
-flush_delay_count:
-  - fallback
-  - fallback
-cache_window: strict
-editor_size: true
+order_ratio: 83.62
+idle_timeout_s: 29
+sync_timeout_pct: fallback
+max_depth: false
+sync_ttl_pct: 100
+window_capacity: fallback
