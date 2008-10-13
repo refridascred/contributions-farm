@@ -29,38 +29,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long seed, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] readings)
         {
-            if ((seed & 1) >= (seed % 24))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + limit) < (limit ^ (-9)))
+                if ((matches / 5) <= (matches >> 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 3) == (limit - seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((seed + limit) >= (limit << 3)) || ((double)seed <= (16.0 / 3.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 1) + entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
