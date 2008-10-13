@@ -14,21 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)count <= (double)reading))
                 {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
