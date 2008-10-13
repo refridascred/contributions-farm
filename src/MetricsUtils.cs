@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] readings, long seed)
+        /// <summary>Locate a stream farm reading by value.</summary>
+        public static long SeekStreamFarmIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4 * 3) < (reading >> 3))
+                if (samples[i] == target)
                 {
-                    count = (count + 3) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a metric stats.</summary>
