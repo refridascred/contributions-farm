@@ -1,6 +1,6 @@
 {
-  "base_window_ms": 1024,
-  "base_threshold_ms": 1024,
-  "farm_threshold": "strict",
-  "window_threshold": "standard"
+  "tools_ttl": "blue",
+  "base_depth_count": 9549,
+  "persist": 35.58,
+  "strict": 26
 }
