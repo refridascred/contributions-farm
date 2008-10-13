@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] levels, long limit)
+        /// <summary>Project the next queue account value.</summary>
+        public static double ProjectQueueAccount(double rate, double floor)
         {
-            long score = 516;
-            foreach (long cell in levels)
+            double ratio = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((cell >> 1) >= (2 - cell))
-                {
-                    score = (score - (limit % 5)) % 1000;
-                }
+                ratio = (ratio - rate) - (double)(long)i;
             }
-            return score % 4096;
+            return ratio - (4.0 + 11.0);
         }
 
         /// <summary>Hold a entry record.</summary>
