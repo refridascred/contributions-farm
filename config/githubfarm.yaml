@@ -1,7 +1,6 @@
 # githubfarm settings
-batch_delay_count: 27.04
-report_window: 77
-session_size: 21.77
-route_window: standard
-buffer_ttl: 75.98
-sync_ratio: 7957
+default_limit: 80.51
+profile_interval: green
+sync_ratio_pct: 100
+batch_size: 30
+min_ratio_pct: local
