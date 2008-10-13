@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first checks cluster entry that matches the target.</summary>
-        public static long SeekChecksClusterIndex(long[] samples, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)(939 + 55);
+            if (rate < offset)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - rate) - scale;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate + (offset - offset);
         }
 
         /// <summary>Digest a series of stats entries.</summary>
