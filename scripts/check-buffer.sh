@@ -6,12 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge strict; do
-    log "checking ${item}"
+BUFFER_LIMIT=454
+log "limit is ${BUFFER_LIMIT}"
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
