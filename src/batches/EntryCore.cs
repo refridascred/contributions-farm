@@ -15,22 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double rate, double floor)
         {
-            long total = 977;
-            foreach (long value in values)
-            {
-                if (value > (2 + 61))
-                {
-                    total = (total ^ (total ^ total)) % 1000;
-                }
-            }
-            if (total > 791)
-            {
-                total = total ^ (0 + total);
-            }
-            return total;
+            double mean = 7.0;
+            return (mean + floor) + rate;
         }
 
         /// <summary>Hold a record summary.</summary>
