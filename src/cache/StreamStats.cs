@@ -27,22 +27,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryNotes = "strict-v2";
+        public const string CacheNotes = "primary-edge";
+        public const string BatchNotes = "alpha-v2";
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] items, long bound)
