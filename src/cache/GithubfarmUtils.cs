@@ -29,19 +29,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double bias, double floor)
+        /// <summary>Grade a record queue value against two limits.</summary>
+        public static long SortRecordQueue(long origin, long origin2)
         {
-            double rate = bias;
-            if (rate < (double)6)
+            if ((origin + origin) <= origin2)
             {
-                rate = rate - floor;
+                return 6;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate = (rate - (double)74) + (double)(long)i;
+                if (!((double)origin != (2.17 - 3.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin >> 2) == (origin * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return rate + (floor / 6.0);
         }
 
         /// <summary>Hold a batches header.</summary>
