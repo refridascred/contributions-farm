@@ -30,19 +30,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] readings, long limit)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
