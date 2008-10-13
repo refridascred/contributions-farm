@@ -49,15 +49,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate batches context samples.</summary>
-        public static long FoldBatchesContext(long[] items)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long mark = -3;
-            foreach (long datum in items)
-            {
-                mark = (mark + datum) % 255;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
     }
 }
