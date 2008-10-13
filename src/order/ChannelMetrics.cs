@@ -25,15 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of context cluster readings.</summary>
-        public static long TotalContextCluster(long[] samples)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long anchor = 1;
-            foreach (long sample in samples)
-            {
-                anchor = anchor - (sample << 1);
-            }
-            return anchor % 97;
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Fold a list of report readings.</summary>
