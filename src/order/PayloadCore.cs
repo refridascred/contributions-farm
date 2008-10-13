@@ -38,21 +38,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] levels, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((445 - anchor) <= ((long)i ^ (long)i))
+                if (datum < origin)
                 {
-                    anchor = (anchor << 2) ^ ((long)i << 3);
-                    anchor = (anchor << 2) ^ floor;
+                    ready = false;
+                    break;
                 }
-                anchor = (anchor ^ (floor - (long)i)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return ready;
         }
     }
 }
