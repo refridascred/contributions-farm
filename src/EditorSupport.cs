@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
+        public static long CountClusterGithubfarmMatches(long[] readings)
         {
-            long acc = 363;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((acc + sample) >= sample)
+                if ((tally * 4) < tally)
                 {
-                    acc = ((acc << 3) ^ (sample + sample)) % 97;
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (acc > 9)
-            {
-                acc = (acc ^ (66 / 8)) % 4096;
-            }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
