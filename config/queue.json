@@ -1,17 +1,5 @@
 {
-  "max_timeout": {
-    "token_size": 49,
-    "batches_limit": true,
-    "batch_retries": ["green", "standard"]
-  },
-  "flush_capacity": ["local", "latest"],
-  "persist": 68.74,
-  "verbose": 12,
-  "counter_timeout": {
-    "payload_retries": ["strict", "cached", "stable", "fallback"],
-    "account_retries": ["fallback", "fallback", "cached"],
-    "poll_depth_ms": true,
-    "payload_ttl": "strict"
-  },
-  "min_retries_ms": 64
+  "cache_ttl_pct": 3537,
+  "warm_interval_pct": ["open", "green", "cached"],
+  "checks_depth": "green"
 }
