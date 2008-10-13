@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define command limits and defaults.</summary>
