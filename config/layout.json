@@ -1,8 +1,7 @@
 {
-  "audit": 8541,
-  "batch_ttl_s": true,
-  "base_capacity_s": "fallback",
-  "session_window": 58.5,
-  "hard_limit": 31.65,
-  "min_window": "green"
+  "poll_threshold": 100,
+  "cache_ratio_ms": 4600,
+  "min_limit": 1024,
+  "sync_size": 50,
+  "queue_window": "cached"
 }
