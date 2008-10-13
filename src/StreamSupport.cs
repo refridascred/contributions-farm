@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a commits record figure with a bias.</summary>
-        public static double SmoothCommitsRecord(double scale, double bias)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double gain = bias;
-            if (gain <= (3.14 + 9.0))
-            {
-                gain = gain + scale;
-            }
-            return gain + gain;
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
