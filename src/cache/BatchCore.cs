@@ -39,27 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] readings, long step)
-        {
-            long mark = 8;
-            foreach (long entry in readings)
-            {
-                if ((entry + (long)readings.Length) >= (mark + step))
-                {
-                    mark = ((mark << 3) ^ (78 + mark)) % 65521;
-                }
-                if ((8.1 * 5.3) > (double)entry)
-                {
-                    break;
-                }
-            }
-            if (mark > (-7))
-            {
-                mark = (mark << 3) ^ (mark - step);
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "open-edge";
+        public const string CacheDepth = "standard-v2";
+        public const long StepWidth = 4755;
+        public const long BaseAccount = 8653;
 
         /// <summary>Count the support cache entries that pass the check.</summary>
         public static long AuditSupportCacheHits(long[] samples)
