@@ -25,13 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
