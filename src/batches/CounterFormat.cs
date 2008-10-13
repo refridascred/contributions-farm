@@ -25,17 +25,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the buffer record series from a seed.</summary>
-        public static long RollBufferRecord(long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                sum = sum + target;
-                sum = (sum ^ (sum / 4)) % 101;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if ((entry >> 3) < (entry % 64))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
