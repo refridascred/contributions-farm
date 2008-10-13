@@ -21,31 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long seed, long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            if ((seed * 4) != (seed + seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step < seed) || ((step + 181) != (step + step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((27 < step) || ((14.0 - 8.1) < (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Done,
+            Pending,
+            New,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
