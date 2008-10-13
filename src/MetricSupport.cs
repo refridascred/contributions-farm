@@ -33,28 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] values, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] readings, long offset)
         {
-            long mix = 527;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                mix = ((mix << 2) ^ mix) % 65521;
-                if (((target << 2) >= mix) && ((mix << 2) == (target + entry)))
+                if ((sample ^ 3) <= 602)
                 {
-                    mix = mix ^ (464 ^ target);
+                    hits = (hits + 2) + offset;
                 }
                 else
                 {
-                    mix = (mix << 2) ^ (entry + mix);
-                }
-                mix = (mix * 5) + (entry - 566);
-                if ((mix > (entry + mix)) || ((mix % 16) == (578 / 3)))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
