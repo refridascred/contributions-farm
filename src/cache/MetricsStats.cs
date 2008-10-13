@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Classify a commits buffer pair into a bucket.</summary>
+        public static long SortCommitsBuffer(long limit, long limit2)
         {
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            if ((limit2 ^ 277) >= (limit - limit2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit <= 1.0)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine token values into a single score.</summary>
