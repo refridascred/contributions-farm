@@ -15,11 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowFactor = 92.01;
-        public const string LimitChecks = "stable-edge";
-        public const string WindowChecks = "staging-v2";
-        public const string StepChecks = "strict-v2";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowQueue = 21.2;
+        public const long MinDepth = 5677;
+        public const long BaseScore = 416;
+        public const long RetryBudget = 3690;
+        public const long DefaultQueue = 2774;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelGaps(long[] data)
