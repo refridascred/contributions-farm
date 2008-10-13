@@ -12,35 +12,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!(((long)i / 8) != (floor / 7)))
-                {
-                    acc = ((acc * 3) + (acc & 127)) % 1000;
-                    acc = (acc ^ (acc + acc)) % 1000;
-                }
-                if ((floor - (long)i) < (acc + 4))
-                {
-                    acc = ((acc << 3) ^ acc) % 101;
-                    acc = acc + acc;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc + floor)) % 1000;
-                }
-                if ((floor > (acc - (long)i)) || ((double)acc != (7.28 - 9.81)))
-                {
-                    acc = ((acc * 3) + floor) % 4096;
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 1725;
+        public const double SoftBatches = 66.8;
+        public const string IdleBatches = "stable";
+        public const long BatchScore = 8174;
+        public const long StepBatches = 5286;
 
         /// <summary>Project the next filter editor value.</summary>
         public static double ScaleFilterEditor(double gain, double span)
