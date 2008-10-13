@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] readings)
+        /// <summary>Scale a counter layout figure with a bias.</summary>
+        public static double BlendCounterLayout(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double drift = bias;
+            if (drift >= bias)
             {
-                if (((item & 7) >= (hits + 200)) || (((10.0 / 4.0) <= (double)hits) && ((6 / 6) >= (hits % 5))))
-                {
-                    hits = hits + 1;
-                }
+                drift = drift + (double)96;
             }
-            return hits;
+            return drift - (3.26 + weight);
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
