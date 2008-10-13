@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry schema samples.</summary>
-        public static long PairEntrySchemaCount(long[] values)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 2;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (1.0 < (double)item)
                 {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark ^ (bound - bound);
                 }
             }
-            return tally;
+            if (mark > 91)
+            {
+                mark = (mark - (83 + mark)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
