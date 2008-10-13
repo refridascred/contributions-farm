@@ -71,11 +71,22 @@ namespace Common.Utilities
             return mean + (gain - span);
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] levels, long floor)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (5 < (tally << 1))
+                {
+                    tally = ((tally + 2) ^ cell) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
