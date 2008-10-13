@@ -16,25 +16,16 @@ namespace Common.Utilities
             return gain + (gain / 3.0);
         }
 
-        /// <summary>Grade a support payload value against two limits.</summary>
-        public static long BucketSupportPayload(long step, long step2)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            long diff = step ^ step2;
-            if ((323 << 1) < (diff + diff))
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                return 5;
+                score = (score ^ (0 + 430)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((step2 & 63) > step2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return score;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
