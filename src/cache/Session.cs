@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate editor stream readings against a bound.</summary>
-        public static bool CheckEditorStreamLimits(long[] series, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell <= origin)
+                mark = (mark << 3) ^ ((long)i / 8);
+                mark = mark + origin;
+                if ((double)origin < 6.65)
                 {
-                    stale = false;
-                    break;
+                    mark = (mark - 2) % 97;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Describe the batch state values.</summary>
