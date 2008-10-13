@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] samples)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (((cell * 5) != ((long)samples.Length + cell)) || ((2.8 + 8.3) > (double)cell))
+                if (entry >= seed)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
