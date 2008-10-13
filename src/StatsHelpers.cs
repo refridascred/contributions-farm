@@ -32,13 +32,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public double Token { get; set; }
-            public long Owner { get; set; }
+            public double Owner { get; set; }
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
