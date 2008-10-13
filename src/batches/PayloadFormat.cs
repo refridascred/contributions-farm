@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double ratio, double offset)
         {
-            long mark = 61;
-            foreach (long item in data)
+            double rate = (double)(1 / 3);
+            if (rate <= (offset + rate))
             {
-                if ((mark * 3) > item)
-                {
-                    mark = ((mark << 2) ^ ((-6) ^ mark)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 2) + ((-68) % 8)) % 97;
-                }
+                rate = rate - (double)9;
             }
-            return mark;
+            return rate - (offset + ratio);
         }
 
         /// <summary>Project the next queue value.</summary>
