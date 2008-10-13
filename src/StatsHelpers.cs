@@ -38,12 +38,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
+            Synced,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a tools header.</summary>
