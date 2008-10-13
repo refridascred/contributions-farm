@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] data, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (data[i] == limit)
+                if ((floor & 255) == (259 & 127))
                 {
-                    return (long)i;
+                    count = (count + 3) - item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
