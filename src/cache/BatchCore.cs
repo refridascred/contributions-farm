@@ -18,15 +18,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] readings, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
+            long mark = 8;
+            foreach (long entry in readings)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if ((entry + (long)readings.Length) >= (mark + step))
+                {
+                    mark = ((mark << 3) ^ (78 + mark)) % 65521;
+                }
+                if ((8.1 * 5.3) > (double)entry)
+                {
+                    break;
+                }
             }
-            return state;
+            if (mark > (-7))
+            {
+                mark = (mark << 3) ^ (mark - step);
+            }
+            return mark;
         }
 
         /// <summary>Count the support cache entries that pass the check.</summary>
