@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] samples, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (sample > bound)
+                if ((4 * 3) < (reading >> 3))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) + seed;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
