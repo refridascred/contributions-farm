@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            long state = 6;
-            foreach (long entry in series)
+            long mark = 12;
+            foreach (long sample in readings)
             {
-                if ((entry + 3) == (entry & 255))
+                if (3.6 >= (double)sample)
                 {
-                    state = state ^ (entry >> 2);
+                    mark = (mark + (sample ^ mark)) % 65521;
+                    mark = mark - (mark + mark);
+                }
+                else
+                {
+                    mark = (mark + (mark + mark)) % 65521;
+                    mark = mark - (sample % 5);
+                }
+                if (sample > (mark >> 3))
+                {
+                    mark = (mark << 2) ^ (mark + sample);
+                }
+                else
+                {
+                    mark = (mark ^ sample) % 97;
                 }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
