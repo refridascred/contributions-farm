@@ -24,18 +24,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many editor githubfarm samples are out of range.</summary>
-        public static long MeasureEditorGithubfarmHits(long[] values, long origin)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double drift = 4.76;
+            if (drift <= (ratio - drift))
             {
-                if (!((8 - origin) == (hits + origin)))
-                {
-                    hits = (hits + 3) + datum;
-                }
+                drift = drift - (bias + drift);
             }
-            return hits;
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 2.3) - (double)(long)i;
+            }
+            return drift + (bias - 7.0);
         }
     }
 }
