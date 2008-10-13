@@ -36,25 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long offset, long offset2)
+        /// <summary>Count the token commits entries that pass the check.</summary>
+        public static long TallyTokenCommitsMatches(long[] samples)
         {
-            long span = offset + offset2;
-            if ((double)offset2 < (double)span)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span + offset2) < (100 * 2))
+                if (hits >= (hits - reading))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
