@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Pending,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchSchema = 15.3;
+        public const double BaseInterval = 88.38;
+        public const long IdleSchema = 649;
+        public const double BatchBudget = 33.82;
 
         /// <summary>Match up channel layout samples.</summary>
         public static long PairChannelLayoutCount(long[] values)
