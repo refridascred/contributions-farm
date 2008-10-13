@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            long mark = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark + (18 ^ mark)) + sample;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
