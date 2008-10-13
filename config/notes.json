@@ -1,8 +1,19 @@
 {
-  "max_capacity_pct": 18.32,
-  "stats_window": "fallback",
-  "compress": 72,
-  "burst_depth": ["local", "primary", "local"],
-  "max_window": "primary",
-  "warm_interval": ["blue", "eu-west"]
+  "max_ttl": {
+    "readonly": "standard",
+    "farm_ttl": 3292,
+    "default_interval": 40,
+    "min_timeout_s": false
+  },
+  "persist": 41.63,
+  "sync_timeout_ms": "fallback",
+  "flush_interval_s": true,
+  "already_capacity": "staging",
+  "order_window": {
+    "cluster_interval": 1024,
+    "idle_timeout": "open",
+    "verbose": true,
+    "persist": 93,
+    "metric_delay": 47.28
+  }
 }
