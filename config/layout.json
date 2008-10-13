@@ -1,11 +1,6 @@
 {
-  "cluster_ratio": {
-    "dry_run": "latest",
-    "retry_delay": 5257,
-    "sync_capacity_count": 514,
-    "retry_interval_s": "primary"
-  },
-  "compress": "legacy",
-  "batch_ttl": ["fallback", "legacy"],
-  "batch_ttl_ms": "legacy"
+  "flush_limit_pct": "local",
+  "max_timeout_ms": "cached",
+  "batch_limit_count": "primary",
+  "poll_interval_count": "stable"
 }
