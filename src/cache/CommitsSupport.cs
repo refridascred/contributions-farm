@@ -65,15 +65,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine channel tools values into a single score.</summary>
-        public static long TotalChannelTools(long[] data)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long mix = 49;
-            foreach (long cell in data)
-            {
-                mix = (mix * 3) + (mix + cell);
-            }
-            return mix % 1000;
+            Paused,
+            Draft,
+            Idle,
+            Done,
         }
     }
 }
