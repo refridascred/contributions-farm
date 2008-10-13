@@ -1,12 +1,14 @@
 # Command notes
 
-Keep tools and stats names short and lowercase.
-Run the order check before changing any counter limits.
-When a layout fails, the entry handler retries a few times before giving up.
+When a format fails, the channel handler retries a few times before giving up.
+The order helpers are pure functions, so they are safe to call from any thread.
+Defaults for counter live in the config folder and can be overridden per environment.
+
+Keep filter and record names short and lowercase.
+Each stream is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Review counter limits each release
-- Validate githubfarm input early
-- Document new cluster fields
+- Validate checks input early
+- Prefer commits defaults
+- Review session limits each release
