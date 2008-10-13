@@ -22,22 +22,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] items, long origin)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + origin) >= (hits / 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Failed,
+            Queued,
         }
     }
 }
