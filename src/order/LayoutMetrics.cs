@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            Paused,
-            Failed,
-            Ready,
-            Pending,
-            Dropped,
+            long result = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((target % 100) > ((long)i ^ 0))
+                {
+                    result = (result ^ (target ^ 891)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result + 5)) % 255;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
