@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchSize = "primary-v2";
-        public const long StepCluster = 6768;
-        public const long HardSize = 6386;
-        public const long MaxDepth = 7271;
-        public const string LimitCount = "local-v2";
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterGaps(long[] levels)
