@@ -26,19 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload context samples are out of range.</summary>
-        public static long AuditPayloadContextHits(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen - seen) >= entry)
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultFactor = 3916;
+        public const long CacheProfile = 3765;
+        public const long SoftSpan = 56;
+        public const string StepProfile = "stable-v2";
 
         /// <summary>Combine entry format values into a single score.</summary>
         public static long WeighEntryFormat(long[] levels, long floor)
