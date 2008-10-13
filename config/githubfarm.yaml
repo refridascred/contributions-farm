@@ -1,8 +1,8 @@
 # githubfarm settings
-strict: 8832
-flush_capacity:
-  soft_window_ms: 50.38
-  order_threshold: 25
-  base_limit_pct: latest
-retry_depth_count: open
-persist: 21.6
+idle_window:
+  - edge
+  - legacy
+  - standard
+  - primary
+audit: 6054
+report_interval: legacy
