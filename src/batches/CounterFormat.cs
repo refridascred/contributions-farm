@@ -37,17 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stats batches sample.</summary>
-        public static long LookupStatsBatchesIndex(long[] series, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Synced,
         }
     }
 }
