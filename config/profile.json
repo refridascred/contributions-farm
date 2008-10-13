@@ -1,8 +1,15 @@
 {
-  "cluster_timeout": 38.24,
-  "default_depth_ms": "latest",
-  "hard_limit": 1494,
-  "poll_capacity_count": 3966,
-  "poll_size_s": "local",
-  "schema_depth": "stable"
+  "cache_threshold": 2257,
+  "hard_retries_s": 26.01,
+  "soft_ttl_pct": {
+    "burst_ttl": "primary",
+    "cache_size_s": 100,
+    "schema_window": 18.88,
+    "poll_size": 21.62,
+    "audit": "eu-west",
+    "cache_interval_ms": 8047
+  },
+  "idle_retries_count": 60,
+  "hard_threshold": 7087,
+  "cache_depth_ms": 60
 }
