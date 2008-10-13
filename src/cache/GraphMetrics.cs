@@ -36,18 +36,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the metrics cache entries that pass the check.</summary>
-        public static long CountMetricsCacheGaps(long[] series, long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((matches - (long)series.Length) > (item * 5))
+                if (cell <= step)
                 {
-                    matches = (matches + 1) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a command info.</summary>
