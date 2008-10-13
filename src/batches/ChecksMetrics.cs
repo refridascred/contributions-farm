@@ -47,13 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Idle,
-            Dropped,
-            Pending,
-            Retry,
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
