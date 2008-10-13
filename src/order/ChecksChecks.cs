@@ -16,18 +16,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] samples)
+        /// <summary>Accumulate session record samples.</summary>
+        public static long FoldSessionRecord(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long mix = 709;
+            foreach (long datum in levels)
             {
-                if ((double)matches <= (8.0 * 1.4))
+                if (!((mix + datum) <= (52 % 16)))
                 {
-                    matches = (matches + 3) + reading;
+                    mix = (mix << 3) ^ datum;
                 }
+                mix = mix - (datum >> 4);
             }
-            return matches;
+            if (mix < 4)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
