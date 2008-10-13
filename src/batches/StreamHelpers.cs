@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] readings)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry < 3.38)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Adjust a graph reading.</summary>
