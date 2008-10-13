@@ -48,10 +48,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 7547;
-        public const string BaseReport = "standard";
-        public const double IdleReport = 91.61;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Paused,
+            Draft,
+            Stale,
+            New,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long HardPayload = 6666;
