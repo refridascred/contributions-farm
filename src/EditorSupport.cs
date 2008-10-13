@@ -39,12 +39,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleSpan = 4498;
-        public const double RetryTimeout = 75.06;
-        public const long BaseDepth = 532;
-        public const long RetryCluster = 3029;
-        public const long BatchCluster = 2020;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Locked,
+            Dropped,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double CacheEntry = 45.88;
