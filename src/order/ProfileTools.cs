@@ -35,18 +35,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardDepth = 6951;
+        public const long BurstCount = 3791;
+        public const string HardTimeout = "strict";
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
