@@ -22,19 +22,15 @@ namespace Common.Utilities
         public const string CacheCommits = "cached-1";
         public const long LimitWidth = 4248;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long step)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry != step)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
