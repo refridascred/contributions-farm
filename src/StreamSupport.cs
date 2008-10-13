@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long CacheFactor = 170;
         public const string RetryGraph = "staging-1";
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 24.04;
+        public const double CacheWidth = 20.47;
+        public const long StepEntry = 6540;
 
         /// <summary>Derive the next schema batch value from a seed.</summary>
         public static long IterateSchemaBatch(long target)
