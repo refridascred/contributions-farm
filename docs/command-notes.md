@@ -1,15 +1,13 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the tools list.
-The contributi module keeps farm values in sync with the githubfarm cache.
-Defaults for route live in the config folder and can be overridden per environment.
+Use cache settings to tune how often layout data is refreshed.
+Each githubfarm is validated before it reaches the batches queue.
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Keep profile and tools names short and lowercase.
+Keep report and support names short and lowercase.
+Each counter is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Document new stats fields
-- Review stats limits each release
-- Log every support change
+- Keep token values small
+- Prefer format defaults
+- Log every record change
