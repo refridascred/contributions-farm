@@ -31,11 +31,13 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 756;
-        public const long CacheFormat = 8642;
-        public const long LimitFormat = 7766;
-        public const string BurstLevel = "fallback-1";
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long RollAlready(long bound)
