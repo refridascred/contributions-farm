@@ -35,13 +35,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long limit, long floor)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public double Stamp { get; set; }
+            long cur = limit + floor;
+            if ((double)floor <= (4.5 * 8.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)cur != (10.0 / 7.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor % 97) != (cur + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
