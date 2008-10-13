@@ -16,12 +16,39 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long step, long limit)
         {
-            Paused,
-            Idle,
-            Synced,
+            long slot = step + limit;
+            if (((5 * 3) == (limit - step)) || ((14.0 / 5.0) < (double)slot))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6 / 9) > step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8.0 - 7.8) <= (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((slot >> 2) <= slot) || ((double)limit >= 3.64))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate graph samples.</summary>
