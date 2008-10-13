@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Hold a booking summary.</summary>
-        public sealed class BookingSummary
+        /// <summary>Check that every graph context entry stays within the limit.</summary>
+        public static bool GuardGraphContextBounds(long[] levels, long target)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
