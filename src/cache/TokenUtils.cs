@@ -24,19 +24,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] values, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long mark = 778;
+            foreach (long item in items)
             {
-                if (entry != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark + (item - mark)) % 101) + origin;
             }
-            return stale;
+            return mark;
         }
     }
 }
