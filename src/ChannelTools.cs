@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long limit, long origin)
         {
-            Retry,
-            Done,
-            Closed,
-            Pending,
-            Ready,
+            long bound = limit + origin;
+            if ((origin % 8) != (bound & 15))
+            {
+                return 2;
+            }
+            else
+            {
+                if (41 > (bound - 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
