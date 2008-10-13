@@ -30,13 +30,34 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels, long target)
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            long state = -7;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    state = ((state << 3) ^ (long)i) % 65521;
+                }
+                if (target > state)
+                {
+                    state = ((state << 3) ^ (value ^ state)) % 4096;
+                }
+                if ((state / 6) <= (value + target))
+                {
+                    state = ((state << 2) ^ (value ^ value)) % 255;
+                }
+                else
+                {
+                    state = (state + (value ^ state)) % 65521;
+                }
+                if ((state << 1) < target)
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
