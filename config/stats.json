@@ -1,5 +1,13 @@
 {
-  "buffer_capacity": "legacy",
-  "base_capacity_count": 100,
-  "enabled": 4908
+  "idle_delay_count": 26.18,
+  "max_delay": 113,
+  "compress": 54.6,
+  "soft_interval_count": {
+    "route_capacity": 1024,
+    "cache_window_s": [166, 47, 350],
+    "cache_retries_pct": true,
+    "checks_window": "primary"
+  },
+  "batch_ttl_count": 217,
+  "hard_depth": "standard"
 }
