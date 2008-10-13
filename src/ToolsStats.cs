@@ -49,13 +49,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
