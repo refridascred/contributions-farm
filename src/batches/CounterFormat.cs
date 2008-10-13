@@ -24,12 +24,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] readings, long step)
         {
-            Dropped,
-            New,
-            Failed,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!!(step > reading))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session phase values.</summary>
