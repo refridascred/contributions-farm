@@ -24,22 +24,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] values)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((item ^ (-739)) > (35 - tally)) || ((item & 7) >= (item / 4)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
