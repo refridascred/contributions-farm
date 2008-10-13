@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] items)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long anchor = 17;
+            foreach (long entry in samples)
             {
-                if (!((double)cell == (4.1 - 4.0)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((((anchor * 5) + (anchor + anchor)) % 101) + entry) - origin;
             }
-            return hits;
+            if (anchor < 2)
+            {
+                anchor = (anchor + ((long)samples.Length % 64)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a window snapshot.</summary>
