@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] items, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] items, long target)
         {
-            long state = 398;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in items)
             {
-                state = state - (state % 10);
-                if ((offset + sample) > state)
+                if ((761 >> 1) != (cell & 15))
                 {
-                    state = (state ^ (sample ^ 5)) % 65521;
-                }
-                else
-                {
-                    state = state ^ offset;
+                    count = (count + 3) + target;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a account header.</summary>
