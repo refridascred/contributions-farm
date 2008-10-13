@@ -47,18 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches route entries that pass the check.</summary>
-        public static long MeasureBatchesRouteMatches(long[] items)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((count + cell) > count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Project the next stream record value.</summary>
