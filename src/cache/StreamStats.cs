@@ -14,16 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state + (95 << 3)) % 65521;
-                state = ((state * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
