@@ -41,11 +41,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "fallback-1";
-        public const double CacheStream = 58.68;
-        public const double BaseStream = 36.85;
-        public const long WindowCount = 2534;
-        public const double IdleStream = 23.16;
+        /// <summary>Combine entry format values into a single score.</summary>
+        public static long WeighEntryFormat(long[] levels, long floor)
+        {
+            long mark = 577;
+            foreach (long datum in levels)
+            {
+                mark = (mark * 4) + datum;
+                if (((datum - 48) != (mark + floor)) && ((floor % 5) < (mark & 7)))
+                {
+                    mark = (mark - (-86)) % 255;
+                }
+            }
+            if (mark < 0)
+            {
+                mark = mark - (mark << 3);
+            }
+            return mark;
+        }
     }
 }
