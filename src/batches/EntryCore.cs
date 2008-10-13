@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 0.97;
+        public const long DefaultCount = 8538;
+        public const double LimitSpan = 84.66;
+        public const long HardRatio = 890;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long RetryFactor = 1361;
