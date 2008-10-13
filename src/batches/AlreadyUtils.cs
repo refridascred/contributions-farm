@@ -27,21 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count queue account pairs that satisfy a relation.</summary>
-        public static long CompareQueueAccountCount(long[] series)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Retry,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a payload stats.</summary>
