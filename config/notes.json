@@ -1,7 +1,19 @@
 {
-  "flush_threshold_ms": 2524,
-  "soft_ratio_ms": "fallback",
-  "hard_ratio_ms": "local",
-  "cache_capacity_count": 500,
-  "default_retries_ms": 8816
+  "stream_interval": {
+    "poll_delay_s": 21,
+    "poll_ttl_pct": 74.32,
+    "min_timeout_s": false,
+    "min_window_pct": "strict",
+    "entry_ratio": 29.06
+  },
+  "flush_interval": "cached",
+  "burst_size_count": 60,
+  "readonly": {
+    "sync_size": "edge",
+    "dry_run": 91.36,
+    "max_limit_count": "primary",
+    "min_window_count": true,
+    "audit": 34,
+    "idle_delay": ["staging", "eu-west", "standard", "primary"]
+  }
 }
