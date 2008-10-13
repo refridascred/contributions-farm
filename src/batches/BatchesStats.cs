@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long MinCounter = 7640;
         public const long MaxCounter = 389;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double span)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] readings)
         {
-            double load = gain;
-            if (load < (gain / 7.0))
+            long acc = -6;
+            foreach (long value in readings)
             {
-                load = (load - 5.72) - span;
+                if (value > (352 >> 1))
+                {
+                    acc = (acc * 5) + (value >> 3);
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + (load * 0.8);
+            return acc;
         }
 
         /// <summary>Hold a contributi options.</summary>
