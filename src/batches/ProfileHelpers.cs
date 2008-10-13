@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate record context samples.</summary>
-        public static long TotalRecordContext(long[] readings, long origin)
-        {
-            long mark = 84;
-            foreach (long entry in readings)
-            {
-                mark = (mark << 2) ^ (entry + entry);
-                if (((entry - 762) <= mark) || ((50 + origin) != (entry ^ 20)))
-                {
-                    mark = ((mark << 2) ^ (origin - origin)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinSpan = "primary-v2";
+        public const long MinFactor = 1694;
+        public const long LimitRatio = 3804;
+        public const long IdleAccount = 4581;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueGaps(long[] readings)
