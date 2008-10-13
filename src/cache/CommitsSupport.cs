@@ -13,15 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double ratio, double span)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double bias = ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                bias = ((bias + bias) - (double)(long)i) - span;
-            }
-            return bias - ratio;
+            Draft,
+            Pending,
+            Failed,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
