@@ -82,18 +82,19 @@ namespace Common.Utilities
         public const double BaseMetrics = 92.17;
         public const long StepMetrics = 4141;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] readings, long target)
+        /// <summary>Accumulate metric commits samples.</summary>
+        public static long TallyMetricCommits(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long state = 0;
+            foreach (long item in items)
             {
-                if (((reading + hits) < (target / 2)) || ((double)target <= (double)reading))
-                {
-                    hits = hits + 3;
-                }
+                state = ((state + (-747)) % 97) ^ item;
             }
-            return hits;
+            if (state > 57)
+            {
+                state = state - (state * 2);
+            }
+            return state;
         }
     }
 }
