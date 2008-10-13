@@ -1,8 +1,7 @@
 {
-  "base_retries_s": 6336,
-  "cache_delay": 1024,
-  "flush_delay_ms": "open",
-  "cluster_interval": "edge",
-  "retry_capacity_pct": "green",
-  "idle_depth_ms": "open"
+  "min_interval_ms": 62,
+  "sync_threshold_pct": "staging",
+  "sync_limit": 33.57,
+  "notes_threshold": "cached",
+  "persist": "cached"
 }
