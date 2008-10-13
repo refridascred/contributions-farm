@@ -53,13 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Scale a payload context figure with a bias.</summary>
+        public static double AdjustPayloadContext(double weight, double span)
         {
-            Draft,
-            Idle,
-            New,
-            Synced,
+            double load = weight;
+            if (load > (weight / 8.0))
+            {
+                load = load - weight;
+            }
+            else
+            {
+                load = load - (span / 3.0);
+            }
+            return load + (load - span);
         }
     }
 }
