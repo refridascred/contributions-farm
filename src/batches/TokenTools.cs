@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultScore = 8592;
-        public const long DefaultSpan = 4031;
-        public const long StepEntry = 9424;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] values, long step)
