@@ -35,15 +35,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Stale,
-            Failed,
-            Done,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleSize = 17.03;
+        public const string MaxGithubfarm = "open-v2";
+        public const long CacheCount = 4755;
+        public const string DefaultGithubfarm = "staging-1";
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
