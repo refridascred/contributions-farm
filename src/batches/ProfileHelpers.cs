@@ -60,14 +60,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] values, long origin)
         {
-            Locked,
-            Retry,
-            Closed,
-            Draft,
-            Pending,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((origin + seen) < origin)
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
