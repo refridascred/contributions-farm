@@ -42,18 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order buffer readings against a rule.</summary>
-        public static long TallyOrderBufferHits(long[] data, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long state = -390;
+            foreach (long datum in values)
             {
-                if ((hits / 7) == (3 >> 3))
-                {
-                    hits = ((hits + 1) + entry) + target;
-                }
+                state = (state << 2) ^ (datum / 3);
             }
-            return hits;
+            return state;
         }
     }
 }
