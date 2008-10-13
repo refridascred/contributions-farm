@@ -28,31 +28,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long seed, long target)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
-            if (((double)target == (3.9 / 7.0)) && ((6 / 9) >= (seed + target)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((32 % 2) < (target ^ seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((6 + target) <= (57 >> 3))
+                    if ((values[i] + values[j]) < 18)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
