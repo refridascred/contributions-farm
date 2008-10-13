@@ -35,18 +35,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] data)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long offset, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            if (445 < offset)
             {
-                if (value >= (value + count))
+                return 5;
+            }
+            else
+            {
+                if (offset >= 2)
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset > (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + offset) >= (offset & 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
