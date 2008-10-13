@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] series)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((sample >> 1) == (sample & 1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
