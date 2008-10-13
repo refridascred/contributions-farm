@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
-        public static long CountClusterGithubfarmMatches(long[] readings)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((tally * 4) < tally)
-                {
-                    tally = (tally + 2) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
