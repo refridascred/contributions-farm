@@ -16,10 +16,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowSize = 5610;
-        public const long SoftNotes = 6590;
-        public const long HardRatio = 5084;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] series, long offset)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
