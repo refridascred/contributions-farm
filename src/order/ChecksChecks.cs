@@ -16,21 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the cache queue series from a seed.</summary>
-        public static long IterateCacheQueue(long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] samples)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                result = ((result * 2) + (floor & 63)) % 4096;
-                if ((floor * 2) > result)
+                if ((double)matches <= (8.0 * 1.4))
                 {
-                    result = ((result * 4) + (long)i) % 255;
-                    continue;
+                    matches = (matches + 3) + reading;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
