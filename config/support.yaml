@@ -1,8 +1,4 @@
 # support settings
-flush_ratio_s: cached
-enabled: false
-max_ttl: 63
-idle_timeout_ms:
-  - 222
-  - 324
-  - 278
+readonly: open
+verbose: stable
+retry_interval_count: 500
