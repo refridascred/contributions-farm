@@ -19,16 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftBudget = "stable";
+        public const double HardChannel = 57.41;
+        public const double BatchWidth = 74.57;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long floor, long bound)
