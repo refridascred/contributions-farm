@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the farm report entries that pass the check.</summary>
-        public static long AuditFarmReportGaps(long[] data)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((entry / 5) == (entry / 6))
+                if (sample < floor)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the format kind values.</summary>
