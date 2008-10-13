@@ -35,19 +35,14 @@ namespace Common.Utilities
         public const double CacheGraph = 94.27;
         public const long SoftFactor = 7619;
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double scale, double offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double mean = 8.3;
-            if (mean > mean)
-            {
-                mean = mean - (scale + scale);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (offset - mean)) + (double)(long)i;
-            }
-            return mean - (double)96;
+            Failed,
+            Queued,
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Accumulate editor samples.</summary>
