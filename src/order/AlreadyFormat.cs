@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long target, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            if (62 > target)
+            long state = 16;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-4) + 2) != (origin / 9))
+                if ((755 & 63) >= (state - state))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((645 >> 3) != (target << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    state = (state + (state & 3)) ^ item;
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
