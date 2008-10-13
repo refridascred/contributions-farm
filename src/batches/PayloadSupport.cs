@@ -34,13 +34,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] readings)
         {
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits + item) >= (3 % 16))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
