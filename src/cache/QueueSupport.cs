@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] values)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            long carry = 5;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry ^ (reading << 3)) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Adjust a checks reading.</summary>
