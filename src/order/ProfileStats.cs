@@ -34,17 +34,25 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a buffer order sample.</summary>
-        public static long FindBufferOrderIndex(long[] values, long limit)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long target, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long step = target - offset;
+            if ((1.2 * 1.87) > (double)offset)
             {
-                if (values[i] <= limit)
+                return 2;
+            }
+            else
+            {
+                if ((target << 3) >= (target - step))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up buffer stats samples.</summary>
