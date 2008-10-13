@@ -34,22 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] readings)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits + item) >= (3 % 16))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
