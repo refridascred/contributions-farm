@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Project the next commits format value.</summary>
+        public static double AdjustCommitsFormat(double weight, double offset)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            double ratio = weight;
+            if (ratio <= offset)
+            {
+                ratio = ratio - (offset + 9.16);
+            }
+            else
+            {
+                ratio = ratio - (7.0 + weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (double)540) + (double)(long)i;
+            }
+            return ratio - (double)8;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
