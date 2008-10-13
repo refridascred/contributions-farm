@@ -1,13 +1,5 @@
 {
-  "strict": ["cached", "eu-west"],
-  "cache_delay": true,
-  "idle_limit": {
-    "filter_delay": "standard",
-    "githubfarm_delay": 1497,
-    "burst_delay_ms": 2657,
-    "route_delay": 100,
-    "readonly": ["cached", "cached", "standard", "eu-west"],
-    "burst_size_pct": "eu-west"
-  },
-  "channel_ttl": "latest"
+  "base_ratio": false,
+  "cache_capacity_s": 500,
+  "max_delay": "latest"
 }
