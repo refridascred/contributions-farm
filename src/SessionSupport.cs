@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] values, long target)
+        /// <summary>Find the first checks cluster entry that matches the target.</summary>
+        public static long SeekChecksClusterIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] < target)
+                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
