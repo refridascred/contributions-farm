@@ -1,6 +1,5 @@
 {
-  "flush_size_pct": "cached",
-  "soft_size_s": ["cached", "standard"],
-  "min_retries": false,
-  "verbose": ["stable", "cached", "latest", "primary"]
+  "strict": 1024,
+  "graph_size": ["eu-west", "eu-west"],
+  "verbose": "strict"
 }
