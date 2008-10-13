@@ -1,15 +1,12 @@
 {
-  "max_capacity_ms": {
-    "payload_depth": true,
-    "stats_ratio": {
-      "hard_interval": "local",
-      "batch_window_count": true,
-      "editor_interval": 27.91,
-      "persist": 9763,
-      "queue_interval": 46
-    },
-    "compress": true
+  "verbose": {
+    "max_timeout": "local",
+    "idle_threshold_s": "open",
+    "default_limit_s": true,
+    "batch_delay": [183, 179, 382, 451],
+    "burst_depth_count": "blue",
+    "burst_depth_pct": 60
   },
-  "sync_window_pct": ["standard", "open", "open"],
-  "max_ttl_count": 36.38
+  "layout_threshold": "stable",
+  "commits_capacity": true
 }
