@@ -5,31 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] items, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long step, long origin)
         {
-            long score = 74;
-            foreach (long sample in items)
+            long step2 = step + origin;
+            if ((origin + step) <= (step + origin))
             {
-                if (!((9 ^ sample) < (score + 76)))
+                return 1;
+            }
+            else
+            {
+                if ((step2 ^ step) > (step % 100))
                 {
-                    score = (score + (sample + (-2))) - step;
-                    score = (score - (score & 127)) % 255;
+                    return 5;
                 }
-                if ((double)score >= (5.4 + 7.87))
+                else
                 {
-                    score = score - (5 * 2);
-                }
-                if (((7.3 * 5.0) <= (double)sample) && ((sample + score) == (score & 15)))
-                {
-                    break;
+                    if (!((0.89 * 18.0) == (double)step2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (score > 859)
-            {
-                score = score - (-214);
-            }
-            return score % 65521;
         }
 
         /// <summary>Describe the report status values.</summary>
