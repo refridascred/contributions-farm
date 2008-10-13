@@ -52,21 +52,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = (anchor - floor) ^ (long)i2;
-                }
-                anchor = (anchor - anchor) % 101;
-                anchor = (anchor + (long)i) % 255;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Paused,
+            New,
+            Queued,
+            Closed,
+            Stale,
         }
     }
 }
