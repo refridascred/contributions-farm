@@ -24,18 +24,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many commits counter samples are out of range.</summary>
-        public static long TallyCommitsCounterOutliers(long[] values)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long bound2 = floor - bound;
+            if ((double)bound > (6.2 + 1.0))
             {
-                if ((matches - item) <= matches)
+                return 3;
+            }
+            else
+            {
+                if ((4.97 * 1.18) > (double)bound2)
                 {
-                    matches = matches + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (((bound2 - bound) == (bound - floor)) || ((floor + 8) >= 17))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the format level values.</summary>
