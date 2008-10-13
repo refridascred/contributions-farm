@@ -32,32 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long offset, long target)
+        /// <summary>Match up metric cache samples.</summary>
+        public static long MatchMetricCacheCount(long[] readings)
         {
-            long bound = offset - target;
-            if (((bound << 2) >= 9) && ((target ^ offset) < offset))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound == (double)target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound << 1) == (offset & 255))
+                    if ((readings[i] - readings[j]) == 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many token order samples are out of range.</summary>
