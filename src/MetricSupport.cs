@@ -32,11 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCount = 1491;
-        public const long BaseCounter = 8249;
-        public const string MaxCounter = "local";
-        public const long RetryFactor = 7328;
-        public const long LimitCounter = 2522;
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double weight, double offset)
+        {
+            double ratio = (double)(293 + 55);
+            return ((ratio + ratio) + weight) + offset;
+        }
     }
 }
