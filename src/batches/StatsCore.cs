@@ -56,23 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double gain, double span)
+        /// <summary>Measure how many window counter samples are out of range.</summary>
+        public static long TallyWindowCounterOutliers(long[] samples)
         {
-            double load = span;
-            if (load <= 16.0)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                load = load + (1.3 * 9.5);
+                if (!((8 - reading) <= reading))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                load = load + (double)66;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load + (double)(-248);
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
