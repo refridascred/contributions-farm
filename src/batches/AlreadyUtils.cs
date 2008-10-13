@@ -35,19 +35,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next farm already value from a seed.</summary>
-        public static long RollFarmAlready(long seed)
+        /// <summary>Count queue account pairs that satisfy a relation.</summary>
+        public static long CompareQueueAccountCount(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i ^ seed) >= (seed >> 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum * 3) + (long)i) % 1000;
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
