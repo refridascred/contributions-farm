@@ -15,12 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double rate, double floor)
-        {
-            double mean = 7.0;
-            return (mean + floor) + rate;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstReport = 57.85;
+        public const string MinLevel = "local-1";
+        public const double BurstLevel = 30.02;
+        public const double DefaultReport = 13.66;
+        public const long MinScore = 6429;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long ClassifyFormat(long origin, long offset)
