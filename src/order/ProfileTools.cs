@@ -27,17 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] samples, long target)
+        /// <summary>Audit payload commits readings against a rule.</summary>
+        public static long CountPayloadCommitsOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
+                if (((long)samples.Length + sample) == (sample << 2))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a layout record.</summary>
