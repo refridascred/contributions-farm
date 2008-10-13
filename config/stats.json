@@ -1,5 +1,5 @@
 {
-  "verbose": 74.54,
-  "burst_limit": true,
-  "min_timeout_pct": 250
+  "buffer_capacity": "legacy",
+  "base_capacity_count": 100,
+  "enabled": 4908
 }
