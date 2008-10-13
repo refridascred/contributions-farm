@@ -14,12 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
+            Ready,
+            Paused,
             Synced,
-            Dropped,
-            Draft,
             New,
         }
 
