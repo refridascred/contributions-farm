@@ -17,17 +17,38 @@ namespace Common.Utilities
         public const double HardBudget = 37.16;
         public const long MaxFactor = 342;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] items, long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long floor, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((5 + 494) > floor)
             {
-                if ((items[i] == target) && ((items[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((bound % 24) <= (bound + 1))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound << 3) <= (bound >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)floor < 4.3)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
