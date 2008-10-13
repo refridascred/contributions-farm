@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate context record samples.</summary>
-        public static long FoldContextRecord(long[] series, long step)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            long mark = 4;
-            foreach (long reading in series)
+            long state = 457;
+            foreach (long item in values)
             {
-                if (mark >= (step >> 5))
+                if ((double)state < (7.0 + 19.0))
                 {
-                    mark = mark - ((-5) + reading);
+                    state = ((state << 3) ^ (state & 127)) % 65521;
+                }
+                if ((state + state) != (item & 255))
+                {
+                    break;
                 }
             }
-            return mark;
+            if (state < (-97))
+            {
+                state = ((state * 4) + (state / 2)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
