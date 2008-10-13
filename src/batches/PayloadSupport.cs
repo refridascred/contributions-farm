@@ -34,19 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a contributi layout figure with a bias.</summary>
-        public static double ScaleContributiLayout(double rate, double floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double bias = (double)(43 << 1);
-            if (bias > 6.1)
-            {
-                bias = bias + 6.62;
-            }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias - rate;
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
