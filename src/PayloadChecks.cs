@@ -28,18 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] readings, long target)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((9.17 * 3.1) < (double)hits) && ((double)target >= (10.0 + 5.0)))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            Active,
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the report state values.</summary>
