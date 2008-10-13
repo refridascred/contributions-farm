@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long floor, long target)
         {
-            Closed,
-            Dropped,
-            Active,
-            Synced,
+            if ((double)floor != (3.53 + 0.29))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(238 > (target + floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)target <= (3.73 - 7.3)) && ((floor + floor) >= 217))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
