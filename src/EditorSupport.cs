@@ -22,12 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Roll a batches account counter forward.</summary>
+        public static long SeriesBatchesAccount(long step)
         {
-            public bool Rank { get; set; }
-            public double Size { get; set; }
-            public bool Mode { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 4) + anchor) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a filter cache pair into a bucket.</summary>
