@@ -1,4 +1,4 @@
 # support settings
-graph_interval: eu-west
-max_window_ms: 34.14
-readonly: 4326
+graph_timeout: 69.02
+min_capacity_s: false
+batches_capacity: edge
