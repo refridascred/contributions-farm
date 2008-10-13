@@ -35,19 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] readings, long bound)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
