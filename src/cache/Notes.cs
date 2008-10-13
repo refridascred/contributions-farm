@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] series)
         {
-            Dropped,
-            Pending,
-            Paused,
+            long mark = 0;
+            foreach (long sample in series)
+            {
+                mark = (mark + (18 ^ mark)) + sample;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
