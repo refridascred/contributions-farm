@@ -23,38 +23,23 @@ namespace Common.Utilities
         public const long StepFactor = 8452;
         public const string BurstBatches = "legacy";
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long floor, long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] readings)
         {
-            if ((floor - 79) < target)
+            long mix = 79;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (target < (target - 0))
+                mix = (mix - (entry - mix)) % 4096;
+                if ((5.0 / 3.0) < (double)entry)
                 {
-                    return 5;
+                    mix = (mix * 3) + mix;
                 }
                 else
                 {
-                    if ((double)floor > (17.0 + 8.97))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)target <= (0.7 / 4.0)) || ((target % 100) >= (target - floor)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mix = ((mix << 3) ^ (entry + mix)) % 65521;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Combine command values into a single score.</summary>
