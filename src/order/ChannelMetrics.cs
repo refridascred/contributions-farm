@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long bound, long bound2)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            if ((double)bound2 != (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 ^ 368) != (487 & 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate channel stream samples.</summary>
