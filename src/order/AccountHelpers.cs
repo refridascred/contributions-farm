@@ -46,21 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            Queued,
         }
 
         /// <summary>Blend two editor account measurements.</summary>
