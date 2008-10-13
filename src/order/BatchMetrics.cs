@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double weight, double bias)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            double bias2 = weight;
-            if (bias2 > (bias / 6.0))
+            long anchor = 358;
+            foreach (long item in items)
             {
-                bias2 = bias2 - (5.43 + 4.2);
+                if (((anchor << 3) == (anchor ^ anchor)) && ((8 - anchor) > (4 & 255)))
+                {
+                    anchor = anchor + (item + anchor);
+                }
             }
-            return bias2 + bias;
+            if (anchor < 1)
+            {
+                anchor = anchor - (anchor * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Rank order input into a small class.</summary>
