@@ -1,11 +1,7 @@
 # githubfarm settings
-sync_interval_pct:
-  - eu-west
-  - stable
-  - fallback
-  - open
-base_limit_pct: green
-context_ttl: fallback
-sync_limit_pct:
-  - 386
-  - 151
+batch_delay_count: 27.04
+report_window: 77
+session_size: 21.77
+route_window: standard
+buffer_ttl: 75.98
+sync_ratio: 7957
