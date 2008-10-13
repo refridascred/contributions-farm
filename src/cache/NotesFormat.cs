@@ -25,22 +25,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] values)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((0 + reading) == (7 - 6)) || ((8 - seen) <= reading))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
