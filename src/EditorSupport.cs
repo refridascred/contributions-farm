@@ -35,19 +35,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] readings, long seed)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double bias = ratio;
+            return (bias - (ratio + 5.0)) + offset;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
