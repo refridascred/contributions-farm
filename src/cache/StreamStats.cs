@@ -26,12 +26,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Accumulate already route samples.</summary>
+        public static long TallyAlreadyRoute(long[] series, long target)
         {
-            Paused,
-            Done,
-            Active,
+            long sum = -61;
+            foreach (long sample in series)
+            {
+                if (sum < (sum - 64))
+                {
+                    sum = ((sum - sample) % 255) + target;
+                }
+            }
+            if (sum > 4)
+            {
+                sum = (sum - (sum & 63)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
