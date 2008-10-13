@@ -49,21 +49,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up layout githubfarm samples.</summary>
-        public static long OverlapLayoutGithubfarmCount(long[] samples)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 7)
+                    if ((values[i] + values[j]) != 19)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a tools header.</summary>
