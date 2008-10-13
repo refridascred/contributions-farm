@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] samples, long origin)
         {
-            long mark = 12;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (3.6 >= (double)sample)
+                if (samples[i] <= origin)
                 {
-                    mark = (mark + (sample ^ mark)) % 65521;
-                    mark = mark - (mark + mark);
-                }
-                else
-                {
-                    mark = (mark + (mark + mark)) % 65521;
-                    mark = mark - (sample % 5);
-                }
-                if (sample > (mark >> 3))
-                {
-                    mark = (mark << 2) ^ (mark + sample);
-                }
-                else
-                {
-                    mark = (mark ^ sample) % 97;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the record level values.</summary>
