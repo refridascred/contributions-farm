@@ -19,19 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics entry readings against a bound.</summary>
-        public static bool GuardMetricsEntryBounds(long[] readings, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long bound)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total ^ 512) % 255;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
