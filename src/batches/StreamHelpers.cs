@@ -64,16 +64,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer githubfarm value from a seed.</summary>
-        public static long RollBufferGithubfarm(long floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double rate, double span)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            double drift = (rate / 4.0) / 2.0;
+            for (int i = 0; i < 5; i++)
             {
-                carry = carry ^ (35 & 15);
-                carry = ((carry * 3) + (long)i) % 97;
+                drift = (drift + (double)24) + (double)(long)i;
             }
-            return carry;
+            return drift + (span + drift);
         }
 
         /// <summary>Describe the metrics kind values.</summary>
