@@ -1,5 +1,12 @@
 {
-  "enabled": true,
-  "sync_delay_count": 58.15,
-  "persist": 4.15
+  "audit": ["strict", "blue", "open", "edge"],
+  "entry_window": false,
+  "route_depth": {
+    "readonly": 3.86,
+    "burst_retries_count": 7100,
+    "retry_interval_pct": 9780
+  },
+  "persist": 94,
+  "payload_ttl": 1,
+  "tools_timeout": false
 }
