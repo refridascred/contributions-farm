@@ -18,22 +18,12 @@ namespace Common.Utilities
         public const long MinQueue = 6923;
         public const long LimitQueue = 1902;
 
-        /// <summary>Accumulate session farm samples.</summary>
-        public static long FoldSessionFarm(long[] levels, long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long total = 20;
-            foreach (long cell in levels)
-            {
-                if ((bound + 829) == (bound ^ cell))
-                {
-                    total = (total - (total - cell)) % 4096;
-                }
-            }
-            if (total > 199)
-            {
-                total = (total ^ bound) % 1000;
-            }
-            return total;
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
