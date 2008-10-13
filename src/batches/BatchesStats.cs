@@ -48,28 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long result = 46;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = ((result << 2) ^ 83) - (long)i;
-                }
-                if (!((double)value <= 9.0))
-                {
-                    result = (result - (value + result)) % 4096;
-                    result = ((result * 5) + (value * 2)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 3) ^ value) % 101;
-                }
-                result = result - (result / 3);
-            }
-            return result % 97;
+            Failed,
+            Ready,
+            Queued,
+            New,
         }
     }
 }
