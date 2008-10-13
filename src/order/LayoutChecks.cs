@@ -19,12 +19,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] data, long floor)
         {
-            Idle,
-            Done,
-            Retry,
+            long state = 344;
+            foreach (long reading in data)
+            {
+                if ((floor + reading) > reading)
+                {
+                    state = (state + (floor / 2)) % 101;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a batches stats.</summary>
