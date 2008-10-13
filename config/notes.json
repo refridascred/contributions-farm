@@ -1,13 +1,8 @@
 {
-  "cache_depth_pct": {
-    "cache_delay_ms": "primary",
-    "cache_window_pct": true,
-    "audit": 2472,
-    "batch_window_s": 500
-  },
-  "farm_retries": 30,
-  "channel_size": "blue",
-  "compress": 25.7,
-  "max_size_count": false,
-  "window_interval": "cached"
+  "soft_size_s": "legacy",
+  "sync_depth": 13,
+  "hard_interval": 14.59,
+  "stats_interval": 60,
+  "verbose": 30,
+  "max_delay_count": "stable"
 }
