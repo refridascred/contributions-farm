@@ -26,17 +26,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] data, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
+                if (datum < step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
