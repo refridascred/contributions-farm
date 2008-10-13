@@ -32,13 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
+            Locked,
+            Retry,
+            Pending,
+            Closed,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
