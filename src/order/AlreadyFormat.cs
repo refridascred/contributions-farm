@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many already stream samples are out of range.</summary>
-        public static long CountAlreadyStreamMatches(long[] levels)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long target, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if (62 > target)
             {
-                if ((count % 64) < 576)
+                return 0;
+            }
+            else
+            {
+                if (((-4) + 2) != (origin / 9))
                 {
-                    count = (count + 1) - sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((645 >> 3) != (target << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the stream status values.</summary>
