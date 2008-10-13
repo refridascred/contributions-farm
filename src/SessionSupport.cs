@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double weight, double bias)
-        {
-            double bias2 = bias - (double)89;
-            return (bias2 - (bias2 / 2.0)) + weight;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheRatio = 6445;
+        public const string MinMetrics = "cached-1";
+        public const double HardMetrics = 95.9;
+        public const long SoftWidth = 3645;
+        public const double CacheSpan = 48.11;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BaseDepth = "local-edge";
