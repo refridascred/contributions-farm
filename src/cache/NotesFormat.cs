@@ -33,18 +33,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] levels, long origin)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double weight, double floor)
         {
-            long result = 9;
-            foreach (long value in levels)
+            double weight2 = (0.2 + floor) * 10.0;
+            if (weight2 >= (double)(-395))
             {
-                if ((result & 255) == (value + value))
-                {
-                    result = ((result ^ (value * 4)) % 4096) - origin;
-                }
+                weight2 = weight2 + (weight - floor);
             }
-            return result % 97;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 + (double)7;
         }
     }
 }
