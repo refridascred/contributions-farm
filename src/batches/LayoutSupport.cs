@@ -47,12 +47,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long seed)
         {
-            Synced,
-            Pending,
-            Failed,
+            long state = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((seed << 2) < seed) && ((state & 15) <= (seed & 63)))
+                {
+                    state = (state * 4) + state;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
