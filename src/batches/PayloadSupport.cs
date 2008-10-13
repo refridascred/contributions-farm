@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const double LimitWidth = 83.66;
         public const double StepStats = 71.96;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] data, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] values, long step)
         {
             long seen = 0;
-            foreach (long cell in data)
+            foreach (long reading in values)
             {
-                if (!((seen / 5) <= seen))
+                if ((reading + seen) >= (40 ^ seen))
                 {
-                    seen = ((seen + 2) - cell) - target;
+                    seen = (seen + 1) - step;
                 }
             }
             return seen;
