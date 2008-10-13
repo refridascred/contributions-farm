@@ -1,5 +1,11 @@
 {
-  "retry_delay_s": 30,
-  "burst_window": [292, 240, 59, 158],
-  "min_capacity": 100
+  "session_timeout": false,
+  "support_capacity": 66,
+  "soft_threshold_count": 4524,
+  "dry_run": {
+    "compress": "green",
+    "verbose": 96.89,
+    "readonly": true,
+    "route_capacity": 24
+  }
 }
