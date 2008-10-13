@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Audit buffer metric readings against a rule.</summary>
+        public static long MeasureBufferMetricMatches(long[] data, long bound)
         {
-            long anchor = 2;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (12.0 >= (double)sample)
+                if (!!(((-54) - bound) < (count - entry)))
                 {
-                    anchor = (anchor * 4) + (sample + sample);
+                    count = count + 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a stats record.</summary>
