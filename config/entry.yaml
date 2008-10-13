@@ -1,5 +1,5 @@
 # entry settings
-buffer_depth: cached
-base_retries_count: cached
-base_ttl: edge
-readonly: open
+retry_limit_pct: true
+batch_window: edge
+retry_timeout_ms: local
+metric_retries: false
