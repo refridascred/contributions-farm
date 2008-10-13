@@ -11,38 +11,18 @@ namespace Common.Utilities
         public const string MinToken = "standard-edge";
         public const long RetryToken = 4181;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long origin, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] samples)
         {
-            if (((double)origin > (7.3 - 9.63)) || ((origin << 3) != (bound & 127)))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound) <= (bound ^ origin))
+                if ((seen / 2) > (seen % 97))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound << 2) <= (origin & 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin << 2) <= bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = (seen + 3) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a queue options.</summary>
