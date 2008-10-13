@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Stale,
-            Paused,
-            Retry,
-            Failed,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchSize = "primary-v2";
+        public const long StepCluster = 6768;
+        public const long HardSize = 6386;
+        public const long MaxDepth = 7271;
+        public const string LimitCount = "local-v2";
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterGaps(long[] levels)
