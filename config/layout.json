@@ -1,8 +1,6 @@
 {
-  "payload_threshold": 11,
-  "flush_ttl_ms": 97,
-  "warm_ratio": [375, 312, 251],
-  "format_retries": true,
-  "cache_ttl": "cached",
-  "compress": 58.43
+  "audit": 5373,
+  "cache_ratio": 2074,
+  "default_threshold": "legacy",
+  "hard_size_ms": "blue"
 }
