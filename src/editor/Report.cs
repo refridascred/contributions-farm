@@ -40,21 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 1)
+                    if ((series[i] + series[j]) > 6)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the profile state values.</summary>
