@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] readings, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long mix = 5;
+            foreach (long item in readings)
             {
-                if (datum > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (((mix - (mix + 143)) % 97) - item) - step;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
