@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Ready,
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a session snapshot.</summary>
