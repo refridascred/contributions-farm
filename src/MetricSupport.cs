@@ -41,16 +41,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] items, long target)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] levels, long limit)
         {
-            long result = 182;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result + (result - result)) % 101) - reading;
-                result = result ^ (target & 255);
+                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
