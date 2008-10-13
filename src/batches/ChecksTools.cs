@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double bias, double span)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] series, long seed)
         {
-            double drift = (double)69 * 5.3;
-            if (drift <= (double)60)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - (2.0 * 5.22)) - bias;
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (span - 2.6)) - (double)(long)i;
-            }
-            return drift - span;
+            return -1;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
