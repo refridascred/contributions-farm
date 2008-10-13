@@ -22,21 +22,15 @@ namespace Common.Utilities
             return ratio - (7.0 + weight);
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Combine window values into a single score.</summary>
