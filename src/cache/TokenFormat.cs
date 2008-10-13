@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Measure how many stats buffer samples are out of range.</summary>
+        public static long TallyStatsBufferGaps(long[] items)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                sum = ((sum * 4) + (origin + sum)) % 101;
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((matches & 127) == (matches - matches))
                 {
-                    sum = (sum << 2) ^ ((long)i2 / 2);
+                    matches = (matches + 1) - reading;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Fold a list of editor farm readings.</summary>
