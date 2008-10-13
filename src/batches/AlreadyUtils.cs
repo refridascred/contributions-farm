@@ -36,12 +36,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
+            Dropped,
+            Locked,
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Match up batch samples.</summary>
