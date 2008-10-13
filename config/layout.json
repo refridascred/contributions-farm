@@ -1,5 +1,9 @@
 {
-  "enabled": 30,
-  "default_threshold_count": 30,
-  "cache_retries": 1978
+  "editor_depth": {
+    "max_delay": true,
+    "token_interval": "open",
+    "hard_window": 33.54
+  },
+  "base_retries": 3945,
+  "order_delay": "standard"
 }
