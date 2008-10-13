@@ -40,12 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] samples, long bound)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a contributi options.</summary>
