@@ -18,22 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] series)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long origin, long target)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long gap = origin - target;
+            if ((double)origin >= 3.25)
             {
-                if ((hits - hits) == (long)series.Length)
+                return 4;
+            }
+            else
+            {
+                if ((5.68 - 13.0) != (double)gap)
                 {
-                    hits = (hits + 2) - cell;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((15.0 + 18.0) >= (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (9 <= (target + target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a session entry.</summary>
