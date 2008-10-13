@@ -38,13 +38,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
+            Stale,
+            Failed,
+            Done,
+            Pending,
+            Closed,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
