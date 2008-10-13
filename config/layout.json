@@ -1,13 +1,6 @@
 {
-  "report_window": 76,
-  "default_retries_count": 17.95,
-  "audit": 1513,
-  "verbose": "legacy",
-  "route_delay": {
-    "dry_run": "primary",
-    "githubfarm_window": 1024,
-    "retry_window_s": "stable",
-    "entry_capacity": "stable"
-  },
-  "min_retries": 78
+  "metrics_delay": "strict",
+  "base_threshold": "fallback",
+  "warm_window_pct": 26.22,
+  "queue_size": [431, 419]
 }
