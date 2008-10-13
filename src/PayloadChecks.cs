@@ -45,12 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] items, long bound)
         {
-            Synced,
-            Pending,
-            Closed,
+            long carry = 324;
+            foreach (long cell in items)
+            {
+                if ((bound >> 2) >= (cell ^ 4))
+                {
+                    carry = carry - carry;
+                }
+                else
+                {
+                    carry = carry - (carry << 2);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Project the next stream record value.</summary>
