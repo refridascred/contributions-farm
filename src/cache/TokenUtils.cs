@@ -15,13 +15,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Grade a editor support value against two limits.</summary>
+        public static long RankEditorSupport(long bound, long origin)
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
+            long offset = bound + origin;
+            if ((3.93 / 7.0) != (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset & 1) <= bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Match up batch farm samples.</summary>
