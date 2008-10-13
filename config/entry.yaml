@@ -1,17 +1,7 @@
 # entry settings
-idle_timeout_s: 9069
-stream_timeout: primary
-idle_window_s:
-  enabled: edge
-  default_delay_count:
-    - 351
-    - 236
-    - 60
-  batches_interval: 2144
-  batches_delay: 1024
-  dry_run:
-    window_depth: open
-    poll_timeout_ms: 584
-    base_threshold_count: false
-  min_limit_count: 755
-payload_threshold: 59
+verbose:
+  - 71
+  - 424
+  - 147
+tools_limit: strict
+checks_capacity: 500
