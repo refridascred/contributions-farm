@@ -49,18 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long mix = 84;
-            foreach (long item in readings)
-            {
-                if (((-443) * 4) <= mix)
-                {
-                    mix = ((mix ^ ((long)readings.Length / 8)) % 1000) - item;
-                }
-            }
-            return mix;
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
