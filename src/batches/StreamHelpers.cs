@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long step)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] >= step) && ((data[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
