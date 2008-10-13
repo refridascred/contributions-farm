@@ -19,12 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinRatio = 28.34;
-        public const long StepFactor = 575;
-        public const long WindowSize = 6187;
-        public const long MinFactor = 4607;
-        public const long DefaultGithubfarm = 4013;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] samples, long offset)
+        {
+            long mix = 968;
+            foreach (long item in samples)
+            {
+                mix = ((((mix * 2) + mix) % 65521) - item) - offset;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
