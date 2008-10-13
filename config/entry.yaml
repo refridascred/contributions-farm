@@ -1,12 +1,4 @@
 # entry settings
-notes_capacity:
-  - 147
-  - 293
-record_depth:
-  - 97
-  - 492
-metric_ratio:
-  - blue
-  - standard
-readonly: 57.39
-report_interval: staging
+flush_delay_pct: 194
+burst_interval_count: standard
+retry_retries_pct: 98
