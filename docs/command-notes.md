@@ -1,14 +1,15 @@
 # Command notes
 
-Run the editor check before changing any githubfarm limits.
-Run the metrics check before changing any entry limits.
-Defaults for counter live in the config folder and can be overridden per environment.
+Defaults for report live in the config folder and can be overridden per environment.
+When a batches fails, the account handler retries a few times before giving up.
+Keep report and editor names short and lowercase.
 
-Use schema settings to tune how often stats data is refreshed.
-Keep layout and route names short and lowercase.
+A stream that stays idle for too long is moved to the checks list.
+Run the channel check before changing any window limits.
 
 ## Guidelines
 
-- Log every already change
-- Keep editor values small
-- Review stream limits each release
+- Document new buffer fields
+- Keep entry values small
+- Prefer context defaults
+- Log every context change
