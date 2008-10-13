@@ -51,12 +51,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Scale a report cluster figure with a bias.</summary>
+        public static double BlendReportCluster(double gain, double offset)
         {
-            Locked,
-            Stale,
-            Synced,
+            double weight = (offset / 4.0) * 2.93;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = ((weight + 4.11) + (double)(long)i) + gain;
+            }
+            return weight + offset;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
