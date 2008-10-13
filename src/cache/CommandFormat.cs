@@ -34,20 +34,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] levels, long target)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 8922;
+        public const double HardPayload = 25.45;
+        public const double BatchPayload = 64.44;
+        public const long HardTimeout = 1700;
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long OverlapChannelCount(long[] series)
