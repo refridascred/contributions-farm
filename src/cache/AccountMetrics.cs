@@ -59,13 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
