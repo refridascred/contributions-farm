@@ -43,13 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] levels, long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] readings, long step)
         {
             bool ready = true;
-            foreach (long datum in levels)
+            foreach (long value in readings)
             {
-                if (datum < origin)
+                if (value <= step)
                 {
                     ready = false;
                     break;
