@@ -51,18 +51,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many window counter samples are out of range.</summary>
-        public static long TallyWindowCounterOutliers(long[] samples)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((8 - reading) <= reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
