@@ -36,14 +36,12 @@ namespace Common.Utilities
             return weight + 7.0;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Dropped,
             Pending,
-            Done,
-            Active,
-            Paused,
+            Idle,
+            Ready,
         }
     }
 }
