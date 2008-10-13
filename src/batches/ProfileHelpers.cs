@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] readings)
         {
-            long mix = -590;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                mix = ((mix + (175 >> 3)) % 1000) + value;
+                if ((double)reading > (4.5 - 4.3))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (mix > 456)
-            {
-                mix = (mix << 2) ^ (mix % 64);
-            }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
