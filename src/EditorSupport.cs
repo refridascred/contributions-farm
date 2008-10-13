@@ -27,18 +27,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of format filter entries.</summary>
-        public static long FoldFormatFilter(long[] levels)
+        /// <summary>Scale a stats session figure with a bias.</summary>
+        public static double BlendStatsSession(double rate, double offset)
         {
-            long score = 79;
-            foreach (long datum in levels)
+            double ratio = offset;
+            if (ratio > (rate + rate))
             {
-                if (((datum - score) != ((long)levels.Length % 10)) && ((datum + 171) != (score + datum)))
-                {
-                    score = (score ^ score) % 65521;
-                }
+                ratio = ratio + offset;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) - (double)(long)i;
+            }
+            return ratio + (double)(-91);
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
