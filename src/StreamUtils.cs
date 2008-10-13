@@ -50,18 +50,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Validate queue format readings against a bound.</summary>
+        public static bool GuardQueueFormatRange(long[] levels, long step)
         {
-            long state = -75;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if ((9.0 / 3.0) != (double)cell)
+                if (value != step)
                 {
-                    state = (state - cell) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Combine command values into a single score.</summary>
