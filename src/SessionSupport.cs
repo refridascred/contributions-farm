@@ -24,21 +24,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 99;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix << 3) ^ mix) - entry;
             }
-            return matches;
+            return mix;
         }
     }
 }
