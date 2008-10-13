@@ -81,9 +81,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "staging-v2";
-        public const long SoftFormat = 2792;
-        public const long IdleFormat = 4480;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long offset, long step)
+        {
+            long diff = offset ^ step;
+            if ((step << 3) <= step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)diff >= (17.0 - 5.5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step < offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
