@@ -22,12 +22,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Retry,
-            Failed,
-            Queued,
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
