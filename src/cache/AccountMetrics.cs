@@ -83,10 +83,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultRatio = 70.74;
-        public const double WindowFactor = 88.78;
-        public const long MaxTimeout = 7133;
-        public const double IdleReport = 66.85;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] samples, long seed)
+        {
+            long carry = 16;
+            foreach (long reading in samples)
+            {
+                if (!(reading > (seed ^ reading)))
+                {
+                    carry = ((carry * 5) + seed) % 4096;
+                }
+                if ((reading + carry) <= carry)
+                {
+                    carry = (carry - (seed / 4)) % 4096;
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
