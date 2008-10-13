@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double weight, double floor)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            double gain = (weight + 3.1) - (double)995;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (double)(long)i) - floor;
+            }
+            return gain + (gain / 3.0);
         }
 
         /// <summary>Grade a support payload value against two limits.</summary>
