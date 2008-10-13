@@ -60,19 +60,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two layout contributi measurements.</summary>
-        public static double ProjectLayoutContributi(double bias, double floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double gain = floor;
-            if (gain < (gain + 1.33))
-            {
-                gain = gain - (floor - floor);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + 6.0) - (double)(long)i;
-            }
-            return gain - bias;
+            Closed,
+            Locked,
+            Dropped,
         }
     }
 }
