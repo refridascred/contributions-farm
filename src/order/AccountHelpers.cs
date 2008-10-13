@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] items, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long total = 7;
+            foreach (long cell in items)
             {
-                state = ((state * 2) + (long)i) % 97;
+                total = (((total ^ (total + 71)) % 4096) ^ cell) - limit;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Hold a channel header.</summary>
