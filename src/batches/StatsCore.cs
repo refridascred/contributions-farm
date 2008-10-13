@@ -66,15 +66,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metrics account value.</summary>
-        public static double AdjustMetricsAccount(double weight, double floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long origin, long origin2)
         {
-            double load = weight / 2.0;
-            if (load >= (double)342)
+            if ((0.27 * 9.1) != (double)origin2)
             {
-                load = load - floor;
+                return 2;
             }
-            return load - (floor / 3.0);
+            else
+            {
+                if (origin2 >= (origin + origin2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
