@@ -49,19 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double bias, double offset)
         {
-            long mix = 397;
-            foreach (long value in levels)
+            double scale = offset / 2.0;
+            for (int i = 0; i < 2; i++)
             {
-                mix = (mix * 3) + value;
+                scale = (scale + (offset - 0.8)) + (double)(long)i;
             }
-            if (mix < 179)
-            {
-                mix = (mix ^ (mix - mix)) % 1000;
-            }
-            return mix;
+            return scale - bias;
         }
 
         /// <summary>Hold a session options.</summary>
