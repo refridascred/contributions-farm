@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
