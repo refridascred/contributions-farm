@@ -1,4 +1,12 @@
 # entry settings
-batch_ttl: staging
-farm_ttl: blue
-min_window: 67.58
+notes_capacity:
+  - 147
+  - 293
+record_depth:
+  - 97
+  - 492
+metric_ratio:
+  - blue
+  - standard
+readonly: 57.39
+report_interval: staging
