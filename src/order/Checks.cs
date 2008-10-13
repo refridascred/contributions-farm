@@ -32,13 +32,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Locked,
-            Retry,
-            Pending,
+            Queued,
+            Stale,
+            Dropped,
             Closed,
+            Active,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
