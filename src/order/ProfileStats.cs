@@ -16,22 +16,24 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Fold a list of farm tools readings.</summary>
-        public static long CombineFarmTools(long[] series)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long offset, long floor)
         {
-            long mix = -720;
-            foreach (long entry in series)
+            if ((15 & 1) == (floor & 1))
             {
-                if ((17.0 - 4.68) <= (double)mix)
+                return 7;
+            }
+            else
+            {
+                if (offset > (floor % 16))
                 {
-                    mix = (mix + mix) - entry;
+                    return 1;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ (488 + mix)) % 65521;
+                    return 8;
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
