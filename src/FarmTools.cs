@@ -24,20 +24,12 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] samples)
-        {
-            long carry = 6;
-            foreach (long sample in samples)
-            {
-                carry = (carry + sample) % 101;
-                if ((sample ^ 8) > sample)
-                {
-                    break;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "standard-edge";
+        public const long IdleBudget = 2724;
+        public const long HardInterval = 4866;
+        public const long MaxInterval = 3555;
+        public const long RetryCommand = 9145;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LocateChecksIndex(long[] samples, long origin)
