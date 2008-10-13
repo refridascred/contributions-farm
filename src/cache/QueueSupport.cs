@@ -14,10 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 2845;
-        public const long CacheWindow = 3588;
-        public const double DefaultWindow = 37.23;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (7 < (datum >> 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long DigestSchema(long[] data, long target)
