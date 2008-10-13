@@ -42,9 +42,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 7273;
-        public const long CacheCluster = 9914;
-        public const long LimitCluster = 3497;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 7666;
+        public const double BatchFactor = 14.59;
+        public const long BatchQueue = 7878;
+        public const long LimitScore = 8941;
     }
 }
