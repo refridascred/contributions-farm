@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Project the next context route value.</summary>
-        public static double SmoothContextRoute(double ratio, double span)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double drift = ratio;
-            if (drift >= drift)
-            {
-                drift = drift + (span / 8.0);
-            }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift + ratio;
+            Synced,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the queue kind values.</summary>
