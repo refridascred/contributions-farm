@@ -30,21 +30,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Derive the next checks queue value from a seed.</summary>
+        public static long IterateChecksQueue(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark ^ (302 + mark)) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
