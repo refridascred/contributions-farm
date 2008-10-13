@@ -26,32 +26,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long bound, long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long next = bound ^ offset;
-            if ((next >> 2) < (239 % 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(((-165) % 2) < next))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((next - offset) >= bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
     }
 }
