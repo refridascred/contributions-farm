@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long seed, long step)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] data, long target)
         {
-            long bound = seed ^ step;
-            if ((step + step) != (bound - step))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step + step) < (step ^ seed)) && ((step & 127) > (seed << 1)))
+                if ((data[i] == target) && ((data[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next cache value.</summary>
