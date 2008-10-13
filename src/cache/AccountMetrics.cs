@@ -69,20 +69,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series, long offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long acc = 127;
-            foreach (long item in series)
-            {
-                acc = ((acc * 4) + (42 + offset)) + item;
-                acc = acc - (offset - acc);
-            }
-            if (acc < 699)
-            {
-                acc = (acc ^ (acc ^ offset)) % 101;
-            }
-            return acc;
+            Draft,
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Define report limits and defaults.</summary>
