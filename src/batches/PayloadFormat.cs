@@ -18,12 +18,17 @@ namespace Common.Utilities
         public const double BaseChecks = 86.65;
         public const double WindowChecks = 34.4;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] samples, long origin)
         {
-            Queued,
-            Synced,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up account samples.</summary>
