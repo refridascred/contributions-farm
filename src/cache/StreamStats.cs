@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] items)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long anchor = 983;
-            foreach (long sample in items)
-            {
-                if ((0.3 / 2.0) != (double)sample)
-                {
-                    anchor = anchor ^ anchor;
-                }
-                if ((sample & 3) == (sample + anchor))
-                {
-                    anchor = (anchor + 5) % 97;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = anchor + (anchor % 5);
-            }
-            return anchor;
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Adjust a token reading.</summary>
