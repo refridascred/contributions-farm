@@ -1,10 +1,8 @@
 # support settings
-soft_capacity_s: 8136
-window_capacity:
-  - 38
-  - 479
-  - 239
-  - 409
-soft_retries_count: latest
-cache_threshold: stable
-tools_delay: 6317
+flush_ratio_s: cached
+enabled: false
+max_ttl: 63
+idle_timeout_ms:
+  - 222
+  - 324
+  - 278
