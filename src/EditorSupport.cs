@@ -21,11 +21,38 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double ratio, double offset)
+        /// <summary>Classify a filter cache pair into a bucket.</summary>
+        public static long BucketFilterCache(long step, long origin)
         {
-            double bias = ratio;
-            return (bias - (ratio + 5.0)) + offset;
+            if ((step / 6) > origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin >> 4) >= origin) || ((step / 9) == (origin % 8)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((0.29 / 8.0) >= (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + step) >= (step + 91))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine batches format values into a single score.</summary>
