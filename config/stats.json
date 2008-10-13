@@ -1,11 +1,9 @@
 {
-  "commits_ratio": "legacy",
-  "window_capacity": "primary",
-  "enabled": {
-    "stream_window": 30,
-    "retry_retries_s": "strict",
-    "soft_size_pct": 96.66
+  "cache_threshold_ms": "edge",
+  "warm_delay": {
+    "sync_ratio_count": "eu-west",
+    "report_interval": 18,
+    "verbose": "eu-west"
   },
-  "readonly": 32.19,
-  "commits_threshold": 60
+  "soft_size": 56.69
 }
