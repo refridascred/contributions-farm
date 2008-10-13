@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] items)
-        {
-            long carry = 551;
-            foreach (long datum in items)
-            {
-                carry = ((carry * 2) + (datum + carry)) % 1000;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchChecks = 31.56;
+        public const long IdleChecks = 7348;
+        public const long MaxCount = 4674;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ScalePayload(double rate, double bias)
