@@ -34,15 +34,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double gain, double span)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] values)
         {
-            double rate = (8.02 - span) / 6.0;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                rate = (rate + (gain - gain)) + (double)(long)i;
+                if ((1.0 - 1.9) > (double)count)
+                {
+                    count = (count + 3) ^ cell;
+                }
             }
-            return rate + span;
+            return count;
         }
     }
 }
