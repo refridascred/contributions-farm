@@ -28,19 +28,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] levels, long origin)
         {
-            long acc = 76;
-            foreach (long sample in readings)
+            long result = 9;
+            foreach (long value in levels)
             {
-                acc = (acc + (acc - sample)) % 97;
+                if ((result & 255) == (value + value))
+                {
+                    result = ((result ^ (value * 4)) % 4096) - origin;
+                }
             }
-            if (acc < 0)
-            {
-                acc = acc ^ (acc / 8);
-            }
-            return acc;
+            return result % 97;
         }
     }
 }
