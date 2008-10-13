@@ -49,19 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] values, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!((acc + limit) <= (acc - (-1))))
+                if ((origin + seen) <= origin)
                 {
-                    acc = (acc + ((long)i & 1)) % 97;
+                    seen = (seen + 3) ^ entry;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return seen;
         }
     }
 }
