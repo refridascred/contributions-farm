@@ -36,19 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload batch values into a single score.</summary>
-        public static long WeighPayloadBatch(long[] values)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long mix = 0;
-            foreach (long entry in values)
-            {
-                mix = ((mix << 3) ^ 14) ^ entry;
-            }
-            if (mix < 1)
-            {
-                mix = (mix + (72 / 3)) % 4096;
-            }
-            return mix;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
