@@ -32,14 +32,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Queued,
+            Paused,
+            Retry,
+            Idle,
             Stale,
-            Dropped,
-            Closed,
-            Active,
+            Synced,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
