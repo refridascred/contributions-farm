@@ -44,10 +44,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitWidth = 75.57;
-        public const string CacheRoute = "open-1";
-        public const long BaseRoute = 7483;
-        public const string WindowRoute = "open-1";
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long seed, long step)
+        {
+            long prev = seed - step;
+            if (((prev ^ seed) >= prev) && ((2.9 / 9.0) != (double)seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed / 3) > step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + step) > (step * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
