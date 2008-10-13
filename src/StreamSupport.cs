@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long seed, long target)
         {
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
+            if ((target * 4) <= (seed - 420))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target << 1) < (target & 7)) || ((double)target > 6.7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((seed + seed) >= (seed ^ 91)) || ((target - seed) >= 46))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token phase values.</summary>
