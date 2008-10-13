@@ -44,22 +44,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetrySpan = 6329;
+        public const long BatchCache = 5889;
+        public const double DefaultCache = 10.56;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
