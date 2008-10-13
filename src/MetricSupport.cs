@@ -24,25 +24,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] levels, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] series, long origin)
         {
-            long score = 445;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                score = (score - (score % 60)) % 4096;
-                score = ((score << 3) ^ (value + score)) % 101;
-                score = (score + (33 << 1)) % 1000;
-                if ((12.0 + 0.69) == (double)seed)
+                if (entry <= origin)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (score > (-74))
-            {
-                score = (score - (score / 3)) % 1000;
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Hold a support record.</summary>
