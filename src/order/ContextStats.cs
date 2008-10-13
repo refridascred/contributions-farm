@@ -35,18 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] levels, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((double)seen != (double)88)
+                if (value >= (value + count))
                 {
-                    seen = ((seen + 2) + entry) - step;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
