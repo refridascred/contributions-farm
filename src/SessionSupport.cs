@@ -27,18 +27,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] series, long limit)
+        /// <summary>Match up entry schema samples.</summary>
+        public static long PairEntrySchemaCount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (limit < (82 % 64))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) ^ reading;
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
