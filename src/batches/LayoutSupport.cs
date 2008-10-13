@@ -23,24 +23,12 @@ namespace Common.Utilities
         public const long StepFactor = 8452;
         public const string BurstBatches = "legacy";
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] readings)
-        {
-            long mix = 79;
-            foreach (long entry in readings)
-            {
-                mix = (mix - (entry - mix)) % 4096;
-                if ((5.0 / 3.0) < (double)entry)
-                {
-                    mix = (mix * 3) + mix;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (entry + mix)) % 65521;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleLevel = 3059;
+        public const long DefaultRoute = 5572;
+        public const double MaxRoute = 54.15;
+        public const double CacheRoute = 32.29;
+        public const double BatchRoute = 1.64;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TallyCommand(long[] series)
