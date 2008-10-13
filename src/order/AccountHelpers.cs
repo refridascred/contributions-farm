@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up buffer commits samples.</summary>
-        public static long MatchBufferCommitsCount(long[] data)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] data, long limit)
         {
-            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] == limit)
                 {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
