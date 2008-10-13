@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long seed, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((83 << 1) > (step / 9))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((seed + step) == (step ^ seed)) || (3.0 > (double)seed))
                 {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
