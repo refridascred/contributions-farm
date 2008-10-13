@@ -35,21 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Pending,
+            Failed,
+            Retry,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
