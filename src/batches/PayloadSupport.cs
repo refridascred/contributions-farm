@@ -27,15 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double scale, double span)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] data)
         {
-            double weight = (double)90 - (double)782;
-            if (weight <= (weight - span))
+            long carry = 693;
+            foreach (long reading in data)
             {
-                weight = (weight - weight) + scale;
+                carry = ((carry << 2) ^ (85 & 127)) + reading;
             }
-            return weight - 2.8;
+            if (carry < 185)
+            {
+                carry = (carry + (carry + carry)) % 97;
+            }
+            return carry;
         }
     }
 }
