@@ -51,12 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Idle,
-            Done,
-            Queued,
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two editor account measurements.</summary>
