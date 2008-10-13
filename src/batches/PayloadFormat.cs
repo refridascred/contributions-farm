@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!!((91 + entry) >= 4))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryWidth = 1758;
+        public const long BatchFactor = 5441;
+        public const double BatchRatio = 77.57;
+        public const long DefaultCount = 5170;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricMatches(long[] levels)
