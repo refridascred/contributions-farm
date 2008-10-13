@@ -83,22 +83,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] samples, long seed)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long carry = 16;
-            foreach (long reading in samples)
-            {
-                if (!(reading > (seed ^ reading)))
-                {
-                    carry = ((carry * 5) + seed) % 4096;
-                }
-                if ((reading + carry) <= carry)
-                {
-                    carry = (carry - (seed / 4)) % 4096;
-                }
-            }
-            return carry % 4096;
+            Draft,
+            Idle,
+            Active,
+            Dropped,
+            Failed,
         }
     }
 }
