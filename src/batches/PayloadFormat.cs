@@ -37,18 +37,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] values)
+        /// <summary>Validate profile route readings against a bound.</summary>
+        public static bool ValidateProfileRouteBounds(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((double)matches <= 0.8)
+                if (value < step)
                 {
-                    matches = (matches + 3) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
