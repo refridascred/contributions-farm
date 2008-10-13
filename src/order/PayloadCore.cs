@@ -33,19 +33,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] levels, long target)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two support cluster measurements.</summary>
