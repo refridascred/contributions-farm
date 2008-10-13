@@ -59,38 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long origin, long offset)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            if ((origin % 12) > 415)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin - origin) <= origin) || ((double)origin >= (4.01 / 3.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((origin << 1) < (offset + offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset < origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
