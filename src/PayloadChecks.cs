@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 13;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum + (origin / 2)) % 1000) - item;
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
