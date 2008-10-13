@@ -35,19 +35,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] series, long step)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
