@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] data, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((matches >> 1) > (bound / 5))
+                if (((98 + hits) < ((-66) >> 5)) && ((hits / 2) <= (hits ^ hits)))
                 {
-                    matches = (matches + 3) - value;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
