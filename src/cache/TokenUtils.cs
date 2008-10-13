@@ -24,19 +24,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] levels, long seed)
+        /// <summary>Match up batch farm samples.</summary>
+        public static long MatchBatchFarmCount(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
     }
 }
