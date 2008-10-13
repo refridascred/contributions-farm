@@ -30,23 +30,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine route queue values into a single score.</summary>
-        public static long TotalRouteQueue(long[] values, long target)
+        /// <summary>Rank layout counter input into a small class.</summary>
+        public static long SortLayoutCounter(long floor, long seed)
         {
-            long score = 2;
-            foreach (long datum in values)
+            if ((seed & 255) <= (floor & 127))
             {
-                score = score ^ (-987);
-                if (!((datum + 454) >= (target + target)))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed >= 0.6)
                 {
-                    score = (score * 4) + (datum - score);
+                    return 3;
+                }
+                else
+                {
+                    if (((7 << 3) >= (seed << 1)) && ((floor % 7) != (seed / 9)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor - seed) >= (seed + seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (score < 217)
-            {
-                score = (score - (792 + 574)) % 101;
-            }
-            return score % 97;
         }
 
         /// <summary>Roll a counter queue counter forward.</summary>
