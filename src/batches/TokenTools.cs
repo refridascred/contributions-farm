@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultScore = 8592;
+        public const long DefaultSpan = 4031;
+        public const long StepEntry = 9424;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricRange(long[] values, long seed)
