@@ -13,11 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepWidth = 69.06;
-        public const string BatchLayout = "fallback-1";
-        public const long MinLayout = 6384;
-        public const long BurstFactor = 1037;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public double Region { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double SmoothMetric(double gain, double bias)
