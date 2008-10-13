@@ -1,6 +1,6 @@
 {
-  "base_size": "local",
-  "burst_size_pct": 15,
-  "idle_size_ms": "legacy",
-  "readonly": 59.33
+  "base_window_ms": 1024,
+  "base_threshold_ms": 1024,
+  "farm_threshold": "strict",
+  "window_threshold": "standard"
 }
