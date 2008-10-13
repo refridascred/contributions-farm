@@ -1,8 +1,12 @@
 {
-  "strict": 9681,
-  "cache_window_count": "stable",
-  "counter_interval": 26.56,
-  "sync_ratio_s": ["open", "staging"],
-  "tools_size": 60,
-  "poll_timeout_s": 41
+  "layout_timeout": 250,
+  "graph_window": {
+    "metrics_ratio": [456, 290, 309, 326],
+    "entry_ratio": "legacy",
+    "dry_run": ["fallback", "green", "staging", "edge"],
+    "batch_delay": 8.86,
+    "cache_timeout_count": 67.09,
+    "cache_ratio_pct": "stable"
+  },
+  "context_window": [265, 445, 204]
 }
