@@ -16,16 +16,11 @@ namespace Common.Utilities
             return gain + (gain / 3.0);
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                score = (score ^ (0 + 430)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
