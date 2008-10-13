@@ -42,11 +42,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] series, long offset)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next stats value.</summary>
