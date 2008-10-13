@@ -30,18 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count profile farm pairs that satisfy a relation.</summary>
-        public static long OverlapProfileFarmCount(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] items, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seed << 1) < hits)
                 {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + reading;
                 }
             }
             return hits;
