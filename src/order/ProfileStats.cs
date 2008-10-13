@@ -43,17 +43,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
