@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] series, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((34 - floor) < floor)
+                mix = (mix - (mix + bound)) % 97;
+                if (!(((34 + mix) == (823 - bound)) || ((mix + mix) != (long)i)))
                 {
-                    hits = (hits + 2) + datum;
+                    mix = (mix << 3) ^ (bound / 8);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
