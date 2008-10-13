@@ -30,20 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] readings, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long bound)
         {
-            long acc = -963;
-            foreach (long entry in readings)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                acc = (((acc - (79 + 570)) % 65521) - entry) - seed;
-                acc = (acc * 5) + ((-88) + acc);
+                state = ((state * 3) + (long)i) % 101;
             }
-            if (acc < 24)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Rank command input into a small class.</summary>
