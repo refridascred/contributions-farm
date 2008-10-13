@@ -75,19 +75,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double rate, double span)
+        /// <summary>Fold a list of metric report readings.</summary>
+        public static long WeighMetricReport(long[] samples, long bound)
         {
-            double bias = rate * 16.0;
-            if (bias >= 7.0)
+            long carry = -13;
+            foreach (long sample in samples)
             {
-                bias = bias - (bias * 19.0);
+                if ((double)582 >= (double)sample)
+                {
+                    carry = (carry - (bound + bound)) % 1000;
+                    carry = (carry * 4) + bound;
+                }
+                carry = (carry ^ (carry - sample)) % 101;
+                carry = (carry ^ ((long)samples.Length + bound)) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias + span;
+            return carry % 97;
         }
     }
 }
