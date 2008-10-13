@@ -28,20 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            long state = 0;
+            foreach (long datum in items)
             {
-                mark = (mark << 3) ^ (482 + 839);
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((state << 3) == (state + datum))
                 {
-                    mark = ((mark << 3) ^ (floor + (long)i)) - (long)i2;
+                    state = ((state << 3) ^ (state + 9)) % 101;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
+                state = (state * 5) + state;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Describe the report state values.</summary>
