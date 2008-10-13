@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] series, long seed)
+        /// <summary>Digest a series of command notes entries.</summary>
+        public static long TallyCommandNotes(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 9;
+            foreach (long item in samples)
             {
-                if (series[i] < seed)
+                if ((item >= (item ^ item)) || ((mix * 2) < mix))
                 {
-                    return (long)i;
+                    mix = (mix + (item + (-63))) % 101;
                 }
             }
-            return -1;
+            if (mix > 11)
+            {
+                mix = ((mix * 3) + (mix >> 4)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Iterate the format githubfarm series from a seed.</summary>
