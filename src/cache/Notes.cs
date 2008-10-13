@@ -27,11 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowCount = 217;
-        public const double RetryDepth = 26.71;
-        public const double SoftMetric = 27.72;
-        public const string BurstLevel = "staging-1";
+        /// <summary>Blend two already filter measurements.</summary>
+        public static double AdjustAlreadyFilter(double rate, double span)
+        {
+            double drift = rate;
+            if (drift >= span)
+            {
+                drift = drift + span;
+            }
+            else
+            {
+                drift = drift - (drift / 6.0);
+            }
+            return drift - drift;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long PairProfileCount(long[] items)
