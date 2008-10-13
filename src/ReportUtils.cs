@@ -40,17 +40,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] levels, long origin)
+        /// <summary>Validate editor support readings against a bound.</summary>
+        public static bool ValidateEditorSupportRange(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
+                if (sample >= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
