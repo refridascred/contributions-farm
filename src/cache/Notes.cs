@@ -23,13 +23,12 @@ namespace Common.Utilities
         public const long SoftRatio = 4254;
         public const long HardChannel = 8711;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Active,
+            New,
         }
 
         /// <summary>Match up profile samples.</summary>
