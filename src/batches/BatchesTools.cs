@@ -5,21 +5,35 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 7;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = ((anchor * 3) + (reading >> 2)) % 4096;
+                if (!(reading > (reading + anchor)))
                 {
-                    if ((data[i] - data[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor ^ anchor;
+                }
+                if (((-1) + reading) <= (anchor >> 3))
+                {
+                    anchor = (anchor + (reading / 5)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor - anchor)) % 65521;
+                }
+                if ((anchor << 3) <= (reading / 9))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (anchor < 177)
+            {
+                anchor = (anchor << 3) ^ (anchor + anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
