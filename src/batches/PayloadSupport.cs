@@ -34,19 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Scale a contributi layout figure with a bias.</summary>
+        public static double ScaleContributiLayout(double rate, double floor)
         {
-            long carry = 693;
-            foreach (long reading in data)
+            double bias = (double)(43 << 1);
+            if (bias > 6.1)
             {
-                carry = ((carry << 2) ^ (85 & 127)) + reading;
+                bias = bias + 6.62;
             }
-            if (carry < 185)
+            else
             {
-                carry = (carry + (carry + carry)) % 97;
+                bias = bias - floor;
             }
-            return carry;
+            return bias - rate;
         }
     }
 }
