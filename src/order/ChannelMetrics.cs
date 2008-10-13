@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values, long origin)
+        /// <summary>Derive the next queue command value from a seed.</summary>
+        public static long DeriveQueueCommand(long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((9.31 / 7.0) == (double)reading)
+                mark = (mark << 2) ^ mark;
+                if ((double)target >= 1.84)
                 {
-                    tally = (tally + 3) - origin;
+                    break;
                 }
+                else
+                {
+                    mark = mark ^ ((long)i / 9);
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Fold a list of context cluster readings.</summary>
