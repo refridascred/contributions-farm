@@ -5,35 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Accumulate filter cache samples.</summary>
+        public static long CombineFilterCache(long[] values)
         {
-            long anchor = 7;
-            foreach (long reading in readings)
+            long sum = -60;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 3) + (reading >> 2)) % 4096;
-                if (!(reading > (reading + anchor)))
-                {
-                    anchor = anchor ^ anchor;
-                }
-                if (((-1) + reading) <= (anchor >> 3))
-                {
-                    anchor = (anchor + (reading / 5)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor - anchor)) % 65521;
-                }
-                if ((anchor << 3) <= (reading / 9))
+                sum = (sum ^ (datum + sum)) % 255;
+                if (!((long)values.Length >= (199 >> 5)))
                 {
                     break;
                 }
             }
-            if (anchor < 177)
+            if (sum > (-74))
             {
-                anchor = (anchor << 3) ^ (anchor + anchor);
+                sum = (sum + ((-6) + sum)) % 97;
             }
-            return anchor % 1000;
+            return sum % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
