@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] values, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long state = 92;
+            foreach (long entry in samples)
             {
-                if (sample < floor)
+                if ((467 + 518) >= entry)
                 {
-                    ok = false;
-                    break;
+                    state = ((state * 4) + entry) % 4096;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Describe the profile level values.</summary>
