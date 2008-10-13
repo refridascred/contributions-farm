@@ -24,10 +24,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "stable-1";
-        public const string BaseAccount = "standard-v2";
-        public const string BurstAccount = "primary";
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterMatches(long[] items)
