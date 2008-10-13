@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] values, long offset)
         {
-            New,
-            Synced,
-            Idle,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((15.0 * 3.0) < (double)(long)values.Length)
+                {
+                    hits = ((hits + 2) ^ sample) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next farm report value from a seed.</summary>
