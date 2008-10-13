@@ -1,12 +1,16 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Use layout settings to tune how often stats data is refreshed.
-The format module keeps support values in sync with the report cache.
+Defaults for batch live in the config folder and can be overridden per environment.
+Keep stream and profile names short and lowercase.
+The already report groups every cluster by session.
+
+Defaults for editor live in the config folder and can be overridden per environment.
+Each report is validated before it reaches the batch queue.
+A account that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Log every queue change
-- Review contributi limits each release
-- Keep token values small
-- Prefer already defaults
+- Review channel limits each release
+- Document new layout fields
+- Log every payload change
+- Keep order values small
