@@ -1,7 +1,6 @@
 {
-  "route_depth": "green",
-  "persist": 2652,
-  "max_retries": 18,
-  "verbose": 68.27,
-  "audit": 20
+  "flush_size_pct": "cached",
+  "soft_size_s": ["cached", "standard"],
+  "min_retries": false,
+  "verbose": ["stable", "cached", "latest", "primary"]
 }
