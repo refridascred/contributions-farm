@@ -1,8 +1,15 @@
 {
-  "compress": 9139,
-  "verbose": "latest",
-  "flush_ttl": [416, 133, 87, 499],
-  "readonly": false,
-  "base_capacity": 1024,
-  "base_interval_pct": 250
+  "sync_limit": 91.98,
+  "burst_timeout": ["strict", "blue", "green"],
+  "cache_threshold_s": {
+    "compress": [173, 22],
+    "burst_delay_count": {
+      "default_threshold_s": true,
+      "farm_size": "blue",
+      "hard_ttl": "latest"
+    },
+    "burst_ratio_count": 81.47
+  },
+  "flush_ratio_pct": false,
+  "max_capacity_s": true
 }
