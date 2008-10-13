@@ -14,12 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Roll a batch profile counter forward.</summary>
+        public static long StepBatchProfile(long step)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of command entries.</summary>
