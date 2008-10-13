@@ -50,24 +50,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long origin, long origin2)
+        /// <summary>Compare every pair of batch layout readings.</summary>
+        public static long OverlapBatchLayoutCount(long[] samples)
         {
-            if ((0.27 * 9.1) != (double)origin2)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin2 >= (origin + origin2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
