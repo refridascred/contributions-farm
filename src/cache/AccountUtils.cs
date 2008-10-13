@@ -29,15 +29,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double ratio, double offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double rate = (double)(958 / 6);
-            if (rate > (8.0 * 3.38))
-            {
-                rate = ((rate - (double)7) - ratio) - offset;
-            }
-            return rate - (double)96;
+            Pending,
+            Stale,
+            Active,
+            Locked,
+            Closed,
         }
     }
 }
