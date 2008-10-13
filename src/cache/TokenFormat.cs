@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long BaseFilter = 5588;
         public const string DefaultCount = "primary-edge";
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of editor farm readings.</summary>
+        public static long FoldEditorFarm(long[] series)
         {
-            Active,
-            Retry,
-            Queued,
-            Draft,
+            long mix = 0;
+            foreach (long reading in series)
+            {
+                mix = (mix - mix) % 255;
+                if ((reading & 15) != (mix >> 1))
+                {
+                    mix = mix + (reading / 2);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Validate filter buffer readings against a bound.</summary>
