@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long sum = 9;
-            foreach (long sample in readings)
-            {
-                if (((sample + sum) == (sum >> 1)) || ((sample - sample) == (sum - 37)))
-                {
-                    sum = sum - ((-300) >> 3);
-                }
-            }
-            return sum % 1000;
+            Ready,
+            New,
+            Dropped,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
