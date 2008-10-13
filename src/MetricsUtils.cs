@@ -28,39 +28,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a metrics context value against two limits.</summary>
-        public static long ClassifyMetricsContext(long target, long target2)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] readings, long origin)
         {
-            long gap = target - target2;
-            if ((target2 / 9) == (5 & 127))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target >> 4) <= (gap >> 5))
+                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)target2 <= (10.0 - 6.09)) && ((gap % 3) >= (target ^ target)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3 - target) <= 1)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a buffer info.</summary>
