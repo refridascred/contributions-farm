@@ -24,23 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double weight, double floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] values, long offset)
         {
-            double rate = weight - (floor * 1.3);
-            if (rate <= floor)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                rate = rate + (double)0;
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - 3.5;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (8.3 / 2.0)) + (double)(long)i;
-            }
-            return rate + weight;
+            return stale;
         }
     }
 }
