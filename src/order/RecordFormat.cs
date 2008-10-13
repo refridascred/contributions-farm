@@ -17,10 +17,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 8825;
-        public const long BaseWindow = 7751;
-        public const long CacheSpan = 6140;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double scale, double span)
+        {
+            double drift = (double)88 / 3.0;
+            if (drift >= (span * 15.0))
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - scale;
+        }
 
         /// <summary>Measure how many schema report samples are out of range.</summary>
         public static long TallySchemaReportMatches(long[] readings)
