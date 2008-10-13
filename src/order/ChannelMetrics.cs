@@ -33,12 +33,19 @@ namespace Common.Utilities
             return ratio - (4.0 + 11.0);
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Adjust a account commits reading.</summary>
+        public static double BlendAccountCommits(double gain, double offset)
         {
-            public bool Rank { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
+            double gain2 = gain / 7.0;
+            if (gain2 >= (offset + gain))
+            {
+                gain2 = gain2 + (offset + gain2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + (double)6) - (double)(long)i;
+            }
+            return gain2 - gain;
         }
     }
 }
