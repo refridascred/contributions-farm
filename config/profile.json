@@ -1,12 +1,5 @@
 {
-  "audit": ["strict", "blue", "open", "edge"],
-  "entry_window": false,
-  "route_depth": {
-    "readonly": 3.86,
-    "burst_retries_count": 7100,
-    "retry_interval_pct": 9780
-  },
-  "persist": 94,
-  "payload_ttl": 1,
-  "tools_timeout": false
+  "persist": 23,
+  "warm_size": 31.77,
+  "batch_ttl_pct": "green"
 }
