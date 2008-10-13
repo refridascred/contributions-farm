@@ -42,17 +42,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] samples, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                if (datum < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
