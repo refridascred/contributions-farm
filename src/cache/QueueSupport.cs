@@ -14,21 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
