@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftTimeout = 8409;
-        public const string SoftRatio = "standard-v2";
-        public const long SoftAccount = 4550;
-        public const long IdleAccount = 960;
-        public const double CacheCount = 22.55;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long bound, long limit)
+        {
+            long next = bound - limit;
+            if (limit <= (next + next))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit == (9.55 / 8.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound - next) >= (next ^ next))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)next < (1.9 * 4.8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a metrics context counter forward.</summary>
         public static long IterateMetricsContext(long offset)
