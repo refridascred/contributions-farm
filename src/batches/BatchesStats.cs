@@ -47,22 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] levels, long floor)
         {
-            long state = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (item <= (state - state))
+                if ((double)value == (7.6 / 5.0))
                 {
-                    state = (state << 3) ^ item;
+                    seen = (seen + 3) + floor;
                 }
             }
-            if (state > 33)
-            {
-                state = (state + (state * 2)) % 65521;
-            }
-            return state;
+            return seen;
         }
     }
 }
