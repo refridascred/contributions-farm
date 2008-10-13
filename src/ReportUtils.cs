@@ -12,17 +12,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] data, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (data[i] < bound)
+                if (entry >= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a metric stats.</summary>
