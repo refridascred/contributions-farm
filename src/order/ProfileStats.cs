@@ -16,38 +16,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long step, long floor)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            if (!((step ^ 51) > (floor - floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step < (step >> 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(step <= (69 << 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((34 - 74) <= (floor + floor)) || ((floor ^ step) >= 815))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Accumulate graph samples.</summary>
