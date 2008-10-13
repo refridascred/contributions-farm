@@ -55,11 +55,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 60.59;
-        public const string RetryTools = "legacy-edge";
-        public const long StepScore = 1174;
-        public const long WindowTools = 9044;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long step, long offset)
+        {
+            long delta = step + offset;
+            if ((double)delta == (8.88 * 3.2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(delta < (offset / 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step + offset) >= delta)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (delta <= step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long CombineSession(long[] readings, long target)
