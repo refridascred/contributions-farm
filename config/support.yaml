@@ -1,11 +1,5 @@
 # support settings
-tools_window: 40.58
-queue_delay:
-  audit: cached
-  enabled: true
-  retry_capacity_s: standard
-  burst_ttl_ms: false
-  support_capacity: 1668
-default_interval_ms: false
-persist: 250
-compress: fallback
+audit: 96.84
+min_capacity_ms: 5978
+context_ttl: 6963
+entry_ttl: 1024
