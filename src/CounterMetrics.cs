@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Accumulate context record samples.</summary>
+        public static long FoldContextRecord(long[] series, long step)
         {
-            Pending,
-            Locked,
-            Queued,
+            long mark = 4;
+            foreach (long reading in series)
+            {
+                if (mark >= (step >> 5))
+                {
+                    mark = mark - ((-5) + reading);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
