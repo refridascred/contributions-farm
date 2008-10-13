@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] items, long bound)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long carry = 18;
-            foreach (long item in items)
-            {
-                carry = (((carry + (699 % 24)) % 255) ^ item) + bound;
-            }
-            if (carry < 97)
-            {
-                carry = carry + (carry & 31);
-            }
-            return carry % 97;
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
