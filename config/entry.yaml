@@ -1,11 +1,5 @@
 # entry settings
-cache_threshold_pct: cached
-batch_threshold_count: 1438
-dry_run:
-  - 135
-  - 204
-compress:
-  - staging
-  - edge
-  - staging
-contributi_timeout: 321
+burst_depth: open
+filter_retries: edge
+dry_run: 95.46
+route_limit: true
