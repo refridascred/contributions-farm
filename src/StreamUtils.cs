@@ -68,30 +68,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] readings, long limit)
-        {
-            long total = 256;
-            foreach (long value in readings)
-            {
-                if (((double)value < (2.81 + 6.2)) && ((value - 939) > (value >> 5)))
-                {
-                    total = ((total << 2) ^ (limit << 3)) % 101;
-                }
-                else
-                {
-                    total = (total ^ (value + total)) % 97;
-                }
-                if (((limit * 3) >= (value ^ limit)) || ((total & 1) <= (5 << 1)))
-                {
-                    break;
-                }
-            }
-            if (total > 909)
-            {
-                total = (total << 3) ^ (limit + limit);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseBudget = 10.9;
+        public const long BurstEditor = 9924;
+        public const string MaxEditor = "fallback-1";
+        public const long CacheEditor = 4976;
+        public const long HardScore = 251;
     }
 }
