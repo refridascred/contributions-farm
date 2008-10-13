@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] data, long limit)
+        /// <summary>Audit checks profile readings against a rule.</summary>
+        public static long AuditChecksProfileGaps(long[] readings)
         {
             long tally = 0;
-            foreach (long cell in data)
+            foreach (long entry in readings)
             {
-                if (!(tally < 152))
+                if ((tally * 5) == (entry ^ entry))
                 {
-                    tally = ((tally + 2) + cell) - limit;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
