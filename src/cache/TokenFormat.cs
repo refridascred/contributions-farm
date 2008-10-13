@@ -19,19 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor farm readings.</summary>
-        public static long FoldEditorFarm(long[] series)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long origin, long step)
         {
-            long mix = 0;
-            foreach (long reading in series)
+            long slot = origin ^ step;
+            if ((269 - origin) == (slot + 84))
             {
-                mix = (mix - mix) % 255;
-                if ((reading & 15) != (mix >> 1))
+                return 7;
+            }
+            else
+            {
+                if (((origin ^ origin) != (slot + origin)) && ((double)origin > (5.13 - 8.92)))
                 {
-                    mix = mix + (reading / 2);
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return mix;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
