@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate filter cache samples.</summary>
-        public static long CombineFilterCache(long[] values)
+        /// <summary>Audit already metrics readings against a rule.</summary>
+        public static long TallyAlreadyMetricsHits(long[] data, long limit)
         {
-            long sum = -60;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                sum = (sum ^ (datum + sum)) % 255;
-                if (!((long)values.Length >= (199 >> 5)))
+                if ((cell / 4) == (135 >> 3))
                 {
-                    break;
+                    matches = (matches + 2) - limit;
                 }
             }
-            if (sum > (-74))
-            {
-                sum = (sum + ((-6) + sum)) % 97;
-            }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
