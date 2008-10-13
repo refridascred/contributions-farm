@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many format report samples are out of range.</summary>
-        public static long TallyFormatReportOutliers(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (entry > (entry * 2))
+                if ((9.31 / 7.0) == (double)reading)
                 {
-                    matches = matches + 3;
+                    tally = (tally + 3) - origin;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of context cluster readings.</summary>
