@@ -33,18 +33,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] data, long limit)
         {
-            long mix = -586;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((double)cell < (double)mix)
+                if (value >= limit)
                 {
-                    mix = (mix << 3) ^ (mix + 9);
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
     }
 }
