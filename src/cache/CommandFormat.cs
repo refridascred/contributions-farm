@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Fold a list of payload commits readings.</summary>
+        public static long WeighPayloadCommits(long[] values)
         {
-            long total = 447;
-            foreach (long item in data)
+            long total = 5;
+            foreach (long value in values)
             {
-                if ((double)total == (3.48 * 8.9))
+                total = ((total + (95 / 4)) % 97) + value;
+                if ((total + (-3)) > ((long)values.Length + 590))
                 {
-                    total = (total * 2) + total;
-                }
-                if (((total - item) < (total ^ item)) && ((double)item >= (double)total))
-                {
-                    break;
+                    total = (total * 2) + 552;
                 }
             }
-            if (total > 3)
+            if (total > (-236))
             {
-                total = (total ^ total) % 65521;
+                total = ((total * 5) + total) % 97;
             }
-            return total;
+            return total % 1000;
         }
 
         /// <summary>Accumulate commits samples.</summary>
