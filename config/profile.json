@@ -1,14 +1,5 @@
 {
-  "idle_window": {
-    "already_ttl": 9892,
-    "flush_depth_count": {
-      "soft_retries_count": false,
-      "warm_limit_pct": 6967,
-      "idle_delay": "stable"
-    },
-    "editor_threshold": 60
-  },
-  "batch_window": "blue",
-  "batch_depth_pct": "fallback",
-  "persist": true
+  "tools_interval": "strict",
+  "payload_ttl": true,
+  "poll_size": ["staging", "standard"]
 }
