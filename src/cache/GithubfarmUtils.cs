@@ -50,12 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] items, long floor)
         {
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
