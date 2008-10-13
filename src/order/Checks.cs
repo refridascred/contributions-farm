@@ -48,17 +48,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] readings, long origin)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ (carry - seed)) % 255;
+                carry = ((carry << 3) ^ (carry % 97)) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
