@@ -33,18 +33,21 @@ namespace Common.Utilities
         public const double SoftMetric = 27.72;
         public const string BurstLevel = "staging-1";
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] data, long seed)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed >> 5) >= (seed + matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) - datum;
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
