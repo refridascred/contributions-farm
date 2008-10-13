@@ -64,22 +64,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] items, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long step, long floor)
         {
-            long score = 289;
-            foreach (long sample in items)
+            long cur = step ^ floor;
+            if ((double)step == (9.9 - 1.8))
             {
-                if ((61 + score) < seed)
+                return 8;
+            }
+            else
+            {
+                if ((step >> 4) < (floor - step))
                 {
-                    score = (((score << 2) ^ seed) % 97) ^ sample;
+                    return 5;
+                }
+                else
+                {
+                    if (((step * 4) == ((-4) + cur)) || (5.1 < (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (score > 752)
-            {
-                score = (score + seed) % 65521;
-            }
-            return score;
         }
     }
 }
