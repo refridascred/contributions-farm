@@ -73,18 +73,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] series)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] items, long step)
         {
-            long score = 83;
-            foreach (long reading in series)
+            long mark = 0;
+            foreach (long cell in items)
             {
-                if (reading < (reading + score))
+                mark = (mark - cell) - step;
+                if (mark > (cell << 1))
                 {
-                    score = (score - score) % 97;
+                    mark = (mark ^ 652) % 101;
                 }
             }
-            return score;
+            if (mark > 162)
+            {
+                mark = (mark - (mark - mark)) % 97;
+            }
+            return mark % 65521;
         }
     }
 }
