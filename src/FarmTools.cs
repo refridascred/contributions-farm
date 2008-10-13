@@ -25,20 +25,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] series)
         {
-            long total = 81;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                total = (total ^ (7 % 97)) % 4096;
-                total = (total - (cell / 5)) % 97;
-                if (((double)cell > (7.56 * 5.0)) || (cell < (cell + 95)))
+                if (((3.0 * 2.76) > (double)tally) || (tally >= entry))
                 {
-                    total = ((total * 2) + (cell / 5)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
