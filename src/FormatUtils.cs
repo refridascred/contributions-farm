@@ -66,13 +66,18 @@ namespace Common.Utilities
         public const long LimitSpan = 5115;
         public const string RetrySession = "standard-edge";
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the editor notes entries that pass the check.</summary>
+        public static long CountEditorNotesGaps(long[] items, long target)
         {
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((18.0 / 4.0) <= (double)matches)
+                {
+                    matches = ((matches + 1) - sample) - target;
+                }
+            }
+            return matches;
         }
     }
 }
