@@ -61,39 +61,18 @@ namespace Common.Utilities
             return drift + (span + drift);
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long limit, long limit2)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] items, long offset)
         {
-            long span = limit + limit2;
-            if (((limit2 - limit) <= (span + span)) || (limit >= (952 >> 2)))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit > (limit + span)) || ((span ^ limit) >= (992 - 0)))
+                if ((1 % 10) <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.0 * 0.2) >= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit2 / 9) != (20 + span))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = (matches + 2) + reading;
                 }
             }
+            return matches;
         }
     }
 }
