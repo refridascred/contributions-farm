@@ -45,12 +45,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] readings, long bound)
         {
-            Done,
-            Synced,
-            Ready,
+            long total = 780;
+            foreach (long entry in readings)
+            {
+                if ((563 << 3) > (bound << 1))
+                {
+                    total = ((total << 2) ^ total) - entry;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
