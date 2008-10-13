@@ -15,18 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] data, long target)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)target > (2.25 - 2.6))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
