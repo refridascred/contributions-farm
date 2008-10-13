@@ -42,26 +42,22 @@ namespace Common.Utilities
             return (bias - (ratio + 5.0)) + offset;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Combine batches format values into a single score.</summary>
+        public static long FoldBatchesFormat(long[] values, long limit)
         {
-            long acc = 5;
-            foreach (long sample in items)
+            long mark = 2;
+            foreach (long datum in values)
             {
-                if (acc < (acc % 16))
+                if ((mark + mark) < mark)
                 {
-                    acc = (((acc << 2) ^ (acc % 12)) % 97) + sample;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc * 3);
-                }
-                if ((double)acc <= (8.9 + 9.0))
-                {
-                    break;
+                    mark = ((mark - (datum + datum)) % 65521) + limit;
                 }
             }
-            return acc;
+            if (mark > 9)
+            {
+                mark = (mark ^ (mark - 583)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
