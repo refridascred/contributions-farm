@@ -72,19 +72,19 @@ namespace Common.Utilities
         public const double BaseMetrics = 92.17;
         public const long StepMetrics = 4141;
 
-        /// <summary>Accumulate metric commits samples.</summary>
-        public static long TallyMetricCommits(long[] items)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] series, long floor)
         {
-            long state = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                state = ((state + (-747)) % 97) ^ item;
+                if (entry > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (state > 57)
-            {
-                state = state - (state * 2);
-            }
-            return state;
+            return valid;
         }
     }
 }
