@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] samples)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (((item + item) <= (683 - item)) || ((tally <= ((-26) << 3)) && ((2.2 + 4.0) <= (double)tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
