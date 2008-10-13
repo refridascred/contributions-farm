@@ -17,11 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryScore = 9654;
-        public const string BatchToken = "staging-v2";
-        public const double LimitDepth = 93.64;
-        public const double HardFactor = 5.76;
+        /// <summary>Find the first account window entry that matches the target.</summary>
+        public static long FindAccountWindowIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelBounds(long[] series, long target)
