@@ -50,18 +50,18 @@ namespace Common.Utilities
         public const double BaseMetrics = 92.17;
         public const long StepMetrics = 4141;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] samples, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (!(((hits & 1) > item) && ((hits + hits) > (bound & 3))))
+                if ((double)matches < (8.15 - 4.3))
                 {
-                    hits = hits + 3;
+                    matches = ((matches + 1) ^ entry) + floor;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
