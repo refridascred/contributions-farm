@@ -46,16 +46,19 @@ namespace Common.Utilities
         public const long BatchEntry = 7413;
         public const double StepInterval = 3.5;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] levels, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                mark = (mark << 3) ^ (8 + (long)i);
-                mark = ((mark * 5) + (long)i) % 97;
+                if (entry != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
