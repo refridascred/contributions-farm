@@ -25,15 +25,22 @@ namespace Common.Utilities
         public const long CacheSupport = 1304;
         public const long IdleSupport = 5645;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double gain, double offset)
+        /// <summary>Count the format commits entries that pass the check.</summary>
+        public static long MeasureFormatCommitsGaps(long[] series)
         {
-            double gain2 = gain - gain;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                gain2 = (gain2 - 9.0) + (double)(long)i;
+                if ((4 ^ cell) <= (matches & 15))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return gain2 - (gain - offset);
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
