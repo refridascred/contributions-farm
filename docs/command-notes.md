@@ -1,12 +1,12 @@
 # Command notes
 
-Use schema settings to tune how often format data is refreshed.
-Each batch is validated before it reaches the record queue.
-A format that stays idle for too long is moved to the metric list.
+Keep entry and command names short and lowercase.
+Use entry settings to tune how often stats data is refreshed.
+A tools that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Log every route change
-- Prefer batch defaults
-- Validate channel input early
-- Keep contributi values small
+- Log every account change
+- Document new buffer fields
+- Keep commits values small
+- Validate account input early
