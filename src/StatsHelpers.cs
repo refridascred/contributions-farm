@@ -28,15 +28,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a cluster batches figure with a bias.</summary>
-        public static double SmoothClusterBatches(double gain, double bias)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double load = 12.0 / 3.0;
-            if (load <= (double)(-180))
-            {
-                load = (load + load) - gain;
-            }
-            return load - (bias * 19.0);
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit cluster route readings against a rule.</summary>
