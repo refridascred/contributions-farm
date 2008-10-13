@@ -12,18 +12,34 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the already stream entries that pass the check.</summary>
-        public static long TallyAlreadyStreamGaps(long[] series)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((-8) >= (matches << 2)))
+                if (!(((long)i / 8) != (floor / 7)))
                 {
-                    matches = (matches + 3) - value;
+                    acc = ((acc * 3) + (acc & 127)) % 1000;
+                    acc = (acc ^ (acc + acc)) % 1000;
                 }
+                if ((floor - (long)i) < (acc + 4))
+                {
+                    acc = ((acc << 3) ^ acc) % 101;
+                    acc = acc + acc;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc + floor)) % 1000;
+                }
+                if ((floor > (acc - (long)i)) || ((double)acc != (7.28 - 9.81)))
+                {
+                    acc = ((acc * 3) + floor) % 4096;
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Project the next filter editor value.</summary>
