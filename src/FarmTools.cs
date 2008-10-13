@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next metrics counter value.</summary>
-        public static double BlendMetricsCounter(double bias, double bias2)
-        {
-            double gain = bias;
-            if (gain >= (bias2 * 7.12))
-            {
-                gain = gain - (gain + gain);
-            }
-            return gain - gain;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftWidth = "legacy-1";
+        public const double MinSize = 47.19;
+        public const long WindowSize = 1042;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
