@@ -1,20 +1,8 @@
 {
-  "strict": "legacy",
-  "sync_window_count": false,
-  "persist": false,
-  "enabled": "cached",
-  "max_capacity_pct": {
-    "readonly": 98,
-    "min_window_count": 80.61,
-    "sync_interval": "edge",
-    "strict": "local",
-    "filter_window": "edge",
-    "batches_timeout": {
-      "entry_ratio": true,
-      "graph_capacity": 29.24,
-      "enabled": 6163,
-      "batch_interval_pct": 38,
-      "soft_capacity_s": 9898
-    }
-  }
+  "min_window_count": ["strict", "eu-west", "legacy"],
+  "poll_ttl": [353, 284, 20],
+  "payload_capacity": "edge",
+  "soft_interval": false,
+  "profile_size": [70, 350, 175],
+  "idle_delay_s": false
 }
