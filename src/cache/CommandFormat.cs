@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] readings, long step)
+        /// <summary>Count the batch channel entries that pass the check.</summary>
+        public static long AuditBatchChannelOutliers(long[] samples, long floor)
         {
-            long state = 9;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                state = ((state ^ step) % 255) - item;
-                state = ((state * 2) + (-83)) % 1000;
+                if (floor >= (727 * 4))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
             }
-            if (state < 87)
-            {
-                state = state + (state << 2);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
