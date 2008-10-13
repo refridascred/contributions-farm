@@ -14,13 +14,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Done,
-            Idle,
-            Synced,
-            Failed,
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
