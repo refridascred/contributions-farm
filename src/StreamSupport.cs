@@ -47,12 +47,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] series, long seed)
         {
-            Retry,
-            Failed,
-            Paused,
+            long carry = 4;
+            foreach (long item in series)
+            {
+                if (((8 + item) == (809 - carry)) && ((seed << 1) < (item - seed)))
+                {
+                    carry = (carry << 3) ^ (carry - 68);
+                }
+                if ((828 + item) == (item >> 3))
+                {
+                    carry = carry + (seed << 1);
+                }
+                else
+                {
+                    carry = (carry + seed) % 65521;
+                }
+            }
+            if (carry > (-922))
+            {
+                carry = (carry ^ seed) % 4096;
+            }
+            return carry;
         }
     }
 }
