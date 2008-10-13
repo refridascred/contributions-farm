@@ -35,25 +35,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long offset, long offset2)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            long span = offset + offset2;
+            if ((double)offset2 < (double)span)
             {
-                if (sum <= (768 & 1))
-                {
-                    sum = (sum ^ offset) % 4096;
-                    break;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = (((sum << 2) ^ (sum % 12)) % 97) - (long)i2;
-                    sum = sum ^ offset;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((span + offset2) < (100 * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two notes measurements.</summary>
