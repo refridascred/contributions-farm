@@ -42,39 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a schema already value against two limits.</summary>
-        public static long ClassifySchemaAlready(long target, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] readings, long bound)
         {
-            long span = target ^ offset;
-            if ((span + target) < (offset + target))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span ^ target) == (offset ^ span))
+                if ((seen * 5) > ((long)readings.Length ^ 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target - target) > (span ^ target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((target << 2) < span))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = ((seen + 1) + sample) - bound;
                 }
             }
+            return seen;
         }
     }
 }
