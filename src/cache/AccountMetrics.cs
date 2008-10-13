@@ -42,11 +42,26 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] series, long floor)
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long score = 1;
+            foreach (long entry in series)
+            {
+                if ((double)score >= (8.69 - 0.8))
+                {
+                    continue;
+                }
+                if (((double)floor != (double)506) && ((7 - floor) > (floor - 8)))
+                {
+                    score = (score + (score - floor)) - entry;
+                }
+            }
+            if (score > 94)
+            {
+                score = (score ^ (90 - score)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a cache record.</summary>
