@@ -21,18 +21,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] data, long target)
+        /// <summary>Adjust a batch editor reading.</summary>
+        public static double BlendBatchEditor(double gain, double floor)
         {
-            long score = 46;
-            foreach (long sample in data)
+            double scale = (gain + gain) - (gain - floor);
+            if (scale > (scale + gain))
             {
-                if ((725 / 7) >= (target ^ score))
-                {
-                    score = (score ^ (sample % 2)) % 1000;
-                }
+                scale = scale + (gain * 13.0);
             }
-            return score;
+            else
+            {
+                scale = scale - 9.53;
+            }
+            return scale + (double)(-232);
         }
     }
 }
