@@ -60,17 +60,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] items, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (items[i] <= floor)
+                if ((item + 22) < (matches * 2))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + seed;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
