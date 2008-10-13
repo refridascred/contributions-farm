@@ -38,15 +38,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] data, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            long mark = 41;
-            foreach (long item in data)
+            long mix = 69;
+            foreach (long reading in levels)
             {
-                mark = ((mark << 2) ^ (item + seed)) % 1000;
+                mix = ((mix + (mix - mix)) % 255) ^ reading;
             }
-            return mark;
+            return mix % 4096;
         }
 
         /// <summary>Accumulate batches context samples.</summary>
