@@ -69,19 +69,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double rate, double offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] series, long target)
         {
-            double scale = 5.0;
-            if (scale >= (double)811)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - (double)878) + offset;
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale + 4.0)) + (double)(long)i;
-            }
-            return scale - (rate / 9.0);
+            return -1;
         }
     }
 }
