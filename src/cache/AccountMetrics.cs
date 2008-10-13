@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a metric token reading by value.</summary>
-        public static long LocateMetricTokenIndex(long[] series, long offset)
+        /// <summary>Find the first support farm entry that matches the target.</summary>
+        public static long FindSupportFarmIndex(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) == 0))
+                if (data[i] < floor)
                 {
                     return (long)i;
                 }
