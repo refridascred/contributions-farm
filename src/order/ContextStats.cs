@@ -35,38 +35,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long offset, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] readings, long origin)
         {
-            if (445 < offset)
+            long anchor = 910;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset >= 2)
+                if (!(cell <= (anchor - (long)readings.Length)))
                 {
-                    return 7;
+                    anchor = (anchor << 2) ^ (origin + anchor);
                 }
                 else
                 {
-                    if ((double)offset > (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound + offset) >= (offset & 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = ((anchor << 2) ^ origin) % 97;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
