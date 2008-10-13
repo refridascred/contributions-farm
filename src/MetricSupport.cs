@@ -36,17 +36,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] levels, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 527;
+            foreach (long entry in values)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
+                mix = ((mix << 2) ^ mix) % 65521;
+                if (((target << 2) >= mix) && ((mix << 2) == (target + entry)))
                 {
-                    return (long)i;
+                    mix = mix ^ (464 ^ target);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (entry + mix);
+                }
+                mix = (mix * 5) + (entry - 566);
+                if ((mix > (entry + mix)) || ((mix % 16) == (578 / 3)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
