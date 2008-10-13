@@ -27,26 +27,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Match up profile channel samples.</summary>
+        public static long CompareProfileChannelCount(long[] data)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0 >> 1) <= (offset & 127))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result + result) % 97;
-                    result = (result + (result / 2)) % 1000;
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                long prev = 544 * 3;
-                if (((double)result >= (3.85 * 2.26)) || ((prev << 1) > (offset - 26)))
-                {
-                    prev = prev + (offset << 1);
-                    result = ((result << 2) ^ ((long)i * 5)) % 97;
-                }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the farm status values.</summary>
