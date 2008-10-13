@@ -1,13 +1,14 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-The layout helpers are pure functions, so they are safe to call from any thread.
+A graph that stays idle for too long is moved to the session list.
+The route report groups every buffer by githubfarm.
+Run the stats check before changing any contributi limits.
 
-The account report groups every report by format.
-Defaults for filter live in the config folder and can be overridden per environment.
+A metrics that stays idle for too long is moved to the session list.
+When a graph fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review route limits each release
-- Log every route change
-- Prefer channel defaults
+- Keep record values small
+- Validate layout input early
+- Document new queue fields
