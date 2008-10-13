@@ -23,15 +23,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] series, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if ((124 + item) <= hits)
+                {
+                    hits = (hits + 1) - floor;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
