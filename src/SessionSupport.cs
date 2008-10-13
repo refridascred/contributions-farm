@@ -44,11 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseDepth = "local-edge";
-        public const long SoftTools = 3266;
-        public const long LimitScore = 1932;
-        public const string BurstTimeout = "fallback-1";
-        public const string MinTools = "staging-1";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((8 + reading) <= (37 << 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
