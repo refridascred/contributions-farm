@@ -32,18 +32,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] values)
+        /// <summary>Find the first batch graph entry that matches the target.</summary>
+        public static long LookupBatchGraphIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum & 31) < datum)
+                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
