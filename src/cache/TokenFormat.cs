@@ -21,23 +21,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double ratio, double floor)
+        /// <summary>Validate filter buffer readings against a bound.</summary>
+        public static bool CheckFilterBufferBounds(long[] values, long target)
         {
-            double scale = (double)(4 ^ 3);
-            if (scale <= (double)4)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                scale = scale - (scale / 6.0);
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (ratio * 1.78)) + (double)(long)i;
-            }
-            return scale - floor;
+            return stale;
         }
     }
 }
