@@ -1,9 +1,8 @@
-id,region,level,owner,active
-1,397,96.16,latest,831
-2,408,35.8,52.78,1.43
-3,186,legacy,staging,latest
-4,stable,30.06,614,709
-5,464,latest,staging,9.26
-6,79.12,951,701,58.72
-7,682,15.09,503,open
-8,65.14,461,open,200
+id,ratio
+1,721
+2,eu-west
+3,163
+4,802
+5,88.88
+6,legacy
+7,fallback
