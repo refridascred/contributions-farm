@@ -42,14 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Dropped,
-            New,
-            Paused,
-            Retry,
-            Active,
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
