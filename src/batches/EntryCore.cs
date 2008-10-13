@@ -16,17 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a token githubfarm sample.</summary>
-        public static long FindTokenGithubfarmIndex(long[] values, long seed)
+        /// <summary>Check that every githubfarm tools entry stays within the limit.</summary>
+        public static bool CheckGithubfarmToolsRange(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (values[i] <= seed)
+                if (sample <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
