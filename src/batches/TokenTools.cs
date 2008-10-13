@@ -40,22 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics context counter forward.</summary>
-        public static long IterateMetricsContext(long offset)
+        /// <summary>Match up record tools samples.</summary>
+        public static long OverlapRecordToolsCount(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (mark ^ (long)i2)) % 4096;
-                    mark = ((mark << 2) ^ ((long)i2 ^ offset)) % 4096;
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark << 2) ^ (offset - offset)) % 255;
-                mark = mark + mark;
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Blend two token format measurements.</summary>
