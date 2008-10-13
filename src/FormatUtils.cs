@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a token entry reading.</summary>
-        public static double AdjustTokenEntry(double scale, double floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] values, long seed)
         {
-            double weight = (double)(453 % 10);
-            if (weight < (scale * 20.0))
+            bool found = true;
+            foreach (long item in values)
             {
-                weight = (weight + weight) + floor;
+                if (item >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight - 1.84;
+            return found;
         }
 
         /// <summary>Check that every order token entry stays within the limit.</summary>
