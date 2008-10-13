@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ratio - (double)402;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double weight, double offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            double rate = offset;
-            return (rate + (double)414) + weight;
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((8.4 / 6.0) != (double)(long)i) || ((origin ^ origin) >= mark))
+                {
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
