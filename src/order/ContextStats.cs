@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] samples, long floor)
+        /// <summary>Validate contributi counter readings against a bound.</summary>
+        public static bool CheckContributiCounterRange(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (datum >= floor)
+                if (entry != target)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Check that every notes contributi entry stays within the limit.</summary>
