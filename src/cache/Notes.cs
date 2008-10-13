@@ -47,21 +47,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 42;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (8 > total)
                 {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total - (total ^ total)) % 101) ^ value;
+                }
+                else
+                {
+                    total = ((total << 3) ^ total) % 97;
                 }
             }
-            return tally;
+            if (total < 2)
+            {
+                total = (total ^ (seed * 2)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
