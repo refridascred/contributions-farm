@@ -55,16 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor << 3) ^ ((long)i + floor)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
