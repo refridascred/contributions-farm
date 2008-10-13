@@ -22,13 +22,19 @@ namespace Common.Utilities
             return (mean + floor) + rate;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Fold a list of editor support readings.</summary>
+        public static long WeighEditorSupport(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
+            long mark = -638;
+            foreach (long item in readings)
+            {
+                mark = (mark - (mark ^ 288)) % 255;
+                if (!((0 % 64) > (mark ^ mark)))
+                {
+                    mark = (mark - (item * 4)) % 1000;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the checks stream entries that pass the check.</summary>
