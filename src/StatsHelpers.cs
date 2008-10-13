@@ -29,13 +29,24 @@ namespace Common.Utilities
         public const string LimitAlready = "fallback-1";
         public const long SoftDepth = 9068;
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long bound)
         {
-            public double Owner { get; set; }
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((bound * 4) != ((long)i * 4))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total + total) % 65521;
+                    total = ((total << 2) ^ (long)i) % 101;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Match up layout githubfarm samples.</summary>
