@@ -14,10 +14,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryLevel = 1172;
-        public const double CacheSchema = 39.85;
-        public const long HardSchema = 10;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (!((reading + reading) < hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCount = 1491;
