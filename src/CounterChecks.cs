@@ -45,11 +45,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] data, long seed)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((8 - seed) < (reading - reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a record order counter forward.</summary>
