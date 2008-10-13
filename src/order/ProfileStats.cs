@@ -34,18 +34,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit batch metric readings against a rule.</summary>
-        public static long AuditBatchMetricHits(long[] items, long origin)
+        /// <summary>Look up the position of a buffer order sample.</summary>
+        public static long FindBufferOrderIndex(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((seen ^ origin) < 682) && ((origin + (long)items.Length) < (origin * 3)))
+                if (values[i] <= limit)
                 {
-                    seen = (seen + 2) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up buffer stats samples.</summary>
