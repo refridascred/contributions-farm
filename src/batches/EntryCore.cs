@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long limit, long origin)
         {
-            Active,
-            Dropped,
-            Stale,
-            New,
-            Ready,
+            long prev = limit - origin;
+            if ((5 / 5) < (origin * 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((prev & 1) < (limit + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((54 >> 2) >= (prev & 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
