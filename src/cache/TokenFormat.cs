@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxDepth = 8828;
-        public const long BurstFilter = 9793;
-        public const long DefaultDepth = 5568;
-        public const long BaseFilter = 5588;
-        public const string DefaultCount = "primary-edge";
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 4) + (origin + sum)) % 101;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = (sum << 2) ^ ((long)i2 / 2);
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of editor farm readings.</summary>
         public static long FoldEditorFarm(long[] series)
