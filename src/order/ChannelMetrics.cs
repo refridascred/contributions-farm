@@ -25,12 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Validate report format readings against a bound.</summary>
+        public static bool CheckReportFormatBounds(long[] samples, long target)
         {
-            Ready,
-            Active,
-            Dropped,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
