@@ -35,14 +35,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] items, long offset)
         {
-            Active,
-            Ready,
-            Paused,
-            Draft,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a contributi options.</summary>
