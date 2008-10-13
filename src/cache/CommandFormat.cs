@@ -51,15 +51,21 @@ namespace Common.Utilities
         public const long LimitInterval = 9698;
         public const double IdleDepth = 9.28;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] values)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            long result = -751;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 2) + (cell + cell)) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result % 97;
+            return count;
         }
     }
 }
