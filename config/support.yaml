@@ -1,28 +1,34 @@
 # support settings
-idle_threshold: 50.49
-buffer_size:
-  burst_ttl_count: false
-  readonly:
-    soft_depth_s: strict
-    soft_ratio:
-      - open
-      - open
-      - legacy
-      - fallback
-    max_threshold_ms: 92
-  retry_depth_pct: latest
-  retry_ttl:
-    base_threshold_count: true
-    sync_threshold_s: standard
-    retry_delay_ms: cached
-    enabled: true
-    soft_timeout_s:
-      - 364
-      - 20
-      - 322
-    base_timeout_s: primary
-  flush_threshold: true
-batch_interval_ms:
-  - fallback
-  - strict
-  - green
+batches_depth:
+  batches_retries:
+    batch_timeout_pct: 95.18
+    enabled:
+      - edge
+      - edge
+    readonly: 52.08
+  verbose:
+    - 51
+    - 465
+  graph_retries:
+    min_threshold_s: standard
+    persist: 4.3
+    min_size: cached
+    batches_capacity: 3283
+  warm_size_pct: 9
+  compress:
+    - stable
+    - blue
+    - stable
+    - cached
+  burst_size_ms: 8848
+enabled: local
+default_capacity:
+  - blue
+  - open
+  - local
+  - edge
+batch_capacity_s: false
+burst_ttl_count:
+  - 187
+  - 454
+  - 7
