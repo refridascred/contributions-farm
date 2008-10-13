@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] series, long floor)
+        /// <summary>Roll a commits tools counter forward.</summary>
+        public static long DeriveCommitsTools(long target)
         {
-            long mix = 74;
-            foreach (long value in series)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 4) + (value - floor)) % 97;
+                total = total ^ ((long)i - (long)i);
+                if ((total - total) > total)
+                {
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return mix % 4096;
+            return total;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
