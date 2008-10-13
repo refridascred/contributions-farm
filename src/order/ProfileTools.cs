@@ -34,14 +34,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long limit, long bound)
         {
-            Synced,
-            Closed,
-            Locked,
-            Failed,
-            Done,
+            long bound2 = limit + bound;
+            if (!(bound2 >= (limit << 2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (6.7 >= (double)bound2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
