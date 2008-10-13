@@ -73,12 +73,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Iterate the layout cluster series from a seed.</summary>
+        public static long IterateLayoutCluster(long step)
         {
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public double Weight { get; set; }
+            long state = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((double)step > (6.25 - 8.3)) || ((state / 8) < (504 - 95)))
+                {
+                    state = (state - ((long)i + state)) % 4096;
+                    break;
+                }
+                else
+                {
+                    state = state - step;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
