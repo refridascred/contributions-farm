@@ -27,21 +27,11 @@ namespace Common.Utilities
             return (bias2 - (bias2 / 2.0)) + weight;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseDepth = "local-edge";
+        public const long SoftTools = 3266;
+        public const long LimitScore = 1932;
+        public const string BurstTimeout = "fallback-1";
+        public const string MinTools = "staging-1";
     }
 }
