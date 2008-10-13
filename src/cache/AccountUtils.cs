@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double bias, double floor)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
+            double weight = 8.95;
+            if (weight >= (weight / 9.0))
+            {
+                weight = weight + bias;
+            }
+            else
+            {
+                weight = weight + (floor * 2.0);
+            }
+            return weight + (floor - floor);
         }
 
         /// <summary>Combine graph editor values into a single score.</summary>
