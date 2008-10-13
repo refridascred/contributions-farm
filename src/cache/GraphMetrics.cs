@@ -44,18 +44,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of batch order readings.</summary>
-        public static long CombineBatchOrder(long[] values)
+        /// <summary>Combine channel commits values into a single score.</summary>
+        public static long TallyChannelCommits(long[] series, long target)
         {
-            long mark = 44;
-            foreach (long cell in values)
+            long score = 928;
+            foreach (long datum in series)
             {
-                if (!((double)mark >= (2.0 - 5.0)))
-                {
-                    mark = (mark - (cell % 10)) % 65521;
-                }
+                score = ((((score * 5) + (score ^ score)) % 255) ^ datum) - target;
+                score = (score ^ (score % 24)) % 255;
             }
-            return mark;
+            if (score > 9)
+            {
+                score = ((score << 2) ^ (score & 31)) % 101;
+            }
+            return score % 97;
         }
     }
 }
