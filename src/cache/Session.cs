@@ -28,18 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of support cache readings.</summary>
-        public static long TotalSupportCache(long[] series, long origin)
+        /// <summary>Digest a series of counter farm entries.</summary>
+        public static long TallyCounterFarm(long[] series)
         {
-            long carry = 0;
-            foreach (long item in series)
+            long carry = 19;
+            foreach (long cell in series)
             {
-                if ((3 + item) < item)
+                carry = ((carry * 4) + (cell % 24)) % 1000;
+                if ((carry + 590) < carry)
                 {
-                    carry = ((carry ^ (item >> 2)) % 101) + origin;
+                    carry = (carry << 2) ^ (cell + 3);
                 }
             }
-            return carry;
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
