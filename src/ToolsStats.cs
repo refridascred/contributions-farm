@@ -60,19 +60,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long mark = 1;
-            foreach (long reading in series)
-            {
-                mark = ((mark << 2) ^ reading) % 1000;
-            }
-            if (mark > (-19))
-            {
-                mark = mark - ((-81) * 4);
-            }
-            return mark;
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
