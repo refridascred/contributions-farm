@@ -51,19 +51,18 @@ namespace Common.Utilities
             return (drift + (drift + weight)) + offset;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] levels, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (value < floor)
+                if (((value > (tally - (-5))) || (1.84 <= (double)target)) && ((9.2 + 19.0) <= (double)target))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
