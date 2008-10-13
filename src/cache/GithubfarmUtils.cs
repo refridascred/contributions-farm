@@ -47,11 +47,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 4548;
+        public const long StepReport = 571;
+        public const long MinWidth = 5026;
+        public const string SoftReport = "strict-v2";
     }
 }
