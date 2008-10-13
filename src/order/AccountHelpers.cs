@@ -72,31 +72,11 @@ namespace Common.Utilities
             return mean + (gain - span);
         }
 
-        /// <summary>Rank layout cache input into a small class.</summary>
-        public static long SortLayoutCache(long origin, long limit)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            if ((0 - origin) < (12 ^ limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin >= 6.8)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - origin) >= (limit % 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
