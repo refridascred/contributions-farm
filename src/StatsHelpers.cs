@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 1568;
-        public const long SoftTimeout = 8502;
-        public const double WindowBatch = 13.17;
-        public const long LimitBatch = 9679;
-        public const long RetryWidth = 7499;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Derive the next cache support value from a seed.</summary>
         public static long DeriveCacheSupport(long origin)
