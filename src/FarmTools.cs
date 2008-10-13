@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double ratio, double offset)
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            double rate = (double)79 + (offset + ratio);
+            if (rate >= (rate - ratio))
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate - (double)95;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate - offset;
         }
 
         /// <summary>Fold a list of context readings.</summary>
