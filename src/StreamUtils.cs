@@ -28,19 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] data, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (datum >= target)
+                if ((step / 5) <= (51 % 7))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
