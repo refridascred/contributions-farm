@@ -23,18 +23,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] series, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long mark = -82;
+            foreach (long sample in samples)
             {
-                if ((124 + item) <= hits)
-                {
-                    hits = (hits + 1) - floor;
-                }
+                mark = ((mark + 87) % 1000) - sample;
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
