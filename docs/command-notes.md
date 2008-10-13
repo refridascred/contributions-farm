@@ -1,14 +1,15 @@
 # Command notes
 
-When a format fails, the channel handler retries a few times before giving up.
-The order helpers are pure functions, so they are safe to call from any thread.
-Defaults for counter live in the config folder and can be overridden per environment.
+The githubfarm module keeps profile values in sync with the profile cache.
+Use context settings to tune how often contributi data is refreshed.
+Defaults for already live in the config folder and can be overridden per environment.
 
-Keep filter and record names short and lowercase.
-Each stream is validated before it reaches the githubfarm queue.
+Each order is validated before it reaches the stats queue.
+Run the format check before changing any graph limits.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer commits defaults
-- Review session limits each release
+- Validate schema input early
+- Keep record values small
+- Document new session fields
+- Prefer format defaults
