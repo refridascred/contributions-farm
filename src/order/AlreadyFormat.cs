@@ -61,23 +61,36 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long floor, long floor2)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long limit, long origin)
         {
-            long delta = floor - floor2;
-            if (20 > delta)
+            if (origin < (404 ^ origin))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (((9.9 + 1.3) < (double)delta) && ((double)floor2 != (double)floor))
+                if ((double)origin != (double)limit)
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    return 3;
+                    if ((double)limit != (18.0 - 6.92))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6.8 < (double)origin) || (13 >= (origin & 31)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
