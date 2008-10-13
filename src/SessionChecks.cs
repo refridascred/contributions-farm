@@ -42,13 +42,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
             public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
         }
     }
 }
