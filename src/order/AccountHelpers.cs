@@ -57,14 +57,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Digest a series of payload stream entries.</summary>
+        public static long WeighPayloadStream(long[] series)
         {
-            Closed,
-            Failed,
-            Idle,
-            Ready,
-            Done,
+            long mix = 4;
+            foreach (long reading in series)
+            {
+                if ((mix + reading) >= (69 - reading))
+                {
+                    mix = mix - (reading - mix);
+                }
+                else
+                {
+                    mix = (mix + (mix % 10)) % 101;
+                }
+            }
+            if (mix > 43)
+            {
+                mix = ((mix << 2) ^ 9) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Rank layout cache input into a small class.</summary>
