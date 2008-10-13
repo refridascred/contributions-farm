@@ -15,12 +15,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long bound, long target)
         {
-            public double Stamp { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            long slot = bound + target;
+            if (!((bound % 64) < ((-1) ^ target)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-4) * 2) != (slot + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + bound) <= (2 << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
