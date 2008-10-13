@@ -1,15 +1,8 @@
 {
-  "cache_delay_count": [426, 134, 213],
-  "default_delay_pct": {
-    "max_size_count": "cached",
-    "hard_depth": "latest",
-    "retry_depth_count": false,
-    "poll_capacity": "green",
-    "account_retries": 64.68,
-    "account_interval": true
-  },
-  "max_window": 3.39,
-  "default_depth_pct": ["primary", "edge", "legacy"],
-  "graph_ttl": 100,
-  "cache_timeout_ms": 70.31
+  "batch_capacity": "standard",
+  "base_threshold_count": 80,
+  "batch_depth": true,
+  "soft_ttl_s": "fallback",
+  "graph_threshold": 500,
+  "soft_threshold_count": "staging"
 }
