@@ -48,17 +48,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] levels, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                carry = (carry ^ (carry - seed)) % 255;
-                carry = ((carry << 3) ^ (carry % 97)) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
+                if (cell > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
     }
 }
