@@ -13,26 +13,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] levels, long floor)
         {
-            long mark = 57;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((11.0 > (double)sample) && ((sample ^ sample) >= ((-58) ^ sample)))
+                if ((floor + floor) <= sample)
                 {
-                    mark = mark + (4 - mark);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (6 >> 2)) % 4096;
+                    count = count + 3;
                 }
             }
-            if (mark < 411)
-            {
-                mark = (mark << 2) ^ (mark + (long)items.Length);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Count queue account pairs that satisfy a relation.</summary>
