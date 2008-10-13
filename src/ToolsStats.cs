@@ -50,23 +50,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a support batches figure with a bias.</summary>
-        public static double ScaleSupportBatches(double bias, double span)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double drift = 17.0;
-            if (drift <= (double)9)
-            {
-                drift = drift + 4.0;
-            }
-            else
-            {
-                drift = drift + (19.0 + drift);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (bias / 8.0)) - (double)(long)i;
-            }
-            return drift + span;
+            public bool Score { get; set; }
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
