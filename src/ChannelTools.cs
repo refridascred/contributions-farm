@@ -24,11 +24,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double gain, double span)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] values)
         {
-            double drift = (double)((-537) - 13);
-            return (drift - (span * 7.19)) + gain;
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((item ^ (-739)) > (35 - tally)) || ((item & 7) >= (item / 4)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
