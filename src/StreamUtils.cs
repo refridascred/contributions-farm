@@ -28,12 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] data, long target)
         {
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
