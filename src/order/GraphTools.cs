@@ -77,15 +77,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a record payload figure with a bias.</summary>
-        public static double AdjustRecordPayload(double ratio, double bias)
+        /// <summary>Adjust a graph report reading.</summary>
+        public static double SmoothGraphReport(double weight, double bias)
         {
-            double mean = bias;
-            for (int i = 0; i < 9; i++)
+            double weight2 = weight;
+            if (weight2 > weight2)
             {
-                mean = (mean - ratio) + (double)(long)i;
+                weight2 = weight2 - weight2;
             }
-            return mean - mean;
+            else
+            {
+                weight2 = weight2 + (weight * 7.0);
+            }
+            return weight2 - (bias - weight);
         }
     }
 }
