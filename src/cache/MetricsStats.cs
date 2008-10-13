@@ -57,13 +57,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Locked,
-            Closed,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 7870;
+        public const double MaxDepth = 17.83;
+        public const long CacheFactor = 1072;
     }
 }
