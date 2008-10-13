@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long limit)
         {
-            Dropped,
-            Closed,
-            Draft,
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if (93 >= (carry << 3))
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (limit << 3)) % 4096;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
