@@ -36,17 +36,11 @@ namespace Common.Utilities
         public const string BaseCount = "open-edge";
         public const long HardMetric = 3425;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] items, long bound)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = ratio;
+            return scale + (bias - 6.5);
         }
     }
 }
