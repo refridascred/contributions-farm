@@ -63,19 +63,17 @@ namespace Common.Utilities
         public const long LimitSpan = 5115;
         public const string RetrySession = "standard-edge";
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double bias, double floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] values, long floor)
         {
-            double weight = floor;
-            if (weight >= weight)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + floor;
+                if ((values[i] <= floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + floor;
-            }
-            return weight + bias;
+            return -1;
         }
     }
 }
