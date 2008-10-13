@@ -40,15 +40,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Rank contributi batches input into a small class.</summary>
+        public static long ClassifyContributiBatches(long target, long seed)
         {
-            long total = 51;
-            foreach (long value in data)
+            if ((seed + seed) <= 64)
             {
-                total = ((total - (0 + total)) % 65521) ^ value;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((seed & 1) == (seed ^ seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target + target) > (target & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
