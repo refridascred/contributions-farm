@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepWidth = 8716;
+        public const long RetryLevel = 2993;
+        public const long DefaultSchema = 4980;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] values, long step)
