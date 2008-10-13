@@ -1,14 +1,26 @@
 # support settings
-min_limit_s:
-  - 497
-  - 311
-  - 184
-  - 477
-retry_threshold_count: 32.4
-retry_size_s:
-  - 496
-  - 342
-  - 373
-  - 79
-idle_retries: false
-contributi_ttl: blue
+payload_retries:
+  base_retries_ms: 4367
+  window_ratio: 100
+  cache_limit:
+    - edge
+    - stable
+    - edge
+    - edge
+  soft_capacity_count:
+    retry_interval_s: false
+    command_timeout: false
+    channel_delay: false
+    sync_depth_pct: 60
+    max_threshold: edge
+    account_depth: true
+idle_delay:
+  cache_delay: 44.84
+  min_size_s: 9757
+  default_delay_s: 56
+  entry_size: legacy
+warm_limit_pct: primary
+min_window:
+  - 426
+  - 403
+context_window: 250
