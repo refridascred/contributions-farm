@@ -34,11 +34,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Rank stream context input into a small class.</summary>
+        public static long SortStreamContext(long step, long origin)
         {
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            if ((step - origin) <= origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8 + origin) != (step % 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a batch header.</summary>
