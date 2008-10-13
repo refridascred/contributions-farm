@@ -24,38 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long seed, long seed2)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data)
         {
-            if ((double)seed2 <= 2.5)
+            long score = -40;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)seed2 == (9.0 * 9.09)) && ((seed2 - seed) <= (seed ^ 60)))
+                score = ((score * 5) + (value ^ value)) % 97;
+                if ((8.47 - 3.8) > (double)score)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((0.9 > (double)seed2) && (seed2 <= (seed2 + seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed & 15) > (seed2 + seed2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
