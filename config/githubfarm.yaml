@@ -1,17 +1,5 @@
 # githubfarm settings
-flush_capacity_count:
-  - staging
-  - stable
-strict: 60
-contributi_retries: 4853
-cache_ttl_s: eu-west
-dry_run:
-  audit:
-    audit: 9.08
-    default_depth: 20
-    format_depth: false
-    batch_ttl: false
-    retry_limit: 3921
-    persist: legacy
-  token_size: true
-  githubfarm_window: 62
+dry_run: 18.7
+batch_timeout_count: 933
+checks_threshold: true
+max_capacity_count: 75
