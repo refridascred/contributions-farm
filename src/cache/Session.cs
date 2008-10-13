@@ -28,18 +28,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] readings, long floor)
+        /// <summary>Rank githubfarm channel input into a small class.</summary>
+        public static long RankGithubfarmChannel(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long step = bound - seed;
+            if (!((double)step > 11.0))
             {
-                if ((floor * 3) >= floor)
+                return 7;
+            }
+            else
+            {
+                if (seed < (bound + seed))
                 {
-                    tally = (tally + 2) + entry;
+                    return 3;
+                }
+                else
+                {
+                    if ((step % 3) <= (step ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound + step) >= step) || ((bound % 60) > bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
