@@ -23,12 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] readings, long offset)
         {
-            Closed,
-            Done,
-            Locked,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the record kind values.</summary>
