@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many stats cluster samples are out of range.</summary>
-        public static long TallyStatsClusterGaps(long[] samples, long origin)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin & 255) == (origin + value))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
