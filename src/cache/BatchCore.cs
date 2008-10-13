@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long seed, long target)
         {
-            long result = target;
-            for (int i = 0; i < 19; i++)
+            if ((target + target) > (seed >> 2))
             {
-                result = (result * 5) + target;
-                result = (result + (result - result)) % 255;
-                result = ((result * 4) + (long)i) % 65521;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((seed >= (0 / 8)) && ((seed + 65) <= (seed & 31)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target % 100) > target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target % 60) < target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
