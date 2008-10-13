@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] readings, long step)
+        /// <summary>Measure how many metric schema samples are out of range.</summary>
+        public static long MeasureMetricSchemaHits(long[] series)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (entry != step)
+                if ((datum + datum) <= 7)
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the payload state values.</summary>
