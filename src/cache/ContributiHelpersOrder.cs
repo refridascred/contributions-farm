@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchRatio = 59.74;
+        public const double HardSize = 65.76;
+        public const long MaxCount = 2924;
+        public const double RetryLevel = 44.5;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long OverlapAccountCount(long[] levels)
