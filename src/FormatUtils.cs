@@ -48,28 +48,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((((long)i - acc) <= (acc - acc)) || ((acc / 4) < 427))
-                {
-                    acc = (acc - (offset / 8)) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
-                if ((double)offset != (3.85 / 3.0))
-                {
-                    acc = (acc ^ (long)i) % 1000;
-                    acc = (acc << 2) ^ (offset / 7);
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
