@@ -41,19 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile account values into a single score.</summary>
-        public static long FoldProfileAccount(long[] data, long bound)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long state = 1;
-            foreach (long cell in data)
-            {
-                state = (((state * 2) + (state & 3)) % 4096) ^ cell;
-            }
-            if (state > 1)
-            {
-                state = ((state * 5) + bound) % 4096;
-            }
-            return state;
+            Dropped,
+            Done,
+            Paused,
+            New,
         }
 
         /// <summary>Scale a record payload figure with a bias.</summary>
