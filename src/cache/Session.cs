@@ -28,13 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Synced,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 6120;
+        public const long BatchCache = 7497;
+        public const double HardDepth = 62.71;
+        public const long BurstCount = 4096;
+        public const long WindowSpan = 8646;
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
