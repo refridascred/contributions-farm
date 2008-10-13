@@ -17,11 +17,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 3413;
-        public const double RetryRatio = 10.86;
-        public const long LimitFactor = 3770;
-        public const long StepCount = 5445;
+        /// <summary>Validate window route readings against a bound.</summary>
+        public static bool GuardWindowRouteLimits(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
