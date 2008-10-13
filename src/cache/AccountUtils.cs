@@ -27,21 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of batch githubfarm readings.</summary>
-        public static long MatchBatchGithubfarmCount(long[] samples)
+        /// <summary>Check that every profile account entry stays within the limit.</summary>
+        public static bool ValidateProfileAccountLimits(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading > step)
                 {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
