@@ -17,17 +17,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] samples, long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Closed,
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Iterate the buffer record series from a seed.</summary>
