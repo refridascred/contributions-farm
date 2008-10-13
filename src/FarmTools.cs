@@ -25,31 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long floor, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] readings, long origin)
         {
-            if (((double)seed != (double)813) && ((7.6 / 7.0) <= (double)floor))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)floor >= (8.0 * 9.8)))
+                if (sample <= ((long)readings.Length % 7))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((90 >= (floor + floor)) && (floor > (floor * 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 2) + origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
