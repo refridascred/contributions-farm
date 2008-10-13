@@ -52,13 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] series)
         {
-            Synced,
-            Queued,
-            Retry,
-            New,
+            long mark = 1;
+            foreach (long reading in series)
+            {
+                if (reading >= (reading * 4))
+                {
+                    mark = (mark ^ (reading + mark)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Match up batch samples.</summary>
