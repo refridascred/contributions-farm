@@ -36,23 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double ratio, double floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            double drift = (double)(44 - 69);
-            if (drift >= ratio)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift + ratio) + floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (double)104;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (drift / 4.0);
+            return tally;
         }
     }
 }
