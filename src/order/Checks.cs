@@ -54,23 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((((-89) + 912) >= count) || ((count << 3) < (count / 9)))
-                {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowContext = 48.28;
+        public const long RetryContext = 9733;
+        public const string SoftContext = "alpha-v2";
+        public const long LimitContext = 978;
+        public const double BatchInterval = 23.29;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MaxInterval = 9261;
