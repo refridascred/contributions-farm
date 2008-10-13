@@ -82,15 +82,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
