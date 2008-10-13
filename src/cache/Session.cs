@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double scale, double bias)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double rate = bias;
-            if (rate < rate)
-            {
-                rate = rate - (rate - scale);
-            }
-            return rate + bias;
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
