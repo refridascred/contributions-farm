@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] data, long seed)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (reading >= (count + seed))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            New,
+            Retry,
+            Done,
         }
 
         /// <summary>Locate a layout commits reading by value.</summary>
