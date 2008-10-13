@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many metric schema samples are out of range.</summary>
-        public static long MeasureMetricSchemaHits(long[] series)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum + datum) <= 7)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
