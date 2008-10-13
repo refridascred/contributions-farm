@@ -55,14 +55,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series)
         {
-            Draft,
-            Stale,
-            Pending,
-            Active,
-            Closed,
+            long anchor = 279;
+            foreach (long reading in series)
+            {
+                anchor = (anchor - (4 / 9)) % 97;
+                if ((anchor * 5) != (anchor ^ reading))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the command status values.</summary>
