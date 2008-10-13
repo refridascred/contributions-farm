@@ -33,13 +33,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Queued,
-            Done,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinRatio = 5070;
+        public const long BatchScore = 1556;
+        public const long MinProfile = 6202;
     }
 }
