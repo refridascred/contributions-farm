@@ -69,11 +69,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSpan = 8347;
-        public const long IdleSize = 4710;
-        public const long LimitSession = 5752;
-        public const string WindowDepth = "local-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheSpan = 3709;
+        public const double IdleGithubfarm = 22.25;
+        public const long StepCount = 1515;
+        public const string LimitFactor = "primary";
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
