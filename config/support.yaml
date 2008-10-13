@@ -1,34 +1,18 @@
 # support settings
-batches_depth:
-  batches_retries:
-    batch_timeout_pct: 95.18
-    enabled:
-      - edge
-      - edge
-    readonly: 52.08
-  verbose:
-    - 51
-    - 465
-  graph_retries:
-    min_threshold_s: standard
-    persist: 4.3
-    min_size: cached
-    batches_capacity: 3283
-  warm_size_pct: 9
-  compress:
-    - stable
-    - blue
-    - stable
-    - cached
-  burst_size_ms: 8848
-enabled: local
-default_capacity:
-  - blue
-  - open
-  - local
-  - edge
-batch_capacity_s: false
-burst_ttl_count:
-  - 187
-  - 454
-  - 7
+route_retries:
+  idle_timeout: 7520
+  base_capacity_pct: fallback
+  persist: strict
+  poll_window:
+    soft_capacity: fallback
+    cache_ttl_pct: 74
+    graph_depth: strict
+    compress: 100
+    burst_ttl_ms: 93.75
+    warm_interval: edge
+default_limit_count:
+  min_delay: false
+  graph_window: 4672
+  hard_interval: true
+  flush_timeout_ms: 1024
+buffer_capacity: 25.49
