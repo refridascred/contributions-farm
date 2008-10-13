@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinSpan = "primary-v2";
-        public const long MinFactor = 1694;
-        public const long LimitRatio = 3804;
-        public const long IdleAccount = 4581;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data)
+        {
+            long anchor = 0;
+            foreach (long entry in data)
+            {
+                anchor = anchor ^ (anchor - entry);
+                anchor = (anchor + (entry << 2)) % 65521;
+                anchor = ((anchor * 4) + 956) % 4096;
+            }
+            if (anchor < (-49))
+            {
+                anchor = (anchor - (anchor / 2)) % 255;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueGaps(long[] readings)
