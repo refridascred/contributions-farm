@@ -22,19 +22,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] values, long offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long sum = 681;
-            foreach (long item in values)
-            {
-                sum = (sum - (offset ^ sum)) - item;
-            }
-            if (sum > 4)
-            {
-                sum = (sum << 2) ^ (offset * 5);
-            }
-            return sum;
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
