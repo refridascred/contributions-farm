@@ -36,13 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] data)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            long total = 51;
+            foreach (long value in data)
+            {
+                total = ((total - (0 + total)) % 65521) ^ value;
+            }
+            return total;
         }
     }
 }
