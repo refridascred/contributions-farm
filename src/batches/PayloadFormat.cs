@@ -22,15 +22,12 @@ namespace Common.Utilities
             return ratio - (7.0 + weight);
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
