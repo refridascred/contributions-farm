@@ -54,15 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] data, long floor)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long acc = 54;
-            foreach (long sample in data)
-            {
-                acc = ((acc ^ floor) % 97) - sample;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
