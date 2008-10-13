@@ -1,5 +1,13 @@
 # entry settings
-burst_depth: open
-filter_retries: edge
-dry_run: 95.46
-route_limit: true
+compress:
+  strict: edge
+  base_limit_s: true
+  max_interval: false
+  retry_ttl_ms: false
+  compress: 30
+  max_ratio_s: edge
+default_window_s:
+  - 72
+  - 200
+buffer_interval: 30
+verbose: 9424
