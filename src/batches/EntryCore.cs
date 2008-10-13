@@ -30,18 +30,18 @@ namespace Common.Utilities
         public const long BatchMetric = 1678;
         public const string WindowFactor = "open-1";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] series)
+        /// <summary>Count the checks stream entries that pass the check.</summary>
+        public static long AuditChecksStreamMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((matches - cell) < (matches % 60))
+                if (((-1) + 9) > datum)
                 {
-                    matches = matches + 2;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
