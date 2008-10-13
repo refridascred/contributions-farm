@@ -12,18 +12,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] samples)
+        /// <summary>Roll a graph account counter forward.</summary>
+        public static long IterateGraphAccount(long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)hits >= (2.0 - 9.6))
+                if ((double)mix == (12.0 / 4.0))
                 {
-                    hits = (hits + 2) + datum;
+                    mix = mix ^ mix;
                 }
+                else
+                {
+                    mix = (mix ^ (floor * 2)) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
