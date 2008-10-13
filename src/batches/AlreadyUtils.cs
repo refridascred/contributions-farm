@@ -52,10 +52,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseFactor = 74.35;
-        public const long DefaultCache = 4501;
-        public const double RetryLevel = 61.59;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Synced,
+            Queued,
+            Retry,
+            New,
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long DigestCommits(long[] levels, long bound)
