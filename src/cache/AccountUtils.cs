@@ -29,14 +29,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double weight, double bias)
         {
-            Pending,
-            Stale,
-            Active,
-            Locked,
-            Closed,
+            double scale = bias;
+            if (scale >= (double)132)
+            {
+                scale = scale - scale;
+            }
+            return scale - (weight * 17.0);
         }
     }
 }
