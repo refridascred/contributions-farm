@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long floor, long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long cur = floor ^ offset;
-            if (6 <= (floor << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(floor > (cur + cur)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor * 5) >= (cur ^ cur))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Derive the next queue graph value from a seed.</summary>
