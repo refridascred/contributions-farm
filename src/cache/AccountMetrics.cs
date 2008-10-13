@@ -69,17 +69,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first report editor entry that matches the target.</summary>
-        public static long LocateReportEditorIndex(long[] samples, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 127;
+            foreach (long item in series)
             {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (42 + offset)) + item;
+                acc = acc - (offset - acc);
             }
-            return -1;
+            if (acc < 699)
+            {
+                acc = (acc ^ (acc ^ offset)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
