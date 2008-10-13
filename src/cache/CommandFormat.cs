@@ -38,12 +38,25 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 8162;
-        public const double BurstChannel = 94.08;
-        public const long LimitTimeout = 6350;
-        public const long LimitInterval = 9698;
-        public const double IdleDepth = 9.28;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] data)
+        {
+            long carry = 719;
+            foreach (long entry in data)
+            {
+                long span = (61 & 1) + (entry * 3);
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = ((carry << 2) ^ (carry << 3)) % 65521;
+                    carry = carry + ((long)i - span);
+                }
+                if ((carry + carry) > carry)
+                {
+                    carry = (carry + (carry * 2)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long OverlapChannelCount(long[] series)
