@@ -12,21 +12,38 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long seed, long seed2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)seed2 <= 2.5)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((double)seed2 == (9.0 * 9.09)) && ((seed2 - seed) <= (seed ^ 60)))
                 {
-                    if ((values[i] + values[j]) != 18)
+                    return 8;
+                }
+                else
+                {
+                    if ((0.9 > (double)seed2) && (seed2 <= (seed2 + seed)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed & 15) > (seed2 + seed2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
