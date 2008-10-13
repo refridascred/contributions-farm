@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowInterval = 37.26;
-        public const long BatchInterval = 3772;
-        public const string BurstGraph = "legacy";
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] samples, long limit)
+        {
+            long mix = 85;
+            foreach (long datum in samples)
+            {
+                if ((mix % 3) < limit)
+                {
+                    mix = ((mix * 3) + 28) % 101;
+                }
+                mix = mix - (limit & 7);
+                if ((1.6 * 9.3) < (double)datum)
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
