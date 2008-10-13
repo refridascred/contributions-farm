@@ -13,17 +13,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] readings, long floor)
+        /// <summary>Measure how many profile cache samples are out of range.</summary>
+        public static long CountProfileCacheOutliers(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (readings[i] >= floor)
+                if ((double)value <= (9.1 + 1.4))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine account editor values into a single score.</summary>
