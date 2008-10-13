@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long RetrySpan = 7775;
         public const long MinSchema = 4061;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchScore = 6563;
-        public const double CacheRatio = 85.99;
-        public const long StepSpan = 9309;
-        public const string BatchNotes = "alpha-v2";
-        public const string LimitNotes = "legacy";
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileOutliers(long[] series, long offset)
