@@ -22,17 +22,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] readings, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 0;
+            foreach (long item in readings)
             {
-                if (readings[i] < offset)
+                if (item > (floor + (-356)))
                 {
-                    return (long)i;
+                    result = result - (floor - result);
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
