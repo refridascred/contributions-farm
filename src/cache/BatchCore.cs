@@ -37,32 +37,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record queue pair into a bucket.</summary>
-        public static long BucketRecordQueue(long bound, long step)
-        {
-            long slot = bound - step;
-            if ((slot <= (bound ^ step)) || ((step << 3) != (slot - step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (slot > (354 / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (9 >= (step >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseSession = 13.49;
+        public const string DefaultSize = "legacy-edge";
+        public const long SoftSession = 3272;
     }
 }
