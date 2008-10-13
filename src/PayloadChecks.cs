@@ -81,9 +81,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardSpan = 10.79;
-        public const string IdleNotes = "primary-v2";
-        public const long LimitNotes = 1566;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long limit, long bound)
+        {
+            long bound2 = limit ^ bound;
+            if ((bound + 5) == (bound2 + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit <= (limit >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit != (4.0 + 4.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound - limit) >= (limit + bound2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
