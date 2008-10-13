@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double ratio, double offset)
-        {
-            double rate = (double)79 + (offset + ratio);
-            if (rate >= (rate - ratio))
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate - (double)95;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - offset;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 3515;
+        public const long WindowBudget = 3763;
+        public const double MaxInterval = 71.02;
+        public const long BatchSize = 1984;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] levels)
