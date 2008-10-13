@@ -1,21 +1,11 @@
 # support settings
-hard_limit_count: open
-soft_window_s: 2.27
-sync_interval_count: fallback
-checks_limit:
-  compress:
-    - edge
-    - green
-    - cached
-  layout_interval: 50.01
-  batch_retries_pct:
-    - fallback
-    - edge
-    - green
-  metric_depth: stable
-  batch_limit_ms: true
-  dry_run:
-    - latest
-    - primary
-cache_capacity: eu-west
-default_size: false
+layout_ttl:
+  - 247
+  - 26
+  - 225
+  - 164
+enabled: false
+warm_depth_count: standard
+persist: 1.46
+batch_depth_s: 11.93
+base_capacity: 9568
