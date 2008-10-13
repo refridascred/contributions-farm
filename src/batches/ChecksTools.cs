@@ -33,12 +33,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Roll a order contributi counter forward.</summary>
+        public static long SeriesOrderContributi(long target)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public bool Token { get; set; }
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the buffer state values.</summary>
