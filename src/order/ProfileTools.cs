@@ -41,10 +41,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardDepth = 6951;
-        public const long BurstCount = 3791;
-        public const string HardTimeout = "strict";
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
