@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            long total = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total + total) % 97;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
