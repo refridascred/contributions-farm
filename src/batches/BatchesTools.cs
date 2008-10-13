@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)(long)items.Length >= (4.1 * 2.7))
                 {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 1) ^ entry) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
