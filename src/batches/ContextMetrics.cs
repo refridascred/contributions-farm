@@ -23,21 +23,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count profile graph pairs that satisfy a relation.</summary>
-        public static long OverlapProfileGraphCount(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long seed, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((seed & 1) >= (seed % 24))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed + limit) < (limit ^ (-9)))
                 {
-                    if ((items[i] ^ items[j]) > 8)
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >> 3) == (limit - seed))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((seed + limit) >= (limit << 3)) || ((double)seed <= (16.0 / 3.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
