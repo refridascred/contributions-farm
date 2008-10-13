@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((offset + 5) > (total - 85))
-                {
-                    total = (total ^ (total * 3)) % 255;
-                }
-                else
-                {
-                    total = (total << 2) ^ total;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = (total ^ (total + offset)) + (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the already stream entries that pass the check.</summary>
