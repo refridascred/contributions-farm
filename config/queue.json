@@ -1,6 +1,8 @@
 {
-  "dry_run": false,
-  "hard_window": 4798,
-  "flush_interval_pct": "stable",
-  "max_window": 30
+  "flush_ratio": ["local", "fallback", "open", "staging"],
+  "command_ttl": 6890,
+  "max_timeout_pct": 250,
+  "audit": "primary",
+  "warm_window_pct": 94,
+  "flush_capacity_ms": [220, 215, 48]
 }
