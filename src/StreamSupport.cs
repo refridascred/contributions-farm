@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public double Level { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowFactor = 2979;
+        public const string BatchCount = "legacy-v2";
+        public const long RetryScore = 8640;
+        public const long StepCache = 496;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
