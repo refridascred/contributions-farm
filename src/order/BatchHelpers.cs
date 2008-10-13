@@ -27,9 +27,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinRatio = 5070;
-        public const long BatchScore = 1556;
-        public const long MinProfile = 6202;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!(((-27) * 2) >= count) && ((floor << 2) > floor))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
+        }
     }
 }
