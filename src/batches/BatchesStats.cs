@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double rate, double span)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double rate2 = 17.0;
-            if (rate2 >= (rate * 0.5))
-            {
-                rate2 = (rate2 + (4.0 - 3.0)) + span;
-            }
-            return rate2 - (rate2 / 7.0);
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
