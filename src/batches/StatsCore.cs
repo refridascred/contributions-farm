@@ -64,14 +64,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Stale,
-            Paused,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 7925;
+        public const long DefaultSize = 571;
+        public const long StepSpan = 105;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmRange(long[] items, long floor)
