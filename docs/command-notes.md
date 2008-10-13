@@ -1,14 +1,14 @@
 # Command notes
 
-Each payload is validated before it reaches the order queue.
-Run the route check before changing any editor limits.
-Keep contributi and filter names short and lowercase.
+The support helpers are pure functions, so they are safe to call from any thread.
+Each notes is validated before it reaches the editor queue.
 
-A stats that stays idle for too long is moved to the support list.
-When a format fails, the support handler retries a few times before giving up.
+The layout report groups every session by command.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new window fields
-- Prefer cluster defaults
-- Log every notes change
+- Prefer queue defaults
+- Document new token fields
+- Review token limits each release
+- Keep command values small
