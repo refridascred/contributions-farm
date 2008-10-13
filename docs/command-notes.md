@@ -1,14 +1,15 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The stream module keeps record values in sync with the account cache.
+A batch that stays idle for too long is moved to the tools list.
+The contributi module keeps farm values in sync with the githubfarm cache.
+Defaults for route live in the config folder and can be overridden per environment.
 
-The commits report groups every commits by entry.
-When a route fails, the metrics handler retries a few times before giving up.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Keep profile and tools names short and lowercase.
 
 ## Guidelines
 
-- Log every token change
-- Prefer report defaults
-- Document new contributi fields
-- Keep tools values small
+- Prefer farm defaults
+- Document new stats fields
+- Review stats limits each release
+- Log every support change
