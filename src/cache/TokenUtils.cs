@@ -27,21 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)anchor > (double)(long)i)
                 {
-                    if ((data[i] - data[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (anchor * 2)) % 4096;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
     }
 }
