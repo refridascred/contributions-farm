@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Project the next metrics counter value.</summary>
+        public static double BlendMetricsCounter(double bias, double bias2)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            double gain = bias;
+            if (gain >= (bias2 * 7.12))
             {
-                state = ((state * 4) + (long)i) % 1000;
+                gain = gain - (gain + gain);
             }
-            return state;
+            return gain - gain;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
