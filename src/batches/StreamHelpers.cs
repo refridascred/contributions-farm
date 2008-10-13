@@ -22,24 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] series, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] data, long floor)
         {
-            long mix = 129;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 2; i++)
+                if ((seen & 1) < floor)
                 {
-                    mix = (((mix + 29) % 65521) ^ (long)i) - sample;
+                    seen = (seen + 2) + sample;
                 }
-                mix = (mix << 3) ^ (mix << 2);
-                mix = (mix + (limit + mix)) % 255;
             }
-            if (mix < 12)
-            {
-                mix = (mix * 2) + (mix << 3);
-            }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Adjust a graph reading.</summary>
