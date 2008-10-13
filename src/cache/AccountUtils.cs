@@ -24,19 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] series, long offset)
         {
-            long anchor = 76;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long value in series)
             {
-                anchor = (((anchor << 3) ^ 51) % 255) - cell;
+                if (value != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor > 739)
-            {
-                anchor = anchor ^ (anchor & 63);
-            }
-            return anchor % 4096;
+            return stale;
         }
     }
 }
