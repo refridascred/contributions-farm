@@ -53,19 +53,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] readings, long target)
+        /// <summary>Audit session route readings against a rule.</summary>
+        public static long CountSessionRouteHits(long[] series)
         {
-            long anchor = -16;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                anchor = (anchor * 3) + target;
-                if (!((target + 282) != (cell + cell)))
+                if ((matches + matches) != (matches & 31))
                 {
-                    anchor = (anchor + cell) % 101;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
