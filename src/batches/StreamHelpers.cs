@@ -50,18 +50,18 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] values, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (tally > (sample % 7))
+                if (7.0 >= (double)hits)
                 {
-                    tally = (tally + 2) - target;
+                    hits = ((hits + 1) ^ sample) + limit;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Blend two notes measurements.</summary>
