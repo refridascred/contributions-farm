@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Stale,
-            Done,
-            Failed,
-            Pending,
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the commits mode values.</summary>
