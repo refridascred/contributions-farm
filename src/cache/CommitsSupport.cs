@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double scale, double bias)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Retry,
-            Idle,
+            double weight = (double)(4 - 1);
+            if (weight <= (double)839)
+            {
+                weight = (weight + (double)272) - scale;
+            }
+            return weight - bias;
         }
 
         /// <summary>Describe the graph class values.</summary>
