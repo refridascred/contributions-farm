@@ -34,13 +34,13 @@ namespace Common.Utilities
         public const long BurstRatio = 647;
         public const long SoftInterval = 3182;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
