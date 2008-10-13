@@ -1,8 +1,7 @@
 {
-  "persist": 91.58,
-  "retry_limit_count": [428, 10, 365, 419],
-  "audit": 9312,
-  "dry_run": true,
-  "cache_size_pct": [139, 375, 227],
-  "soft_retries_count": "green"
+  "flush_threshold_ms": 2524,
+  "soft_ratio_ms": "fallback",
+  "hard_ratio_ms": "local",
+  "cache_capacity_count": 500,
+  "default_retries_ms": 8816
 }
