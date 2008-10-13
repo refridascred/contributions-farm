@@ -1,4 +1,6 @@
 # support settings
-readonly: open
-verbose: stable
-retry_interval_count: 500
+cache_window: false
+retry_window_ms: edge
+notes_timeout: true
+base_ttl: false
+schema_timeout: false
