@@ -39,16 +39,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] levels)
-        {
-            long score = 74;
-            foreach (long sample in levels)
-            {
-                score = (score - ((long)levels.Length << 1)) + sample;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleSpan = 4498;
+        public const double RetryTimeout = 75.06;
+        public const long BaseDepth = 532;
+        public const long RetryCluster = 3029;
+        public const long BatchCluster = 2020;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double CacheEntry = 45.88;
