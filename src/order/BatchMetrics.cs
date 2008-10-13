@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] values, long limit)
         {
-            Stale,
-            New,
-            Paused,
-            Closed,
+            long anchor = 71;
+            foreach (long reading in values)
+            {
+                if ((double)reading > (double)9)
+                {
+                    anchor = ((anchor - (78 - reading)) % 97) + limit;
+                }
+                else
+                {
+                    anchor = (anchor + (reading - reading)) % 101;
+                }
+            }
+            if (anchor < 152)
+            {
+                anchor = ((anchor << 2) ^ (anchor / 4)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
