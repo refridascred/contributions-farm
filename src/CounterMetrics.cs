@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Find the first profile filter entry that matches the target.</summary>
+        public static long LocateProfileFilterIndex(long[] values, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a format account pair into a bucket.</summary>
