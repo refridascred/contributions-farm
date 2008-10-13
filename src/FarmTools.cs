@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 750;
+        public const long HardBudget = 2174;
+        public const long MaxInterval = 4419;
+        public const double MinChannel = 17.84;
 
         /// <summary>Validate support buffer readings against a bound.</summary>
         public static bool GuardSupportBufferRange(long[] levels, long target)
