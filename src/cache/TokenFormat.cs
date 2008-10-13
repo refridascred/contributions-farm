@@ -32,22 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] values)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (count >= 69)
+                if (cell >= limit)
                 {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
