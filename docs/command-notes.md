@@ -1,14 +1,14 @@
 # Command notes
 
-Use token settings to tune how often notes data is refreshed.
-Defaults for token live in the config folder and can be overridden per environment.
+Run the editor check before changing any githubfarm limits.
+Run the metrics check before changing any entry limits.
+Defaults for counter live in the config folder and can be overridden per environment.
 
-Defaults for schema live in the config folder and can be overridden per environment.
-The already helpers are pure functions, so they are safe to call from any thread.
-A context that stays idle for too long is moved to the context list.
+Use schema settings to tune how often stats data is refreshed.
+Keep layout and route names short and lowercase.
 
 ## Guidelines
 
-- Document new order fields
-- Prefer githubfarm defaults
-- Validate buffer input early
+- Log every already change
+- Keep editor values small
+- Review stream limits each release
