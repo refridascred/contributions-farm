@@ -1,10 +1,10 @@
 # Command notes
 
-Each batches is validated before it reaches the stream queue.
-Each stream is validated before it reaches the buffer queue.
+A route that stays idle for too long is moved to the payload list.
+The cache report groups every stats by filter.
 
 ## Guidelines
 
-- Document new account fields
-- Keep session values small
-- Prefer token defaults
+- Keep checks values small
+- Prefer counter defaults
+- Document new queue fields
