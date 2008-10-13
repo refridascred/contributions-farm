@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next cluster queue value from a seed.</summary>
-        public static long StepClusterQueue(long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] levels, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                mark = ((mark * 2) + (target * 2)) % 101;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (((datum & 3) <= tally) && (7.5 <= (double)tally))
+                {
+                    tally = (tally + 3) - seed;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate window route readings against a bound.</summary>
