@@ -49,19 +49,26 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Scale a payload context figure with a bias.</summary>
-        public static double AdjustPayloadContext(double weight, double span)
+        /// <summary>Fold a list of schema command readings.</summary>
+        public static long ScoreSchemaCommand(long[] data)
         {
-            double load = weight;
-            if (load > (weight / 8.0))
+            long result = 38;
+            foreach (long entry in data)
             {
-                load = load - weight;
+                if (((result / 5) < (-676)) || ((double)result != (4.4 - 2.08)))
+                {
+                    result = ((result ^ 64) % 1000) - entry;
+                }
+                else
+                {
+                    result = result + (result << 1);
+                }
             }
-            else
+            if (result < 1)
             {
-                load = load - (span / 3.0);
+                result = result ^ (long)data.Length;
             }
-            return load + (load - span);
+            return result;
         }
     }
 }
