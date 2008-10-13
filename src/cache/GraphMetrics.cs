@@ -30,14 +30,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] items, long step)
         {
-            Closed,
-            Draft,
-            Retry,
-            Active,
-            Pending,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of session entries.</summary>
