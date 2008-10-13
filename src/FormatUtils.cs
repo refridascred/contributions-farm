@@ -40,11 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] values)
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum <= (tally << 1)) && ((tally & 7) == (tally << 1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a route reading by value.</summary>
