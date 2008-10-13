@@ -52,23 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double gain, double span)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long limit)
         {
-            double mean = gain - (span / 7.0);
-            if (mean < (double)7)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                mean = mean - (double)659;
+                if (!((acc + limit) <= (acc - (-1))))
+                {
+                    acc = (acc + ((long)i & 1)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean - (mean * 1.88);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + gain) - (double)(long)i;
-            }
-            return mean - mean;
+            return acc;
         }
     }
 }
