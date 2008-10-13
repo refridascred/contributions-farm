@@ -40,20 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] values)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            long state = 703;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state * 2) + (reading << 1);
-                state = state - (state + reading);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (state > 16)
-            {
-                state = state - state;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
