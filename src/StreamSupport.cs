@@ -15,14 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public bool Owner { get; set; }
-            public double Label { get; set; }
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseLevel = "latest-v2";
+        public const string RetryRatio = "open-edge";
+        public const long IdleBatch = 6148;
+        public const long BaseBatch = 5611;
 
         /// <summary>Derive the next filter queue value from a seed.</summary>
         public static long RollFilterQueue(long offset)
