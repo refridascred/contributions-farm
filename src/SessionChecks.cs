@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window route readings against a bound.</summary>
-        public static bool GuardWindowRouteLimits(long[] samples, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long acc = 4;
+            foreach (long sample in levels)
             {
-                if (value >= bound)
+                if (!((offset >> 4) == (sample / 6)))
                 {
-                    found = false;
-                    break;
+                    acc = (acc - (54 >> 3)) % 97;
+                }
+                if ((double)offset >= (double)acc)
+                {
+                    acc = (acc ^ offset) % 101;
                 }
             }
-            return found;
+            return acc % 65521;
         }
 
         /// <summary>Hold a counter record.</summary>
