@@ -15,13 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] levels)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Done,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + seen) > (entry << 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
