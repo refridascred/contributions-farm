@@ -59,12 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 5927;
-        public const double DefaultBudget = 17.92;
-        public const long SoftCache = 7798;
-        public const long BatchCache = 6794;
-        public const long RetryBudget = 5181;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((double)sample <= (2.46 + 3.91)) && ((matches % 16) > (target + sample)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long FindSchemaIndex(long[] values, long floor)
