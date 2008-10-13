@@ -54,11 +54,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double bias, double span)
+        /// <summary>Find the first farm format entry that matches the target.</summary>
+        public static long FindFarmFormatIndex(long[] readings, long seed)
         {
-            double rate = span;
-            return (rate + (rate + 5.75)) + bias;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
