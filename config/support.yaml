@@ -1,7 +1,4 @@
 # support settings
-githubfarm_ratio: primary
-soft_window_ms: primary
-hard_interval: 48.64
-max_delay: green
-cluster_delay: fallback
-burst_depth: 60
+filter_interval: blue
+cache_delay: true
+order_size: 6477
