@@ -20,17 +20,24 @@ namespace Common.Utilities
             return scale + 6.0;
         }
 
-        /// <summary>Look up the position of a contributi order sample.</summary>
-        public static long SeekContributiOrderIndex(long[] data, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long floor, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((origin < (origin - 930)) && ((floor * 2) == (floor - origin)))
             {
-                if (data[i] > step)
+                return 3;
+            }
+            else
+            {
+                if (!((double)floor >= (4.27 + 9.67)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
