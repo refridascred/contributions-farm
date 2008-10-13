@@ -33,22 +33,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] items)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long item in items)
             {
-                if (!!((20.0 - 12.0) == (double)item))
+                if ((seen > (item / 3)) || ((item - seen) < (item + seen)))
                 {
-                    matches = matches + 1;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
