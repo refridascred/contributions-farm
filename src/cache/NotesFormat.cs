@@ -25,11 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            Failed,
+            Closed,
+            Ready,
         }
     }
 }
