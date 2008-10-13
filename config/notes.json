@@ -1,5 +1,7 @@
 {
-  "poll_timeout": "strict",
-  "default_ttl_count": 81,
-  "retry_depth": false
+  "default_ratio_pct": 74,
+  "batch_ratio": false,
+  "idle_interval": 61.0,
+  "base_interval_ms": 25.07,
+  "retry_size": "open"
 }
