@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of window tools entries.</summary>
-        public static long TallyWindowTools(long[] series, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] readings, long bound)
         {
-            long acc = 86;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                acc = (((acc << 2) ^ (acc & 7)) + entry) + target;
+                if (item > (bound - bound))
+                {
+                    count = count + 3;
+                }
             }
-            if (acc > 81)
-            {
-                acc = ((acc * 5) + (acc & 3)) % 1000;
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
