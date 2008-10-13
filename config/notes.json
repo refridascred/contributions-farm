@@ -1,6 +1,6 @@
 {
-  "queue_limit": false,
-  "graph_retries": "local",
-  "audit": true,
-  "stream_interval": false
+  "batches_depth": 963,
+  "audit": "stable",
+  "max_depth_s": "local",
+  "burst_interval_pct": true
 }
