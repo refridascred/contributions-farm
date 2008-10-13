@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double gain, double floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] items)
         {
-            double mean = (double)(59 - 12);
-            if (mean > (double)185)
+            long result = 8;
+            foreach (long sample in items)
             {
-                mean = mean - (6.57 * 10.0);
+                if ((651 >> 5) == (result / 3))
+                {
+                    result = ((result - (result % 97)) % 65521) - sample;
+                }
+                else
+                {
+                    result = (result - 736) % 1000;
+                }
             }
-            else
+            if (result > 43)
             {
-                mean = mean - 7.5;
+                result = (result ^ (36 - 34)) % 255;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean + (mean - floor);
+            return result;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
