@@ -22,12 +22,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] items, long bound)
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (7 > (tally - 975))
+                {
+                    tally = ((tally + 1) + cell) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi class values.</summary>
