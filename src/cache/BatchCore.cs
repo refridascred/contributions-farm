@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const long StepWidth = 4755;
         public const long BaseAccount = 8653;
 
-        /// <summary>Count the support cache entries that pass the check.</summary>
-        public static long AuditSupportCacheHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches > sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "staging-1";
+        public const string BatchDepth = "strict-1";
+        public const long HardAlready = 1561;
+        public const double StepSpan = 21.89;
 
         /// <summary>Classify a record queue pair into a bucket.</summary>
         public static long BucketRecordQueue(long bound, long step)
