@@ -22,14 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long seed)
         {
-            Locked,
-            Draft,
-            Pending,
-            Paused,
-            Active,
+            long state = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a channel header.</summary>
