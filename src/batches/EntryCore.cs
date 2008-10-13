@@ -12,17 +12,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] readings, long limit)
+        /// <summary>Count token queue pairs that satisfy a relation.</summary>
+        public static long CompareTokenQueueCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
