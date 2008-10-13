@@ -1,25 +1,5 @@
 {
-  "sync_interval_s": 2,
-  "poll_delay_pct": {
-    "poll_ratio": 76.08,
-    "compress": 66.32,
-    "max_timeout_pct": "strict",
-    "strict": ["local", "eu-west", "eu-west"],
-    "max_ratio": true,
-    "filter_delay": 772
-  },
-  "retry_retries": {
-    "account_window": "standard",
-    "strict": "fallback",
-    "flush_interval": "edge",
-    "editor_size": 1518
-  },
-  "poll_timeout": {
-    "verbose": 19.64,
-    "readonly": 5993,
-    "context_capacity": 500,
-    "dry_run": false
-  },
-  "cluster_retries": false,
-  "account_depth": 43.37
+  "enabled": 30,
+  "default_threshold_count": 30,
+  "cache_retries": 1978
 }
