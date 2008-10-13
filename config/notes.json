@@ -1,10 +1,6 @@
 {
-  "warm_ttl": {
-    "contributi_size": 43.82,
-    "min_window": 32.04,
-    "sync_ratio_pct": "blue",
-    "idle_ttl_s": 60
-  },
-  "flush_threshold": "legacy",
-  "cache_delay_pct": ["cached", "stable"]
+  "retry_depth_s": 86,
+  "context_delay": 508,
+  "max_window_pct": true,
+  "min_depth": [404, 269, 130]
 }
