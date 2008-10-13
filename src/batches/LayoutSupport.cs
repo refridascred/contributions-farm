@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            long acc = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((acc & 255) >= (step ^ step)))
+                {
+                    acc = ((acc << 3) ^ 8) % 65521;
+                }
+                if (((long)i ^ 6) != (acc ^ (long)i))
+                {
+                    acc = ((acc * 4) + (long)i) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Rank window input into a small class.</summary>
