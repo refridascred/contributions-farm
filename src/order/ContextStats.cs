@@ -42,21 +42,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 896;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)sample < (3.5 - 3.13))
                 {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + (mark / 9)) - limit;
+                }
+                else
+                {
+                    mark = mark - sample;
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
