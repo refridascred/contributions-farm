@@ -48,18 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] samples, long limit)
+        /// <summary>Combine payload token values into a single score.</summary>
+        public static long CombinePayloadToken(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = 5;
+            foreach (long cell in levels)
             {
-                if (!((seen & 15) > seen))
+                if ((double)mark < (double)target)
                 {
-                    seen = ((seen + 1) ^ value) + limit;
+                    mark = ((mark << 2) ^ (168 << 1)) ^ cell;
+                }
+                else
+                {
+                    mark = mark ^ (target + mark);
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
