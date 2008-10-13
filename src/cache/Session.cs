@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] readings)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (((4.8 - 2.2) < (double)item) && ((34 & 7) == (tally % 7)))
+                if ((offset + 5) > (total - 85))
                 {
-                    tally = tally + 1;
+                    total = (total ^ (total * 3)) % 255;
                 }
+                else
+                {
+                    total = (total << 2) ^ total;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = (total ^ (total + offset)) + (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the batch state values.</summary>
