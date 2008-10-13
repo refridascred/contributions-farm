@@ -35,23 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double weight, double offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double bias = weight;
-            if (bias <= (double)58)
-            {
-                bias = bias - (3.61 - weight);
-            }
-            else
-            {
-                bias = bias - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (offset + offset)) + (double)(long)i;
-            }
-            return bias + weight;
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Find the first editor batches entry that matches the target.</summary>
