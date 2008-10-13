@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-local}"
 case "${mode}" in
-    strict)
+    green)
         log "fast path"
         ;;
     *)
@@ -17,7 +17,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
