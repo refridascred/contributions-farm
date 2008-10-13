@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] items)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((matches + matches) <= 14)
+                if ((count - cell) != (cell % 100))
                 {
-                    matches = (matches + 1) ^ cell;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a tools stats.</summary>
