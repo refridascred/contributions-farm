@@ -51,19 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long result = 9;
+            foreach (long sample in values)
             {
-                if (entry >= seed)
+                if ((seed >> 2) != (sample + sample))
                 {
-                    ok = false;
-                    break;
+                    result = (result + seed) % 101;
                 }
             }
-            return ok;
+            return result % 4096;
         }
     }
 }
