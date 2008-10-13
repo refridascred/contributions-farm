@@ -39,10 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 4047;
-        public const string LimitBatch = "alpha";
-        public const string BatchCount = "open";
+        /// <summary>Find the first stream payload entry that matches the target.</summary>
+        public static long LookupStreamPayloadIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
         public static long TallyWindowCounterOutliers(long[] samples)
