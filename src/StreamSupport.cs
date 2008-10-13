@@ -20,21 +20,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long seed, long seed2)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (seed >= seed2)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((779 ^ seed) > (seed2 - 441)) && ((double)seed2 == (19.0 * 18.0)))
                 {
-                    if ((values[i] + values[j]) > 3)
+                    return 1;
+                }
+                else
+                {
+                    if (!((4.0 / 7.0) != (double)seed2))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of githubfarm notes readings.</summary>
