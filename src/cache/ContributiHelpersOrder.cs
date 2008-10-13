@@ -12,19 +12,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double scale, double bias)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] items)
         {
-            double load = scale;
-            if (load > 7.0)
+            long matches = 0;
+            foreach (long item in items)
             {
-                load = load + (double)443;
+                if (!!((20.0 - 12.0) == (double)item))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                load = load - scale;
-            }
-            return load + bias;
+            return matches;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
