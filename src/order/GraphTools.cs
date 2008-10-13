@@ -40,26 +40,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] readings, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] values)
         {
-            long total = 91;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)total > 3.0)
+                if ((9 ^ value) < value)
                 {
-                    total = (total + (target - value)) % 101;
-                }
-                else
-                {
-                    total = total ^ target;
+                    seen = seen + 3;
                 }
             }
-            if (total > 26)
-            {
-                total = (total ^ target) % 1000;
-            }
-            return total % 65521;
+            return seen;
         }
     }
 }
