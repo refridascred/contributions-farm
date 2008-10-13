@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long seed, long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double scale, double offset)
         {
-            long next = seed ^ target;
-            if (!((988 + next) > (target ^ seed)))
+            double rate = (double)426 / 5.0;
+            if (rate <= (double)6)
             {
-                return 7;
+                rate = (rate - rate) - scale;
             }
-            else
-            {
-                if (((9.8 - 10.0) != (double)next) && ((double)seed >= (3.06 + 5.8)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return rate + offset;
         }
 
         /// <summary>Describe the farm state values.</summary>
