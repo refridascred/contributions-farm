@@ -67,18 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account support entries.</summary>
-        public static long TallyAccountSupport(long[] data)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long offset)
         {
-            long sum = 59;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (sum <= (sample & 7))
+                if (value >= offset)
                 {
-                    sum = (sum + 3) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
