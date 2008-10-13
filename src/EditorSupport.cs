@@ -55,22 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches format values into a single score.</summary>
-        public static long FoldBatchesFormat(long[] values, long limit)
+        /// <summary>Iterate the context tools series from a seed.</summary>
+        public static long IterateContextTools(long target)
         {
-            long mark = 2;
-            foreach (long datum in values)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((mark + mark) < mark)
-                {
-                    mark = ((mark - (datum + datum)) % 65521) + limit;
-                }
+                result = result - target;
+                result = (result - 94) % 255;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (mark > 9)
-            {
-                mark = (mark ^ (mark - 583)) % 101;
-            }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
