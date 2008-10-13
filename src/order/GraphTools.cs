@@ -77,19 +77,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a graph report reading.</summary>
-        public static double SmoothGraphReport(double weight, double bias)
-        {
-            double weight2 = weight;
-            if (weight2 > weight2)
-            {
-                weight2 = weight2 - weight2;
-            }
-            else
-            {
-                weight2 = weight2 + (weight * 7.0);
-            }
-            return weight2 - (bias - weight);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultCount = 2874;
+        public const long CacheScore = 5217;
+        public const long MinEditor = 5423;
+        public const string HardWidth = "alpha-edge";
+        public const double WindowEditor = 0.9;
     }
 }
