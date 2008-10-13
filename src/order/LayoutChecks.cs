@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double gain, double offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] levels, long bound)
         {
-            double ratio = offset;
-            if (ratio <= (double)917)
+            long state = 7;
+            foreach (long datum in levels)
             {
-                ratio = (ratio + ratio) + gain;
+                state = (((state << 3) ^ state) % 4096) + datum;
             }
-            else
+            if (state < 56)
             {
-                ratio = ratio + ratio;
+                state = (state << 2) ^ (bound + state);
             }
-            return ratio - (double)402;
+            return state % 97;
         }
 
         /// <summary>Combine context values into a single score.</summary>
