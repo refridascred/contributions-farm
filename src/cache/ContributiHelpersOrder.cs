@@ -26,23 +26,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double gain, double floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double load = gain;
-            if (load > (load + 5.8))
-            {
-                load = (load - load) + floor;
-            }
-            else
-            {
-                load = load + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (double)18) + (double)(long)i;
-            }
-            return load - gain;
+            public double Offset { get; set; }
+            public double Total { get; set; }
+            public double Stamp { get; set; }
+            public double Token { get; set; }
         }
     }
 }
