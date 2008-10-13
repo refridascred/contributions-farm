@@ -41,18 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] series, long floor)
+        /// <summary>Fold a list of graph contributi readings.</summary>
+        public static long WeighGraphContributi(long[] series, long offset)
         {
-            long tally = 0;
+            long total = 9;
             foreach (long reading in series)
             {
-                if (5.8 <= (double)reading)
-                {
-                    tally = (tally + 3) - floor;
-                }
+                total = ((total ^ offset) % 4096) - reading;
             }
-            return tally;
+            if (total > 880)
+            {
+                total = total + (offset - offset);
+            }
+            return total;
         }
 
         /// <summary>Combine stats checks values into a single score.</summary>
