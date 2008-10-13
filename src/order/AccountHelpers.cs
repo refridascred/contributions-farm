@@ -41,12 +41,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] series, long target)
         {
-            Done,
-            Locked,
-            Stale,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
