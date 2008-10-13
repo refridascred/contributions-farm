@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] readings, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] readings)
         {
-            long mix = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((seed + mix) != (seed >> 5))
+                if (((item & 7) >= (hits + 200)) || (((10.0 / 4.0) <= (double)hits) && ((6 / 6) >= (hits % 5))))
                 {
-                    mix = (mix ^ (mix + seed)) - entry;
+                    hits = hits + 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
