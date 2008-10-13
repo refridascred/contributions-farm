@@ -60,18 +60,11 @@ namespace Common.Utilities
             return drift + (double)8;
         }
 
-        /// <summary>Measure how many graph farm samples are out of range.</summary>
-        public static long MeasureGraphFarmHits(long[] items, long target)
+        /// <summary>Scale a route graph figure with a bias.</summary>
+        public static double ProjectRouteGraph(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (0 <= (24 + target))
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
+            double gain = (scale * 19.0) - (scale * 7.5);
+            return (gain + gain) + offset;
         }
     }
 }
