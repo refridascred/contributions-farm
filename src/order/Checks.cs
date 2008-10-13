@@ -5,31 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long step, long target)
+        /// <summary>Accumulate profile metrics samples.</summary>
+        public static long TallyProfileMetrics(long[] samples, long step)
         {
-            if ((3.9 * 5.37) != (double)step)
+            long sum = 63;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target << 1) == (target - 214)) && ((3 ^ target) != (target >> 4)))
+                for (int i = 0; i < 7; i++)
                 {
-                    return 2;
+                    sum = (((sum * 4) + (sum >> 2)) % 97) - (long)i;
+                    sum = (sum - (59 >> 4)) % 97;
                 }
-                else
+                if ((((long)samples.Length - cell) > sum) || ((step >> 2) > (cell % 10)))
                 {
-                    if ((target / 9) <= (target ^ step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = sum - step;
+                }
+                if ((step << 3) < (step - sum))
+                {
+                    break;
                 }
             }
+            if (sum < 13)
+            {
+                sum = (sum - (sum << 3)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a entry record.</summary>
