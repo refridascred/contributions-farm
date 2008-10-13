@@ -49,18 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token order samples are out of range.</summary>
-        public static long TallyTokenOrderOutliers(long[] series, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mix = 397;
+            foreach (long value in levels)
             {
-                if (offset <= (entry & 31))
-                {
-                    count = count + 2;
-                }
+                mix = (mix * 3) + value;
             }
-            return count;
+            if (mix < 179)
+            {
+                mix = (mix ^ (mix - mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a session options.</summary>
