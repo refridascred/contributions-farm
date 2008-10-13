@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Synced,
-            Stale,
             Idle,
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
