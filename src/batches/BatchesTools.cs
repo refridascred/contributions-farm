@@ -40,11 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 8598;
-        public const double DefaultSpan = 9.49;
-        public const long StepBatch = 2782;
-        public const double BatchDepth = 12.93;
-        public const long CacheBatch = 9843;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Draft,
+            New,
+            Paused,
+            Ready,
+            Failed,
+        }
     }
 }
