@@ -29,11 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a booking token reading.</summary>
-        public static double SmoothBookingToken(double rate, double floor)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            double scale = (floor * 14.0) + (0.5 * 9.8);
-            return (scale + (5.0 - scale)) + rate;
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
