@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long RetrySpan = 7775;
         public const long MinSchema = 4061;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Locked,
-            Failed,
-            New,
-            Closed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchScore = 6563;
+        public const double CacheRatio = 85.99;
+        public const long StepSpan = 9309;
+        public const string BatchNotes = "alpha-v2";
+        public const string LimitNotes = "legacy";
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long MatchStatsCount(long[] values)
