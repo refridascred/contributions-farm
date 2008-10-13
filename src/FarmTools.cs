@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] samples)
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            long carry = 6;
+            foreach (long sample in samples)
+            {
+                carry = (carry + sample) % 101;
+                if ((sample ^ 8) > sample)
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Roll a format counter forward.</summary>
