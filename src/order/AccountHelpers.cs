@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftToken = "local-edge";
-        public const long MinToken = 1655;
-        public const double RetryScore = 86.62;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Combine counter report values into a single score.</summary>
         public static long ScoreCounterReport(long[] values)
