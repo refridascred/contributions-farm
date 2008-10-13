@@ -43,13 +43,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double bias, double bias2)
         {
-            Pending,
-            Done,
-            Closed,
-            Locked,
+            double drift = (double)(8 - 97);
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift + bias) + (double)(long)i) - bias2;
+            }
+            return drift - drift;
         }
     }
 }
