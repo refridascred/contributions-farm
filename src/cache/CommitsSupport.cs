@@ -34,13 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Count the account notes entries that pass the check.</summary>
+        public static long TallyAccountNotesMatches(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((item - item) != (count - item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
