@@ -47,15 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Retry,
-            Closed,
-            Stale,
-            Paused,
-            Done,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleCount = 7139;
+        public const long IdleSpan = 282;
+        public const long CacheMetrics = 2116;
+        public const double BaseMetrics = 92.17;
+        public const long StepMetrics = 4141;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long RollRoute(long seed)
