@@ -55,10 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 7925;
-        public const long DefaultSize = 571;
-        public const long StepSpan = 105;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!((7.6 * 14.0) <= (double)item))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmRange(long[] items, long floor)
