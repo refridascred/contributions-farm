@@ -36,12 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] values)
         {
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((double)matches <= 0.8)
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
         }
     }
 }
