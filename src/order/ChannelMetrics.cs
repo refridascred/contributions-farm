@@ -19,21 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Fold a list of context cluster readings.</summary>
+        public static long TotalContextCluster(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 1;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = anchor - (sample << 1);
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Hold a batches options.</summary>
