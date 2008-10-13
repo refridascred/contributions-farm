@@ -46,22 +46,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the counter support series from a seed.</summary>
-        public static long DeriveCounterSupport(long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] data, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                total = total ^ total;
-                if ((total & 15) > total)
+                if (seed < (hits + (long)data.Length))
                 {
-                    total = ((total << 2) ^ bound) % 255;
-                    total = (total << 2) ^ (bound - total);
+                    hits = (hits + 2) + value;
                 }
-                total = (total << 2) ^ ((-1) + total);
-                total = ((total * 3) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
