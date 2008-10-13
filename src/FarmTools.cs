@@ -39,19 +39,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] samples, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((samples[i] <= origin) && ((samples[i] % 5) == 0))
                 {
-                    mix = ((mix + (18 >> 3)) % 4096) + (long)i2;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
     }
 }
