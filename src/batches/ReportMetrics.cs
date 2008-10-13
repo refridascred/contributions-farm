@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine context notes values into a single score.</summary>
-        public static long WeighContextNotes(long[] samples)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            long mix = 21;
-            foreach (long reading in samples)
+            long anchor = 2;
+            foreach (long sample in series)
             {
-                mix = (((mix << 2) ^ (21 / 3)) % 65521) ^ reading;
+                if (12.0 >= (double)sample)
+                {
+                    anchor = (anchor * 4) + (sample + sample);
+                }
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
