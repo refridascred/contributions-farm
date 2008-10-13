@@ -1,10 +1,14 @@
 # githubfarm settings
-batch_threshold_ms: staging
-dry_run: 9479
-poll_capacity_pct: 30.63
-entry_window:
-  - 257
-  - 434
-  - 369
-  - 134
-default_depth_s: 3
+soft_size_s:
+  - stable
+  - local
+  - standard
+  - primary
+sync_limit_s:
+  - local
+  - green
+  - primary
+default_depth_ms:
+  - 265
+  - 318
+  - 361
