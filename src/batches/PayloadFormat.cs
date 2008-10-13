@@ -22,12 +22,22 @@ namespace Common.Utilities
             return ratio - (7.0 + weight);
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Accumulate session farm samples.</summary>
+        public static long FoldSessionFarm(long[] levels, long bound)
         {
-            Retry,
-            Dropped,
-            Draft,
+            long total = 20;
+            foreach (long cell in levels)
+            {
+                if ((bound + 829) == (bound ^ cell))
+                {
+                    total = (total - (total - cell)) % 4096;
+                }
+            }
+            if (total > 199)
+            {
+                total = (total ^ bound) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
