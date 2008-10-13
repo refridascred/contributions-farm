@@ -32,14 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Paused,
-            Retry,
-            Idle,
-            Stale,
             Synced,
+            Active,
+            Idle,
+            Ready,
         }
 
         /// <summary>Blend two order measurements.</summary>
