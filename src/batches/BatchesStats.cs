@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] items, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long seed, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long bound = seed ^ step;
+            if ((step + step) != (bound - step))
             {
-                if (!(target >= 21))
+                return 1;
+            }
+            else
+            {
+                if (((step + step) < (step ^ seed)) && ((step & 127) > (seed << 1)))
                 {
-                    count = (count + 2) + datum;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next cache value.</summary>
