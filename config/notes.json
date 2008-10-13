@@ -1,8 +1,11 @@
 {
-  "graph_size": ["legacy", "eu-west", "primary", "eu-west"],
-  "payload_threshold": ["standard", "strict", "green"],
-  "retry_retries_count": false,
-  "default_limit_count": true,
-  "batch_window": ["primary", "eu-west"],
-  "sync_ttl_pct": "local"
+  "token_interval": "primary",
+  "base_ratio_ms": {
+    "strict": 7515,
+    "token_interval": 6325,
+    "context_ratio": 63.81,
+    "layout_timeout": false,
+    "enabled": 25.15
+  },
+  "profile_ratio": 167
 }
