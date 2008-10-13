@@ -25,22 +25,11 @@ namespace Common.Utilities
         public const long CacheSupport = 1304;
         public const long IdleSupport = 5645;
 
-        /// <summary>Count the format commits entries that pass the check.</summary>
-        public static long MeasureFormatCommitsGaps(long[] series)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((4 ^ cell) <= (matches & 15))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the already mode values.</summary>
