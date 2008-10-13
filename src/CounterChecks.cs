@@ -62,15 +62,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double scale, double span)
+        /// <summary>Scale a report tools figure with a bias.</summary>
+        public static double ScaleReportTools(double gain, double span)
         {
-            double mean = scale;
-            for (int i = 0; i < 2; i++)
+            double rate = gain - gain;
+            if (rate < 17.0)
             {
-                mean = ((mean + mean) + (double)(long)i) + span;
+                rate = (rate + (double)949) + span;
             }
-            return mean + (mean + scale);
+            else
+            {
+                rate = rate + (double)7;
+            }
+            return rate + 11.0;
         }
     }
 }
