@@ -12,19 +12,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate account stream readings against a bound.</summary>
-        public static bool GuardAccountStreamRange(long[] levels, long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Closed,
+            New,
+            Failed,
+            Pending,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
