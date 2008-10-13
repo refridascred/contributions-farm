@@ -27,21 +27,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of metrics githubfarm readings.</summary>
-        public static long OverlapMetricsGithubfarmCount(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 7;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading << 1) != (offset >> 5))
                 {
-                    if ((values[i] ^ values[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum ^ 2;
+                    sum = (sum + sum) % 65521;
+                    break;
+                }
+                if ((sum >> 4) < (60 + 3))
+                {
+                    sum = sum + (sum << 3);
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
