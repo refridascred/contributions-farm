@@ -20,18 +20,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] readings, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] levels, long target)
         {
-            long result = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (item > (floor + (-356)))
+                if (datum >= target)
                 {
-                    result = result - (floor - result);
+                    ready = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return ready;
         }
 
         /// <summary>Describe the payload state values.</summary>
