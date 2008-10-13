@@ -61,15 +61,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] levels, long bound)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long step)
         {
-            long anchor = 5;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ (bound << 3)) ^ value;
+                if ((samples[i] == step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
