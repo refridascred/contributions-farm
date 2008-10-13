@@ -27,15 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Queued,
+            Synced,
+            Ready,
         }
 
         /// <summary>Validate profile route readings against a bound.</summary>
