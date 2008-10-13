@@ -33,10 +33,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseCount = "alpha-edge";
-        public const long IdleChannel = 5336;
-        public const long WindowSize = 7253;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Count the checks stream entries that pass the check.</summary>
         public static long AuditChecksStreamMatches(long[] series)
