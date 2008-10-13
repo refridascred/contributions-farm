@@ -34,16 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long mark = 4;
+            foreach (long reading in values)
             {
-                carry = ((carry << 3) ^ ((long)i / 9)) % 65521;
-                carry = ((carry * 2) + (long)i) % 4093;
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = (mark - (reading >> 5)) + (long)i;
+                }
+                mark = (mark ^ mark) % 101;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
