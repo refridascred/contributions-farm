@@ -44,21 +44,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of channel graph readings.</summary>
-        public static long PairChannelGraphCount(long[] data)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Stale,
+            Failed,
+            Draft,
+            Paused,
         }
     }
 }
