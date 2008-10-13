@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const double MaxInterval = 71.02;
         public const long BatchSize = 1984;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Idle,
-            Ready,
-            Locked,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstLevel = 5897;
+        public const long IdleSpan = 4641;
+        public const long IdleAlready = 6261;
+        public const long WindowAlready = 3227;
+        public const string HardFactor = "open-v2";
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long SeekStreamIndex(long[] levels, long seed)
