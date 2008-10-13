@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long MinCounter = 7640;
         public const long MaxCounter = 389;
 
-        /// <summary>Audit payload counter readings against a rule.</summary>
-        public static long CountPayloadCounterHits(long[] series)
+        /// <summary>Locate a support session reading by value.</summary>
+        public static long SeekSupportSessionIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum >> 1) >= (datum + count))
+                if (readings[i] > target)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a contributi options.</summary>
