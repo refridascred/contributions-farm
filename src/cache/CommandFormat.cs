@@ -28,11 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 8922;
-        public const double HardPayload = 25.45;
-        public const double BatchPayload = 64.44;
-        public const long HardTimeout = 1700;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
