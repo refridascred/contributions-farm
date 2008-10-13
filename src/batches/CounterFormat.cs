@@ -17,22 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] readings, long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!(step > reading))
+                if (samples[i] > floor)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the buffer record series from a seed.</summary>
