@@ -46,18 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] series, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = 85;
+            foreach (long reading in items)
             {
-                if ((tally ^ tally) > (tally << 2))
+                score = score ^ (score + reading);
+                score = (score * 2) + (score << 2);
+                if ((double)score < (0.96 / 2.0))
                 {
-                    tally = ((tally + 3) - sample) - target;
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
