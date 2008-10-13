@@ -14,12 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheCount = 9910;
-        public const long IdleTimeout = 2646;
-        public const string SoftSize = "open-edge";
-        public const long MaxSession = 8031;
-        public const long RetryScore = 4458;
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
