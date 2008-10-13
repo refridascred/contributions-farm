@@ -30,19 +30,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] series, long target)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] series)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Describe the buffer class values.</summary>
