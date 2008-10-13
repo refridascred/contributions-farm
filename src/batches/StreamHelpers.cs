@@ -32,12 +32,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] readings, long origin)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine notes channel values into a single score.</summary>
