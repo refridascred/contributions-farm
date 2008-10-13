@@ -25,31 +25,20 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long seed, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            if (((seed * 3) == (seed >> 1)) && ((seed * 2) < 80))
+            long total = 81;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset << 2) >= (seed - offset)) && ((offset % 3) < (seed + 4)))
+                total = (total ^ (7 % 97)) % 4096;
+                total = (total - (cell / 5)) % 97;
+                if (((double)cell > (7.56 * 5.0)) || (cell < (cell + 95)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed <= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    total = ((total * 2) + (cell / 5)) % 4096;
                 }
             }
+            return total;
         }
     }
 }
