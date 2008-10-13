@@ -28,19 +28,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] series, long floor)
         {
-            long state = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((state << 3) == (state + datum))
+                if (hits <= (hits * 2))
                 {
-                    state = ((state << 3) ^ (state + 9)) % 101;
+                    hits = ((hits + 3) - value) - floor;
                 }
-                state = (state * 5) + state;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the report state values.</summary>
