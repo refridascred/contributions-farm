@@ -33,18 +33,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] levels, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] series, long offset)
         {
-            long result = 344;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((item << 2) > result)
+                if (sample >= offset)
                 {
-                    result = (((result * 2) + (item % 24)) % 97) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
     }
 }
