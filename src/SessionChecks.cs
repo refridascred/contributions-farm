@@ -23,20 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] items, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] series)
         {
-            long state = 4;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((double)state <= (double)8)
+                if ((count >> 5) <= (619 + sample))
                 {
-                    state = ((state << 2) ^ origin) - cell;
-                    state = (state + (657 / 4)) % 1000;
+                    count = count + 3;
                 }
-                state = ((state << 2) ^ 945) % 255;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the record class values.</summary>
