@@ -1,14 +1,14 @@
 # Command notes
 
-Use already settings to tune how often layout data is refreshed.
-The counter module keeps notes values in sync with the buffer cache.
-Defaults for filter live in the config folder and can be overridden per environment.
+Each format is validated before it reaches the metrics queue.
+Use payload settings to tune how often window data is refreshed.
 
-The profile module keeps tools values in sync with the context cache.
-Each entry is validated before it reaches the channel queue.
+A entry that stays idle for too long is moved to the entry list.
+Use already settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate layout input early
-- Prefer record defaults
+- Review batches limits each release
+- Document new notes fields
+- Log every metric change
+- Prefer stream defaults
