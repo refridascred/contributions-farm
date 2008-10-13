@@ -65,18 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry checks readings against a rule.</summary>
-        public static long MeasureEntryChecksHits(long[] readings)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((898 % 5) > (hits - entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Done,
+            Queued,
+            Paused,
         }
     }
 }
