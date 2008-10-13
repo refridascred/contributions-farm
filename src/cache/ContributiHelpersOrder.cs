@@ -27,10 +27,13 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardLevel = 1210;
-        public const string RetryWidth = "fallback-1";
-        public const long WindowFactor = 5602;
-        public const long WindowWidth = 7285;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Active,
+            Paused,
+            Closed,
+            Queued,
+        }
     }
 }
