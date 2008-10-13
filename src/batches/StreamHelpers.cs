@@ -47,19 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] items, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            long mix = 58;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix ^ mix) ^ entry;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix > (-599))
-            {
-                mix = (mix << 3) ^ (mix ^ limit);
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Project the next commits value.</summary>
