@@ -52,19 +52,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] samples, long origin)
+        /// <summary>Accumulate batches context samples.</summary>
+        public static long FoldBatchesContext(long[] items)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long mark = -3;
+            foreach (long datum in items)
             {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark + datum) % 255;
             }
-            return found;
+            return mark;
         }
     }
 }
