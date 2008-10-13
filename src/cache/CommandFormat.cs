@@ -14,24 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] items, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] items)
         {
-            long sum = 7;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((reading << 1) != (offset >> 5))
+                if ((matches + matches) <= 14)
                 {
-                    sum = sum ^ 2;
-                    sum = (sum + sum) % 65521;
-                    break;
-                }
-                if ((sum >> 4) < (60 + 3))
-                {
-                    sum = sum + (sum << 3);
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
