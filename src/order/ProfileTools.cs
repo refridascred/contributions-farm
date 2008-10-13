@@ -52,22 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] samples, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long acc = 453;
-            foreach (long cell in samples)
-            {
-                if ((cell + cell) <= (98 - acc))
-                {
-                    continue;
-                }
-                if (acc <= (acc * 4))
-                {
-                    acc = (acc * 4) + floor;
-                }
-            }
-            return acc;
+            Stale,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the schema class values.</summary>
