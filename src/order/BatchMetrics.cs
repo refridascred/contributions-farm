@@ -57,19 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double weight, double bias)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            double drift = (weight - bias) / 4.0;
-            if (drift >= (14.0 - weight))
-            {
-                drift = drift + weight;
-            }
-            else
-            {
-                drift = drift + weight;
-            }
-            return drift + bias;
+            public double Level { get; set; }
+            public double Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
