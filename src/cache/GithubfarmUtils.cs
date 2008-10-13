@@ -46,39 +46,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long seed, long bound)
+        /// <summary>Iterate the counter support series from a seed.</summary>
+        public static long DeriveCounterSupport(long bound)
         {
-            long offset = seed - bound;
-            if ((offset - offset) >= (bound - seed))
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset >= (double)(-6))
+                total = total ^ total;
+                if ((total & 15) > total)
                 {
-                    return 0;
+                    total = ((total << 2) ^ bound) % 255;
+                    total = (total << 2) ^ (bound - total);
                 }
-                else
-                {
-                    if (!((bound - offset) != (offset / 6)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)seed == (8.7 / 4.0)) && ((bound * 2) > (seed % 10)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                total = (total << 2) ^ ((-1) + total);
+                total = ((total * 3) + (long)i) % 4093;
             }
+            return total;
         }
     }
 }
