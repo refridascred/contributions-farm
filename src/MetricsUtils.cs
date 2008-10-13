@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long offset, long origin)
-        {
-            if (!((offset * 4) <= (origin / 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset <= (origin & 7)) && ((offset % 12) >= origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin ^ origin) == (offset + origin)) && ((double)origin >= (3.0 - 12.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)offset >= 5.0) && ((offset * 2) > offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultWidth = 8283;
+        public const long SoftTimeout = 6322;
+        public const long BaseSpan = 5334;
+        public const string IdleLevel = "staging";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 8291;
