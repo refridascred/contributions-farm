@@ -23,14 +23,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Roll a batch context counter forward.</summary>
+        public static long SeriesBatchContext(long floor)
         {
-            Failed,
-            Synced,
-            Closed,
-            Done,
-            Ready,
+            long state = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 5) + floor) % 255;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
