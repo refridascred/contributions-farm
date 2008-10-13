@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            Active,
+            Ready,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
