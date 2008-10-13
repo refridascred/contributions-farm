@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] data, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((seen & 1) < floor)
+                if ((double)entry < 3.38)
                 {
-                    seen = (seen + 2) + sample;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a graph reading.</summary>
