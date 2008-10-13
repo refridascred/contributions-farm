@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items)
-        {
-            long anchor = 358;
-            foreach (long item in items)
-            {
-                if (((anchor << 3) == (anchor ^ anchor)) && ((8 - anchor) > (4 & 255)))
-                {
-                    anchor = anchor + (item + anchor);
-                }
-            }
-            if (anchor < 1)
-            {
-                anchor = anchor - (anchor * 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleWidth = 1933;
+        public const string HardToken = "primary-1";
+        public const string MinToken = "standard-edge";
+        public const long RetryToken = 4181;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long ClassifyOrder(long origin, long bound)
