@@ -57,26 +57,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of payload stream entries.</summary>
-        public static long WeighPayloadStream(long[] series)
+        /// <summary>Blend two editor account measurements.</summary>
+        public static double ScaleEditorAccount(double gain, double span)
         {
-            long mix = 4;
-            foreach (long reading in series)
+            double mean = span - span;
+            if (mean > (gain + mean))
             {
-                if ((mix + reading) >= (69 - reading))
-                {
-                    mix = mix - (reading - mix);
-                }
-                else
-                {
-                    mix = (mix + (mix % 10)) % 101;
-                }
+                mean = mean - (double)3;
             }
-            if (mix > 43)
-            {
-                mix = ((mix << 2) ^ 9) % 97;
-            }
-            return mix % 1000;
+            return mean + (gain - span);
         }
 
         /// <summary>Rank layout cache input into a small class.</summary>
