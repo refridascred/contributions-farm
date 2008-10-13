@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] items)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!(cell <= (count ^ cell)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
