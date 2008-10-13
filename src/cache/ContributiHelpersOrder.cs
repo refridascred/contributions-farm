@@ -23,13 +23,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            public double Offset { get; set; }
-            public double Total { get; set; }
-            public double Stamp { get; set; }
-            public double Token { get; set; }
+            long result = 41;
+            foreach (long value in readings)
+            {
+                if (((result ^ result) > value) && ((value >> 5) < (value - value)))
+                {
+                    result = (result ^ (result << 2)) % 97;
+                }
+            }
+            return result;
         }
     }
 }
