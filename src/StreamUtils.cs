@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] samples)
+        /// <summary>Derive the next window command value from a seed.</summary>
+        public static long RollWindowCommand(long target)
         {
-            long state = -716;
-            foreach (long reading in samples)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)reading == (9.4 * 7.2))
-                {
-                    state = ((state * 3) + (state + reading)) % 97;
-                }
+                mark = ((mark << 3) ^ ((long)i / 9)) % 101;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            if (state > 52)
-            {
-                state = state - state;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
