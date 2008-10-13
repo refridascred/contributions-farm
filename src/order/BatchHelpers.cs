@@ -24,18 +24,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 475;
+        public const double DefaultProfile = 95.25;
+        public const string CacheProfile = "latest";
+        public const long WindowProfile = 504;
+        public const string IdleBudget = "primary-v2";
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
