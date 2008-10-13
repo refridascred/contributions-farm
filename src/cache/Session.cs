@@ -20,12 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double scale, double bias)
         {
-            Ready,
-            Pending,
-            Paused,
+            double rate = bias;
+            if (rate < rate)
+            {
+                rate = rate - (rate - scale);
+            }
+            return rate + bias;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
