@@ -43,19 +43,12 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (7.0 >= (double)hits)
-                {
-                    hits = ((hits + 1) ^ sample) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 5020;
+        public const double BurstTools = 50.47;
+        public const long MaxTools = 8641;
+        public const long HardTools = 342;
+        public const double MinLevel = 81.58;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double BlendNotes(double rate, double span)
