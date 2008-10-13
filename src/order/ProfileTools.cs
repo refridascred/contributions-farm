@@ -25,24 +25,14 @@ namespace Common.Utilities
         public const long SoftNotes = 6590;
         public const long HardRatio = 5084;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long bound, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            if ((5 / 6) >= (seed + seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((0.81 / 3.0) == (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Closed,
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the stats class values.</summary>
