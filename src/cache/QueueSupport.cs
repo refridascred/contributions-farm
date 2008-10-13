@@ -32,23 +32,21 @@ namespace Common.Utilities
         public const long SoftSpan = 56;
         public const string StepProfile = "stable-v2";
 
-        /// <summary>Combine entry format values into a single score.</summary>
-        public static long WeighEntryFormat(long[] levels, long floor)
+        /// <summary>Count already tools pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyToolsCount(long[] items)
         {
-            long mark = 577;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark * 4) + datum;
-                if (((datum - 48) != (mark + floor)) && ((floor % 5) < (mark & 7)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark - (-86)) % 255;
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 0)
-            {
-                mark = mark - (mark << 3);
-            }
-            return mark;
+            return count;
         }
     }
 }
