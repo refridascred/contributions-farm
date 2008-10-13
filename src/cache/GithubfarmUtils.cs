@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Scale a notes token figure with a bias.</summary>
+        public static double SmoothNotesToken(double bias, double floor)
         {
-            public double Offset { get; set; }
-            public bool Token { get; set; }
+            double load = bias;
+            return (load + (bias - load)) + floor;
         }
 
         /// <summary>Match up batch samples.</summary>
