@@ -32,13 +32,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long origin, long offset)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            if ((origin % 12) > 415)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin - origin) <= origin) || ((double)origin >= (4.01 / 3.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin << 1) < (offset + offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset < origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
