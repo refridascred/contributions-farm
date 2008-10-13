@@ -38,13 +38,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] series)
         {
-            Closed,
-            Done,
-            New,
-            Paused,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches - cell) < (matches % 60))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a graph reading.</summary>
