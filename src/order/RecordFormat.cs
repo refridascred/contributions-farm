@@ -35,15 +35,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double scale, double bias)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            double gain = (3.05 - bias) - bias;
-            for (int i = 0; i < 2; i++)
+            long mix = 49;
+            foreach (long item in samples)
             {
-                gain = ((gain + (bias * 0.3)) + (double)(long)i) + scale;
+                mix = (mix ^ mix) % 65521;
+                if (((2 ^ item) < mix) || ((9.3 / 7.0) >= (double)mix))
+                {
+                    break;
+                }
             }
-            return gain - gain;
+            if (mix > 65)
+            {
+                mix = ((mix << 2) ^ ((long)samples.Length & 3)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many notes already samples are out of range.</summary>
