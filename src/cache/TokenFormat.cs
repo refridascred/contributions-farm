@@ -33,19 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window batch counter forward.</summary>
-        public static long DeriveWindowBatch(long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((step + (long)i) == (step & 15))
+                if (count >= 69)
                 {
-                    break;
+                    count = (count + 3) ^ sample;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
