@@ -22,12 +22,12 @@ namespace Common.Utilities
         public const long WindowPayload = 8245;
         public const long RetryCount = 9268;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] series, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] > offset)
+                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
