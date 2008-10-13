@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=103
+log "limit is ${RECORD_LIMIT}"
 
-for item in primary legacy; do
+for item in blue staging cached; do
     log "checking ${item}"
 done
