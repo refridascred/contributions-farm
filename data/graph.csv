@@ -1,7 +1,9 @@
-id,score,state,active
-1,175,9.31,615
-2,169,312,632
-3,519,open,142
-4,168,standard,32.63
-5,91.95,715,94.55
-6,456,64.7,905
+id,score
+1,124
+2,standard
+3,primary
+4,120
+5,30.09
+6,green
+7,edge
+8,green
