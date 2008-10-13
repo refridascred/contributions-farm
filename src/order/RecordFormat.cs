@@ -32,19 +32,11 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Measure how many schema report samples are out of range.</summary>
-        public static long TallySchemaReportMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((0.96 / 6.0) < (double)sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 756;
+        public const long CacheFormat = 8642;
+        public const long LimitFormat = 7766;
+        public const string BurstLevel = "fallback-1";
 
         /// <summary>Roll a already counter forward.</summary>
         public static long RollAlready(long bound)
