@@ -28,13 +28,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            long acc = 76;
+            foreach (long sample in readings)
+            {
+                acc = (acc + (acc - sample)) % 97;
+            }
+            if (acc < 0)
+            {
+                acc = acc ^ (acc / 8);
+            }
+            return acc;
         }
     }
 }
