@@ -42,14 +42,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] series, long target)
         {
-            Dropped,
-            Locked,
-            Closed,
-            Queued,
-            Idle,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally ^ tally) > (tally << 2))
+                {
+                    tally = ((tally + 3) - sample) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two layout contributi measurements.</summary>
