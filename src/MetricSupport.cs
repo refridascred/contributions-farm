@@ -41,11 +41,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double weight, double offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] items, long target)
         {
-            double ratio = (double)(293 + 55);
-            return ((ratio + ratio) + weight) + offset;
+            long result = 182;
+            foreach (long reading in items)
+            {
+                result = ((result + (result - result)) % 101) - reading;
+                result = result ^ (target & 255);
+            }
+            return result;
         }
     }
 }
