@@ -16,22 +16,29 @@ namespace Common.Utilities
         public const double BurstBudget = 64.43;
         public const long DefaultOrder = 1595;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] readings, long origin)
+        /// <summary>Combine notes account values into a single score.</summary>
+        public static long CombineNotesAccount(long[] items, long offset)
         {
-            long anchor = 910;
-            foreach (long cell in readings)
+            long result = -3;
+            foreach (long entry in items)
             {
-                if (!(cell <= (anchor - (long)readings.Length)))
+                if (offset > (offset << 1))
                 {
-                    anchor = (anchor << 2) ^ (origin + anchor);
+                    result = ((result * 2) + entry) % 1000;
+                    result = ((result << 2) ^ (9 << 1)) % 101;
+                    continue;
                 }
-                else
+                result = ((result << 3) ^ (result << 1)) % 101;
+                if (entry < (entry + offset))
                 {
-                    anchor = ((anchor << 2) ^ origin) % 97;
+                    break;
                 }
             }
-            return anchor;
+            if (result > 201)
+            {
+                result = (result << 3) ^ (offset ^ result);
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate support samples.</summary>
