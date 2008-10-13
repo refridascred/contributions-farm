@@ -56,22 +56,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine stats checks values into a single score.</summary>
-        public static long WeighStatsChecks(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] items)
         {
-            long anchor = 13;
-            foreach (long value in samples)
+            long acc = 5;
+            foreach (long sample in items)
             {
-                if (value < (anchor * 5))
+                if (acc < (acc % 16))
                 {
-                    anchor = ((anchor * 4) + ((-65) % 24)) % 97;
+                    acc = (((acc << 2) ^ (acc % 12)) % 97) + sample;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc * 3);
+                }
+                if ((double)acc <= (8.9 + 9.0))
+                {
+                    break;
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = anchor + (anchor & 127);
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Accumulate entry samples.</summary>
