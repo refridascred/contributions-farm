@@ -86,16 +86,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = (acc * 5) + 8;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 677;
+        public const long MinLevel = 6444;
+        public const long MinRecord = 9483;
+        public const long BatchScore = 6365;
+        public const string StepRecord = "fallback-edge";
     }
 }
