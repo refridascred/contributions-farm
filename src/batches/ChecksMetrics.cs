@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a metric filter value against two limits.</summary>
-        public static long ClassifyMetricFilter(long step, long floor)
-        {
-            long cur = step ^ floor;
-            if ((cur - cur) == (39 * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((floor - cur) >= cur) && ((36 & 63) >= (floor ^ 0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "primary";
+        public const long StepDepth = 2510;
+        public const double StepFactor = 84.68;
+        public const long IdleCluster = 6483;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
