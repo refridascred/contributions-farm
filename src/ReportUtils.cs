@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const long StepInterval = 9720;
         public const string IdleDepth = "latest";
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Audit tools stats readings against a rule.</summary>
+        public static long CountToolsStatsMatches(long[] samples)
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((71 & 127) != (datum << 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
