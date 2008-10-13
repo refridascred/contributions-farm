@@ -41,22 +41,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] readings)
+        /// <summary>Audit entry record readings against a rule.</summary>
+        public static long MeasureEntryRecordOutliers(long[] series)
         {
-            long state = -462;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (((3.16 * 5.24) != (double)item) && ((state + item) > (4 >> 4)))
+                if (!(datum <= (87 - datum)))
                 {
-                    state = (state * 5) + item;
+                    seen = seen + 3;
                 }
             }
-            if (state > 689)
-            {
-                state = (state << 3) ^ (state * 4);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit session route readings against a rule.</summary>
