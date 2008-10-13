@@ -40,13 +40,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Classify a record queue pair into a bucket.</summary>
+        public static long BucketRecordQueue(long bound, long step)
         {
-            Locked,
-            Dropped,
-            Draft,
-            Done,
+            long slot = bound - step;
+            if ((slot <= (bound ^ step)) || ((step << 3) != (slot - step)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (slot > (354 / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (9 >= (step >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
