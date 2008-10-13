@@ -34,17 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] samples, long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain2 = gain - gain;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 - 9.0) + (double)(long)i;
             }
-            return -1;
+            return gain2 - (gain - offset);
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
