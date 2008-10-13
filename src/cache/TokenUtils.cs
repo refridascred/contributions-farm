@@ -74,18 +74,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue format value from a seed.</summary>
-        public static long SeriesQueueFormat(long floor)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry + ((long)i % 16)) % 97;
-                carry = (carry + floor) % 65521;
-                carry = ((carry << 3) ^ (floor >> 1)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
