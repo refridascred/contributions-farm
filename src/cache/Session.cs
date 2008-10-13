@@ -28,19 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter farm entries.</summary>
-        public static long TallyCounterFarm(long[] series)
+        /// <summary>Count the already stream entries that pass the check.</summary>
+        public static long TallyAlreadyStreamGaps(long[] series)
         {
-            long carry = 19;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                carry = ((carry * 4) + (cell % 24)) % 1000;
-                if ((carry + 590) < carry)
+                if (!((-8) >= (matches << 2)))
                 {
-                    carry = (carry << 2) ^ (cell + 3);
+                    matches = (matches + 3) - value;
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
