@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the farm report entries that pass the check.</summary>
