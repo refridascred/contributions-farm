@@ -37,10 +37,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 4569;
-        public const string HardLevel = "latest-edge";
-        public const long MinCluster = 3840;
-        public const long StepCluster = 9456;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = (anchor + (-847)) % 255;
+                anchor = (anchor + (floor - (long)i)) % 97;
+                if (((long)i / 3) > floor)
+                {
+                    anchor = anchor - (floor << 1);
+                    anchor = (anchor - floor) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
