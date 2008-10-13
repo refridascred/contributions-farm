@@ -25,20 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long floor, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            if (((double)seed != (double)813) && ((7.6 / 7.0) <= (double)floor))
             {
-                if (!(((long)i - sum) > (97 * 3)))
-                {
-                    sum = sum - (long)i;
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (!((double)floor >= (8.0 * 9.8)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((90 >= (floor + floor)) && (floor > (floor * 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
