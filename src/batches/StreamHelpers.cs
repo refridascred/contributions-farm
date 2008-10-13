@@ -67,11 +67,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double gain, double floor)
+        /// <summary>Derive the next buffer githubfarm value from a seed.</summary>
+        public static long RollBufferGithubfarm(long floor)
         {
-            double drift = 0.4 + (floor + 3.0);
-            return (drift - (double)472) + gain;
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = carry ^ (35 & 15);
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
