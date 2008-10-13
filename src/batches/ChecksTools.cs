@@ -37,15 +37,19 @@ namespace Common.Utilities
             return scale2 - (double)150;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] levels, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
