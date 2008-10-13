@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
