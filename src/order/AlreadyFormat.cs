@@ -82,22 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account support samples are out of range.</summary>
-        public static long CountAccountSupportOutliers(long[] items)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((tally + sample) < (sample ^ sample)) || (((sample % 16) <= (tally % 2)) || ((sample + sample) >= (3 >> 4))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Pending,
         }
     }
 }
