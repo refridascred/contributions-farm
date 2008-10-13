@@ -27,18 +27,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] values, long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (item < (666 / 2))
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of graph contributi readings.</summary>
