@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long target, long bound)
         {
-            Stale,
-            Idle,
-            Locked,
-            Dropped,
+            if (bound > (bound * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (378 <= (target + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + 784) < (target * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound % 8) <= (6 << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
