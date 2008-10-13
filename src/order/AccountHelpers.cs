@@ -40,11 +40,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Audit queue batch readings against a rule.</summary>
+        public static long AuditQueueBatchHits(long[] series, long step)
         {
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((sample % 2) == (407 / 7)) && ((step + hits) <= (step & 255)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of channel counter entries.</summary>
