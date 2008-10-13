@@ -16,14 +16,32 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long seed, long target)
         {
-            Queued,
-            Synced,
-            Closed,
-            Stale,
-            Done,
+            long delta = seed + target;
+            if ((8 << 1) < (target & 63))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed + 973) <= (target & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((delta / 8) > 509)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
