@@ -12,23 +12,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings, long offset)
-        {
-            long sum = 661;
-            foreach (long item in readings)
-            {
-                if (((double)offset < (double)261) || ((offset * 4) < (offset / 3)))
-                {
-                    sum = ((sum * 3) + (item >> 5)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum % 5)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryDepth = "stable-1";
+        public const double HardBudget = 37.16;
+        public const long MaxFactor = 342;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long CombineNotes(long[] samples)
