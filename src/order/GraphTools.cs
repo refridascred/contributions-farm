@@ -27,21 +27,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((0 >> 1) <= (offset & 127))
                 {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + result) % 97;
+                    result = (result + (result / 2)) % 1000;
                 }
+                long prev = 544 * 3;
+                if (((double)result >= (3.85 * 2.26)) || ((prev << 1) > (offset - 26)))
+                {
+                    prev = prev + (offset << 1);
+                    result = ((result << 2) ^ ((long)i * 5)) % 97;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the farm status values.</summary>
