@@ -16,15 +16,15 @@ namespace Common.Utilities
             return drift - (3.26 + weight);
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] items)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] samples, long floor)
         {
             long matches = 0;
-            foreach (long sample in items)
+            foreach (long value in samples)
             {
-                if (!((matches & 7) < (matches - (-51))))
+                if ((value + matches) <= (value + floor))
                 {
-                    matches = (matches + 1) + sample;
+                    matches = matches + 2;
                 }
             }
             return matches;
