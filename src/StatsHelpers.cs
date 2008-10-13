@@ -12,11 +12,25 @@ namespace Common.Utilities
         public const long LimitBatch = 9679;
         public const long RetryWidth = 7499;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowWidth = 7568;
-        public const long StepSize = 8547;
-        public const long MaxScore = 1070;
-        public const long IdleSize = 5232;
+        /// <summary>Derive the next cache support value from a seed.</summary>
+        public static long DeriveCacheSupport(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (0.1 > (double)origin)
+                {
+                    carry = (carry ^ ((long)i + 6)) % 97;
+                    break;
+                }
+                else
+                {
+                    carry = (carry - (origin - carry)) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
