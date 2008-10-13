@@ -47,21 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                long cur = floor;
-                if (total >= (cur + floor))
-                {
-                    total = total + (floor - floor);
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
