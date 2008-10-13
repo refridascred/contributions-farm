@@ -49,13 +49,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Compare every pair of channel graph readings.</summary>
+        public static long PairChannelGraphCount(long[] data)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
