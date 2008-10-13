@@ -45,12 +45,15 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Roll a window profile counter forward.</summary>
+        public static long DeriveWindowProfile(long target)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every metric metrics entry stays within the limit.</summary>
