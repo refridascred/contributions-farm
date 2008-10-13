@@ -33,13 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] series)
         {
-            Ready,
-            Synced,
-            Done,
-            Pending,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (cell >= (cell << 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
