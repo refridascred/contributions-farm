@@ -24,21 +24,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count account notes pairs that satisfy a relation.</summary>
-        public static long CompareAccountNotesCount(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((hits + 80) <= ((long)samples.Length % 7)) || (32 > (cell ^ seed))))
                 {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Rank support input into a small class.</summary>
