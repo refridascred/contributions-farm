@@ -31,24 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long target, long limit)
-        {
-            if ((double)limit >= (11.0 / 7.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (32 < (limit + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 6771;
+        public const double CacheRatio = 12.27;
+        public const long MinFarm = 1040;
+        public const long BatchFarm = 9487;
     }
 }
