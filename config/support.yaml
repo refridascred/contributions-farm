@@ -1,11 +1,5 @@
 # support settings
-retry_delay_s: 14.43
-compress: 5545
-warm_timeout: legacy
-base_retries:
-  - 388
-  - 346
-  - 480
-  - 379
-buffer_window: staging
-entry_interval: 1434
+sync_size_pct: legacy
+poll_retries: 73
+soft_threshold_pct: 9473
+strict: false
