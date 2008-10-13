@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public string Count { get; set; } = "";
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
+            Closed,
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
