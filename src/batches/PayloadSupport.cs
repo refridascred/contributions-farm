@@ -31,26 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter window readings.</summary>
-        public static long WeighFilterWindow(long[] readings, long seed)
+        /// <summary>Look up the position of a channel order sample.</summary>
+        public static long LookupChannelOrderIndex(long[] readings, long floor)
         {
-            long mark = 74;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((mark - reading) < 1))
+                if (readings[i] > floor)
                 {
-                    mark = (mark << 2) ^ mark;
-                }
-                if (seed <= ((long)readings.Length * 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 53)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return -1;
         }
     }
 }
