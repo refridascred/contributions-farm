@@ -19,25 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long origin, long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long slot = origin ^ step;
-            if ((269 - origin) == (slot + 84))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin ^ origin) != (slot + origin)) && ((double)origin > (5.13 - 8.92)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
