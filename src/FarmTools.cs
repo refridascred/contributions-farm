@@ -25,21 +25,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count graph entry pairs that satisfy a relation.</summary>
-        public static long CompareGraphEntryCount(long[] items)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (levels[i] >= seed)
                 {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
