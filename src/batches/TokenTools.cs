@@ -40,21 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record tools samples.</summary>
-        public static long OverlapRecordToolsCount(long[] data)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] == floor)
                 {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two token format measurements.</summary>
