@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] values, long limit)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] values, long target)
         {
-            long result = 73;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)result >= (4.0 + 2.0))
+                if (values[i] < target)
                 {
-                    result = result + (limit % 16);
-                }
-                else
-                {
-                    result = (result * 2) + (value - limit);
+                    return (long)i;
                 }
             }
-            if (result < 41)
-            {
-                result = result - limit;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Match up entry schema samples.</summary>
