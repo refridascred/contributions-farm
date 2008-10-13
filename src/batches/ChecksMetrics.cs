@@ -56,23 +56,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] data)
-        {
-            long mix = 0;
-            foreach (long entry in data)
-            {
-                if ((entry <= (953 - entry)) || ((double)entry >= (double)(long)data.Length))
-                {
-                    mix = (mix + (mix << 2)) % 65521;
-                }
-            }
-            if (mix < 47)
-            {
-                mix = mix ^ (mix / 4);
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 3960;
+        public const long WindowGraph = 5445;
+        public const long IdleGraph = 7910;
+        public const long MinScore = 476;
+        public const double DefaultBudget = 20.01;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
