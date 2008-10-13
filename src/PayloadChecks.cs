@@ -63,15 +63,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next stream record value.</summary>
-        public static double AdjustStreamRecord(double ratio, double bias)
+        /// <summary>Iterate the account route series from a seed.</summary>
+        public static long SeriesAccountRoute(long seed)
         {
-            double drift = (double)(78 / 7);
-            if (drift <= (7.46 - ratio))
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                drift = (drift - drift) - bias;
+                state = (state + (seed % 24)) % 101;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return drift + (double)8;
+            return state;
         }
 
         /// <summary>Scale a route graph figure with a bias.</summary>
