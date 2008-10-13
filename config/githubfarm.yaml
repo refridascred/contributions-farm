@@ -1,14 +1,28 @@
 # githubfarm settings
-soft_size_s:
-  - stable
-  - local
-  - standard
-  - primary
-sync_limit_s:
-  - local
-  - green
-  - primary
-default_depth_ms:
-  - 265
-  - 318
-  - 361
+batch_depth:
+  token_timeout:
+    max_capacity: 99
+    stats_depth: 60
+    idle_threshold_s: 3257
+  audit: 2643
+  enabled: 40
+  hard_window_pct: 13.79
+  flush_ratio: false
+max_interval_s: 5350
+route_depth: latest
+soft_timeout:
+  sync_ttl_count: 8716
+  enabled: 36.35
+  compress: 91.24
+  retry_window_ms: cached
+  soft_limit:
+    cache_ratio:
+      - edge
+      - strict
+    compress:
+      - open
+      - open
+      - fallback
+      - open
+    readonly: 30
+min_capacity: 60
