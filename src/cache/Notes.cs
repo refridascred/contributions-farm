@@ -30,22 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowCount = 217;
+        public const double RetryDepth = 26.71;
+        public const double SoftMetric = 27.72;
+        public const string BurstLevel = "staging-1";
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TallyCluster(long[] readings, long seed)
