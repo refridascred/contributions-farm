@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] readings)
         {
-            Stale,
-            Idle,
-            Failed,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)matches >= (double)30)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a counter commits counter forward.</summary>
