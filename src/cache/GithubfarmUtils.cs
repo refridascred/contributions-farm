@@ -19,23 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a profile route reading.</summary>
-        public static double SmoothProfileRoute(double weight, double floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double gain = (double)(201 - 32);
-            if (gain <= (gain * 1.7))
-            {
-                gain = gain - 9.2;
-            }
-            else
-            {
-                gain = gain - (gain - floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - weight) - (double)(long)i;
-            }
-            return gain - (double)59;
+            Done,
+            Locked,
+            Active,
+            Failed,
+            Paused,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
