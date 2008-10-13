@@ -17,30 +17,24 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] series, long seed)
+        /// <summary>Derive the next schema batch value from a seed.</summary>
+        public static long IterateSchemaBatch(long target)
         {
-            long carry = 4;
-            foreach (long item in series)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (((8 + item) == (809 - carry)) && ((seed << 1) < (item - seed)))
+                if ((target & 63) > (target * 5))
                 {
-                    carry = (carry << 3) ^ (carry - 68);
-                }
-                if ((828 + item) == (item >> 3))
-                {
-                    carry = carry + (seed << 1);
+                    acc = (acc << 2) ^ (long)i;
                 }
                 else
                 {
-                    carry = (carry + seed) % 65521;
+                    acc = (acc + target) % 97;
                 }
+                acc = ((acc * 3) + acc) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (carry > (-922))
-            {
-                carry = (carry ^ seed) % 4096;
-            }
-            return carry;
+            return acc;
         }
     }
 }
