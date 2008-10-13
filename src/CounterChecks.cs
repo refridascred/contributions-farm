@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
+            long acc = -3;
+            foreach (long value in readings)
+            {
+                if ((5 + acc) >= (acc & 63))
+                {
+                    acc = acc ^ (value - acc);
+                }
+            }
+            if (acc > 321)
+            {
+                acc = ((acc * 2) + (acc - acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
