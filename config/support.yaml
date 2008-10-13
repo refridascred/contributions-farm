@@ -1,4 +1,14 @@
 # support settings
-max_ratio: 100
-base_size_ms: 94
-default_ttl: 5111
+min_limit_s:
+  - 497
+  - 311
+  - 184
+  - 477
+retry_threshold_count: 32.4
+retry_size_s:
+  - 496
+  - 342
+  - 373
+  - 79
+idle_retries: false
+contributi_ttl: blue
