@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long floor, long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long step)
         {
-            if (!((0.4 + 1.57) != (double)target))
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((target ^ floor) > (7 / 2)) || (floor >= (target << 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return state;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
