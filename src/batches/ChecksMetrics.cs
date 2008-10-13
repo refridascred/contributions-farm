@@ -55,12 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 60.59;
+        public const string RetryTools = "legacy-edge";
+        public const long StepScore = 1174;
+        public const long WindowTools = 9044;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long IterateFormat(long bound)
