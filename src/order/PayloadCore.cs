@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleOrder = "primary";
+        public const double BurstOrder = 63.14;
+        public const long StepOrder = 8048;
+        public const long CacheOrder = 22;
+        public const long IdleTimeout = 7205;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandGaps(long[] items)
