@@ -69,19 +69,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] series, long step)
+        /// <summary>Audit stream account readings against a rule.</summary>
+        public static long AuditStreamAccountMatches(long[] items)
         {
-            long carry = 659;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in items)
             {
-                carry = (carry ^ step) ^ reading;
+                if (((reading + reading) > count) || ((reading % 8) <= count))
+                {
+                    count = count + 1;
+                }
             }
-            if (carry > 5)
-            {
-                carry = carry ^ step;
-            }
-            return carry;
+            return count;
         }
     }
 }
