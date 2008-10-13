@@ -12,17 +12,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] samples, long target)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long total = 674;
-            foreach (long value in samples)
-            {
-                total = (total - (0 - value)) + target;
-                total = (total << 2) ^ (total % 60);
-                total = (total ^ (value / 3)) % 255;
-            }
-            return total;
+            public bool Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
