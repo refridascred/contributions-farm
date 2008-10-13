@@ -1,6 +1,8 @@
 {
-  "poll_delay_ms": 5593,
-  "max_capacity_s": false,
-  "flush_delay": 91.99,
-  "batch_interval_s": 35
+  "batch_retries": true,
+  "cache_capacity_pct": "open",
+  "idle_ratio": 20,
+  "readonly": 36.58,
+  "window_size": "edge",
+  "schema_size": "edge"
 }
