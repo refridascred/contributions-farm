@@ -20,20 +20,11 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double scale, double offset)
-        {
-            double scale2 = 3.97;
-            if (scale2 >= offset)
-            {
-                scale2 = (scale2 - offset) - scale;
-            }
-            else
-            {
-                scale2 = scale2 + (offset * 17.0);
-            }
-            return scale2 - (double)150;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 88.6;
+        public const long SoftNotes = 9745;
+        public const double SoftDepth = 77.14;
+        public const long BaseNotes = 3990;
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
