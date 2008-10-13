@@ -69,10 +69,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 9142;
-        public const long IdleCount = 6211;
-        public const long MinEditor = 4251;
-        public const string MaxLevel = "cached";
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Ready,
+            Active,
+            Dropped,
+        }
     }
 }
