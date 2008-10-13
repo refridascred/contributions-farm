@@ -1,4 +1,26 @@
 # entry settings
-strict: true
-hard_capacity_pct: 81.34
-default_depth_s: standard
+retry_timeout_count: 57.96
+compress: true
+verbose:
+  - 498
+  - 64
+min_capacity_count:
+  flush_depth:
+    githubfarm_interval: true
+    persist:
+      - latest
+      - blue
+      - local
+    readonly: false
+    order_size: latest
+  enabled: edge
+  burst_threshold:
+    - 12
+    - 265
+    - 90
+    - 131
+  verbose: primary
+  burst_threshold_ms: 2438
+  editor_threshold: stable
+audit: 60
+channel_limit: false
