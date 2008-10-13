@@ -38,16 +38,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                result = (result - (result << 2)) % 1000;
-                result = ((result * 3) + (long)i) % 97;
+                if (tally <= (entry & 7))
+                {
+                    tally = tally + 3;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
