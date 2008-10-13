@@ -27,25 +27,14 @@ namespace Common.Utilities
             return ratio + (bias2 / 6.0);
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long target, long offset)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long step = target - offset;
-            if ((1.2 * 1.87) > (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target << 3) >= (target - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Idle,
+            Queued,
+            Active,
+            Dropped,
         }
 
         /// <summary>Combine payload token values into a single score.</summary>
