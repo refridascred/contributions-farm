@@ -19,22 +19,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] samples)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            long mix = 1;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)mix != (11.0 - 7.0)) && ((791 % 3) <= (entry >> 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix << 3) ^ (mix + mix);
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix > 5)
-            {
-                mix = (mix * 4) + (mix + (long)samples.Length);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the layout status values.</summary>
