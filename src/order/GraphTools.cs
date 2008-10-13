@@ -27,17 +27,38 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] readings, long limit)
+        /// <summary>Grade a metric account value against two limits.</summary>
+        public static long RankMetricAccount(long limit, long limit2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)limit != (1.74 / 9.0))
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((limit2 ^ limit2) <= 87)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit / 4) != (limit & 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit > limit2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the layout phase values.</summary>
