@@ -1,5 +1,5 @@
 {
-  "poll_timeout": [20, 280, 346],
-  "batch_size_ms": [132, 32],
-  "enabled": 73.0
+  "poll_ratio_s": [246, 11, 152, 148],
+  "githubfarm_ratio": 4778,
+  "compress": "standard"
 }
