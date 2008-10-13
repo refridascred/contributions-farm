@@ -24,19 +24,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Count account notes pairs that satisfy a relation.</summary>
+        public static long CompareAccountNotesCount(long[] levels)
         {
-            long score = -40;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 5) + (value ^ value)) % 97;
-                if ((8.47 - 3.8) > (double)score)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Rank support input into a small class.</summary>
