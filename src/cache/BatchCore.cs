@@ -24,11 +24,20 @@ namespace Common.Utilities
         public const long StepWidth = 4755;
         public const long BaseAccount = 8653;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "staging-1";
-        public const string BatchDepth = "strict-1";
-        public const long HardAlready = 1561;
-        public const double StepSpan = 21.89;
+        /// <summary>Validate channel metric readings against a bound.</summary>
+        public static bool GuardChannelMetricRange(long[] items, long limit)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a record queue pair into a bucket.</summary>
         public static long BucketRecordQueue(long bound, long step)
