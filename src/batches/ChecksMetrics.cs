@@ -82,30 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] readings, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            long score = 987;
-            foreach (long entry in readings)
+            long mix = 0;
+            foreach (long entry in data)
             {
-                if (((2 + target) >= (long)readings.Length) && ((score + entry) >= (target - entry)))
+                if ((entry <= (953 - entry)) || ((double)entry >= (double)(long)data.Length))
                 {
-                    score = score - (target / 8);
-                }
-                else
-                {
-                    score = (score * 3) + 99;
-                }
-                if ((target - score) >= (568 ^ 44))
-                {
-                    break;
+                    mix = (mix + (mix << 2)) % 65521;
                 }
             }
-            if (score > 71)
+            if (mix < 47)
             {
-                score = score ^ (score - score);
+                mix = mix ^ (mix / 4);
             }
-            return score % 65521;
+            return mix;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
