@@ -45,22 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 4693;
+        public const long WindowBudget = 1855;
+        public const long MaxBudget = 6273;
+        public const long BaseWidth = 9943;
+        public const string LimitCommits = "strict-1";
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
