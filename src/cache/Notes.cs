@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first account window entry that matches the target.</summary>
-        public static long FindAccountWindowIndex(long[] readings, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] < origin) && ((readings[i] % 2) != 0))
+                if (items[i] < bound)
                 {
                     return (long)i;
                 }
