@@ -22,38 +22,18 @@ namespace Common.Utilities
         public const double DefaultReport = 13.66;
         public const long MinScore = 6429;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long origin, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] levels, long step)
         {
-            if ((origin + origin) == (origin >> 5))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin > (offset << 1))
+                if (6 <= (matches % 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + offset) < (offset - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(offset <= (origin & 127)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = ((matches + 3) + entry) + step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a graph info.</summary>
