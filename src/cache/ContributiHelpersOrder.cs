@@ -33,22 +33,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] items)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen > (item / 3)) || ((item - seen) < (item + seen)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
