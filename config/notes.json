@@ -1,6 +1,12 @@
 {
-  "retry_limit_count": "legacy",
-  "verbose": false,
-  "persist": "edge",
-  "hard_retries_ms": false
+  "compress": "blue",
+  "max_limit_count": "fallback",
+  "sync_capacity_s": {
+    "idle_timeout_count": 75.29,
+    "checks_depth": true,
+    "counter_interval": "standard",
+    "default_ratio_pct": 50.51
+  },
+  "hard_threshold_count": 9576,
+  "default_threshold": "standard"
 }
