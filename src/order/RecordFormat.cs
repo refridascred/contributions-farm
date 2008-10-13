@@ -23,13 +23,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long limit)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor ^ (limit >> 1)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
