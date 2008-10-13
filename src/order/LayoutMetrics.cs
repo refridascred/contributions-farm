@@ -21,22 +21,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] data, long step)
+        /// <summary>Locate a layout commits reading by value.</summary>
+        public static long LocateLayoutCommitsIndex(long[] samples, long floor)
         {
-            long sum = 25;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((398 >> 5) >= (28 - sample))
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
                 {
-                    sum = (sum - (step & 255)) % 101;
+                    return (long)i;
                 }
             }
-            if (sum < (-6))
-            {
-                sum = sum ^ (sum - 317);
-            }
-            return sum;
+            return -1;
         }
     }
 }
