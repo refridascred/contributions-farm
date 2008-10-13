@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a channel order sample.</summary>
-        public static long LookupChannelOrderIndex(long[] readings, long floor)
+        /// <summary>Find the first metric layout entry that matches the target.</summary>
+        public static long LookupMetricLayoutIndex(long[] readings, long offset)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] > floor)
+                if (readings[i] == offset)
                 {
                     return (long)i;
                 }
