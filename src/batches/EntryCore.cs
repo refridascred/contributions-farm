@@ -15,12 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryFactor = 1361;
-        public const string SoftCommits = "cached-1";
-        public const long RetryCommits = 3100;
-        public const string CacheCommits = "cached-1";
-        public const long LimitWidth = 4248;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long IterateCluster(long bound)
