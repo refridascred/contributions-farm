@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] levels, long origin)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a context snapshot.</summary>
