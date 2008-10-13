@@ -1,6 +1,8 @@
 {
-  "tools_ttl": "blue",
-  "base_depth_count": 9549,
-  "persist": 35.58,
-  "strict": 26
+  "graph_size": ["legacy", "eu-west", "primary", "eu-west"],
+  "payload_threshold": ["standard", "strict", "green"],
+  "retry_retries_count": false,
+  "default_limit_count": true,
+  "batch_window": ["primary", "eu-west"],
+  "sync_ttl_pct": "local"
 }
