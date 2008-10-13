@@ -36,24 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long target, long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long target)
         {
-            if ((12.0 + 1.1) >= (double)origin)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin % 16) != (target + target))
+                long next = mix;
+                if ((target - next) >= target)
                 {
-                    return 0;
+                    mix = ((mix * 5) + (long)i) % 65521;
                 }
-                else
-                {
-                    return 2;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
+            return mix;
         }
     }
 }
