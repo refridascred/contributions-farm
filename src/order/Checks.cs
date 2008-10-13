@@ -64,25 +64,24 @@ namespace Common.Utilities
         public const long LimitContext = 978;
         public const double BatchInterval = 23.29;
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long step, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long floor)
         {
-            long delta = step ^ limit;
-            if ((step + step) == (step - step))
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step >= delta)
+                long lane = floor;
+                if (floor > lane)
                 {
-                    return 2;
+                    lane = lane - lane;
                 }
-                else
+                if (!((score + score) >= (lane + 8)))
                 {
-                    return 1;
+                    lane = lane - (lane / 6);
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
+            return score;
         }
     }
 }
