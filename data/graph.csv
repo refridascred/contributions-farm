@@ -1,6 +1,6 @@
-id,state,owner
-1,82,30.82
-2,406,97.66
-3,green,333
-4,660,14.65
-5,53.61,green
+id,ratio,state,owner,level
+1,5,558,cached,277
+2,559,798,49.32,local
+3,blue,56,582,268
+4,794,585,latest,eu-west
+5,79.54,402,329,green
