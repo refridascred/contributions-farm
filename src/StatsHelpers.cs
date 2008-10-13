@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "standard";
-        public const double MinAlready = 92.47;
-        public const string HardAlready = "strict";
-        public const string LimitAlready = "fallback-1";
-        public const long SoftDepth = 9068;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Dropped,
+            Active,
+            Retry,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long IterateStats(long bound)
