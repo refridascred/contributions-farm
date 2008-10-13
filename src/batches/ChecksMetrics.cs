@@ -47,39 +47,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long step, long offset)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long delta = step + offset;
-            if ((double)delta == (8.88 * 3.2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(delta < (offset / 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + offset) >= delta)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (delta <= step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Pending,
+            Retry,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
