@@ -75,15 +75,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] values)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long state = -390;
-            foreach (long datum in values)
-            {
-                state = (state << 2) ^ (datum / 3);
-            }
-            return state;
+            Locked,
+            Dropped,
+            Draft,
+            Done,
         }
     }
 }
