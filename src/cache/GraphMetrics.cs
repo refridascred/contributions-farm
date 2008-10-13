@@ -21,13 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Locked,
-            Draft,
-            Dropped,
-            New,
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
