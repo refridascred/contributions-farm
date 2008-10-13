@@ -35,19 +35,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of graph contributi readings.</summary>
-        public static long WeighGraphContributi(long[] series, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] readings, long seed)
         {
-            long total = 9;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                total = ((total ^ offset) % 4096) - reading;
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (total > 880)
-            {
-                total = total + (offset - offset);
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
