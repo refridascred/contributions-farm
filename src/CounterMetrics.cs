@@ -31,19 +31,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] data, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long total = 1;
+            foreach (long sample in values)
             {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (((total * 4) + seed) % 1000) + sample;
+                total = ((total * 2) + total) % 4096;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
