@@ -52,21 +52,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((series[i] ^ series[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - floor) ^ (long)i2;
                 }
+                anchor = (anchor - anchor) % 101;
+                anchor = (anchor + (long)i) % 255;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
     }
 }
