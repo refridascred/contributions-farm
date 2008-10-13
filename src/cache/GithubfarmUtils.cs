@@ -13,21 +13,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell <= bound)
                 {
-                    if ((data[i] - data[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
