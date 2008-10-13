@@ -1,16 +1,14 @@
 # Command notes
 
-Each checks is validated before it reaches the profile queue.
-The token helpers are pure functions, so they are safe to call from any thread.
-Each payload is validated before it reaches the metrics queue.
+Use already settings to tune how often layout data is refreshed.
+The counter module keeps notes values in sync with the buffer cache.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-Defaults for stream live in the config folder and can be overridden per environment.
-Keep schema and support names short and lowercase.
-The farm helpers are pure functions, so they are safe to call from any thread.
+The profile module keeps tools values in sync with the context cache.
+Each entry is validated before it reaches the channel queue.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Log every token change
-- Validate checks input early
-- Keep layout values small
+- Keep queue values small
+- Validate layout input early
+- Prefer record defaults
