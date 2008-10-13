@@ -42,13 +42,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Grade a schema already value against two limits.</summary>
+        public static long ClassifySchemaAlready(long target, long offset)
         {
-            Failed,
-            Ready,
-            Queued,
-            New,
+            long span = target ^ offset;
+            if ((span + target) < (offset + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((span ^ target) == (offset ^ span))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target - target) > (span ^ target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((target << 2) < span))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
