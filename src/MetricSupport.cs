@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Fold a list of session editor readings.</summary>
+        public static long FoldSessionEditor(long[] values, long limit)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long acc = 91;
+            foreach (long item in values)
+            {
+                if ((double)item >= (15.0 * 8.8))
+                {
+                    acc = acc ^ (634 % 100);
+                }
+            }
+            if (acc < 44)
+            {
+                acc = (acc - (limit * 4)) % 65521;
+            }
+            return acc;
         }
     }
 }
