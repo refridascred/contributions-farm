@@ -47,11 +47,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryWidth = 2891;
-        public const double MinSize = 57.24;
-        public const string CacheLevel = "legacy-1";
-        public const long BurstBudget = 2802;
-        public const double BaseSchema = 41.03;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            New,
+            Paused,
+            Retry,
+            Dropped,
+            Locked,
+        }
     }
 }
