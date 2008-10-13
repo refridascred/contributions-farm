@@ -45,12 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 4693;
-        public const long WindowBudget = 1855;
-        public const long MaxBudget = 6273;
-        public const long BaseWidth = 9943;
-        public const string LimitCommits = "strict-1";
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Active,
+            Ready,
+            Paused,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
