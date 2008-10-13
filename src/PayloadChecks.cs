@@ -19,11 +19,19 @@ namespace Common.Utilities
         public const long IdleSchema = 649;
         public const double BatchBudget = 33.82;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardTimeout = 22.36;
-        public const double LimitReport = 50.19;
-        public const string MinReport = "cached-v2";
-        public const long DefaultBudget = 1046;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((count << 2) > 541) || ((double)count <= (5.21 + 4.0)))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
