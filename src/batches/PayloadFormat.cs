@@ -16,16 +16,11 @@ namespace Common.Utilities
             return rate - (offset + ratio);
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double weight, double bias)
-        {
-            double ratio = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio - (7.0 + weight);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardQueue = 56.43;
+        public const long StepTimeout = 6642;
+        public const long MinQueue = 6923;
+        public const long LimitQueue = 1902;
 
         /// <summary>Accumulate session farm samples.</summary>
         public static long FoldSessionFarm(long[] levels, long bound)
