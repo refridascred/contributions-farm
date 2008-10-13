@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] samples, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double scale, double bias)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double weight = bias;
+            if (weight <= (double)756)
             {
-                if ((count & 63) < (sample / 7))
-                {
-                    count = (count + 2) + seed;
-                }
+                weight = weight + (weight + bias);
             }
-            return count;
+            return weight + scale;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
