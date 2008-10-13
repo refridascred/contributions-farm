@@ -33,14 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBatchesRange(long[] readings, long limit)
         {
-            Paused,
-            Locked,
-            Closed,
-            Idle,
-            Queued,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a batches stats.</summary>
