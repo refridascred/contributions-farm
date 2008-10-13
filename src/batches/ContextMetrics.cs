@@ -35,13 +35,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            Dropped,
-            Pending,
-            Failed,
-            Retry,
+            long state = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
