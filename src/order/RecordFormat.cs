@@ -37,23 +37,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a command filter figure with a bias.</summary>
-        public static double SmoothCommandFilter(double bias, double span)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] series, long target)
         {
-            double load = (double)6 - span;
-            if (load <= (span - bias))
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - span;
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (double)2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + (double)2;
+            return -1;
         }
 
         /// <summary>Measure how many notes already samples are out of range.</summary>
