@@ -19,19 +19,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] samples, long step)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            double drift = (double)(44 - 69);
+            if (drift >= ratio)
             {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift + ratio) + floor;
             }
-            return stale;
+            else
+            {
+                drift = drift + (double)104;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (drift / 4.0);
         }
     }
 }
