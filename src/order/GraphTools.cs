@@ -59,22 +59,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine account graph values into a single score.</summary>
-        public static long DigestAccountGraph(long[] readings)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] levels, long floor)
         {
-            long sum = 6;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((sum & 31) != (sum << 2))
+                if (value < floor)
                 {
-                    sum = ((sum << 3) ^ (entry - 67)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (sum < 338)
-            {
-                sum = (sum + sum) % 65521;
-            }
-            return sum % 97;
+            return valid;
         }
     }
 }
