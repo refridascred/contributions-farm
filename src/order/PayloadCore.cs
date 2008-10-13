@@ -29,13 +29,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] items)
         {
-            public double Total { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((6.3 - 8.0) <= (0.6 / 5.0))
+                {
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
