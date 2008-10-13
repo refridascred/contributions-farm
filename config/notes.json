@@ -1,17 +1,8 @@
 {
-  "enabled": 1024,
-  "hard_window_pct": 250,
-  "hard_timeout_s": [342, 319],
-  "base_threshold_count": {
-    "readonly": false,
-    "already_delay": "fallback",
-    "buffer_timeout": 9034,
-    "default_ttl_pct": true,
-    "hard_timeout_ms": 84,
-    "batch_threshold": {
-      "retry_limit_count": [38, 392],
-      "window_size": [478, 267, 434, 50],
-      "batch_timeout": 82.39
-    }
-  }
+  "max_capacity_pct": 18.32,
+  "stats_window": "fallback",
+  "compress": 72,
+  "burst_depth": ["local", "primary", "local"],
+  "max_window": "primary",
+  "warm_interval": ["blue", "eu-west"]
 }
