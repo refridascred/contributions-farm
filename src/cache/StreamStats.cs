@@ -20,10 +20,20 @@ namespace Common.Utilities
         public const long LimitWindow = 3891;
         public const long DefaultSize = 391;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "strict";
-        public const string BaseCount = "open-edge";
-        public const long HardMetric = 3425;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] values, long bound)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ProjectCounter(double ratio, double bias)
