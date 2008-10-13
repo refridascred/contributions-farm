@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxDepth = 1840;
+        public const long MaxRatio = 7377;
+        public const long IdleQueue = 5970;
+        public const double StepSpan = 38.2;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LookupCounterIndex(long[] values, long floor)
