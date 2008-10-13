@@ -20,25 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a editor support value against two limits.</summary>
-        public static long RankEditorSupport(long bound, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            long offset = bound + origin;
-            if ((3.93 / 7.0) != (double)origin)
+            long state = 605;
+            foreach (long sample in series)
             {
-                return 0;
+                state = state - (sample % 8);
             }
-            else
-            {
-                if (!((offset & 1) <= bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return state;
         }
 
         /// <summary>Match up batch farm samples.</summary>
