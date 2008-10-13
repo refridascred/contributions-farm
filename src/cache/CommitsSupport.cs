@@ -54,24 +54,16 @@ namespace Common.Utilities
         public const long BatchEntry = 7413;
         public const double StepInterval = 3.5;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long seed, long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long floor)
         {
-            if ((limit ^ 375) > (seed + limit))
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
+                mark = (mark << 3) ^ (8 + (long)i);
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (!(limit <= (limit >> 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
