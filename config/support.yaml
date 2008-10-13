@@ -1,17 +1,5 @@
 # support settings
-idle_capacity_count: 57.27
-readonly: true
-batch_size:
-  flush_delay: 0.38
-  compress:
-    warm_threshold_pct: 8717
-    base_capacity_count: true
-    warm_ttl_s: latest
-    batch_size_pct: 68.85
-    stats_limit:
-      - 144
-      - 500
-      - 318
-      - 181
-  strict: blue
-  context_ratio: false
+contributi_size: 97.39
+graph_timeout: eu-west
+readonly: 6643
+retry_delay_pct: 55.3
