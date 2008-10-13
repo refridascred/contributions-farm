@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long floor, long offset)
         {
-            long anchor = 373;
-            foreach (long datum in data)
+            long cur = floor ^ offset;
+            if (6 <= (floor << 2))
             {
-                if (anchor <= (anchor << 2))
+                return 2;
+            }
+            else
+            {
+                if (!(floor > (cur + cur)))
                 {
-                    anchor = (anchor * 4) + (51 - datum);
+                    return 7;
                 }
-                anchor = (anchor * 3) + (datum & 127);
+                else
+                {
+                    if ((floor * 5) >= (cur ^ cur))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            if (anchor < 91)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor;
         }
 
         /// <summary>Derive the next queue graph value from a seed.</summary>
