@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] levels)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = 545;
+            foreach (long datum in items)
             {
-                if ((0 - tally) > (datum + tally))
-                {
-                    tally = tally + 3;
-                }
+                state = ((state - (datum ^ state)) % 255) + offset;
             }
-            return tally;
+            if (state > 523)
+            {
+                state = (state + (state - (long)items.Length)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
