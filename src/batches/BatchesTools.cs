@@ -36,21 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] items)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
