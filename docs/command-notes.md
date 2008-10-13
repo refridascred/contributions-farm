@@ -1,12 +1,15 @@
 # Command notes
 
-Keep entry and command names short and lowercase.
-Use entry settings to tune how often stats data is refreshed.
-A tools that stays idle for too long is moved to the command list.
+Defaults for already live in the config folder and can be overridden per environment.
+The command report groups every entry by batch.
+
+The counter module keeps commits values in sync with the order cache.
+The support module keeps contributi values in sync with the layout cache.
+The token module keeps contributi values in sync with the record cache.
 
 ## Guidelines
 
-- Log every account change
-- Document new buffer fields
-- Keep commits values small
-- Validate account input early
+- Prefer buffer defaults
+- Log every record change
+- Document new notes fields
+- Review contributi limits each release
