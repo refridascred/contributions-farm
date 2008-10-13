@@ -1,8 +1,12 @@
 {
-  "verbose": [32, 347, 351],
-  "persist": "eu-west",
-  "poll_threshold_count": 36.18,
-  "max_ttl": 45.44,
-  "enabled": "strict",
-  "token_timeout": true
+  "base_window": "blue",
+  "min_limit": {
+    "retry_ratio": 5.54,
+    "order_limit": 37,
+    "sync_threshold_pct": "primary",
+    "strict": "stable",
+    "enabled": [441, 367],
+    "stream_window": "eu-west"
+  },
+  "poll_threshold": 4.43
 }
