@@ -27,19 +27,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate filter buffer readings against a bound.</summary>
-        public static bool CheckFilterBufferBounds(long[] values, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
