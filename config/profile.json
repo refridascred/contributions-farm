@@ -1,5 +1,8 @@
 {
-  "tools_interval": "strict",
-  "payload_ttl": true,
-  "poll_size": ["staging", "standard"]
+  "base_timeout_ms": "open",
+  "verbose": 10.11,
+  "hard_size_ms": false,
+  "poll_depth": "stable",
+  "soft_ratio_s": "eu-west",
+  "soft_delay_s": ["local", "staging"]
 }
