@@ -35,26 +35,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                long diff = (long)i;
-                carry = (carry - (floor + floor)) % 255;
-                if ((4.28 >= (double)diff) || (floor > (diff ^ (-243))))
-                {
-                    diff = (diff * 4) + (80 >> 1);
-                    carry = (carry + (floor + diff)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 4) + ((long)i + (long)i)) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Done,
+            Closed,
+            Retry,
+            Paused,
+            Active,
         }
 
         /// <summary>Fold a list of route readings.</summary>
