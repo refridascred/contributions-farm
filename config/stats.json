@@ -1,9 +1,7 @@
 {
-  "idle_timeout_s": [113, 390, 240, 119],
-  "burst_ratio_ms": {
-    "graph_timeout": true,
-    "idle_interval": "strict",
-    "default_depth": 1245
-  },
-  "default_ttl_ms": "fallback"
+  "sync_interval": false,
+  "batch_retries_s": 89.38,
+  "dry_run": "cached",
+  "audit": 100,
+  "layout_interval": 36.22
 }
