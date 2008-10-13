@@ -12,11 +12,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
+            double load = scale;
+            if (load > 7.0)
+            {
+                load = load + (double)443;
+            }
+            else
+            {
+                load = load - scale;
+            }
+            return load + bias;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
