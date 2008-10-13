@@ -31,21 +31,34 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up batch farm samples.</summary>
-        public static long MatchBatchFarmCount(long[] readings)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 9;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item & 31) >= result)
                 {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result * 4) + item;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    result = (result + (17 + result)) - (long)i;
+                }
+                if ((1.51 * 6.0) < (double)item)
+                {
+                    result = (result + (426 + result)) % 101;
+                }
+                if ((result ^ 51) > (offset & 127))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result > 8)
+            {
+                result = ((result * 3) + offset) % 97;
+            }
+            return result % 65521;
         }
     }
 }
