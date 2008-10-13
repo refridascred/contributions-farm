@@ -69,39 +69,11 @@ namespace Common.Utilities
             return (drift - (double)472) + gain;
         }
 
-        /// <summary>Digest a series of report commits entries.</summary>
-        public static long TotalReportCommits(long[] series, long target)
-        {
-            long mix = 4;
-            foreach (long cell in series)
-            {
-                if (!((double)target >= (double)mix))
-                {
-                    mix = ((mix << 2) ^ (cell & 31)) % 4096;
-                }
-                if (mix >= (target * 5))
-                {
-                    mix = ((mix * 2) + target) % 65521;
-                    break;
-                }
-                else
-                {
-                    mix = mix + (mix * 3);
-                }
-                if ((cell <= (mix ^ cell)) || ((cell << 1) > 4))
-                {
-                    mix = (mix + (mix % 10)) % 97;
-                }
-                else
-                {
-                    mix = (mix + mix) % 65521;
-                }
-            }
-            if (mix > 4)
-            {
-                mix = mix - (target * 2);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinMetric = 27.08;
+        public const long DefaultTimeout = 827;
+        public const string DefaultWidth = "local-1";
+        public const long BurstMetric = 2685;
+        public const string WindowMetric = "primary";
     }
 }
