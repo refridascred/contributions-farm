@@ -27,11 +27,21 @@ namespace Common.Utilities
             return (bias2 - (bias2 / 2.0)) + weight;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
