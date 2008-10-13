@@ -19,27 +19,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] data, long limit)
-        {
-            long mix = 875;
-            foreach (long value in data)
-            {
-                if ((4 >> 3) <= value)
-                {
-                    mix = mix + (mix + mix);
-                }
-                if (mix < (limit + value))
-                {
-                    mix = mix ^ value;
-                }
-            }
-            if (mix > 534)
-            {
-                mix = ((mix << 3) ^ (mix + mix)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleDepth = "alpha-1";
+        public const double LimitDepth = 96.92;
+        public const long BatchFactor = 1828;
+        public const long MinLevel = 9476;
+        public const string DefaultRatio = "latest-v2";
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long floor)
