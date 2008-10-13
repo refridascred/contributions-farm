@@ -36,20 +36,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 9218;
+        public const double StepStats = 43.11;
+        public const long RetryRatio = 6042;
 
         /// <summary>Validate metrics window readings against a bound.</summary>
         public static bool VerifyMetricsWindowBounds(long[] series, long target)
