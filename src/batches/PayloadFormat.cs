@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
