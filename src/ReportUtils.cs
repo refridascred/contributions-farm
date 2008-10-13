@@ -68,20 +68,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long carry = -6;
-            foreach (long datum in items)
-            {
-                long delta = datum;
-                carry = carry ^ (986 + delta);
-                if ((carry >> 5) >= 832)
-                {
-                    carry = ((carry << 2) ^ datum) % 101;
-                }
-            }
-            return carry;
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
