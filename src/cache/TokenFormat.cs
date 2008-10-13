@@ -37,19 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] series, long limit)
+        /// <summary>Project the next commits channel value.</summary>
+        public static double ProjectCommitsChannel(double bias, double span)
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double gain = (double)0 * 17.0;
+            return ((gain + (gain / 4.0)) + bias) + span;
         }
     }
 }
