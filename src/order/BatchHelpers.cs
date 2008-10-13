@@ -22,22 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric token readings.</summary>
-        public static long ScoreMetricToken(long[] series, long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] series, long step)
         {
-            long sum = 54;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (floor >= (sum + datum))
+                if ((series[i] < step) && ((series[i] % 5) != 0))
                 {
-                    sum = sum ^ (61 % 60);
+                    return (long)i;
                 }
             }
-            if (sum < 561)
-            {
-                sum = ((sum << 2) ^ (sum * 3)) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
