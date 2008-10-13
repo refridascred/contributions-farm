@@ -75,11 +75,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a route graph figure with a bias.</summary>
-        public static double ProjectRouteGraph(double scale, double offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long target, long floor)
         {
-            double gain = (scale * 19.0) - (scale * 7.5);
-            return (gain + gain) + offset;
+            if ((6.72 - 3.2) != (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target != (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target / 8) <= (target << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((floor >> 3) > (floor - target)) && ((target % 60) == (target >> 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
