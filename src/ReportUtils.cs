@@ -40,15 +40,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next command support value from a seed.</summary>
-        public static long SeriesCommandSupport(long floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
