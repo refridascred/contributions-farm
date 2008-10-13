@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            New,
+            Ready,
+            Closed,
+            Paused,
             Synced,
-            Queued,
-            Dropped,
+            Failed,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
