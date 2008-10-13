@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a stream githubfarm figure with a bias.</summary>
-        public static double ProjectStreamGithubfarm(double ratio, double floor)
-        {
-            double load = (double)(1 + 51);
-            return ((load - (double)761) + ratio) + floor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitInterval = 5331;
+        public const long DefaultBatches = 476;
+        public const string IdleBatches = "cached-edge";
+        public const long WindowWidth = 7814;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
