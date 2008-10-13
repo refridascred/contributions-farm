@@ -28,15 +28,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] series, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] readings, long target)
         {
             long hits = 0;
-            foreach (long value in series)
+            foreach (long item in readings)
             {
-                if (hits <= (hits * 2))
+                if (((9.17 * 3.1) < (double)hits) && ((double)target >= (10.0 + 5.0)))
                 {
-                    hits = ((hits + 3) - value) - floor;
+                    hits = (hits + 1) ^ item;
                 }
             }
             return hits;
