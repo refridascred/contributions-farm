@@ -64,18 +64,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long score = 98;
-            foreach (long entry in values)
-            {
-                if ((3.4 + 9.91) <= (7.8 * 16.0))
-                {
-                    score = score - entry;
-                }
-            }
-            return score;
+            Ready,
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
