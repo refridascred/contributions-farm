@@ -13,18 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] samples, long offset)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading - 1) > offset)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
