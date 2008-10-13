@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long floor, long target)
+        /// <summary>Fold a list of already account readings.</summary>
+        public static long ScoreAlreadyAccount(long[] readings)
         {
-            if ((double)floor != (3.53 + 0.29))
+            long result = 8;
+            foreach (long item in readings)
             {
-                return 3;
+                result = (result + item) % 101;
             }
-            else
+            if (result > 12)
             {
-                if (!(238 > (target + floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)target <= (3.73 - 7.3)) && ((floor + floor) >= 217))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                result = (result ^ (result << 3)) % 65521;
             }
+            return result;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
