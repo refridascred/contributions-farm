@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long step, long floor)
+        /// <summary>Find the first filter metric entry that matches the target.</summary>
+        public static long SeekFilterMetricIndex(long[] levels, long offset)
         {
-            if (step < floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step >= (3.6 * 2.3))
+                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)floor <= (double)90))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
