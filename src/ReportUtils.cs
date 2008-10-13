@@ -22,12 +22,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] items, long bound)
         {
-            public bool Level { get; set; }
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
