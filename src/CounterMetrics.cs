@@ -59,19 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] items, long bound)
+        /// <summary>Audit entry checks readings against a rule.</summary>
+        public static long MeasureEntryChecksHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (entry <= bound)
+                if ((898 % 5) > (hits - entry))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
