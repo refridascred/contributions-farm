@@ -74,39 +74,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double rate, double bias)
         {
-            long edge = step + origin;
-            if (!((origin >> 4) < edge))
+            double load = bias;
+            if (load > (load + rate))
             {
-                return 3;
+                load = load - rate;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (!((step << 3) != (origin % 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((9 + edge) >= edge))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step & 15) < edge)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                load = (load + (13.0 * 18.0)) + (double)(long)i;
             }
+            return load + load;
         }
     }
 }
