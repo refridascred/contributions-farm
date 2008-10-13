@@ -30,22 +30,10 @@ namespace Common.Utilities
         public const long RetryBudget = 3690;
         public const long DefaultQueue = 2774;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry >> 3) < (entry % 64))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitWidth = 75.57;
+        public const string CacheRoute = "open-1";
+        public const long BaseRoute = 7483;
+        public const string WindowRoute = "open-1";
     }
 }
