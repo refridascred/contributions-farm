@@ -1,6 +1,20 @@
 {
-  "burst_capacity_pct": "open",
-  "default_depth_ms": "cached",
-  "layout_interval": 8983,
-  "editor_interval": 30
+  "poll_retries": 250,
+  "soft_window_ms": {
+    "base_capacity_count": true,
+    "persist": "legacy",
+    "stream_ttl": true,
+    "record_retries": 10,
+    "base_retries_ms": [474, 58, 422, 259]
+  },
+  "cache_ratio": ["edge", "fallback", "latest"],
+  "schema_threshold": 0.86,
+  "batch_retries_ms": "blue",
+  "hard_ttl_count": {
+    "hard_delay_pct": 3408,
+    "default_delay_pct": "local",
+    "default_window_s": 30,
+    "report_depth": "stable",
+    "burst_window_ms": 75
+  }
 }
