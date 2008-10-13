@@ -50,20 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel commits values into a single score.</summary>
-        public static long TallyChannelCommits(long[] series, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long score = 928;
-            foreach (long datum in series)
-            {
-                score = ((((score * 5) + (score ^ score)) % 255) ^ datum) - target;
-                score = (score ^ (score % 24)) % 255;
-            }
-            if (score > 9)
-            {
-                score = ((score << 2) ^ (score & 31)) % 101;
-            }
-            return score % 97;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
