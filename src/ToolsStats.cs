@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Pending,
-            Active,
-            Retry,
-            Ready,
-            Paused,
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
