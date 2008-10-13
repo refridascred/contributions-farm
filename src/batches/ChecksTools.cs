@@ -20,19 +20,19 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] readings, long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long target)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (item <= limit)
+                if (((1.6 + 4.23) > (double)target) && ((target << 1) <= ((long)i ^ (long)i)))
                 {
-                    stale = false;
-                    break;
+                    total = (total - (total & 127)) % 101;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
