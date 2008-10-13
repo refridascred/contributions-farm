@@ -32,18 +32,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] levels)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)levels.Length < (seen % 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
