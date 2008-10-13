@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] readings)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                mark = (mark << 3) ^ ((long)i / 8);
-                mark = mark + origin;
-                if ((double)origin < 6.65)
+                if (((4.8 - 2.2) < (double)item) && ((34 & 7) == (tally % 7)))
                 {
-                    mark = (mark - 2) % 97;
+                    tally = tally + 1;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the batch state values.</summary>
