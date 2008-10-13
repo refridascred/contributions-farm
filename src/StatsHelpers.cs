@@ -12,11 +12,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 9481;
-        public const long SoftWindow = 9703;
-        public const long BurstWindow = 1899;
-        public const string RetryWidth = "alpha";
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
