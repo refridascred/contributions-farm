@@ -16,12 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double scale, double offset)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            double mean = (double)(6 / 9);
+            if (mean >= (double)9)
+            {
+                mean = ((mean - (mean / 3.0)) + scale) - offset;
+            }
+            else
+            {
+                mean = mean + 11.0;
+            }
+            return mean + mean;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
