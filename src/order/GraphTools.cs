@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (drift + (offset - offset)) + bias;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] readings, long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
