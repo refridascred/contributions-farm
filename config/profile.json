@@ -1,6 +1,16 @@
 {
-  "poll_depth_ms": "green",
-  "soft_limit": 6335,
-  "sync_depth_s": "fallback",
-  "idle_retries_count": false
+  "cache_retries_s": false,
+  "schema_size": 7876,
+  "githubfarm_size": {
+    "format_ratio": ["primary", "cached", "latest", "legacy"],
+    "burst_ttl_ms": {
+      "soft_window_count": false,
+      "hard_limit_s": 7018,
+      "poll_capacity": 1216
+    },
+    "soft_delay": 79,
+    "cluster_timeout": "blue",
+    "soft_ratio_pct": 1
+  },
+  "persist": 9739
 }
