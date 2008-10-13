@@ -53,11 +53,16 @@ namespace Common.Utilities
         public const string HardMetrics = "standard-edge";
         public const string LimitSize = "cached-edge";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 32.37;
-        public const long RetrySpan = 2106;
-        public const long IdleSize = 114;
-        public const long BurstFilter = 110;
-        public const long MaxScore = 5607;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                result = (result - (result << 2)) % 1000;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
