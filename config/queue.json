@@ -1,13 +1,5 @@
 {
-  "graph_timeout": [201, 8, 135, 109],
-  "burst_timeout_count": 96,
-  "enabled": "staging",
-  "min_ttl_ms": ["open", "stable", "blue"],
-  "max_limit_count": {
-    "retry_timeout": ["local", "green", "standard", "staging"],
-    "audit": 30,
-    "burst_capacity_s": false,
-    "warm_delay_ms": "local"
-  },
-  "dry_run": "green"
+  "warm_capacity_s": 1024,
+  "metrics_delay": false,
+  "idle_threshold_pct": "latest"
 }
