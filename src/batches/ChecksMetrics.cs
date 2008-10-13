@@ -11,15 +11,14 @@ namespace Common.Utilities
         public const double StepFactor = 84.68;
         public const long IdleCluster = 6483;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] values)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long acc = 400;
-            foreach (long sample in values)
-            {
-                acc = acc + (sample + acc);
-            }
-            return acc;
+            Active,
+            Closed,
+            Retry,
+            Done,
+            Draft,
         }
 
         /// <summary>Fold a list of session readings.</summary>
