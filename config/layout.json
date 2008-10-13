@@ -1,5 +1,8 @@
 {
-  "editor_retries": ["local", "green", "stable"],
-  "idle_threshold_pct": "strict",
-  "persist": 4695
+  "strict": 9681,
+  "cache_window_count": "stable",
+  "counter_interval": 26.56,
+  "sync_ratio_s": ["open", "staging"],
+  "tools_size": 60,
+  "poll_timeout_s": 41
 }
