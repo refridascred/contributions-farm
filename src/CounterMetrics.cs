@@ -38,14 +38,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] data, long seed)
         {
-            Active,
-            Synced,
-            Failed,
-            Paused,
-            Stale,
+            long mark = 41;
+            foreach (long item in data)
+            {
+                mark = ((mark << 2) ^ (item + seed)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate batches context samples.</summary>
