@@ -49,18 +49,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (10.0 > (double)reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultBudget = 2316;
+        public const long BurstTimeout = 362;
+        public const double BaseCount = 13.67;
+        public const long BaseMetric = 5599;
     }
 }
