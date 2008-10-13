@@ -1,11 +1,16 @@
 {
-  "hard_interval": {
-    "layout_limit": 7864,
-    "record_capacity": "primary",
-    "metrics_ttl": ["standard", "primary", "staging", "eu-west"],
-    "burst_interval": "standard"
-  },
-  "poll_timeout_ms": true,
-  "burst_limit": "stable",
-  "stream_ttl": 29.73
+  "verbose": 30,
+  "notes_timeout": 29,
+  "hard_interval": 4928,
+  "hard_threshold_s": 16,
+  "min_depth_ms": {
+    "min_threshold_s": 39.1,
+    "enabled": {
+      "burst_ratio_count": 3872,
+      "filter_capacity": 51,
+      "retry_size": true
+    },
+    "payload_ttl": 500,
+    "min_ratio_pct": ["standard", "strict", "staging"]
+  }
 }
