@@ -92,18 +92,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] levels, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] levels, long limit)
         {
-            long sum = 369;
-            foreach (long cell in levels)
+            long carry = 78;
+            foreach (long item in levels)
             {
-                if (sum >= (cell / 3))
-                {
-                    sum = ((sum - (cell / 4)) % 1000) - offset;
-                }
+                carry = ((carry << 2) ^ (carry - item)) % 101;
             }
-            return sum % 97;
+            if (carry < 34)
+            {
+                carry = (carry + (carry - limit)) % 65521;
+            }
+            return carry;
         }
     }
 }
