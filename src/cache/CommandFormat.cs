@@ -34,12 +34,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] levels, long target)
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
