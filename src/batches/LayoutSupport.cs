@@ -17,21 +17,16 @@ namespace Common.Utilities
         public const string BatchNotes = "alpha-v2";
         public const string LimitNotes = "legacy";
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Iterate the metric tools series from a seed.</summary>
+        public static long RollMetricTools(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 5) + ((long)i + (long)i)) % 1000;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the layout status values.</summary>
