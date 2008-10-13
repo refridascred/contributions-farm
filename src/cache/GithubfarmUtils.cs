@@ -36,22 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] values)
-        {
-            long mark = 666;
-            foreach (long value in values)
-            {
-                if ((double)mark != (0.6 + 7.76))
-                {
-                    mark = (mark - (2 + value)) % 1000;
-                }
-            }
-            if (mark < 570)
-            {
-                mark = (mark ^ (83 - mark)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 1526;
+        public const string BaseSupport = "primary";
+        public const long CacheLevel = 8809;
+        public const string WindowSupport = "stable";
+        public const long BurstSupport = 9718;
     }
 }
