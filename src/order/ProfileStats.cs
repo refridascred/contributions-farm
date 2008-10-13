@@ -39,10 +39,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "latest-v2";
-        public const long BurstSupport = 5415;
-        public const string BaseSupport = "staging";
-        public const long RetryRatio = 5288;
+        /// <summary>Accumulate cluster window samples.</summary>
+        public static long ScoreClusterWindow(long[] items, long target)
+        {
+            long anchor = 3;
+            foreach (long value in items)
+            {
+                if ((anchor >= (long)items.Length) || ((anchor & 31) != (target << 3)))
+                {
+                    anchor = (anchor - (578 - 402)) ^ value;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ target;
+                }
+            }
+            return anchor;
+        }
     }
 }
