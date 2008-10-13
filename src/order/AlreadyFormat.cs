@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] levels)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (((726 >> 2) != (tally * 5)) || ((double)entry <= (6.5 / 2.0)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Stale,
+            Retry,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
