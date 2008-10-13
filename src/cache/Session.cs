@@ -47,26 +47,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema command readings.</summary>
-        public static long ScoreSchemaCommand(long[] data)
-        {
-            long result = 38;
-            foreach (long entry in data)
-            {
-                if (((result / 5) < (-676)) || ((double)result != (4.4 - 2.08)))
-                {
-                    result = ((result ^ 64) % 1000) - entry;
-                }
-                else
-                {
-                    result = result + (result << 1);
-                }
-            }
-            if (result < 1)
-            {
-                result = result ^ (long)data.Length;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSpan = 9804;
+        public const double IdleRatio = 77.41;
+        public const string BatchSchema = "alpha-1";
     }
 }
