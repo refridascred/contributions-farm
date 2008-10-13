@@ -1,6 +1,7 @@
 {
-  "commits_interval": 32,
-  "audit": 60,
-  "verbose": 8754,
-  "idle_interval": ["stable", "strict"]
+  "warm_interval_s": 100,
+  "metric_ratio": ["legacy", "fallback", "blue"],
+  "hard_limit_ms": 90.67,
+  "idle_ttl": 59,
+  "base_delay_count": 5272
 }
