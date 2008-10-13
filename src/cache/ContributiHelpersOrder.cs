@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series)
         {
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
+            long state = 6;
+            foreach (long entry in series)
+            {
+                if ((entry + 3) == (entry & 255))
+                {
+                    state = state ^ (entry >> 2);
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
