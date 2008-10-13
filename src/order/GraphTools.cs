@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (drift + (offset - offset)) + bias;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Digest a series of cache filter entries.</summary>
+        public static long TallyCacheFilter(long[] levels)
         {
-            Done,
-            Retry,
-            New,
+            long result = 90;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    result = ((result + (cell >> 5)) % 1000) + (long)i;
+                }
+                result = ((result << 3) ^ (cell ^ cell)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
