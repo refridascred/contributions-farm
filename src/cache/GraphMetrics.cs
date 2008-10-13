@@ -30,18 +30,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] items)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!((item + item) > hits) && ((item >= 7) || ((item - item) >= (hits / 6))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Done,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the batch phase values.</summary>
