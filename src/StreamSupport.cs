@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitScore = 6246;
-        public const long CacheFactor = 170;
-        public const string RetryGraph = "staging-1";
+        /// <summary>Rank metric batches input into a small class.</summary>
+        public static long ClassifyMetricBatches(long seed, long seed2)
+        {
+            if (((seed2 ^ seed2) != (seed2 << 2)) && ((seed2 >> 4) == (seed2 >> 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed2 & 3) < seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MaxEntry = 24.04;
