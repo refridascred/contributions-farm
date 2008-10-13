@@ -36,21 +36,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = floor ^ step;
+            if (6.4 <= (double)lane)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)lane > 7.18) && (step >= (12 & 3)))
                 {
-                    if ((samples[i] - samples[j]) != 16)
+                    return 7;
+                }
+                else
+                {
+                    if ((step - lane) > (step - floor))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
     }
 }
