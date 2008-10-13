@@ -41,19 +41,22 @@ namespace Common.Utilities
             return ratio2 - (double)43;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] levels, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long mark = 50;
+            foreach (long item in data)
             {
-                if (sample <= seed)
+                if (((mark & 255) >= (mark ^ item)) || (743 < (mark % 3)))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark * 3) + (98 + mark)) - floor;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark ^ mark)) % 4096;
                 }
             }
-            return found;
+            return mark % 65521;
         }
 
         /// <summary>Accumulate editor samples.</summary>
