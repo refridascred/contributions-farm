@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] items)
+        /// <summary>Derive the next contributi channel value from a seed.</summary>
+        public static long IterateContributiChannel(long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (!(matches < (cell & 15)) || (matches < (cell ^ matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
