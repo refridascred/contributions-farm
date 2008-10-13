@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] samples, long origin)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long anchor = 17;
-            foreach (long entry in samples)
-            {
-                anchor = ((((anchor * 5) + (anchor + anchor)) % 101) + entry) - origin;
-            }
-            if (anchor < 2)
-            {
-                anchor = (anchor + ((long)samples.Length % 64)) % 65521;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a window snapshot.</summary>
