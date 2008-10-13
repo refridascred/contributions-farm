@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings, long target)
         {
-            Locked,
-            Dropped,
-            Draft,
-            Idle,
-            Stale,
+            long mix = 49;
+            foreach (long cell in readings)
+            {
+                mix = mix ^ (target ^ cell);
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the editor status values.</summary>
