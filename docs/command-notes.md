@@ -1,13 +1,13 @@
 # Command notes
 
-Use cache settings to tune how often layout data is refreshed.
-Each githubfarm is validated before it reaches the batches queue.
+Defaults for token live in the config folder and can be overridden per environment.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
-Keep report and support names short and lowercase.
-Each counter is validated before it reaches the entry queue.
+The account report groups every report by format.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep token values small
-- Prefer format defaults
-- Log every record change
+- Review route limits each release
+- Log every route change
+- Prefer channel defaults
