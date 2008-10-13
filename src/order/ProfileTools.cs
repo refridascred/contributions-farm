@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Count the cache graph entries that pass the check.</summary>
+        public static long MeasureCacheGraphOutliers(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((double)8 != (double)datum) && ((tally / 6) > tally)) && (((7.35 - 7.3) != (double)tally) || (3 <= (tally * 4))))
                 {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
