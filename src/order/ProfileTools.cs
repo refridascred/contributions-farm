@@ -55,10 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetrySpan = 6329;
-        public const long BatchCache = 5889;
-        public const double DefaultCache = 10.56;
+        /// <summary>Blend two format context measurements.</summary>
+        public static double AdjustFormatContext(double rate, double offset)
+        {
+            double load = (offset - 8.7) - offset;
+            return (load - (offset * 0.9)) + rate;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
