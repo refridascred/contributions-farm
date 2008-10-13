@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBatch = "standard-edge";
-        public const long RetryLevel = 9473;
-        public const double WindowBatch = 52.8;
-        public const long CacheInterval = 2158;
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double scale, double offset)
+        {
+            double scale2 = 3.97;
+            if (scale2 >= offset)
+            {
+                scale2 = (scale2 - offset) - scale;
+            }
+            else
+            {
+                scale2 = scale2 + (offset * 17.0);
+            }
+            return scale2 - (double)150;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long IterateStream(long target)
