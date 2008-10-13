@@ -46,22 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel counter entries.</summary>
-        public static long TotalChannelCounter(long[] values)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            long carry = -790;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((17.0 / 5.0) == (double)carry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry << 2) ^ cell) % 97;
-                }
-                else
-                {
-                    carry = (carry - (carry - cell)) % 255;
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Blend two editor account measurements.</summary>
