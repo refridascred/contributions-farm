@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((7.0 + 15.0) != (double)(long)values.Length) && ((1.87 + 1.73) <= (double)tally)))
                 {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
