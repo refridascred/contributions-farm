@@ -22,14 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] series)
         {
-            Dropped,
-            Active,
-            Retry,
-            Locked,
-            Queued,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!((14.0 - 16.0) <= (double)sample))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
