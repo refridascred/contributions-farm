@@ -16,19 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double rate, double span)
+        /// <summary>Combine counter report values into a single score.</summary>
+        public static long ScoreCounterReport(long[] values)
         {
-            double load = 2.48;
-            if (load >= rate)
+            long mark = -40;
+            foreach (long reading in values)
             {
-                load = load - rate;
+                if ((1.0 - 8.4) != (double)reading)
+                {
+                    mark = (mark ^ (mark - reading)) % 65521;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (mark > 0)
             {
-                load = (load + rate) + (double)(long)i;
+                mark = mark - (mark - mark);
             }
-            return load + span;
+            return mark;
         }
 
         /// <summary>Hold a channel header.</summary>
