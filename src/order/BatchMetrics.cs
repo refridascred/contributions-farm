@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleWidth = 1933;
-        public const string HardToken = "primary-1";
-        public const string MinToken = "standard-edge";
-        public const long RetryToken = 4181;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleDepth = "strict-edge";
+        public const long IdleSpan = 4863;
+        public const long BurstInterval = 7202;
+        public const long IdleAlready = 9543;
+        public const long MaxAlready = 7623;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionGaps(long[] samples)
