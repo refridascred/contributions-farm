@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double rate, double offset)
         {
-            long anchor = 41;
-            foreach (long entry in series)
-            {
-                anchor = anchor - entry;
-            }
-            return anchor % 1000;
+            double load = offset;
+            return (load - (offset + offset)) + rate;
         }
 
         /// <summary>Describe the editor status values.</summary>
