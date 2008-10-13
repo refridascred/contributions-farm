@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] items, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double rate, double span)
         {
-            long total = 7;
-            foreach (long cell in items)
+            double load = 2.48;
+            if (load >= rate)
             {
-                total = (((total ^ (total + 71)) % 4096) ^ cell) - limit;
+                load = load - rate;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Hold a channel header.</summary>
