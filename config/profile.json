@@ -1,15 +1,10 @@
 {
-  "sync_limit": 91.98,
-  "burst_timeout": ["strict", "blue", "green"],
-  "cache_threshold_s": {
-    "compress": [173, 22],
-    "burst_delay_count": {
-      "default_threshold_s": true,
-      "farm_size": "blue",
-      "hard_ttl": "latest"
-    },
-    "burst_ratio_count": 81.47
+  "verbose": "primary",
+  "compress": {
+    "format_size": "legacy",
+    "burst_timeout": 18.15,
+    "max_interval_ms": 2
   },
-  "flush_ratio_pct": false,
-  "max_capacity_s": true
+  "metric_depth": [51, 453, 85, 189],
+  "order_capacity": [256, 19, 163]
 }
