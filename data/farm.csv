@@ -1,6 +1,10 @@
-id,rank,level,label
-1,510,712,778
-2,798,230,eu-west
-3,665,eu-west,local
-4,86.12,73.66,866
-5,staging,cached,857
+id,ratio,weight
+1,eu-west,645
+2,50.44,stable
+3,stable,green
+4,55.71,672
+5,182,128
+6,787,82.34
+7,77.89,485
+8,local,19.82
+9,384,strict
