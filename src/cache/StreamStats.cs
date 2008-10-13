@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Idle,
-            Failed,
             Done,
+            Ready,
+            Dropped,
             Active,
-            Queued,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
