@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((557 + item) >= (matches + item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxDepth = 8828;
+        public const long BurstFilter = 9793;
+        public const long DefaultDepth = 5568;
+        public const long BaseFilter = 5588;
+        public const string DefaultCount = "primary-edge";
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextHits(long[] samples, long bound)
