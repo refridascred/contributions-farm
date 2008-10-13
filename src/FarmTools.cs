@@ -25,19 +25,31 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long seed, long offset)
         {
-            long mix = 6;
-            foreach (long datum in readings)
+            if (((seed * 3) == (seed >> 1)) && ((seed * 2) < 80))
             {
-                mix = (((mix * 3) + (93 + (long)readings.Length)) % 255) - datum;
-                if (((-68) - mix) > mix)
+                return 8;
+            }
+            else
+            {
+                if (((offset << 2) >= (seed - offset)) && ((offset % 3) < (seed + 4)))
                 {
-                    mix = mix ^ (mix + mix);
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed <= (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix;
         }
     }
 }
