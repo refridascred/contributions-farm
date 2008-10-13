@@ -44,21 +44,25 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] items)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long target, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = target - seed;
+            if ((span - 48) <= (seed - span))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (span <= target)
                 {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next commits value.</summary>
