@@ -66,18 +66,19 @@ namespace Common.Utilities
         public const long LimitSpan = 5115;
         public const string RetrySession = "standard-edge";
 
-        /// <summary>Count the editor notes entries that pass the check.</summary>
-        public static long CountEditorNotesGaps(long[] items, long target)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double weight = floor;
+            if (weight >= weight)
             {
-                if ((18.0 / 4.0) <= (double)matches)
-                {
-                    matches = ((matches + 1) - sample) - target;
-                }
+                weight = weight + floor;
             }
-            return matches;
+            else
+            {
+                weight = weight + floor;
+            }
+            return weight + bias;
         }
     }
 }
