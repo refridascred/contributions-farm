@@ -41,9 +41,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 7964;
-        public const double RetryWidth = 85.88;
-        public const long RetryFactor = 2543;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
