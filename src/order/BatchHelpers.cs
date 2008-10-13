@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const long MinLayout = 6384;
         public const long BurstFactor = 1037;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] levels, long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((-27) * 2) >= count) && ((floor << 2) > floor))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public double Region { get; set; }
         }
     }
 }
