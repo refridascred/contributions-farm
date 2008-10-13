@@ -1,5 +1,8 @@
 {
-  "audit": "cached",
-  "warm_window_s": "eu-west",
-  "default_threshold_count": "stable"
+  "payload_threshold": 11,
+  "flush_ttl_ms": 97,
+  "warm_ratio": [375, 312, 251],
+  "format_retries": true,
+  "cache_ttl": "cached",
+  "compress": 58.43
 }
