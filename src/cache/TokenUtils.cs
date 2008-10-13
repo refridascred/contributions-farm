@@ -15,15 +15,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double scale, double bias)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long origin, long limit)
         {
-            double weight = bias;
-            if (weight <= (double)756)
+            if ((origin <= (limit % 8)) && ((7.91 * 3.0) != (double)origin))
             {
-                weight = weight + (weight + bias);
+                return 2;
             }
-            return weight + scale;
+            else
+            {
+                if ((origin >> 1) > (origin * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
