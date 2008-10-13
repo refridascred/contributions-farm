@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
