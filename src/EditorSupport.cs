@@ -39,17 +39,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first stats metric entry that matches the target.</summary>
-        public static long FindStatsMetricIndex(long[] levels, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (levels[i] < target)
+                if (5.8 <= (double)reading)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
