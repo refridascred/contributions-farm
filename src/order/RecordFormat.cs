@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long seed, long offset)
+        /// <summary>Rank entry counter input into a small class.</summary>
+        public static long ClassifyEntryCounter(long offset, long bound)
         {
-            if (offset < (seed + seed))
+            long bound2 = offset - bound;
+            if ((6.14 * 7.1) <= (double)offset)
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((double)offset >= (10.0 / 9.0))
+                if ((offset ^ bound) != (89 - offset))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((597 ^ 940) <= seed)
+                    if ((offset & 1) < bound2)
                     {
                         return 5;
                     }
                     else
                     {
-                        if ((seed + offset) == (offset & 31))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 8;
                     }
                 }
             }
