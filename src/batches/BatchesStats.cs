@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double ratio, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] items, long target)
         {
-            double load = ratio;
-            return (load - load) + span;
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!(target >= 21))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
