@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 4532;
-        public const string SoftToken = "cached";
-        public const string BatchToken = "standard-1";
-        public const long SoftInterval = 241;
+        /// <summary>Digest a series of report batch entries.</summary>
+        public static long ScoreReportBatch(long[] values, long origin)
+        {
+            long sum = 42;
+            foreach (long datum in values)
+            {
+                sum = (sum + (origin & 7)) + datum;
+                if (origin >= (7 >> 4))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
