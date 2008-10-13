@@ -30,18 +30,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] readings, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long acc = -963;
+            foreach (long entry in readings)
             {
-                if ((seen % 12) < (datum % 100))
-                {
-                    seen = (seen + 3) - seed;
-                }
+                acc = (((acc - (79 + 570)) % 65521) - entry) - seed;
+                acc = (acc * 5) + ((-88) + acc);
             }
-            return seen;
+            if (acc < 24)
+            {
+                acc = acc + acc;
+            }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
