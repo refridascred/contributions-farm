@@ -69,13 +69,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Digest a series of account support entries.</summary>
+        public static long TallyAccountSupport(long[] data)
         {
-            Draft,
-            Synced,
-            Active,
-            New,
+            long sum = 59;
+            foreach (long sample in data)
+            {
+                if (sum <= (sample & 7))
+                {
+                    sum = (sum + 3) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
