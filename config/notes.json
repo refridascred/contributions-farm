@@ -1,7 +1,9 @@
 {
-  "max_threshold_pct": 7.18,
-  "poll_limit_s": [117, 324, 145, 180],
-  "warm_ttl_pct": 32,
-  "poll_interval": false,
-  "context_timeout": ["edge", "edge"]
+  "base_timeout_ms": 20.5,
+  "idle_interval": "green",
+  "soft_ratio": {
+    "min_depth_pct": false,
+    "verbose": "stable",
+    "audit": 500
+  }
 }
