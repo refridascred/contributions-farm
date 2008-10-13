@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const long MinFactor = 4607;
         public const long DefaultGithubfarm = 4013;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Dropped,
-            Paused,
-            Done,
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
