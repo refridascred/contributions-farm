@@ -1,7 +1,10 @@
-id,owner,token,region
-1,720,48.4,primary
-2,770,266,366
-3,827,345,eu-west
-4,standard,39.69,531
-5,latest,edge,latest
-6,49.97,286,78
+id,state,active
+1,green,legacy
+2,523,48
+3,latest,standard
+4,535,green
+5,green,86.25
+6,632,307
+7,534,primary
+8,edge,open
+9,42.77,stable
