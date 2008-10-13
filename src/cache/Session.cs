@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] items, long bound)
         {
-            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] == bound)
                 {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
