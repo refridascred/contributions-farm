@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double bias, double offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long target, long origin)
         {
-            double mean = bias;
-            if (mean <= 8.6)
+            if (((3 + origin) == (24 % 100)) && ((8.58 + 5.0) == (double)origin))
             {
-                mean = mean + offset;
+                return 6;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean - (20.0 - mean)) - (double)(long)i;
+                if ((origin % 24) > (target % 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mean - offset;
         }
 
         /// <summary>Hold a tools stats.</summary>
