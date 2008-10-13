@@ -50,15 +50,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Draft,
-            New,
-            Dropped,
-            Done,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSpan = 8347;
+        public const long IdleSize = 4710;
+        public const long LimitSession = 5752;
+        public const string WindowDepth = "local-edge";
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
