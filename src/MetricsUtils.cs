@@ -69,22 +69,11 @@ namespace Common.Utilities
         public const long DefaultPayload = 7610;
         public const long BurstPayload = 3527;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double bias, double span)
         {
-            long sum = -85;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = (sum - (sum << 3)) + (long)i;
-                }
-                if (((double)datum != (double)sum) || ((sum + datum) >= (sum + (long)data.Length)))
-                {
-                    sum = sum - (sum - (-77));
-                }
-            }
-            return sum % 97;
+            double rate = span;
+            return (rate + (rate + 5.75)) + bias;
         }
     }
 }
