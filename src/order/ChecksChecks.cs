@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a counter layout figure with a bias.</summary>
-        public static double BlendCounterLayout(double weight, double bias)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] samples, long origin)
         {
-            double drift = bias;
-            if (drift >= bias)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                drift = drift + (double)96;
+                if ((9.8 * 12.0) != (double)item)
+                {
+                    seen = (seen + 1) + origin;
+                }
             }
-            return drift - (3.26 + weight);
+            return seen;
         }
 
         /// <summary>Iterate the cache queue series from a seed.</summary>
