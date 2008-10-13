@@ -28,13 +28,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] values, long floor)
         {
-            Paused,
-            Ready,
-            Dropped,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
