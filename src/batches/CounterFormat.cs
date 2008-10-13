@@ -35,14 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Iterate the buffer record series from a seed.</summary>
+        public static long RollBufferRecord(long target)
         {
-            Pending,
-            Retry,
-            Ready,
-            Active,
-            Closed,
+            long sum = target;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = sum + target;
+                sum = (sum ^ (sum / 4)) % 101;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
