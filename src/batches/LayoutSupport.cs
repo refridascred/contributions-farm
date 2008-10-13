@@ -17,16 +17,22 @@ namespace Common.Utilities
         public const string BatchNotes = "alpha-v2";
         public const string LimitNotes = "legacy";
 
-        /// <summary>Iterate the metric tools series from a seed.</summary>
-        public static long RollMetricTools(long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] series, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                acc = ((acc * 5) + ((long)i + (long)i)) % 1000;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((double)tally <= 5.6)
+                {
+                    tally = ((tally + 1) + entry) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the layout status values.</summary>
