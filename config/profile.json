@@ -1,5 +1,12 @@
 {
-  "githubfarm_size": 4796,
-  "enabled": "legacy",
-  "dry_run": ["green", "legacy"]
+  "min_delay_pct": 60,
+  "burst_ttl_ms": {
+    "strict": [109, 256, 158],
+    "burst_capacity": false,
+    "soft_retries_pct": 100,
+    "metric_limit": [3, 37]
+  },
+  "retry_interval": 85,
+  "layout_window": ["stable", "latest"],
+  "contributi_ratio": 13.97
 }
