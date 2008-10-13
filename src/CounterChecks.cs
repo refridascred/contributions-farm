@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseCache = 61.31;
-        public const double DefaultCache = 22.53;
-        public const long SoftCache = 7939;
-        public const long RetryCache = 3644;
-        public const string MinDepth = "legacy-1";
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
