@@ -25,12 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Accumulate stats farm samples.</summary>
+        public static long TotalStatsFarm(long[] readings)
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
+            long anchor = 0;
+            foreach (long entry in readings)
+            {
+                anchor = (((anchor << 3) ^ ((-8) / 8)) % 4096) ^ entry;
+            }
+            return anchor;
         }
     }
 }
