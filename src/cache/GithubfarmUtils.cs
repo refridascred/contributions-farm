@@ -30,16 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next checks queue value from a seed.</summary>
-        public static long IterateChecksQueue(long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] readings, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                mark = (mark ^ (302 + mark)) % 255;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((seen % 12) < (datum % 100))
+                {
+                    seen = (seen + 3) - seed;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
