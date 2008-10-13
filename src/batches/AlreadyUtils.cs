@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double scale, double floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] levels)
         {
-            double load = scale * 5.0;
-            if (load <= (scale * 5.0))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - load) + floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (load - 4.18)) + (double)(long)i;
-            }
-            return load - (scale + scale);
+            return matches;
         }
 
         /// <summary>Rank contributi layout input into a small class.</summary>
