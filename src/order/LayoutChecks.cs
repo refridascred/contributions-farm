@@ -27,18 +27,22 @@ namespace Common.Utilities
             return (rate + (double)414) + weight;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] data, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] data, long target)
         {
-            long state = 344;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((floor + reading) > reading)
+                if (108 <= seen)
                 {
-                    state = (state + (floor / 2)) % 101;
+                    seen = ((seen + 3) ^ cell) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
