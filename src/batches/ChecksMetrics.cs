@@ -53,18 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile account values into a single score.</summary>
-        public static long TallyProfileAccount(long[] series, long offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double gain, double span)
         {
-            long acc = 4;
-            foreach (long entry in series)
+            double load = (5.1 + 5.17) * 7.0;
+            if (load > gain)
             {
-                if (!((entry % 5) != (acc - (long)series.Length)))
-                {
-                    acc = (((acc << 3) ^ (entry << 2)) % 101) - offset;
-                }
+                load = load + (span - gain);
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load - (span * 5.2);
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
