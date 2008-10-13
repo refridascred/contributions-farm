@@ -37,19 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBatchesRange(long[] readings, long limit)
+        /// <summary>Check that every session token entry stays within the limit.</summary>
+        public static bool GuardSessionTokenRange(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (cell >= limit)
+                if (item < seed)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Scale a support batches figure with a bias.</summary>
