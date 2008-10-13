@@ -54,20 +54,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate editor layout readings against a bound.</summary>
-        public static bool VerifyEditorLayoutRange(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "open";
+        public const string WindowCount = "local";
+        public const long CacheChannel = 2741;
+        public const string WindowDepth = "open-edge";
+        public const double RetryWidth = 43.8;
 
         /// <summary>Digest a series of account support entries.</summary>
         public static long TallyAccountSupport(long[] data)
