@@ -37,22 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session editor readings.</summary>
-        public static long FoldSessionEditor(long[] values, long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long acc = 91;
-            foreach (long item in values)
-            {
-                if ((double)item >= (15.0 * 8.8))
-                {
-                    acc = acc ^ (634 % 100);
-                }
-            }
-            if (acc < 44)
-            {
-                acc = (acc - (limit * 4)) % 65521;
-            }
-            return acc;
+            Closed,
+            Paused,
+            Idle,
+            Active,
         }
     }
 }
