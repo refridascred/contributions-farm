@@ -1,4 +1,20 @@
 # support settings
-graph_timeout: 69.02
-min_capacity_s: false
-batches_capacity: edge
+hard_retries: 78.97
+hard_window: 84.01
+persist: staging
+poll_size_s: 91.65
+sync_delay:
+  graph_size: 1024
+  min_threshold: 13.35
+  strict: 44
+  batch_retries_pct: 19.23
+  stream_window: false
+  retry_threshold:
+    verbose: 4
+    command_depth: staging
+    min_timeout_count:
+      - 367
+      - 427
+      - 398
+    base_threshold_ms: 100
+base_limit_pct: 22
