@@ -30,12 +30,20 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitCount = 2318;
-        public const string CacheBatch = "primary-1";
-        public const long DefaultBatch = 5670;
-        public const long MinBatch = 8997;
-        public const long CacheScore = 7242;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double scale, double floor)
+        {
+            double ratio = floor * 7.0;
+            if (ratio <= floor)
+            {
+                ratio = ratio + (ratio + scale);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + scale) + (double)(long)i;
+            }
+            return ratio - (ratio + 0.55);
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
