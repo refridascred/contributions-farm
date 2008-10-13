@@ -14,10 +14,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxEntry = 24.04;
-        public const double CacheWidth = 20.47;
-        public const long StepEntry = 6540;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Idle,
+            Stale,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Derive the next schema batch value from a seed.</summary>
         public static long IterateSchemaBatch(long target)
