@@ -73,10 +73,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseInterval = 15.86;
-        public const long RetryTimeout = 3821;
-        public const long BurstAccount = 2635;
-        public const double WindowTimeout = 52.3;
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double scale, double span)
+        {
+            double mean = scale;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean + mean) + (double)(long)i) + span;
+            }
+            return mean + (mean + scale);
+        }
     }
 }
