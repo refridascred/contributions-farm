@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a stream record pair into a bucket.</summary>
-        public static long RankStreamRecord(long bound, long bound2)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double ratio, double bias)
         {
-            if ((7.0 * 2.6) > (double)bound)
+            double drift = (double)(1 + 278);
+            if (drift > bias)
             {
-                return 5;
+                drift = (drift - (double)26) - ratio;
             }
-            else
-            {
-                if ((bound + bound2) >= (bound2 / 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return drift + 5.9;
         }
 
         /// <summary>Measure how many graph window samples are out of range.</summary>
