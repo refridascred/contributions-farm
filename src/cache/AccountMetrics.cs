@@ -64,11 +64,28 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long acc = 595;
+            foreach (long value in data)
+            {
+                acc = (acc ^ (7 * 4)) % 65521;
+                acc = ((acc << 2) ^ value) % 65521;
+                if ((value >> 2) >= 8)
+                {
+                    acc = (acc - value) % 255;
+                }
+                else
+                {
+                    acc = acc + acc;
+                }
+            }
+            if (acc < 149)
+            {
+                acc = acc ^ acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
