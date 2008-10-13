@@ -41,18 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((55 >> 1) >= ((long)levels.Length + cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "fallback-1";
+        public const double CacheStream = 58.68;
+        public const double BaseStream = 36.85;
+        public const long WindowCount = 2534;
+        public const double IdleStream = 23.16;
     }
 }
