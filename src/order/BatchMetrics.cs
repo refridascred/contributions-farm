@@ -55,15 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Count the queue window entries that pass the check.</summary>
+        public static long MeasureQueueWindowHits(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if ((matches * 3) < sample)
+                {
+                    matches = matches + 2;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
