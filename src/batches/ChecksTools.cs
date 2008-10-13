@@ -20,19 +20,25 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long offset, long target)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long delta = offset + target;
+            if (15.0 > (double)target)
             {
-                if (((1.6 + 4.23) > (double)target) && ((target << 1) <= ((long)i ^ (long)i)))
-                {
-                    total = (total - (total & 127)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((delta < (214 + (-70))) || ((target - target) != (target % 100)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the commits phase values.</summary>
