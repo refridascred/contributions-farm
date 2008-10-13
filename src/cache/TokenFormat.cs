@@ -22,17 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (levels[i] <= floor)
+                if ((sample + count) < (sample / 2))
                 {
-                    return (long)i;
+                    count = (count + 1) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
