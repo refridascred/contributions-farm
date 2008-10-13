@@ -1,6 +1,9 @@
 # entry settings
-base_capacity_pct: 6094
-audit: 23.48
-idle_ratio: true
-hard_ttl: 26.59
-schema_depth: stable
+warm_timeout_s: edge
+cache_window_pct: local
+readonly: 250
+flush_delay_count:
+  - fallback
+  - fallback
+cache_window: strict
+editor_size: true
