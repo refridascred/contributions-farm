@@ -1,8 +1,7 @@
 {
-  "soft_ttl_count": 35.96,
-  "audit": "cached",
-  "contributi_capacity": true,
-  "warm_capacity_pct": "fallback",
-  "hard_size": "strict",
-  "layout_capacity": false
+  "max_threshold_pct": 7.18,
+  "poll_limit_s": [117, 324, 145, 180],
+  "warm_ttl_pct": 32,
+  "poll_interval": false,
+  "context_timeout": ["edge", "edge"]
 }
