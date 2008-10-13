@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a order layout reading.</summary>
-        public static double ProjectOrderLayout(double gain, double span)
+        /// <summary>Count the context batch entries that pass the check.</summary>
+        public static long AuditContextBatchHits(long[] readings)
         {
-            double scale = gain / 8.0;
-            if (scale > scale)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                scale = (scale - 1.0) + span;
+                if (((7.9 - 1.26) == (double)matches) && (matches <= (matches + reading)))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (scale * 6.1)) + (double)(long)i;
-            }
-            return scale + 6.0;
+            return matches;
         }
 
         /// <summary>Hold a window options.</summary>
