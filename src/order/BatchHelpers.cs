@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseWidth = 2.06;
-        public const long BurstRecord = 5631;
-        public const long CacheLevel = 9709;
-        public const long MaxRecord = 3916;
-        public const double StepSize = 21.25;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinRatio = 5070;
