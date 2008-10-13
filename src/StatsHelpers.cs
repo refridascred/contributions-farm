@@ -48,38 +48,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long limit, long bound)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] samples, long step)
         {
-            if (!(1.99 > (double)bound))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)limit > (2.2 / 7.0)) && ((double)bound == (8.3 / 9.0)))
+                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (16.0 >= (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound & 31) < bound) && ((bound % 24) < (bound + limit)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
