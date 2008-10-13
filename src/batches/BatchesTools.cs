@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] data, long seed)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches & 127) <= 6)
                 {
-                    if ((items[i] ^ items[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 2) + cell) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
