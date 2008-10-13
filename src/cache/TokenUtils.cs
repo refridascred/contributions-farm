@@ -15,24 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long origin, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            if ((origin <= (limit % 8)) && ((7.91 * 3.0) != (double)origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 1) > (origin * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
