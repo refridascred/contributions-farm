@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheDepth = 1927;
+        public const long MaxDepth = 3323;
+        public const double MinBudget = 44.87;
+        public const long BurstStream = 6434;
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
