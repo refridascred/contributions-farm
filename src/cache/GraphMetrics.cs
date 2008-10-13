@@ -30,14 +30,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            New,
-            Done,
             Closed,
-            Dropped,
             Draft,
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the batch phase values.</summary>
