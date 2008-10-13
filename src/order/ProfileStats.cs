@@ -27,14 +27,23 @@ namespace Common.Utilities
             return ratio + (bias2 / 6.0);
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] items)
         {
-            Locked,
-            Idle,
-            Queued,
-            Active,
-            Dropped,
+            long state = 8;
+            foreach (long value in items)
+            {
+                state = (state - value) % 65521;
+                if ((7.06 / 6.0) <= (double)state)
+                {
+                    state = state ^ (state + state);
+                }
+            }
+            if (state > 1)
+            {
+                state = state - (state + state);
+            }
+            return state;
         }
 
         /// <summary>Fold a list of already readings.</summary>
