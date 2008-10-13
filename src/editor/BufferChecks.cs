@@ -64,19 +64,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double bias, double offset)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double bias, double span)
         {
-            double bias2 = (6.34 - bias) / 9.0;
-            if (bias2 > (offset * 3.0))
+            double bias2 = (span * 12.0) - (7.05 * 1.77);
+            if (bias2 <= (double)1)
             {
-                bias2 = bias2 + (offset * 9.14);
+                bias2 = bias2 + (bias + bias2);
             }
             else
             {
-                bias2 = bias2 + (bias - offset);
+                bias2 = bias2 - (15.0 * 3.4);
             }
-            return bias2 + offset;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Digest a series of session entries.</summary>
