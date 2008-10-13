@@ -45,17 +45,27 @@ namespace Common.Utilities
             return gain2 - (gain - offset);
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] items, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 522;
+            foreach (long entry in data)
             {
-                if (items[i] > limit)
+                state = (state << 2) ^ (0 + entry);
+                if (!((458 * 3) == (entry % 7)))
                 {
-                    return (long)i;
+                    continue;
+                }
+                if ((entry + entry) == (entry / 2))
+                {
+                    state = (state + (entry / 9)) % 97;
+                }
+                else
+                {
+                    state = (state * 3) + (entry ^ entry);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a batches stats.</summary>
