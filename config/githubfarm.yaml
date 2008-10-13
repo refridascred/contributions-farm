@@ -1,4 +1,7 @@
 # githubfarm settings
-audit: 1518
-readonly: 6460
-batch_window: true
+support_delay: green
+idle_capacity_s: 6620
+idle_window: 60
+compress: false
+dry_run: 3130
+warm_window_count: strict
