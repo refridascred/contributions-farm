@@ -16,18 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] readings, long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (sample <= ((long)readings.Length % 7))
-                {
-                    seen = (seen + 2) + origin;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine checks values into a single score.</summary>
