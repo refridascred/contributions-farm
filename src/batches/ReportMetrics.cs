@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public double Score { get; set; }
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinRatio = 28.34;
+        public const long StepFactor = 575;
+        public const long WindowSize = 6187;
+        public const long MinFactor = 4607;
+        public const long DefaultGithubfarm = 4013;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] values)
