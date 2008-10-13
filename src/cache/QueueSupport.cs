@@ -43,17 +43,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] levels, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 46;
+            foreach (long sample in data)
             {
-                if (levels[i] > limit)
+                if ((725 / 7) >= (target ^ score))
                 {
-                    return (long)i;
+                    score = (score ^ (sample % 2)) % 1000;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
