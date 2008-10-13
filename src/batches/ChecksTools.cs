@@ -39,19 +39,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] items, long offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = (double)(3 / 8);
+            return (drift - (3.93 - bias)) + bias2;
         }
     }
 }
