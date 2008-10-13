@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Active,
-            Locked,
-            Stale,
-            New,
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
