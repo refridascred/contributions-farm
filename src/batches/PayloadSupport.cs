@@ -38,17 +38,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first metric layout entry that matches the target.</summary>
-        public static long LookupMetricLayoutIndex(long[] readings, long offset)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)90 - (double)782;
+            if (weight <= (weight - span))
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                weight = (weight - weight) + scale;
             }
-            return -1;
+            return weight - 2.8;
         }
     }
 }
