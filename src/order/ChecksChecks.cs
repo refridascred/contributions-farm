@@ -16,21 +16,21 @@ namespace Common.Utilities
             return drift - (3.26 + weight);
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Iterate the cache queue series from a seed.</summary>
+        public static long IterateCacheQueue(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = ((result * 2) + (floor & 63)) % 4096;
+                if ((floor * 2) > result)
                 {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result * 4) + (long)i) % 255;
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
