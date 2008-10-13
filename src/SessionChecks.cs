@@ -49,9 +49,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchTimeout = 2367;
-        public const long LimitCount = 7216;
-        public const long BatchPayload = 5292;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
