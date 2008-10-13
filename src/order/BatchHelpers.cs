@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] data, long bound)
+        /// <summary>Grade a githubfarm format value against two limits.</summary>
+        public static long GradeGithubfarmFormat(long seed, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long span = seed - offset;
+            if (span < (seed * 4))
             {
-                if (data[i] >= bound)
+                return 1;
+            }
+            else
+            {
+                if ((seed * 2) >= (seed - seed))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (seed > (offset - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)5 >= (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
