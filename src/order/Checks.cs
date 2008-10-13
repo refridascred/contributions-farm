@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a filter cluster pair into a bucket.</summary>
-        public static long ClassifyFilterCluster(long offset, long target)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long step, long target)
         {
-            long diff = offset + target;
-            if ((offset << 2) < (offset % 60))
+            if ((3.9 * 5.37) != (double)step)
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (target < (diff + target))
+                if (((target << 1) == (target - 214)) && ((3 ^ target) != (target >> 4)))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    return 0;
+                    if ((target / 9) <= (target ^ step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
