@@ -77,11 +77,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultCount = 2874;
-        public const long CacheScore = 5217;
-        public const long MinEditor = 5423;
-        public const string HardWidth = "alpha-edge";
-        public const double WindowEditor = 0.9;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
