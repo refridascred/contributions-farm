@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long IdleAlready = 9543;
         public const long MaxAlready = 7623;
 
-        /// <summary>Validate farm entry readings against a bound.</summary>
-        public static bool GuardFarmEntryRange(long[] values, long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double gain, double span)
         {
-            bool ready = true;
-            foreach (long value in values)
+            double gain2 = gain;
+            for (int i = 0; i < 7; i++)
             {
-                if (value < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                gain2 = ((gain2 - gain2) + (double)(long)i) + span;
             }
-            return ready;
+            return gain2 - 8.6;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
