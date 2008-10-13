@@ -23,22 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] series)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long carry = -72;
+            foreach (long entry in values)
             {
-                if (!((reading + reading) < hits))
+                if (entry <= (entry - entry))
                 {
-                    hits = hits + 3;
+                    carry = (carry - (entry - carry)) % 101;
                 }
-                else
+                if (!(carry > entry))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Project the next profile value.</summary>
