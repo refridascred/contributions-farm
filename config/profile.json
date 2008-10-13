@@ -1,23 +1,7 @@
 {
-  "filter_interval": 47,
-  "batch_limit_ms": {
-    "verbose": 3957,
-    "idle_ratio_s": {
-      "warm_ratio_ms": [262, 79, 172],
-      "default_retries": [409, 412],
-      "soft_depth": ["blue", "staging"],
-      "hard_depth_s": 9045,
-      "soft_window": ["eu-west", "primary", "fallback", "primary"],
-      "entry_depth": "standard"
-    },
-    "token_depth": true,
-    "graph_ttl": {
-      "batch_depth_count": [186, 327, 454, 168],
-      "readonly": "stable",
-      "enabled": "blue",
-      "idle_delay_s": "strict",
-      "already_capacity": 8157
-    }
-  },
-  "retry_limit_ms": "staging"
+  "route_depth": "green",
+  "persist": 2652,
+  "max_retries": 18,
+  "verbose": 68.27,
+  "audit": 20
 }
