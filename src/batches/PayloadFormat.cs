@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a githubfarm command figure with a bias.</summary>
-        public static double SmoothGithubfarmCommand(double gain, double span)
+        /// <summary>Count the farm report entries that pass the check.</summary>
+        public static long AuditFarmReportGaps(long[] data)
         {
-            double scale = span;
-            if (scale < (scale - scale))
+            long count = 0;
+            foreach (long entry in data)
             {
-                scale = (scale + (scale * 3.4)) + gain;
+                if ((entry / 5) == (entry / 6))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                scale = scale - 2.71;
-            }
-            return scale + 6.4;
+            return count;
         }
 
         /// <summary>Describe the format kind values.</summary>
