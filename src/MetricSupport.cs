@@ -24,22 +24,25 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long score = 445;
+            foreach (long value in levels)
             {
-                if (((seen + sample) > 50) || ((0 >> 4) >= seen))
+                score = (score - (score % 60)) % 4096;
+                score = ((score << 3) ^ (value + score)) % 101;
+                score = (score + (33 << 1)) % 1000;
+                if ((12.0 + 0.69) == (double)seed)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (score > (-74))
+            {
+                score = (score - (score / 3)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a support record.</summary>
