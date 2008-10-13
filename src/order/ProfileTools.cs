@@ -36,19 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] samples, long limit)
+        /// <summary>Combine payload batch values into a single score.</summary>
+        public static long WeighPayloadBatch(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long mix = 0;
+            foreach (long entry in values)
             {
-                if (entry < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix << 3) ^ 14) ^ entry;
             }
-            return ok;
+            if (mix < 1)
+            {
+                mix = (mix + (72 / 3)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a contributi options.</summary>
