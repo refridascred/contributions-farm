@@ -57,24 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double weight, double bias)
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
+            double drift = (weight - bias) / 4.0;
+            if (drift >= (14.0 - weight))
             {
-                if ((anchor + origin) <= (origin * 2))
-                {
-                    anchor = (anchor * 3) + (origin % 60);
-                }
-                else
-                {
-                    anchor = (anchor ^ (origin - origin)) % 101;
-                    anchor = ((anchor << 3) ^ (6 + (long)i)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                drift = drift + weight;
             }
-            return anchor;
+            else
+            {
+                drift = drift + weight;
+            }
+            return drift + bias;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
