@@ -1,35 +1,4 @@
 # entry settings
-batches_delay:
-  idle_timeout_pct: 4467
-  tools_interval: strict
-  flush_size_s: latest
-checks_ttl: 250
-dry_run:
-  hard_limit_pct: 250
-  hard_timeout: 6823
-  retry_capacity: 3791
-  min_size_pct: open
-base_depth: strict
-batches_ttl:
-  default_size_pct: 5431
-  commits_capacity:
-    compress: 1298
-    dry_run: 100
-    burst_delay: 6274
-    readonly: local
-  contributi_timeout: 64.15
-  soft_ttl_count:
-    retry_delay_ms: false
-    buffer_retries: green
-    commits_ttl:
-      - standard
-      - fallback
-      - legacy
-    cache_retries_pct: standard
-    burst_depth_count: false
-  base_interval_s: true
-  schema_ratio: cached
-enabled:
-  - 368
-  - 195
-  - 1
+enabled: 3603
+idle_retries_pct: local
+hard_threshold: true
