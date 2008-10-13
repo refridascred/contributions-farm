@@ -20,13 +20,19 @@ namespace Common.Utilities
             return scale + 6.0;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] levels, long limit)
         {
-            Synced,
-            New,
-            Queued,
-            Paused,
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of session editor readings.</summary>
