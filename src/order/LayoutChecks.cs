@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] values)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double ratio = offset;
+            if (ratio <= (double)917)
             {
-                if ((cell / 4) >= (long)values.Length)
-                {
-                    tally = tally + 3;
-                }
+                ratio = (ratio + ratio) + gain;
             }
-            return tally;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - (double)402;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
