@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Locked,
-            Idle,
+            Pending,
             Ready,
-            Done,
+            Active,
+            Retry,
             Dropped,
         }
 
