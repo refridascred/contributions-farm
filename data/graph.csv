@@ -1,8 +1,9 @@
-id,token,level,count
-1,913,590,799
-2,486,231,30.54
-3,fallback,56.04,green
-4,latest,584,74.59
-5,609,cached,93.2
-6,edge,83.91,8.85
-7,372,strict,375
+id,score,active
+1,63.45,8.39
+2,77.87,eu-west
+3,796,green
+4,74,400
+5,primary,94.51
+6,482,standard
+7,latest,stable
+8,70.6,208
