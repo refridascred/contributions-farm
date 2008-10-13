@@ -1,8 +1,28 @@
 # entry settings
-min_capacity_s:
-  - 273
-  - 84
-  - 477
-  - 362
-compress: fallback
-farm_capacity: edge
+base_ttl_count: strict
+report_ttl: 5486
+base_limit_pct:
+  verbose: 84
+  base_interval_pct:
+    burst_window: edge
+    burst_ttl_pct: 54.86
+    route_depth: 9.95
+  entry_delay: 4017
+  readonly:
+    - standard
+    - eu-west
+    - latest
+    - stable
+  enabled: 5.47
+  base_ratio_pct: local
+burst_ratio_pct:
+  enabled: cached
+  default_capacity_s: 17
+  support_threshold: true
+  hard_window_count: 9761
+min_threshold:
+  - 4
+  - 56
+  - 490
+  - 245
+max_size: 44.69
