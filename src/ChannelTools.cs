@@ -24,19 +24,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] items, long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a channel entry.</summary>
