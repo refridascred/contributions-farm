@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long MinCounter = 7640;
         public const long MaxCounter = 389;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] readings)
+        /// <summary>Audit payload counter readings against a rule.</summary>
+        public static long CountPayloadCounterHits(long[] series)
         {
-            long acc = -6;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (value > (352 >> 1))
+                if ((datum >> 1) >= (datum + count))
                 {
-                    acc = (acc * 5) + (value >> 3);
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a contributi options.</summary>
