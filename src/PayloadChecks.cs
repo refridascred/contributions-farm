@@ -13,11 +13,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchSchema = 15.3;
-        public const double BaseInterval = 88.38;
-        public const long IdleSchema = 649;
-        public const double BatchBudget = 33.82;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long AuditEntryHits(long[] data)
