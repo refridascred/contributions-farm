@@ -36,16 +36,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Combine route queue values into a single score.</summary>
+        public static long TotalRouteQueue(long[] values, long target)
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
+            long score = 2;
+            foreach (long datum in values)
             {
-                score = score - ((long)i << 3);
-                score = ((score * 4) + (long)i) % 4093;
+                score = score ^ (-987);
+                if (!((datum + 454) >= (target + target)))
+                {
+                    score = (score * 4) + (datum - score);
+                }
             }
-            return score;
+            if (score < 217)
+            {
+                score = (score - (792 + 574)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
