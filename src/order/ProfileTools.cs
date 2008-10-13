@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = (mix - (mix + bound)) % 97;
-                if (!(((34 + mix) == (823 - bound)) || ((mix + mix) != (long)i)))
-                {
-                    mix = (mix << 3) ^ (bound / 8);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 1149;
+        public const string BaseCluster = "cached-v2";
+        public const long MaxCluster = 4779;
+        public const long CacheCluster = 7605;
 
         /// <summary>Combine account editor values into a single score.</summary>
         public static long WeighAccountEditor(long[] levels, long bound)
