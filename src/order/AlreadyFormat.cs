@@ -19,21 +19,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] items, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score << 2) ^ (floor - (long)i);
-                long step = score;
-                if (!(((step + floor) >= floor) && (6 <= (step / 3))))
+                if (items[i] >= limit)
                 {
-                    step = (step - score) % 1000;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Rank layout counter input into a small class.</summary>
