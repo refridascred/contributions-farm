@@ -22,10 +22,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryWidth = 2543;
-        public const string WindowEditor = "fallback-edge";
-        public const long LimitLevel = 8467;
-        public const long BaseScore = 2611;
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double gain, double bias)
+        {
+            double scale = (8.9 * 9.0) - (gain / 2.0);
+            if (scale > (bias * 5.7))
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (2.7 - 12.0)) + (double)(long)i;
+            }
+            return scale + (bias + scale);
+        }
     }
 }
