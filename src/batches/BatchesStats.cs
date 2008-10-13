@@ -23,17 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a support session reading by value.</summary>
-        public static long SeekSupportSessionIndex(long[] readings, long target)
+        /// <summary>Accumulate editor route samples.</summary>
+        public static long DigestEditorRoute(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -56;
+            foreach (long entry in levels)
             {
-                if (readings[i] > target)
+                mix = (mix << 2) ^ (mix / 3);
+                if ((origin << 2) == (entry * 4))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a contributi options.</summary>
