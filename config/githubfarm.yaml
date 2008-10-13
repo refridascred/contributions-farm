@@ -1,4 +1,18 @@
 # githubfarm settings
-persist: stable
-cache_interval_count: standard
-compress: true
+flush_depth_pct:
+  base_size:
+    - 247
+    - 252
+    - 263
+  schema_capacity: local
+  burst_ratio: false
+  warm_ttl_pct:
+    - 451
+    - 493
+  base_threshold_count: 48.45
+  flush_delay_ms: 250
+cluster_limit: false
+audit: 77.31
+compress: legacy
+schema_threshold: 25
+min_timeout_count: true
