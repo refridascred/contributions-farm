@@ -54,19 +54,18 @@ namespace Common.Utilities
         public const double BaseMetrics = 92.17;
         public const long StepMetrics = 4141;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] samples, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (((seed << 2) < seed) && ((state & 15) <= (seed & 63)))
+                if (!(((hits & 1) > item) && ((hits + hits) > (bound & 3))))
                 {
-                    state = (state * 4) + state;
+                    hits = hits + 3;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return hits;
         }
     }
 }
