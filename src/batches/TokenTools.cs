@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepWidth = 8716;
-        public const long RetryLevel = 2993;
-        public const long DefaultSchema = 4980;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Closed,
+            Synced,
+            Paused,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] values, long step)
