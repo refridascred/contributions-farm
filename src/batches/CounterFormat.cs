@@ -29,11 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
             public double Label { get; set; }
         }
     }
