@@ -1,6 +1,7 @@
-id,ratio,state,owner,level
-1,5,558,cached,277
-2,559,798,49.32,local
-3,blue,56,582,268
-4,794,585,latest,eu-west
-5,79.54,402,329,green
+id,level,weight,owner
+1,fallback,420,45
+2,strict,65.16,36.14
+3,open,593,486
+4,954,primary,32.45
+5,standard,10.74,3.43
+6,845,890,68.32
