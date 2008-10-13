@@ -46,14 +46,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Paused,
-            Locked,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 1514;
+        public const long StepMetrics = 3844;
+        public const double BatchDepth = 61.69;
+        public const string HardMetrics = "standard-edge";
+        public const string LimitSize = "cached-edge";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BatchFilter = 32.37;
