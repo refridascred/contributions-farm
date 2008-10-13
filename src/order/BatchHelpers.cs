@@ -24,12 +24,14 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 475;
-        public const double DefaultProfile = 95.25;
-        public const string CacheProfile = "latest";
-        public const long WindowProfile = 504;
-        public const string IdleBudget = "primary-v2";
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            New,
+            Stale,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
