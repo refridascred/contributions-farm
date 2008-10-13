@@ -32,11 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 3693;
-        public const string IdleCount = "fallback-1";
-        public const long LimitWindow = 3891;
-        public const long DefaultSize = 391;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Ready,
+            Idle,
+            Failed,
+            Active,
+            New,
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamBounds(long[] values, long bound)
