@@ -1,28 +1,8 @@
 # githubfarm settings
-batch_depth:
-  token_timeout:
-    max_capacity: 99
-    stats_depth: 60
-    idle_threshold_s: 3257
-  audit: 2643
-  enabled: 40
-  hard_window_pct: 13.79
-  flush_ratio: false
-max_interval_s: 5350
-route_depth: latest
-soft_timeout:
-  sync_ttl_count: 8716
-  enabled: 36.35
-  compress: 91.24
-  retry_window_ms: cached
-  soft_limit:
-    cache_ratio:
-      - edge
-      - strict
-    compress:
-      - open
-      - open
-      - fallback
-      - open
-    readonly: 30
-min_capacity: 60
+strict: 8832
+flush_capacity:
+  soft_window_ms: 50.38
+  order_threshold: 25
+  base_limit_pct: latest
+retry_depth_count: open
+persist: 21.6
