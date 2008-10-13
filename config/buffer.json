@@ -1,18 +1,5 @@
 {
-  "warm_interval_count": {
-    "sync_window_pct": ["edge", "stable", "latest"],
-    "cache_ttl_ms": 72.26,
-    "max_capacity_ms": {
-      "idle_threshold_count": "standard",
-      "counter_interval": true,
-      "idle_size": "standard",
-      "compress": "cached",
-      "poll_capacity_s": "green",
-      "base_size_count": true
-    },
-    "dry_run": false,
-    "profile_threshold": 60
-  },
-  "soft_retries_count": 6422,
-  "metrics_delay": 4647
+  "poll_timeout": [20, 280, 346],
+  "batch_size_ms": [132, 32],
+  "enabled": 73.0
 }
