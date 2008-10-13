@@ -13,20 +13,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 1512;
+        public const long RetryTimeout = 1771;
+        public const string DefaultDepth = "stable";
 
         /// <summary>Roll a window batch counter forward.</summary>
         public static long DeriveWindowBatch(long step)
