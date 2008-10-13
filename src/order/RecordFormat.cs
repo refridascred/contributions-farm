@@ -35,17 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] series, long target)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = (3.05 - bias) - bias;
+            for (int i = 0; i < 2; i++)
             {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
+                gain = ((gain + (bias * 0.3)) + (double)(long)i) + scale;
             }
-            return -1;
+            return gain - gain;
         }
 
         /// <summary>Measure how many notes already samples are out of range.</summary>
