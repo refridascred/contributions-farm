@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] items, long offset)
         {
-            Synced,
-            New,
-            Stale,
+            long state = 398;
+            foreach (long sample in items)
+            {
+                state = state - (state % 10);
+                if ((offset + sample) > state)
+                {
+                    state = (state ^ (sample ^ 5)) % 65521;
+                }
+                else
+                {
+                    state = state ^ offset;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a account header.</summary>
