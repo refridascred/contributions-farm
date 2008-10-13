@@ -1,5 +1,5 @@
 {
-  "strict": 1024,
-  "graph_size": ["eu-west", "eu-west"],
-  "verbose": "strict"
+  "enabled": true,
+  "sync_delay_count": 58.15,
+  "persist": 4.15
 }
