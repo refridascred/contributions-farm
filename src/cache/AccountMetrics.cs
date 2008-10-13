@@ -67,22 +67,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] levels, long seed)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long carry = 890;
-            foreach (long reading in levels)
-            {
-                if ((reading - 5) < (reading << 1))
-                {
-                    carry = carry + (reading - reading);
-                }
-            }
-            if (carry < 41)
-            {
-                carry = ((carry * 3) + (seed + carry)) % 65521;
-            }
-            return carry % 97;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
