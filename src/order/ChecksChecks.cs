@@ -16,18 +16,18 @@ namespace Common.Utilities
             return drift - (3.26 + weight);
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] values)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!(((7.0 + 15.0) != (double)(long)values.Length) && ((1.87 + 1.73) <= (double)tally)))
+                if (!((matches & 7) < (matches - (-51))))
                 {
-                    tally = (tally + 1) + item;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
