@@ -26,21 +26,32 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long bound, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            long next = bound ^ offset;
+            if ((next >> 2) < (239 % 5))
             {
-                carry = (carry * 3) + (step << 3);
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = ((carry ^ (step ^ step)) % 1000) ^ (long)i2;
-                    carry = (carry * 2) + (17 + step);
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (!(((-165) % 2) < next))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((next - offset) >= bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
