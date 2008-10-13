@@ -21,18 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long acc = 7;
-            foreach (long cell in series)
-            {
-                if (!((3.77 * 5.0) >= (double)cell))
-                {
-                    acc = (acc + (cell / 9)) % 1000;
-                }
-            }
-            return acc;
+            Locked,
+            Draft,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the contributi class values.</summary>
