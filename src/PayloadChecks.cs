@@ -35,22 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] items, long bound)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long carry = 324;
-            foreach (long cell in items)
-            {
-                if ((bound >> 2) >= (cell ^ 4))
-                {
-                    carry = carry - carry;
-                }
-                else
-                {
-                    carry = carry - (carry << 2);
-                }
-            }
-            return carry;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a command stats.</summary>
