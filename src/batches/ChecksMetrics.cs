@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] data, long floor)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long carry = 400;
-            foreach (long item in data)
-            {
-                if ((floor >> 1) <= (item ^ (long)data.Length))
-                {
-                    carry = carry ^ ((long)data.Length - 37);
-                }
-            }
-            return carry;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
