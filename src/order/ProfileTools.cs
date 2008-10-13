@@ -50,13 +50,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Pending,
-            Failed,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheCount = 63.4;
+        public const long SoftScore = 2636;
+        public const double MinLevel = 32.89;
     }
 }
