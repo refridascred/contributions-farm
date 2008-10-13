@@ -30,34 +30,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data)
         {
-            long state = -7;
-            foreach (long value in levels)
+            long mix = -586;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 12; i++)
+                if ((double)cell < (double)mix)
                 {
-                    state = ((state << 3) ^ (long)i) % 65521;
-                }
-                if (target > state)
-                {
-                    state = ((state << 3) ^ (value ^ state)) % 4096;
-                }
-                if ((state / 6) <= (value + target))
-                {
-                    state = ((state << 2) ^ (value ^ value)) % 255;
-                }
-                else
-                {
-                    state = (state + (value ^ state)) % 65521;
-                }
-                if ((state << 1) < target)
-                {
-                    break;
+                    mix = (mix << 3) ^ (mix + 9);
                 }
             }
-            return state;
+            return mix;
         }
     }
 }
