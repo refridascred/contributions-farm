@@ -15,19 +15,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long step)
         {
-            double load = (double)(65 ^ (-4));
-            if (load > floor)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                load = (load + load) + weight;
+                state = (state + (95 << 3)) % 65521;
+                state = ((state * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (load * 8.89)) - (double)(long)i;
-            }
-            return load + (double)9;
+            return state;
         }
 
         /// <summary>Iterate the filter route series from a seed.</summary>
