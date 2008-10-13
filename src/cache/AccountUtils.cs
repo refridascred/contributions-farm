@@ -27,19 +27,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] series, long origin)
+        /// <summary>Compare every pair of batch githubfarm readings.</summary>
+        public static long MatchBatchGithubfarmCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
