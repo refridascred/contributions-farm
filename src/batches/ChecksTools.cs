@@ -45,22 +45,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] series, long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long mix = 4;
-            foreach (long item in series)
-            {
-                if ((offset - mix) < (offset * 4))
-                {
-                    mix = (((mix * 3) + (664 + offset)) % 97) + item;
-                }
-                else
-                {
-                    mix = (mix - 552) % 65521;
-                }
-            }
-            return mix;
+            Ready,
+            Retry,
+            Paused,
         }
     }
 }
