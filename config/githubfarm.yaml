@@ -1,8 +1,9 @@
 # githubfarm settings
-idle_window:
-  - edge
-  - legacy
-  - standard
-  - primary
-audit: 6054
-report_interval: legacy
+warm_ttl_pct: cached
+hard_size:
+  retry_delay_ms: green
+  soft_size: false
+  idle_retries_s: cached
+support_window: 9354
+githubfarm_capacity: true
+batch_delay_pct: fallback
