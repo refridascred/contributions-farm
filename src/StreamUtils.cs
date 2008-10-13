@@ -64,11 +64,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] series, long seed)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long mark = 4;
+            foreach (long reading in series)
+            {
+                mark = ((mark + seed) % 65521) + reading;
+                mark = mark + (mark % 12);
+            }
+            if (mark > 92)
+            {
+                mark = mark - seed;
+            }
+            return mark % 97;
         }
     }
 }
