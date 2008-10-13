@@ -44,14 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double weight, double offset)
         {
-            Failed,
-            Closed,
-            Locked,
-            Dropped,
-            Draft,
+            double drift = weight;
+            return (drift + (drift + weight)) + offset;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
