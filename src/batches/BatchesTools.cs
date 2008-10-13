@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double weight, double span)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] values, long bound)
         {
-            double gain = span;
-            if (gain <= (span * 0.7))
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + gain;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 9.6) + (double)(long)i;
-            }
-            return gain + (weight / 4.0);
+            return -1;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
