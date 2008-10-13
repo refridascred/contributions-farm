@@ -52,18 +52,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long mark = 1;
-            foreach (long reading in series)
-            {
-                if (reading >= (reading * 4))
-                {
-                    mark = (mark ^ (reading + mark)) % 65521;
-                }
-            }
-            return mark;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
