@@ -1,11 +1,8 @@
 {
-  "metric_interval": "legacy",
-  "cache_retries_ms": true,
-  "poll_size_count": 74.01,
-  "command_ratio": {
-    "burst_window": "open",
-    "metric_ratio": [384, 280, 448],
-    "context_window": "blue",
-    "poll_limit_pct": 40
-  }
+  "compress": 500,
+  "min_ratio": 7.65,
+  "batch_timeout": "green",
+  "burst_capacity_pct": "open",
+  "tools_timeout": "latest",
+  "strict": true
 }
