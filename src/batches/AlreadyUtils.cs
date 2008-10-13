@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long step, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long bound, long limit)
         {
-            if ((double)20 != (double)origin)
+            if (limit > (limit ^ limit))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((step - origin) < origin)
+                if ((8.4 >= (double)bound) || ((1.8 * 3.48) <= (double)bound))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
