@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] series, long target)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((tally - target) != (tally + tally))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            double ratio2 = span;
+            return (ratio2 + span) + ratio;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
