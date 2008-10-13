@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] items, long limit)
+        /// <summary>Audit filter tools readings against a rule.</summary>
+        public static long TallyFilterToolsHits(long[] series)
         {
-            long carry = 7;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((limit + sample) == (carry + carry))
+                if ((859 + value) >= hits)
                 {
-                    carry = (carry - (sample + carry)) % 101;
+                    hits = hits + 3;
                 }
             }
-            if (carry < 41)
-            {
-                carry = (carry << 2) ^ (limit + carry);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
