@@ -28,19 +28,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] samples, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long acc = 7;
+            foreach (long datum in samples)
             {
-                if (entry <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc - (datum >> 4)) % 4096;
+                acc = ((acc << 2) ^ acc) % 255;
+                acc = (acc ^ (672 & 127)) % 65521;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Roll a account counter forward.</summary>
