@@ -33,10 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstContext = "cached-1";
-        public const long DefaultContext = 6786;
-        public const long BurstWidth = 7033;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long seed, long origin)
+        {
+            if ((seed << 1) < (origin + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin <= (0 + 574))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((3.0 * 0.9) > (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] levels)
