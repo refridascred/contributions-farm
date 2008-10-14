@@ -29,27 +29,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] readings)
-        {
-            long anchor = 44;
-            foreach (long entry in readings)
-            {
-                if ((anchor ^ anchor) != (anchor % 60))
-                {
-                    anchor = anchor + (6 / 2);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (entry % 16)) % 101;
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = ((anchor << 2) ^ (1 * 4)) % 65521;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 826;
+        public const string StepBatches = "alpha-edge";
+        public const long RetryTimeout = 2346;
+        public const long RetryBatches = 9255;
+        public const long DefaultBatches = 3176;
 
         /// <summary>Combine graph already values into a single score.</summary>
         public static long CombineGraphAlready(long[] readings, long step)
