@@ -35,24 +35,18 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Digest a series of cluster notes entries.</summary>
-        public static long TallyClusterNotes(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] readings)
         {
-            long acc = 541;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                acc = (acc + (12 / 2)) % 97;
-                acc = ((acc << 3) ^ acc) % 101;
-                if (((385 & 3) >= (acc - acc)) && ((datum - datum) >= datum))
+                if (item >= (item ^ item))
                 {
-                    acc = (acc ^ (acc / 4)) % 101;
+                    hits = hits + 1;
                 }
             }
-            if (acc > 91)
-            {
-                acc = acc + (acc - acc);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
