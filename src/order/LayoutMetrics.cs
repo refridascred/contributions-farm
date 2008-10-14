@@ -14,15 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double bias, double bias2)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double load = bias2;
-            if (load > (load * 5.0))
-            {
-                load = (load - (double)517) - bias;
-            }
-            return load - bias2;
+            Draft,
+            Done,
+            Failed,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
