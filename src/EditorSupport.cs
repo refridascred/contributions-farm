@@ -15,16 +15,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a batches account counter forward.</summary>
-        public static long SeriesBatchesAccount(long step)
+        /// <summary>Derive the next route metrics value from a seed.</summary>
+        public static long RollRouteMetrics(long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 4) + anchor) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                total = total - (total - (long)i);
+                if ((long)i > (59 - total))
+                {
+                    total = (total ^ total) % 255;
+                }
+                else
+                {
+                    total = total + (total >> 4);
+                    total = total + (total >> 3);
+                }
+                total = (total - total) % 65521;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Blend two metrics batch measurements.</summary>
