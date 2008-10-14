@@ -17,25 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long seed, long floor)
-        {
-            if (42 > (floor + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed <= (4.0 / 6.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRatio = 2789;
+        public const string IdleRoute = "cached-edge";
+        public const long CacheRoute = 4096;
+        public const string CacheCount = "stable-edge";
+        public const string StepRoute = "latest-1";
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
