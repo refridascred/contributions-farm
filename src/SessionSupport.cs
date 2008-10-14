@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            New,
-            Stale,
-            Ready,
-            Queued,
-            Closed,
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
