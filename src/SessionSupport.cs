@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleCount = "alpha-1";
-        public const double BurstEntry = 50.52;
-        public const string BaseBudget = "primary-1";
-        public const string CacheEntry = "alpha-edge";
-        public const long WindowSpan = 6120;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Locked,
+            Closed,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelOutliers(long[] levels, long bound)
