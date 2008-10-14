@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
         {
-            Locked,
-            Draft,
-            Failed,
-            Queued,
-            Idle,
+            long score = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score * 3) + score;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
