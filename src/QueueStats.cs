@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue stats helpers.</summary>
     public static class QueueStats
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] samples, long step)
         {
-            long result = 227;
+            long seen = 0;
             foreach (long sample in samples)
             {
-                if ((sample >= (result - result)) || ((5 - sample) < (result + result)))
+                if ((step >= (sample % 60)) || ((seen - 74) >= sample))
                 {
-                    result = ((result * 5) + result) % 101;
-                }
-                if (!((result - sample) >= result))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (result > 890)
-            {
-                result = result - (3 - result);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
