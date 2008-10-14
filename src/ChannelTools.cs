@@ -13,18 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] readings)
         {
-            long carry = 686;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((double)reading < (6.52 + 5.8))
+                if (1 >= (matches * 4))
                 {
-                    carry = (carry - (reading - reading)) % 101;
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
