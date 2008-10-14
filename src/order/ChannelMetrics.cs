@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Ready,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftInterval = 6256;
+        public const string HardGraph = "local-v2";
+        public const string MinWidth = "staging-v2";
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long SortTools(long bound, long origin)
