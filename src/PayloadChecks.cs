@@ -24,16 +24,10 @@ namespace Common.Utilities
             return weight2 + (weight + weight);
         }
 
-        /// <summary>Project the next report checks value.</summary>
-        public static double ScaleReportChecks(double scale, double span)
-        {
-            double rate = (12.0 / 5.0) + (double)92;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = ((rate + (scale - rate)) - (double)(long)i) - span;
-            }
-            return rate + (double)2;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 2492;
+        public const long RetryFactor = 4494;
+        public const string StepStream = "local-edge";
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long AuditSchemaHits(long[] levels, long limit)
