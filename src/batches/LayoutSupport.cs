@@ -67,14 +67,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Active,
-            Failed,
-            Draft,
-            Retry,
-            New,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetryTimeout = "open-v2";
+        public const long LimitFactor = 4967;
+        public const long WindowSession = 9850;
+        public const string StepFactor = "open-edge";
     }
 }
