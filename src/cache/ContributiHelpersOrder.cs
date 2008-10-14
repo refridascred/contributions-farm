@@ -22,31 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long step, long bound)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double gain, double offset)
         {
-            if (bound > (6 << 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound > step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound >= (bound + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double rate = offset;
+            return rate - gain;
         }
 
         /// <summary>Grade a order stats value against two limits.</summary>
