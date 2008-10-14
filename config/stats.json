@@ -1,6 +1,13 @@
 {
-  "batch_window_pct": 30,
-  "burst_delay_ms": 1888,
-  "hard_window_s": "staging",
-  "contributi_delay": true
+  "soft_retries_s": 9572,
+  "hard_delay_s": "primary",
+  "contributi_ratio": {
+    "account_depth": "standard",
+    "idle_size_ms": 77,
+    "soft_ratio": 36,
+    "audit": false,
+    "payload_timeout": "stable",
+    "readonly": "staging"
+  },
+  "persist": 96
 }
