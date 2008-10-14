@@ -21,38 +21,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long offset, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] data, long step)
         {
-            if (!((2.7 * 3.93) != (double)offset))
+            bool ready = true;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset + 31) != (50 * 3)) && ((double)step == (16.0 * 9.21)))
+                if (sample <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset & 15) <= step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset + step) >= (step + step)) || ((double)step <= (double)offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Project the next metrics notes value.</summary>
