@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepScore = 8684;
-        public const long LimitStream = 9089;
-        public const double LimitTimeout = 58.99;
-        public const double HardStream = 29.63;
-        public const long SoftStream = 1515;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string MinWidth = "legacy-v2";
