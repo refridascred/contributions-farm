@@ -34,11 +34,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double rate, double offset)
+        /// <summary>Digest a series of context command entries.</summary>
+        public static long FoldContextCommand(long[] readings, long bound)
         {
-            double drift = (2.0 - rate) * 9.47;
-            return drift + offset;
+            long mix = 5;
+            foreach (long reading in readings)
+            {
+                mix = mix ^ (bound - mix);
+                mix = ((mix << 3) ^ (reading % 10)) % 97;
+                if ((71 + mix) >= (mix % 16))
+                {
+                    mix = (mix - (845 - bound)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
