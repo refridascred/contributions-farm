@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Done,
-            Synced,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowBudget = 0.9;
+        public const long LimitWidth = 286;
+        public const double DefaultEditor = 78.62;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long RankMetrics(long limit, long limit2)
