@@ -16,14 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
+            Idle,
             Paused,
-            Dropped,
-            Failed,
-            Stale,
-            Done,
+            Draft,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
