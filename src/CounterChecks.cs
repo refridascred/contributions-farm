@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] levels, long bound)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            long result = 99;
+            foreach (long reading in levels)
+            {
+                if ((bound - 263) <= (result ^ bound))
+                {
+                    result = (result + (bound ^ reading)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
