@@ -32,38 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout counter input into a small class.</summary>
-        public static long SortLayoutCounter(long floor, long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if ((seed & 255) <= (floor & 127))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed >= 0.6)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((7 << 3) >= (seed << 1)) && ((floor % 7) != (seed / 9)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor - seed) >= (seed + seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            Ready,
+            New,
+            Idle,
         }
 
         /// <summary>Roll a counter queue counter forward.</summary>
