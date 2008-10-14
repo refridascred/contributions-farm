@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] samples, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -164;
+            foreach (long entry in series)
             {
-                if ((samples[i] > seed) && ((samples[i] % 5) == 0))
+                if ((entry ^ mix) == (mix << 2))
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ (-757);
                 }
             }
-            return -1;
+            if (mix > (-194))
+            {
+                mix = (mix * 2) + (mix - mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Fold a list of token readings.</summary>
