@@ -1,5 +1,8 @@
 {
-  "warm_ratio_count": "local",
-  "sync_depth": ["blue", "staging", "local"],
-  "default_ttl": ["green", "eu-west", "local", "edge"]
+  "payload_threshold": true,
+  "cache_capacity_count": 66.89,
+  "format_window": 5780,
+  "audit": "cached",
+  "cache_depth_count": 500,
+  "compress": 6301
 }
