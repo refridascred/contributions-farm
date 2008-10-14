@@ -63,20 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((991 << 2) <= (2 + seed))
-                {
-                    mix = (mix << 3) ^ mix;
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
