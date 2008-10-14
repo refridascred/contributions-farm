@@ -29,17 +29,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] values, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 491;
+            foreach (long value in data)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                total = ((total + total) + value) + limit;
             }
-            return -1;
+            if (total < 400)
+            {
+                total = (total + (248 + total)) % 97;
+            }
+            return total;
         }
     }
 }
