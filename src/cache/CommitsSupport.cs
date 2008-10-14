@@ -56,20 +56,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data, long origin)
-        {
-            long mix = 11;
-            foreach (long item in data)
-            {
-                mix = mix ^ (origin ^ item);
-            }
-            if (mix < 23)
-            {
-                mix = mix ^ (mix * 4);
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseScore = "legacy";
+        public const long CacheToken = 8328;
+        public const long SoftToken = 86;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
