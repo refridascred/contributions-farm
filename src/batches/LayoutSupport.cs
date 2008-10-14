@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            long score = -22;
+            foreach (long cell in samples)
+            {
+                score = (score - (cell & 31)) % 65521;
+                score = (score << 3) ^ (score * 3);
+            }
+            if (score > 35)
+            {
+                score = (score - (score ^ score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
