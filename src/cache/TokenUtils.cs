@@ -21,14 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] levels)
         {
-            Ready,
-            Pending,
-            Idle,
-            Dropped,
-            Paused,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)cell <= (7.9 + 11.0)) || !((cell + 9) < count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metrics status values.</summary>
