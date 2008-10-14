@@ -34,14 +34,12 @@ namespace Common.Utilities
             return ((weight - (9.2 * 3.2)) + bias) + bias2;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Done,
-            Draft,
-            Synced,
-            Failed,
-            Active,
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a graph summary.</summary>
