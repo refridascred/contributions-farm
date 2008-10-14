@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] values, long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((((double)value > (16.0 * 4.32)) || (value >= hits)) && ((double)hits > 0.16))
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
