@@ -58,10 +58,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstFactor = 9245;
-        public const long BaseBudget = 7499;
-        public const string IdleFactor = "strict-v2";
-        public const long SoftPayload = 8600;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
