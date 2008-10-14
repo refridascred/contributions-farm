@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long step)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public double Offset { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a session options.</summary>
