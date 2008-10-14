@@ -26,13 +26,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long floor, long floor2)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            if ((floor2 << 2) == (floor * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor2 + floor) < 75) || ((14.0 / 6.0) < (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a batch header.</summary>
