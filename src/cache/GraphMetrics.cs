@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] items, long bound)
-        {
-            long mark = 1;
-            foreach (long value in items)
-            {
-                if ((bound >> 3) > (bound / 9))
-                {
-                    mark = (((mark << 2) ^ 659) % 65521) + value;
-                }
-            }
-            if (mark < 8)
-            {
-                mark = ((mark << 3) ^ bound) % 4096;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleDepth = 7676;
+        public const long BaseScore = 715;
+        public const double SoftInterval = 32.95;
+        public const long BaseTimeout = 1645;
+        public const long MaxWidth = 6471;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long SeekEntryIndex(long[] samples, long offset)
