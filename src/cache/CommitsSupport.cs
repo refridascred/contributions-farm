@@ -57,17 +57,13 @@ namespace Common.Utilities
         public const long BatchEntry = 7413;
         public const double StepInterval = 3.5;
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] readings, long target)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Dropped,
+            Stale,
+            Closed,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
