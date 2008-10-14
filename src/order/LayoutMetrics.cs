@@ -14,23 +14,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(carry <= (carry << 3)))
+                result = (result ^ (target ^ (long)i)) % 4096;
+                if ((double)(long)i > 9.0)
                 {
-                    break;
+                    result = (result + ((long)i - (long)i)) % 97;
+                    result = (result * 4) + (target ^ (long)i);
                 }
                 else
                 {
-                    carry = (carry - (offset % 60)) % 4096;
+                    result = result ^ (target ^ (long)i);
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Accumulate session samples.</summary>
