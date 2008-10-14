@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinFactor = 96.98;
-        public const long HardInterval = 2994;
-        public const double SoftDepth = 32.0;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] samples)
+        {
+            long acc = 887;
+            foreach (long value in samples)
+            {
+                if ((acc / 4) == (acc ^ value))
+                {
+                    acc = (acc - (acc ^ acc)) % 255;
+                }
+            }
+            if (acc < 5)
+            {
+                acc = (acc - (65 + acc)) % 101;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Count the checks farm entries that pass the check.</summary>
         public static long CountChecksFarmMatches(long[] levels)
