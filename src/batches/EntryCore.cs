@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 508;
-        public const string MaxWindow = "fallback";
-        public const double RetryWindow = 59.03;
-        public const long IdleBudget = 9752;
+        /// <summary>Adjust a tools report reading.</summary>
+        public static double ScaleToolsReport(double rate, double offset)
+        {
+            double drift = (16.0 - 6.0) / 3.0;
+            if (drift < (offset / 7.0))
+            {
+                drift = (drift + (double)8) - rate;
+            }
+            return drift + offset;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsLimits(long[] levels, long limit)
