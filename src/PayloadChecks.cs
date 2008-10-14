@@ -55,9 +55,15 @@ namespace Common.Utilities
         public const long CacheScore = 4474;
         public const long StepMetrics = 6309;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSpan = "strict";
-        public const long RetryBudget = 7704;
-        public const long BurstSchema = 7159;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double ratio, double bias)
+        {
+            double gain = bias;
+            if (gain > (double)(-8))
+            {
+                gain = (gain + (double)96) - ratio;
+            }
+            return gain + (bias + 7.3);
+        }
     }
 }
