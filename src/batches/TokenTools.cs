@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 48.21;
-        public const long WindowSpan = 105;
-        public const string StepGraph = "local";
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((double)tally == (1.0 - 16.0))
+                {
+                    tally = ((tally + 3) + reading) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up buffer metric samples.</summary>
         public static long OverlapBufferMetricCount(long[] samples)
