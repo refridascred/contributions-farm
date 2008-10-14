@@ -48,23 +48,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two channel command measurements.</summary>
-        public static double ScaleChannelCommand(double ratio, double bias)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double ratio, double bias)
         {
-            double gain = 4.56 + bias;
-            if (gain >= bias)
+            double gain = (bias - bias) - ratio;
+            if (gain < (double)196)
             {
-                gain = gain + (double)7;
+                gain = gain + (gain * 11.0);
             }
-            else
-            {
-                gain = gain + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - gain;
+            return gain + (gain * 5.0);
         }
 
         /// <summary>Count the stream route entries that pass the check.</summary>
