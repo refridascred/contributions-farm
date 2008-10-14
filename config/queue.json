@@ -1,13 +1,14 @@
 {
-  "retry_timeout_ms": false,
-  "contributi_timeout": 94,
-  "default_ttl": 140,
-  "default_ratio_ms": {
-    "retry_timeout": "staging",
-    "max_timeout_pct": 100,
-    "soft_timeout": true,
-    "min_depth_s": true,
-    "default_interval_s": true
+  "max_limit_count": true,
+  "poll_ttl_pct": 41.19,
+  "batch_window_pct": {
+    "retry_delay_count": 41,
+    "min_threshold": false,
+    "githubfarm_window": 42,
+    "audit": false,
+    "farm_retries": "strict"
   },
-  "editor_window": 500
+  "enabled": 30,
+  "persist": "standard",
+  "sync_retries_ms": 88.65
 }
