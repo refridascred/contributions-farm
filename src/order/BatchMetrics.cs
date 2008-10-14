@@ -42,21 +42,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up metric cache samples.</summary>
-        public static long MatchMetricCacheCount(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 44;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((anchor ^ anchor) != (anchor % 60))
                 {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor + (6 / 2);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (entry % 16)) % 101;
                 }
             }
-            return seen;
+            if (anchor > 7)
+            {
+                anchor = ((anchor << 2) ^ (1 * 4)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
