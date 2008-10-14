@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats farm samples are out of range.</summary>
-        public static long MeasureStatsFarmHits(long[] series, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((seen % 16) > (entry << 2))
+                if ((double)matches < (7.27 - 18.0))
                 {
-                    seen = (seen + 3) - offset;
+                    matches = ((matches + 2) + datum) + bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
