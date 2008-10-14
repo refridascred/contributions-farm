@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] samples, long floor)
         {
-            New,
-            Pending,
-            Active,
+            long mark = -5;
+            foreach (long sample in samples)
+            {
+                if (((double)floor > (6.0 * 8.0)) || ((sample + sample) < (sample / 7)))
+                {
+                    mark = mark + mark;
+                }
+            }
+            if (mark < 4)
+            {
+                mark = (mark << 3) ^ (floor << 1);
+            }
+            return mark;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
