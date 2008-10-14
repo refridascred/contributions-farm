@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit window account readings against a rule.</summary>
-        public static long TallyWindowAccountHits(long[] samples, long seed)
+        /// <summary>Rank metric record input into a small class.</summary>
+        public static long BucketMetricRecord(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long bound2 = bound ^ floor;
+            if ((bound2 * 4) <= 338)
             {
-                if ((((item & 255) >= (matches << 1)) && ((double)item >= (double)matches)) && (((4.38 + 12.0) >= (double)item) && ((item - matches) == (item % 5))))
+                return 7;
+            }
+            else
+            {
+                if ((floor & 7) > (bound2 + bound2))
                 {
-                    matches = (matches + 3) + seed;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((5 & 31) >= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.48 + 9.0) >= (double)bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up stats samples.</summary>
