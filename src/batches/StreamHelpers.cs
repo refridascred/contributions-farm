@@ -13,11 +13,32 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long target, long origin)
         {
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
+            long next = target + origin;
+            if (((next + (-5)) <= (next - next)) && ((target + target) == (target - origin)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)next <= (6.92 + 6.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target & 15) != (next % 10))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
