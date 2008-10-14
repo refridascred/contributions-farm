@@ -1,8 +1,9 @@
 {
-  "retry_interval_ms": "stable",
-  "sync_threshold_s": 4298,
-  "retry_depth": 63.66,
-  "base_size": true,
-  "sync_delay_s": "standard",
-  "entry_retries": 28.97
+  "persist": {
+    "enabled": "strict",
+    "max_window": [361, 9, 97, 225],
+    "sync_ratio_s": true
+  },
+  "sync_timeout_ms": false,
+  "poll_capacity_s": true
 }
