@@ -13,27 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate cluster cache samples.</summary>
-        public static long ScoreClusterCache(long[] items, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long acc = 364;
-            foreach (long item in items)
-            {
-                if ((5 < (item << 2)) && ((10.0 - 0.8) > (double)acc))
-                {
-                    acc = ((acc * 5) + (acc << 1)) % 97;
-                }
-                acc = (acc - (origin + origin)) % 255;
-                if (2.0 >= (double)item)
-                {
-                    break;
-                }
-            }
-            if (acc > (-221))
-            {
-                acc = (acc - (acc & 255)) % 1000;
-            }
-            return acc;
+            Closed,
+            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
