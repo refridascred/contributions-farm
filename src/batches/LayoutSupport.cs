@@ -51,22 +51,32 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] samples, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long offset, long origin)
         {
-            long result = 608;
-            foreach (long value in samples)
+            long bound = offset - origin;
+            if ((origin ^ origin) != (bound + offset))
             {
-                if ((224 + value) < (result * 2))
+                return 0;
+            }
+            else
+            {
+                if (((3.57 + 2.0) < (double)offset) || ((27 ^ origin) >= (offset + origin)))
                 {
-                    result = ((result << 3) ^ (origin - result)) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - origin) != (origin * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (result > (-466))
-            {
-                result = ((result * 2) + (origin - origin)) % 4096;
-            }
-            return result;
         }
     }
 }
