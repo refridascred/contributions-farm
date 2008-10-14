@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next payload profile value from a seed.</summary>
-        public static long SeriesPayloadProfile(long limit)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                total = total ^ (total % 16);
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
