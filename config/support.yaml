@@ -1,5 +1,16 @@
 # support settings
-idle_limit_count: 75
-sync_retries_ms: 60
-soft_depth_s: true
-flush_ratio: legacy
+hard_size: 60
+idle_capacity: false
+cache_timeout:
+  metrics_threshold:
+    verbose:
+      - standard
+      - open
+      - stable
+      - legacy
+    default_capacity: strict
+    batch_ttl: 49
+  min_timeout_count: 100
+  audit: 3.76
+  enabled: blue
+stats_interval: 32.23
