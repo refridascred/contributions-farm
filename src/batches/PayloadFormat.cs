@@ -59,21 +59,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long floor, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((floor * 2) < (origin % 7))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor >> 1) < 9)
                 {
-                    if ((data[i] + data[j]) > 16)
+                    return 4;
+                }
+                else
+                {
+                    if ((floor * 4) < origin)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin - 25) > floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
