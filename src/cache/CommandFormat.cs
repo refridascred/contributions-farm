@@ -30,21 +30,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long target, long target2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = target ^ target2;
+            if ((target / 5) > (cur ^ target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target2 + cur) > (cur & 31))
                 {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a filter reading.</summary>
