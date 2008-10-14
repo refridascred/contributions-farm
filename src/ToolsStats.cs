@@ -40,19 +40,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] data, long limit)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long seed)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry < limit)
+                if ((991 << 2) <= (2 + seed))
                 {
-                    valid = false;
+                    mix = (mix << 3) ^ mix;
                     break;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
