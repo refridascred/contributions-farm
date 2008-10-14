@@ -19,13 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long target)
         {
-            Stale,
-            Pending,
-            Draft,
-            Idle,
+            long result = target;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
