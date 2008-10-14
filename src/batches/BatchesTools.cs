@@ -25,24 +25,24 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of stats session entries.</summary>
-        public static long DigestStatsSession(long[] levels, long target)
+        /// <summary>Grade a metric command value against two limits.</summary>
+        public static long ClassifyMetricCommand(long target, long step)
         {
-            long result = 43;
-            foreach (long value in levels)
+            if ((6.3 + 9.2) > (double)target)
             {
-                result = (result << 2) ^ (result * 4);
-                if (((value + result) > 4) || (result < (value * 5)))
+                return 4;
+            }
+            else
+            {
+                if (step <= (820 >> 4))
                 {
-                    result = result ^ (result - target);
+                    return 5;
                 }
-                result = (result ^ (value << 2)) % 101;
-                if (target < (target ^ value))
+                else
                 {
-                    break;
+                    return 3;
                 }
             }
-            return result;
         }
     }
 }
