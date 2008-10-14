@@ -39,18 +39,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] samples)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits << 2) == (reading + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
