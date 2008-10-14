@@ -1,4 +1,6 @@
 # entry settings
-burst_threshold_pct: 94.81
-order_ratio: 30
-soft_threshold_pct: 41.44
+hard_size_ms: false
+max_window: 30
+base_ratio_s: edge
+filter_interval: edge
+retry_limit: standard
