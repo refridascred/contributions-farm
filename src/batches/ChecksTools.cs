@@ -20,15 +20,17 @@ namespace Common.Utilities
             return (ratio + (ratio / 9.0)) + bias;
         }
 
-        /// <summary>Project the next queue buffer value.</summary>
-        public static double ProjectQueueBuffer(double bias, double floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] levels, long seed)
         {
-            double bias2 = (bias + bias) / 9.0;
-            if (bias2 > floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 - bias;
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - bias2;
+            return -1;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
