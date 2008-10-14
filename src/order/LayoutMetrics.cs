@@ -14,19 +14,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double gain, double offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double mean = gain;
-            if (mean <= (double)263)
-            {
-                mean = mean - (gain - offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (gain - offset)) + (double)(long)i;
-            }
-            return mean + (mean - gain);
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
