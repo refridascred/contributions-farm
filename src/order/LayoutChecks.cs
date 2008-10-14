@@ -59,19 +59,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double bias, double bias2)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            double scale = bias2;
-            if (scale < scale)
+            long state = 183;
+            foreach (long entry in samples)
             {
-                scale = (scale - scale) - bias;
+                state = (state ^ (entry - state)) % 4096;
+                if (!((97 / 7) <= (entry >> 5)))
+                {
+                    state = (state ^ (state + state)) % 97;
+                }
+                if ((entry & 127) < (entry * 5))
+                {
+                    state = (state ^ (entry - entry)) % 101;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - bias2) + (double)(long)i;
-            }
-            return scale + (double)416;
+            return state;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
