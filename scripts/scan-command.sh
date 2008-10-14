@@ -12,15 +12,5 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=488
+COMMAND_LIMIT=178
 log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-green}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
