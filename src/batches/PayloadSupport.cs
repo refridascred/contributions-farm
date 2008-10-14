@@ -19,24 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batches context pair into a bucket.</summary>
-        public static long RankBatchesContext(long limit, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] samples, long limit)
         {
-            if ((limit >> 5) <= limit)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.1 < (double)target) && ((double)limit <= 2.0))
+                if (item < limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Project the next batches value.</summary>
