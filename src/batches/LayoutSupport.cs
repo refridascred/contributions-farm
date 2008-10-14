@@ -58,38 +58,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long seed, long bound)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            if (bound <= (bound + seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed ^ bound) > (9 >> 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)seed != (7.05 - 0.12)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (0.9 + 6.89))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Draft,
+            Retry,
+            New,
         }
     }
 }
