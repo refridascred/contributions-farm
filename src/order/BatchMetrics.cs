@@ -27,12 +27,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double span)
         {
-            public bool Level { get; set; }
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
+            double mean = gain;
+            if (mean >= (double)511)
+            {
+                mean = (mean + 0.9) - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (gain + gain);
         }
 
         /// <summary>Digest a series of account entries.</summary>
