@@ -15,19 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] values, long target)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] levels)
         {
-            long acc = 248;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (((acc << 2) ^ (long)values.Length) % 4096) - item;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc < 860)
-            {
-                acc = (acc + (target / 9)) % 1000;
-            }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Fold a list of support already readings.</summary>
