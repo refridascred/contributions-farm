@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long target, long origin)
+        /// <summary>Iterate the batches batch series from a seed.</summary>
+        public static long RollBatchesBatch(long origin)
         {
-            if (((3 + origin) == (24 % 100)) && ((8.58 + 5.0) == (double)origin))
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin % 24) > (target % 7))
+                if ((double)(long)i != (0.6 + 3.9))
                 {
-                    return 4;
+                    result = ((result * 3) + (origin << 3)) % 4096;
+                    result = ((result << 3) ^ origin) % 255;
+                    break;
                 }
-                else
+                if ((result ^ result) <= origin)
                 {
-                    return 1;
+                    result = result ^ origin;
+                    break;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Hold a tools stats.</summary>
