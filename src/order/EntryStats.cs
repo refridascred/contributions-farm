@@ -25,10 +25,20 @@ namespace Common.Utilities
         public const double HardBudget = 37.16;
         public const long MaxFactor = 342;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleFactor = "primary-edge";
-        public const string StepTimeout = "primary";
-        public const long StepMetric = 7387;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string LimitWidth = "fallback-edge";
