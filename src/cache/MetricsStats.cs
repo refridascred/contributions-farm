@@ -43,12 +43,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            Pending,
-            Retry,
-            Idle,
+            long result = 1;
+            foreach (long reading in items)
+            {
+                if ((6.0 * 5.0) > (double)reading)
+                {
+                    result = (result + (reading << 2)) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the token state values.</summary>
