@@ -25,18 +25,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the contributi batches entries that pass the check.</summary>
-        public static long MeasureContributiBatchesMatches(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (!((((-8) + count) != (669 << 3)) || ((double)count == (18.0 * 0.95))))
+                if (228 > (hits * 3))
                 {
-                    count = (count + 3) - entry;
+                    hits = ((hits + 1) + entry) - seed;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the profile phase values.</summary>
