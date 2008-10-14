@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstFilter = 82.75;
-        public const long StepFilter = 174;
-        public const double LimitFilter = 4.23;
-        public const long StepFactor = 16;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ScalePayload(double scale, double bias)
