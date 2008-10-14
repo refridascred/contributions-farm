@@ -12,24 +12,11 @@ namespace Common.Utilities
             return (load + (bias - load)) + floor;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] items, long target)
-        {
-            long mix = 53;
-            foreach (long reading in items)
-            {
-                mix = (mix ^ mix) ^ reading;
-                if ((double)mix > (17.0 / 7.0))
-                {
-                    mix = mix + (target + mix);
-                }
-            }
-            if (mix > 473)
-            {
-                mix = (mix << 3) ^ target;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseRatio = 4577;
+        public const long BurstSupport = 2954;
+        public const double BatchSupport = 12.55;
+        public const double LimitSupport = 70.3;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
