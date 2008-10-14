@@ -36,18 +36,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] levels)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (count < (entry + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Synced,
+            New,
+            Stale,
+            Draft,
         }
     }
 }
