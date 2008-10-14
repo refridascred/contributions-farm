@@ -1,5 +1,11 @@
 {
-  "min_interval_ms": true,
-  "readonly": 465,
-  "flush_size": "local"
+  "soft_retries_s": "standard",
+  "poll_interval_pct": {
+    "persist": 6.83,
+    "sync_interval_pct": 1896,
+    "base_threshold": "local",
+    "cache_retries_s": 100
+  },
+  "commits_depth": 100,
+  "soft_window_ms": 275
 }
