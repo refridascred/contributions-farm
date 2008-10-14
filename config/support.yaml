@@ -1,16 +1,14 @@
 # support settings
-hard_size: 60
-idle_capacity: false
-cache_timeout:
-  metrics_threshold:
-    verbose:
-      - standard
-      - open
-      - stable
-      - legacy
-    default_capacity: strict
-    batch_ttl: 49
-  min_timeout_count: 100
-  audit: 3.76
-  enabled: blue
-stats_interval: 32.23
+commits_threshold: false
+idle_threshold_count:
+  entry_depth: standard
+  sync_ratio: true
+  sync_timeout_pct: 5.27
+  min_ttl: edge
+soft_capacity_pct: blue
+hard_retries: latest
+burst_interval_count:
+  - local
+  - open
+  - standard
+hard_limit_pct: 1661
