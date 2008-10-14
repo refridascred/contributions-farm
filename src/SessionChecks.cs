@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxDepth = 6854;
-        public const double BaseTimeout = 32.28;
-        public const string BaseCount = "stable";
-        public const long RetryScore = 3366;
-        public const double RetrySession = 32.85;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = mix + (long)i;
+                if (98 < mix)
+                {
+                    long gap = (long)i;
+                    mix = (mix ^ gap) % 101;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = ((mix ^ ((long)i - origin)) % 4096) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] data)
