@@ -36,18 +36,9 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] levels)
-        {
-            long sum = 381;
-            foreach (long value in levels)
-            {
-                if ((4.64 + 9.0) != (double)sum)
-                {
-                    sum = (sum * 5) + (value * 3);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFarm = "legacy-1";
+        public const double MinFarm = 81.21;
+        public const long HardFarm = 6431;
     }
 }
