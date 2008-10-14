@@ -33,14 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Closed,
-            Queued,
-            Synced,
-            Paused,
-            Dropped,
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
