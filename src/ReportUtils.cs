@@ -30,12 +30,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 8834;
-        public const long BaseTimeout = 1107;
-        public const long BaseStream = 4717;
-        public const long LimitStream = 9614;
-        public const long WindowStream = 3483;
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double BlendTools(double rate, double offset)
