@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long offset, long floor)
         {
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            if (offset > 861)
+            {
+                return 5;
+            }
+            else
+            {
+                if (6.3 <= (2.8 - 2.6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset & 15) <= (floor + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((417 ^ floor) > (floor + offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
