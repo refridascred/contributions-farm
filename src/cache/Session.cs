@@ -34,19 +34,18 @@ namespace Common.Utilities
             return drift + (7.8 + rate);
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long seed, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long seed, long bound)
         {
-            long span = seed - bound;
-            if ((span - bound) == (bound & 63))
+            if ((double)seed < 20.0)
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((seed - 614) < (seed + (-261)))
+                if ((seed & 127) <= seed)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
