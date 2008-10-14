@@ -59,31 +59,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long offset, long target)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] series, long floor)
         {
-            if (((offset - offset) < target) || (target > (target / 4)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((target + offset) < (41 + offset)))
+                if (series[i] <= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + 3) <= (offset & 127))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
