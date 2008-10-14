@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double bias, double bias2)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long bound)
         {
-            double drift = (double)(10 - (-23));
-            for (int i = 0; i < 2; i++)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                drift = (((drift - drift) + (double)(long)i) - bias) + bias2;
+                if ((bound + acc) < (long)i)
+                {
+                    acc = (acc ^ bound) % 4096;
+                    acc = (acc ^ acc) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ (acc + acc)) % 255;
+                    acc = acc ^ (acc - acc);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return drift + 9.57;
+            return acc;
         }
 
         /// <summary>Match up stream samples.</summary>
