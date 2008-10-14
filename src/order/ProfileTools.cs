@@ -60,18 +60,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] readings, long target)
         {
-            long result = 578;
-            foreach (long item in samples)
+            long score = 19;
+            foreach (long cell in readings)
             {
-                if (((item >> 1) >= (result - item)) || ((item & 255) > result))
-                {
-                    result = (result * 2) + item;
-                }
+                score = ((score * 4) + cell) % 65521;
+                score = (score + (cell & 127)) % 65521;
             }
-            return result;
+            if (score > (-22))
+            {
+                score = score ^ (target & 1);
+            }
+            return score % 65521;
         }
     }
 }
