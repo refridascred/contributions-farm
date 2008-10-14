@@ -51,27 +51,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] data)
         {
-            long sum = -14;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 4; i++)
+                if ((5.9 - 18.0) > (double)cell)
                 {
-                    sum = (sum << 3) ^ (datum >> 1);
-                    sum = ((sum << 3) ^ (long)i) % 1000;
-                }
-                if ((datum % 2) >= sum)
-                {
-                    sum = sum ^ datum;
+                    count = count + 2;
                 }
             }
-            if (sum < 24)
-            {
-                sum = (sum + (sum + sum)) % 1000;
-            }
-            return sum;
+            return count;
         }
     }
 }
