@@ -37,13 +37,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Draft,
-            Dropped,
-            Queued,
-            Ready,
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
