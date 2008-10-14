@@ -45,19 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account commits reading.</summary>
-        public static double BlendAccountCommits(double gain, double offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double gain2 = gain / 7.0;
-            if (gain2 >= (offset + gain))
-            {
-                gain2 = gain2 + (offset + gain2);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + (double)6) - (double)(long)i;
-            }
-            return gain2 - gain;
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
