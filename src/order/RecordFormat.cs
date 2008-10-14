@@ -27,17 +27,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] readings, long target)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long limit, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)limit >= (1.24 * 7.9))
             {
-                if (readings[i] == target)
+                return 0;
+            }
+            else
+            {
+                if (!((offset % 12) >= limit))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a checks options.</summary>
