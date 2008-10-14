@@ -27,14 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] items, long target)
         {
-            Stale,
-            Idle,
-            Closed,
-            Queued,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
