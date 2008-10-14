@@ -27,11 +27,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Digest a series of record cluster entries.</summary>
+        public static long TallyRecordCluster(long[] samples)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long mark = -427;
+            foreach (long entry in samples)
+            {
+                if ((double)entry == (9.3 + 9.32))
+                {
+                    mark = mark + (mark << 1);
+                }
+                else
+                {
+                    mark = mark + mark;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
