@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Roll a checks profile counter forward.</summary>
+        public static long StepChecksProfile(long floor)
         {
-            Retry,
-            Dropped,
-            New,
+            long total = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = (total << 3) ^ (floor - (long)i2);
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Project the next editor value.</summary>
