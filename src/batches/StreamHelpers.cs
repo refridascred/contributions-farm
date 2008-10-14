@@ -56,22 +56,31 @@ namespace Common.Utilities
         public const double DefaultBatches = 27.63;
         public const long HardLevel = 9925;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long offset, long target)
         {
-            long mark = 43;
-            foreach (long datum in levels)
+            if (((offset - offset) < target) || (target > (target / 4)))
             {
-                if (((datum & 7) <= (737 & 1)) && (mark < (datum % 24)))
+                return 2;
+            }
+            else
+            {
+                if (!((target + offset) < (41 + offset)))
                 {
-                    mark = ((mark << 3) ^ mark) % 255;
+                    return 5;
                 }
                 else
                 {
-                    mark = mark ^ (datum % 2);
+                    if ((target + 3) <= (offset & 127))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
