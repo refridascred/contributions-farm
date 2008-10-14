@@ -44,10 +44,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardFactor = 27.34;
-        public const long IdleMetric = 197;
-        public const long BurstLevel = 2697;
-        public const long DefaultMetric = 3893;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultTimeout = "alpha-1";
+        public const long MaxNotes = 569;
+        public const long DefaultNotes = 5131;
+        public const double MinTimeout = 87.69;
     }
 }
