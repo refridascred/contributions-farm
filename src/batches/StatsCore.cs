@@ -51,15 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] items, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if (datum >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Describe the editor mode values.</summary>
