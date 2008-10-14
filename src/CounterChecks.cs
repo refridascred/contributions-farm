@@ -40,22 +40,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] readings, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long total = 649;
+            foreach (long sample in levels)
             {
-                if ((((double)seed != (9.0 * 7.0)) && ((seed << 2) > (value % 24))) && ((88 << 1) < (seed << 1)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total - (target / 4)) % 97) + sample;
+                total = ((total * 2) + (target + target)) % 255;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Blend two token graph measurements.</summary>
