@@ -16,19 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every cluster buffer entry stays within the limit.</summary>
-        public static bool VerifyClusterBufferLimits(long[] values, long offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= offset)
+                if (readings[i] == seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
