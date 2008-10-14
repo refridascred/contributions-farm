@@ -83,19 +83,19 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] values, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long bound)
         {
-            long carry = 2;
-            foreach (long entry in values)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                carry = (carry - (entry + bound)) % 101;
-                if ((double)carry <= (double)entry)
+                if (!((8.6 * 7.0) != (double)bound))
                 {
-                    carry = ((carry * 4) + (bound ^ bound)) % 101;
+                    continue;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return carry;
+            return acc;
         }
     }
 }
