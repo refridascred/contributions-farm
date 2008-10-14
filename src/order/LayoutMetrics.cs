@@ -25,31 +25,18 @@ namespace Common.Utilities
             return load - bias2;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long target, long target2)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] values, long step)
         {
-            if (896 > (target - target))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target2 << 1) <= (target - target))
+                if (sample > (sample + hits))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target > target2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 2) - step;
                 }
             }
+            return hits;
         }
     }
 }
