@@ -33,17 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a format tools reading by value.</summary>
-        public static long SeekFormatToolsIndex(long[] values, long step)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = weight;
+            return (scale + 14.0) + offset;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
