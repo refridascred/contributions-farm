@@ -66,22 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples, long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long bound)
         {
-            long score = 21;
-            foreach (long reading in samples)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((score & 3) >= (floor ^ score))
-                {
-                    score = ((score << 2) ^ (7 + (-948))) + reading;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            if (score > 72)
-            {
-                score = (score - floor) % 97;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
