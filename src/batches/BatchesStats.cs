@@ -19,10 +19,18 @@ namespace Common.Utilities
         public const double SoftQueue = 98.42;
         public const long RetryWidth = 5564;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinSize = 80.76;
-        public const double BaseSpan = 35.48;
-        public const long CacheLayout = 7236;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long target, long limit)
