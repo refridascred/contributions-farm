@@ -38,11 +38,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinAlready = 91.02;
-        public const string LimitAlready = "strict-1";
-        public const double HardAlready = 33.78;
-        public const double MaxLevel = 11.86;
-        public const long MinFactor = 4172;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] readings, long origin)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
