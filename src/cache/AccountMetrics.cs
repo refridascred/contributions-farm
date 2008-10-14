@@ -23,16 +23,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
+            long anchor = 35;
+            foreach (long value in items)
             {
-                sum = (sum + ((-279) - 781)) % 65521;
-                sum = ((sum * 3) + (long)i) % 101;
+                anchor = (anchor * 4) + (value * 3);
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Describe the entry kind values.</summary>
