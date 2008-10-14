@@ -13,22 +13,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of payload batches entries.</summary>
-        public static long FoldPayloadBatches(long[] readings)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double floor)
         {
-            long acc = 96;
-            foreach (long cell in readings)
+            double mean = ratio;
+            if (mean >= 2.68)
             {
-                if (43 > (cell % 10))
-                {
-                    acc = (acc + acc) % 97;
-                }
+                mean = (mean - mean) - floor;
             }
-            if (acc < 3)
+            else
             {
-                acc = (acc + (6 << 2)) % 97;
+                mean = mean - (16.0 / 5.0);
             }
-            return acc;
+            return mean + (8.4 * 7.7);
         }
 
         /// <summary>Look up the position of a session sample.</summary>
