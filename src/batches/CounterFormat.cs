@@ -27,13 +27,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Rank format order input into a small class.</summary>
+        public static long GradeFormatOrder(long offset, long bound)
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
+            if (((offset / 8) <= offset) && ((double)offset >= (12.0 - 3.45)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset % 12) != (bound - 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(4 >= offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)bound <= (double)offset) && (bound < offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
