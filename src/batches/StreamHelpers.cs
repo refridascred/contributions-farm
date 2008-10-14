@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every notes commits entry stays within the limit.</summary>
-        public static bool CheckNotesCommitsRange(long[] samples, long floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
