@@ -1,8 +1,12 @@
 {
-  "idle_ratio_s": 250,
-  "burst_limit_pct": "green",
-  "burst_retries_s": "edge",
-  "audit": false,
-  "warm_ratio_s": 6.43,
-  "batch_limit_pct": "standard"
+  "route_interval": ["green", "stable", "edge", "edge"],
+  "cache_capacity_ms": "open",
+  "batch_threshold_ms": "strict",
+  "soft_ttl": 65,
+  "strict": {
+    "checks_ratio": 60,
+    "batch_interval_pct": 76.47,
+    "editor_limit": "cached",
+    "max_threshold_pct": 9164
+  }
 }
