@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Classify a route context pair into a bucket.</summary>
+        public static long ClassifyRouteContext(long limit, long origin)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            long edge = limit ^ origin;
+            if ((origin * 4) > (edge + 315))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin - limit) < (edge << 2)) && ((6.34 * 6.5) <= (double)edge))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the cluster status values.</summary>
