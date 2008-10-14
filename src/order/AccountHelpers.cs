@@ -37,18 +37,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] levels)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits ^ item) >= (item ^ hits))
+                if ((values[i] < target) && ((values[i] % 5) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a stream stats.</summary>
