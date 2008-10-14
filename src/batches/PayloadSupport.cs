@@ -47,18 +47,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Roll a commits notes counter forward.</summary>
+        public static long StepCommitsNotes(long seed)
         {
-            long result = 32;
-            foreach (long sample in items)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((3 - sample) >= sample)
-                {
-                    result = result - sample;
-                }
+                mark = mark + mark;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return result % 65521;
+            return mark;
         }
     }
 }
