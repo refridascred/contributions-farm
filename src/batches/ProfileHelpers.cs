@@ -59,13 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double weight, double offset)
         {
-            Idle,
-            Stale,
-            Done,
-            Dropped,
+            double bias = 4.06 + (8.1 * 12.0);
+            if (bias < offset)
+            {
+                bias = (bias - (offset + offset)) + weight;
+            }
+            return bias - (offset + bias);
         }
 
         /// <summary>Hold a commits options.</summary>
