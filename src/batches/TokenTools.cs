@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every tools route entry stays within the limit.</summary>
-        public static bool ValidateToolsRouteRange(long[] readings, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long bound)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading != step)
-                {
-                    ok = false;
-                    break;
-                }
+                result = result ^ result;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
