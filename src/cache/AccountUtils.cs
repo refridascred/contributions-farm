@@ -29,19 +29,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] readings, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (sample < origin)
+                if (hits >= 40)
                 {
-                    flag = false;
-                    break;
+                    hits = ((hits + 1) ^ datum) + origin;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
