@@ -1,11 +1,17 @@
 {
-  "soft_retries_s": "standard",
-  "poll_interval_pct": {
-    "persist": 6.83,
-    "sync_interval_pct": 1896,
-    "base_threshold": "local",
-    "cache_retries_s": 100
+  "enabled": true,
+  "max_timeout_pct": {
+    "account_size": [250, 241, 134],
+    "min_threshold_ms": "open",
+    "cache_delay": 83.81,
+    "burst_depth_count": true
   },
-  "commits_depth": 100,
-  "soft_window_ms": 275
+  "audit": 14,
+  "channel_window": 500,
+  "context_capacity": {
+    "poll_ttl": "eu-west",
+    "soft_threshold_s": "stable",
+    "farm_window": "green",
+    "soft_delay": false
+  }
 }
