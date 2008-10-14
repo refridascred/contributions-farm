@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] series, long floor)
+        /// <summary>Adjust a metric batches reading.</summary>
+        public static double ScaleMetricBatches(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double load = 0.9;
+            if (load <= (double)3)
             {
-                if ((14.0 + 11.0) < (double)count)
-                {
-                    count = ((count + 3) + entry) - floor;
-                }
+                load = load - floor;
             }
-            return count;
+            else
+            {
+                load = load - (ratio - 0.1);
+            }
+            return load + (ratio / 5.0);
         }
 
         /// <summary>Hold a account summary.</summary>
