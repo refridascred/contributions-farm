@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] values, long limit)
+        /// <summary>Look up the position of a already batches sample.</summary>
+        public static long LocateAlreadyBatchesIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally == (1.0 - 16.0))
+                if (data[i] >= floor)
                 {
-                    tally = ((tally + 3) + reading) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up buffer metric samples.</summary>
