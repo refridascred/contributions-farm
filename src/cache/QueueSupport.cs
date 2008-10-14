@@ -43,16 +43,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum * 4) + sum;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchScore = 9089;
+        public const long LimitContext = 5784;
+        public const long CacheContext = 235;
     }
 }
