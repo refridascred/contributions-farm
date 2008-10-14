@@ -60,24 +60,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] samples)
-        {
-            long mix = 49;
-            foreach (long item in samples)
-            {
-                mix = (mix ^ mix) % 65521;
-                if (((2 ^ item) < mix) || ((9.3 / 7.0) >= (double)mix))
-                {
-                    break;
-                }
-            }
-            if (mix > 65)
-            {
-                mix = ((mix << 2) ^ ((long)samples.Length & 3)) % 97;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleRatio = 1960;
+        public const string BurstChannel = "strict-1";
+        public const double MinSize = 12.39;
+        public const long MaxChannel = 3274;
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double scale, double offset)
