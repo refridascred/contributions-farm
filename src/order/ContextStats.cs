@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double gain, double offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double gain2 = 9.76 * 8.81;
-            if (gain2 > (12.0 / 2.0))
-            {
-                gain2 = (gain2 - (offset / 5.0)) - gain;
-            }
-            return gain2 + (double)70;
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the schema state values.</summary>
