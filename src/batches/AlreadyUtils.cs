@@ -78,22 +78,9 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (37 >= (entry << 3))
-                {
-                    tally = (tally + 3) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 932;
+        public const string DefaultSpan = "local";
+        public const string CacheTimeout = "stable-1";
     }
 }
