@@ -27,22 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long origin, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long limit, long origin)
         {
-            if ((475 & 127) < (floor * 2))
+            if (((-54) * 2) >= (44 + origin))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (((double)origin > (9.0 + 19.0)) && ((floor << 3) < 4))
+                if ((limit + origin) > (origin - 529))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 7;
+                    return 8;
                 }
             }
         }
