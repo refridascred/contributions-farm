@@ -36,19 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next tools counter value.</summary>
-        public static double AdjustToolsCounter(double scale, double span)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items, long step)
         {
-            double bias = scale - span;
-            if (bias < (7.79 / 5.0))
+            long sum = 842;
+            foreach (long entry in items)
             {
-                bias = bias - (double)941;
+                if ((8.0 - 0.4) < (double)(long)items.Length)
+                {
+                    sum = (sum << 2) ^ (sum << 1);
+                }
+                if ((entry << 3) < (entry + step))
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (double)494;
-            }
-            return bias - (span - 6.16);
+            return sum % 1000;
         }
     }
 }
