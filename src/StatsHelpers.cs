@@ -28,21 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Accumulate cluster session samples.</summary>
+        public static long ScoreClusterSession(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 4;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result ^ 53) - item;
+                if (((offset & 63) < offset) && (offset <= (long)data.Length))
                 {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
