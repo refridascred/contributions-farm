@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Stale,
-            Synced,
-            Pending,
-            Dropped,
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
