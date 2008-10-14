@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Retry,
-            Queued,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstInterval = 82.59;
+        public const double LimitScore = 83.47;
+        public const double CacheFactor = 50.86;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
