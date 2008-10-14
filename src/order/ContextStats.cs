@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 2804;
-        public const double BurstBudget = 64.43;
-        public const long DefaultOrder = 1595;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine notes account values into a single score.</summary>
         public static long CombineNotesAccount(long[] items, long offset)
