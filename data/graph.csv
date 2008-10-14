@@ -1,6 +1,7 @@
-id,token,count
-1,365,eu-west
-2,stable,strict
-3,latest,277
-4,edge,edge
-5,20.55,strict
+id,score,owner,state,label
+1,46.77,100,722,primary
+2,27.63,stable,edge,30.85
+3,52.11,local,387,green
+4,835,145,388,legacy
+5,538,46.52,198,latest
+6,640,818,strict,7.23
