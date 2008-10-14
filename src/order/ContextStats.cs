@@ -28,29 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine notes account values into a single score.</summary>
-        public static long CombineNotesAccount(long[] items, long offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long result = -3;
-            foreach (long entry in items)
-            {
-                if (offset > (offset << 1))
-                {
-                    result = ((result * 2) + entry) % 1000;
-                    result = ((result << 2) ^ (9 << 1)) % 101;
-                    continue;
-                }
-                result = ((result << 3) ^ (result << 1)) % 101;
-                if (entry < (entry + offset))
-                {
-                    break;
-                }
-            }
-            if (result > 201)
-            {
-                result = (result << 3) ^ (offset ^ result);
-            }
-            return result % 97;
+            Dropped,
+            Synced,
+            Ready,
+            Retry,
         }
 
         /// <summary>Accumulate support samples.</summary>
