@@ -18,16 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window filter series from a seed.</summary>
-        public static long DeriveWindowFilter(long bound)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] values, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state ^ ((long)i << 3);
-                state = ((state * 5) + (long)i) % 65521;
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
