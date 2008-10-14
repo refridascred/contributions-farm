@@ -71,19 +71,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheScore = 3.97;
+        public const long DefaultBudget = 9326;
+        public const string MinLevel = "open-edge";
+        public const long BatchFilter = 9562;
     }
 }
