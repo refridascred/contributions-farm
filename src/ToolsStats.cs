@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] samples, long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public bool Score { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
