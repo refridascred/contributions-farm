@@ -13,11 +13,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double scale, double bias)
+        /// <summary>Digest a series of payload batches entries.</summary>
+        public static long FoldPayloadBatches(long[] readings)
         {
-            double ratio = (scale * 0.02) + scale;
-            return (ratio + (ratio / 9.0)) + bias;
+            long acc = 96;
+            foreach (long cell in readings)
+            {
+                if (43 > (cell % 10))
+                {
+                    acc = (acc + acc) % 97;
+                }
+            }
+            if (acc < 3)
+            {
+                acc = (acc + (6 << 2)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
