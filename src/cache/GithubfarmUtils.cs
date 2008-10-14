@@ -30,19 +30,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate graph tools readings against a bound.</summary>
-        public static bool GuardGraphToolsRange(long[] readings, long step)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
