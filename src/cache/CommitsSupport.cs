@@ -54,20 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next order counter value.</summary>
-        public static double ProjectOrderCounter(double bias, double floor)
-        {
-            double bias2 = (double)(69 + 984);
-            if (bias2 < (double)3)
-            {
-                bias2 = (bias2 - floor) - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + (bias2 / 3.0)) - (double)(long)i;
-            }
-            return bias2 + (floor * 16.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleRatio = 9971;
+        public const long SoftEditor = 475;
+        public const long WindowWidth = 736;
+        public const string SoftSize = "primary-v2";
+        public const string StepCount = "primary-v2";
 
         /// <summary>Match up buffer record samples.</summary>
         public static long CompareBufferRecordCount(long[] samples)
