@@ -15,30 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] items, long bound)
-        {
-            long score = 77;
-            foreach (long sample in items)
-            {
-                score = (score << 2) ^ (bound % 24);
-                if (5 > (sample - bound))
-                {
-                    score = ((score * 3) + (sample % 24)) % 97;
-                    score = score ^ (score * 2);
-                    break;
-                }
-                if (!((bound << 3) < sample))
-                {
-                    score = ((score << 2) ^ (236 & 31)) % 65521;
-                }
-            }
-            if (score < 92)
-            {
-                score = score + score;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 5160;
+        public const long LimitBudget = 1471;
+        public const long MinBatch = 2861;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] readings, long bound)
