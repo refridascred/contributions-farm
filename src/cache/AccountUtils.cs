@@ -14,17 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] items, long offset)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
