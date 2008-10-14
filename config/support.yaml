@@ -1,4 +1,17 @@
 # support settings
-buffer_depth: primary
-already_depth: staging
-burst_window_ms: 45.41
+flush_capacity: 111
+default_ttl_s: false
+farm_size:
+  base_limit_count: 97.54
+  strict: 1024
+  checks_depth:
+    - cached
+    - latest
+  schema_interval: 86.04
+  min_size_ms: strict
+  persist:
+    - green
+    - standard
+    - cached
+persist: true
+cache_size: false
