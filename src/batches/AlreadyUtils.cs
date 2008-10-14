@@ -42,12 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            Draft,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the route mode values.</summary>
