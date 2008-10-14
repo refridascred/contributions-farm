@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 29;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((bound << 2) != (cell & 15))
                 {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum << 3) ^ (bound * 5);
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
