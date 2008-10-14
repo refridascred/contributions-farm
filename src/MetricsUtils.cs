@@ -27,15 +27,10 @@ namespace Common.Utilities
         public const string DefaultPayload = "legacy-edge";
         public const double HardRatio = 49.6;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Locked,
-            Failed,
-            Queued,
-            Done,
-            New,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 5962;
+        public const long BatchReport = 8818;
+        public const double MaxReport = 51.7;
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
