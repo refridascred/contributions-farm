@@ -1,8 +1,32 @@
 # entry settings
-warm_depth: true
-idle_limit_ms:
-  - 256
-  - 484
-verbose: 13
-audit: 66.0
-route_ttl: true
+min_ratio_ms: 2.68
+profile_window: 51.93
+max_timeout:
+  - eu-west
+  - strict
+  - fallback
+  - green
+cache_size: 100
+retry_threshold_s:
+  base_size_pct:
+    queue_delay: true
+    retry_size:
+      - 50
+      - 261
+    compress: false
+    farm_timeout: 55.61
+    warm_capacity: 92.41
+    base_window_count: cached
+  base_capacity_ms: 500
+  burst_capacity: cached
+  burst_interval_count:
+    - cached
+    - standard
+    - stable
+    - cached
+  record_capacity: 8.6
+  cache_depth_s: 89
+readonly:
+  - 126
+  - 20
+  - 88
