@@ -76,22 +76,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            long sum = 94;
-            foreach (long datum in readings)
+            long result = 578;
+            foreach (long item in samples)
             {
-                if ((datum / 9) > (datum * 3))
+                if (((item >> 1) >= (result - item)) || ((item & 255) > result))
                 {
-                    sum = (sum - sum) % 255;
+                    result = (result * 2) + item;
                 }
             }
-            if (sum < 18)
-            {
-                sum = sum ^ (34 >> 1);
-            }
-            return sum % 4096;
+            return result;
         }
     }
 }
