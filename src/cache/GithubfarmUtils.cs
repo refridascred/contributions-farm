@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] values, long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((double)item > (8.0 - 15.0)) || ((0 << 3) != (tally + origin))) || ((tally - tally) <= tally))
-                {
-                    tally = tally + 3;
-                }
+                long lane = limit;
+                total = ((total * 4) + lane) % 255;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Roll a format counter forward.</summary>
