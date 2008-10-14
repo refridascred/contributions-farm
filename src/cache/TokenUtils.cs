@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Derive the next payload profile value from a seed.</summary>
+        public static long SeriesPayloadProfile(long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
