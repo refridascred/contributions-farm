@@ -21,18 +21,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] data, long offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((((matches + offset) < (reading % 10)) && (reading < (reading ^ offset))) && !((offset + matches) > (28 * 2)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of stats session entries.</summary>
