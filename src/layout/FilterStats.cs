@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] samples, long step)
         {
-            Done,
-            Stale,
-            Idle,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the graph state values.</summary>
