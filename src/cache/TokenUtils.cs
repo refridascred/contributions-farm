@@ -20,21 +20,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of entry farm readings.</summary>
-        public static long MatchEntryFarmCount(long[] data)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Idle,
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a account entry.</summary>
