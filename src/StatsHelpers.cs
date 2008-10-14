@@ -44,15 +44,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the schema filter entries that pass the check.</summary>
-        public static long CountSchemaFilterOutliers(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] values, long origin)
         {
             long hits = 0;
-            foreach (long item in samples)
+            foreach (long entry in values)
             {
-                if ((1.43 <= (double)hits) && ((533 - item) > hits))
+                if ((3.3 * 9.02) < (double)hits)
                 {
-                    hits = hits + 2;
+                    hits = ((hits + 3) + entry) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
