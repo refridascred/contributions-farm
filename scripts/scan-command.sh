@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-staging}"
 case "${mode}" in
-    standard)
+    cached)
         log "fast path"
         ;;
     *)
