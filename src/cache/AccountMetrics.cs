@@ -28,16 +28,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] items)
-        {
-            long anchor = 35;
-            foreach (long value in items)
-            {
-                anchor = (anchor * 4) + (value * 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "cached-1";
+        public const long HardNotes = 1452;
+        public const string DefaultNotes = "strict-v2";
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
