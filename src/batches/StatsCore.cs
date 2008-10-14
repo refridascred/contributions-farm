@@ -51,20 +51,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinInterval = "staging-1";
+        public const long MinSize = 1484;
+        public const long LimitSize = 564;
+        public const string BaseMetric = "local";
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
