@@ -1,5 +1,14 @@
 {
-  "verbose": 4580,
-  "default_delay_ms": "open",
-  "strict": false
+  "retry_ttl_ms": 3274,
+  "hard_retries": [366, 335],
+  "metric_ttl": {
+    "audit": {
+      "checks_ttl": "cached",
+      "min_depth_pct": 3539,
+      "verbose": false
+    },
+    "verbose": 38,
+    "warm_ttl_count": [123, 170, 348]
+  },
+  "base_limit": 69.16
 }
