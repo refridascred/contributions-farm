@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 6;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6.1 / 2.0) == (double)bound)
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 3) + bound) + item;
+                }
+                if (bound >= (698 & 7))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry > 33)
+            {
+                carry = (carry + (42 / 8)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a session header.</summary>
