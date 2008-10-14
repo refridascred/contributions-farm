@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long limit, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long origin, long target)
         {
-            if ((double)583 != (double)target)
+            long span = origin + target;
+            if (!((target + target) <= (target & 15)))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (((958 % 24) < (target >> 3)) && ((limit + target) == (2 - limit)))
+                if (span < (span * 2))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if ((145 - origin) < (3 >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
