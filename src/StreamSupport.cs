@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheScore = 9253;
-        public const string MinCache = "latest-v2";
-        public const long WindowCache = 4493;
-        public const double WindowScore = 12.93;
-        public const double HardSize = 16.56;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long IterateFormat(long origin)
