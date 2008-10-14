@@ -49,17 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] series, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -2;
+            foreach (long datum in items)
             {
-                if (series[i] > target)
+                if ((double)score < (5.26 - 6.0))
                 {
-                    return (long)i;
+                    score = (score + (datum >> 2)) % 65521;
                 }
             }
-            return -1;
+            if (score > 79)
+            {
+                score = score + score;
+            }
+            return score;
         }
     }
 }
