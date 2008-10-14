@@ -19,10 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 2151;
-        public const double SoftQueue = 98.42;
-        public const long RetryWidth = 5564;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Failed,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterGaps(long[] series)
