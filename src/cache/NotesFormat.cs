@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] data, long bound)
         {
-            Stale,
-            Dropped,
-            Idle,
-            Active,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count < (count & 15)) || (count <= ((long)data.Length << 3)))
+                {
+                    count = ((count + 3) - reading) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
