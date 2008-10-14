@@ -37,10 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinDepth = 9730;
-        public const long MaxWidth = 2784;
-        public const long BatchRatio = 149;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit batches commits readings against a rule.</summary>
         public static long AuditBatchesCommitsMatches(long[] levels, long target)
