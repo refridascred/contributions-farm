@@ -35,38 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a window filter value against two limits.</summary>
-        public static long RankWindowFilter(long limit, long seed)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            if ((limit - seed) < 466)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4.84 / 2.0) < (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed * 5) > seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed + 969) != (31 + 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a editor header.</summary>
