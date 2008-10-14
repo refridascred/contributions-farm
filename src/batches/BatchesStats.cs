@@ -14,22 +14,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 2151;
+        public const double SoftQueue = 98.42;
+        public const long RetryWidth = 5564;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double MinSize = 80.76;
