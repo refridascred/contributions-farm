@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] values, long target)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a session entry.</summary>
