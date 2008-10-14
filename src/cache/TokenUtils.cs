@@ -48,14 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] samples, long seed)
         {
-            Dropped,
-            Draft,
-            Locked,
-            Idle,
-            Failed,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell - (-81)) < cell))
+                {
+                    seen = (seen + 1) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
