@@ -1,12 +1,8 @@
 {
-  "persist": {
-    "farm_retries": "fallback",
-    "farm_ttl": [493, 40, 424, 425],
-    "session_retries": false
-  },
-  "flush_ratio_s": 90.96,
-  "flush_threshold_count": 58.47,
-  "poll_capacity_s": 98,
-  "layout_ratio": "primary",
-  "readonly": "strict"
+  "sync_retries_pct": 74.06,
+  "soft_ratio": ["green", "staging", "strict"],
+  "batch_capacity": [355, 266, 32],
+  "max_limit": ["primary", "cached", "local"],
+  "default_size_pct": 30,
+  "max_depth_count": true
 }
