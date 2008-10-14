@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double gain, double floor)
         {
-            Failed,
-            Ready,
-            Paused,
-            Closed,
+            double ratio = gain;
+            return (ratio + (8.94 - gain)) + floor;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
