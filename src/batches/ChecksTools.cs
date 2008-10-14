@@ -53,21 +53,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((366 ^ seen) >= 87)
                 {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 1) ^ value) + limit;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
