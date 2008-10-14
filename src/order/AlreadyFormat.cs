@@ -32,14 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Stale,
-            Synced,
-            Idle,
-            Failed,
-            Done,
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the already filter entries that pass the check.</summary>
