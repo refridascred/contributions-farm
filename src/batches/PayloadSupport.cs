@@ -16,13 +16,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Measure how many commits tools samples are out of range.</summary>
+        public static long AuditCommitsToolsGaps(long[] values)
         {
-            Retry,
-            Idle,
-            Synced,
-            Locked,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry * 4) < (entry / 6))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a layout reading.</summary>
