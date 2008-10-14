@@ -1,5 +1,4 @@
 # githubfarm settings
-flush_threshold_s: staging
-strict: green
-base_capacity_count: stable
-hard_ratio_ms: 45
+entry_interval: true
+sync_window: open
+batch_ratio_pct: 55.37
