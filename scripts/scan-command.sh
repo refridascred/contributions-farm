@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in strict staging; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=276
+log "limit is ${COMMAND_LIMIT}"
