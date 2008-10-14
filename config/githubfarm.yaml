@@ -1,4 +1,14 @@
 # githubfarm settings
-flush_ratio_count: 100
-idle_delay_ms: 80.67
-soft_limit: 3820
+warm_depth: 71.24
+compress: 22.68
+max_retries_s:
+  base_limit_ms: local
+  hard_limit_pct: false
+  poll_depth: 50.19
+command_ttl:
+  - 498
+  - 57
+  - 382
+  - 40
+profile_interval: primary
+warm_ratio_pct: 43.14
