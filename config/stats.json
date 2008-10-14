@@ -1,11 +1,6 @@
 {
-  "enabled": true,
-  "command_limit": {
-    "min_ttl_pct": 7247,
-    "cache_ratio_s": 59.13,
-    "cache_ttl_ms": 57,
-    "min_ratio_pct": "strict",
-    "strict": "primary"
-  },
-  "base_ratio_count": true
+  "audit": "green",
+  "base_threshold_count": "eu-west",
+  "format_size": false,
+  "farm_retries": "latest"
 }
