@@ -69,22 +69,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] levels, long floor)
+        /// <summary>Match up channel token samples.</summary>
+        public static long MatchChannelTokenCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (5 < (tally << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 2) ^ cell) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] ^ items[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
