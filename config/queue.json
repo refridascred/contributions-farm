@@ -1,7 +1,8 @@
 {
-  "readonly": 7,
-  "idle_delay_pct": ["edge", "stable", "green", "legacy"],
-  "flush_window_s": 8.91,
-  "flush_interval_pct": "green",
-  "report_limit": true
+  "batches_ratio": 37.86,
+  "cache_delay_pct": ["strict", "fallback"],
+  "verbose": 2422,
+  "profile_retries": [114, 451],
+  "enabled": 5071,
+  "soft_capacity_ms": [241, 298, 268, 43]
 }
