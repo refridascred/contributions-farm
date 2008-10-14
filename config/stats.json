@@ -1,5 +1,5 @@
 {
-  "hard_ratio": true,
-  "schema_delay": "local",
-  "checks_threshold": "blue"
+  "verbose": 4580,
+  "default_delay_ms": "open",
+  "strict": false
 }
