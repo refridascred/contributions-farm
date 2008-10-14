@@ -17,11 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double ratio, double bias)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double rate = (double)(853 - 38);
-            return ((rate + (rate / 8.0)) + ratio) + bias;
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a batch record.</summary>
