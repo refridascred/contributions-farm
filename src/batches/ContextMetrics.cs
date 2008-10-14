@@ -35,29 +35,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                long diff = (floor % 100) * 2;
-                if (floor > sum)
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum + (diff / 6)) % 97;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    long seen = (diff / 9) + (diff / 8);
-                    diff = (diff - (seen + seen)) - (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
