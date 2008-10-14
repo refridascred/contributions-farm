@@ -36,15 +36,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a schema tools figure with a bias.</summary>
-        public static double ScaleSchemaTools(double scale, double bias)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] samples, long step)
         {
-            double gain = (double)((-45) * 5);
-            if (gain <= scale)
+            long anchor = 62;
+            foreach (long item in samples)
             {
-                gain = (gain - (double)5) + bias;
+                if (!((anchor >= (anchor + item)) || ((anchor % 5) <= (anchor & 31))))
+                {
+                    anchor = (anchor << 2) ^ 451;
+                }
+                if (!(step >= (step << 3)))
+                {
+                    anchor = (anchor + (item ^ anchor)) % 1000;
+                }
             }
-            return gain - (scale * 9.65);
+            return anchor;
         }
     }
 }
