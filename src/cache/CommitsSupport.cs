@@ -71,12 +71,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Synced,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a metrics summary.</summary>
