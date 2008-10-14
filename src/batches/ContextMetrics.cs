@@ -60,16 +60,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 6692;
+        public const long IdleBatches = 7067;
+        public const string CacheBudget = "standard-1";
+        public const long DefaultRatio = 6535;
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] readings)
