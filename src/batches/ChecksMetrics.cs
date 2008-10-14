@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinWidth = "legacy";
-        public const string LimitScore = "alpha-1";
-        public const long WindowRatio = 147;
-        public const long BurstWidth = 2648;
-        public const string IdleSupport = "local-1";
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderGaps(long[] series)
