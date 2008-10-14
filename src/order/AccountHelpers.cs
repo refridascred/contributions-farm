@@ -50,14 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 3534;
+        public const long StepGithubfarm = 5156;
+        public const long BatchDepth = 1982;
+        public const string BurstGithubfarm = "stable-edge";
 
         /// <summary>Blend two editor account measurements.</summary>
         public static double ScaleEditorAccount(double gain, double span)
