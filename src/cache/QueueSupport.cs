@@ -40,15 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel entry series from a seed.</summary>
-        public static long DeriveChannelEntry(long floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
