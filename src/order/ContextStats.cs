@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Validate token notes readings against a bound.</summary>
+        public static bool VerifyTokenNotesRange(long[] levels, long limit)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a queue summary.</summary>
