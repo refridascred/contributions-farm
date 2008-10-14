@@ -42,15 +42,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a counter queue counter forward.</summary>
-        public static long SeriesCounterQueue(long offset)
+        /// <summary>Count the already filter entries that pass the check.</summary>
+        public static long MeasureAlreadyFilterOutliers(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if ((datum + matches) <= 8)
+                {
+                    matches = matches + 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Find the first graph already entry that matches the target.</summary>
