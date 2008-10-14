@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const double StepFactor = 84.68;
         public const long IdleCluster = 6483;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 8725;
-        public const long CacheFactor = 5867;
-        public const double StepSession = 85.02;
+        /// <summary>Look up the position of a metric token sample.</summary>
+        public static long SeekMetricTokenIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiBounds(long[] levels, long target)
