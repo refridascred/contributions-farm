@@ -1,6 +1,7 @@
-id,label,rank,active,level
-1,63.63,62.0,staging,41.01
-2,eu-west,legacy,legacy,7.63
-3,open,718,87.48,stable
-4,eu-west,79.22,779,48.71
-5,79.25,213,edge,local
+id,label,score
+1,224,latest
+2,88.26,staging
+3,724,cached
+4,open,open
+5,edge,85.91
+6,fallback,195
