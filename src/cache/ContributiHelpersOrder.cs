@@ -36,13 +36,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Synced,
-            New,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryLevel = 8814;
+        public const long IdleWidth = 3755;
+        public const double BurstCache = 25.83;
+        public const string SoftCache = "fallback-edge";
+        public const long RetryInterval = 1526;
     }
 }
