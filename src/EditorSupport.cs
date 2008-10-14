@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long bound, long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long offset = bound + seed;
-            if ((6 ^ offset) <= (offset + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed % 10) == (bound ^ bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound + offset) >= (bound - bound)) && (18.0 > (double)bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Active,
+            Retry,
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Roll a batches account counter forward.</summary>
