@@ -49,10 +49,10 @@ namespace Common.Utilities
             return weight + (offset * 5.0);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 5368;
-        public const long StepContext = 1780;
-        public const long StepWidth = 5195;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 8765;
+        public const double WindowFactor = 5.03;
+        public const double LimitRoute = 8.29;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] series)
