@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit graph contributi readings against a rule.</summary>
-        public static long CountGraphContributiOutliers(long[] readings, long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits > (5.0 * 4.27))
+                if ((samples[i] > seed) && ((samples[i] % 5) == 0))
                 {
-                    hits = ((hits + 2) - entry) - bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
