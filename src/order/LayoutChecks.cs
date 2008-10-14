@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools schema readings against a rule.</summary>
-        public static long TallyToolsSchemaOutliers(long[] samples, long seed)
+        /// <summary>Audit cluster cache readings against a rule.</summary>
+        public static long TallyClusterCacheOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((137 - entry) != (seen + seen))
+                if ((955 + reading) != (reading - reading))
                 {
-                    seen = (seen + 2) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up layout samples.</summary>
