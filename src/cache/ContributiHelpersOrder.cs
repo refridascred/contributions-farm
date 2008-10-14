@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((-23) + 0) > tally)
-                {
-                    tally = ((tally + 2) + entry) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 1969;
+        public const long MaxWidth = 7908;
+        public const long BurstRatio = 1847;
+        public const string CacheTools = "cached-1";
+        public const string LimitTools = "fallback-edge";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double BatchRatio = 59.74;
