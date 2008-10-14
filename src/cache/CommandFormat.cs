@@ -32,22 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many commits farm samples are out of range.</summary>
-        public static long MeasureCommitsFarmHits(long[] values)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count + count) < count)
-                {
-                    count = (count + 1) - item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Paused,
+            Draft,
         }
     }
 }
