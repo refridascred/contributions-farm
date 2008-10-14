@@ -37,23 +37,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] data)
-        {
-            long sum = 442;
-            foreach (long sample in data)
-            {
-                sum = (sum ^ (sum % 100)) % 255;
-                if (((sum + (long)data.Length) == (sample << 3)) && ((12.0 - 4.3) != (double)sum))
-                {
-                    break;
-                }
-            }
-            if (sum < (-10))
-            {
-                sum = (sum * 4) + (sum - sum);
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepDepth = 906;
+        public const long RetryMetrics = 2109;
+        public const double MinMetrics = 60.31;
+        public const long IdleMetrics = 2250;
     }
 }
