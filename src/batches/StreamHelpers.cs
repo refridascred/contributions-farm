@@ -51,11 +51,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 32.25;
-        public const string IdleMetrics = "latest-1";
-        public const long DefaultSize = 7320;
-        public const long BurstScore = 838;
+        /// <summary>Roll a queue filter counter forward.</summary>
+        public static long IterateQueueFilter(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                score = (score - (origin - origin)) % 255;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
