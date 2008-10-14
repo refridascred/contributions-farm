@@ -47,18 +47,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((366 ^ seen) >= 87)
-                {
-                    seen = ((seen + 1) ^ value) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowWidth = 12.81;
+        public const double IdleRatio = 66.09;
+        public const long RetryStream = 9176;
+        public const double WindowStream = 29.91;
     }
 }
