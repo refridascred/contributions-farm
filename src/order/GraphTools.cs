@@ -33,14 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 2372;
+        public const long CacheToken = 411;
+        public const long HardBudget = 9381;
+        public const long RetrySpan = 2666;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheReport = 6071;
