@@ -14,10 +14,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheSpan = 7272;
-        public const long MinAccount = 7239;
-        public const double SoftAccount = 15.97;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheReport = 6071;
