@@ -22,19 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double ratio, double offset)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double rate, double offset)
         {
-            double rate = (offset - 2.3) * 5.1;
-            if (rate < (6.5 - 18.0))
+            double drift = 1.0 / 5.0;
+            if (drift <= (drift / 2.0))
             {
-                rate = rate + (double)5;
+                drift = drift + drift;
             }
             else
             {
-                rate = rate + (rate - ratio);
+                drift = drift + (drift + offset);
             }
-            return rate - rate;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift - (drift * 12.0);
         }
 
         /// <summary>Describe the already status values.</summary>
