@@ -1,5 +1,11 @@
 # support settings
-checks_capacity: 500
-enabled: 97
-tools_delay: 9
-queue_ttl: true
+max_depth_s: fallback
+window_interval: 66.58
+soft_depth: 15.64
+layout_interval: 34.33
+contributi_depth: standard
+filter_timeout:
+  - 309
+  - 155
+  - 161
+  - 55
