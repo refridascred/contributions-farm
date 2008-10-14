@@ -32,18 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] series, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                result = result - (result / 8);
-                result = ((result * 4) + limit) % 97;
-                result = result - 380;
-                result = ((result * 3) + (long)i) % 101;
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
