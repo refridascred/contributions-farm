@@ -1,8 +1,6 @@
 {
-  "min_size_pct": false,
-  "hard_depth": 96.33,
-  "retry_timeout_s": ["primary", "open", "standard", "eu-west"],
-  "retry_delay": 30,
-  "readonly": ["green", "green", "staging", "blue"],
-  "enabled": [486, 42, 433, 50]
+  "soft_timeout_count": "local",
+  "checks_size": 28.81,
+  "dry_run": [402, 489],
+  "compress": ["open", "legacy", "fallback"]
 }
