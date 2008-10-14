@@ -1,10 +1,30 @@
 # support settings
-poll_capacity_count: 63
-default_timeout: 80.91
-strict:
-  - strict
-  - standard
-  - cached
-warm_size_pct: 37.77
-payload_capacity: 100
-warm_ttl_pct: false
+default_ttl: blue
+warm_interval_ms: 41.24
+cache_size:
+  idle_threshold_count:
+    burst_ratio: 3732
+    layout_retries: staging
+    dry_run:
+      - stable
+      - strict
+    soft_threshold: 26
+  sync_capacity: 29
+  base_timeout: 500
+  soft_size: edge
+  idle_capacity_s: 100
+  graph_capacity: 67.23
+max_retries_ms:
+  order_window: true
+  cluster_retries:
+    warm_limit_count: 7.8
+    metrics_retries: 12.31
+    flush_depth_s: eu-west
+    min_ttl_pct: latest
+    cache_size_count: 9852
+  metric_capacity: eu-west
+  compress: 25.92
+  stats_timeout: 56.37
+  context_threshold: true
+editor_retries: 327
+cache_timeout_s: 66
