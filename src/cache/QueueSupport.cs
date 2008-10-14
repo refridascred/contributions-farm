@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepInterval = 5030;
+        public const string SoftSpan = "alpha-v2";
+        public const long SoftLevel = 340;
+        public const long IdleInterval = 5371;
+        public const string DefaultTimeout = "stable-v2";
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
