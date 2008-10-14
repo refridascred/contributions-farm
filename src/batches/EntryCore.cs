@@ -43,23 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] levels, long limit)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long total = 444;
-            foreach (long value in levels)
-            {
-                if ((double)total <= (1.2 + 6.0))
-                {
-                    total = total + total;
-                    total = ((total * 2) + (total ^ total)) % 4096;
-                }
-                if ((limit + limit) < (limit & 3))
-                {
-                    total = total ^ (value + (long)levels.Length);
-                }
-            }
-            return total;
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
