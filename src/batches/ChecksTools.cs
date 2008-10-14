@@ -20,17 +20,15 @@ namespace Common.Utilities
             return (ratio + (ratio / 9.0)) + bias;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Project the next queue buffer value.</summary>
+        public static double ProjectQueueBuffer(double bias, double floor)
         {
-            long acc = 7;
-            foreach (long datum in samples)
+            double bias2 = (bias + bias) / 9.0;
+            if (bias2 > floor)
             {
-                acc = (acc - (datum >> 4)) % 4096;
-                acc = ((acc << 2) ^ acc) % 255;
-                acc = (acc ^ (672 & 127)) % 65521;
+                bias2 = bias2 - bias;
             }
-            return acc;
+            return bias2 - bias2;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
