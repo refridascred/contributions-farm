@@ -1,6 +1,22 @@
 {
-  "graph_retries": "strict",
-  "queue_interval": 29.02,
-  "enabled": 58.0,
-  "retry_depth": 7699
+  "token_interval": {
+    "hard_timeout_count": "staging",
+    "sync_delay_pct": "strict",
+    "stats_threshold": 60,
+    "batch_interval_pct": {
+      "burst_limit_count": false,
+      "base_size_ms": "primary",
+      "max_capacity_pct": "edge",
+      "dry_run": 1140
+    },
+    "flush_window": 67,
+    "readonly": 77.05
+  },
+  "cache_depth_pct": {
+    "cache_ttl_ms": "strict",
+    "flush_interval_pct": "staging",
+    "soft_size_count": true
+  },
+  "soft_window_ms": "open",
+  "readonly": "eu-west"
 }
