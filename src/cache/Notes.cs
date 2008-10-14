@@ -19,26 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] data)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long seed)
         {
-            long anchor = 9;
-            foreach (long value in data)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (((value + anchor) != (long)data.Length) && ((109 + anchor) <= (anchor * 5)))
-                {
-                    anchor = (anchor * 5) + (284 >> 2);
-                }
-                if ((3.7 + 13.0) >= (double)anchor)
-                {
-                    anchor = anchor ^ (anchor << 3);
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            if (anchor > 19)
-            {
-                anchor = anchor - (anchor >> 2);
-            }
-            return anchor % 1000;
+            return acc;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
