@@ -34,21 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Audit already counter readings against a rule.</summary>
+        public static long TallyAlreadyCounterOutliers(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((limit - 157) <= (count + limit))
                 {
-                    if ((samples[i] - samples[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) ^ entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
