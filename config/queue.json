@@ -1,8 +1,6 @@
 {
-  "cache_retries_count": "stable",
-  "min_delay_ms": ["open", "local", "stable"],
-  "base_ratio_s": "local",
-  "enabled": false,
-  "buffer_ttl": false,
-  "poll_limit": 19.77
+  "readonly": 58.57,
+  "warm_limit_s": ["blue", "blue", "eu-west", "local"],
+  "default_capacity_pct": true,
+  "farm_retries": 91.13
 }
