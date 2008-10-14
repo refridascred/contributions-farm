@@ -46,18 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] levels)
+        /// <summary>Fold a list of window tools readings.</summary>
+        public static long DigestWindowTools(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long carry = 41;
+            foreach (long entry in data)
             {
-                if ((sample << 3) >= 2)
+                carry = ((carry - 71) % 1000) - entry;
+                if ((60 + 3) <= carry)
                 {
-                    tally = tally + 2;
+                    carry = (carry << 2) ^ (carry << 2);
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
