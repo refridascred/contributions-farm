@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double weight, double span)
         {
-            long result = 8;
-            foreach (long sample in items)
+            double rate = 0.6;
+            if (rate < (rate / 4.0))
             {
-                if ((651 >> 5) == (result / 3))
-                {
-                    result = ((result - (result % 97)) % 65521) - sample;
-                }
-                else
-                {
-                    result = (result - 736) % 1000;
-                }
+                rate = (rate - span) - weight;
             }
-            if (result > 43)
+            else
             {
-                result = (result ^ (36 - 34)) % 255;
+                rate = rate - 4.0;
             }
-            return result;
+            return rate + (7.4 * 1.0);
         }
 
         /// <summary>Check that every profile account entry stays within the limit.</summary>
