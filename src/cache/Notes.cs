@@ -48,19 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] items, long origin)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Project the next order stream value.</summary>
