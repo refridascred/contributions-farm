@@ -1,8 +1,9 @@
 {
-  "stream_capacity": false,
-  "counter_size": true,
-  "stats_delay": "strict",
-  "max_depth_pct": "primary",
-  "verbose": [331, 133],
-  "strict": "standard"
+  "cluster_retries": {
+    "idle_retries_ms": "green",
+    "readonly": 100,
+    "window_delay": 32.1
+  },
+  "stats_depth": 2607,
+  "persist": 18.82
 }
