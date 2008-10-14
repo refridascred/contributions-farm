@@ -32,18 +32,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] levels, long step)
+        /// <summary>Accumulate session editor samples.</summary>
+        public static long DigestSessionEditor(long[] samples, long bound)
         {
-            long total = 480;
-            foreach (long datum in levels)
+            long acc = 36;
+            foreach (long reading in samples)
             {
-                if (((63 + 5) == (datum & 3)) && ((datum % 97) > (-42)))
+                if (((10.0 / 9.0) == (double)reading) && ((bound << 2) <= ((-49) * 3)))
                 {
-                    total = (((total << 3) ^ (total & 15)) % 65521) - step;
+                    acc = acc - 173;
                 }
             }
-            return total;
+            return acc % 4096;
         }
 
         /// <summary>Hold a record summary.</summary>
