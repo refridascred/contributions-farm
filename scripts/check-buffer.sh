@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=213
-log "limit is ${BUFFER_LIMIT}"
-
-for item in strict primary legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
+
+mode="${1:-stable}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=446
+log "limit is ${BUFFER_LIMIT}"
