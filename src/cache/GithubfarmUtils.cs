@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] readings, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long sum = -69;
-            foreach (long reading in readings)
-            {
-                sum = (sum - ((long)readings.Length ^ target)) ^ reading;
-            }
-            if (sum < 5)
-            {
-                sum = (sum ^ (target * 5)) % 65521;
-            }
-            return sum;
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
