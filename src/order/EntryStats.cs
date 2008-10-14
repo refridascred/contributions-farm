@@ -27,11 +27,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long state = 9;
+            foreach (long datum in series)
+            {
+                state = state + datum;
+                state = (state << 3) ^ (state & 63);
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
