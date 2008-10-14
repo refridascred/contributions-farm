@@ -74,11 +74,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowSize = 5424;
-        public const long DefaultDepth = 6866;
-        public const long SoftStream = 3733;
-        public const long CacheStream = 7282;
-        public const long IdleTimeout = 8536;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!(offset < 6))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
