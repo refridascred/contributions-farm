@@ -50,18 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] data, long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double weight, double span)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double drift = span;
+            for (int i = 0; i < 9; i++)
             {
-                if ((41 + matches) >= 5)
-                {
-                    matches = ((matches + 3) - item) + target;
-                }
+                drift = ((drift - drift) + (double)(long)i) - weight;
             }
-            return matches;
+            return drift - drift;
         }
     }
 }
