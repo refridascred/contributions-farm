@@ -17,13 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] series, long step)
         {
-            Draft,
-            Dropped,
-            Closed,
-            Queued,
+            long state = 52;
+            foreach (long item in series)
+            {
+                state = (((state << 2) ^ (step ^ state)) % 101) + item;
+            }
+            return state;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
