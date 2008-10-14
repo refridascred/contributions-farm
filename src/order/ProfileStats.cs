@@ -31,18 +31,18 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] samples, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((reading % 24) >= (reading + seen))
+                if (((datum - hits) != (floor - datum)) || ((floor - floor) != (datum / 8)))
                 {
-                    seen = (seen + 3) + step;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
