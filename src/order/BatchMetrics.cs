@@ -35,12 +35,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
