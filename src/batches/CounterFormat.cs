@@ -25,11 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] samples, long limit)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (((seen % 64) <= seen) && (sample > (171 * 5)))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
     }
 }
