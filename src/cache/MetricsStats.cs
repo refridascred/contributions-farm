@@ -61,15 +61,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
