@@ -23,21 +23,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long limit)
         {
-            long acc = -992;
-            foreach (long sample in values)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                acc = (acc ^ sample) % 97;
-                acc = (acc * 4) + (acc % 5);
-                acc = ((acc * 3) + (910 / 2)) % 65521;
+                sum = (sum + ((-279) - 781)) % 65521;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            if (acc < 781)
-            {
-                acc = (acc - (acc & 127)) % 255;
-            }
-            return acc % 1000;
+            return sum;
         }
 
         /// <summary>Describe the entry kind values.</summary>
