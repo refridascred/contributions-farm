@@ -1,8 +1,5 @@
 {
-  "hard_timeout_ms": 2294,
-  "format_size": true,
-  "layout_size": [492, 450],
-  "max_depth_ms": false,
-  "soft_limit_pct": "primary",
-  "cache_capacity_ms": 96.39
+  "counter_size": 1024,
+  "batches_depth": 68.37,
+  "compress": ["standard", "staging"]
 }
