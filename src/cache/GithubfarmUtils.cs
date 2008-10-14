@@ -39,22 +39,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] data, long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (seed < (hits + (long)data.Length))
+                if (datum <= offset)
                 {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
