@@ -47,11 +47,25 @@ namespace Common.Utilities
             return weight + (double)62;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long origin, long origin2)
         {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long next = origin - origin2;
+            if ((double)next <= (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7.34 / 5.0) == (double)origin2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
