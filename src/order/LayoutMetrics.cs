@@ -29,18 +29,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many buffer route samples are out of range.</summary>
-        public static long CountBufferRouteHits(long[] samples)
+        /// <summary>Iterate the commits cache series from a seed.</summary>
+        public static long RollCommitsCache(long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((count / 2) != (count - cell))
+                if (((long)i + seed) == (mix << 3))
                 {
-                    count = count + 2;
+                    mix = mix + seed;
                 }
+                else
+                {
+                    mix = ((mix << 3) ^ ((long)i % 12)) % 4096;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = (((mix * 3) + mix) % 1000) ^ (long)i2;
+                    mix = mix - (930 ^ (long)i);
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
     }
 }
