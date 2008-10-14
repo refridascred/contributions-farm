@@ -69,13 +69,17 @@ namespace Common.Utilities
         public const long CacheToken = 8328;
         public const long SoftToken = 86;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] values, long seed)
         {
-            Dropped,
-            Queued,
-            Pending,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
