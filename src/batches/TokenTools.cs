@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long target, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] samples, long step)
         {
-            if ((double)target < (9.7 + 5.04))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((19.0 * 7.71) <= (double)step)
+                if ((48 + step) >= (matches + step))
                 {
-                    return 5;
+                    matches = (matches + 2) - datum;
                 }
                 else
                 {
-                    if (((target << 1) <= (step - 135)) || ((target ^ step) < (target / 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
