@@ -20,18 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long carry = 90;
+            foreach (long reading in readings)
             {
-                if ((value / 3) > tally)
-                {
-                    tally = tally + 2;
-                }
+                carry = (carry + (reading >> 1)) % 97;
             }
-            return tally;
+            if (carry > (-147))
+            {
+                carry = carry + (735 >> 2);
+            }
+            return carry;
         }
 
         /// <summary>Hold a commits entry.</summary>
