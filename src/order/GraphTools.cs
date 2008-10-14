@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long origin, long origin2)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long next = origin - origin2;
-            if ((double)origin >= (2.3 / 3.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 4) == (origin - next))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((6 % 60) > (next << 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
