@@ -101,18 +101,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] values, long origin)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((origin + seen) <= origin)
+                if ((state + state) == (seed ^ seed))
                 {
-                    seen = (seen + 3) ^ entry;
+                    state = state + (state - seed);
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
     }
 }
