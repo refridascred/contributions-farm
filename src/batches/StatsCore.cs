@@ -51,11 +51,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 443;
-        public const string BaseStream = "legacy-edge";
-        public const long CacheStream = 7590;
-        public const string CacheSpan = "latest";
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Pending,
+            New,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
