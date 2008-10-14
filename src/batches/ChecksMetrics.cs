@@ -49,14 +49,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Failed,
-            Done,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 8434;
+        public const long LimitCount = 1434;
+        public const double CacheCount = 58.03;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long origin, long bound)
