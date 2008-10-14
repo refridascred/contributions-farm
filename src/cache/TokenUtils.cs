@@ -5,39 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long seed, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] series)
         {
-            long prev = seed ^ target;
-            if ((88 + prev) != (5 ^ seed))
+            long carry = 9;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + prev) > (9 + 6))
+                if ((cell + carry) <= ((-36) - carry))
                 {
-                    return 3;
+                    carry = (carry ^ (cell - cell)) % 97;
+                    carry = (carry + carry) % 1000;
                 }
                 else
                 {
-                    if ((target > (target >> 5)) || ((30 << 3) != (seed * 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed * 3) >= (8 / 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = carry - (cell - cell);
                 }
+                carry = ((carry * 3) + cell) % 1000;
+                carry = carry + (cell - cell);
             }
+            return carry;
         }
 
         /// <summary>Find the first cache batches entry that matches the target.</summary>
