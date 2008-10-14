@@ -46,17 +46,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] samples, long seed)
+        /// <summary>Project the next payload schema value.</summary>
+        public static double SmoothPayloadSchema(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = 3.87;
+            if (ratio > ratio)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - scale) + span;
             }
-            return -1;
+            return ratio - (scale * 6.85);
         }
     }
 }
