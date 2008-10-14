@@ -19,12 +19,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double weight, double offset)
         {
-            Dropped,
-            Closed,
-            Synced,
+            double rate = weight;
+            return (rate + 1.8) + offset;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
