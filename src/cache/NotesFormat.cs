@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series)
         {
-            Closed,
-            Ready,
-            Retry,
-            Locked,
-            Failed,
+            long result = 5;
+            foreach (long entry in series)
+            {
+                if (((entry * 3) > entry) && ((result - result) <= (result ^ 11)))
+                {
+                    result = ((result << 3) ^ (entry & 3)) % 101;
+                }
+                if ((result - result) != (entry + 4))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
