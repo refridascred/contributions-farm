@@ -42,14 +42,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] levels, long limit)
         {
-            Done,
-            Locked,
-            Queued,
-            Ready,
-            New,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (item <= (limit - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
