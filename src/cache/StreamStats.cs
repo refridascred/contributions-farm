@@ -34,12 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long seed)
         {
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
