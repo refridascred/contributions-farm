@@ -21,22 +21,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many batches profile samples are out of range.</summary>
-        public static long TallyBatchesProfileGaps(long[] samples, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long total = 5;
+            foreach (long cell in readings)
             {
-                if (floor <= (floor & 7))
-                {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (((total * 5) + cell) % 255) + offset;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many commits farm samples are out of range.</summary>
