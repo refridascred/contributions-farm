@@ -42,18 +42,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the already metrics entries that pass the check.</summary>
-        public static long CountAlreadyMetricsMatches(long[] data)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (matches <= (cell << 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Dropped,
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
