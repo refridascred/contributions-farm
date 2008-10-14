@@ -33,21 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Classify a batches context pair into a bucket.</summary>
+        public static long RankBatchesContext(long limit, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((limit >> 5) <= limit)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((6.1 < (double)target) && ((double)limit <= 2.0))
                 {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next batches value.</summary>
