@@ -36,13 +36,26 @@ namespace Common.Utilities
         public const long SoftBudget = 7459;
         public const long CacheNotes = 8002;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] levels, long bound)
         {
-            Paused,
-            Active,
-            Failed,
-            Retry,
+            long anchor = 971;
+            foreach (long sample in levels)
+            {
+                if (!(((sample << 3) > anchor) && ((5.2 + 3.0) <= (double)sample)))
+                {
+                    anchor = (anchor + (bound ^ bound)) % 97;
+                }
+                if (((19.0 * 3.0) > (double)bound) || ((double)anchor == (double)6))
+                {
+                    anchor = (anchor + bound) % 65521;
+                }
+            }
+            if (anchor > 9)
+            {
+                anchor = ((anchor << 2) ^ (6 & 63)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
