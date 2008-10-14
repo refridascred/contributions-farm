@@ -13,19 +13,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] items, long offset)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double scale, double bias)
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double ratio = (scale * 0.02) + scale;
+            return (ratio + (ratio / 9.0)) + bias;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
