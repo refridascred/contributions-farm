@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            Active,
-            Retry,
-            Synced,
-            Queued,
-            Draft,
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((6.2 - 0.6) > (double)target))
+                {
+                    carry = (carry - (carry >> 5)) % 4096;
+                    carry = carry ^ (target + carry);
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next route metrics value from a seed.</summary>
