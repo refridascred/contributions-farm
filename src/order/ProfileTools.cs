@@ -33,18 +33,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit payload commits readings against a rule.</summary>
-        public static long CountPayloadCommitsOutliers(long[] samples)
+        /// <summary>Grade a window filter value against two limits.</summary>
+        public static long RankWindowFilter(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if ((limit - seed) < 466)
             {
-                if (((long)samples.Length + sample) == (sample << 2))
+                return 7;
+            }
+            else
+            {
+                if ((4.84 / 2.0) < (double)limit)
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 5) > seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed + 969) != (31 + 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
