@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double gain, double offset)
         {
-            Ready,
-            Pending,
-            Dropped,
-            Queued,
-            Failed,
+            double gain2 = 9.76 * 8.81;
+            if (gain2 > (12.0 / 2.0))
+            {
+                gain2 = (gain2 - (offset / 5.0)) - gain;
+            }
+            return gain2 + (double)70;
         }
 
         /// <summary>Describe the schema state values.</summary>
