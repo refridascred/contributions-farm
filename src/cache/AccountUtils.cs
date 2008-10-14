@@ -29,20 +29,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (target >= (long)i)
+                if ((count % 16) == (2 + reading))
                 {
-                    sum = sum - (446 ^ sum);
-                    sum = ((sum * 2) + (target + 749)) % 255;
+                    count = count + 3;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
     }
 }
