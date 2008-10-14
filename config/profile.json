@@ -1,5 +1,7 @@
 {
-  "flush_limit_s": 75.48,
-  "cache_depth_pct": 500,
-  "batches_timeout": "open"
+  "enabled": "latest",
+  "burst_delay": ["blue", "fallback", "blue", "staging"],
+  "commits_limit": "blue",
+  "sync_ttl_count": false,
+  "batch_timeout_ms": true
 }
