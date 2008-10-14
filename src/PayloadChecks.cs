@@ -38,12 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Active,
-            Idle,
+            Done,
             Locked,
+            Queued,
+            Ready,
+            New,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
