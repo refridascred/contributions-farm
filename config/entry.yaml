@@ -1,5 +1,35 @@
 # entry settings
-queue_ttl: true
-flush_size_ms: edge
-min_window: false
-tools_timeout: 90
+batch_depth_pct: 96
+warm_ratio_pct:
+  - green
+  - legacy
+persist: 47.4
+sync_limit_s:
+  audit: cached
+  profile_depth:
+    - staging
+    - eu-west
+  context_interval: 92.8
+  sync_window_count: 23.58
+  idle_interval_pct: 5087
+  cache_delay: true
+batch_threshold_count:
+  soft_threshold_count:
+    verbose:
+      - stable
+      - primary
+    filter_depth: true
+    persist: 23.17
+  cache_limit_count: true
+  max_limit:
+    token_ttl: 1366
+    warm_ttl_s: legacy
+    channel_limit: blue
+    strict: 500
+    retry_threshold: edge
+  sync_ttl_count:
+    - 307
+    - 420
+    - 136
+    - 228
+burst_size: local
