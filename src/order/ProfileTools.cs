@@ -39,12 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] items, long step)
         {
-            Queued,
-            Closed,
-            Retry,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
