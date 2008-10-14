@@ -23,16 +23,18 @@ namespace Common.Utilities
         public const long RetryCounter = 3439;
         public const string BurstCounter = "fallback-edge";
 
-        /// <summary>Derive the next buffer metric value from a seed.</summary>
-        public static long IterateBufferMetric(long floor)
+        /// <summary>Count the githubfarm account entries that pass the check.</summary>
+        public static long AuditGithubfarmAccountGaps(long[] items, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                sum = (sum + (sum - floor)) % 101;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (floor < (tally / 2))
+                {
+                    tally = (tally + 1) - datum;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
