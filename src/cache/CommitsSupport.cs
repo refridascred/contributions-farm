@@ -69,10 +69,22 @@ namespace Common.Utilities
             return bias2 + (floor * 16.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 7489;
-        public const double IdleSpan = 1.89;
-        public const long StepQueue = 5709;
+        /// <summary>Match up buffer record samples.</summary>
+        public static long CompareBufferRecordCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] samples)
