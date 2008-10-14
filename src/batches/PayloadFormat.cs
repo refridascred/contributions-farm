@@ -59,38 +59,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long floor, long origin)
+        /// <summary>Locate a batch batches reading by value.</summary>
+        public static long LocateBatchBatchesIndex(long[] series, long seed)
         {
-            if ((floor * 2) < (origin % 7))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor >> 1) < 9)
+                if (series[i] <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor * 4) < origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin - 25) > floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
