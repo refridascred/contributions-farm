@@ -57,19 +57,17 @@ namespace Common.Utilities
         public const long BatchEntry = 7413;
         public const double StepInterval = 3.5;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] levels, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != floor)
+                if (readings[i] == target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
