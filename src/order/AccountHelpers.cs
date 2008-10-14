@@ -56,15 +56,13 @@ namespace Common.Utilities
         public const long BatchDepth = 1982;
         public const string BurstGithubfarm = "stable-edge";
 
-        /// <summary>Blend two editor account measurements.</summary>
-        public static double ScaleEditorAccount(double gain, double span)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double mean = span - span;
-            if (mean > (gain + mean))
-            {
-                mean = mean - (double)3;
-            }
-            return mean + (gain - span);
+            Pending,
+            Queued,
+            Done,
+            New,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
