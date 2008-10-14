@@ -55,19 +55,32 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long origin, long offset)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long bound = origin ^ offset;
+            if (!(3.4 >= (double)bound))
             {
-                if (item > target)
+                return 0;
+            }
+            else
+            {
+                if ((bound ^ origin) <= (3 * 4))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound <= (13.0 / 3.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a profile record.</summary>
