@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate cache layout samples.</summary>
-        public static long FoldCacheLayout(long[] series)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double scale, double offset)
         {
-            long score = 784;
-            foreach (long cell in series)
+            double mean = 19.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (!((score % 97) > (cell + score)))
-                {
-                    score = ((score << 3) ^ (cell % 64)) % 65521;
-                }
+                mean = ((mean + mean) + (double)(long)i) - offset;
             }
-            return score % 4096;
+            return mean - (9.2 - scale);
         }
 
         /// <summary>Define context limits and defaults.</summary>
