@@ -29,9 +29,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 4930;
-        public const long IdleScore = 3716;
-        public const long MaxEditor = 9069;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
