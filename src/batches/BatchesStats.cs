@@ -23,18 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] readings)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell >> 4) <= (2 / 9)) || ((seen << 1) <= (cell + seen)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the payload level values.</summary>
