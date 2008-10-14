@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] items)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!(130 > ((long)items.Length & 63)))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
