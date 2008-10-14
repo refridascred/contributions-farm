@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Derive the next window context value from a seed.</summary>
+        public static long DeriveWindowContext(long target)
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            long mark = target;
+            for (int i = 0; i < 24; i++)
+            {
+                long delta = target;
+                mark = (mark ^ (delta - target)) % 65521;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
