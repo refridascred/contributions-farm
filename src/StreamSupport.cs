@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double ratio, double floor)
-        {
-            double rate = floor - (floor * 12.0);
-            if (rate > (double)286)
-            {
-                rate = (rate - (double)72) - ratio;
-            }
-            return rate - (rate * 6.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheScore = 9253;
+        public const string MinCache = "latest-v2";
+        public const long WindowCache = 4493;
+        public const double WindowScore = 12.93;
+        public const double HardSize = 16.56;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long IterateFormat(long origin)
