@@ -13,24 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long bound, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] data, long limit)
         {
-            if (offset > (offset % 3))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound & 1) >= (bound % 16))
+                if ((double)limit == (6.9 / 6.0))
                 {
-                    return 4;
+                    count = (count + 1) ^ cell;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
