@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two graph stream measurements.</summary>
-        public static double ProjectGraphStream(double bias, double span)
-        {
-            double ratio = 3.0 + (bias + 9.3);
-            return ratio + (span * 7.42);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSpan = 8397;
+        public const double MinSession = 65.8;
+        public const string CacheSession = "latest-1";
+        public const long SoftTimeout = 5440;
+        public const long BurstSession = 6457;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long bound, long offset)
