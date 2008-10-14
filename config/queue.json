@@ -1,10 +1,8 @@
 {
-  "compress": 95,
-  "persist": "stable",
-  "audit": {
-    "soft_delay_ms": 24.21,
-    "persist": "eu-west",
-    "compress": 7500,
-    "strict": "strict"
-  }
+  "dry_run": 80,
+  "burst_capacity_s": "cached",
+  "support_interval": true,
+  "max_interval_s": [159, 187],
+  "idle_timeout_count": 79.45,
+  "default_size": true
 }
