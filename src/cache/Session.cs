@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] data)
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)matches >= (3.48 + 1.0))
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a session entry.</summary>
