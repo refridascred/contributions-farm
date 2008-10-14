@@ -57,21 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of farm profile readings.</summary>
-        public static long OverlapFarmProfileCount(long[] samples)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Queued,
+            Idle,
         }
     }
 }
