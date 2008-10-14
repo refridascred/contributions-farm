@@ -75,13 +75,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long limit, long offset)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            long span = limit + offset;
+            if ((7.0 / 3.0) >= (double)span)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((span + limit) == (77 % 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(117 < (offset / 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((span + limit) == (5 & 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
