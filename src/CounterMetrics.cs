@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] series, long floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (175 <= (matches + floor))
-                {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Dropped,
+            Queued,
+            Synced,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
