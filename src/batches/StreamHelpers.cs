@@ -19,19 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command graph counter forward.</summary>
-        public static long DeriveCommandGraph(long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long bound, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
+            if (offset > (offset % 3))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (state + (state & 1)) - (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((bound & 1) >= (bound % 16))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
