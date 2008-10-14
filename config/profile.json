@@ -1,6 +1,12 @@
 {
-  "editor_retries": 74,
-  "batch_retries_count": 1151,
-  "poll_retries_s": 88.93,
-  "checks_interval": "open"
+  "flush_ttl_s": "strict",
+  "dry_run": false,
+  "channel_retries": {
+    "burst_threshold": 500,
+    "default_retries_ms": true,
+    "retry_retries": 1024,
+    "max_depth_pct": 1746,
+    "channel_size": "standard",
+    "readonly": false
+  }
 }
