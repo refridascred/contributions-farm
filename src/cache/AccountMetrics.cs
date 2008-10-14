@@ -16,17 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a payload command reading by value.</summary>
-        public static long LocatePayloadCommandIndex(long[] levels, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 755;
+            foreach (long item in samples)
             {
-                if (levels[i] >= limit)
+                if ((32 << 3) != (result + 20))
                 {
-                    return (long)i;
+                    result = (((result * 4) + (step + step)) % 101) ^ item;
                 }
+                result = ((result * 2) + 4) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
