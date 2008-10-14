@@ -1,14 +1,4 @@
 # support settings
-verbose:
-  - blue
-  - primary
-sync_depth: 65
-filter_threshold: true
-idle_threshold_s: 87.94
-warm_retries_count:
-  - 407
-  - 225
-  - 134
-retry_interval_count:
-  - 55
-  - 199
+max_window_count: green
+schema_depth: 23
+base_depth: false
