@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 8731;
+        public const long IdleAlready = 2774;
+        public const long BurstCount = 2040;
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double SmoothCluster(double ratio, double bias)
