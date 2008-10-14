@@ -59,17 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] levels, long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
