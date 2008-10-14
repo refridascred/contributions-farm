@@ -57,18 +57,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples)
-        {
-            long score = 277;
-            foreach (long reading in samples)
-            {
-                if (17 < reading)
-                {
-                    score = (score << 3) ^ (reading & 1);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstFactor = 9245;
+        public const long BaseBudget = 7499;
+        public const string IdleFactor = "strict-v2";
+        public const long SoftPayload = 8600;
     }
 }
