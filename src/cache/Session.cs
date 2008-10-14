@@ -14,15 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double rate, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] series)
         {
-            double drift = 0.41;
-            if (drift > (7.55 + 7.0))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                drift = drift + (span * 1.0);
+                if ((reading + seen) <= (reading << 2))
+                {
+                    seen = seen + 3;
+                }
             }
-            return drift + (7.8 + rate);
+            return seen;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
