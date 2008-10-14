@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "stable-1";
-        public const double WindowTimeout = 93.67;
-        public const long StepFactor = 4844;
-        public const long SoftSpan = 9733;
-        public const long BatchCache = 4009;
+        /// <summary>Grade a order farm value against two limits.</summary>
+        public static long SortOrderFarm(long step, long seed)
+        {
+            long bound = step + seed;
+            if (seed >= (seed >> 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound - seed) > (step & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + 52) <= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed & 63) >= (10 - step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long ScoreCounter(long[] values)
