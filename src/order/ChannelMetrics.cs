@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long result = 95;
+            foreach (long value in levels)
             {
-                mark = (mark ^ ((long)i >> 1)) % 4096;
-                mark = ((mark * 3) + (long)i) % 65521;
+                result = (result << 3) ^ ((-8) ^ value);
             }
-            return mark;
+            if (result > 46)
+            {
+                result = (result * 3) + result;
+            }
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
