@@ -32,12 +32,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Dropped,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitWidth = 791;
+        public const double LimitSpan = 59.25;
+        public const long DefaultBudget = 9375;
     }
 }
