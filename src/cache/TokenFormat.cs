@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a profile cache figure with a bias.</summary>
-        public static double SmoothProfileCache(double weight, double offset)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double weight2 = (offset + offset) - weight;
-            if (weight2 >= (offset * 8.0))
-            {
-                weight2 = weight2 + (weight - offset);
-            }
-            else
-            {
-                weight2 = weight2 + (double)3;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - weight) - (double)(long)i;
-            }
-            return weight2 + (weight * 1.0);
+            Dropped,
+            Retry,
+            Ready,
+            Locked,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
