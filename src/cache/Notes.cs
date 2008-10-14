@@ -13,12 +13,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinScore = "primary";
-        public const double WindowSpan = 55.83;
-        public const long StepAccount = 2120;
-        public const long DefaultInterval = 638;
-        public const long BaseAccount = 9876;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
