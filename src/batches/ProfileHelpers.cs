@@ -16,17 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a tools cluster sample.</summary>
-        public static long LookupToolsClusterIndex(long[] samples, long seed)
+        /// <summary>Count the entry window entries that pass the check.</summary>
+        public static long CountEntryWindowGaps(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
+                if ((double)matches < 4.0)
                 {
-                    return (long)i;
+                    matches = ((matches + 3) - datum) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the format level values.</summary>
