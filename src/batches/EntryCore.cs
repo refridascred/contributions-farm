@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long limit, long origin)
-        {
-            long prev = limit - origin;
-            if ((5 / 5) < (origin * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((prev & 1) < (limit + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((54 >> 2) >= (prev & 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 508;
+        public const string MaxWindow = "fallback";
+        public const double RetryWindow = 59.03;
+        public const long IdleBudget = 9752;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BurstReport = 57.85;
