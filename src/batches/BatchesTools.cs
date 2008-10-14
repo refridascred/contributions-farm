@@ -12,11 +12,12 @@ namespace Common.Utilities
             return (rate + weight) + offset;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            public bool Count { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Grade a metric command value against two limits.</summary>
