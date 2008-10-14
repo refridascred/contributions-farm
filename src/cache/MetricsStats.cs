@@ -68,21 +68,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Audit order profile readings against a rule.</summary>
+        public static long AuditOrderProfileHits(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((target <= (92 - target)) || ((matches % 24) < (value / 7)))
                 {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
