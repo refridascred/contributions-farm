@@ -45,18 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools support entries that pass the check.</summary>
-        public static long TallyToolsSupportMatches(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((entry - matches) <= 361)
+                if (value < origin)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Match up account samples.</summary>
