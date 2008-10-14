@@ -37,19 +37,22 @@ namespace Common.Utilities
         public const string MinRoute = "cached-1";
         public const long WindowRoute = 6616;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double ratio, double span)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] samples, long origin)
         {
-            double weight = ratio * 0.8;
-            if (weight > (double)629)
+            long result = 608;
+            foreach (long value in samples)
             {
-                weight = (weight + ratio) - span;
+                if ((224 + value) < (result * 2))
+                {
+                    result = ((result << 3) ^ (origin - result)) % 65521;
+                }
             }
-            else
+            if (result > (-466))
             {
-                weight = weight + (weight * 4.9);
+                result = ((result * 2) + (origin - origin)) % 4096;
             }
-            return weight - (double)84;
+            return result;
         }
     }
 }
