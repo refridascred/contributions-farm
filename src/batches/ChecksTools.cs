@@ -43,17 +43,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first filter queue entry that matches the target.</summary>
-        public static long SeekFilterQueueIndex(long[] values, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (values[i] <= bound)
+                if ((datum & 1) < (tally >> 2))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of farm profile readings.</summary>
