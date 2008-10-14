@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a metric account pair into a bucket.</summary>
-        public static long ClassifyMetricAccount(long limit, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            if (((limit >> 2) <= limit) && ((2.91 - 1.7) > (double)limit))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit & 15) < (floor * 3)) || (floor > (7 - floor)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((4 * 4) <= (floor + floor))
+                    if ((samples[i] ^ samples[j]) != 4)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor * 2) != (441 / 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two farm measurements.</summary>
