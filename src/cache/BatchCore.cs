@@ -37,11 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 1926;
-        public const string CacheStream = "fallback-v2";
-        public const long BurstBudget = 9577;
-        public const double CacheDepth = 5.0;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Audit graph support readings against a rule.</summary>
         public static long CountGraphSupportHits(long[] samples, long origin)
