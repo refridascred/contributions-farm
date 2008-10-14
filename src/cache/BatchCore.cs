@@ -51,15 +51,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double weight, double span)
+        /// <summary>Rank batches tools input into a small class.</summary>
+        public static long RankBatchesTools(long bound, long offset)
         {
-            double mean = 0.72;
-            if (mean < (double)533)
+            long gap = bound - offset;
+            if (bound >= gap)
             {
-                mean = ((mean + (mean - mean)) - weight) + span;
+                return 4;
             }
-            return mean - (double)4;
+            else
+            {
+                if ((bound <= gap) && ((bound / 3) <= 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
