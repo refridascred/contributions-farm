@@ -42,10 +42,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 7666;
-        public const double BatchFactor = 14.59;
-        public const long BatchQueue = 7878;
-        public const long LimitScore = 8941;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
