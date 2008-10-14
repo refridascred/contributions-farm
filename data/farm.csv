@@ -1,8 +1,6 @@
-id,count,active
-1,316,685
-2,78.93,42.41
-3,eu-west,447
-4,62,592
-5,665,eu-west
-6,edge,24.39
-7,321,local
+id,count,weight,label,region
+1,blue,60.1,68.84,87.1
+2,standard,769,56.31,green
+3,937,legacy,cached,999
+4,575,484,75.86,1.72
+5,staging,51.89,113,fallback
