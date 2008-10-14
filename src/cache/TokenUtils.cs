@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total ^ (total % 16);
-                total = ((total * 5) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
