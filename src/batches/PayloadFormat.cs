@@ -11,34 +11,35 @@ namespace Common.Utilities
         public const double IdleCount = 1.31;
         public const long HardFactor = 980;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long target, long origin)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long step, long limit)
         {
-            if ((target >= 56) || (9 >= (origin - origin)))
+            long offset = step ^ limit;
+            if (offset <= 43)
             {
                 return 6;
             }
             else
             {
-                if ((origin > (origin + target)) && ((origin % 7) <= (origin + 5)))
+                if ((step + 14) >= (offset << 2))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((target - target) >= origin)
+                    if ((double)offset <= 2.3)
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        if ((target ^ target) == (120 + origin))
+                        if (((1.74 + 19.0) == (double)limit) && ((limit / 8) == (600 + limit)))
                         {
                             return 8;
                         }
                         else
                         {
-                            return 4;
+                            return 5;
                         }
                     }
                 }
