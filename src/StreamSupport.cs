@@ -16,38 +16,22 @@ namespace Common.Utilities
             return rate - (rate * 6.0);
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long floor, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] series)
         {
-            if (((limit << 1) > limit) && ((limit / 9) < limit))
+            long anchor = 35;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor <= (limit & 7)) || ((limit + floor) >= (limit * 5)))
+                if (!((datum ^ datum) > (datum * 4)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor * 4) >= 574)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)limit >= (4.7 - 0.8)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = (anchor << 3) ^ (anchor >> 4);
                 }
             }
+            if (anchor < (-919))
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a stats record.</summary>
