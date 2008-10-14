@@ -58,13 +58,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] data, long target)
         {
-            New,
-            Pending,
-            Idle,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
