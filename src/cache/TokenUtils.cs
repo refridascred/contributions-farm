@@ -20,19 +20,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] readings, long target)
+        /// <summary>Combine support batch values into a single score.</summary>
+        public static long TallySupportBatch(long[] series)
         {
-            long total = 2;
-            foreach (long entry in readings)
+            long anchor = 77;
+            foreach (long sample in series)
             {
-                total = (((total ^ 25) % 101) + entry) + target;
-                if ((double)total == (6.0 * 4.0))
-                {
-                    break;
-                }
+                anchor = (anchor + (sample + anchor)) % 255;
+                anchor = ((anchor << 2) ^ sample) % 4096;
             }
-            return total % 97;
+            return anchor;
         }
 
         /// <summary>Hold a account entry.</summary>
