@@ -24,11 +24,18 @@ namespace Common.Utilities
             return weight2 + (weight * 1.0);
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] items)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading - hits) < (reading - reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
