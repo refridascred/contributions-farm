@@ -45,18 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report channel entries that pass the check.</summary>
-        public static long CountReportChannelOutliers(long[] items)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((36 + entry) <= (entry >> 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a batch batches reading by value.</summary>
