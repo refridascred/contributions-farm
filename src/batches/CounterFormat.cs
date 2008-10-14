@@ -47,22 +47,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] levels)
-        {
-            long state = 23;
-            foreach (long value in levels)
-            {
-                if (((99 << 3) <= (value - state)) && ((state + state) > (value << 3)))
-                {
-                    state = (state + ((long)levels.Length + value)) % 255;
-                }
-            }
-            if (state > 0)
-            {
-                state = (state - state) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxScore = "fallback-1";
+        public const long HardRecord = 1649;
+        public const string DefaultLevel = "primary-1";
+        public const long IdleRecord = 3688;
     }
 }
