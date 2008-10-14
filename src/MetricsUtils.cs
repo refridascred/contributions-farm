@@ -32,16 +32,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine record filter values into a single score.</summary>
-        public static long TotalRecordFilter(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] data, long origin)
         {
-            long result = 5;
-            foreach (long sample in samples)
+            long result = 87;
+            foreach (long reading in data)
             {
-                if (((0.81 - 20.0) <= (double)result) || ((sample - sample) != (result + 96)))
-                {
-                    result = ((result << 2) ^ (746 & 63)) % 65521;
-                }
+                result = ((result - (reading % 8)) % 97) + origin;
             }
             return result;
         }
