@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long bound, long bound2)
-        {
-            long slot = bound ^ bound2;
-            if ((slot >> 1) >= ((-8) - slot))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound2) <= bound2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound + bound) >= (bound2 / 5)) || ((slot ^ slot) > (bound / 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinCount = "open-1";
+        public const long BurstMetric = 3864;
+        public const string IdleCount = "cached-v2";
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
