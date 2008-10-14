@@ -1,7 +1,6 @@
 {
-  "base_timeout": ["legacy", "stable", "latest"],
-  "audit": "green",
-  "already_timeout": 48.56,
-  "enabled": 60,
-  "base_timeout_pct": "stable"
+  "batch_window_pct": 30,
+  "burst_delay_ms": 1888,
+  "hard_window_s": "staging",
+  "contributi_delay": true
 }
