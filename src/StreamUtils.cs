@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] readings, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (((long)readings.Length / 6) == (item - item))
+                if (cell != target)
                 {
-                    hits = (hits + 3) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Match up contributi samples.</summary>
