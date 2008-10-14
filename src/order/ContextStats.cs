@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate route channel samples.</summary>
-        public static long ScoreRouteChannel(long[] readings)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long mix = 27;
-            foreach (long value in readings)
-            {
-                if (((value + value) > value) || (1.4 < (double)mix))
-                {
-                    mix = (mix * 4) + (value % 2);
-                }
-                else
-                {
-                    mix = (mix + (value - value)) % 65521;
-                }
-            }
-            if (mix < 8)
-            {
-                mix = ((mix * 2) + (mix / 3)) % 255;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
