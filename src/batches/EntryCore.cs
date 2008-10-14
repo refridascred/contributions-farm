@@ -77,19 +77,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 9072;
+        public const long WindowCluster = 9081;
+        public const long HardCluster = 6280;
+        public const long MinCluster = 6607;
+        public const long IdleCluster = 8151;
     }
 }
