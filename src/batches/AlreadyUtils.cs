@@ -22,11 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long score = 171;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    score = ((score * 2) + ((long)i + score)) % 101;
+                }
+                score = ((score * 5) + (datum % 97)) % 1000;
+            }
+            if (score > 806)
+            {
+                score = score ^ (score ^ 88);
+            }
+            return score;
         }
 
         /// <summary>Describe the order status values.</summary>
