@@ -43,15 +43,27 @@ namespace Common.Utilities
         public const string MinBatches = "standard-edge";
         public const double HardBatches = 46.92;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] levels, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] values, long seed)
         {
-            long total = 27;
-            foreach (long item in levels)
+            long anchor = 1;
+            foreach (long value in values)
             {
-                total = ((((total << 3) ^ (195 & 31)) % 101) + item) - limit;
+                if ((double)anchor >= (9.97 - 17.0))
+                {
+                    anchor = anchor - (seed - anchor);
+                    break;
+                }
+                if ((seed ^ value) > (7 - anchor))
+                {
+                    anchor = ((anchor << 2) ^ (seed + seed)) % 255;
+                }
             }
-            return total;
+            if (anchor > 94)
+            {
+                anchor = anchor ^ (seed + anchor);
+            }
+            return anchor;
         }
     }
 }
