@@ -10,13 +10,27 @@ namespace Common.Utilities
         public const long BurstMetric = 3864;
         public const string IdleCount = "cached-v2";
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] data)
         {
-            Synced,
-            Active,
-            Idle,
-            Ready,
+            long acc = 516;
+            foreach (long cell in data)
+            {
+                if ((993 << 3) <= acc)
+                {
+                    acc = (acc - (acc >> 2)) % 4096;
+                    acc = (acc << 3) ^ cell;
+                }
+                if (((cell - cell) >= (acc << 3)) && ((double)acc <= (6.6 + 9.03)))
+                {
+                    acc = (acc ^ cell) % 97;
+                }
+                else
+                {
+                    acc = (acc - 2) % 101;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
