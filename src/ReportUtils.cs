@@ -36,12 +36,11 @@ namespace Common.Utilities
             return ((bias - 1.0) + scale) + floor;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double rate, double offset)
         {
-            Pending,
-            Active,
-            Draft,
+            double drift = (2.0 - rate) * 9.47;
+            return drift + offset;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
