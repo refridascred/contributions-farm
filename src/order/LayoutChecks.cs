@@ -79,19 +79,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double rate, double bias)
-        {
-            double load = bias;
-            if (load > (load + rate))
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (13.0 * 18.0)) + (double)(long)i;
-            }
-            return load + load;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 8568;
+        public const double RetryWidth = 14.64;
+        public const long DefaultOrder = 962;
     }
 }
