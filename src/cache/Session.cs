@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] data)
+        /// <summary>Combine checks payload values into a single score.</summary>
+        public static long FoldChecksPayload(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long sum = 52;
+            foreach (long reading in readings)
             {
-                if ((double)matches >= (3.48 + 1.0))
+                if ((double)reading < (double)7)
                 {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = sum - (sum + sum);
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Roll a record counter forward.</summary>
