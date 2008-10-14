@@ -14,14 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] data, long bound)
         {
-            Queued,
-            Closed,
-            Ready,
-            Retry,
-            Stale,
+            long result = 8;
+            foreach (long item in data)
+            {
+                if (((item * 2) != (item - bound)) || ((double)bound == (12.0 / 8.0)))
+                {
+                    result = result + (bound - 638);
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
