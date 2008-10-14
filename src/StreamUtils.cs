@@ -58,16 +58,12 @@ namespace Common.Utilities
         public const double StepStats = 43.11;
         public const long RetryRatio = 6042;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double weight, double span)
-        {
-            double mean = weight;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (span / 4.0)) + (double)(long)i;
-            }
-            return mean + weight;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepScore = 4368;
+        public const double RetryLayout = 25.99;
+        public const double RetryInterval = 72.85;
+        public const double MaxRatio = 55.65;
+        public const long LimitFactor = 8704;
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
