@@ -73,18 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item + 22) < (matches * 2))
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultFactor = 437;
+        public const long BatchSpan = 2657;
+        public const long IdleTimeout = 2767;
+        public const long LimitFactor = 4393;
+        public const long DefaultRatio = 4594;
     }
 }
