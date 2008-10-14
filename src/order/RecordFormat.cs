@@ -45,11 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double weight, double offset)
         {
-            public double Count { get; set; }
-            public double Mode { get; set; }
+            double load = (double)((-436) - 2);
+            for (int i = 0; i < 3; i++)
+            {
+                load = (((load + load) + (double)(long)i) - weight) + offset;
+            }
+            return load - load;
         }
     }
 }
