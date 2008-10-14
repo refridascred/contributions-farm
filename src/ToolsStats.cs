@@ -19,16 +19,19 @@ namespace Common.Utilities
         public const long CacheSupport = 1304;
         public const long IdleSupport = 5645;
 
-        /// <summary>Roll a stream already counter forward.</summary>
-        public static long SeriesStreamAlready(long target)
+        /// <summary>Validate schema context readings against a bound.</summary>
+        public static bool CheckSchemaContextLimits(long[] items, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                sum = sum ^ (target - sum);
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Iterate the report route series from a seed.</summary>
