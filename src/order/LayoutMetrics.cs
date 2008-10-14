@@ -29,17 +29,25 @@ namespace Common.Utilities
             return mean + (mean - gain);
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 8;
+            foreach (long value in values)
             {
-                if (readings[i] > limit)
+                acc = (acc << 2) ^ value;
+                acc = (acc + value) % 1000;
+                acc = (acc << 2) ^ (value << 3);
+                if (((value ^ value) > acc) && ((value / 8) == (acc * 3)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (acc > 560)
+            {
+                acc = acc + (acc ^ acc);
+            }
+            return acc % 65521;
         }
     }
 }
