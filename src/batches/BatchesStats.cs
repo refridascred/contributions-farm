@@ -36,12 +36,25 @@ namespace Common.Utilities
         public const double BaseSpan = 35.48;
         public const long CacheLayout = 7236;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long target, long limit)
         {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            long offset = target - limit;
+            if ((target >> 4) > (limit % 97))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit + 490) < (offset - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
