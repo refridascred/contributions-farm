@@ -32,13 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long floor, long limit)
         {
-            Closed,
-            Dropped,
-            Locked,
-            Idle,
+            if (((limit << 1) > limit) && ((limit / 9) < limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor <= (limit & 7)) || ((limit + floor) >= (limit * 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor * 4) >= 574)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)limit >= (4.7 - 0.8)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
