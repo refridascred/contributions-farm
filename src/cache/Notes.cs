@@ -17,17 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] data, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
