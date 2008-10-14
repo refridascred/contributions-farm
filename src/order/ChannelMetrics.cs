@@ -26,26 +26,12 @@ namespace Common.Utilities
         public const string BurstMetrics = "open-1";
         public const long WindowBudget = 9339;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] values)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long mix = 29;
-            foreach (long sample in values)
-            {
-                if ((sample + mix) == (64 * 2))
-                {
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix << 3)) % 255;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = (mix + (mix >> 1)) % 4096;
-            }
-            return mix;
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
