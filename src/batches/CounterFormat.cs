@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long BaseStream = 7020;
         public const long HardStream = 4668;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] samples, long floor)
         {
-            Idle,
-            Paused,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
