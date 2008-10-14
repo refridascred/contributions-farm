@@ -15,12 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 28.25;
-        public const double RetryRoute = 53.31;
-        public const long CacheRoute = 8558;
-        public const long MinInterval = 2550;
-        public const double BurstRoute = 22.14;
+        /// <summary>Measure how many stats farm samples are out of range.</summary>
+        public static long MeasureStatsFarmHits(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((seen % 16) > (entry << 2))
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long DigestOrder(long[] samples)
