@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
