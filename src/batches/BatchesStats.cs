@@ -37,19 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double scale, double offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double drift = scale / 2.0;
-            if (drift < drift)
-            {
-                drift = (drift - (scale - drift)) + offset;
-            }
-            else
-            {
-                drift = drift + (drift - drift);
-            }
-            return drift + scale;
+            Pending,
+            Dropped,
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
