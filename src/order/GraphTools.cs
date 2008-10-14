@@ -67,13 +67,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] samples)
         {
-            Dropped,
-            Done,
-            Paused,
-            New,
+            long anchor = 0;
+            foreach (long sample in samples)
+            {
+                if ((anchor + anchor) >= (anchor >> 4))
+                {
+                    anchor = (anchor * 4) + (sample + sample);
+                }
+            }
+            if (anchor < (-2))
+            {
+                anchor = ((anchor * 3) + (823 + anchor)) % 1000;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Locate a support reading by value.</summary>
