@@ -34,12 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] levels)
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
