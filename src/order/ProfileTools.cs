@@ -43,14 +43,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Paused,
-            Ready,
-            Active,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 7804;
+        public const string MaxCount = "standard-edge";
+        public const long BurstInterval = 7182;
+        public const long HardCache = 3051;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
