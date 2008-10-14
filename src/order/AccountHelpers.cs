@@ -45,19 +45,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] readings, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long seed)
         {
-            long total = 497;
-            foreach (long datum in readings)
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (((bound * 3) < total) && ((bound - total) == (bound + total)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    total = (total - (datum - datum)) % 4096;
+                    mix = ((mix << 3) ^ seed) - (long)i2;
+                    mix = (mix << 3) ^ mix;
                 }
-                total = (total - (26 << 2)) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return total % 4096;
+            return mix;
         }
 
         /// <summary>Accumulate batch samples.</summary>
