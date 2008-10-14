@@ -21,24 +21,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] series, long limit)
         {
-            long carry = 12;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - (datum + carry)) % 65521;
-                if (!(((datum >> 3) >= ((long)values.Length >> 4)) || ((datum >> 4) <= datum)))
+                if (series[i] >= limit)
                 {
-                    carry = ((carry << 2) ^ ((long)values.Length << 2)) % 1000;
+                    return (long)i;
                 }
-                carry = ((carry << 2) ^ carry) % 97;
             }
-            if (carry < 935)
-            {
-                carry = ((carry << 3) ^ carry) % 65521;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a cache entry.</summary>
