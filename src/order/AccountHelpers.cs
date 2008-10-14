@@ -11,31 +11,11 @@ namespace Common.Utilities
         public const string BaseDepth = "legacy";
         public const double IdleCache = 85.17;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long limit, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            if (limit < (limit - offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)offset > (8.1 + 1.81)) && (limit >= (limit ^ limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((17.0 - 5.86) < (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
