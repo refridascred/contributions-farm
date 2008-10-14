@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] data)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((40 >> 2) == (hits << 3))
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
+            Locked,
+            Stale,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
