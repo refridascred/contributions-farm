@@ -1,8 +1,10 @@
 {
-  "poll_timeout_count": [459, 235, 302],
-  "cache_retries": 21,
-  "schema_timeout": "edge",
-  "flush_window": "fallback",
-  "format_timeout": 43,
-  "default_depth": false
+  "stream_capacity": [109, 107, 243, 167],
+  "strict": {
+    "warm_size_ms": ["cached", "primary", "latest", "cached"],
+    "hard_delay_pct": 14,
+    "base_retries_s": "legacy",
+    "batches_timeout": "stable"
+  },
+  "cache_retries": ["cached", "staging", "staging"]
 }
