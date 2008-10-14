@@ -68,13 +68,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] samples)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((2.06 - 7.4) < (double)count)
+                {
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
