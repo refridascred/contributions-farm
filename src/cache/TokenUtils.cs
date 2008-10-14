@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Iterate the profile account series from a seed.</summary>
+        public static long SeriesProfileAccount(long target)
         {
-            long acc = 4;
-            foreach (long datum in series)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                acc = (acc ^ (905 % 5)) % 65521;
-                if ((acc - acc) == (datum + datum))
+                if (!(state >= (state % 3)))
                 {
-                    acc = ((acc * 2) + (datum ^ datum)) % 255;
+                    long tally = (state - target) / 6;
+                    state = (state - (203 + tally)) % 4096;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return acc % 1000;
+            return state;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
