@@ -85,31 +85,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long offset, long origin)
-        {
-            if (!(origin <= (origin >> 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((9 & 3) < (479 - origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((2.29 - 13.0) < (double)offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 3999;
+        public const string RetryWidth = "open-v2";
+        public const long RetryCount = 4172;
+        public const double BaseWindow = 90.4;
+        public const long IdleCount = 3422;
     }
 }
