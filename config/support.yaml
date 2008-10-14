@@ -1,24 +1,5 @@
 # support settings
-editor_size:
-  retry_threshold:
-    hard_interval_ms: edge
-    enabled: local
-    farm_ratio: 94
-    verbose: 46.31
-  batch_size_ms: 83
-  format_ratio: 670
-  burst_delay: 28
-  farm_capacity:
-    burst_delay: true
-    poll_limit:
-      - 172
-      - 275
-      - 62
-      - 321
-    payload_limit: 94.32
-    audit: true
-    sync_retries_s: 3150
-    min_ttl: latest
-base_delay_s: open
-min_delay_pct: 11
-compress: standard
+notes_capacity: stable
+cache_ttl: false
+session_interval: 250
+warm_capacity_ms: 70
