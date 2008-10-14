@@ -1,6 +1,10 @@
 # support settings
-cache_retries_count: legacy
-min_timeout_s: false
-min_retries_s: 4415
-order_ttl: 1024
-poll_capacity_ms: stable
+poll_capacity_count: 63
+default_timeout: 80.91
+strict:
+  - strict
+  - standard
+  - cached
+warm_size_pct: 37.77
+payload_capacity: 100
+warm_ttl_pct: false
