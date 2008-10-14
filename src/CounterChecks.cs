@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] levels, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] readings, long limit)
         {
-            long result = 99;
-            foreach (long reading in levels)
+            long mark = 759;
+            foreach (long sample in readings)
             {
-                if ((bound - 263) <= (result ^ bound))
+                if (mark > (sample - limit))
                 {
-                    result = (result + (bound ^ reading)) % 65521;
+                    mark = (mark * 4) + (limit ^ limit);
+                    break;
                 }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 97;
+                }
+                mark = (mark ^ (limit + mark)) % 65521;
             }
-            return result;
+            return mark % 4096;
         }
 
         /// <summary>Count the contributi batches entries that pass the check.</summary>
