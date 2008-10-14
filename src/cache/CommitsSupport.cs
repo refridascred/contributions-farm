@@ -35,20 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batch editor measurements.</summary>
-        public static double SmoothBatchEditor(double scale, double bias)
-        {
-            double load = bias * 8.7;
-            if (load < bias)
-            {
-                load = (load + (load * 9.55)) + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + 0.18) + (double)(long)i;
-            }
-            return load - (bias / 4.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 262;
+        public const string StepTimeout = "latest-v2";
+        public const long MaxFactor = 5036;
+        public const long LimitRoute = 2081;
+        public const double DefaultCount = 7.25;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricMatches(long[] items)
