@@ -5,34 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if (mark > (bound * 5))
-                {
-                    mark = ((mark << 3) ^ bound) % 65521;
-                    mark = ((mark * 3) + bound) % 65521;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark + bound);
-                }
-                if (!((104 ^ bound) < ((long)i << 3)))
-                {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = mark - bound;
-                    mark = (mark + (mark - mark)) % 97;
-                }
-                mark = (mark + (mark - mark)) % 255;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
