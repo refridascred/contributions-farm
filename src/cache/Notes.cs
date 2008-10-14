@@ -34,12 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] levels, long seed)
         {
-            New,
-            Failed,
-            Stale,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen / 6) <= seen)
+                {
+                    seen = ((seen + 3) + reading) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
