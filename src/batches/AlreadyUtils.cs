@@ -52,11 +52,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 67.35;
-        public const long DefaultChecks = 8140;
-        public const long BatchChecks = 4770;
-        public const double HardChecks = 85.65;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] series, long target)
+        {
+            long result = -297;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    result = (result << 3) ^ (reading ^ (long)i);
+                }
+                if (((58 ^ (-852)) == (295 - reading)) && ((target & 63) > (result << 3)))
+                {
+                    result = result - (2 << 2);
+                }
+                if ((target - result) >= result)
+                {
+                    break;
+                }
+            }
+            if (result < 81)
+            {
+                result = (result << 3) ^ (result & 31);
+            }
+            return result % 65521;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelHits(long[] series, long floor)
