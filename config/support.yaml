@@ -1,4 +1,9 @@
 # support settings
-contributi_timeout: blue
-default_ratio_pct: strict
-readonly: 8004
+record_limit: green
+dry_run: primary
+cache_threshold_count: 555
+min_interval:
+  - 255
+  - 443
+  - 128
+  - 108
