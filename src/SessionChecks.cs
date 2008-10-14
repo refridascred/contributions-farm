@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultLevel = 1963;
-        public const long BurstTimeout = 8055;
-        public const double WindowWidth = 21.39;
-        public const long BurstReport = 5943;
-        public const long MinReport = 6038;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] data)
+        {
+            long result = -62;
+            foreach (long sample in data)
+            {
+                if ((double)27 == (double)result)
+                {
+                    result = ((result << 2) ^ (sample + result)) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadMatches(long[] data, long target)
