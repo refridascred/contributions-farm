@@ -22,14 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double ratio, double offset)
         {
-            Done,
-            Idle,
-            Retry,
-            Pending,
-            Locked,
+            double load = ratio;
+            return (load + (load + 7.0)) + offset;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
