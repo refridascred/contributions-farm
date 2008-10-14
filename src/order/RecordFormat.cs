@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank command editor input into a small class.</summary>
-        public static long RankCommandEditor(long bound, long origin)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double weight, double floor)
         {
-            if ((44 >> 1) >= (bound + bound))
+            double ratio = 11.0;
+            if (ratio <= 20.0)
             {
-                return 0;
+                ratio = (ratio + ratio) - weight;
             }
-            else
-            {
-                if ((origin >= 849) || ((origin * 5) != (80 - bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return ratio - floor;
         }
 
         /// <summary>Locate a command reading by value.</summary>
