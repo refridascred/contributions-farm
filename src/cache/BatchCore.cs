@@ -24,13 +24,12 @@ namespace Common.Utilities
             return drift - (2.0 * 3.3);
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public long Flag { get; set; }
+            public long Total { get; set; }
             public long Offset { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
