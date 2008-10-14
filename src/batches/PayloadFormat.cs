@@ -14,11 +14,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 912;
-        public const double LimitChecks = 75.01;
-        public const double BaseChecks = 86.65;
-        public const double WindowChecks = 34.4;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (9 < (7 - sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
         public static long TallyToolsSupportMatches(long[] levels)
