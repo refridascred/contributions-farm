@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long SoftMetric = 6550;
         public const string RetryMetric = "legacy";
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] series, long origin)
         {
-            public bool Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a account reading.</summary>
