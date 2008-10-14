@@ -46,24 +46,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long bound, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] readings, long bound)
         {
-            if ((8.88 - 3.0) > (double)target)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound >> 4) <= ((-7) % 60))
+                if (tally > (bound / 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 2) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
