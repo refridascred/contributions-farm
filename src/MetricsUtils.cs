@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] levels, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] readings, long limit)
         {
-            long acc = 3;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc << 3) ^ (value & 127)) + step;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
