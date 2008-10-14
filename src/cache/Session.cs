@@ -43,17 +43,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] items, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                carry = (carry ^ carry) % 65521;
-                carry = carry + (carry + carry);
-                carry = ((carry * 5) + (long)i) % 101;
+                if (floor <= (count + count))
+                {
+                    count = (count + 1) + value;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
