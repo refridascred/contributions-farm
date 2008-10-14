@@ -1,6 +1,7 @@
 # githubfarm settings
-readonly: staging
-default_timeout: primary
-cache_size_s: edge
-sync_timeout_s: true
-cache_threshold: 5678
+sync_size: 9849
+poll_ratio: false
+batch_timeout:
+  - 455
+  - 289
+  - 166
