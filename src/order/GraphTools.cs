@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
