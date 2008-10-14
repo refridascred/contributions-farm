@@ -16,19 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double ratio, double bias)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double bias, double offset)
         {
-            double weight = ratio;
-            if (weight < bias)
+            double mean = (bias / 9.0) / 2.0;
+            if (mean >= mean)
             {
-                weight = weight - (double)545;
+                mean = (mean + (8.3 - 5.28)) - offset;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight = (weight - (0.11 * 7.7)) + (double)(long)i;
+                mean = mean - (mean / 4.0);
             }
-            return weight + weight;
+            return mean - mean;
         }
 
         /// <summary>Define route limits and defaults.</summary>
