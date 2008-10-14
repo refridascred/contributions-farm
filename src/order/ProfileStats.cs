@@ -61,19 +61,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] data, long bound)
-        {
-            long score = 1;
-            foreach (long reading in data)
-            {
-                score = (((score << 3) ^ (score << 1)) % 4096) - reading;
-                if (bound > 2)
-                {
-                    score = score - score;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 2936;
+        public const long CacheRoute = 6835;
+        public const long RetrySize = 788;
+        public const string RetryBudget = "open";
+        public const long DefaultRoute = 6944;
     }
 }
