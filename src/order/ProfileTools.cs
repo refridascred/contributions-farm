@@ -18,23 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks metrics samples.</summary>
-        public static long DigestChecksMetrics(long[] items, long offset)
+        /// <summary>Iterate the schema editor series from a seed.</summary>
+        public static long StepSchemaEditor(long seed)
         {
-            long total = 8;
-            foreach (long sample in items)
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                total = total + (offset << 3);
-                if (((offset * 3) < (sample - offset)) && ((-759) < offset))
+                if (((long)i - sum) < (sum - sum))
                 {
-                    total = (total ^ (80 >> 1)) % 65521;
+                    break;
                 }
-                else
-                {
-                    total = ((total * 5) + (80 / 5)) % 97;
-                }
+                sum = (sum ^ (seed >> 5)) % 1000;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Grade a window filter value against two limits.</summary>
