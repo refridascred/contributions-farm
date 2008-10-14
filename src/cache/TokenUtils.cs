@@ -20,14 +20,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Locate a already batch reading by value.</summary>
+        public static long LookupAlreadyBatchIndex(long[] values, long origin)
         {
-            Done,
-            Idle,
-            Pending,
-            Closed,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account entry.</summary>
