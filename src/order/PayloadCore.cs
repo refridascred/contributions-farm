@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            Stale,
-            Synced,
-            Pending,
-            New,
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 5) + (seed + seed)) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the queue class values.</summary>
