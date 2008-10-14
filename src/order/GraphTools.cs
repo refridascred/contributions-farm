@@ -34,38 +34,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Grade a metric account value against two limits.</summary>
-        public static long RankMetricAccount(long limit, long limit2)
+        /// <summary>Audit schema metrics readings against a rule.</summary>
+        public static long AuditSchemaMetricsGaps(long[] values, long step)
         {
-            if ((double)limit != (1.74 / 9.0))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit2 ^ limit2) <= 87)
+                if ((double)datum == (0.5 - 6.2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit / 4) != (limit & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit > limit2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = (count + 1) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the layout phase values.</summary>
