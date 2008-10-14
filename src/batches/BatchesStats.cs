@@ -57,14 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Done,
-            Synced,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "legacy-1";
+        public const long MinFactor = 8072;
+        public const long DefaultRoute = 3208;
+        public const double StepRoute = 67.59;
+        public const double SoftInterval = 70.22;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutOutliers(long[] levels, long origin)
