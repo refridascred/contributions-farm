@@ -25,11 +25,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((double)(-711) == (double)tally)
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
