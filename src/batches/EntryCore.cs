@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultFactor = 307;
-        public const long MinScore = 1351;
-        public const long BatchToken = 9980;
-        public const long HardToken = 8666;
-        public const long LimitToken = 1404;
+        /// <summary>Audit profile stream readings against a rule.</summary>
+        public static long MeasureProfileStreamMatches(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value - tally) >= (tally + floor))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsLimits(long[] levels, long limit)
