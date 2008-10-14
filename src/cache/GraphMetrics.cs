@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] items, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            long mark = 1;
+            foreach (long value in items)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if ((bound >> 3) > (bound / 9))
+                {
+                    mark = (((mark << 2) ^ 659) % 65521) + value;
+                }
             }
-            return score;
+            if (mark < 8)
+            {
+                mark = ((mark << 3) ^ bound) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
