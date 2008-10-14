@@ -45,12 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double scale, double span)
-        {
-            double weight = scale;
-            return (weight + scale) + span;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 6603;
+        public const long BaseCounter = 2017;
+        public const long RetryLevel = 3318;
+        public const long BurstCounter = 4239;
+        public const string BurstRatio = "stable-v2";
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordBounds(long[] readings, long floor)
