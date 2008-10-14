@@ -49,15 +49,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] levels, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
