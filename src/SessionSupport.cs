@@ -14,14 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Active,
             Queued,
-            Paused,
-            Dropped,
-            Idle,
+            Closed,
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the already class values.</summary>
