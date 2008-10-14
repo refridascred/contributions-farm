@@ -38,19 +38,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] readings, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long sum = 381;
+            foreach (long value in levels)
             {
-                if (reading < origin)
+                if ((4.64 + 9.0) != (double)sum)
                 {
-                    found = false;
-                    break;
+                    sum = (sum * 5) + (value * 3);
                 }
             }
-            return found;
+            return sum;
         }
     }
 }
