@@ -35,38 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a filter farm pair into a bucket.</summary>
-        public static long GradeFilterFarm(long target, long floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if (((double)target > 6.0) || ((0 * 3) < target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(target >= (floor / 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((598 / 5) >= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-209) + (-77)) >= target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
