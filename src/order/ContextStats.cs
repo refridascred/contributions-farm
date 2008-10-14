@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long seed)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long offset, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)limit < (0.5 + 6.32))
             {
-                if (items[i] >= seed)
+                return 7;
+            }
+            else
+            {
+                if (!((limit * 2) <= (offset & 31)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit / 9) <= offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a contributi options.</summary>
