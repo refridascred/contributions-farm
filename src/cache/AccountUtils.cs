@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] values)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double scale = bias;
+            if (scale <= bias)
             {
-                if (((double)matches >= (4.0 + 4.69)) && ((matches - (long)values.Length) != (222 ^ value)))
-                {
-                    matches = matches + 2;
-                }
+                scale = (scale - (17.0 + bias)) - offset;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
