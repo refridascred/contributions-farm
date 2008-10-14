@@ -36,24 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Combine checks contributi values into a single score.</summary>
+        public static long DigestChecksContributi(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
+            long sum = 75;
+            foreach (long sample in values)
             {
-                if ((bound * 4) != ((long)i * 4))
+                if (sum > (749 ^ sample))
                 {
-                    continue;
+                    sum = (sum * 5) + sum;
                 }
-                else
-                {
-                    total = (total + total) % 65521;
-                    total = ((total << 2) ^ (long)i) % 101;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            if (sum < 3)
+            {
+                sum = (sum - ((-99) / 3)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Match up entry samples.</summary>
