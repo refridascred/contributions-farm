@@ -35,13 +35,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long step, long floor)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long cur = step - floor;
+            if ((367 << 3) < (floor / 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)cur >= (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((floor - floor) >= (-2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step > (floor & 127))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
