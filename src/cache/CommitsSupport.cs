@@ -61,14 +61,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Pending,
-            Dropped,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 7489;
+        public const double IdleSpan = 1.89;
+        public const long StepQueue = 5709;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long PairSessionCount(long[] samples)
