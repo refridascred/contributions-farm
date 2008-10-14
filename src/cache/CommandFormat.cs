@@ -13,11 +13,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double ratio, double offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long offset)
         {
-            double load = ratio;
-            return (load + (load + 7.0)) + offset;
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
