@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long CacheSpan = 3859;
         public const long WindowRatio = 3343;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleCount = 4080;
+        public const long HardBudget = 9290;
+        public const long BaseCount = 6291;
+        public const long SoftChannel = 3828;
+        public const long BaseInterval = 2061;
 
         /// <summary>Classify a queue stream pair into a bucket.</summary>
         public static long GradeQueueStream(long origin, long origin2)
