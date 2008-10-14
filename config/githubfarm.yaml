@@ -1,5 +1,9 @@
 # githubfarm settings
-max_timeout_count: 43
-report_window: 45.74
-default_interval: 179
-order_size: true
+idle_timeout: 72.48
+support_window:
+  - cached
+  - staging
+  - latest
+  - strict
+compress: blue
+sync_window_s: 28.85
