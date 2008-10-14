@@ -51,18 +51,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] data, long seed)
+        /// <summary>Combine graph already values into a single score.</summary>
+        public static long CombineGraphAlready(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long carry = 5;
+            foreach (long entry in readings)
             {
-                if ((hits >> 5) > (sample - seed))
+                if ((204 ^ carry) >= step)
                 {
-                    hits = hits + 2;
+                    carry = ((carry << 2) ^ entry) % 1000;
+                }
+                else
+                {
+                    carry = carry + (carry - carry);
                 }
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Hold a session options.</summary>
