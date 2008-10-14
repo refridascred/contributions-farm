@@ -57,10 +57,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstDepth = 3631;
-        public const string MinEditor = "strict-v2";
-        public const long BurstLevel = 5701;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 7454;
+        public const long BatchSize = 4578;
+        public const double CacheAccount = 3.02;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] data, long target)
