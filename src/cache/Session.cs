@@ -52,39 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long step, long target)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long gap = step - target;
-            if (step <= (1 >> 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (14.0 >= (double)gap)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + step) < (step - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((gap / 6) < ((-95) >> 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
     }
 }
