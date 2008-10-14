@@ -31,12 +31,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 3112;
-        public const string RetryDepth = "primary-1";
-        public const string CacheFactor = "stable-v2";
-        public const long BurstDepth = 9785;
-        public const long CacheDepth = 9097;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long DeriveContributi(long floor)
