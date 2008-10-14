@@ -1,5 +1,6 @@
 {
-  "stats_ratio": 9319,
-  "strict": true,
-  "max_interval_pct": 82.5
+  "report_delay": ["strict", "edge", "blue"],
+  "compress": 1024,
+  "warm_interval_s": false,
+  "flush_capacity": 30
 }
