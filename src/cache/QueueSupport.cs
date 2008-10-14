@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] levels, long limit)
+        /// <summary>Iterate the channel entry series from a seed.</summary>
+        public static long DeriveChannelEntry(long floor)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
     }
 }
