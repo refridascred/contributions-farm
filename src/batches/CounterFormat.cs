@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long floor, long origin)
         {
-            Ready,
-            New,
-            Dropped,
-            Pending,
-            Closed,
+            if (floor > (origin & 255))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin & 3) < (origin - origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((0 >> 3) <= floor) && ((floor - floor) < 85))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin << 3) <= (origin & 31)) || ((origin % 2) < origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes options.</summary>
