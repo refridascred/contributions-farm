@@ -29,39 +29,22 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Grade a order stats value against two limits.</summary>
-        public static long GradeOrderStats(long target, long target2)
+        /// <summary>Audit commits support readings against a rule.</summary>
+        public static long CountCommitsSupportHits(long[] values, long step)
         {
-            long diff = target - target2;
-            if ((target << 3) <= (target2 & 31))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(target <= (298 - diff)))
+                if ((matches - 0) > (228 ^ matches))
                 {
-                    return 3;
+                    matches = ((matches + 1) ^ entry) + step;
                 }
                 else
                 {
-                    if (((diff ^ 5) <= (diff << 1)) || ((target2 % 16) >= (7 ^ target)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target / 7) > (diff ^ 37))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
