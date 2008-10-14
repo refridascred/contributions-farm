@@ -32,11 +32,17 @@ namespace Common.Utilities
         public const long BatchReport = 8818;
         public const double MaxReport = 51.7;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Look up the position of a metric report sample.</summary>
+        public static long SeekMetricReportIndex(long[] items, long offset)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics state values.</summary>
