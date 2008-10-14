@@ -24,17 +24,12 @@ namespace Common.Utilities
         public const long DefaultLevel = 6926;
         public const long BaseWindow = 8695;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] samples, long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
