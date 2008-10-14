@@ -43,11 +43,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long bound, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            if ((floor & 3) > floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound / 3) >= (floor ^ bound)) && (floor > bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7 - bound) == (floor + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of batch layout readings.</summary>
