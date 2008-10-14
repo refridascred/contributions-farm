@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a filter buffer sample.</summary>
-        public static long LookupFilterBufferIndex(long[] data, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long target, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((bound ^ bound) != (bound + (-742)))
             {
-                if ((data[i] >= target) && ((data[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if (6.7 > (double)bound)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count notes account pairs that satisfy a relation.</summary>
