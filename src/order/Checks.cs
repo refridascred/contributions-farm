@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long BurstMetric = 3864;
         public const string IdleCount = "cached-v2";
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] series, long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((series[i] < offset) && ((series[i] % 2) != 0))
+                if ((1 & 7) <= (seen + seen))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + datum) - step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a contributi entry.</summary>
