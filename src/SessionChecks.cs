@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] samples, long floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Validate editor route readings against a bound.</summary>
