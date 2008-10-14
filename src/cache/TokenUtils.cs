@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Roll a buffer record counter forward.</summary>
+        public static long DeriveBufferRecord(long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                mark = (mark ^ mark) % 255;
-                mark = ((mark * 2) + (long)i) % 101;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = (((state << 3) ^ state) % 4096) - (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
