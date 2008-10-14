@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Dropped,
-            Draft,
-            Synced,
-            Done,
-            Stale,
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
