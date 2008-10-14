@@ -1,14 +1,12 @@
 {
-  "burst_threshold_pct": "stable",
-  "batch_interval_ms": {
-    "strict": "latest",
-    "dry_run": "eu-west",
-    "payload_delay": 9799,
-    "githubfarm_interval": "cached",
-    "base_retries_ms": [428, 195]
+  "persist": {
+    "farm_retries": "fallback",
+    "farm_ttl": [493, 40, 424, 425],
+    "session_retries": false
   },
-  "poll_size_ms": 1024,
-  "min_ttl": 3854,
-  "stats_ratio": false,
-  "persist": "primary"
+  "flush_ratio_s": 90.96,
+  "flush_threshold_count": 58.47,
+  "poll_capacity_s": 98,
+  "layout_ratio": "primary",
+  "readonly": "strict"
 }
