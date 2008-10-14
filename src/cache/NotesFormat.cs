@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
