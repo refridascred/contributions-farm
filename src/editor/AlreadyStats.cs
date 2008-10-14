@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Already stats helpers.</summary>
     public static class AlreadyStats
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleProfile = 85.84;
+        public const long HardProfile = 5858;
+        public const double MinProfile = 66.86;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
