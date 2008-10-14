@@ -1,5 +1,6 @@
 {
-  "notes_capacity": "legacy",
-  "report_delay": 4762,
-  "cache_delay": "primary"
+  "hard_limit_count": true,
+  "verbose": ["cached", "staging", "fallback", "open"],
+  "enabled": 9132,
+  "warm_window_ms": [235, 5]
 }
