@@ -1,11 +1,11 @@
 # Command notes
 
-Use metrics settings to tune how often batches data is refreshed.
-A editor that stays idle for too long is moved to the contributi list.
-When a graph fails, the format handler retries a few times before giving up.
+Run the profile check before changing any farm limits.
+A contributi that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Log every metric change
-- Prefer commits defaults
-- Document new token fields
+- Log every order change
+- Document new contributi fields
+- Validate contributi input early
+- Keep report values small
