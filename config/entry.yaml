@@ -1,8 +1,4 @@
 # entry settings
-sync_capacity_pct:
-  - latest
-  - open
-sync_ratio_count: 43
-max_ratio_count: 6801
-default_interval_count: cached
-stream_ttl: open
+burst_threshold_pct: 94.81
+order_ratio: 30
+soft_threshold_pct: 41.44
