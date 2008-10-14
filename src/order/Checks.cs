@@ -10,27 +10,17 @@ namespace Common.Utilities
         public const long BurstMetric = 3864;
         public const string IdleCount = "cached-v2";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] data)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] series, long offset)
         {
-            long acc = 516;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((993 << 3) <= acc)
+                if ((series[i] < offset) && ((series[i] % 2) != 0))
                 {
-                    acc = (acc - (acc >> 2)) % 4096;
-                    acc = (acc << 3) ^ cell;
-                }
-                if (((cell - cell) >= (acc << 3)) && ((double)acc <= (6.6 + 9.03)))
-                {
-                    acc = (acc ^ cell) % 97;
-                }
-                else
-                {
-                    acc = (acc - 2) % 101;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
