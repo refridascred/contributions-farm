@@ -31,13 +31,20 @@ namespace Common.Utilities
             return load - (double)4;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of route stats readings.</summary>
+        public static long DigestRouteStats(long[] values, long bound)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
+            long score = 6;
+            foreach (long reading in values)
+            {
+                score = (score + (bound ^ reading)) % 101;
+                score = ((score << 2) ^ (reading * 3)) % 101;
+            }
+            if (score > 4)
+            {
+                score = (score + 867) % 255;
+            }
+            return score;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
