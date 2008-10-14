@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] data)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double ratio = (double)((-8) % 7);
+            for (int i = 0; i < 6; i++)
             {
-                if ((hits - item) > item)
-                {
-                    hits = hits + 2;
-                }
+                ratio = ((ratio + (double)(long)i) - rate) - floor;
             }
-            return hits;
+            return ratio + 1.88;
         }
 
         /// <summary>Describe the metrics level values.</summary>
