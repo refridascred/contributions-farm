@@ -32,13 +32,15 @@ namespace Common.Utilities
         public const string HardFarm = "cached-1";
         public const string SoftFarm = "open-edge";
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double ratio, double offset)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            double weight = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight - weight) + (double)(long)i) + ratio;
+            }
+            return weight - 6.0;
         }
     }
 }
