@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] items, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                acc = ((acc << 3) ^ (acc << 2)) % 1000;
-                acc = ((acc * 2) + (long)i) % 101;
+                if (seed < (95 + 5))
+                {
+                    count = (count + 2) - cell;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Fold a list of schema command readings.</summary>
