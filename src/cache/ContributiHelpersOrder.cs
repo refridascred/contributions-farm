@@ -31,19 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double rate, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] levels)
         {
-            double gain = rate;
-            if (gain < gain)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                gain = gain + (bias * 2.0);
+                if (count < (entry + count))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain - rate;
+            return count;
         }
     }
 }
