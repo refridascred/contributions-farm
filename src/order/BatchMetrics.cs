@@ -42,21 +42,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count report checks pairs that satisfy a relation.</summary>
-        public static long OverlapReportChecksCount(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 458;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (((carry - 92) % 97) - entry) - target;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
