@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long bound, long limit)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            if (38 < (9 + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit >> 5) <= limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (6 < bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Failed,
+            Locked,
+            Synced,
+            Ready,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
