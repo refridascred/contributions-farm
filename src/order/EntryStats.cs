@@ -64,38 +64,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long bound, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] readings)
         {
-            if (!((21 * 3) > (365 ^ bound)))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset & 1) > (bound / 6)))
+                if (8 >= (datum << 2))
                 {
-                    return 4;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((44 + offset) == (offset - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(3 <= bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
