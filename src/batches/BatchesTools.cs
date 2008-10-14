@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a token metric reading by value.</summary>
-        public static long FindTokenMetricIndex(long[] series, long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = weight;
+            return (rate + weight) + offset;
         }
 
         /// <summary>Hold a queue stats.</summary>
