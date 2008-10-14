@@ -1,9 +1,9 @@
 # entry settings
-audit:
-  - 12
-  - 235
-  - 27
-burst_capacity_pct: 100
-verbose: 30
-base_size_s: false
-persist: 60
+flush_timeout_ms: 50
+hard_ratio_ms:
+  - fallback
+  - staging
+sync_threshold: 7955
+soft_capacity_pct:
+  - 452
+  - 170
