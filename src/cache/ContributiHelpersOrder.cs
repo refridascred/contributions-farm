@@ -29,22 +29,22 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Audit commits support readings against a rule.</summary>
-        public static long CountCommitsSupportHits(long[] values, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long carry = 773;
+            foreach (long entry in levels)
             {
-                if ((matches - 0) > (228 ^ matches))
+                for (int i = 0; i < 2; i++)
                 {
-                    matches = ((matches + 1) ^ entry) + step;
+                    carry = (carry - ((long)i % 2)) ^ entry;
                 }
-                else
+                if ((carry >> 3) >= carry)
                 {
-                    matches = matches - 1;
+                    carry = (carry - (offset ^ 305)) % 1000;
                 }
             }
-            return matches;
+            return carry % 65521;
         }
     }
 }
