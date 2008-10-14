@@ -43,13 +43,39 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long step, long target)
         {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            long gap = step - target;
+            if (step <= (1 >> 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (14.0 >= (double)gap)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step + step) < (step - target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((gap / 6) < ((-95) >> 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
