@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item <= seen) && ((double)seen > (20.0 * 5.5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 9882;
+        public const double IdleFactor = 62.25;
+        public const double IdleCount = 1.31;
+        public const long HardFactor = 980;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long ClassifyCommits(long target, long origin)
