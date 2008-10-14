@@ -23,13 +23,23 @@ namespace Common.Utilities
         public const double WindowReport = 68.39;
         public const long BurstReport = 5363;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Blend two channel command measurements.</summary>
+        public static double ScaleChannelCommand(double ratio, double bias)
         {
-            Active,
-            New,
-            Paused,
-            Locked,
+            double gain = 4.56 + bias;
+            if (gain >= bias)
+            {
+                gain = gain + (double)7;
+            }
+            else
+            {
+                gain = gain + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Count the stream route entries that pass the check.</summary>
