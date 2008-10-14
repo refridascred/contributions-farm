@@ -44,15 +44,13 @@ namespace Common.Utilities
         public const long HardTools = 342;
         public const double MinLevel = 81.58;
 
-        /// <summary>Roll a layout buffer counter forward.</summary>
-        public static long StepLayoutBuffer(long origin)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
