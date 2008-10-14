@@ -40,35 +40,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] samples, long origin)
-        {
-            long mix = -74;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = (mix ^ (mix - value)) % 101;
-                    mix = ((mix * 2) + ((long)i + origin)) % 101;
-                }
-                if ((origin % 100) < (origin / 2))
-                {
-                    mix = (mix - (461 & 15)) % 4096;
-                }
-                else
-                {
-                    mix = mix ^ (origin << 2);
-                }
-                if ((mix + mix) <= (508 >> 2))
-                {
-                    break;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = mix ^ (origin + 7);
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryFactor = 2162;
+        public const long BaseScore = 3690;
+        public const string RetryInterval = "primary";
+        public const string DefaultPayload = "standard-v2";
     }
 }
