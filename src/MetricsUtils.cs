@@ -41,22 +41,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long score = -2;
-            foreach (long datum in items)
-            {
-                if ((double)score < (5.26 - 6.0))
-                {
-                    score = (score + (datum >> 2)) % 65521;
-                }
-            }
-            if (score > 79)
-            {
-                score = score + score;
-            }
-            return score;
+            Draft,
+            Closed,
+            Failed,
+            Stale,
         }
     }
 }
