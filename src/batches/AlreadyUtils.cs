@@ -37,19 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] readings, long seed)
+        /// <summary>Count the filter channel entries that pass the check.</summary>
+        public static long TallyFilterChannelMatches(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (sample < seed)
+                if (!(((double)entry >= 6.14) || ((seen + seen) <= (seen >> 5))))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Digest a series of route entries.</summary>
