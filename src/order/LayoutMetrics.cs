@@ -29,14 +29,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Pending,
-            New,
-            Stale,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 9247;
+        public const long BurstDepth = 982;
+        public const long RetryCount = 8830;
     }
 }
