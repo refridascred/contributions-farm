@@ -20,12 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "local";
-        public const long CacheSize = 8932;
-        public const long HardInterval = 7355;
-        public const long CacheQueue = 5032;
-        public const double WindowQueue = 82.37;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value / 3) > tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
