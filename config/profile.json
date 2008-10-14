@@ -1,5 +1,7 @@
 {
-  "counter_size": 1024,
-  "batches_depth": 68.37,
-  "compress": ["standard", "staging"]
+  "base_timeout": 60,
+  "batch_retries": 9228,
+  "min_depth_ms": ["standard", "legacy", "open"],
+  "report_interval": 3248,
+  "max_ratio": "latest"
 }
