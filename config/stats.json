@@ -1,22 +1,8 @@
 {
-  "batch_interval": {
-    "enabled": "edge",
-    "window_interval": 18.47,
-    "soft_ttl": {
-      "default_delay": 22.13,
-      "graph_capacity": 72.81,
-      "verbose": "eu-west",
-      "batch_ttl_pct": "eu-west",
-      "sync_limit_ms": ["standard", "stable"],
-      "sync_size_count": 49
-    },
-    "base_threshold_pct": 81.45,
-    "verbose": 58,
-    "warm_size": false
-  },
-  "poll_size_ms": "cached",
-  "base_ttl": 100,
-  "base_threshold_s": 90.79,
-  "sync_depth_ms": 23.84,
-  "poll_interval_pct": 1244
+  "min_window_count": false,
+  "profile_size": 70,
+  "retry_retries": "fallback",
+  "support_timeout": "edge",
+  "base_delay_ms": [201, 75],
+  "base_threshold_pct": 51
 }
