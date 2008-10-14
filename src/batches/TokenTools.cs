@@ -30,16 +30,16 @@ namespace Common.Utilities
         public const long RetryCounter = 3439;
         public const string BurstCounter = "fallback-edge";
 
-        /// <summary>Roll a format already counter forward.</summary>
-        public static long DeriveFormatAlready(long bound)
+        /// <summary>Derive the next buffer metric value from a seed.</summary>
+        public static long IterateBufferMetric(long floor)
         {
-            long result = bound;
+            long sum = floor;
             for (int i = 0; i < 5; i++)
             {
-                result = (result << 3) ^ 817;
-                result = ((result * 5) + (long)i) % 101;
+                sum = (sum + (sum - floor)) % 101;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return result;
+            return sum;
         }
     }
 }
