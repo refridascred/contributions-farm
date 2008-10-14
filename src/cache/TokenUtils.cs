@@ -20,24 +20,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long limit, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            if ((limit + 2) >= seed)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed <= (seed / 2))
+                long edge = offset;
+                if (((edge << 3) < anchor) || ((10.0 - 13.0) != (double)edge))
                 {
-                    return 4;
+                    edge = edge - ((long)i ^ edge);
                 }
-                else
-                {
-                    return 6;
-                }
+                edge = (edge - (anchor - (long)i)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Combine command values into a single score.</summary>
