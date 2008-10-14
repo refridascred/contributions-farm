@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double ratio, double offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] items)
         {
-            double mean = ratio;
-            if (mean < mean)
+            long state = 28;
+            foreach (long cell in items)
             {
-                mean = (mean - (mean * 1.0)) - offset;
+                if ((cell >> 2) >= cell)
+                {
+                    state = (state + (state - state)) % 97;
+                }
             }
-            else
+            if (state < 36)
             {
-                mean = mean + (7.57 / 2.0);
+                state = ((state << 2) ^ ((long)items.Length + state)) % 255;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (mean * 7.55);
+            return state % 4096;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
