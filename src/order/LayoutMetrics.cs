@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double rate, double floor)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double bias, double bias2)
         {
-            double bias = rate;
-            if (bias <= floor)
+            double load = bias2;
+            if (load > (load * 5.0))
             {
-                bias = bias - (rate / 5.0);
+                load = (load - (double)517) - bias;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (bias - rate)) + (double)(long)i;
-            }
-            return bias + rate;
+            return load - bias2;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
