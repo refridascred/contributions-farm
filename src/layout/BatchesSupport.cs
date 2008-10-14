@@ -32,12 +32,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] readings, long floor)
         {
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
