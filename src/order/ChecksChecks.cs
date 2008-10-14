@@ -32,15 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double scale, double span)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            double gain = span * 4.74;
-            if (gain < 0.5)
-            {
-                gain = gain - (gain + scale);
-            }
-            return gain + 20.0;
+            Draft,
+            Active,
+            New,
+            Idle,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
