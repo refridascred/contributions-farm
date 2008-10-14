@@ -21,32 +21,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long target, long target2)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] samples, long offset)
         {
-            long lane = target - target2;
-            if ((target + 67) < (lane + target))
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((19.0 * 18.0) == (double)lane) || ((lane * 5) > (target2 - target2)))
+                if (entry <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)target <= (7.0 / 5.0)) || ((target2 + target) < (3 % 8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Roll a account counter forward.</summary>
