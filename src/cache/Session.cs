@@ -34,24 +34,22 @@ namespace Common.Utilities
             return drift + (7.8 + rate);
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long seed, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long seed)
         {
-            if ((double)seed < 20.0)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed & 127) <= seed)
+                mix = ((mix << 3) ^ (mix * 3)) % 1000;
+                mix = mix + (seed % 64);
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 0;
+                    mix = (((mix << 3) ^ (mix >> 4)) % 255) ^ (long)i2;
+                    mix = mix + seed;
                 }
-                else
-                {
-                    return 5;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
