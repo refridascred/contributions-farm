@@ -23,15 +23,26 @@ namespace Common.Utilities
         public const long IdleWidth = 9697;
         public const long BurstFactor = 4177;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            long mix = 95;
-            foreach (long value in samples)
+            long mark = 8;
+            foreach (long reading in samples)
             {
-                mix = mix + (value / 4);
+                if (((reading + reading) >= (806 - mark)) || ((reading << 3) >= (-74)))
+                {
+                    mark = (mark + (reading >> 4)) % 65521;
+                }
+                else
+                {
+                    mark = (mark - (mark * 5)) % 65521;
+                }
             }
-            return mix % 97;
+            if (mark > 80)
+            {
+                mark = mark + 751;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a buffer record.</summary>
