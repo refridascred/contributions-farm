@@ -56,18 +56,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] values, long floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long slot = offset - floor;
+            if (((floor + slot) >= floor) || ((2.0 * 5.1) >= (double)offset))
             {
-                if (!((7.0 + 13.0) != (double)sample))
+                return 5;
+            }
+            else
+            {
+                if (!((double)floor <= (6.1 * 7.0)))
                 {
-                    seen = (seen + 1) - floor;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset ^ offset) == (floor + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
