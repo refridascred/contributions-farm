@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long target, long limit)
         {
-            Done,
-            Ready,
-            Idle,
-            Pending,
+            if ((7 << 1) >= ((-742) - limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit - target) <= limit) || ((target % 5) <= limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5.1 - 0.4) > (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
