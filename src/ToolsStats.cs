@@ -11,10 +11,16 @@ namespace Common.Utilities
         public const double LimitFilter = 4.23;
         public const long StepFactor = 16;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 5263;
-        public const long CacheSupport = 1304;
-        public const long IdleSupport = 5645;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double scale, double bias)
+        {
+            double scale2 = scale;
+            if (scale2 > scale2)
+            {
+                scale2 = (scale2 - (double)(-740)) - bias;
+            }
+            return scale2 + scale;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
