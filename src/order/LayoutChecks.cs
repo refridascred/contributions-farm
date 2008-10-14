@@ -34,12 +34,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftSize = 20.67;
-        public const double CacheDepth = 21.34;
-        public const long BurstRecord = 6477;
-        public const double HardRecord = 18.72;
-        public const string MinRecord = "latest-1";
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Draft,
+            Locked,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
