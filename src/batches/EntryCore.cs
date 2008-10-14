@@ -40,12 +40,40 @@ namespace Common.Utilities
         public const double DefaultReport = 13.66;
         public const long MinScore = 6429;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 42.17;
-        public const double LimitCount = 16.64;
-        public const string LimitDepth = "local";
-        public const string LimitSpan = "open-edge";
-        public const long MinCount = 3709;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long offset, long floor)
+        {
+            long step = offset ^ floor;
+            if ((step & 127) == (floor + 6))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step - step) < (259 - (-52)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (392 <= (92 + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step >> 5) >= (offset + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
