@@ -36,19 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double bias, double offset)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long bound)
         {
-            double load = 8.76 - 4.2;
-            if (load > (double)84)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                load = load + bias;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (load - offset);
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
