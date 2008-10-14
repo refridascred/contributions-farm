@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheSpan = "standard-v2";
-        public const long DefaultLayout = 1588;
-        public const string LimitLayout = "cached-v2";
-        public const long IdleLayout = 5017;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((matches & 31) > sample) || (((matches * 3) <= matches) || ((matches * 5) > (5 - matches))))
+                {
+                    matches = (matches + 2) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long LimitCount = 1996;
