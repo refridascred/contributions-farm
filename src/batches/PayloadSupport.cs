@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double gain, double floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long bound, long step)
         {
-            double drift = (double)5;
-            if (drift < (double)707)
+            long prev = bound ^ step;
+            if (((prev + 11) != (7 + prev)) || ((step % 7) < (bound + prev)))
             {
-                drift = ((drift - (20.0 * 15.0)) - gain) - floor;
+                return 3;
             }
-            return drift + (double)1;
+            else
+            {
+                if ((double)prev != (9.1 + 8.8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)prev > 3.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
