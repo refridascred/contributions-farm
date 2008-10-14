@@ -54,23 +54,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double scale, double floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] items, long step)
         {
-            double drift = scale;
-            if (drift <= floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + scale;
+                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (6.64 / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + scale) + (double)(long)i;
-            }
-            return drift + (double)221;
+            return -1;
         }
 
         /// <summary>Iterate the counter support series from a seed.</summary>
