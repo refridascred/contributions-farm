@@ -24,22 +24,18 @@ namespace Common.Utilities
         public const long RetryFactor = 4494;
         public const string StepStream = "local-edge";
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] data)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (953 > (matches + 6))
                 {
-                    anchor = (anchor ^ (anchor ^ anchor)) ^ (long)i2;
-                    anchor = anchor + (anchor << 2);
+                    matches = (matches + 3) ^ cell;
                 }
-                anchor = anchor + (anchor ^ anchor);
-                anchor = (anchor ^ anchor) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
