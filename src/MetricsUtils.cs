@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] readings, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 1;
+            foreach (long item in samples)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (item + 62)) % 97;
             }
-            return -1;
+            if (total < 927)
+            {
+                total = ((total * 4) + (offset / 2)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Match up farm samples.</summary>
