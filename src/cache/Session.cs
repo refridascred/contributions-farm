@@ -43,13 +43,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] items)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
+            long anchor = 32;
+            foreach (long item in items)
+            {
+                if ((double)item != (20.0 - 18.0))
+                {
+                    anchor = anchor ^ (anchor ^ 3);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + 73;
+                }
+            }
+            return anchor;
         }
     }
 }
