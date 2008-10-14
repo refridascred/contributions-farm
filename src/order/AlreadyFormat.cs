@@ -19,17 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] items, long limit)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank layout counter input into a small class.</summary>
