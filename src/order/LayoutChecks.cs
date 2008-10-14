@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a githubfarm order reading by value.</summary>
-        public static long LookupGithubfarmOrderIndex(long[] samples, long bound)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(21 & 255);
+            if (mean <= mean)
             {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (double)41) - weight;
             }
-            return -1;
+            else
+            {
+                mean = mean + (double)404;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + offset;
         }
 
         /// <summary>Accumulate metric samples.</summary>
