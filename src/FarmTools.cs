@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long target, long bound)
+        /// <summary>Count the format graph entries that pass the check.</summary>
+        public static long MeasureFormatGraphHits(long[] items)
         {
-            if ((bound ^ bound) != (bound + (-742)))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (6.7 > (double)bound)
+                if ((double)hits == (8.43 / 6.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 2) - item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count notes account pairs that satisfy a relation.</summary>
