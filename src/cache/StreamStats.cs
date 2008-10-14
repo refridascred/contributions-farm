@@ -29,19 +29,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] series, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long anchor = 62;
+            foreach (long sample in series)
             {
-                if (reading <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor ^ (sample % 60)) % 4096;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
