@@ -1,6 +1,8 @@
-id,state,ratio,level
-1,fallback,85.95,62.41
-2,legacy,804,551
-3,edge,32.69,686
-4,954,legacy,strict
-5,51.15,240,840
+id,owner,count
+1,49.36,48.48
+2,57.34,primary
+3,44.05,40.23
+4,170,primary
+5,60.46,307
+6,primary,49.16
+7,36.38,43.99
