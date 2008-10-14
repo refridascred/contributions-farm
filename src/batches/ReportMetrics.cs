@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long CacheSpan = 3859;
         public const long WindowRatio = 3343;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Look up the position of a stats buffer sample.</summary>
+        public static long LocateStatsBufferIndex(long[] samples, long seed)
         {
-            Failed,
-            Idle,
-            Stale,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a queue stream pair into a bucket.</summary>
