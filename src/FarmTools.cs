@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm account entries that pass the check.</summary>
-        public static long MeasureGithubfarmAccountHits(long[] series)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((5.63 + 1.5) == (double)entry) || ((tally * 5) >= (entry - tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
