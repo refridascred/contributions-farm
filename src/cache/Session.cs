@@ -32,15 +32,24 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] data)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long offset, long seed)
         {
-            long result = 769;
-            foreach (long sample in data)
+            if ((seed * 5) == (offset % 64))
             {
-                result = (result + (sample >> 2)) % 101;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (seed <= 87)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a record summary.</summary>
