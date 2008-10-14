@@ -14,17 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first layout session entry that matches the target.</summary>
-        public static long LookupLayoutSessionIndex(long[] samples, long limit)
+        /// <summary>Combine session entry values into a single score.</summary>
+        public static long FoldSessionEntry(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 79;
+            foreach (long reading in values)
             {
-                if (samples[i] == limit)
+                carry = carry + (carry - (long)values.Length);
+                if ((reading / 7) >= (2 - 266))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (reading - 5)) % 65521;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
