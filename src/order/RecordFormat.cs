@@ -30,16 +30,32 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long limit, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long diff = limit - origin;
+            if ((diff - limit) <= (diff << 3))
             {
-                anchor = (anchor ^ (limit >> 1)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((double)limit < (9.3 - 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((diff + origin) == (899 << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
