@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            Ready,
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
