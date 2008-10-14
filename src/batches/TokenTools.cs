@@ -20,12 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double CacheDepth = 58.71;
-        public const string IdleCounter = "cached";
-        public const string WindowBudget = "legacy-v2";
-        public const long RetryCounter = 3439;
-        public const string BurstCounter = "fallback-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinGraph = 48.21;
+        public const long WindowSpan = 105;
+        public const string StepGraph = "local";
 
         /// <summary>Accumulate githubfarm notes samples.</summary>
         public static long DigestGithubfarmNotes(long[] readings, long floor)
