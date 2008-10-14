@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double HardStream = 29.63;
         public const long SoftStream = 1515;
 
-        /// <summary>Measure how many commits tools samples are out of range.</summary>
-        public static long AuditCommitsToolsGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry * 4) < (entry / 6))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxFactor = 1817;
+        public const double BurstRatio = 10.95;
+        public const long SoftBuffer = 3262;
+        public const string RetryInterval = "strict-edge";
 
         /// <summary>Adjust a layout reading.</summary>
         public static double ScaleLayout(double weight, double floor)
