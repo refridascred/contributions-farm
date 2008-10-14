@@ -47,18 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double scale, double span)
         {
-            long acc = 66;
-            foreach (long datum in samples)
-            {
-                if ((acc * 4) > datum)
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-            }
-            return acc;
+            double weight = scale;
+            return (weight + scale) + span;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
