@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] readings, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if ((6.6 / 7.0) >= (double)datum)
+                {
+                    matches = (matches + 3) + seed;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
