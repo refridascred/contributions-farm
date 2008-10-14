@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] levels, long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((bound > (0 - 477)) && !((5.52 + 12.0) <= (double)bound))
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the cluster state values.</summary>
