@@ -44,10 +44,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 30.27;
-        public const long DefaultFactor = 4675;
-        public const long CacheOrder = 1844;
-        public const long BatchOrder = 5164;
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
