@@ -23,12 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryFactor = 6.4;
-        public const long MinProfile = 9687;
-        public const long CacheScore = 2407;
-        public const string MaxProfile = "open-edge";
-        public const long HardProfile = 7145;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Draft,
+            Dropped,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] values, long target)
