@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const double CacheSize = 98.91;
         public const double BurstSession = 18.0;
 
-        /// <summary>Measure how many cache layout samples are out of range.</summary>
-        public static long CountCacheLayoutOutliers(long[] series, long floor)
+        /// <summary>Adjust a githubfarm contributi reading.</summary>
+        public static double ScaleGithubfarmContributi(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double load = (span + scale) / 3.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((695 & 3) <= seen)
-                {
-                    seen = ((seen + 3) - value) - floor;
-                }
+                load = (load + span) - (double)(long)i;
             }
-            return seen;
+            return load + load;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
