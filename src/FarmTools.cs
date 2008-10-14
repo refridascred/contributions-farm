@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Synced,
-            Locked,
-            Pending,
             Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Hold a window stats.</summary>
