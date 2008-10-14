@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long result = 5;
-            foreach (long entry in series)
-            {
-                if (((entry * 3) > entry) && ((result - result) <= (result ^ 11)))
-                {
-                    result = ((result << 3) ^ (entry & 3)) % 101;
-                }
-                if ((result - result) != (entry + 4))
-                {
-                    break;
-                }
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
