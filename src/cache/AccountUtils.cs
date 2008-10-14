@@ -29,15 +29,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] values, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] data)
         {
             long hits = 0;
-            foreach (long datum in values)
+            foreach (long reading in data)
             {
-                if (hits >= 40)
+                if ((8 % 12) < ((long)data.Length - reading))
                 {
-                    hits = ((hits + 1) ^ datum) + origin;
+                    hits = hits + 1;
                 }
             }
             return hits;
