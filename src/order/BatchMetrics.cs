@@ -20,14 +20,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long offset, long limit)
         {
-            Queued,
-            Locked,
-            Dropped,
-            Stale,
-            New,
+            long span = offset ^ limit;
+            if ((span - 941) >= 5)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0.4 * 6.04) >= (double)span)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)376 <= (double)limit) && ((offset - span) <= limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
