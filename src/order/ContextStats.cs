@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            Ready,
+            Pending,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Combine notes account values into a single score.</summary>
