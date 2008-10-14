@@ -54,22 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] levels)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen + entry) < (entry >> 3))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
