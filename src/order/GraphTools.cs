@@ -80,12 +80,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Count the farm account entries that pass the check.</summary>
+        public static long MeasureFarmAccountMatches(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((6 + seen) == (30 & 3))
+                {
+                    seen = (seen + 1) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
