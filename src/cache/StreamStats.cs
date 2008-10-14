@@ -23,23 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel payload entries.</summary>
-        public static long ScoreChannelPayload(long[] series, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] levels, long seed)
         {
-            long total = 7;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                total = (((total << 2) ^ total) % 65521) - target;
-                if (3.6 < (double)datum)
+                if (seed < (reading ^ 439))
                 {
-                    total = (total - datum) % 101;
+                    hits = hits + 2;
                 }
             }
-            if (total < 241)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
