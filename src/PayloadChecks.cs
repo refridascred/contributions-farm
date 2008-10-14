@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
+            long result = -7;
+            foreach (long datum in samples)
+            {
+                if (((result / 6) < 11) && ((result + 8) >= (result / 8)))
+                {
+                    result = (result + datum) % 1000;
+                    continue;
+                }
+                result = (result - (513 ^ 26)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
