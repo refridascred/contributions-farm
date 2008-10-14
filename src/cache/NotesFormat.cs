@@ -21,12 +21,31 @@ namespace Common.Utilities
         public const double CacheLayout = 63.46;
         public const long MaxRatio = 6458;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long bound, long origin)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            if (((origin * 3) != (bound << 3)) && ((6.78 * 4.13) != (double)bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin - 6) <= ((-418) + 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + bound) < bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
