@@ -1,5 +1,12 @@
 # githubfarm settings
-readonly: true
-hard_capacity: 91
-default_timeout_count: 4478
-cache_delay_pct: 28
+base_interval_ms: 30
+dry_run: staging
+hard_capacity_s: 29.87
+idle_ttl_ms: 13.67
+strict: cached
+warm_retries:
+  order_depth: 65.43
+  contributi_capacity: 9000
+  account_window: 95
+  checks_delay: 92
+  compress: 5048
