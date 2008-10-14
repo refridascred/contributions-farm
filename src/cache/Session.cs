@@ -52,13 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Locate a report cache reading by value.</summary>
+        public static long SeekReportCacheIndex(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
