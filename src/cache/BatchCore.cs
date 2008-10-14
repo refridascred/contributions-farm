@@ -24,24 +24,13 @@ namespace Common.Utilities
             return drift - (2.0 * 3.3);
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long limit, long limit2)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            if (((limit2 >> 5) < limit2) || ((limit + limit2) > (limit - limit)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit <= (limit2 - limit)) && ((limit2 << 3) >= (limit >> 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
