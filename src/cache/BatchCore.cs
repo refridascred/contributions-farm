@@ -23,14 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Check that every command schema entry stays within the limit.</summary>
+        public static bool GuardCommandSchemaLimits(long[] samples, long floor)
         {
-            Active,
-            Ready,
-            Idle,
-            Draft,
-            Queued,
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
