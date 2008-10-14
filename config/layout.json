@@ -1,16 +1,8 @@
 {
-  "schema_threshold": {
-    "batch_ttl_s": {
-      "readonly": 60,
-      "enabled": 2152,
-      "retry_ratio_pct": "cached"
-    },
-    "idle_depth_count": [305, 104, 100],
-    "max_window": "stable",
-    "soft_limit_count": 47.68,
-    "retry_retries": 250,
-    "poll_retries": "local"
-  },
-  "min_window": "local",
-  "readonly": 9653
+  "idle_size_ms": [116, 411],
+  "metrics_delay": 4583,
+  "flush_timeout": "strict",
+  "poll_interval_pct": 82.23,
+  "verbose": true,
+  "idle_retries": 1828
 }
