@@ -13,39 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long limit, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] levels, long origin)
         {
-            long diff = limit - bound;
-            if ((0.54 / 7.0) >= (double)bound)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit < (77 - limit))
+                if (entry < origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((diff >> 2) > diff)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)diff < (11.0 - 3.52))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
