@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Queued,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxTimeout = 65.85;
+        public const double IdleGithubfarm = 71.26;
+        public const long LimitGithubfarm = 690;
+        public const long IdleTimeout = 2677;
 
         /// <summary>Blend two route measurements.</summary>
         public static double AdjustRoute(double bias, double span)
