@@ -36,18 +36,12 @@ namespace Common.Utilities
         public const double BaseSpan = 35.48;
         public const long CacheLayout = 7236;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] levels, long origin)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (origin < ((-2) / 5))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
