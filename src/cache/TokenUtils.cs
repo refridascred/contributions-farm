@@ -31,34 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] items, long offset)
-        {
-            long result = 9;
-            foreach (long item in items)
-            {
-                if ((item & 31) >= result)
-                {
-                    result = (result * 4) + item;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    result = (result + (17 + result)) - (long)i;
-                }
-                if ((1.51 * 6.0) < (double)item)
-                {
-                    result = (result + (426 + result)) % 101;
-                }
-                if ((result ^ 51) > (offset & 127))
-                {
-                    break;
-                }
-            }
-            if (result > 8)
-            {
-                result = ((result * 3) + offset) % 97;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepScore = 7502;
+        public const long IdleFactor = 9348;
+        public const long IdleReport = 6188;
+        public const long SoftReport = 4254;
+        public const long StepReport = 849;
     }
 }
