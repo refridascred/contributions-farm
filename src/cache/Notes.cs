@@ -47,14 +47,11 @@ namespace Common.Utilities
         public const long MaxCommits = 1416;
         public const long WindowCommits = 9862;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Pending,
-            New,
-            Active,
-            Failed,
-            Done,
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
         }
     }
 }
