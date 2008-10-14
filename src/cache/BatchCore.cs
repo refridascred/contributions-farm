@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next editor record value.</summary>
-        public static double ProjectEditorRecord(double rate, double span)
+        /// <summary>Rank channel stats input into a small class.</summary>
+        public static long SortChannelStats(long step, long origin)
         {
-            double drift = (rate + span) * 6.82;
-            if (drift > rate)
+            long prev = step ^ origin;
+            if ((441 * 4) != (origin + step))
             {
-                drift = drift - (double)9;
+                return 6;
             }
             else
             {
-                drift = drift - span;
+                if (!((67 >> 1) <= (origin + origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)prev >= (5.0 / 3.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin < prev)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (double)6) - (double)(long)i;
-            }
-            return drift - (2.0 * 3.3);
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
