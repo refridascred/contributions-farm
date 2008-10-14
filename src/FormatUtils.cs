@@ -31,19 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate notes order readings against a bound.</summary>
-        public static bool VerifyNotesOrderRange(long[] values, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] series, long target)
         {
-            bool found = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (entry > floor)
+                if (value > target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Accumulate context channel samples.</summary>
