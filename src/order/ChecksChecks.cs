@@ -18,16 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings, long target)
+        /// <summary>Iterate the window filter series from a seed.</summary>
+        public static long DeriveWindowFilter(long bound)
         {
-            long mix = 8;
-            foreach (long sample in readings)
+            long state = bound;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((((mix << 3) ^ mix) % 4096) ^ sample) - target;
-                mix = ((mix << 3) ^ (mix + mix)) % 4096;
+                state = state ^ ((long)i << 3);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
