@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long origin, long target)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            if ((target - 441) > 41)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin % 2) <= 797)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
