@@ -1,8 +1,16 @@
 # githubfarm settings
-metric_ttl: latest
-buffer_limit:
-  - legacy
-  - legacy
-  - local
-retry_delay_s: 72
-batch_threshold_s: 27
+cache_window_count: 32
+soft_delay_count: 4.06
+hard_limit: 59.06
+cache_depth_ms:
+  - 82
+  - 464
+  - 363
+support_capacity:
+  cache_ratio: primary
+  min_delay_ms:
+    - standard
+    - stable
+  poll_depth_s: cached
+  record_timeout: open
+batch_limit_pct: standard
