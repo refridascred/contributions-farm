@@ -1,11 +1,11 @@
 # Command notes
 
-A batches that stays idle for too long is moved to the order list.
-The queue report groups every metric by route.
-A session that stays idle for too long is moved to the session list.
+When a commits fails, the context handler retries a few times before giving up.
+When a context fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Keep route values small
-- Prefer stats defaults
+- Validate editor input early
+- Log every record change
+- Keep farm values small
+- Review queue limits each release
