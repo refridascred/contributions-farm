@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double bias, double floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double rate = (bias * 2.0) / 6.0;
-            if (rate <= (20.0 + bias))
-            {
-                rate = rate - (floor + floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate + floor;
+            Draft,
+            Retry,
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Accumulate queue samples.</summary>
