@@ -1,14 +1,5 @@
 {
-  "base_threshold_pct": ["strict", "cached", "eu-west", "legacy"],
-  "retry_retries": false,
-  "route_capacity": "staging",
-  "burst_size_pct": 8171,
-  "idle_ttl_s": "edge",
-  "readonly": {
-    "flush_threshold": [170, 422],
-    "format_depth": ["staging", "blue", "latest"],
-    "soft_retries_s": "stable",
-    "batch_depth_count": "legacy",
-    "audit": 21.28
-  }
+  "stats_timeout": [115, 213, 33, 24],
+  "flush_ttl": 8468,
+  "cache_timeout_ms": 100
 }
