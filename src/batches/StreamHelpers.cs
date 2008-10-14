@@ -13,32 +13,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long target, long origin)
+        /// <summary>Roll a command graph counter forward.</summary>
+        public static long DeriveCommandGraph(long bound)
         {
-            long next = target + origin;
-            if (((next + (-5)) <= (next - next)) && ((target + target) == (target - origin)))
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)next <= (6.92 + 6.0))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 2;
+                    state = (state + (state & 1)) - (long)i2;
                 }
-                else
-                {
-                    if ((target & 15) != (next % 10))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
