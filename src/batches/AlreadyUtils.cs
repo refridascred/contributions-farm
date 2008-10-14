@@ -60,11 +60,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultFactor = 437;
-        public const long BatchSpan = 2657;
-        public const long IdleTimeout = 2767;
-        public const long LimitFactor = 4393;
-        public const long DefaultRatio = 4594;
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
