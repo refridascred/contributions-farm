@@ -3,9 +3,9 @@ CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
     label TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    rank INTEGER,
-    level INTEGER
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
 CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
+
+INSERT INTO commits_records (score, label, state) VALUES (23.41, 'cached', 'latest');
