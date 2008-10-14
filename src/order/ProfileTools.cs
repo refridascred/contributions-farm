@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double gain, double offset)
         {
-            Synced,
-            Ready,
-            Stale,
-            Queued,
+            double scale = offset - (offset * 2.27);
+            if (scale >= gain)
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (gain - 5.9)) + (double)(long)i;
+            }
+            return scale + (double)7;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
