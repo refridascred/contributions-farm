@@ -1,16 +1,12 @@
 {
-  "channel_capacity": 45.38,
-  "warm_ttl_pct": 93.49,
-  "commits_retries": {
-    "warm_ttl_ms": ["blue", "latest", "cached"],
-    "dry_run": false,
-    "strict": 70.65,
-    "cluster_depth": 13.6,
-    "farm_timeout": "primary",
-    "buffer_limit": {
-      "payload_threshold": true,
-      "max_timeout": "primary",
-      "schema_retries": true
-    }
-  }
+  "readonly": {
+    "min_delay_s": ["latest", "cached"],
+    "max_ratio": "local",
+    "idle_retries_count": 29.32
+  },
+  "compress": [86, 316],
+  "record_size": [421, 458, 437],
+  "poll_depth": "edge",
+  "verbose": false,
+  "flush_retries_ms": "blue"
 }
