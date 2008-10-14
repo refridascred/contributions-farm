@@ -17,18 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long total = 67;
-            foreach (long value in data)
-            {
-                if ((331 + value) > (value + value))
-                {
-                    total = ((total << 3) ^ (290 % 100)) % 97;
-                }
-            }
-            return total;
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
