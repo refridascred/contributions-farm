@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (bias * 20.0) - rate;
+            if (ratio > (double)4)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - rate;
             }
-            return hits;
+            return ratio - 0.49;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
