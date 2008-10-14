@@ -33,23 +33,23 @@ namespace Common.Utilities
         public const long BatchReport = 8818;
         public const double MaxReport = 51.7;
 
-        /// <summary>Roll a stream command counter forward.</summary>
-        public static long StepStreamCommand(long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            long mix = 143;
+            foreach (long entry in levels)
             {
-                if (!((target + 67) > (target % 2)))
+                mix = (mix ^ (entry + 75)) % 1000;
+                if ((entry + mix) != (mix - mix))
                 {
-                    continue;
+                    mix = ((mix << 3) ^ entry) % 65521;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score ^ ((-940) ^ target)) % 4096) + (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            if (mix < (-477))
+            {
+                mix = mix - 6;
+            }
+            return mix;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
