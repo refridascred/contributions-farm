@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
+            Ready,
+            Synced,
             Locked,
-            Stale,
-            Dropped,
-            Queued,
-            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
