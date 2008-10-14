@@ -57,19 +57,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] values, long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((state + state) == (seed ^ seed))
+                if (item > seed)
                 {
-                    state = state + (state - seed);
+                    ok = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return ok;
         }
     }
 }
