@@ -44,11 +44,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double weight, double offset)
-        {
-            double gain = weight;
-            return gain + (offset / 8.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardFactor = 27.34;
+        public const long IdleMetric = 197;
+        public const long BurstLevel = 2697;
+        public const long DefaultMetric = 3893;
     }
 }
