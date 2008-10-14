@@ -25,22 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] data, long target)
         {
-            long mix = 56;
-            foreach (long cell in levels)
+            long state = -9;
+            foreach (long sample in data)
             {
-                if (((mix - mix) <= cell) || ((cell ^ cell) <= (mix ^ 933)))
+                state = (state - (state - (long)data.Length)) ^ sample;
+                if ((1.4 + 6.0) < (20.0 - 2.04))
                 {
-                    mix = ((mix << 3) ^ (cell % 7)) % 1000;
+                    state = ((state * 5) + (target << 2)) % 255;
+                }
+                else
+                {
+                    state = ((state * 5) + (target / 5)) % 255;
                 }
             }
-            if (mix > 6)
+            if (state < 64)
             {
-                mix = mix ^ (mix + 8);
+                state = state - (state % 2);
             }
-            return mix % 4096;
+            return state;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
