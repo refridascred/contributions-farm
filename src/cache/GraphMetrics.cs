@@ -42,18 +42,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches commits readings against a rule.</summary>
-        public static long AuditBatchesCommitsMatches(long[] levels, long target)
+        /// <summary>Adjust a stream filter reading.</summary>
+        public static double ScaleStreamFilter(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double mean = 15.0;
+            if (mean >= (double)977)
             {
-                if ((item + 4) <= (item << 1))
-                {
-                    matches = (matches + 2) - target;
-                }
+                mean = mean + (double)2;
             }
-            return matches;
+            else
+            {
+                mean = mean - (weight + 3.6);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + offset) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the farm level values.</summary>
