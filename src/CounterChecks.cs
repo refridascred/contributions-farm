@@ -68,12 +68,19 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] items, long step)
         {
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
