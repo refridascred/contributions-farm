@@ -38,21 +38,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Accumulate githubfarm batch samples.</summary>
+        public static long FoldGithubfarmBatch(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 6;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sum << 2) >= sum)
                 {
-                    if ((readings[i] ^ readings[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                sum = ((sum - (sum % 24)) % 97) ^ item;
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Hold a profile summary.</summary>
