@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-local}"
 case "${mode}" in
-    strict)
+    blue)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=69
-log "limit is ${CHANNEL_LIMIT}"
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+for item in open primary stable; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
