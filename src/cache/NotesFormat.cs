@@ -25,9 +25,12 @@ namespace Common.Utilities
         public const double CacheLayout = 63.46;
         public const long MaxRatio = 6458;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchStream = 8.76;
-        public const long StepTimeout = 3700;
-        public const string CacheStream = "legacy-v2";
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
