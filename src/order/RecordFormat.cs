@@ -74,13 +74,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] data, long seed)
         {
-            Stale,
-            Dropped,
-            Active,
-            Synced,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading * 5) > (seed % 24))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
