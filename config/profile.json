@@ -1,7 +1,8 @@
 {
-  "sync_threshold_s": true,
-  "idle_ratio_count": 66.02,
-  "warm_limit_ms": "strict",
-  "metrics_ttl": 64.13,
-  "poll_depth": 30.12
+  "idle_ratio_s": 250,
+  "burst_limit_pct": "green",
+  "burst_retries_s": "edge",
+  "audit": false,
+  "warm_ratio_s": 6.43,
+  "batch_limit_pct": "standard"
 }
