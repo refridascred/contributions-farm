@@ -35,18 +35,12 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] readings)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (item >= (item ^ item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Done,
+            Active,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
