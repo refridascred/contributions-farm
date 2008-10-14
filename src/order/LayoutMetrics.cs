@@ -14,19 +14,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] values, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long offset)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (value > bound)
+                if (!(carry <= (carry << 3)))
                 {
-                    stale = false;
                     break;
                 }
+                else
+                {
+                    carry = (carry - (offset % 60)) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Accumulate session samples.</summary>
