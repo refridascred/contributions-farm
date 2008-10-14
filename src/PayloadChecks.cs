@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double weight, double offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] samples)
         {
-            double weight2 = (double)(5 * 5);
-            if (weight2 < (offset + offset))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                weight2 = weight2 - offset;
+                if ((hits - value) == (hits & 31))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 + (weight + weight);
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
