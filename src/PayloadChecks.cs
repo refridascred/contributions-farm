@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const long RetryFactor = 4494;
         public const string StepStream = "local-edge";
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (953 > (matches + 6))
+                if ((sample & 1) == (sample - sample))
                 {
-                    matches = (matches + 3) ^ cell;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
