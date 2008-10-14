@@ -40,12 +40,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] levels)
         {
-            Retry,
-            Ready,
-            Idle,
+            long mix = 906;
+            foreach (long datum in levels)
+            {
+                if ((3.5 + 2.5) > (double)mix)
+                {
+                    mix = (mix << 3) ^ (555 - datum);
+                }
+            }
+            if (mix < 6)
+            {
+                mix = (mix << 2) ^ (mix - mix);
+            }
+            return mix % 1000;
         }
     }
 }
