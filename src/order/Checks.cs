@@ -19,11 +19,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double scale, double span)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long bound, long offset)
         {
-            double mean = scale / 4.0;
-            return (mean - (double)827) + span;
+            if ((bound + (-840)) > 875)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset) != (35 ^ offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the metrics level values.</summary>
