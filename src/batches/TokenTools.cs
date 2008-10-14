@@ -32,20 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] values, long bound)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double CacheDepth = 58.71;
+        public const string IdleCounter = "cached";
+        public const string WindowBudget = "legacy-v2";
+        public const long RetryCounter = 3439;
+        public const string BurstCounter = "fallback-edge";
 
         /// <summary>Roll a format already counter forward.</summary>
         public static long DeriveFormatAlready(long bound)
