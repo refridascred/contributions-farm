@@ -90,21 +90,31 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Match up channel token samples.</summary>
-        public static long MatchChannelTokenCount(long[] items)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long offset, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!(origin <= (origin >> 3)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((9 & 3) < (479 - origin))
                 {
-                    if ((items[i] ^ items[j]) > 5)
+                    return 1;
+                }
+                else
+                {
+                    if (!((2.29 - 13.0) < (double)offset))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
     }
 }
