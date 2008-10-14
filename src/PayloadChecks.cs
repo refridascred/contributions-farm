@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Failed,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftBatch = "stable-v2";
+        public const long LimitTimeout = 2884;
+        public const string RetryBatch = "legacy-v2";
+        public const long DefaultSpan = 8260;
+        public const long BatchDepth = 3107;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
