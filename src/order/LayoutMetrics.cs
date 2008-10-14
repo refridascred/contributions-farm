@@ -19,26 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] samples, long origin)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double rate, double floor)
         {
-            long anchor = 283;
-            foreach (long cell in samples)
+            double bias = rate;
+            if (bias <= floor)
             {
-                if ((anchor + cell) >= origin)
-                {
-                    anchor = anchor + cell;
-                }
-                else
-                {
-                    anchor = (anchor - (cell % 5)) % 1000;
-                }
+                bias = bias - (rate / 5.0);
             }
-            if (anchor < 7)
+            for (int i = 0; i < 2; i++)
             {
-                anchor = (anchor + origin) % 255;
+                bias = (bias - (bias - rate)) + (double)(long)i;
             }
-            return anchor;
+            return bias + rate;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
