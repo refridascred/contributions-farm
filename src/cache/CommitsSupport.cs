@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseSize = "primary-edge";
-        public const string MaxMetric = "cached";
-        public const long MinMetric = 560;
-        public const long DefaultRatio = 2972;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Stale,
+            Synced,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long SortBuffer(long seed, long target)
