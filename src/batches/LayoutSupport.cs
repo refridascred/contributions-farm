@@ -58,22 +58,38 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] samples)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            if (bound <= (bound + seed))
             {
-                if (seen >= 27)
+                return 4;
+            }
+            else
+            {
+                if ((seed ^ bound) > (9 >> 2))
                 {
-                    seen = (seen + 1) - entry;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((double)seed != (7.05 - 0.12)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (0.9 + 6.89))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
