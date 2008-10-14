@@ -24,18 +24,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] samples, long target)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target % 7) != (target + 417))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) - item;
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a filter reading.</summary>
