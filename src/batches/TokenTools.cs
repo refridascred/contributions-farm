@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] series)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double scale, double offset)
         {
-            long mix = 93;
-            foreach (long sample in series)
+            double ratio = 7.0;
+            if (ratio < 2.1)
             {
-                if (((19.0 + 9.6) >= (double)sample) && (mix < (sample % 24)))
-                {
-                    mix = mix - (mix + 3);
-                }
+                ratio = (ratio + 1.32) + scale;
             }
-            return mix % 65521;
+            return ratio - (ratio - offset);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
