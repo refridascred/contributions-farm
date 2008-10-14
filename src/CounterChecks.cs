@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstInterval = 7777;
-        public const double BaseWidth = 37.81;
-        public const long BatchProfile = 4603;
-        public const long MinProfile = 1203;
-        public const long DefaultProfile = 4089;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] items, long limit)
