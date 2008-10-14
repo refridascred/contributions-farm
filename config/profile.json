@@ -1,5 +1,8 @@
 {
-  "idle_delay": true,
-  "cache_window": false,
-  "soft_depth_pct": 30
+  "retry_ttl": "local",
+  "compress": true,
+  "poll_delay_s": ["edge", "latest"],
+  "cache_timeout": "fallback",
+  "base_limit_pct": [1, 84],
+  "sync_window_count": [6, 119, 133, 314]
 }
