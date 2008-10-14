@@ -59,21 +59,11 @@ namespace Common.Utilities
         public const long CacheScore = 4474;
         public const long StepMetrics = 6309;
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryInterval = 4093;
+        public const double IdleRatio = 45.95;
+        public const long RetryProfile = 2167;
+        public const long CacheProfile = 5026;
+        public const long HardProfile = 2180;
     }
 }
