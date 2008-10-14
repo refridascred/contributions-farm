@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] values, long limit)
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-            public double Flag { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count context batches pairs that satisfy a relation.</summary>
