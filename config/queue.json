@@ -1,8 +1,8 @@
 {
-  "dry_run": 80,
-  "burst_capacity_s": "cached",
-  "support_interval": true,
-  "max_interval_s": [159, 187],
-  "idle_timeout_count": 79.45,
-  "default_size": true
+  "tools_limit": 29.74,
+  "strict": true,
+  "default_depth_ms": 86,
+  "sync_ttl": "edge",
+  "idle_depth_s": ["blue", "green"],
+  "cache_timeout": false
 }
