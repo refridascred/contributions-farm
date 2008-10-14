@@ -1,6 +1,6 @@
 {
-  "batches_retries": 500,
-  "githubfarm_limit": 500,
-  "enabled": 78.63,
-  "entry_timeout": 20
+  "burst_retries_s": 68,
+  "buffer_delay": 2894,
+  "dry_run": "eu-west",
+  "stream_capacity": "legacy"
 }
