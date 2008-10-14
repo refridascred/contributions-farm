@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] series, long floor)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = (bias * 2.0) / 6.0;
+            if (rate <= (20.0 + bias))
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                rate = rate - (floor + floor);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Accumulate queue samples.</summary>
