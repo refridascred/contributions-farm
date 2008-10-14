@@ -1,5 +1,15 @@
 {
-  "flush_interval_ms": 4,
-  "batch_limit_count": 100,
-  "soft_interval_ms": false
+  "soft_retries": 35.77,
+  "warm_size_ms": {
+    "cache_ratio_s": "standard",
+    "flush_window": false,
+    "soft_capacity": [456, 354],
+    "cache_window": 30,
+    "idle_delay_s": [51, 422, 293, 307],
+    "commits_window": 79
+  },
+  "poll_capacity_pct": false,
+  "flush_retries": 4518,
+  "entry_ttl": 3821,
+  "base_ttl": "cached"
 }
