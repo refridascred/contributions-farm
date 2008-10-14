@@ -16,19 +16,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] samples, long step)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            long result = 755;
-            foreach (long item in samples)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((32 << 3) != (result + 20))
-                {
-                    result = (((result * 4) + (step + step)) % 101) ^ item;
-                }
-                result = ((result * 2) + 4) % 97;
+                mix = ((mix * 4) + ((long)i + 42)) % 101;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
