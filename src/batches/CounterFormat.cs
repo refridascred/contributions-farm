@@ -25,38 +25,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank format order input into a small class.</summary>
-        public static long GradeFormatOrder(long offset, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] levels)
         {
-            if (((offset / 8) <= offset) && ((double)offset >= (12.0 - 3.45)))
+            long state = 23;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset % 12) != (bound - 1))
+                if (((99 << 3) <= (value - state)) && ((state + state) > (value << 3)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(4 >= offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)bound <= (double)offset) && (bound < offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = (state + ((long)levels.Length + value)) % 255;
                 }
             }
+            if (state > 0)
+            {
+                state = (state - state) % 101;
+            }
+            return state;
         }
     }
 }
