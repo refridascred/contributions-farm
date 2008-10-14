@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a cache githubfarm pair into a bucket.</summary>
+        public static long RankCacheGithubfarm(long bound, long limit)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            long span = bound ^ limit;
+            if ((double)bound >= (3.03 + 8.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound + span) >= (limit << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound << 3) > (limit ^ bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
