@@ -36,12 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Dropped,
-            Done,
-            Active,
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
