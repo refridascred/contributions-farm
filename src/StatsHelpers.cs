@@ -51,22 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] values, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((3.3 * 9.02) < (double)hits)
+                if (sample != bound)
                 {
-                    hits = ((hits + 3) + entry) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
