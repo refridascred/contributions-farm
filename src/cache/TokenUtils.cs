@@ -26,12 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first cache batches entry that matches the target.</summary>
-        public static long LookupCacheBatchesIndex(long[] series, long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] >= origin)
+                if ((levels[i] < step) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
