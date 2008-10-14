@@ -24,19 +24,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double bias, double offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] samples, long offset)
         {
-            double drift = bias / 4.0;
-            if (drift >= offset)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                drift = drift + (double)4;
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift / 9.0)) + (double)(long)i;
-            }
-            return drift + (double)934;
+            return flag;
         }
     }
 }
