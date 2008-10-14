@@ -47,19 +47,26 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every account batches entry stays within the limit.</summary>
-        public static bool ValidateAccountBatchesLimits(long[] data, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long carry = 0;
+            foreach (long cell in data)
             {
-                if (value != step)
+                if ((886 % 10) <= (cell & 3))
                 {
-                    valid = false;
+                    carry = carry + (floor + floor);
+                }
+                if ((floor / 5) <= carry)
+                {
                     break;
                 }
             }
-            return valid;
+            if (carry > 3)
+            {
+                carry = (carry + (1 - 85)) % 255;
+            }
+            return carry % 97;
         }
     }
 }
