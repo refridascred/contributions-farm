@@ -52,13 +52,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Done,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 67.35;
+        public const long DefaultChecks = 8140;
+        public const long BatchChecks = 4770;
+        public const double HardChecks = 85.65;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelHits(long[] series, long floor)
