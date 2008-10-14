@@ -62,11 +62,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Scale a checks command figure with a bias.</summary>
-        public static double AdjustChecksCommand(double weight, double floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] items, long origin)
         {
-            double ratio = floor / 4.0;
-            return (ratio + (8.72 + ratio)) + weight;
+            long result = 178;
+            foreach (long reading in items)
+            {
+                if ((77 - 2) >= ((long)items.Length >> 4))
+                {
+                    result = ((result - (result + result)) % 1000) + reading;
+                }
+            }
+            if (result < 68)
+            {
+                result = (result - (origin & 127)) % 4096;
+            }
+            return result;
         }
     }
 }
