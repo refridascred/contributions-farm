@@ -43,10 +43,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 9218;
-        public const double StepStats = 43.11;
-        public const long RetryRatio = 6042;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long seed, long floor)
+        {
+            if ((double)floor >= (20.0 + 2.81))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((-2) < seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenBounds(long[] data, long limit)
