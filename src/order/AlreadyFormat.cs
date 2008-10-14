@@ -46,39 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long bound, long seed)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] levels, long step)
         {
-            long delta = bound - seed;
-            if (((44 * 4) >= seed) && ((double)seed != (7.46 * 17.0)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (delta <= (delta & 255))
+                if (levels[i] == step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta - seed) < (seed - seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + 58) > bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
