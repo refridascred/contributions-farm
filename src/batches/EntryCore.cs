@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const double RetryWindow = 59.03;
         public const long IdleBudget = 9752;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstReport = 57.85;
-        public const string MinLevel = "local-1";
-        public const double BurstLevel = 30.02;
-        public const double DefaultReport = 13.66;
-        public const long MinScore = 6429;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long offset, long floor)
