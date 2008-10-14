@@ -47,38 +47,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long target, long step)
+        /// <summary>Fold a list of payload profile readings.</summary>
+        public static long TotalPayloadProfile(long[] samples)
         {
-            if (target >= (step + target))
+            long acc = 75;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (target > (step / 6))
+                if (!((acc - reading) <= 53))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.19 + 7.1) == (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((target * 3) > (1 >> 2)) && ((double)step >= (1.8 / 6.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    acc = acc ^ 0;
                 }
             }
+            return acc;
         }
 
         /// <summary>Match up token farm samples.</summary>
