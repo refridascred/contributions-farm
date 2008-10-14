@@ -46,13 +46,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Pending,
-            Idle,
-            Paused,
-            Queued,
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
