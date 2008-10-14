@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Locked,
-            Closed,
-            Retry,
-            Ready,
+            Idle,
+            Done,
+            Synced,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
