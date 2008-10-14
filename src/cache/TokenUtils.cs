@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every command editor entry stays within the limit.</summary>
-        public static bool GuardCommandEditorLimits(long[] samples, long target)
+        /// <summary>Count the context metric entries that pass the check.</summary>
+        public static long MeasureContextMetricOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (value <= target)
+                if (!((seen * 4) < value))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
