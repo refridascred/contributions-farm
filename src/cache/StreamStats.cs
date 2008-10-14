@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "alpha-edge";
-        public const double LimitRatio = 32.93;
-        public const long HardPayload = 4995;
-        public const long BasePayload = 6515;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseCount = 3700;
+        public const long MinSchema = 7250;
+        public const long MaxSchema = 8756;
+        public const long IdleWidth = 9697;
+        public const long BurstFactor = 4177;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] series)
