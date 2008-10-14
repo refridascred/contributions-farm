@@ -36,25 +36,13 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long origin, long origin2)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long next = origin - origin2;
-            if ((double)next <= (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((7.34 / 5.0) == (double)origin2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
