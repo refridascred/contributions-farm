@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result << 3) ^ result) % 65521;
-                result = (result * 2) + (origin % 7);
-                result = (result - (19 + result)) % 4096;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Stale,
+            Paused,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a stats record.</summary>
