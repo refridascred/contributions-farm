@@ -61,17 +61,19 @@ namespace Common.Utilities
         public const double HardRecord = 18.72;
         public const string MinRecord = "latest-1";
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long floor)
+        /// <summary>Adjust a farm commits reading.</summary>
+        public static double ProjectFarmCommits(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = 19.0 + (double)83;
+            if (gain <= (gain / 9.0))
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                gain = gain - floor;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (2.2 - gain)) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
