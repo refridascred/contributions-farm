@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long seed, long seed2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((((-46) * 3) == (seed - seed)) || (seed > (seed2 + seed2)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((seed + seed) > (seed2 + seed)) && ((2 & 63) != (seed + seed2)))
                 {
-                    if ((values[i] + values[j]) > 9)
+                    return 2;
+                }
+                else
+                {
+                    if (seed > (seed << 3))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit cluster cache readings against a rule.</summary>
