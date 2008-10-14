@@ -30,18 +30,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseDepth = 2470;
+        public const string BatchGraph = "standard-1";
+        public const long BurstLevel = 6501;
+        public const long HardWidth = 7564;
+        public const long StepCount = 6400;
 
         /// <summary>Rank batches tools input into a small class.</summary>
         public static long RankBatchesTools(long bound, long offset)
