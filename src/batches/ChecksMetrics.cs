@@ -66,30 +66,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] series, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
+            long mix = 437;
+            foreach (long entry in series)
             {
-                result = (result << 2) ^ (limit - result);
-                if (result >= (limit * 2))
+                if ((25 - 289) >= (mix * 4))
                 {
-                    result = (result << 2) ^ (99 / 6);
-                    result = result - result;
-                    continue;
+                    mix = (((mix * 5) + (mix - entry)) % 1000) + seed;
                 }
-                if (((limit << 1) != (result ^ 11)) || ((long)i <= limit))
-                {
-                    result = (result + result) % 97;
-                }
-                else
-                {
-                    result = (result - result) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return mix;
         }
     }
 }
