@@ -42,19 +42,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] series, long target)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
