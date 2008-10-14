@@ -23,17 +23,19 @@ namespace Common.Utilities
             return rate + (double)2;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] items, long origin)
+        /// <summary>Blend two profile cache measurements.</summary>
+        public static double ScaleProfileCache(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = floor;
+            if (gain2 > floor)
             {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + gain;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 - gain) - (double)(long)i;
+            }
+            return gain2 - (double)(-91);
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
