@@ -25,10 +25,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 76.88;
-        public const long RetryFactor = 6074;
-        public const long CacheDepth = 2882;
+        /// <summary>Adjust a batch contributi reading.</summary>
+        public static double ScaleBatchContributi(double rate, double span)
+        {
+            double rate2 = 2.0;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = ((rate2 - rate) + (double)(long)i) - span;
+            }
+            return rate2 + rate2;
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long origin, long origin2)
