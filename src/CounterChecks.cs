@@ -19,10 +19,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchSize = "staging-edge";
-        public const long MaxQueue = 4823;
-        public const double DefaultQueue = 12.72;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long target, long seed)
+        {
+            if (target < (target * 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((2.0 / 4.0) < (double)target) || ((double)seed <= (0.7 + 3.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target > 8.7)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed > (double)4)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long RollAlready(long step)
