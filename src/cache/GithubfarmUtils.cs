@@ -19,15 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double scale, double offset)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            double drift = (double)(40 / 3);
-            if (drift > 8.48)
-            {
-                drift = ((drift - 14.0) - scale) - offset;
-            }
-            return drift - 2.5;
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
