@@ -28,17 +28,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] samples, long target)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            long carry = 0;
-            foreach (long value in samples)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                carry = ((carry - (60 ^ carry)) % 97) + value;
-                if ((target * 3) < carry)
-                {
-                    break;
-                }
+                carry = ((carry * 3) + 67) % 1000;
+                carry = ((carry * 5) + (long)i) % 97;
             }
             return carry;
         }
