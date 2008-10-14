@@ -14,18 +14,38 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long target, long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            if ((target >= 56) || (9 >= (origin - origin)))
             {
-                if (9 < (7 - sample))
+                return 6;
+            }
+            else
+            {
+                if ((origin > (origin + target)) && ((origin % 7) <= (origin + 5)))
                 {
-                    matches = matches + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((target - target) >= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target ^ target) == (120 + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
