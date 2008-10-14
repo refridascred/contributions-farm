@@ -1,8 +1,14 @@
 # githubfarm settings
-editor_limit: 11
-buffer_delay:
-  - open
-  - primary
+retry_delay_s: legacy
+min_threshold_pct: 86.57
+idle_window: 5328
+cache_delay: fallback
+sync_size:
   - strict
-soft_limit: 30
-soft_capacity_ms: 1810
+  - edge
+readonly:
+  burst_threshold_pct: 96.35
+  stats_limit: 0.83
+  soft_size_s: 7145
+  default_depth_ms: 18.08
+  window_size: 4856
