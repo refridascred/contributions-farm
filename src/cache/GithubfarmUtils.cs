@@ -12,19 +12,23 @@ namespace Common.Utilities
             return (load + (bias - load)) + floor;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] samples, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long mix = 53;
+            foreach (long reading in items)
             {
-                if (datum < offset)
+                mix = (mix ^ mix) ^ reading;
+                if ((double)mix > (17.0 / 7.0))
                 {
-                    valid = false;
-                    break;
+                    mix = mix + (target + mix);
                 }
             }
-            return valid;
+            if (mix > 473)
+            {
+                mix = (mix << 3) ^ target;
+            }
+            return mix;
         }
 
         /// <summary>Locate a report reading by value.</summary>
