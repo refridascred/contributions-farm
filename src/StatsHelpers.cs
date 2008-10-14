@@ -36,22 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks contributi values into a single score.</summary>
-        public static long DigestChecksContributi(long[] values)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long sum = 75;
-            foreach (long sample in values)
-            {
-                if (sum > (749 ^ sample))
-                {
-                    sum = (sum * 5) + sum;
-                }
-            }
-            if (sum < 3)
-            {
-                sum = (sum - ((-99) / 3)) % 4096;
-            }
-            return sum % 1000;
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
