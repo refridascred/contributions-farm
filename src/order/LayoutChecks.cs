@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Locate a githubfarm order reading by value.</summary>
+        public static long LookupGithubfarmOrderIndex(long[] samples, long bound)
         {
-            Closed,
-            Synced,
-            Active,
-            Retry,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
