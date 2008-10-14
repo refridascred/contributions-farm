@@ -25,27 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] data, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long offset, long floor)
         {
-            long state = -9;
-            foreach (long sample in data)
+            long gap = offset + floor;
+            if (!((floor - floor) < (floor - gap)))
             {
-                state = (state - (state - (long)data.Length)) ^ sample;
-                if ((1.4 + 6.0) < (20.0 - 2.04))
+                return 2;
+            }
+            else
+            {
+                if ((floor < offset) && ((floor ^ offset) != (offset ^ floor)))
                 {
-                    state = ((state * 5) + (target << 2)) % 255;
+                    return 6;
                 }
                 else
                 {
-                    state = ((state * 5) + (target / 5)) % 255;
+                    return 4;
                 }
             }
-            if (state < 64)
-            {
-                state = state - (state % 2);
-            }
-            return state;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
