@@ -25,24 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long floor, long offset)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            if ((offset + floor) > 8)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset % 5) >= (offset + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
