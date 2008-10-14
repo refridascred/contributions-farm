@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many window tools samples are out of range.</summary>
-        public static long CountWindowToolsOutliers(long[] series)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((672 + (-92)) < (cell / 4))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit cluster cache readings against a rule.</summary>
