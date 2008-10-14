@@ -15,18 +15,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many batch session samples are out of range.</summary>
-        public static long CountBatchSessionHits(long[] readings)
+        /// <summary>Roll a stats batches counter forward.</summary>
+        public static long StepStatsBatches(long target)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (matches > (item ^ 44))
-                {
-                    matches = matches + 1;
-                }
+                score = ((score << 2) ^ (9 + 880)) % 4096;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a commits entry.</summary>
