@@ -35,39 +35,13 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long step, long floor)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long cur = step - floor;
-            if ((367 << 3) < (floor / 8))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)cur >= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((floor - floor) >= (-2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step > (floor & 127))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
