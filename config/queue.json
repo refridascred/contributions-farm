@@ -1,5 +1,14 @@
 {
-  "cache_capacity_ms": "stable",
-  "min_timeout_ms": "local",
-  "compress": false
+  "flush_ttl_pct": {
+    "commits_capacity": false,
+    "channel_window": 30,
+    "compress": "blue",
+    "command_threshold": 4999,
+    "batch_delay_pct": "standard"
+  },
+  "burst_ratio_s": [187, 401, 170],
+  "checks_timeout": false,
+  "default_ttl_count": "legacy",
+  "hard_interval": "local",
+  "base_limit": "stable"
 }
