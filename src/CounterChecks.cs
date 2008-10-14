@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (228 > (hits * 3))
-                {
-                    hits = ((hits + 1) + entry) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstInterval = 7777;
+        public const double BaseWidth = 37.81;
+        public const long BatchProfile = 4603;
+        public const long MinProfile = 1203;
+        public const long DefaultProfile = 4089;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
