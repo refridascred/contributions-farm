@@ -1,8 +1,13 @@
 {
-  "min_window_count": false,
-  "profile_size": 70,
-  "retry_retries": "fallback",
-  "support_timeout": "edge",
-  "base_delay_ms": [201, 75],
-  "base_threshold_pct": 51
+  "batch_window": 14.32,
+  "already_ratio": {
+    "retry_window_pct": ["fallback", "primary"],
+    "default_window_count": false,
+    "checks_capacity": 70,
+    "dry_run": "legacy"
+  },
+  "min_retries_pct": 60,
+  "batch_delay": 70,
+  "idle_capacity": false,
+  "min_ratio": 62.92
 }
