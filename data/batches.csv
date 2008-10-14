@@ -1,6 +1,7 @@
-id,ratio,region,level
-1,556,835,staging
-2,937,67.62,395
-3,588,351,local
-4,368,standard,57.65
-5,435,47.61,723
+id,level,active,rank
+1,0,495,stable
+2,standard,180,33.44
+3,79.35,14.08,blue
+4,staging,standard,556
+5,357,478,stable
+6,504,local,latest
