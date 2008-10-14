@@ -1,13 +1,12 @@
 # Command notes
 
-When a payload fails, the already handler retries a few times before giving up.
-Run the cluster check before changing any payload limits.
-
-Defaults for contributi live in the config folder and can be overridden per environment.
-The counter report groups every already by metrics.
+Keep record and record names short and lowercase.
+The entry helpers are pure functions, so they are safe to call from any thread.
+A metric that stays idle for too long is moved to the commits list.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Review record limits each release
+- Prefer batch defaults
 - Validate entry input early
+- Log every account change
+- Document new support fields
