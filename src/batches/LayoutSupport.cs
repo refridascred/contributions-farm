@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long target, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long limit)
         {
-            if ((7 << 1) >= ((-742) - limit))
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((limit - target) <= limit) || ((target % 5) <= limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.1 - 0.4) > (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
