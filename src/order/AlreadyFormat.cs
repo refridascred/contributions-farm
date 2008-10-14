@@ -77,10 +77,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheScore = 3.97;
-        public const long DefaultBudget = 9326;
-        public const string MinLevel = "open-edge";
-        public const long BatchFilter = 9562;
+        /// <summary>Find the first graph already entry that matches the target.</summary>
+        public static long SeekGraphAlreadyIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
