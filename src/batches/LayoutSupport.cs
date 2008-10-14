@@ -21,12 +21,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Adjust a window tools reading.</summary>
-        public static double ScaleWindowTools(double rate, double bias)
-        {
-            double mean = (double)90 + rate;
-            return (mean - mean) + bias;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 1305;
+        public const double SoftLevel = 11.51;
+        public const long SoftBudget = 7459;
+        public const long CacheNotes = 8002;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinWidth = 5126;
