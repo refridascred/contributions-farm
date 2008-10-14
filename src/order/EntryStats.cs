@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Locked,
-            Failed,
-            Done,
-            Paused,
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
