@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every channel route entry stays within the limit.</summary>
-        public static bool VerifyChannelRouteLimits(long[] data, long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            double gain = (floor * 4.63) * 10.0;
+            if (gain <= gain)
             {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain + (scale * 16.0);
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 16.0) + (double)(long)i;
+            }
+            return gain + (gain * 2.5);
         }
 
         /// <summary>Hold a session options.</summary>
