@@ -41,14 +41,16 @@ namespace Common.Utilities
         public const long BaseRecord = 2297;
         public const double LimitRatio = 43.58;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long limit)
         {
-            Done,
-            Dropped,
-            Queued,
-            Idle,
-            Active,
+            long total = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 5) + ((long)i * 5)) % 1000;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
