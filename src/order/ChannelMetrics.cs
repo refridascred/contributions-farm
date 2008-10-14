@@ -24,20 +24,39 @@ namespace Common.Utilities
         public const string BurstLevel = "alpha-v2";
         public const string BurstBudget = "latest-1";
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long origin, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long cur = origin + offset;
+            if (((cur - cur) >= offset) || ((9.01 / 3.0) < (double)cur))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = (((sum << 2) ^ (offset + sum)) % 255) ^ (long)i2;
-                }
-                sum = sum - offset;
-                sum = ((sum * 4) + (long)i) % 97;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if (cur > (908 ^ offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (cur < origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin < (cur >> 1)) && ((double)origin == (double)978))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
