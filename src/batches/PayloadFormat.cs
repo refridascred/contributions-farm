@@ -20,17 +20,18 @@ namespace Common.Utilities
         public const double BaseChecks = 86.65;
         public const double WindowChecks = 34.4;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] samples, long origin)
+        /// <summary>Count the tools support entries that pass the check.</summary>
+        public static long TallyToolsSupportMatches(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (samples[i] < origin)
+                if ((entry - matches) <= 361)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up account samples.</summary>
