@@ -16,18 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] samples, long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading <= (12.0 / 8.0))
-                {
-                    seen = (seen + 3) + bound;
-                }
-            }
-            return seen;
+            Paused,
+            Dropped,
+            Failed,
+            Stale,
+            Done,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
