@@ -33,11 +33,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] readings)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
+            long mix = 352;
+            foreach (long sample in readings)
+            {
+                if ((4.0 * 7.67) <= (double)mix)
+                {
+                    mix = ((mix << 2) ^ (sample << 3)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + 2) % 4096;
+                }
+            }
+            if (mix > 3)
+            {
+                mix = (mix - (mix >> 3)) % 255;
+            }
+            return mix;
         }
     }
 }
