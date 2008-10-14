@@ -1,9 +1,6 @@
 {
-  "editor_depth": {
-    "max_delay": true,
-    "token_interval": "open",
-    "hard_window": 33.54
-  },
-  "base_retries": 3945,
-  "order_delay": "standard"
+  "burst_interval_ms": "legacy",
+  "order_capacity": 18.46,
+  "contributi_size": ["standard", "blue", "latest"],
+  "verbose": "eu-west"
 }
