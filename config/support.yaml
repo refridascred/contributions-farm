@@ -1,17 +1,4 @@
 # support settings
-flush_capacity: 111
-default_ttl_s: false
-farm_size:
-  base_limit_count: 97.54
-  strict: 1024
-  checks_depth:
-    - cached
-    - latest
-  schema_interval: 86.04
-  min_size_ms: strict
-  persist:
-    - green
-    - standard
-    - cached
-persist: true
-cache_size: false
+cache_size_pct: 97
+default_threshold_ms: 78.47
+queue_limit: 64.91
