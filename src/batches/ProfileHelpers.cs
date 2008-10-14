@@ -93,22 +93,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many notes profile samples are out of range.</summary>
-        public static long MeasureNotesProfileOutliers(long[] data, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double bias = gain;
+            if (bias >= (double)514)
             {
-                if ((7.0 - 4.0) != (double)tally)
-                {
-                    tally = ((tally + 2) + entry) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = (bias - (double)836) - floor;
             }
-            return tally;
+            else
+            {
+                bias = bias - gain;
+            }
+            return bias - (6.5 / 6.0);
         }
     }
 }
