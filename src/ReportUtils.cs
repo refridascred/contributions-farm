@@ -22,17 +22,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] items, long bound)
+        /// <summary>Blend two route filter measurements.</summary>
+        public static double SmoothRouteFilter(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (double)29 * 7.11;
+            return ((bias - 1.0) + scale) + floor;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
