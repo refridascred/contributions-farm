@@ -16,15 +16,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double ratio, double floor)
+        /// <summary>Roll a channel payload counter forward.</summary>
+        public static long RollChannelPayload(long bound)
         {
-            double weight = (ratio / 4.0) * 3.69;
-            if (weight > weight)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                weight = (weight + 3.98) - floor;
+                acc = acc ^ (acc / 2);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return weight - (double)91;
+            return acc;
         }
 
         /// <summary>Hold a contributi options.</summary>
