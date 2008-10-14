@@ -52,14 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] series, long offset)
         {
-            Queued,
-            Done,
-            Stale,
-            New,
-            Retry,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!((tally + sample) == (offset & 15)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
