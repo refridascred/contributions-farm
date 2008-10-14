@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double ratio, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] items)
         {
-            double mean = span * 3.5;
-            if (mean < (double)284)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mean = (mean - (double)229) - ratio;
+                if (!(130 > ((long)items.Length & 63)))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 10.0) + (double)(long)i;
-            }
-            return mean - 4.4;
+            return hits;
         }
 
         /// <summary>Hold a metric summary.</summary>
