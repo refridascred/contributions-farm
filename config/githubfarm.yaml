@@ -1,8 +1,4 @@
 # githubfarm settings
-audit:
-  - cached
-  - stable
-  - standard
-retry_ratio: 74
-burst_depth: 71.66
-batch_capacity: stable
+persist: true
+cache_interval_s: 30
+layout_size: 53
