@@ -41,12 +41,11 @@ namespace Common.Utilities
         public const long CacheCount = 4755;
         public const string DefaultGithubfarm = "staging-1";
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Locked,
-            Stale,
-            Synced,
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
