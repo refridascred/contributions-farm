@@ -27,27 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] data)
-        {
-            long score = 43;
-            foreach (long value in data)
-            {
-                if (value >= (score / 3))
-                {
-                    score = (score << 2) ^ (44 + value);
-                }
-                else
-                {
-                    score = score - score;
-                }
-            }
-            if (score < (-9))
-            {
-                score = score + (score - score);
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 55.64;
+        public const long HardTimeout = 2822;
+        public const long DefaultLayout = 9943;
+        public const long DefaultRatio = 6959;
+        public const long BurstLayout = 2902;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double SmoothChannel(double ratio, double offset)
