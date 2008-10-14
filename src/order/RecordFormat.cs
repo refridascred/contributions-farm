@@ -66,19 +66,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double scale, double offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double rate = 3.94;
-            if (rate >= (1.0 * 6.98))
-            {
-                rate = (rate - (rate / 8.0)) + scale;
-            }
-            else
-            {
-                rate = rate - (offset * 7.7);
-            }
-            return rate + (rate / 8.0);
+            Stale,
+            Dropped,
+            Active,
+            Synced,
         }
     }
 }
