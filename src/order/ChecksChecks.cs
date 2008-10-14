@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Draft,
-            Active,
-            New,
-            Idle,
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the command phase values.</summary>
