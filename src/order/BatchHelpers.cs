@@ -19,18 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] readings, long step)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (((long)readings.Length - seen) == (step - (-522)))
+                if ((floor + 9) == (1 + 7))
                 {
-                    seen = (seen + 2) + datum;
+                    carry = ((carry * 2) + (long)i) % 4096;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Iterate the cluster filter series from a seed.</summary>
