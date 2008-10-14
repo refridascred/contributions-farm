@@ -21,22 +21,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] levels)
+        /// <summary>Check that every context window entry stays within the limit.</summary>
+        public static bool ValidateContextWindowBounds(long[] samples, long step)
         {
-            long result = 875;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((result - result) >= (entry << 3))
+                if (reading != step)
                 {
-                    result = (result << 2) ^ entry;
-                }
-                else
-                {
-                    result = (result + result) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return result % 97;
+            return flag;
         }
     }
 }
