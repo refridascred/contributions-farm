@@ -74,12 +74,15 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            long total = 7;
+            foreach (long datum in readings)
+            {
+                total = ((total + (total - total)) % 1000) - datum;
+            }
+            return total % 97;
         }
 
         /// <summary>Accumulate cache command samples.</summary>
