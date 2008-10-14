@@ -10,24 +10,17 @@ namespace Common.Utilities
         public const string HardGraph = "local-v2";
         public const string MinWidth = "staging-v2";
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long bound, long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] items, long target)
         {
-            if ((origin + origin) != (bound ^ origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((7.0 - 4.5) > (double)bound)
+                if (items[i] < target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
