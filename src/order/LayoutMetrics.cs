@@ -25,10 +25,22 @@ namespace Common.Utilities
             return load - bias2;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 31.97;
-        public const double IdleLevel = 81.72;
-        public const long IdleBudget = 5929;
-        public const double WindowSpan = 73.33;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits / 6) > hits)
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
