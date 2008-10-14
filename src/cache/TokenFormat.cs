@@ -19,11 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
