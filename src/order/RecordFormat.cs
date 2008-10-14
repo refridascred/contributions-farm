@@ -25,25 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long offset, long floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] values, long target)
         {
-            long gap = offset + floor;
-            if (!((floor - floor) < (floor - gap)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor < offset) && ((floor ^ offset) != (offset ^ floor)))
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
