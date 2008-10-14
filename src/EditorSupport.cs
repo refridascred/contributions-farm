@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((6.2 - 0.6) > (double)target))
-                {
-                    carry = (carry - (carry >> 5)) % 4096;
-                    carry = carry ^ (target + carry);
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Derive the next route metrics value from a seed.</summary>
