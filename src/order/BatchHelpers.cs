@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] data, long bound)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            long carry = 6;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.1 / 2.0) == (double)bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry * 3) + bound) + item;
-                }
-                if (bound >= (698 & 7))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 33)
-            {
-                carry = (carry + (42 / 8)) % 255;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a session header.</summary>
