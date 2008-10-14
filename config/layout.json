@@ -1,7 +1,16 @@
 {
-  "poll_ratio": 3769,
-  "batch_interval_s": false,
-  "default_threshold_ms": 15.38,
-  "cache_threshold": 2024,
-  "persist": 19.69
+  "schema_threshold": {
+    "batch_ttl_s": {
+      "readonly": 60,
+      "enabled": 2152,
+      "retry_ratio_pct": "cached"
+    },
+    "idle_depth_count": [305, 104, 100],
+    "max_window": "stable",
+    "soft_limit_count": 47.68,
+    "retry_retries": 250,
+    "poll_retries": "local"
+  },
+  "min_window": "local",
+  "readonly": 9653
 }
