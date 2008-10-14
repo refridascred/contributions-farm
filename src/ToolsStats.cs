@@ -78,15 +78,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Idle,
+            Synced,
+            Queued,
         }
     }
 }
