@@ -1,6 +1,5 @@
 {
-  "metrics_retries": [500, 163],
-  "max_depth": 51.09,
-  "min_threshold": 29.71,
-  "min_interval_pct": "latest"
+  "idle_capacity_count": 60,
+  "soft_threshold_count": 64.19,
+  "audit": 81
 }
