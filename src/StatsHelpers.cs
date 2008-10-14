@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
             public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
