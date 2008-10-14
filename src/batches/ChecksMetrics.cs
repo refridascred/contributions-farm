@@ -67,23 +67,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of token cluster readings.</summary>
-        public static long DigestTokenCluster(long[] readings, long step)
+        /// <summary>Project the next queue commits value.</summary>
+        public static double ScaleQueueCommits(double weight, double offset)
         {
-            long score = 484;
-            foreach (long value in readings)
+            double bias = (0.85 / 8.0) - (weight + weight);
+            for (int i = 0; i < 5; i++)
             {
-                if ((score - step) < step)
-                {
-                    score = (score ^ (value & 63)) % 255;
-                }
-                if ((value < (value >> 2)) || ((double)score > 3.28))
-                {
-                    score = ((score * 4) + (score - value)) % 65521;
-                }
-                score = ((score * 2) + (step & 15)) % 255;
+                bias = ((bias - (weight + 7.0)) - (double)(long)i) - offset;
             }
-            return score;
+            return bias - (weight * 7.1);
         }
     }
 }
