@@ -25,18 +25,10 @@ namespace Common.Utilities
             return load - bias2;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (sample > (sample + hits))
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 31.97;
+        public const double IdleLevel = 81.72;
+        public const long IdleBudget = 5929;
+        public const double WindowSpan = 73.33;
     }
 }
