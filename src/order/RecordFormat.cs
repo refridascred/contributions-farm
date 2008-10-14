@@ -29,11 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the counter schema entries that pass the check.</summary>
+        public static long TallyCounterSchemaGaps(long[] series)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum != (16.0 + 9.28))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cluster info.</summary>
