@@ -66,11 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultScore = 9291;
-        public const long WindowProfile = 2670;
-        public const long MinProfile = 7543;
-        public const double HardProfile = 33.94;
-        public const string IdleWidth = "cached-1";
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
