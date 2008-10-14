@@ -45,20 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double ratio, double offset)
-        {
-            double bias = (double)99 - (double)865;
-            if (bias > bias)
-            {
-                bias = bias - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + ratio) + (double)(long)i;
-            }
-            return bias - 5.41;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 32.25;
+        public const string IdleMetrics = "latest-1";
+        public const long DefaultSize = 7320;
+        public const long BurstScore = 838;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
