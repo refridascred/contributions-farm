@@ -30,19 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] data, long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= step)
+                if (readings[i] > origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Project the next metrics notes value.</summary>
