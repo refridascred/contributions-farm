@@ -16,18 +16,39 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long offset, long origin)
         {
-            long anchor = 466;
-            foreach (long datum in series)
+            long cur = offset + origin;
+            if ((double)origin > (10.0 + 11.0))
             {
-                if (((1.3 - 4.7) == (double)anchor) || ((datum - (-570)) <= (datum >> 2)))
+                return 4;
+            }
+            else
+            {
+                if ((origin - offset) <= offset)
                 {
-                    anchor = (anchor << 3) ^ anchor;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin << 3) < (cur >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin < (0.7 + 4.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
