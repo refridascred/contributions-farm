@@ -20,16 +20,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine support batch values into a single score.</summary>
-        public static long TallySupportBatch(long[] series)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long anchor = 77;
-            foreach (long sample in series)
-            {
-                anchor = (anchor + (sample + anchor)) % 255;
-                anchor = ((anchor << 2) ^ sample) % 4096;
-            }
-            return anchor;
+            Synced,
+            Idle,
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a account entry.</summary>
