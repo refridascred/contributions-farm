@@ -42,21 +42,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((cell <= tally) || ((cell << 2) == (cell * 3))) && ((tally < (cell % 97)) || ((cell / 7) >= (cell >> 1))))
                 {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
