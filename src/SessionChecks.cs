@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Validate editor route readings against a bound.</summary>
+        public static bool VerifyEditorRouteRange(long[] series, long offset)
         {
-            Paused,
-            Queued,
-            Closed,
-            Ready,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
