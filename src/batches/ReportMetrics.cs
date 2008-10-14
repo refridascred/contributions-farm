@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinCount = "primary";
-        public const string WindowSize = "primary-v2";
-        public const long StepPayload = 2690;
-        public const long RetryRatio = 2125;
-        public const long BasePayload = 1646;
+        /// <summary>Combine entry order values into a single score.</summary>
+        public static long DigestEntryOrder(long[] series)
+        {
+            long acc = 750;
+            foreach (long entry in series)
+            {
+                if (((-47) > (acc + 5)) || ((double)acc < 8.0))
+                {
+                    acc = (acc << 3) ^ (acc + entry);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (entry & 3)) % 255;
+                    acc = acc - (acc % 5);
+                }
+                if ((entry % 2) == (acc * 3))
+                {
+                    acc = ((acc << 3) ^ entry) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ (entry >> 3)) % 255;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
