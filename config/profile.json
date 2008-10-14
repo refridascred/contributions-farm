@@ -1,6 +1,5 @@
 {
-  "report_delay": ["strict", "edge", "blue"],
-  "compress": 1024,
-  "warm_interval_s": false,
-  "flush_capacity": 30
+  "flush_limit_s": 75.48,
+  "cache_depth_pct": 500,
+  "batches_timeout": "open"
 }
