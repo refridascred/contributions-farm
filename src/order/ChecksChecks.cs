@@ -29,23 +29,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] values, long bound)
         {
-            long result = 4;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ result) % 255;
-                if (((-842) & 1) < reading)
+                if (values[i] < bound)
                 {
-                    result = ((result << 3) ^ ((long)data.Length & 3)) % 4096;
-                }
-                if (!(reading <= (599 + result)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
