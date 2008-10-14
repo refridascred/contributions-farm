@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every metric filter entry stays within the limit.</summary>
-        public static bool VerifyMetricFilterRange(long[] samples, long seed)
+        /// <summary>Find the first layout tools entry that matches the target.</summary>
+        public static long FindLayoutToolsIndex(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != seed)
+                if (series[i] >= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
