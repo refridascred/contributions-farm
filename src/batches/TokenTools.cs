@@ -22,32 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long origin, long offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long target)
         {
-            long slot = origin ^ offset;
-            if (((offset % 97) != (70 / 5)) || ((double)slot != (17.0 * 8.1)))
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)origin < (6.05 - 8.01))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((slot / 4) <= (origin / 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
