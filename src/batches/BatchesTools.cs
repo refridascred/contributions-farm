@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Locate a token metric reading by value.</summary>
+        public static long FindTokenMetricIndex(long[] series, long offset)
         {
-            long mark = 14;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark - 61) ^ entry;
-                mark = mark ^ mark;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 70)
-            {
-                mark = (mark * 5) + (mark + mark);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a queue stats.</summary>
