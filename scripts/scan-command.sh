@@ -12,16 +12,6 @@ for i in $(seq 1 11); do
 done
 log "total ${total}"
 
-for item in standard green cached; do
+for item in cached staging; do
     log "checking ${item}"
 done
-
-mode="${1:-stable}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
