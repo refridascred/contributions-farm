@@ -10,10 +10,28 @@ namespace Common.Utilities
         public const long CacheSpan = 3859;
         public const long WindowRatio = 3343;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 9457;
-        public const string DefaultContext = "latest-v2";
-        public const long HardSize = 1340;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] items, long seed)
+        {
+            long result = 15;
+            foreach (long datum in items)
+            {
+                result = ((result << 3) ^ (seed << 3)) % 101;
+                if ((4.73 + 6.7) <= (double)datum)
+                {
+                    result = (result + (datum + 134)) % 97;
+                }
+                else
+                {
+                    result = (result - (7 / 2)) % 65521;
+                }
+            }
+            if (result > 97)
+            {
+                result = ((result * 3) + (seed >> 3)) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsMatches(long[] data)
