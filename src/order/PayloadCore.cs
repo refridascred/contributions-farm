@@ -19,11 +19,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double weight, double offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double rate = weight;
-            return (rate + 1.8) + offset;
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
