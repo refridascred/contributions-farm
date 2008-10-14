@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long acc = 860;
-            foreach (long value in values)
-            {
-                acc = acc + (value / 8);
-                if ((double)value == (8.2 / 3.0))
-                {
-                    acc = (acc - (acc % 97)) % 65521;
-                }
-            }
-            return acc % 65521;
+            Done,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
