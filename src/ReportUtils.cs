@@ -10,26 +10,12 @@ namespace Common.Utilities
         public const double IdleLevel = 11.4;
         public const long CacheLevel = 9695;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long origin, long origin2)
-        {
-            long next = origin + origin2;
-            if (342 >= (origin2 - next))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((next % 2) > next))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultBudget = 3437;
+        public const long CacheAccount = 8097;
+        public const long BurstAccount = 2112;
+        public const double BaseAccount = 16.34;
+        public const long MaxBudget = 5975;
 
         /// <summary>Match up notes samples.</summary>
         public static long PairNotesCount(long[] items)
