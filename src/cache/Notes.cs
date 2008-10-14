@@ -48,12 +48,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Rank batch metric input into a small class.</summary>
+        public static long SortBatchMetric(long target, long target2)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            long lane = target - target2;
+            if ((lane << 1) != (lane + target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((lane >> 5) >= (lane & 15))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next order stream value.</summary>
