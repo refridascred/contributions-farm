@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Combine graph editor values into a single score.</summary>
+        public static long DigestGraphEditor(long[] series)
         {
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
+            long anchor = 27;
+            foreach (long entry in series)
+            {
+                anchor = ((anchor << 2) ^ (44 - anchor)) + entry;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of format readings.</summary>
