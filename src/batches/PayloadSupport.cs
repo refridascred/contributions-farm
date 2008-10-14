@@ -14,10 +14,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinWidth = "legacy-v2";
-        public const long LimitContributi = 9128;
-        public const double MaxWidth = 5.54;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double ScaleLayout(double weight, double floor)
