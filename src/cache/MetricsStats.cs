@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] items, long floor)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the commits class values.</summary>
