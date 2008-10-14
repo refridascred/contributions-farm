@@ -51,12 +51,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long target, long offset)
         {
-            Draft,
-            Pending,
-            New,
+            long diff = target + offset;
+            if (offset <= (342 + target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((diff - target) < (offset + target)) && ((target + diff) != (offset - target)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target <= (diff - 68))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((diff / 3) > (46 / 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
