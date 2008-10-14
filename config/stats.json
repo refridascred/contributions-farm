@@ -1,5 +1,8 @@
 {
-  "warm_delay_pct": 100,
-  "batch_depth": 6.34,
-  "compress": 1024
+  "poll_window_s": [209, 197],
+  "batch_delay": "primary",
+  "verbose": true,
+  "soft_limit": 6426,
+  "strict": true,
+  "flush_capacity": 500
 }
