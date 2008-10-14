@@ -1,20 +1,27 @@
 # support settings
-checks_delay:
-  burst_depth_ms:
-    warm_ratio_s: latest
-    cache_ttl_s: fallback
-    idle_ttl_s: 1024
-    sync_retries_count: staging
-    metric_retries:
-      - 348
-      - 77
-      - 47
-  readonly:
-    strict: 98.83
-    batches_size: 5391
-    compress: 75.28
-  hard_ttl: 39
-  audit: false
-cache_timeout: 74.28
-already_window: 9645
-buffer_timeout: fallback
+schema_delay:
+  graph_depth:
+    hard_interval_count: latest
+    burst_timeout_ms: 87.51
+    sync_timeout: staging
+    metrics_size: blue
+    retry_threshold: 35
+  warm_ttl_pct: 2587
+  batch_depth_s: legacy
+  base_capacity:
+    default_limit_s:
+      - 407
+      - 63
+      - 342
+      - 62
+    persist: 68.13
+    cache_interval_s: cached
+    stats_window: 43.14
+    dry_run: cached
+    idle_retries: legacy
+  cache_ratio_ms: blue
+base_size_count: standard
+min_limit_s: false
+poll_capacity_ms: 44.43
+verbose: 100
+compress: blue
