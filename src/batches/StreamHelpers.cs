@@ -80,18 +80,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] items, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long state = 22;
+            foreach (long cell in samples)
             {
-                if ((1 % 10) <= offset)
-                {
-                    matches = (matches + 2) + reading;
-                }
+                state = (((state * 2) + state) % 97) + cell;
             }
-            return matches;
+            if (state > 7)
+            {
+                state = ((state << 2) ^ (393 - seed)) % 101;
+            }
+            return state;
         }
     }
 }
