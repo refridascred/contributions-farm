@@ -55,15 +55,21 @@ namespace Common.Utilities
         public const long CacheScore = 4474;
         public const long StepMetrics = 6309;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double ratio, double bias)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] readings)
         {
-            double gain = bias;
-            if (gain > (double)(-8))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain + (double)96) - ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain + (bias + 7.3);
+            return matches;
         }
     }
 }
