@@ -32,9 +32,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFactor = 6681;
-        public const long SoftInterval = 106;
-        public const long BatchCount = 5299;
+        /// <summary>Count the stream route entries that pass the check.</summary>
+        public static long TallyStreamRouteGaps(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum ^ datum) > datum)
+                {
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
