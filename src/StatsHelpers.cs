@@ -62,20 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] levels, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (!((anchor + target) != (target & 63)))
+                if (reading < origin)
                 {
-                    anchor = (anchor - 47) % 65521;
+                    ok = false;
+                    break;
                 }
-                anchor = (anchor * 4) + ((long)i ^ (-145));
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return ok;
         }
     }
 }
