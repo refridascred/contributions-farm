@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum * 5) > (seed / 7))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "stable-1";
+        public const double WindowTimeout = 93.67;
+        public const long StepFactor = 4844;
+        public const long SoftSpan = 9733;
+        public const long BatchCache = 4009;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
