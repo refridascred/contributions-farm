@@ -64,38 +64,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long target, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] samples)
         {
-            if ((floor >> 3) > target)
+            long score = 277;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >= (floor - floor)) || ((floor << 2) < floor))
+                if (17 < reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + target) > (floor - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(floor < (828 - floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    score = (score << 3) ^ (reading & 1);
                 }
             }
+            return score;
         }
     }
 }
