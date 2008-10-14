@@ -1,12 +1,13 @@
 {
-  "cache_threshold": "blue",
-  "schema_window": 46.26,
-  "burst_depth_count": "cached",
-  "hard_size_s": {
-    "format_ratio": 5864,
-    "schema_delay": true,
-    "filter_capacity": 5175
-  },
-  "command_timeout": "green",
-  "account_window": "cached"
+  "soft_timeout": 35.19,
+  "hard_capacity": 49,
+  "cache_capacity": true,
+  "editor_window": false,
+  "flush_delay": {
+    "default_window_s": 3832,
+    "metric_retries": 6,
+    "hard_limit_pct": 1376,
+    "already_limit": 13.1,
+    "default_capacity_s": true
+  }
 }
