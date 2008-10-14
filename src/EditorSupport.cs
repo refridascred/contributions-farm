@@ -68,10 +68,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 8765;
-        public const double WindowFactor = 5.03;
-        public const double LimitRoute = 8.29;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((seen >> 3) != (reading + 744))
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long WindowSize = 5424;
