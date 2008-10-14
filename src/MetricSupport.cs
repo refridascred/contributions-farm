@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a report metrics reading by value.</summary>
-        public static long FindReportMetricsIndex(long[] levels, long target)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
