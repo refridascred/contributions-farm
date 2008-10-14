@@ -19,12 +19,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 575;
-        public const long DefaultSession = 3813;
-        public const string MaxScore = "fallback-v2";
-        public const double CacheSize = 98.91;
-        public const double BurstSession = 18.0;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a githubfarm contributi reading.</summary>
         public static double ScaleGithubfarmContributi(double scale, double span)
