@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Draft,
-            Dropped,
-            Retry,
-            New,
-            Queued,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 8589;
+        public const long DefaultFactor = 6121;
+        public const long SoftLevel = 8581;
+        public const double MaxScore = 94.78;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long RollToken(long limit)
