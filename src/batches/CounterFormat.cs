@@ -34,12 +34,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Dropped,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 95.63;
+        public const long BurstSpan = 7578;
+        public const string MaxBuffer = "strict-v2";
     }
 }
