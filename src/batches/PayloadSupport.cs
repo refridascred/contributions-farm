@@ -27,15 +27,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double weight, double span)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] values, long bound)
         {
-            double drift = span;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                drift = ((drift - drift) + (double)(long)i) - weight;
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift - drift;
+            return ok;
         }
     }
 }
