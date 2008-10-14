@@ -32,12 +32,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseDepth = 2470;
-        public const string BatchGraph = "standard-1";
-        public const long BurstLevel = 6501;
-        public const long HardWidth = 7564;
-        public const long StepCount = 6400;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 2473;
+        public const long IdleWindow = 4682;
+        public const long RetryWindow = 536;
+        public const long CacheWindow = 1726;
+        public const long LimitBudget = 5598;
 
         /// <summary>Rank batches tools input into a small class.</summary>
         public static long RankBatchesTools(long bound, long offset)
