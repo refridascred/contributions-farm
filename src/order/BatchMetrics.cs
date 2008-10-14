@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            long acc = 320;
-            foreach (long value in series)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                acc = acc + (value % 60);
-                if (!((3.81 - 7.9) > (double)acc))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    acc = (acc + acc) % 255;
+                    state = ((state ^ seed) % 4096) - (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return acc % 4096;
+            return state;
         }
 
         /// <summary>Describe the channel class values.</summary>
