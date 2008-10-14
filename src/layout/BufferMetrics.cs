@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] data)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((double)value == (double)tally)
+                if (entry >= bound)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a order stats.</summary>
