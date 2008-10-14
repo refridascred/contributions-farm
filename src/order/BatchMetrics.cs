@@ -60,11 +60,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheLevel = 9854;
-        public const string HardBudget = "legacy";
-        public const long MaxRatio = 6958;
-        public const double IdleBuffer = 8.66;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double floor)
+        {
+            double load = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load + (load - load)) + (double)(long)i) - floor;
+            }
+            return load + (2.54 - load);
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TotalQueue(long[] data)
