@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((offset & 3) != (offset + hits))
                 {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) ^ datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a channel record.</summary>
