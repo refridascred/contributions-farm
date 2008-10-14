@@ -37,12 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
             public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
