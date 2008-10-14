@@ -39,17 +39,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long bound)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc + 534) % 65521;
-                acc = (acc + (755 ^ acc)) % 97;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Retry,
+            Pending,
+            Active,
         }
     }
 }
