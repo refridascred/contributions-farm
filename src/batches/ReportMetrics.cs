@@ -20,12 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleCount = 4080;
-        public const long HardBudget = 9290;
-        public const long BaseCount = 6291;
-        public const long SoftChannel = 3828;
-        public const long BaseInterval = 2061;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountGaps(long[] levels, long origin)
