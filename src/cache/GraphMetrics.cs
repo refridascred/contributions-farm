@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BaseTimeout = 1645;
         public const long MaxWidth = 6471;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] samples, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
+                if (((seed >> 5) < seed) && ((hits * 2) >= (4 + hits)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next tools order value from a seed.</summary>
