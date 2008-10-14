@@ -1,7 +1,6 @@
-id,owner,score,rank,level
-1,69.65,stable,32.26,737
-2,40.31,30,17.99,39
-3,254,960,359,staging
-4,50.04,175,84.44,759
-5,334,78.27,63.13,608
-6,local,977,300,946
+id,label,rank,active,level
+1,63.63,62.0,staging,41.01
+2,eu-west,legacy,legacy,7.63
+3,open,718,87.48,stable
+4,eu-west,79.22,779,48.71
+5,79.25,213,edge,local
