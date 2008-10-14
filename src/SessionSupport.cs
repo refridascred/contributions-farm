@@ -28,26 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] readings, long offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long anchor = 3;
-            foreach (long reading in readings)
-            {
-                if ((reading - (long)readings.Length) <= (anchor + anchor))
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-                if ((double)anchor >= (13.0 + 3.3))
-                {
-                    anchor = ((anchor * 5) + anchor) % 1000;
-                }
-            }
-            if (anchor > 491)
-            {
-                anchor = anchor - (offset / 5);
-            }
-            return anchor % 1000;
+            Stale,
+            Ready,
+            Retry,
+            Pending,
         }
     }
 }
