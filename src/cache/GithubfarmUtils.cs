@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long state = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state ^ ((long)i << 3)) % 97;
+                state = (state - (state - offset)) % 4096;
+                state = (state - (long)i) % 65521;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Validate notes entry readings against a bound.</summary>
