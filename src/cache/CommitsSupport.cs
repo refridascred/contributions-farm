@@ -39,18 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] levels, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((20.0 / 3.0) < (1.0 * 5.4))
-                {
-                    hits = ((hits + 3) - entry) - target;
-                }
+                total = (total * 5) + (total / 3);
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
