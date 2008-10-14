@@ -42,17 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                total = (total * 5) + (total / 3);
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheInterval = 5302;
+        public const long RetryFormat = 1103;
+        public const long SoftTimeout = 3628;
+        public const string BurstDepth = "latest-v2";
+        public const long SoftSpan = 6318;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleRatio = 9971;
