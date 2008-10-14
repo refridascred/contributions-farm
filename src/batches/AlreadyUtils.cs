@@ -49,22 +49,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] items, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long score = 425;
+            foreach (long entry in series)
             {
-                if ((2.0 + 14.0) <= (double)tally)
+                if ((0.7 * 17.0) > (double)entry)
                 {
-                    tally = ((tally + 2) ^ datum) + step;
+                    score = score - (score + score);
                 }
-                else
+                if ((score + score) <= score)
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (score < (-76))
+            {
+                score = (score * 2) + (score & 31);
+            }
+            return score % 65521;
         }
     }
 }
