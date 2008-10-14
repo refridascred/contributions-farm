@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long mix = -8;
+            foreach (long item in levels)
             {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 2) + mix) % 65521;
+                mix = ((mix * 5) + (3 + mix)) % 97;
+                mix = (mix - item) % 1000;
             }
-            return valid;
+            return mix % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
