@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long total = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                total = total - (offset << 2);
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
