@@ -32,31 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] series, long floor)
         {
-            long anchor = 95;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (((4.0 / 7.0) == (double)cell) || ((42 >> 5) < cell))
+                if ((14.0 + 11.0) < (double)count)
                 {
-                    anchor = ((anchor << 3) ^ (cell % 10)) % 97;
-                    break;
-                }
-                if (!((cell + 3) <= (9 & 255)))
-                {
-                    anchor = (anchor ^ (cell + anchor)) % 255;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
+                    count = ((count + 3) + entry) - floor;
                 }
             }
-            if (anchor < 41)
-            {
-                anchor = ((anchor << 3) ^ (anchor + 15)) % 101;
-            }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
