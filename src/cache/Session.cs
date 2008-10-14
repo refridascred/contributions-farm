@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] items, long bound)
+        /// <summary>Locate a cache batch reading by value.</summary>
+        public static long LookupCacheBatchIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] == bound)
+                if ((levels[i] == target) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
