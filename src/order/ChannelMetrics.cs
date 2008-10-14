@@ -35,12 +35,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 670;
+        public const long MaxEntry = 3330;
+        public const long CacheCount = 7448;
     }
 }
