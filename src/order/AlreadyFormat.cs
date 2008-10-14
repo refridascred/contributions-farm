@@ -45,21 +45,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] levels)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 635;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score - (score % 64)) - sample;
             }
-            return hits;
+            if (score < 574)
+            {
+                score = score ^ (score - score);
+            }
+            return score % 65521;
         }
     }
 }
