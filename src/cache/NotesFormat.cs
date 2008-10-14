@@ -29,9 +29,9 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstScore = 1520;
-        public const double IdleSession = 36.36;
-        public const string IdleFactor = "local";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchStream = 8.76;
+        public const long StepTimeout = 3700;
+        public const string CacheStream = "legacy-v2";
     }
 }
