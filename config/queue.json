@@ -1,14 +1,8 @@
 {
-  "flush_ttl_pct": {
-    "commits_capacity": false,
-    "channel_window": 30,
-    "compress": "blue",
-    "command_threshold": 4999,
-    "batch_delay_pct": "standard"
-  },
-  "burst_ratio_s": [187, 401, 170],
-  "checks_timeout": false,
-  "default_ttl_count": "legacy",
-  "hard_interval": "local",
-  "base_limit": "stable"
+  "queue_timeout": 48,
+  "soft_delay_pct": 1269,
+  "report_size": 7366,
+  "sync_ratio": 1070,
+  "notes_ratio": "open",
+  "checks_window": 4267
 }
