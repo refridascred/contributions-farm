@@ -29,12 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowCount = 2314;
-        public const long LimitTimeout = 444;
-        public const long DefaultBudget = 6913;
-        public const double MinEditor = 92.84;
-        public const long BatchEditor = 6966;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Idle,
+            Stale,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long OverlapCommandCount(long[] readings)
