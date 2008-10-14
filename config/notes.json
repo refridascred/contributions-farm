@@ -1,8 +1,5 @@
 {
-  "payload_threshold": true,
-  "cache_capacity_count": 66.89,
-  "format_window": 5780,
-  "audit": "cached",
-  "cache_depth_count": 500,
-  "compress": 6301
+  "flush_timeout_pct": true,
+  "sync_depth": "eu-west",
+  "window_ttl": "stable"
 }
