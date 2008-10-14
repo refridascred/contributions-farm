@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] values, long origin)
+        /// <summary>Check that every batches tools entry stays within the limit.</summary>
+        public static bool GuardBatchesToolsLimits(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (datum > origin)
+                if (item < bound)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
