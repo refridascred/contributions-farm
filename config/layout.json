@@ -1,5 +1,6 @@
 {
-  "verbose": "blue",
-  "default_timeout_ms": "latest",
-  "min_interval": ["blue", "local", "local", "primary"]
+  "warm_ttl_ms": 4652,
+  "session_delay": 61.0,
+  "cache_limit_pct": "legacy",
+  "batch_ratio": 67
 }
