@@ -71,18 +71,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] series, long seed)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mix = 437;
-            foreach (long entry in series)
-            {
-                if ((25 - 289) >= (mix * 4))
-                {
-                    mix = (((mix * 5) + (mix - entry)) % 1000) + seed;
-                }
-            }
-            return mix;
+            Failed,
+            Closed,
+            Active,
+            Draft,
+            Locked,
         }
     }
 }
