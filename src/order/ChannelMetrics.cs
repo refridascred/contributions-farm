@@ -56,9 +56,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 670;
-        public const long MaxEntry = 3330;
-        public const long CacheCount = 7448;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] values)
+        {
+            long mix = 29;
+            foreach (long sample in values)
+            {
+                if ((sample + mix) == (64 * 2))
+                {
+                    mix = mix ^ mix;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix << 3)) % 255;
+                }
+            }
+            if (mix < 6)
+            {
+                mix = (mix + (mix >> 1)) % 4096;
+            }
+            return mix;
+        }
     }
 }
