@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] series, long step)
+        /// <summary>Accumulate checks counter samples.</summary>
+        public static long CombineChecksCounter(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long anchor = 919;
+            foreach (long value in values)
             {
-                if (item != step)
+                if (((double)limit > (5.8 - 9.8)) && ((double)value == (0.5 - 17.0)))
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor + (8 % 64);
                 }
             }
-            return valid;
+            if (anchor > 59)
+            {
+                anchor = anchor - limit;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
