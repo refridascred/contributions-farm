@@ -14,13 +14,31 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long target, long seed)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
+            if (target <= (seed + seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((((-74) + seed) < target) || ((441 - seed) >= target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - seed) > (seed << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a layout reading.</summary>
