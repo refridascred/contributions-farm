@@ -46,24 +46,23 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long limit, long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double gain, double bias)
         {
-            if ((250 + floor) > (limit % 7))
+            double weight = (double)(34 << 2);
+            if (weight > (double)922)
             {
-                return 8;
+                weight = weight - gain;
             }
             else
             {
-                if (3.1 < (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
+                weight = weight + (bias / 9.0);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (weight / 9.0)) + (double)(long)i;
+            }
+            return weight + bias;
         }
     }
 }
