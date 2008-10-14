@@ -27,17 +27,24 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] values, long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((values[i] < target) && ((values[i] % 5) != 0))
+                if ((6.0 - 9.7) <= (double)target)
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + ((long)i & 15)) % 101;
                 }
+                else
+                {
+                    carry = (carry + (carry / 5)) % 1000;
+                }
+                carry = (carry ^ (long)i) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the report batches entries that pass the check.</summary>
