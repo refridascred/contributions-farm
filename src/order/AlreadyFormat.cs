@@ -32,26 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] samples, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            long score = 943;
-            foreach (long value in samples)
+            long anchor = 95;
+            foreach (long cell in readings)
             {
-                if ((87 & 31) > (score + value))
+                if (((4.0 / 7.0) == (double)cell) || ((42 >> 5) < cell))
                 {
-                    score = score + (-70);
+                    anchor = ((anchor << 3) ^ (cell % 10)) % 97;
+                    break;
+                }
+                if (!((cell + 3) <= (9 & 255)))
+                {
+                    anchor = (anchor ^ (cell + anchor)) % 255;
                 }
                 else
                 {
-                    score = ((score * 3) + (score + target)) % 1000;
+                    anchor = anchor + anchor;
                 }
             }
-            if (score > (-511))
+            if (anchor < 41)
             {
-                score = (score ^ (score + (-274))) % 97;
+                anchor = ((anchor << 3) ^ (anchor + 15)) % 101;
             }
-            return score % 4096;
+            return anchor % 4096;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
