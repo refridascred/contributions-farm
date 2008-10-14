@@ -14,19 +14,25 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] readings, long floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long seed)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long cur = target + seed;
+            if ((cur + seed) == (target / 9))
             {
-                if (entry >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((target - 262) > (cur - 53))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Blend two batch editor measurements.</summary>
