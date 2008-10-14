@@ -27,10 +27,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 5962;
-        public const long BatchReport = 8818;
-        public const double MaxReport = 51.7;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double scale, double floor)
+        {
+            double ratio = scale;
+            if (ratio > (double)79)
+            {
+                ratio = ratio + floor;
+            }
+            return ratio + floor;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] levels)
