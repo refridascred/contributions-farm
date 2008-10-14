@@ -47,10 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 7454;
-        public const long BatchSize = 4578;
-        public const double CacheAccount = 3.02;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples)
+        {
+            long acc = 66;
+            foreach (long datum in samples)
+            {
+                if ((acc * 4) > datum)
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] data, long target)
