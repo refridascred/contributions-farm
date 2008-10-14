@@ -38,11 +38,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleSize = 17.03;
-        public const string MaxGithubfarm = "open-v2";
-        public const long CacheCount = 4755;
-        public const string DefaultGithubfarm = "staging-1";
+        /// <summary>Fold a list of entry token readings.</summary>
+        public static long FoldEntryToken(long[] data, long limit)
+        {
+            long sum = 72;
+            foreach (long sample in data)
+            {
+                if (((double)sample > (0.54 * 15.0)) && ((11.0 + 6.64) <= (double)limit))
+                {
+                    sum = (sum << 2) ^ (sum + limit);
+                }
+                else
+                {
+                    sum = ((sum * 3) + (limit >> 2)) % 101;
+                }
+                if (7 > (limit + sample))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
