@@ -14,10 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryDepth = "stable-1";
-        public const double HardBudget = 37.16;
-        public const long MaxFactor = 342;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
