@@ -27,11 +27,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstFactor = 1910;
-        public const long BaseInterval = 6291;
-        public const double WindowSpan = 58.56;
-        public const long LimitMetric = 262;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((score + score) >= (score % 12))
+                {
+                    score = (score << 3) ^ (89 % 16);
+                }
+                else
+                {
+                    score = score ^ (limit >> 1);
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] levels, long offset)
