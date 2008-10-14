@@ -30,12 +30,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdleRatio = "local-edge";
-        public const long IdlePayload = 2816;
-        public const long BurstPayload = 9468;
-        public const double CachePayload = 75.17;
-        public const string StepPayload = "primary-v2";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "primary-edge";
+        public const string MinBatches = "standard-edge";
+        public const double HardBatches = 46.92;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsHits(long[] values)
