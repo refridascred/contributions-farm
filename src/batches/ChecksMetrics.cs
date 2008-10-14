@@ -54,10 +54,20 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowSize = 6435;
-        public const string BaseDepth = "open-v2";
-        public const long LimitBatch = 2470;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long origin, long bound)
