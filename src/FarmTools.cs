@@ -25,31 +25,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long target, long origin)
+        /// <summary>Project the next tools counter value.</summary>
+        public static double AdjustToolsCounter(double scale, double span)
         {
-            if ((double)origin == (double)target)
+            double bias = scale - span;
+            if (bias < (7.79 / 5.0))
             {
-                return 5;
+                bias = bias - (double)941;
             }
             else
             {
-                if ((origin + origin) >= ((-20) - origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + target) < 20)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                bias = bias + (double)494;
             }
+            return bias - (span - 6.16);
         }
     }
 }
