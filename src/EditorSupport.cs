@@ -43,15 +43,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double weight, double bias)
+        /// <summary>Adjust a token layout reading.</summary>
+        public static double ScaleTokenLayout(double rate, double floor)
         {
-            double drift = bias - weight;
-            if (drift > (bias + bias))
+            double gain = floor;
+            if (gain <= gain)
             {
-                drift = drift + (3.6 / 3.0);
+                gain = (gain + (7.1 * 3.0)) - rate;
             }
-            return drift + bias;
+            return gain + (double)99;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
