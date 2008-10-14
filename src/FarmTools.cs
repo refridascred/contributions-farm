@@ -19,18 +19,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the tools filter entries that pass the check.</summary>
-        public static long MeasureToolsFilterOutliers(long[] levels, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long anchor = 8;
+            foreach (long reading in samples)
             {
-                if ((6 >> 1) <= (step << 2))
-                {
-                    matches = (matches + 1) - entry;
-                }
+                anchor = ((((anchor << 3) ^ (anchor >> 4)) % 1000) + reading) - seed;
             }
-            return matches;
+            return anchor;
         }
     }
 }
