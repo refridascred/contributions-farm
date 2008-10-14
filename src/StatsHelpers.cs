@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] values, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] series, long step)
         {
-            long sum = 29;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((bound << 2) != (cell & 15))
+                if (datum < step)
                 {
-                    sum = (sum << 3) ^ (bound * 5);
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
