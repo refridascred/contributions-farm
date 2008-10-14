@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of batches token entries.</summary>
-        public static long CombineBatchesToken(long[] readings)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] data, long bound)
         {
-            long state = 97;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (!((state & 15) <= 29))
+                if (datum <= bound)
                 {
-                    state = (state + (480 + reading)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
