@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Retry,
+            Paused,
+            Failed,
             Idle,
-            Draft,
+            Closed,
         }
 
         /// <summary>Count the entry window entries that pass the check.</summary>
