@@ -35,12 +35,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            Paused,
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a editor header.</summary>
