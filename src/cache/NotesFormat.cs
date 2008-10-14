@@ -14,38 +14,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a queue contributi value against two limits.</summary>
-        public static long RankQueueContributi(long limit, long origin)
+        /// <summary>Count context batches pairs that satisfy a relation.</summary>
+        public static long MatchContextBatchesCount(long[] readings)
         {
-            if ((31 >= limit) && ((origin % 2) == (limit & 15)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9 + limit) < (origin * 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit + origin) >= limit) && ((4.42 * 6.2) > (double)limit))
+                    if ((readings[i] ^ readings[j]) == 18)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit - origin) < origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
