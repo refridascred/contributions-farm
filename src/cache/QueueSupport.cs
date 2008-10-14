@@ -22,13 +22,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate session payload samples.</summary>
+        public static long TotalSessionPayload(long[] levels, long offset)
         {
-            Active,
-            Dropped,
-            Closed,
-            Retry,
+            long carry = 2;
+            foreach (long entry in levels)
+            {
+                carry = (carry ^ offset) - entry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
