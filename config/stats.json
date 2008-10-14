@@ -1,13 +1,14 @@
 {
-  "soft_retries_s": 9572,
-  "hard_delay_s": "primary",
-  "contributi_ratio": {
-    "account_depth": "standard",
-    "idle_size_ms": 77,
-    "soft_ratio": 36,
-    "audit": false,
-    "payload_timeout": "stable",
-    "readonly": "staging"
+  "format_ttl": {
+    "idle_interval_pct": 2485,
+    "route_window": "green",
+    "stream_limit": true,
+    "cache_retries": "cached",
+    "persist": "fallback"
   },
-  "persist": 96
+  "dry_run": "latest",
+  "cache_ttl_count": true,
+  "commits_size": 19.0,
+  "verbose": ["fallback", "blue", "cached", "edge"],
+  "filter_delay": 40.83
 }
