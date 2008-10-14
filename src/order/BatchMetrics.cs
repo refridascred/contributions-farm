@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] values, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] items, long origin)
         {
-            long anchor = 71;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)reading > (double)9)
+                if (items[i] >= origin)
                 {
-                    anchor = ((anchor - (78 - reading)) % 97) + limit;
-                }
-                else
-                {
-                    anchor = (anchor + (reading - reading)) % 101;
+                    return (long)i;
                 }
             }
-            if (anchor < 152)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 4)) % 1000;
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Hold a cluster info.</summary>
