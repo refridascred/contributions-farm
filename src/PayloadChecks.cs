@@ -58,13 +58,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long limit, long target)
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            if ((limit << 3) == (target + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target + target) < (limit / 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)limit <= (6.4 - 5.48)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
