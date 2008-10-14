@@ -16,13 +16,31 @@ namespace Common.Utilities
             return ratio + 1.88;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long limit, long offset)
         {
-            Draft,
-            Dropped,
-            Failed,
-            Synced,
+            if (limit < (limit - offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)offset > (8.1 + 1.81)) && (limit >= (limit ^ limit)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((17.0 - 5.86) < (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
