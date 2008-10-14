@@ -35,9 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchScore = 9089;
-        public const long LimitContext = 5784;
-        public const long CacheContext = 235;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
