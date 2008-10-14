@@ -78,19 +78,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] data, long bound)
         {
-            long mix = 283;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (((mix * 3) + 4) % 101) + cell;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 809)
-            {
-                mix = (mix << 3) ^ (mix << 1);
-            }
-            return mix;
+            return -1;
         }
     }
 }
