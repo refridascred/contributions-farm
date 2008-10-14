@@ -19,18 +19,20 @@ namespace Common.Utilities
         public const double HardBudget = 37.16;
         public const long MaxFactor = 342;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] samples)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((double)matches == (5.46 * 5.2)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    matches = (matches + 2) + entry;
+                    anchor = ((anchor + anchor) % 101) ^ (long)i2;
                 }
+                anchor = ((anchor << 3) ^ (387 & 1)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
