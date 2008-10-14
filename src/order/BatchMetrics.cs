@@ -54,12 +54,38 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long bound, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            if ((bound & 1) > (bound / 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((5 < (target >> 4)) || (bound < 62))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)859 <= (5.82 + 17.0)) || ((6 + bound) <= bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target != (double)5)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate queue samples.</summary>
