@@ -19,25 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a window cache value against two limits.</summary>
-        public static long SortWindowCache(long floor, long step)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long step2 = floor - step;
-            if (((double)floor >= 1.0) || ((step2 + step2) == (85 + step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((82 % 2) < (step + 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Adjust a graph reading.</summary>
