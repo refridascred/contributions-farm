@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double weight, double floor)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long seed, long target)
         {
-            double load = floor - weight;
-            if (load < (double)42)
+            long prev = seed ^ target;
+            if ((88 + prev) != (5 ^ seed))
             {
-                load = load - load;
+                return 6;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                load = (load - (load + weight)) + (double)(long)i;
+                if ((target + prev) > (9 + 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target > (target >> 5)) || ((30 << 3) != (seed * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed * 3) >= (8 / 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return load - (floor / 7.0);
         }
 
         /// <summary>Find the first cache batches entry that matches the target.</summary>
