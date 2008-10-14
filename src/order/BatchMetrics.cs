@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] items, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 320;
+            foreach (long value in series)
             {
-                if (items[i] >= origin)
+                acc = acc + (value % 60);
+                if (!((3.81 - 7.9) > (double)acc))
                 {
-                    return (long)i;
+                    acc = (acc + acc) % 255;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Hold a cluster info.</summary>
