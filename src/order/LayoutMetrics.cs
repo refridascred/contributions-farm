@@ -22,22 +22,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] items)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits / 6) > hits)
+                if (series[i] == offset)
                 {
-                    hits = (hits + 1) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
