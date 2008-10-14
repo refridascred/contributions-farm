@@ -65,31 +65,21 @@ namespace Common.Utilities
         public const long StepContext = 1780;
         public const long StepWidth = 5195;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long bound, long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            if ((bound + 170) < offset)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound <= (offset / 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset % 97) <= 4) || ((double)offset == (7.0 / 8.0)))
+                    if ((series[i] - series[j]) > 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
