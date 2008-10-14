@@ -78,13 +78,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Stale,
-            New,
-            Done,
-            Draft,
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
