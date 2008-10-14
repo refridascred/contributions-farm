@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftWidth = "legacy-1";
-        public const double MinSize = 47.19;
-        public const long WindowSize = 1042;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
