@@ -69,32 +69,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long origin, long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long gap = origin - bound;
-            if ((8 ^ gap) < (bound ^ gap))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin >> 5) <= 3)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((550 + bound) < (-4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
