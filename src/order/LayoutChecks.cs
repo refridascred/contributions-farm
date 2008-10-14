@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double weight, double offset)
+        /// <summary>Measure how many window tools samples are out of range.</summary>
+        public static long CountWindowToolsOutliers(long[] series)
         {
-            double mean = (double)(21 & 255);
-            if (mean <= mean)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                mean = (mean + (double)41) - weight;
+                if ((672 + (-92)) < (cell / 4))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                mean = mean + (double)404;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + offset;
+            return tally;
         }
 
         /// <summary>Audit tools schema readings against a rule.</summary>
