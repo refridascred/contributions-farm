@@ -1,12 +1,11 @@
 # Command notes
 
-The account report groups every farm by filter.
-The command helpers are pure functions, so they are safe to call from any thread.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Keep githubfarm and account names short and lowercase.
+Each batch is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Document new buffer fields
-- Review batches limits each release
-- Prefer tools defaults
-- Log every tools change
+- Document new payload fields
+- Log every layout change
+- Keep contributi values small
+- Validate counter input early
