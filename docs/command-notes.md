@@ -1,13 +1,16 @@
 # Command notes
 
-Use route settings to tune how often entry data is refreshed.
-The support helpers are pure functions, so they are safe to call from any thread.
+Defaults for payload live in the config folder and can be overridden per environment.
+Run the payload check before changing any channel limits.
+Defaults for account live in the config folder and can be overridden per environment.
 
-The window report groups every filter by graph.
-A cache that stays idle for too long is moved to the buffer list.
+Use command settings to tune how often token data is refreshed.
+The filter module keeps route values in sync with the tools cache.
+Keep githubfarm and filter names short and lowercase.
 
 ## Guidelines
 
-- Document new notes fields
-- Validate buffer input early
-- Log every githubfarm change
+- Log every queue change
+- Review channel limits each release
+- Validate schema input early
+- Document new session fields
