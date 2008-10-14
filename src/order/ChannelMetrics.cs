@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "fallback";
-        public const long LimitInterval = 4758;
-        public const double LimitFactor = 92.51;
-        public const string RetryBudget = "cached-1";
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long origin, long target)
