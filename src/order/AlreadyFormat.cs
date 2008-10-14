@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the stats metrics entries that pass the check.</summary>
-        public static long AuditStatsMetricsMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (!(hits < (reading + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "latest-v2";
+        public const long BatchInterval = 945;
+        public const string StepLayout = "standard-1";
+        public const string DefaultLayout = "latest-edge";
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LookupCommandIndex(long[] values, long seed)
