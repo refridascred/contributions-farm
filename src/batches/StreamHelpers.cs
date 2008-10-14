@@ -56,16 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a queue filter counter forward.</summary>
-        public static long IterateQueueFilter(long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] readings, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            long state = 3;
+            foreach (long item in readings)
             {
-                score = (score - (origin - origin)) % 255;
-                score = ((score * 3) + (long)i) % 65521;
+                if ((58 - item) >= (target - item))
+                {
+                    state = (state - (target / 6)) % 65521;
+                }
             }
-            return score;
+            return state % 4096;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
