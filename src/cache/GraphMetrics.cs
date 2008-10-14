@@ -22,12 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstCount = "stable-edge";
-        public const long MinScore = 8117;
-        public const long HardAlready = 6844;
-        public const string CacheAlready = "strict-v2";
-        public const string StepAlready = "cached-edge";
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long bound, long bound2)
+        {
+            if (bound2 > (bound2 / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)bound != (3.0 + 13.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound % 2) >= (-813))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 8312;
