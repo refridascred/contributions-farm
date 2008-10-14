@@ -82,10 +82,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseRatio = 2297;
-        public const double MinWidth = 50.41;
-        public const string MinSize = "stable-1";
-        public const long WindowGithubfarm = 6579;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
