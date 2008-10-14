@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=64
-log "limit is ${RECORD_LIMIT}"
+for item in stable fallback standard green; do
+    log "checking ${item}"
+done
 
-mode="${1:-green}"
+mode="${1:-latest}"
 case "${mode}" in
-    strict)
+    open)
         log "fast path"
         ;;
     *)
