@@ -1,7 +1,6 @@
 # entry settings
-audit:
-  - 461
-  - 35
-  - 317
-schema_capacity: 34.57
-warm_retries_ms: fallback
+enabled: strict
+report_window: 19
+min_depth_ms: local
+warm_delay_count: 15.2
+sync_ratio: true
