@@ -35,10 +35,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitWidth = "fallback-edge";
-        public const string BurstInterval = "legacy-edge";
-        public const long BaseNotes = 7208;
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] levels)
