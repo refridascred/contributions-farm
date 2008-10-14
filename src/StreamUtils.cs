@@ -69,12 +69,13 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Closed,
-            Failed,
-            Draft,
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
