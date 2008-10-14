@@ -76,26 +76,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] values, long seed)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double ratio, double bias)
         {
-            long state = 3;
-            foreach (long datum in values)
+            double mean = bias;
+            if (mean >= ratio)
             {
-                if ((state & 7) >= seed)
-                {
-                    state = (state << 2) ^ ((-598) ^ 632);
-                }
-                if (((seed % 97) >= (3 % 7)) && ((datum - datum) <= (datum - state)))
-                {
-                    break;
-                }
+                mean = mean - mean;
             }
-            if (state > 1)
-            {
-                state = ((state * 2) + (state % 3)) % 101;
-            }
-            return state;
+            return mean + (double)896;
         }
     }
 }
