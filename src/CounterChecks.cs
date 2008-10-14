@@ -52,19 +52,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two token graph measurements.</summary>
-        public static double BlendTokenGraph(double gain, double bias)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double drift = gain;
-            if (drift >= (gain / 5.0))
-            {
-                drift = drift + (double)61;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (bias + 7.0)) - (double)(long)i;
-            }
-            return drift + gain;
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
