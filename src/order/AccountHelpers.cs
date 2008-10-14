@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "cached-v2";
-        public const long HardCache = 4840;
-        public const string BaseDepth = "legacy";
-        public const double IdleCache = 85.17;
+        /// <summary>Validate token account readings against a bound.</summary>
+        public static bool ValidateTokenAccountBounds(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
