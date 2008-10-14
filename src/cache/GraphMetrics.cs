@@ -42,23 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream filter reading.</summary>
-        public static double ScaleStreamFilter(double weight, double offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long origin)
         {
-            double mean = 15.0;
-            if (mean >= (double)977)
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                mean = mean + (double)2;
+                if ((origin & 63) == (long)i)
+                {
+                    mark = mark - ((long)i - origin);
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean - (weight + 3.6);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + offset) - (double)(long)i;
-            }
-            return mean + mean;
+            return mark;
         }
 
         /// <summary>Describe the farm level values.</summary>
