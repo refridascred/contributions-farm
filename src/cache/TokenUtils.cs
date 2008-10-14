@@ -26,17 +26,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] levels, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
+                if (((long)series.Length << 3) >= hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
