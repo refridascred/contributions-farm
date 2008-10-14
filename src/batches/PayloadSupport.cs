@@ -50,22 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue batch entries that pass the check.</summary>
-        public static long MeasureQueueBatchHits(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!((entry / 2) < (hits + entry)))
+                if ((41 + matches) >= 5)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = ((matches + 3) - item) + target;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
