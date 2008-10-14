@@ -74,22 +74,19 @@ namespace Common.Utilities
         public const string BaseNotes = "standard-1";
         public const long MinLevel = 4476;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] values)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((6.0 / 8.0) != (double)cell)
+                if (item != offset)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Project the next batches value.</summary>
