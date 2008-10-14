@@ -50,19 +50,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum <= (tally << 1)) && ((tally & 7) == (tally << 1)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstDepth = 3631;
+        public const string MinEditor = "strict-v2";
+        public const long BurstLevel = 5701;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] data, long target)
