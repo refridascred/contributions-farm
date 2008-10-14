@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] items, long limit)
         {
-            long anchor = 68;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                anchor = (anchor + sample) % 1000;
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor < 537)
-            {
-                anchor = (anchor ^ anchor) % 255;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Hold a queue record.</summary>
