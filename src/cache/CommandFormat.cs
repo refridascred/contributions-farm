@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a cache githubfarm pair into a bucket.</summary>
-        public static long RankCacheGithubfarm(long bound, long limit)
+        /// <summary>Compare every pair of graph order readings.</summary>
+        public static long MatchGraphOrderCount(long[] samples)
         {
-            long span = bound ^ limit;
-            if ((double)bound >= (3.03 + 8.0))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + span) >= (limit << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound << 3) > (limit ^ bound)))
+                    if ((samples[i] ^ samples[j]) != 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
