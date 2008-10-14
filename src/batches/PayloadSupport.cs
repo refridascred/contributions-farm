@@ -43,11 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double weight, double floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            double bias = (weight - weight) + (3.1 * 1.5);
-            return bias + floor;
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
