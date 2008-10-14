@@ -94,19 +94,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] levels, long bound)
+        /// <summary>Measure how many notes profile samples are out of range.</summary>
+        public static long MeasureNotesProfileOutliers(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (sample < bound)
+                if ((7.0 - 4.0) != (double)tally)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 2) + entry) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
