@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const string CacheAlready = "strict-v2";
         public const string StepAlready = "cached-edge";
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 8312;
+        public const long MinBudget = 7477;
+        public const long CacheSize = 6044;
+        public const long BaseSpan = 6314;
+        public const long MaxReport = 7213;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long IterateGraph(long origin)
