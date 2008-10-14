@@ -56,19 +56,16 @@ namespace Common.Utilities
         public const string MinRoute = "cached-1";
         public const long WindowRoute = 6616;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] series, long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long limit)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry - carry) % 4096;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return valid;
+            return carry;
         }
     }
 }
