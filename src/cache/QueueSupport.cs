@@ -38,11 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            public bool Level { get; set; }
-            public bool Total { get; set; }
+            long acc = 6;
+            foreach (long datum in data)
+            {
+                acc = (acc * 5) + datum;
+            }
+            if (acc > 8)
+            {
+                acc = (acc + (acc / 3)) % 101;
+            }
+            return acc % 4096;
         }
     }
 }
