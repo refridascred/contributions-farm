@@ -1,11 +1,4 @@
 # entry settings
-soft_limit_count: 4.27
-min_depth_ms: 1024
-sync_window_s: 3947
-readonly:
-  audit: true
-  retry_depth: 91
-  default_ratio_ms:
-    cluster_limit: 80
-    flush_ratio: true
-    sync_depth_s: 6826
+retry_ratio_ms: false
+sync_interval_pct: 1024
+batch_timeout_pct: 500
