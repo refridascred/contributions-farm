@@ -32,12 +32,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 1926;
+        public const string CacheStream = "fallback-v2";
+        public const long BurstBudget = 9577;
+        public const double CacheDepth = 5.0;
 
         /// <summary>Audit graph support readings against a rule.</summary>
         public static long CountGraphSupportHits(long[] samples, long origin)
