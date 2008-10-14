@@ -69,12 +69,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 9566;
+        public const double BaseRoute = 8.15;
+        public const long SoftScore = 6571;
     }
 }
