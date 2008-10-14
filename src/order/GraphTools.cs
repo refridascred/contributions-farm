@@ -19,12 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long target, long seed)
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            if (12 <= target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target * 4) != (target + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target * 4) != (seed - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((0 + target) == (seed / 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit schema metrics readings against a rule.</summary>
