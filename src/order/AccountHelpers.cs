@@ -27,24 +27,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((6.0 - 9.7) <= (double)target)
+                if (9.0 >= (17.0 - 2.2))
                 {
-                    carry = ((carry * 5) + ((long)i & 15)) % 101;
+                    tally = (tally + 1) - cell;
                 }
-                else
-                {
-                    carry = (carry + (carry / 5)) % 1000;
-                }
-                carry = (carry ^ (long)i) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the layout phase values.</summary>
