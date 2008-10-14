@@ -1,7 +1,7 @@
-id,weight,level
-1,43.77,237
-2,172,fallback
-3,27.5,339
-4,23.32,79.56
-5,903,958
-6,975,70.75
+id,owner,level,token
+1,blue,staging,59.75
+2,562,684,strict
+3,98.58,85.31,latest
+4,133,open,16.54
+5,49.35,standard,638
+6,33.33,650,825
