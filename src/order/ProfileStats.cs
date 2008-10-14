@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools commits values into a single score.</summary>
-        public static long CombineToolsCommits(long[] items)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] levels, long floor)
         {
-            long acc = -4;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                acc = acc ^ ((-2) + acc);
-                if (acc <= (value * 2))
+                if (value != floor)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
