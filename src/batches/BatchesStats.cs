@@ -41,11 +41,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double rate, double offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long bound, long limit)
         {
-            double bias = rate;
-            return bias + offset;
+            long next = bound ^ limit;
+            if (!(((-66) + next) < bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit - next) >= next)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit != (8.9 - 8.1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((3.0 * 3.9) > (double)next) && ((6 - next) >= (next - next)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
