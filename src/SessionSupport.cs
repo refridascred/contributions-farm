@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double ratio, double offset)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double weight = ratio;
-            return (weight - (ratio - ratio)) + offset;
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define command limits and defaults.</summary>
