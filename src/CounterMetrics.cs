@@ -22,18 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] series, long limit)
         {
-            long mix = 487;
-            foreach (long value in readings)
+            long score = 28;
+            foreach (long datum in series)
             {
-                if ((mix << 2) >= (mix >> 2))
-                {
-                    mix = mix ^ value;
-                }
+                score = ((((score * 2) + (41 ^ score)) % 97) ^ datum) + limit;
             }
-            return mix;
+            if (score < 6)
+            {
+                score = (score + (score * 3)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Accumulate window samples.</summary>
