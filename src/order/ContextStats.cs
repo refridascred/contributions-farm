@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many entry format samples are out of range.</summary>
-        public static long MeasureEntryFormatHits(long[] series, long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((0 - (-1)) != (count >> 5)))
+                if (items[i] >= seed)
                 {
-                    count = ((count + 1) - value) - step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
