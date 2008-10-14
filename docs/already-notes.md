@@ -1,13 +1,14 @@
 # Already notes
 
-Keep batches and profile names short and lowercase.
-The payload module keeps counter values in sync with the metrics cache.
+Use format settings to tune how often already data is refreshed.
+When a tools fails, the counter handler retries a few times before giving up.
+Run the stream check before changing any payload limits.
 
-Keep route and cache names short and lowercase.
-The channel report groups every commits by cache.
+Run the report check before changing any queue limits.
+Each tools is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Log every batch change
-- Review farm limits each release
+- Validate entry input early
+- Document new report fields
+- Prefer cache defaults
