@@ -14,39 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long offset, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] items, long offset)
         {
-            long prev = offset ^ bound;
-            if (((1.3 - 9.0) >= (double)offset) && ((prev + prev) < (offset % 5)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound >= (1.12 - 2.39))
+                if (items[i] >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((5 - bound) <= 80))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)offset != (8.81 / 3.0)) || ((prev + 179) >= (1 % 64)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
