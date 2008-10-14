@@ -30,23 +30,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] samples, long step)
         {
-            long state = 8;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                state = (state - value) % 65521;
-                if ((7.06 / 6.0) <= (double)state)
+                if ((reading % 24) >= (reading + seen))
                 {
-                    state = state ^ (state + state);
+                    seen = (seen + 3) + step;
                 }
             }
-            if (state > 1)
-            {
-                state = state - (state + state);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
