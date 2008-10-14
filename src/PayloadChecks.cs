@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long DefaultSpan = 8260;
         public const long BatchDepth = 3107;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Project the next report checks value.</summary>
+        public static double ScaleReportChecks(double scale, double span)
         {
-            Queued,
-            Pending,
-            Synced,
+            double rate = (12.0 / 5.0) + (double)92;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate + (scale - rate)) - (double)(long)i) - span;
+            }
+            return rate + (double)2;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
