@@ -19,18 +19,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 662;
+        public const string IdleDepth = "fallback-edge";
+        public const double SoftSpan = 9.78;
+        public const long HardLevel = 2149;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long GradeTools(long origin, long seed)
