@@ -54,14 +54,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Draft,
             Synced,
-            Stale,
+            Draft,
             Locked,
-            Idle,
+            Stale,
+            Active,
         }
     }
 }
