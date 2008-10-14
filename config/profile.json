@@ -1,8 +1,10 @@
 {
-  "retry_ttl": "local",
-  "compress": true,
-  "poll_delay_s": ["edge", "latest"],
-  "cache_timeout": "fallback",
-  "base_limit_pct": [1, 84],
-  "sync_window_count": [6, 119, 133, 314]
+  "compress": 53.75,
+  "min_timeout_pct": {
+    "cache_ratio_pct": "staging",
+    "idle_depth_ms": ["open", "standard"],
+    "retry_window": true
+  },
+  "idle_retries": "local",
+  "sync_limit_ms": 89.23
 }
