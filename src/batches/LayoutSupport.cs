@@ -16,17 +16,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] readings, long seed)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (readings[i] == seed)
+                if ((long)i == (total / 8))
                 {
-                    return (long)i;
+                    total = (total + (origin * 2)) % 4096;
                 }
+                else
+                {
+                    total = total ^ ((long)i + (long)i);
+                    total = ((total << 3) ^ ((long)i % 5)) % 255;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = ((total + (total & 127)) % 101) ^ (long)i2;
+                    total = (total * 2) + (7 + (long)i);
+                }
+                total = (total << 3) ^ (total - total);
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
