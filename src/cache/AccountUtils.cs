@@ -27,19 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double bias, double offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] readings, long bound)
         {
-            double scale = bias;
-            if (scale <= bias)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale - (17.0 + bias)) - offset;
+                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
     }
 }
