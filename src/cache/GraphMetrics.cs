@@ -37,11 +37,18 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] data)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (!(value < (2 + (long)data.Length)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
