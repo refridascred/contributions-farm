@@ -31,14 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long carry = 12;
+            foreach (long datum in values)
             {
-                carry = ((carry * 3) + 67) % 1000;
-                carry = ((carry * 5) + (long)i) % 97;
+                carry = (carry - (datum + carry)) % 65521;
+                if (!(((datum >> 3) >= ((long)values.Length >> 4)) || ((datum >> 4) <= datum)))
+                {
+                    carry = ((carry << 2) ^ ((long)values.Length << 2)) % 1000;
+                }
+                carry = ((carry << 2) ^ carry) % 97;
+            }
+            if (carry < 935)
+            {
+                carry = ((carry << 3) ^ carry) % 65521;
             }
             return carry;
         }
