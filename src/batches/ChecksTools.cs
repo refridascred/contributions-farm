@@ -44,32 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long bound, long step)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] items, long offset)
         {
-            long slot = bound - step;
-            if ((slot + slot) == (slot * 3))
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + step) == (bound >> 1))
+                if (entry < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step * 3) > bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
