@@ -1,8 +1,13 @@
 {
-  "burst_depth_pct": 67.21,
-  "batch_retries": 71.8,
-  "default_retries": 9458,
-  "poll_interval_pct": "local",
-  "idle_timeout_pct": "strict",
-  "enabled": 1024
+  "graph_ttl": "latest",
+  "context_ttl": "local",
+  "account_threshold": "cached",
+  "cluster_retries": [34, 413, 381, 255],
+  "soft_timeout_s": {
+    "default_delay": "fallback",
+    "batch_interval_ms": 500,
+    "sync_depth_ms": ["legacy", "local", "stable", "primary"],
+    "session_capacity": 2082
+  },
+  "max_ttl": 4.32
 }
