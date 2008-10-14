@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] readings, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!((51 % 64) <= (origin << 1)) && ((0 & 1) >= (seen * 4)))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the already level values.</summary>
