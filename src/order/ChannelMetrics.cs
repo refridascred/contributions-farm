@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const string BurstLevel = "alpha-v2";
         public const string BurstBudget = "latest-1";
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] samples, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] items)
         {
-            long carry = 672;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((double)carry >= (1.5 - 2.22))
+                if ((count >> 5) > (datum ^ count))
                 {
-                    carry = (carry + (floor ^ sample)) % 101;
+                    count = count + 2;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
