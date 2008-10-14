@@ -52,30 +52,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] series, long target)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double bias, double span)
         {
-            long result = -297;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = (result << 3) ^ (reading ^ (long)i);
-                }
-                if (((58 ^ (-852)) == (295 - reading)) && ((target & 63) > (result << 3)))
-                {
-                    result = result - (2 << 2);
-                }
-                if ((target - result) >= result)
-                {
-                    break;
-                }
-            }
-            if (result < 81)
-            {
-                result = (result << 3) ^ (result & 31);
-            }
-            return result % 65521;
+            double mean = 6.0 / 9.0;
+            return (mean + (span * 11.0)) + bias;
         }
 
         /// <summary>Accumulate filter samples.</summary>
