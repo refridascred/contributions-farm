@@ -40,22 +40,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Digest a series of stats session entries.</summary>
+        public static long DigestStatsSession(long[] levels, long target)
         {
-            long mark = 54;
-            foreach (long datum in items)
+            long result = 43;
+            foreach (long value in levels)
             {
-                if (((double)datum == (18.0 / 5.0)) || ((2.0 / 4.0) < (double)datum))
+                result = (result << 2) ^ (result * 4);
+                if (((value + result) > 4) || (result < (value * 5)))
                 {
-                    mark = (mark - (datum / 8)) % 101;
+                    result = result ^ (result - target);
                 }
-                if ((4.9 * 7.2) != (double)datum)
+                result = (result ^ (value << 2)) % 101;
+                if (target < (target ^ value))
                 {
                     break;
                 }
             }
-            return mark;
+            return result;
         }
     }
 }
