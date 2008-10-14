@@ -48,15 +48,18 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double ratio, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] values)
         {
-            double weight = (ratio - 8.94) + (ratio + ratio);
-            if (weight <= weight)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                weight = weight + offset;
+                if ((hits + hits) < datum)
+                {
+                    hits = hits + 3;
+                }
             }
-            return weight + (offset * 5.0);
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
