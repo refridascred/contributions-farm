@@ -77,15 +77,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] samples, long offset)
         {
-            long anchor = 432;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 3) + (cell - (long)samples.Length)) % 65521;
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor % 97;
+            return stale;
         }
     }
 }
