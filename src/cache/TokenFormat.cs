@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long LimitSize = 1872;
         public const string MinContributi = "legacy";
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] series, long step)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
