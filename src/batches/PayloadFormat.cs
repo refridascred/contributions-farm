@@ -64,18 +64,16 @@ namespace Common.Utilities
         public const double BatchChannel = 98.85;
         public const double BaseFactor = 20.53;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] data)
+        /// <summary>Derive the next session already value from a seed.</summary>
+        public static long StepSessionAlready(long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((8.3 + 14.0) > (double)value)
-                {
-                    hits = hits + 1;
-                }
+                total = (total - 446) % 97;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
     }
 }
