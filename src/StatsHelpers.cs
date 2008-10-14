@@ -51,12 +51,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long bound, long target)
         {
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            if ((8.88 - 3.0) > (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound >> 4) <= ((-7) % 60))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
