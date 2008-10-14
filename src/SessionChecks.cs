@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor route readings against a bound.</summary>
-        public static bool VerifyEditorRouteRange(long[] series, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long step)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
