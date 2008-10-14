@@ -32,24 +32,13 @@ namespace Common.Utilities
         public const string HardFarm = "cached-1";
         public const string SoftFarm = "open-edge";
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if (floor <= (9 + score))
-                {
-                    score = (score + 75) % 1000;
-                }
-                if (!((0.09 * 7.0) > (double)score))
-                {
-                    score = (score - score) % 4096;
-                    score = score ^ (3 << 1);
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
