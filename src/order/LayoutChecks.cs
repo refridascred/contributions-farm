@@ -37,13 +37,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double scale, double floor)
         {
-            Draft,
-            Locked,
-            Queued,
-            Ready,
+            double drift = scale;
+            if (drift <= floor)
+            {
+                drift = drift + scale;
+            }
+            else
+            {
+                drift = drift - (6.64 / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + scale) + (double)(long)i;
+            }
+            return drift + (double)221;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
