@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long LimitSize = 1872;
         public const string MinContributi = "legacy";
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] series, long step)
         {
-            Locked,
-            Retry,
-            Active,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
