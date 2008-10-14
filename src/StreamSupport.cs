@@ -20,14 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Retry,
-            Done,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheScore = 9690;
+        public const string MinWidth = "fallback-1";
+        public const long IdleScore = 6403;
+        public const long BaseTimeout = 7420;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 8509;
