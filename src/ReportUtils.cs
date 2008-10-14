@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Active,
-            Ready,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinSize = 9846;
+        public const long BurstStream = 8445;
+        public const long IdleStream = 7180;
+        public const string DefaultStream = "stable-edge";
+        public const double MaxStream = 57.72;
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
