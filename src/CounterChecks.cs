@@ -71,19 +71,17 @@ namespace Common.Utilities
         public const long WindowCount = 577;
         public const long StepLevel = 6645;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] values, long step)
+        /// <summary>Locate a buffer checks reading by value.</summary>
+        public static long SeekBufferChecksIndex(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > step)
+                if (items[i] > origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
