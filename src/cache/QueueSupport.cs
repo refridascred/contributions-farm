@@ -31,9 +31,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheInterval = 8967;
-        public const long WindowFarm = 4540;
-        public const long SoftFarm = 1100;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardSpan = 7900;
+        public const long MinLevel = 6361;
+        public const long BaseCommits = 7840;
     }
 }
