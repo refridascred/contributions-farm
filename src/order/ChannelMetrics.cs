@@ -33,26 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long step)
         {
-            long mix = 352;
-            foreach (long sample in readings)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((4.0 * 7.67) <= (double)mix)
+                if (((long)i + acc) >= (acc + 38))
                 {
-                    mix = ((mix << 2) ^ (sample << 3)) % 65521;
+                    acc = ((acc * 5) + acc) % 4096;
                 }
-                else
-                {
-                    mix = (mix + 2) % 4096;
-                }
+                acc = ((acc * 5) + (step + acc)) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (mix > 3)
-            {
-                mix = (mix - (mix >> 3)) % 255;
-            }
-            return mix;
+            return acc;
         }
     }
 }
