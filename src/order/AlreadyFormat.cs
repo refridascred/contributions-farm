@@ -19,11 +19,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] values, long seed)
         {
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank layout counter input into a small class.</summary>
