@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Draft,
-            Dropped,
-            Locked,
-            Synced,
+            Idle,
+            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
