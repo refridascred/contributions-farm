@@ -19,13 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long limit, long step)
         {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            long diff = limit + step;
+            if (!((17 % 24) < (limit - (-65))))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((43 - diff) > 85) && ((10.0 - 8.0) < (double)step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)diff <= (0.5 + 1.51))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
