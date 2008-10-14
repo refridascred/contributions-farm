@@ -1,6 +1,10 @@
 {
-  "cache_ttl_ms": 250,
-  "metrics_size": ["strict", "legacy"],
-  "session_limit": 46.62,
-  "support_limit": true
+  "counter_delay": ["local", "edge"],
+  "farm_delay": true,
+  "format_ttl": {
+    "compress": 1024,
+    "retry_threshold_count": true,
+    "verbose": "open",
+    "cache_ratio_pct": "local"
+  }
 }
