@@ -54,18 +54,39 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the already filter entries that pass the check.</summary>
-        public static long MeasureAlreadyFilterOutliers(long[] items)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long delta = bound - seed;
+            if (((44 * 4) >= seed) && ((double)seed != (7.46 * 17.0)))
             {
-                if ((datum + matches) <= 8)
+                return 5;
+            }
+            else
+            {
+                if (delta <= (delta & 255))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((delta - seed) < (seed - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + 58) > bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the record level values.</summary>
