@@ -33,12 +33,16 @@ namespace Common.Utilities
         public const long BurstDepth = 9785;
         public const long CacheDepth = 9097;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long floor)
         {
-            Pending,
-            Idle,
-            Ready,
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix << 2) ^ (mix + mix)) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
