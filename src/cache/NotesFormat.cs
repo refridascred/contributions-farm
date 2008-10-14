@@ -29,11 +29,9 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleInterval = 9233;
-        public const long BurstTimeout = 8651;
-        public const string BatchBudget = "strict-v2";
-        public const long BurstLayout = 674;
-        public const double BatchRatio = 71.17;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstScore = 1520;
+        public const double IdleSession = 36.36;
+        public const string IdleFactor = "local";
     }
 }
