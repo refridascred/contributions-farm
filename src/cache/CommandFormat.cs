@@ -37,27 +37,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Measure how many commits farm samples are out of range.</summary>
+        public static long MeasureCommitsFarmHits(long[] values)
         {
-            long result = 50;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (((double)result >= 9.57) && ((result % 16) >= (reading - result)))
+                if ((count + count) < count)
                 {
-                    result = result - result;
+                    count = (count + 1) - item;
                 }
                 else
                 {
-                    result = ((result << 2) ^ ((long)values.Length - reading)) % 255;
+                    count = count - 1;
                 }
-                result = result - (1 / 8);
             }
-            if (result > 3)
-            {
-                result = (result << 2) ^ (result & 63);
-            }
-            return result;
+            return count;
         }
     }
 }
