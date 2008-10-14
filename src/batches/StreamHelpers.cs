@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] levels, long limit)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((15.0 / 3.0) < (double)matches)
+                {
+                    matches = ((matches + 2) ^ reading) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a command graph counter forward.</summary>
