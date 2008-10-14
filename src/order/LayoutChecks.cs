@@ -41,18 +41,14 @@ namespace Common.Utilities
         public const double HardRecord = 18.72;
         public const string MinRecord = "latest-1";
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] readings, long seed)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading + reading) < (matches >> 2)) || ((reading & 63) == (reading + 6)))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
