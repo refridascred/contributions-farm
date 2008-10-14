@@ -41,24 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metric command value against two limits.</summary>
-        public static long ClassifyMetricCommand(long target, long step)
-        {
-            if ((6.3 + 9.2) > (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if (step <= (820 >> 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryRatio = 1229;
+        public const double MinFactor = 86.78;
+        public const double HardOrder = 85.97;
+        public const long MinSize = 9557;
+        public const long RetryOrder = 5370;
     }
 }
