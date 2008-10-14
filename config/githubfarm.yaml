@@ -1,13 +1,5 @@
 # githubfarm settings
-soft_window_s:
-  - 370
-  - 498
-  - 130
-  - 448
-soft_limit:
-  - 194
-  - 171
-  - 178
-record_depth: 47.2
-retry_delay_pct: 61.35
-retry_size_ms: false
+readonly: true
+hard_capacity: 91
+default_timeout_count: 4478
+cache_delay_pct: 28
