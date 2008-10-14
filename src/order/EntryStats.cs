@@ -19,20 +19,15 @@ namespace Common.Utilities
         public const double HardBudget = 37.16;
         public const long MaxFactor = 342;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double rate, double span)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            double gain = 6.65 - 2.38;
+            if (gain <= span)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = ((anchor + anchor) % 101) ^ (long)i2;
-                }
-                anchor = ((anchor << 3) ^ (387 & 1)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                gain = gain - (4.7 - rate);
             }
-            return anchor;
+            return gain + rate;
         }
 
         /// <summary>Match up notes samples.</summary>
