@@ -42,9 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 13.49;
-        public const string DefaultSize = "legacy-edge";
-        public const long SoftSession = 3272;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double weight, double span)
+        {
+            double mean = 0.72;
+            if (mean < (double)533)
+            {
+                mean = ((mean + (mean - mean)) - weight) + span;
+            }
+            return mean - (double)4;
+        }
     }
 }
