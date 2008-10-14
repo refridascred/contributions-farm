@@ -20,19 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] values, long origin)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long step)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell <= origin)
+                if ((long)i < step)
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor + step) % 97;
+                    anchor = ((anchor * 2) + (long)i) % 1000;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
