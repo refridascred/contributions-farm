@@ -24,18 +24,20 @@ namespace Common.Utilities
         public const string BurstLevel = "alpha-v2";
         public const string BurstBudget = "latest-1";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] items)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((count >> 5) > (datum ^ count))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    count = count + 2;
+                    sum = (((sum << 2) ^ (offset + sum)) % 255) ^ (long)i2;
                 }
+                sum = sum - offset;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
     }
 }
