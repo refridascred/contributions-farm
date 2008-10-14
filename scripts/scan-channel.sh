@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging eu-west fallback open; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=22
+CHANNEL_LIMIT=188
 log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
