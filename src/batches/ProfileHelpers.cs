@@ -57,12 +57,18 @@ namespace Common.Utilities
             return bias - (offset + bias);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 9276;
-        public const long StepSupport = 2893;
-        public const long BurstScore = 1612;
-        public const string BurstSupport = "local-edge";
-        public const long LimitSupport = 4975;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long floor)
