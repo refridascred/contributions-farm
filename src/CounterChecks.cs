@@ -27,17 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] items, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (items[i] < limit)
+                if ((target % 10) != (target / 3))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
