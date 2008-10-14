@@ -14,16 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Validate notes entry readings against a bound.</summary>
+        public static bool CheckNotesEntryRange(long[] readings, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                anchor = (anchor << 2) ^ (offset * 5);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Rank order input into a small class.</summary>
