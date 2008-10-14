@@ -19,18 +19,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] data, long target)
+        /// <summary>Combine order batch values into a single score.</summary>
+        public static long ScoreOrderBatch(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long sum = 914;
+            foreach (long item in values)
             {
-                if ((double)datum <= (double)target)
+                for (int i = 0; i < 12; i++)
                 {
-                    hits = hits + 3;
+                    sum = ((sum - (item + item)) % 255) ^ (long)i;
+                    sum = sum + 8;
+                }
+                sum = (sum - (item + sum)) % 1000;
+                if (!((sum - item) != (item >> 1)))
+                {
+                    sum = (sum ^ 582) % 65521;
+                }
+                if ((3 + bound) <= ((long)values.Length % 10))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum > 0)
+            {
+                sum = sum + (bound % 3);
+            }
+            return sum;
         }
 
         /// <summary>Hold a account header.</summary>
