@@ -22,24 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long limit, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] data, long origin)
         {
-            if (!(seed > (seed * 3)))
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((((-35) + seed) > (limit - limit)) || (14.0 < (double)limit))
+                if (reading < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
