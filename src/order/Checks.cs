@@ -23,24 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long bound, long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            if ((bound + (-840)) > 875)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) != (35 ^ offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
