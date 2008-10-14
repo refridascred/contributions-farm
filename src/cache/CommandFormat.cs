@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] items, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 3;
+            foreach (long cell in levels)
             {
-                if ((items[i] < seed) && ((items[i] % 5) != 0))
+                if ((cell + cell) <= cell)
                 {
-                    return (long)i;
+                    mix = mix ^ (cell / 6);
+                }
+                else
+                {
+                    mix = mix ^ (cell - cell);
                 }
             }
-            return -1;
+            if (mix < 895)
+            {
+                mix = mix + (long)levels.Length;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Blend two route measurements.</summary>
