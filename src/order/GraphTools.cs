@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long origin, long origin2)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
+            long next = origin - origin2;
+            if ((double)origin >= (2.3 / 3.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin * 4) == (origin - next))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((6 % 60) > (next << 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context stats.</summary>
