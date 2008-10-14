@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] readings, long bound)
         {
-            long mix = -164;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((entry ^ mix) == (mix << 2))
+                if ((double)hits < (double)bound)
                 {
-                    mix = (mix << 3) ^ (-757);
+                    hits = (hits + 3) - cell;
                 }
             }
-            if (mix > (-194))
-            {
-                mix = (mix * 2) + (mix - mix);
-            }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Fold a list of token readings.</summary>
