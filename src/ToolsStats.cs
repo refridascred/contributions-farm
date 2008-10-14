@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinFactor = 96.98;
+        public const long HardInterval = 2994;
+        public const double SoftDepth = 32.0;
 
         /// <summary>Count the checks farm entries that pass the check.</summary>
         public static long CountChecksFarmMatches(long[] levels)
