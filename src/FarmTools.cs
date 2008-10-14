@@ -37,21 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up commits token samples.</summary>
-        public static long CompareCommitsTokenCount(long[] readings)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
