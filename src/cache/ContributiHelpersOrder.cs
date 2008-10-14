@@ -31,21 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = rate;
+            if (gain < gain)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain + (bias * 2.0);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain - rate;
         }
     }
 }
