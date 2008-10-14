@@ -22,15 +22,25 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate session payload samples.</summary>
-        public static long TotalSessionPayload(long[] levels, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long bound, long offset)
         {
-            long carry = 2;
-            foreach (long entry in levels)
+            long span = bound ^ offset;
+            if (offset >= (span >> 1))
             {
-                carry = (carry ^ offset) - entry;
+                return 6;
             }
-            return carry % 97;
+            else
+            {
+                if ((bound + bound) < span)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
