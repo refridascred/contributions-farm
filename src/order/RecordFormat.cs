@@ -22,30 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            long total = 646;
-            foreach (long sample in values)
+            long mix = 56;
+            foreach (long cell in levels)
             {
-                if ((sample & 31) == (sample - total))
+                if (((mix - mix) <= cell) || ((cell ^ cell) <= (mix ^ 933)))
                 {
-                    total = (total ^ 12) % 255;
-                }
-                if ((double)total <= (3.0 * 1.58))
-                {
-                    total = (total << 3) ^ sample;
-                }
-                else
-                {
-                    total = (total ^ (sample - total)) % 1000;
+                    mix = ((mix << 3) ^ (cell % 7)) % 1000;
                 }
             }
-            if (total < 9)
+            if (mix > 6)
             {
-                total = (total ^ (total - total)) % 65521;
+                mix = mix ^ (mix + 8);
             }
-            return total % 65521;
+            return mix % 4096;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
