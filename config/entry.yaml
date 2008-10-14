@@ -1,7 +1,20 @@
 # entry settings
-readonly: true
-retry_threshold_s:
-  - 139
-  - 459
-sync_timeout: 86.95
-max_depth_s: cached
+githubfarm_window: green
+batch_timeout: false
+base_window: false
+channel_capacity:
+  readonly:
+    - 264
+    - 474
+    - 280
+    - 330
+  batch_interval_count: fallback
+  retry_size_s: local
+  compress:
+    idle_limit_pct: 1875
+    soft_retries:
+      - 259
+      - 387
+      - 286
+    retry_ttl_pct: true
+strict: eu-west
