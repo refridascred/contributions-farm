@@ -39,19 +39,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double weight, double floor)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            double mean = (double)(3 & 3);
-            if (mean > weight)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (weight + mean);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - floor;
-            }
-            return mean + mean;
+            return count;
         }
     }
 }
