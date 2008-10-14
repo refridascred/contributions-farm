@@ -35,12 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] series)
         {
-            Closed,
-            Locked,
-            Failed,
+            long carry = -65;
+            foreach (long entry in series)
+            {
+                carry = carry + entry;
+            }
+            if (carry > 43)
+            {
+                carry = (carry - (carry + carry)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the filter class values.</summary>
