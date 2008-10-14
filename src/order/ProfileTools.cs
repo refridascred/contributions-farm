@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a stream session sample.</summary>
-        public static long LookupStreamSessionIndex(long[] items, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((items[i] < bound) && ((items[i] % 5) != 0))
+                if ((double)matches > 6.67)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the schema editor series from a seed.</summary>
