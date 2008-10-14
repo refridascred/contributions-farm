@@ -1,7 +1,5 @@
 {
-  "poll_ratio": 49.16,
-  "max_capacity": [115, 67, 197, 226],
-  "dry_run": 1757,
-  "counter_threshold": "fallback",
-  "retry_depth_pct": 1024
+  "schema_delay": "stable",
+  "idle_window": "cached",
+  "stats_limit": 5802
 }
