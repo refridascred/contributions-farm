@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] values, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long total = 67;
+            foreach (long value in data)
             {
-                if (sample > limit)
+                if ((331 + value) > (value + value))
                 {
-                    valid = false;
-                    break;
+                    total = ((total << 3) ^ (290 % 100)) % 97;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
