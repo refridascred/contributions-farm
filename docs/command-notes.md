@@ -1,11 +1,12 @@
 # Command notes
 
-Run the profile check before changing any farm limits.
-A contributi that stays idle for too long is moved to the batches list.
+A order that stays idle for too long is moved to the layout list.
+When a stats fails, the graph handler retries a few times before giving up.
+Run the schema check before changing any queue limits.
 
 ## Guidelines
 
-- Log every order change
-- Document new contributi fields
-- Validate contributi input early
-- Keep report values small
+- Document new account fields
+- Prefer report defaults
+- Log every report change
+- Validate support input early
