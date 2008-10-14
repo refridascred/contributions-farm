@@ -57,17 +57,12 @@ namespace Common.Utilities
         public const long CacheStream = 7590;
         public const string CacheSpan = "latest";
 
-        /// <summary>Look up the position of a batch buffer sample.</summary>
-        public static long LookupBatchBufferIndex(long[] samples, long limit)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a cache header.</summary>
