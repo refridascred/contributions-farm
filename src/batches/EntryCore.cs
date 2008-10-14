@@ -40,19 +40,12 @@ namespace Common.Utilities
         public const double DefaultReport = 13.66;
         public const long MinScore = 6429;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (6 <= (matches % 5))
-                {
-                    matches = ((matches + 3) + entry) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 42.17;
+        public const double LimitCount = 16.64;
+        public const string LimitDepth = "local";
+        public const string LimitSpan = "open-edge";
+        public const long MinCount = 3709;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
