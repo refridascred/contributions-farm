@@ -46,18 +46,24 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long limit, long floor)
         {
-            long anchor = 194;
-            foreach (long cell in values)
+            if ((250 + floor) > (limit % 7))
             {
-                if ((double)(long)values.Length != (4.21 - 3.0))
+                return 8;
+            }
+            else
+            {
+                if (3.1 < (double)limit)
                 {
-                    anchor = (((anchor * 3) + 64) % 255) ^ cell;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return anchor % 4096;
         }
     }
 }
