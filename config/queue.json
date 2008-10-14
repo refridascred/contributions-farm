@@ -1,6 +1,6 @@
 {
-  "batch_timeout_s": [158, 103, 248],
-  "retry_limit_ms": false,
-  "warm_size": "cached",
-  "audit": [93, 315, 224]
+  "sync_limit_ms": "latest",
+  "persist": true,
+  "graph_depth": 7135,
+  "tools_capacity": [65, 495, 96, 103]
 }
