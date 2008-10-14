@@ -20,14 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Compare every pair of entry farm readings.</summary>
+        public static long MatchEntryFarmCount(long[] data)
         {
-            Synced,
-            Idle,
-            Locked,
-            Pending,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a account entry.</summary>
