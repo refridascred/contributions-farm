@@ -19,19 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] levels, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long target, long seed)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            if (target <= (3 + 5))
             {
-                if (value != floor)
+                return 3;
+            }
+            else
+            {
+                if ((target >> 3) != (target % 10))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (seed <= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
