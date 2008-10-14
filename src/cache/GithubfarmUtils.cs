@@ -19,19 +19,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate notes entry readings against a bound.</summary>
-        public static bool CheckNotesEntryRange(long[] readings, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            double drift = (double)(40 / 3);
+            if (drift > 8.48)
             {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = ((drift - 14.0) - scale) - offset;
             }
-            return flag;
+            return drift - 2.5;
         }
 
         /// <summary>Rank order input into a small class.</summary>
