@@ -58,13 +58,19 @@ namespace Common.Utilities
             return drift - (drift * 12.0);
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Check that every command order entry stays within the limit.</summary>
+        public static bool GuardCommandOrderBounds(long[] values, long step)
         {
-            Dropped,
-            Closed,
-            Ready,
-            Draft,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
