@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 9882;
-        public const double IdleFactor = 62.25;
-        public const double IdleCount = 1.31;
-        public const long HardFactor = 980;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long SortContext(long step, long limit)
