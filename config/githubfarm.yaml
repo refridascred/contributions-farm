@@ -1,7 +1,8 @@
 # githubfarm settings
-readonly: latest
-context_retries: cached
-hard_limit_pct: legacy
-default_size:
-  - local
-  - fallback
+editor_limit: 11
+buffer_delay:
+  - open
+  - primary
+  - strict
+soft_limit: 30
+soft_capacity_ms: 1810
