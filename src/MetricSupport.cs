@@ -18,11 +18,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 8894;
-        public const double CacheAlready = 55.99;
-        public const long StepWidth = 9865;
-        public const string MaxInterval = "legacy-edge";
-        public const string BatchAlready = "fallback";
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Dropped,
+            Ready,
+            Synced,
+        }
     }
 }
