@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 9293;
-        public const long LimitSize = 1872;
-        public const string MinContributi = "legacy";
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Draft,
+            Dropped,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
