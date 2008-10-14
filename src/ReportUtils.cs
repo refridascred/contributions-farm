@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinSize = 9846;
-        public const long BurstStream = 8445;
-        public const long IdleStream = 7180;
-        public const string DefaultStream = "stable-edge";
-        public const double MaxStream = 57.72;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long step, long bound)
+        {
+            if ((double)bound >= 6.49)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step > (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
