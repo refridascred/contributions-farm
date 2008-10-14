@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 8731;
-        public const double WindowSpan = 28.64;
-        public const double BatchTimeout = 38.42;
-        public const long CacheTools = 6428;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Active,
+            Dropped,
+            Done,
+            Pending,
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] values)
