@@ -50,15 +50,15 @@ namespace Common.Utilities
         public const long StepMetric = 3573;
         public const long BatchRatio = 8649;
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            double load = bias;
-            for (int i = 0; i < 3; i++)
+            long state = floor;
+            for (int i = 0; i < 14; i++)
             {
-                load = ((load + (load - load)) + (double)(long)i) - floor;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return load + (2.54 - load);
+            return state;
         }
 
         /// <summary>Accumulate queue samples.</summary>
