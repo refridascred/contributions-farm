@@ -1,4 +1,22 @@
 # entry settings
-queue_capacity: 22.59
-idle_window: cached
-cache_window: 2138
+burst_delay_count:
+  - 153
+  - 437
+  - 359
+  - 255
+counter_limit:
+  poll_window_pct: 30
+  batch_timeout: 51
+  audit: 59.49
+  compress: 3
+  order_delay: open
+cache_window_count: true
+batch_retries:
+  - cached
+  - stable
+  - latest
+strict:
+  - 29
+  - 427
+  - 308
+poll_limit_ms: 74.79
