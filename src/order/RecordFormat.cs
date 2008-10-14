@@ -54,26 +54,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] data, long floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            long carry = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((886 % 10) <= (cell & 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry + (floor + floor);
-                }
-                if ((floor / 5) <= carry)
-                {
-                    break;
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 3)
-            {
-                carry = (carry + (1 - 85)) % 255;
-            }
-            return carry % 97;
+            return seen;
         }
     }
 }
