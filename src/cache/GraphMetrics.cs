@@ -68,13 +68,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
+            Failed,
+            Ready,
+            Retry,
         }
     }
 }
