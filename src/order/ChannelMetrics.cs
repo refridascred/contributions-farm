@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 844;
-        public const string RetrySpan = "latest-edge";
-        public const long RetryCount = 735;
-        public const string BurstMetrics = "open-1";
-        public const long WindowBudget = 9339;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double ratio, double span)
+        {
+            double mean = span * 3.5;
+            if (mean < (double)284)
+            {
+                mean = (mean - (double)229) - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 10.0) + (double)(long)i;
+            }
+            return mean - 4.4;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
