@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many format queue samples are out of range.</summary>
-        public static long TallyFormatQueueGaps(long[] series)
+        /// <summary>Blend two graph stream measurements.</summary>
+        public static double ProjectGraphStream(double bias, double span)
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((value - 806) != ((-439) & 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double ratio = 3.0 + (bias + 9.3);
+            return ratio + (span * 7.42);
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
