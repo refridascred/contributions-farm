@@ -81,11 +81,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double ratio, double floor)
         {
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
+            double gain = ratio;
+            if (gain < (double)27)
+            {
+                gain = gain + floor;
+            }
+            else
+            {
+                gain = gain - (floor - floor);
+            }
+            return gain - (gain / 6.0);
         }
     }
 }
