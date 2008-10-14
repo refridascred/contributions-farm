@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleDepth = 7676;
-        public const long BaseScore = 715;
-        public const double SoftInterval = 32.95;
-        public const long BaseTimeout = 1645;
-        public const long MaxWidth = 6471;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 2728;
+        public const long StepWidth = 2677;
+        public const long WindowWidth = 5713;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheGaps(long[] items, long seed)
