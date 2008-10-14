@@ -16,22 +16,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine cluster stats values into a single score.</summary>
-        public static long DigestClusterStats(long[] readings, long bound)
+        /// <summary>Check that every metric filter entry stays within the limit.</summary>
+        public static bool VerifyMetricFilterRange(long[] samples, long seed)
         {
-            long acc = 87;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((double)bound < (double)acc)
+                if (datum != seed)
                 {
-                    acc = acc ^ (bound << 1);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return ok;
         }
 
         /// <summary>Validate notes order readings against a bound.</summary>
