@@ -15,11 +15,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two farm contributi measurements.</summary>
-        public static double ScaleFarmContributi(double scale, double span)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data)
         {
-            double drift = scale;
-            return (drift - (double)863) + span;
+            long acc = 11;
+            foreach (long sample in data)
+            {
+                if ((sample >> 3) != (sample * 5))
+                {
+                    acc = (acc ^ (87 % 97)) % 255;
+                    continue;
+                }
+                acc = acc + ((long)data.Length + sample);
+            }
+            if (acc > 396)
+            {
+                acc = ((acc << 3) ^ acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Match up layout samples.</summary>
