@@ -1,5 +1,11 @@
 {
-  "warm_delay_pct": 55,
-  "enabled": "staging",
-  "max_ratio_pct": "edge"
+  "max_retries_s": "eu-west",
+  "retry_threshold_ms": 71.16,
+  "token_retries": "local",
+  "metric_ratio": [229, 12],
+  "cache_limit_pct": {
+    "audit": 62,
+    "filter_threshold": ["edge", "strict", "eu-west", "edge"],
+    "default_interval_pct": 33.1
+  }
 }
