@@ -65,38 +65,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long bound, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] readings, long offset)
         {
-            if ((bound & 1) > (bound / 4))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5 < (target >> 4)) || (bound < 62))
+                if ((2.57 + 1.6) == (double)sample)
                 {
-                    return 2;
+                    count = (count + 2) + offset;
                 }
                 else
                 {
-                    if (((double)859 <= (5.82 + 17.0)) || ((6 + bound) <= bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target != (double)5)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
