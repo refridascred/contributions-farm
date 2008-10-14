@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a route context pair into a bucket.</summary>
-        public static long ClassifyRouteContext(long limit, long origin)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] samples, long seed)
         {
-            long edge = limit ^ origin;
-            if ((origin * 4) > (edge + 315))
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin - limit) < (edge << 2)) && ((6.34 * 6.5) <= (double)edge))
+                if (datum > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
