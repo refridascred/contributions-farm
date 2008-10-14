@@ -35,19 +35,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Classify a filter farm pair into a bucket.</summary>
+        public static long GradeFilterFarm(long target, long floor)
         {
-            long carry = -65;
-            foreach (long entry in series)
+            if (((double)target > 6.0) || ((0 * 3) < target))
             {
-                carry = carry + entry;
+                return 0;
             }
-            if (carry > 43)
+            else
             {
-                carry = (carry - (carry + carry)) % 65521;
+                if (!(target >= (floor / 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((598 / 5) >= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-209) + (-77)) >= target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return carry % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
