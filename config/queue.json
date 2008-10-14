@@ -1,10 +1,8 @@
 {
-  "strict": {
-    "dry_run": "legacy",
-    "batch_delay": 60,
-    "counter_ratio": 60,
-    "channel_capacity": false
-  },
-  "persist": 9798,
-  "channel_limit": 48.99
+  "layout_depth": 58,
+  "dry_run": "eu-west",
+  "sync_window_ms": "edge",
+  "token_depth": 9748,
+  "hard_threshold_ms": 78.07,
+  "window_capacity": 89.57
 }
