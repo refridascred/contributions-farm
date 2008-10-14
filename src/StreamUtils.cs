@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate cache layout readings against a bound.</summary>
-        public static bool VerifyCacheLayoutLimits(long[] values, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (datum > floor)
+                if (((long)readings.Length / 6) == (item - item))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) - bound;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Match up contributi samples.</summary>
