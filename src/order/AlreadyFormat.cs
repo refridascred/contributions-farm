@@ -61,9 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultLevel = 6937;
-        public const long RetryMetric = 5381;
-        public const long RetryFactor = 937;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Queued,
+            Stale,
+            Ready,
+        }
     }
 }
