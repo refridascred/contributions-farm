@@ -27,19 +27,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double scale, double span)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double scale2 = 4.3 / 4.0;
-            if (scale2 < (scale2 + scale2))
-            {
-                scale2 = scale2 - (scale / 7.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + span) + (double)(long)i;
-            }
-            return scale2 + (scale / 3.0);
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
