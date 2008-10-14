@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const double StepFactor = 84.68;
         public const long IdleCluster = 6483;
 
-        /// <summary>Combine checks batches values into a single score.</summary>
-        public static long DigestChecksBatches(long[] readings)
-        {
-            long mark = 602;
-            foreach (long datum in readings)
-            {
-                mark = (mark ^ (mark - 0)) % 101;
-                if ((mark + mark) < (datum + datum))
-                {
-                    mark = (mark + (mark >> 3)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 8725;
+        public const long CacheFactor = 5867;
+        public const double StepSession = 85.02;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiBounds(long[] levels, long target)
