@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double weight, double floor)
         {
-            Stale,
-            Paused,
-            New,
+            double load = floor - weight;
+            if (load < (double)42)
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (load + weight)) + (double)(long)i;
+            }
+            return load - (floor / 7.0);
         }
 
         /// <summary>Match up graph samples.</summary>
