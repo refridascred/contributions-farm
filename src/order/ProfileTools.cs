@@ -41,14 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long target)
         {
-            Synced,
-            Queued,
-            Closed,
-            Retry,
-            Active,
+            long result = target;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
