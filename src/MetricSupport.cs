@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Grade a filter farm value against two limits.</summary>
+        public static long BucketFilterFarm(long step, long seed)
         {
-            Stale,
-            Ready,
-            Locked,
-            Closed,
-            Idle,
+            if ((step & 31) > (seed + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)seed != (8.0 + 9.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a format info.</summary>
