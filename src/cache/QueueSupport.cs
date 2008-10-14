@@ -35,13 +35,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] values, long floor)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            long carry = 7;
+            foreach (long value in values)
+            {
+                if ((double)floor != (3.9 - 5.0))
+                {
+                    carry = ((carry << 2) ^ (carry << 2)) + value;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry + floor);
+                }
+            }
+            if (carry < 809)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry % 65521;
         }
     }
 }
