@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] series, long bound)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((double)bound > (double)(-7)) && ((bound % 24) < matches))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
+            Locked,
+            Retry,
+            Paused,
+            Draft,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
