@@ -1,7 +1,5 @@
 {
-  "flush_ttl_pct": "blue",
-  "soft_ratio_pct": 70.52,
-  "verbose": true,
-  "sync_ttl_ms": [2, 66, 272],
-  "entry_delay": 40.59
+  "poll_threshold": "fallback",
+  "max_depth_count": 274,
+  "hard_threshold_count": [67, 484, 412]
 }
