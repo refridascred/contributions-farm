@@ -69,17 +69,14 @@ namespace Common.Utilities
         public const long CacheToken = 8328;
         public const long SoftToken = 86;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] values, long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Locked,
+            Failed,
+            Closed,
+            Draft,
         }
     }
 }
