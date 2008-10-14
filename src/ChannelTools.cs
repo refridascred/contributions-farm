@@ -24,39 +24,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Classify a tools githubfarm pair into a bucket.</summary>
-        public static long ClassifyToolsGithubfarm(long step, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items)
         {
-            long offset = step - bound;
-            if (((step ^ bound) != (bound / 8)) && ((offset - offset) < (step + offset)))
+            long carry = 686;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((65 + offset) > (step - offset))
+                if ((double)reading < (6.52 + 5.8))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset * 2) > (offset + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + offset) <= (offset & 255))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = (carry - (reading - reading)) % 101;
                 }
             }
+            return carry;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
