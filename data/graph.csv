@@ -1,7 +1,9 @@
-id,label,state,score
-1,907,41,468
-2,867,eu-west,open
-3,23.78,30.79,16.64
-4,22.83,763,45.81
-5,142,974,100
-6,edge,93.21,264
+id,token,ratio
+1,fallback,203
+2,cached,89.37
+3,cached,95.94
+4,staging,fallback
+5,standard,standard
+6,57,eu-west
+7,standard,strict
+8,646,open
