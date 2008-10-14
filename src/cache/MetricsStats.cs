@@ -57,14 +57,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] levels, long floor)
         {
-            Dropped,
-            Ready,
-            Paused,
-            Closed,
-            Pending,
+            long acc = 495;
+            foreach (long datum in levels)
+            {
+                acc = ((acc - (datum + acc)) % 101) - floor;
+            }
+            return acc;
         }
     }
 }
