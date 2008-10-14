@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Scale a profile cache figure with a bias.</summary>
+        public static double SmoothProfileCache(double weight, double offset)
         {
-            Active,
-            Idle,
-            Retry,
-            Failed,
+            double weight2 = (offset + offset) - weight;
+            if (weight2 >= (offset * 8.0))
+            {
+                weight2 = weight2 + (weight - offset);
+            }
+            else
+            {
+                weight2 = weight2 + (double)3;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - weight) - (double)(long)i;
+            }
+            return weight2 + (weight * 1.0);
         }
 
         /// <summary>Hold a filter snapshot.</summary>
