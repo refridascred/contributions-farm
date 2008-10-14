@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a checks profile counter forward.</summary>
-        public static long StepChecksProfile(long floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total << 3) ^ (floor - (long)i2);
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Project the next editor value.</summary>
