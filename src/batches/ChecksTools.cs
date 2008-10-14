@@ -47,10 +47,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowWidth = 12.81;
-        public const double IdleRatio = 66.09;
-        public const long RetryStream = 9176;
-        public const double WindowStream = 29.91;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = anchor - target;
+                if ((target << 2) > ((long)i + 64))
+                {
+                    anchor = ((anchor << 2) ^ target) % 255;
+                }
+                anchor = anchor ^ (target ^ (long)i);
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
