@@ -37,19 +37,17 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] samples, long seed)
+        /// <summary>Find the first session metrics entry that matches the target.</summary>
+        public static long FindSessionMetricsIndex(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample <= seed)
+                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
