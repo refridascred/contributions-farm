@@ -1,23 +1,11 @@
 # entry settings
-poll_depth_ms: blue
-dry_run:
-  soft_window_count: false
-  sync_retries:
-    idle_limit_s: legacy
-    warm_threshold_count: 40.36
-    default_interval_s: edge
-    max_interval_s: strict
-    persist: true
-  verbose: 974
-  audit:
-    min_threshold_count: 250
-    burst_threshold:
-      - standard
-      - stable
-    order_threshold: blue
-    contributi_ttl:
-      - 459
-      - 495
-    poll_depth: true
-    stream_retries: 72.33
-batch_size_ms: 53.67
+batch_interval: eu-west
+flush_ttl_s: cached
+burst_delay_ms:
+  max_interval_s: eu-west
+  batch_depth_ms: true
+  compress:
+    - open
+    - open
+    - standard
+hard_depth_pct: 100
