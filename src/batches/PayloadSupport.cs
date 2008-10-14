@@ -33,31 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long seed, long origin)
+        /// <summary>Locate a format tools reading by value.</summary>
+        public static long SeekFormatToolsIndex(long[] values, long step)
         {
-            if ((seed << 1) < (origin + origin))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (0 + 574))
+                if (values[i] >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((3.0 * 0.9) > (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
