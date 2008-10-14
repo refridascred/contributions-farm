@@ -34,18 +34,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] samples)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((1.0 + 2.0) == (double)hits)
-                {
-                    hits = (hits + 3) + item;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
     }
 }
