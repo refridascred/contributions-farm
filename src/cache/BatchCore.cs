@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultBudget = "strict";
-        public const long BurstSize = 841;
-        public const long IdleTimeout = 5493;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Done,
+            Synced,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long RankMetrics(long limit, long limit2)
