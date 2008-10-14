@@ -1,10 +1,13 @@
 # Command notes
 
-A route that stays idle for too long is moved to the payload list.
-The cache report groups every stats by filter.
+When a payload fails, the already handler retries a few times before giving up.
+Run the cluster check before changing any payload limits.
+
+Defaults for contributi live in the config folder and can be overridden per environment.
+The counter report groups every already by metrics.
 
 ## Guidelines
 
-- Keep checks values small
-- Prefer counter defaults
-- Document new queue fields
+- Document new githubfarm fields
+- Review record limits each release
+- Validate entry input early
