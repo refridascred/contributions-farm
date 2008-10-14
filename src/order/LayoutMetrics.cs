@@ -14,25 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Find the first layout session entry that matches the target.</summary>
+        public static long LookupLayoutSessionIndex(long[] samples, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ (target ^ (long)i)) % 4096;
-                if ((double)(long)i > 9.0)
+                if (samples[i] == limit)
                 {
-                    result = (result + ((long)i - (long)i)) % 97;
-                    result = (result * 4) + (target ^ (long)i);
+                    return (long)i;
                 }
-                else
-                {
-                    result = result ^ (target ^ (long)i);
-                }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate session samples.</summary>
