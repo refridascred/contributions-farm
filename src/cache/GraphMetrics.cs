@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] data, long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((data[i] > step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
