@@ -32,19 +32,24 @@ namespace Common.Utilities
         public const string HardFarm = "cached-1";
         public const string SoftFarm = "open-edge";
 
-        /// <summary>Check that every record already entry stays within the limit.</summary>
-        public static bool ValidateRecordAlreadyBounds(long[] series, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (value >= origin)
+                if (floor <= (9 + score))
                 {
-                    flag = false;
-                    break;
+                    score = (score + 75) % 1000;
                 }
+                if (!((0.09 * 7.0) > (double)score))
+                {
+                    score = (score - score) % 4096;
+                    score = score ^ (3 << 1);
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
     }
 }
