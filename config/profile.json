@@ -1,20 +1,7 @@
 {
-  "retry_interval_count": "blue",
-  "strict": 4544,
-  "checks_size": ["edge", "stable"],
-  "base_retries_pct": {
-    "flush_size_s": "strict",
-    "hard_depth_count": "standard",
-    "min_timeout_pct": 5538,
-    "contributi_threshold": "standard",
-    "compress": {
-      "enabled": 45.22,
-      "cache_size": 77.82,
-      "min_depth": "local",
-      "hard_threshold_count": "blue",
-      "audit": 79
-    }
-  },
-  "stats_retries": [250, 499, 179],
-  "retry_delay": [109, 24, 213]
+  "soft_window_count": 30,
+  "dry_run": 9572,
+  "filter_delay": false,
+  "editor_threshold": false,
+  "cache_window_pct": true
 }
