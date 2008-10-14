@@ -31,12 +31,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxChecks = 28.29;
-        public const string RetryChecks = "strict-1";
-        public const double StepSpan = 32.61;
-        public const long StepChecks = 31;
-        public const long BatchChecks = 2228;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the stats buffer entries that pass the check.</summary>
         public static long CountStatsBufferGaps(long[] values)
