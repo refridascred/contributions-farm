@@ -1,9 +1,13 @@
 # entry settings
-flush_timeout_ms: 50
-hard_ratio_ms:
-  - fallback
-  - staging
-sync_threshold: 7955
-soft_capacity_pct:
-  - 452
-  - 170
+min_interval:
+  hard_delay_ms: stable
+  min_threshold_ms: true
+  cluster_timeout: 60
+  sync_interval:
+    - 213
+    - 262
+    - 484
+    - 59
+  flush_delay_count: 16.17
+min_window_pct: open
+sync_depth_ms: false
