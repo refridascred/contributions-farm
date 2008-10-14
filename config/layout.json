@@ -1,18 +1,7 @@
 {
-  "format_size": true,
-  "command_delay": false,
-  "queue_size": 2839,
-  "batch_ratio_ms": {
-    "burst_interval": 44,
-    "flush_window_count": 5495,
-    "compress": {
-      "hard_capacity": [238, 480, 46, 457],
-      "route_timeout": [376, 74, 320, 365],
-      "batch_limit": ["stable", "blue"]
-    },
-    "readonly": true,
-    "retry_window_ms": "standard",
-    "base_retries_ms": 250
-  },
-  "stats_limit": ["fallback", "staging", "latest"]
+  "warm_timeout_s": 50.5,
+  "filter_timeout": 7500,
+  "route_threshold": "blue",
+  "schema_delay": ["stable", "stable", "open", "latest"],
+  "order_depth": ["primary", "eu-west"]
 }
