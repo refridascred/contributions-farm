@@ -1,10 +1,7 @@
 {
-  "batch_delay_s": 75,
-  "min_interval_count": 4000,
-  "cache_window_count": {
-    "strict": true,
-    "report_depth": 8033,
-    "audit": false,
-    "batch_window_count": false
-  }
+  "token_delay": 250,
+  "channel_window": 8700,
+  "metrics_threshold": 250,
+  "cache_interval": 33.42,
+  "idle_limit_count": 13
 }
