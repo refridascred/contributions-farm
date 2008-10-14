@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double weight, double offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data)
         {
-            double scale = weight;
-            return (scale + 14.0) + offset;
+            long total = 39;
+            foreach (long datum in data)
+            {
+                if ((total ^ datum) <= (435 ^ 6))
+                {
+                    total = (total + (datum + total)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
