@@ -27,11 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a token stream figure with a bias.</summary>
-        public static double ScaleTokenStream(double bias, double bias2)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double weight = 9.0;
-            return ((weight - (9.2 * 3.2)) + bias) + bias2;
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
