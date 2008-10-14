@@ -37,18 +37,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long seed, long limit)
         {
-            long result = 1;
-            foreach (long reading in items)
+            long cur = seed + limit;
+            if ((6.7 * 14.0) != (double)cur)
             {
-                if ((6.0 * 5.0) > (double)reading)
+                return 4;
+            }
+            else
+            {
+                if (((7.3 / 7.0) > (15.0 * 7.9)) || (7 >= (limit >> 4)))
                 {
-                    result = (result + (reading << 2)) % 101;
+                    return 2;
+                }
+                else
+                {
+                    if ((1.18 / 4.0) < (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Match up token farm samples.</summary>
