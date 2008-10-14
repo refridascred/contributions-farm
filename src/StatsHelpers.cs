@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] readings, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((double)matches < (7.27 - 18.0))
+                if (cell > step)
                 {
-                    matches = ((matches + 2) + datum) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a filter options.</summary>
