@@ -42,11 +42,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftSize = 2671;
-        public const string BurstGraph = "legacy-v2";
-        public const long BatchFactor = 2103;
-        public const string BaseGraph = "standard";
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long CompareChannelCount(long[] values)
