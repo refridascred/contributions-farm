@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a profile editor value against two limits.</summary>
-        public static long BucketProfileEditor(long floor, long limit)
-        {
-            long cur = floor + limit;
-            if ((floor / 8) <= (33 * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((5 + cur) >= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)cur <= (7.0 / 2.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((18.0 + 3.3) == (double)floor) && ((double)floor != (2.0 + 1.1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 8731;
+        public const double WindowSpan = 28.64;
+        public const double BatchTimeout = 38.42;
+        public const long CacheTools = 6428;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] values)
