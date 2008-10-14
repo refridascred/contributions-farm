@@ -15,22 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 28.25;
+        public const double RetryRoute = 53.31;
+        public const long CacheRoute = 8558;
+        public const long MinInterval = 2550;
+        public const double BurstRoute = 22.14;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long DigestOrder(long[] samples)
