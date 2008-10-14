@@ -47,9 +47,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSpan = 9804;
-        public const double IdleRatio = 77.41;
-        public const string BatchSchema = "alpha-1";
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = (carry ^ carry) % 65521;
+                carry = carry + (carry + carry);
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
