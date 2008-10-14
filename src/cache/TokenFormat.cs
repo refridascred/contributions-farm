@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 8731;
-        public const long IdleAlready = 2774;
-        public const long BurstCount = 2040;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Retry,
+            Stale,
+            Ready,
+            Active,
+            Idle,
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double SmoothCluster(double ratio, double bias)
