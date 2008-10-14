@@ -16,22 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] series)
+        /// <summary>Locate a payload command reading by value.</summary>
+        public static long LocatePayloadCommandIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(count <= ((-87) - sample)))
+                if (levels[i] >= limit)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
