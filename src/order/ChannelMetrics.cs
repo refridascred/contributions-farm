@@ -22,17 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] values, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long seed, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((bound << 2) <= bound)
             {
-                if (values[i] >= seed)
+                return 6;
+            }
+            else
+            {
+                if (((bound + 6) < (bound * 5)) && ((seed & 63) >= (bound / 9)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)seed < (9.7 + 7.15)) || ((double)seed != (6.4 / 4.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + seed) < (seed + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
