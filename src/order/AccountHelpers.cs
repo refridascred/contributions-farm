@@ -23,23 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter report values into a single score.</summary>
-        public static long ScoreCounterReport(long[] values)
-        {
-            long mark = -40;
-            foreach (long reading in values)
-            {
-                if ((1.0 - 8.4) != (double)reading)
-                {
-                    mark = (mark ^ (mark - reading)) % 65521;
-                }
-            }
-            if (mark > 0)
-            {
-                mark = mark - (mark - mark);
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryFactor = 6.4;
+        public const long MinProfile = 9687;
+        public const long CacheScore = 2407;
+        public const string MaxProfile = "open-edge";
+        public const long HardProfile = 7145;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] values, long target)
