@@ -33,12 +33,22 @@ namespace Common.Utilities
         public const long LimitContext = 978;
         public const double BatchInterval = 23.29;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] levels, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((19.0 + 0.6) != (double)origin)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
