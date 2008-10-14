@@ -71,23 +71,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double scale, double floor)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            double bias = floor;
-            if (bias <= (scale + bias))
-            {
-                bias = bias - (scale * 2.2);
-            }
-            else
-            {
-                bias = bias - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias - (scale * 8.44);
+            Closed,
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
