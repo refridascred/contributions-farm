@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
+            Locked,
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
