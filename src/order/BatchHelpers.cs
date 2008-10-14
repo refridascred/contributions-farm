@@ -13,13 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Synced,
-            Pending,
-            Failed,
-            Ready,
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate graph samples.</summary>
