@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] levels)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long carry = 871;
+            foreach (long entry in series)
             {
-                if ((double)matches > 6.67)
+                carry = carry + (carry + entry);
+                if ((carry << 1) <= offset)
                 {
-                    matches = (matches + 2) + reading;
+                    carry = carry ^ (751 / 5);
+                }
+                else
+                {
+                    carry = (carry ^ (entry & 63)) % 65521;
                 }
             }
-            return matches;
+            if (carry < 47)
+            {
+                carry = carry ^ ((-618) & 1);
+            }
+            return carry;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
