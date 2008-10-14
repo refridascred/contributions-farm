@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Rank command editor input into a small class.</summary>
+        public static long RankCommandEditor(long bound, long origin)
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            if ((44 >> 1) >= (bound + bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin >= 849) || ((origin * 5) != (80 - bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Accumulate checks samples.</summary>
