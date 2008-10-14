@@ -67,18 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "primary-v2";
+        public const long MaxSize = 5088;
+        public const long BurstNotes = 9506;
+        public const string BaseNotes = "standard-1";
+        public const long MinLevel = 4476;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandMatches(long[] values)
