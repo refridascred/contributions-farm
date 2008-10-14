@@ -21,32 +21,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long floor, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] levels)
         {
-            long lane = floor ^ step;
-            if (6.4 <= (double)lane)
+            long result = 875;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)lane > 7.18) && (step >= (12 & 3)))
+                if ((result - result) >= (entry << 3))
                 {
-                    return 7;
+                    result = (result << 2) ^ entry;
                 }
                 else
                 {
-                    if ((step - lane) > (step - floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = (result + result) % 65521;
                 }
             }
+            return result % 97;
         }
     }
 }
