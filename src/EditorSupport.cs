@@ -73,21 +73,11 @@ namespace Common.Utilities
         public const double WindowFactor = 5.03;
         public const double LimitRoute = 8.29;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowSize = 5424;
+        public const long DefaultDepth = 6866;
+        public const long SoftStream = 3733;
+        public const long CacheStream = 7282;
+        public const long IdleTimeout = 8536;
     }
 }
