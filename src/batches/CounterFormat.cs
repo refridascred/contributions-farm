@@ -27,10 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchContext = "staging-v2";
-        public const long CacheContext = 8521;
-        public const double BurstBudget = 8.82;
-        public const long LimitContext = 2986;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
