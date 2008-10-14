@@ -63,11 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] series, long seed)
         {
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
