@@ -58,11 +58,19 @@ namespace Common.Utilities
             return drift + (double)221;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Iterate the counter support series from a seed.</summary>
+        public static long StepCounterSupport(long step)
         {
-            public double Region { get; set; }
-            public double Score { get; set; }
+            long sum = step;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = ((sum << 3) ^ (-82)) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
