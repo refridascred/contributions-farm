@@ -1,6 +1,5 @@
 {
-  "persist": "fallback",
-  "soft_delay_ms": "latest",
-  "base_ratio_count": "edge",
-  "default_interval_count": 5205
+  "warm_delay_pct": 100,
+  "batch_depth": 6.34,
+  "compress": 1024
 }
