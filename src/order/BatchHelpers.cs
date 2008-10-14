@@ -27,29 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long seed, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long origin, long floor)
         {
-            if ((origin << 1) != (seed ^ origin))
+            if ((475 & 127) < (floor * 2))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((seed % 100) != (82 - origin))
+                if (((double)origin > (9.0 + 19.0)) && ((floor << 3) < 4))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)seed >= (4.48 - 0.2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 7;
                 }
             }
         }
