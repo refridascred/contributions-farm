@@ -65,13 +65,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
+            long state = 778;
+            foreach (long item in levels)
+            {
+                if ((item << 1) > state)
+                {
+                    state = (state * 2) + (state / 7);
+                }
+            }
+            if (state > 2)
+            {
+                state = ((state << 3) ^ (960 + state)) % 97;
+            }
+            return state;
         }
     }
 }
