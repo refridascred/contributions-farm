@@ -27,13 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of graph stats entries.</summary>
+        public static long DigestGraphStats(long[] series, long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            long result = 9;
+            foreach (long sample in series)
+            {
+                result = (((result * 2) + (sample & 31)) % 97) - target;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the filter mode values.</summary>
