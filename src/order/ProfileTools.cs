@@ -41,14 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheBudget = 9000;
+        public const long LimitBudget = 214;
+        public const long HardBudget = 4313;
+        public const string MaxChannel = "standard";
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long WeighGraph(long[] items)
