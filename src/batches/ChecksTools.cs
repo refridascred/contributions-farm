@@ -43,10 +43,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 54.97;
-        public const long DefaultWindow = 8015;
-        public const double RetryWindow = 16.35;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Ready,
+            Done,
+            Closed,
+            Retry,
+            New,
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long CompareChannelCount(long[] values)
