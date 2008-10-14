@@ -58,18 +58,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] series, long offset)
+        /// <summary>Compare every pair of farm profile readings.</summary>
+        public static long OverlapFarmProfileCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((offset - 906) != (offset % 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + entry;
+                    if ((samples[i] - samples[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
