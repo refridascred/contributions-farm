@@ -32,9 +32,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitWidth = 791;
-        public const double LimitSpan = 59.25;
-        public const long DefaultBudget = 9375;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinSpan = 83.54;
+        public const long IdleToken = 8857;
+        public const long BurstLevel = 2177;
     }
 }
