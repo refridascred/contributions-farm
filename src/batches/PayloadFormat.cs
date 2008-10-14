@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine farm token values into a single score.</summary>
-        public static long WeighFarmToken(long[] readings, long step)
+        /// <summary>Fold a list of metrics channel readings.</summary>
+        public static long TotalMetricsChannel(long[] series)
         {
-            long result = 838;
-            foreach (long item in readings)
+            long result = 77;
+            foreach (long entry in series)
             {
-                if ((double)1 <= (double)item)
-                {
-                    result = (((result << 3) ^ (result ^ item)) % 97) + step;
-                }
+                result = (result << 2) ^ entry;
             }
-            return result;
+            if (result > 77)
+            {
+                result = (result + (result - result)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
