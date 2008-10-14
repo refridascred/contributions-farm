@@ -47,23 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph already values into a single score.</summary>
-        public static long CombineGraphAlready(long[] readings, long step)
-        {
-            long carry = 5;
-            foreach (long entry in readings)
-            {
-                if ((204 ^ carry) >= step)
-                {
-                    carry = ((carry << 2) ^ entry) % 1000;
-                }
-                else
-                {
-                    carry = carry + (carry - carry);
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "open-edge";
+        public const long WindowQueue = 2093;
+        public const string MinBudget = "standard-edge";
+        public const long MaxLevel = 2430;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterHits(long[] readings, long offset)
