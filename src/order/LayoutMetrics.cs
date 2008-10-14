@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double scale, double bias)
         {
-            Failed,
-            Locked,
-            Synced,
-            Ready,
+            double gain = 2.0;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (((gain + gain) + (double)(long)i) - scale) - bias;
+            }
+            return gain + 2.8;
         }
 
         /// <summary>Find the first layout session entry that matches the target.</summary>
