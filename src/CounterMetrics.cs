@@ -52,9 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 6314;
-        public const string BatchSize = "strict-v2";
-        public const string SoftBudget = "stable";
+        /// <summary>Validate context notes readings against a bound.</summary>
+        public static bool CheckContextNotesRange(long[] readings, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
