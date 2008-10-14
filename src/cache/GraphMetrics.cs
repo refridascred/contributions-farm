@@ -22,19 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] samples, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
