@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] data, long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] series, long offset)
         {
-            long total = 30;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long value in series)
             {
-                total = ((total ^ (floor + total)) % 1000) ^ entry;
+                if (value < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Hold a commits entry.</summary>
