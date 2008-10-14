@@ -13,15 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Stale,
-            Closed,
-            Done,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardDepth = "open-1";
+        public const string SoftFactor = "cached";
+        public const long CacheSize = 5822;
+        public const long MinCommits = 6683;
+        public const long BatchCommits = 4022;
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
