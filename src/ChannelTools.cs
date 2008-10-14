@@ -35,23 +35,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double rate, double floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items, long floor)
         {
-            double scale = 1.2 * 13.0;
-            if (scale < (floor - floor))
+            long carry = 8;
+            foreach (long reading in items)
             {
-                scale = scale + (double)246;
+                carry = (carry - (8 << 2)) % 1000;
+                if (((double)reading != (double)carry) || ((507 - carry) >= (floor - 0)))
+                {
+                    carry = (carry << 3) ^ (carry + floor);
+                }
             }
-            else
+            if (carry < 4)
             {
-                scale = scale + (rate + rate);
+                carry = (carry + (floor ^ 357)) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (floor / 3.0)) - (double)(long)i;
-            }
-            return scale + (scale * 1.4);
+            return carry;
         }
     }
 }
