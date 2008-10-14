@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "standard-v2";
-        public const long CacheSpan = 3859;
-        public const long WindowRatio = 3343;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleCount = 4080;
