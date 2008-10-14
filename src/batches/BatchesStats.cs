@@ -41,35 +41,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long bound, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long step, long limit)
         {
-            long next = bound ^ limit;
-            if (!(((-66) + next) < bound))
+            long offset = step + limit;
+            if ((step / 6) < (limit + step))
             {
                 return 2;
             }
             else
             {
-                if ((limit - next) >= next)
+                if (1.89 > (double)offset)
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)limit != (8.9 - 8.1))
+                    if (step >= (3 ^ step))
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        if (((3.0 * 3.9) > (double)next) && ((6 - next) >= (next - next)))
+                        if ((offset - 13) > (limit - step))
                         {
-                            return 0;
+                            return 4;
                         }
                         else
                         {
-                            return 4;
+                            return 1;
                         }
                     }
                 }
