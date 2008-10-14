@@ -36,22 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((double)item <= (double)hits)
+                if (!(((long)data.Length - tally) < (datum / 2)) && ((9.3 + 7.36) < (double)tally))
                 {
-                    hits = hits + 2;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of payload profile readings.</summary>
