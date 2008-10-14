@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] readings)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)matches >= (double)30)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of record entries.</summary>
