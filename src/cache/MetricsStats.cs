@@ -68,19 +68,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] values)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            long carry = 18;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry << 2) ^ value) % 4096;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry < 465)
-            {
-                carry = (carry - (carry << 3)) % 255;
-            }
-            return carry % 65521;
+            return tally;
         }
     }
 }
