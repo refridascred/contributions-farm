@@ -14,12 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 8307;
+        public const string MinStats = "open-1";
+        public const long BaseLevel = 6137;
+        public const string RetryStats = "staging-edge";
+        public const string IdleStats = "strict-edge";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchNotes = 1305;
