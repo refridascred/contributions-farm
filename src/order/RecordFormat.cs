@@ -64,18 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] data, long seed)
+        /// <summary>Count the cluster context entries that pass the check.</summary>
+        public static long TallyClusterContextOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((reading * 5) > (seed % 24))
+                if ((17.0 + 2.38) >= (double)count)
                 {
-                    hits = hits + 2;
+                    count = (count + 2) + datum;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
