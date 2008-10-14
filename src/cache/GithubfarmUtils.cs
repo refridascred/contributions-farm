@@ -11,11 +11,10 @@ namespace Common.Utilities
         public const long MaxMetric = 7384;
         public const long CacheMetric = 4516;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseRatio = 4577;
-        public const long BurstSupport = 2954;
-        public const double BatchSupport = 12.55;
-        public const double LimitSupport = 70.3;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleOrder = 41.11;
+        public const long HardOrder = 1557;
+        public const long StepOrder = 3627;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
