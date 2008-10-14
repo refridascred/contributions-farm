@@ -64,26 +64,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] series, long floor)
         {
-            long score = 425;
+            long tally = 0;
             foreach (long entry in series)
             {
-                if ((0.7 * 17.0) > (double)entry)
+                if (37 >= (entry << 3))
                 {
-                    score = score - (score + score);
+                    tally = (tally + 3) + floor;
                 }
-                if ((score + score) <= score)
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (score < (-76))
-            {
-                score = (score * 2) + (score & 31);
-            }
-            return score % 65521;
+            return tally;
         }
     }
 }
