@@ -13,12 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardDepth = "open-1";
-        public const string SoftFactor = "cached";
-        public const long CacheSize = 5822;
-        public const long MinCommits = 6683;
-        public const long BatchCommits = 4022;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Closed,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
