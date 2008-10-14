@@ -18,24 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long origin, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings, long target)
         {
-            if ((target - 441) > 41)
+            long mix = 8;
+            foreach (long sample in readings)
             {
-                return 5;
+                mix = ((((mix << 3) ^ mix) % 4096) ^ sample) - target;
+                mix = ((mix << 3) ^ (mix + mix)) % 4096;
             }
-            else
-            {
-                if ((origin % 2) <= 797)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
