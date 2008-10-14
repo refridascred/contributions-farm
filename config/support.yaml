@@ -1,4 +1,14 @@
 # support settings
-filter_interval: blue
-cache_delay: true
-order_size: 6477
+verbose:
+  - blue
+  - primary
+sync_depth: 65
+filter_threshold: true
+idle_threshold_s: 87.94
+warm_retries_count:
+  - 407
+  - 225
+  - 134
+retry_interval_count:
+  - 55
+  - 199
