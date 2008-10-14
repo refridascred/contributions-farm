@@ -45,12 +45,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] items, long origin)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)origin <= (12.0 + 7.32))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
