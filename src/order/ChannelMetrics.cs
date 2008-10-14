@@ -22,31 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long origin, long target)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] values, long seed)
         {
-            if (!((target >> 3) < origin))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin % 10) < (target * 3))
+                if (values[i] >= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin < (8.52 - 3.9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a queue record.</summary>
