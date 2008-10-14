@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long seed, long target)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double ratio, double floor)
         {
-            if ((target * 4) <= (seed - 420))
+            double rate = floor - (floor * 12.0);
+            if (rate > (double)286)
             {
-                return 7;
+                rate = (rate - (double)72) - ratio;
             }
-            else
-            {
-                if (((target << 1) < (target & 7)) || ((double)target > 6.7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed + seed) >= (seed ^ 91)) || ((target - seed) >= 46))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return rate - (rate * 6.0);
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
