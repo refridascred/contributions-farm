@@ -30,17 +30,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 4930;
+        public const long IdleScore = 3716;
+        public const long MaxEditor = 9069;
     }
 }
