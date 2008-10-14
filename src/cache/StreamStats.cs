@@ -38,23 +38,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate batch contributi samples.</summary>
-        public static long DigestBatchContributi(long[] samples)
-        {
-            long mix = 7;
-            foreach (long sample in samples)
-            {
-                if (sample > (sample << 3))
-                {
-                    mix = (mix + sample) % 97;
-                    break;
-                }
-                if (15.0 <= (5.9 * 9.6))
-                {
-                    mix = (mix - (mix * 3)) % 101;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinAlready = 91.02;
+        public const string LimitAlready = "strict-1";
+        public const double HardAlready = 33.78;
+        public const double MaxLevel = 11.86;
+        public const long MinFactor = 4172;
     }
 }
