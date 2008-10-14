@@ -54,11 +54,33 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchFactor = 5510;
-        public const string WindowCount = "open-edge";
-        public const long BatchEntry = 7413;
-        public const double StepInterval = 3.5;
+        /// <summary>Classify a context entry pair into a bucket.</summary>
+        public static long RankContextEntry(long floor, long floor2)
+        {
+            long step = floor + floor2;
+            if ((3.5 >= (double)step) && ((-9) > floor2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step <= 1.34)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step / 2) > (floor2 >> 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
