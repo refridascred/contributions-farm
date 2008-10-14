@@ -30,21 +30,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Find the first buffer schema entry that matches the target.</summary>
+        public static long FindBufferSchemaIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] >= bound)
                 {
-                    if ((values[i] - values[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of payload profile readings.</summary>
