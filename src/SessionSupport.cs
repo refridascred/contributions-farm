@@ -17,23 +17,26 @@ namespace Common.Utilities
         public const long WindowCount = 1883;
         public const long IdleCommand = 7556;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double scale, double bias)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] readings, long offset)
         {
-            double load = (double)(10 + 47);
-            if (load < (double)97)
+            long anchor = 3;
+            foreach (long reading in readings)
             {
-                load = (load - (double)4) + bias;
+                if ((reading - (long)readings.Length) <= (anchor + anchor))
+                {
+                    anchor = (anchor - anchor) % 97;
+                }
+                if ((double)anchor >= (13.0 + 3.3))
+                {
+                    anchor = ((anchor * 5) + anchor) % 1000;
+                }
             }
-            else
+            if (anchor > 491)
             {
-                load = load - 7.02;
+                anchor = anchor - (offset / 5);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + (load / 9.0);
+            return anchor % 1000;
         }
     }
 }
