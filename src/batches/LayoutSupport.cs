@@ -52,20 +52,13 @@ namespace Common.Utilities
         public const long SoftBudget = 7459;
         public const long CacheNotes = 8002;
 
-        /// <summary>Derive the next buffer command value from a seed.</summary>
-        public static long StepBufferCommand(long target)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((54 >> 5) >= ((long)i % 3))
-                {
-                    acc = (acc ^ target) % 1000;
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Paused,
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
