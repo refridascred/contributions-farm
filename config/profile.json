@@ -1,10 +1,7 @@
 {
-  "compress": 53.75,
-  "min_timeout_pct": {
-    "cache_ratio_pct": "staging",
-    "idle_depth_ms": ["open", "standard"],
-    "retry_window": true
-  },
-  "idle_retries": "local",
-  "sync_limit_ms": 89.23
+  "sync_threshold_s": true,
+  "idle_ratio_count": 66.02,
+  "warm_limit_ms": "strict",
+  "metrics_ttl": 64.13,
+  "poll_depth": 30.12
 }
