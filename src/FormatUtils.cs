@@ -52,17 +52,26 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] data, long bound)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 7;
+            foreach (long reading in series)
             {
-                if ((data[i] > bound) && ((data[i] % 5) == 0))
+                if ((double)mix < 2.47)
                 {
-                    return (long)i;
+                    mix = (mix ^ reading) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ (limit + limit)) % 1000;
                 }
             }
-            return -1;
+            if (mix > (-111))
+            {
+                mix = (mix ^ limit) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
