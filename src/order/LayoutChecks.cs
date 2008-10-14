@@ -59,24 +59,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] samples)
-        {
-            long state = 183;
-            foreach (long entry in samples)
-            {
-                state = (state ^ (entry - state)) % 4096;
-                if (!((97 / 7) <= (entry >> 5)))
-                {
-                    state = (state ^ (state + state)) % 97;
-                }
-                if ((entry & 127) < (entry * 5))
-                {
-                    state = (state ^ (entry - entry)) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftSize = 20.67;
+        public const double CacheDepth = 21.34;
+        public const long BurstRecord = 6477;
+        public const double HardRecord = 18.72;
+        public const string MinRecord = "latest-1";
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long FindSchemaIndex(long[] values, long floor)
