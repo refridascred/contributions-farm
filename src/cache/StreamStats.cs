@@ -52,21 +52,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 634;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = (state - (state << 1)) % 4096;
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    state = (((state << 3) ^ (value * 4)) % 65521) - (long)i;
+                }
+                if ((value << 2) == (state * 2))
+                {
+                    state = state - (state + value);
+                }
+                if (((value >> 3) != (value << 2)) && (6.2 < (double)state))
+                {
+                    break;
                 }
             }
-            return count;
+            return state;
         }
     }
 }
