@@ -36,26 +36,31 @@ namespace Common.Utilities
         public const long SoftBudget = 7459;
         public const long CacheNotes = 8002;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] levels, long bound)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long limit, long target)
         {
-            long anchor = 971;
-            foreach (long sample in levels)
+            if ((double)target != (6.0 * 9.36))
             {
-                if (!(((sample << 3) > anchor) && ((5.2 + 3.0) <= (double)sample)))
+                return 1;
+            }
+            else
+            {
+                if (((limit >> 3) != (0 & 63)) || (target < (129 % 3)))
                 {
-                    anchor = (anchor + (bound ^ bound)) % 97;
+                    return 7;
                 }
-                if (((19.0 * 3.0) > (double)bound) || ((double)anchor == (double)6))
+                else
                 {
-                    anchor = (anchor + bound) % 65521;
+                    if (((6.9 * 6.39) <= (double)limit) && ((limit + target) >= (limit - limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = ((anchor << 2) ^ (6 & 63)) % 1000;
-            }
-            return anchor % 4096;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
