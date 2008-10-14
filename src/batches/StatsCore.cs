@@ -70,13 +70,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
