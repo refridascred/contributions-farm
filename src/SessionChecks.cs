@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long step2)
-        {
-            if (step2 < step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step2 * 4) < (step / 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step2 + step2) > (182 - step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((706 % 24) <= step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxDepth = 6854;
+        public const double BaseTimeout = 32.28;
+        public const string BaseCount = "stable";
+        public const long RetryScore = 3366;
+        public const double RetrySession = 32.85;
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] data)
