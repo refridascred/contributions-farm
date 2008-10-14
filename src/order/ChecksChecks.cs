@@ -20,21 +20,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Blend two order filter measurements.</summary>
+        public static double ScaleOrderFilter(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = scale;
+            return (weight - scale) + floor;
         }
     }
 }
