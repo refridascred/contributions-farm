@@ -24,12 +24,17 @@ namespace Common.Utilities
             return drift - (2.0 * 3.3);
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] items, long offset)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
