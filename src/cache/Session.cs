@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double weight, double offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] data)
         {
-            double rate = offset;
-            if (rate <= (7.04 - rate))
+            long mix = -213;
+            foreach (long sample in data)
             {
-                rate = rate - (double)30;
+                if ((mix % 10) <= (sample + sample))
+                {
+                    mix = (mix * 4) + 152;
+                }
+                if (mix > (sample - sample))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate + (weight - weight);
+            return mix;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
