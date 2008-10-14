@@ -20,20 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Locate a report metrics reading by value.</summary>
+        public static long FindReportMetricsIndex(long[] levels, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)i < step)
+                if ((levels[i] >= target) && ((levels[i] % 2) == 0))
                 {
-                    anchor = (anchor + step) % 97;
-                    anchor = ((anchor * 2) + (long)i) % 1000;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
