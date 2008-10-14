@@ -54,18 +54,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] levels, long step)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double load = (double)(10 + 47);
+            if (load < (double)97)
             {
-                if ((double)hits >= (2.71 * 0.5))
-                {
-                    hits = ((hits + 3) - datum) - step;
-                }
+                load = (load - (double)4) + bias;
             }
-            return hits;
+            else
+            {
+                load = load - 7.02;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load + (load / 9.0);
         }
     }
 }
