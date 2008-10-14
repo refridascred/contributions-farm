@@ -17,14 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Count the session layout entries that pass the check.</summary>
+        public static long TallySessionLayoutMatches(long[] values, long offset)
         {
-            Retry,
-            Closed,
-            Idle,
-            Paused,
-            Queued,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell < (double)tally)
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm phase values.</summary>
