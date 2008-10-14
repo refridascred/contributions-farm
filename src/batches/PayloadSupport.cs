@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardInterval = 73.48;
-        public const string SoftLevel = "open-1";
-        public const double IdleFactor = 25.95;
-        public const double BurstReport = 18.04;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public long Region { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Validate cache context readings against a bound.</summary>
         public static bool ValidateCacheContextLimits(long[] series, long floor)
