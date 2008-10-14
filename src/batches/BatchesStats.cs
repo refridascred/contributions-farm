@@ -23,19 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor route samples.</summary>
-        public static long DigestEditorRoute(long[] levels, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] values)
         {
-            long mix = -56;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long sample in values)
             {
-                mix = (mix << 2) ^ (mix / 3);
-                if ((origin << 2) == (entry * 4))
+                if (sample <= count)
                 {
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Fold a list of entry token readings.</summary>
