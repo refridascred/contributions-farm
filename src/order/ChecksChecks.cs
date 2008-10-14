@@ -23,19 +23,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] series, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((mix % 7) < (limit - 2))
+                if (!((70 - 3) != (cell / 4)) && (((seed + seed) != ((long)series.Length ^ (long)series.Length)) || ((cell % 100) <= (seen * 5))))
                 {
-                    mix = (mix ^ (limit * 4)) % 1000;
+                    seen = seen + 3;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
