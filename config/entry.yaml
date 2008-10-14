@@ -1,7 +1,13 @@
 # entry settings
-cache_depth_ms: 15
-hard_depth_count: 94.69
-cache_depth_count:
-  verbose: true
-  min_ttl: local
-  already_ttl: 814
+retry_retries_ms: false
+dry_run:
+  verbose:
+    - 497
+    - 136
+    - 420
+  audit: 9.09
+  strict: 73.53
+  max_timeout_s: false
+  warm_depth_pct: 52
+warm_ttl_s: 62
+compress: cached
