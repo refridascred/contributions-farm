@@ -20,12 +20,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a already batch reading by value.</summary>
-        public static long LookupAlreadyBatchIndex(long[] values, long origin)
+        /// <summary>Find the first window metric entry that matches the target.</summary>
+        public static long LocateWindowMetricIndex(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] > origin)
+                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
