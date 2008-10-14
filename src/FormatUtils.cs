@@ -71,9 +71,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultCount = 1439;
-        public const double WindowRecord = 7.15;
-        public const long LimitRecord = 6818;
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
