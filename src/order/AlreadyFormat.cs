@@ -25,20 +25,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double gain, double bias)
-        {
-            double weight = bias;
-            if (weight >= gain)
-            {
-                weight = weight - (weight - 1.6);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (double)543) + (double)(long)i;
-            }
-            return weight + (double)62;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 76.88;
+        public const long RetryFactor = 6074;
+        public const long CacheDepth = 2882;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long origin, long origin2)
