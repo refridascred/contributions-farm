@@ -69,19 +69,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two window filter measurements.</summary>
-        public static double AdjustWindowFilter(double ratio, double offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double load = offset;
-            if (load > (double)0)
-            {
-                load = load - (load * 4.67);
-            }
-            else
-            {
-                load = load + (double)5;
-            }
-            return load + (4.0 - ratio);
+            Stale,
+            New,
+            Done,
+            Draft,
         }
     }
 }
