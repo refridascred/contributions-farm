@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] levels, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long target)
         {
-            long mark = 462;
-            foreach (long sample in levels)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((sample < (origin + mark)) && (0.15 >= (double)origin))
-                {
-                    mark = (mark * 4) + (mark ^ sample);
-                }
-                else
-                {
-                    mark = (mark ^ (origin / 3)) % 1000;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (mark > 68)
-            {
-                mark = ((mark * 5) + (origin - mark)) % 97;
-            }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
