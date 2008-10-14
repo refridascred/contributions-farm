@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const double HardBudget = 37.16;
         public const long MaxFactor = 342;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] series, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (value <= bound)
+                if (!((double)matches == (5.46 * 5.2)))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
