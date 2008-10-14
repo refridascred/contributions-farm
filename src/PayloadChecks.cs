@@ -14,15 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long limit)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
