@@ -33,19 +33,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] series, long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (datum <= offset)
+                if ((seed + seed) < (entry + seen))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
