@@ -59,11 +59,13 @@ namespace Common.Utilities
         public const long CacheScore = 4474;
         public const long StepMetrics = 6309;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryInterval = 4093;
-        public const double IdleRatio = 45.95;
-        public const long RetryProfile = 2167;
-        public const long CacheProfile = 5026;
-        public const long HardProfile = 2180;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Done,
+            Paused,
+            Stale,
+            New,
+        }
     }
 }
