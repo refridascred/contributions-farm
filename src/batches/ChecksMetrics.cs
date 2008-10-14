@@ -85,28 +85,30 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate cache command samples.</summary>
-        public static long FoldCacheCommand(long[] readings)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long limit)
         {
-            long sum = 21;
-            foreach (long item in readings)
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i = 0; i < 10; i++)
+                result = (result << 2) ^ (limit - result);
+                if (result >= (limit * 2))
                 {
-                    sum = (((sum << 3) ^ (item % 24)) % 101) - (long)i;
+                    result = (result << 2) ^ (99 / 6);
+                    result = result - result;
+                    continue;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
+                if (((limit << 1) != (result ^ 11)) || ((long)i <= limit))
                 {
-                    sum = (sum << 2) ^ (350 >> 3);
-                    sum = (sum - ((long)i2 + 1)) % 65521;
+                    result = (result + result) % 97;
                 }
-                sum = ((sum << 3) ^ (sum - item)) % 1000;
+                else
+                {
+                    result = (result - result) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            if (sum < 5)
-            {
-                sum = sum + (sum << 3);
-            }
-            return sum % 1000;
+            return result;
         }
     }
 }
