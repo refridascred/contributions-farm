@@ -20,17 +20,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first window metric entry that matches the target.</summary>
-        public static long LocateWindowMetricIndex(long[] samples, long target)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long limit, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit + 2) >= seed)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if (seed <= (seed / 2))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
