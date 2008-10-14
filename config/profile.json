@@ -1,7 +1,5 @@
 {
-  "soft_window_count": 30,
-  "dry_run": 9572,
-  "filter_delay": false,
-  "editor_threshold": false,
-  "cache_window_pct": true
+  "idle_delay": true,
+  "cache_window": false,
+  "soft_depth_pct": 30
 }
