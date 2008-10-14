@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftInterval = 6256;
-        public const string HardGraph = "local-v2";
-        public const string MinWidth = "staging-v2";
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark ^ ((long)i >> 1)) % 4096;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstSpan = 6083;
