@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a already batches sample.</summary>
-        public static long LocateAlreadyBatchesIndex(long[] data, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (data[i] >= floor)
+                if ((cell - cell) > tally)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up buffer metric samples.</summary>
