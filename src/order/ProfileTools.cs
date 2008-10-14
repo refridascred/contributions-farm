@@ -19,20 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema editor series from a seed.</summary>
-        public static long StepSchemaEditor(long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] data, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long acc = 9;
+            foreach (long cell in data)
             {
-                if (((long)i - sum) < (sum - sum))
+                acc = acc - (acc - acc);
+                if (((seed / 8) <= (seed - seed)) && ((cell ^ acc) == (seed >> 3)))
                 {
                     break;
                 }
-                sum = (sum ^ (seed >> 5)) % 1000;
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Describe the schema phase values.</summary>
