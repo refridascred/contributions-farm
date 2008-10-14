@@ -51,24 +51,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] levels, long seed)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] samples, long floor)
         {
-            long anchor = 17;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor + (3 % 24)) - value;
-                anchor = anchor + (anchor - anchor);
-                if ((anchor % 5) > (anchor / 5))
+                if (samples[i] == floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = ((anchor * 4) + (seed / 5)) % 101;
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
