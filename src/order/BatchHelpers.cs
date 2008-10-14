@@ -13,18 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches / 2) <= sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
