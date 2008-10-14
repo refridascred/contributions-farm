@@ -13,10 +13,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetrySpan = 66.18;
-        public const long WindowCount = 1883;
-        public const long IdleCommand = 7556;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] readings, long offset)
