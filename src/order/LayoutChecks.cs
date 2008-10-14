@@ -24,24 +24,22 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data)
+        /// <summary>Audit tools schema readings against a rule.</summary>
+        public static long TallyToolsSchemaOutliers(long[] samples, long seed)
         {
-            long acc = 11;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((sample >> 3) != (sample * 5))
+                if ((137 - entry) != (seen + seen))
                 {
-                    acc = (acc ^ (87 % 97)) % 255;
-                    continue;
+                    seen = (seen + 2) + seed;
                 }
-                acc = acc + ((long)data.Length + sample);
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (acc > 396)
-            {
-                acc = ((acc << 3) ^ acc) % 255;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
