@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const long DefaultLevel = 6926;
         public const long BaseWindow = 8695;
 
-        /// <summary>Find the first cluster graph entry that matches the target.</summary>
-        public static long SeekClusterGraphIndex(long[] levels, long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < origin)
+                if (samples[i] <= target)
                 {
                     return (long)i;
                 }
