@@ -15,11 +15,11 @@ namespace Common.Utilities
         public const string DefaultContext = "latest-v2";
         public const long HardSize = 1340;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowFactor = 2415;
+        public const long WindowCluster = 7136;
+        public const double LimitBudget = 22.96;
+        public const long SoftCluster = 4670;
+        public const long CacheCluster = 7452;
     }
 }
