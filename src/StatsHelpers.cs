@@ -28,19 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster session samples.</summary>
-        public static long ScoreClusterSession(long[] data, long offset)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long result = 4;
-            foreach (long item in data)
-            {
-                result = (result ^ 53) - item;
-                if (((offset & 63) < offset) && (offset <= (long)data.Length))
-                {
-                    break;
-                }
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
