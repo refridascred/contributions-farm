@@ -55,19 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support graph readings against a bound.</summary>
-        public static bool VerifySupportGraphRange(long[] data, long target)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
     }
 }
