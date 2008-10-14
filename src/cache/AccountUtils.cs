@@ -14,13 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] items, long step)
         {
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
