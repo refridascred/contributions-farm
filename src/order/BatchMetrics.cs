@@ -27,19 +27,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] values, long limit)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Digest a series of account entries.</summary>
