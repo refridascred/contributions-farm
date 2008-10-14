@@ -14,16 +14,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Accumulate checks metrics samples.</summary>
+        public static long DigestChecksMetrics(long[] items, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            long total = 8;
+            foreach (long sample in items)
             {
-                score = (score + (offset >> 1)) % 97;
-                score = ((score * 3) + (long)i) % 97;
+                total = total + (offset << 3);
+                if (((offset * 3) < (sample - offset)) && ((-759) < offset))
+                {
+                    total = (total ^ (80 >> 1)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 5) + (80 / 5)) % 97;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Audit payload commits readings against a rule.</summary>
