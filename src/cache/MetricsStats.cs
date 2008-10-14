@@ -57,12 +57,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] values)
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            long carry = 18;
+            foreach (long value in values)
+            {
+                carry = ((carry << 2) ^ value) % 4096;
+            }
+            if (carry < 465)
+            {
+                carry = (carry - (carry << 3)) % 255;
+            }
+            return carry % 65521;
         }
     }
 }
