@@ -31,18 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] data)
+        /// <summary>Derive the next tools order value from a seed.</summary>
+        public static long SeriesToolsOrder(long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(value < (2 + (long)data.Length)))
+                mix = (mix + (bound + bound)) % 255;
+                if ((-964) < (mix + mix))
                 {
-                    count = count + 2;
+                    mix = (mix * 4) + bound;
+                    mix = mix + mix;
                 }
+                else
+                {
+                    mix = (mix * 3) + (mix * 3);
+                }
+                mix = (mix + (mix << 2)) % 4096;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
