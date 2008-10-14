@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] data, long target)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long mix = 9;
-            foreach (long reading in data)
-            {
-                mix = (mix - (reading + reading)) % 255;
-                if (reading > (target - reading))
-                {
-                    mix = ((mix * 5) + (21 << 1)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (target - reading)) % 65521;
-                }
-            }
-            return mix;
+            New,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count payload already pairs that satisfy a relation.</summary>
