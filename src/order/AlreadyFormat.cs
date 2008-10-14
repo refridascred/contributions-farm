@@ -32,14 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] samples, long target)
         {
-            Pending,
-            Stale,
-            Paused,
-            Active,
-            Locked,
+            long score = 943;
+            foreach (long value in samples)
+            {
+                if ((87 & 31) > (score + value))
+                {
+                    score = score + (-70);
+                }
+                else
+                {
+                    score = ((score * 3) + (score + target)) % 1000;
+                }
+            }
+            if (score > (-511))
+            {
+                score = (score ^ (score + (-274))) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Count the already filter entries that pass the check.</summary>
