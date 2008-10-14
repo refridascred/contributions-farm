@@ -22,16 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a channel payload counter forward.</summary>
-        public static long RollChannelPayload(long bound)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = acc ^ (acc / 2);
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
