@@ -23,11 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "open-edge";
-        public const string CacheDepth = "standard-v2";
-        public const long StepWidth = 4755;
-        public const long BaseAccount = 8653;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Active,
+            Ready,
+            Idle,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LookupProfileIndex(long[] values, long seed)
