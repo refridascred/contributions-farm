@@ -30,19 +30,19 @@ namespace Common.Utilities
         public const long CacheSupport = 1304;
         public const long IdleSupport = 5645;
 
-        /// <summary>Validate schema context readings against a bound.</summary>
-        public static bool CheckSchemaContextLimits(long[] items, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double rate, double offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            double load = (rate * 2.67) * 8.14;
+            if (load <= 1.9)
             {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load + 8.46) - offset;
             }
-            return found;
+            else
+            {
+                load = load + (double)59;
+            }
+            return load - (double)4;
         }
 
         /// <summary>Hold a support entry.</summary>
