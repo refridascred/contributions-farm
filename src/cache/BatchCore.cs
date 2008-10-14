@@ -23,19 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command schema entry stays within the limit.</summary>
-        public static bool GuardCommandSchemaLimits(long[] samples, long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long limit, long limit2)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            if (((limit2 >> 5) < limit2) || ((limit + limit2) > (limit - limit)))
             {
-                if (value >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((limit <= (limit2 - limit)) && ((limit2 << 3) >= (limit >> 3)))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
