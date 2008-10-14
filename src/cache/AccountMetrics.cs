@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a stats schema counter forward.</summary>
-        public static long IterateStatsSchema(long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] levels, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
+            long mark = 462;
+            foreach (long sample in levels)
             {
-                long cur = origin;
-                if (!((-700) < (cur & 15)))
+                if ((sample < (origin + mark)) && (0.15 >= (double)origin))
                 {
-                    sum = (sum ^ (sum - cur)) % 1000;
+                    mark = (mark * 4) + (mark ^ sample);
                 }
-                sum = ((sum * 4) + (long)i) % 97;
+                else
+                {
+                    mark = (mark ^ (origin / 3)) % 1000;
+                }
             }
-            return sum;
+            if (mark > 68)
+            {
+                mark = ((mark * 5) + (origin - mark)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
