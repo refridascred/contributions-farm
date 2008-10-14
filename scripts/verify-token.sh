@@ -7,13 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 5); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+TOKEN_LIMIT=145
+log "limit is ${TOKEN_LIMIT}"
