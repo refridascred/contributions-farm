@@ -1,12 +1,12 @@
 # githubfarm settings
-base_interval_ms: 30
-dry_run: staging
-hard_capacity_s: 29.87
-idle_ttl_ms: 13.67
-strict: cached
-warm_retries:
-  order_depth: 65.43
-  contributi_capacity: 9000
-  account_window: 95
-  checks_delay: 92
-  compress: 5048
+compress: true
+retry_retries_pct:
+  - 368
+  - 43
+  - 223
+  - 228
+cluster_ratio: 29.14
+soft_retries: strict
+soft_retries_ms:
+  - 176
+  - 193
