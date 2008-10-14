@@ -26,11 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 1305;
-        public const double SoftLevel = 11.51;
-        public const long SoftBudget = 7459;
-        public const long CacheNotes = 8002;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of filter farm entries.</summary>
         public static long DigestFilterFarm(long[] readings)
