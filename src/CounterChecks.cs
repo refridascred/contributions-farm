@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] series, long bound)
         {
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((double)bound > (double)(-7)) && ((bound % 24) < matches))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a format info.</summary>
