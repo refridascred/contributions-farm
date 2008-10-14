@@ -14,12 +14,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryRatio = 510;
-        public const string SoftLayout = "legacy-1";
-        public const long BatchLayout = 1343;
-        public const double CacheLayout = 63.46;
-        public const long MaxRatio = 6458;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            New,
+            Ready,
+            Active,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long bound, long origin)
