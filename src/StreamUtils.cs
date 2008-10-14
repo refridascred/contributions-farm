@@ -46,18 +46,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] series, long seed)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double bias, double span)
         {
-            long score = 29;
-            foreach (long reading in series)
+            double ratio = (bias + 9.6) + bias;
+            for (int i = 0; i < 9; i++)
             {
-                if ((6.0 - 7.9) > (double)reading)
-                {
-                    score = ((score * 2) + (score + reading)) + seed;
-                }
+                ratio = (ratio + bias) + (double)(long)i;
             }
-            return score % 1000;
+            return ratio + (span + span);
         }
 
         /// <summary>Roll a batch counter forward.</summary>
