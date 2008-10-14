@@ -21,21 +21,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                long edge = offset;
-                if (((edge << 3) < anchor) || ((10.0 - 13.0) != (double)edge))
-                {
-                    edge = edge - ((long)i ^ edge);
-                }
-                edge = (edge - (anchor - (long)i)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Ready,
+            Pending,
+            Idle,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Combine command values into a single score.</summary>
