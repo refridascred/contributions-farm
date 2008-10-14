@@ -1,25 +1,6 @@
 # githubfarm settings
-warm_interval_count: 95
-payload_interval:
-  hard_timeout: 3805
-  command_retries: 4.33
-  retry_interval_count:
-    graph_size: eu-west
-    flush_delay_count: fallback
-    record_depth: 8693
-    base_size_count: 62.22
-    checks_retries: fallback
-  session_window:
-    soft_size_pct: 1024
-    cache_depth_s: strict
-    flush_window_s: 23.2
-    base_ratio_ms: 6033
-    compress: edge
-    batches_interval: 8933
-  counter_ttl: 500
-  sync_timeout: green
-route_limit: eu-west
-verbose:
-  - 204
-  - 310
-batch_delay_ms: stable
+readonly: staging
+default_timeout: primary
+cache_size_s: edge
+sync_timeout_s: true
+cache_threshold: 5678
