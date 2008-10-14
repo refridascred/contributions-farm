@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Paused,
-            Draft,
-            Synced,
-            Active,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 9293;
+        public const long LimitSize = 1872;
+        public const string MinContributi = "legacy";
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
