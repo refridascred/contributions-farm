@@ -50,14 +50,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Closed,
-            New,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstSize = 9173;
+        public const double SoftTimeout = 9.99;
+        public const double DefaultBatches = 27.63;
+        public const long HardLevel = 9925;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long ScoreBatch(long[] levels)
