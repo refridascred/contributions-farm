@@ -62,19 +62,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 815;
+        public const string BaseBatches = "alpha-v2";
+        public const long HardBatches = 7409;
+        public const string CacheCount = "open-edge";
     }
 }
