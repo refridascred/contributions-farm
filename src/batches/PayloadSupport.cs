@@ -33,18 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Locate a notes channel reading by value.</summary>
+        public static long SeekNotesChannelIndex(long[] readings, long origin)
         {
-            long total = 39;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total ^ datum) <= (435 ^ 6))
+                if (readings[i] >= origin)
                 {
-                    total = (total + (datum + total)) % 1000;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a commits notes counter forward.</summary>
