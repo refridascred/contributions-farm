@@ -54,32 +54,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a context entry pair into a bucket.</summary>
-        public static long RankContextEntry(long floor, long floor2)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long step = floor + floor2;
-            if ((3.5 >= (double)step) && ((-9) > floor2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= 1.34)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step / 2) > (floor2 >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
