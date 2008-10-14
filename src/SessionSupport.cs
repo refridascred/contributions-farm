@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] levels)
+        /// <summary>Audit contributi schema readings against a rule.</summary>
+        public static long TallyContributiSchemaOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((count >> 1) == (cell * 3))
+                if ((seen ^ 16) <= seen)
                 {
-                    count = count + 3;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a order options.</summary>
