@@ -18,39 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long offset, long target)
-        {
-            if ((target & 15) >= (target + 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target & 15) == (offset & 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target >= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((74 - target) > (target << 2)) && (1.4 >= (double)offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultCount = 3408;
+        public const double IdleWindow = 40.31;
+        public const long MaxDepth = 4292;
+        public const long BaseFactor = 3483;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long ClassifyProfile(long target, long origin)
