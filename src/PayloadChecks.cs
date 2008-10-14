@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long result = -7;
-            foreach (long datum in samples)
-            {
-                if (((result / 6) < 11) && ((result + 8) >= (result / 8)))
-                {
-                    result = (result + datum) % 1000;
-                    continue;
-                }
-                result = (result - (513 ^ 26)) % 1000;
-            }
-            return result;
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
