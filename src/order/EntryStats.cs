@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] levels)
         {
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            long anchor = 68;
+            foreach (long sample in levels)
+            {
+                anchor = (anchor + sample) % 1000;
+            }
+            if (anchor < 537)
+            {
+                anchor = (anchor ^ anchor) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a queue record.</summary>
