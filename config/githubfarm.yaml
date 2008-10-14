@@ -1,25 +1,17 @@
 # githubfarm settings
-min_retries_pct:
-  - 102
-  - 338
-  - 495
-  - 466
-contributi_window: 60
-commits_timeout:
-  sync_limit:
-    flush_delay: 3764
-    queue_timeout:
-      - 139
-      - 36
-    audit: 8.98
-    stream_threshold: true
-  base_capacity_ms:
-    burst_threshold_ms: blue
-    hard_window: false
-    default_window_s: latest
-  compress: 60
-  entry_window: 7.31
-  cache_ttl_count: 6594
-hard_capacity_s: 1334
-poll_depth_pct: 36.36
-commits_capacity: 100
+poll_ttl_s:
+  min_delay: 11
+  warm_depth_s: fallback
+  audit:
+    - legacy
+    - staging
+sync_window_ms: 6549
+readonly: fallback
+persist:
+  - 111
+  - 48
+farm_timeout: cached
+command_ratio:
+  - 199
+  - 58
+  - 194
