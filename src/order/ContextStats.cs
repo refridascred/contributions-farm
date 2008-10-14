@@ -27,38 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long floor, long target)
+        /// <summary>Scale a token stream figure with a bias.</summary>
+        public static double ScaleTokenStream(double bias, double bias2)
         {
-            if ((floor + floor) > (target + target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target > (18.0 / 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target <= (floor << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)target >= (9.8 - 0.73)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double weight = 9.0;
+            return ((weight - (9.2 * 3.2)) + bias) + bias2;
         }
 
         /// <summary>Describe the filter mode values.</summary>
