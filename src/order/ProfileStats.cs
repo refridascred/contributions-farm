@@ -16,39 +16,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long offset, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double scale, double span)
         {
-            long cur = offset + origin;
-            if ((double)origin > (10.0 + 11.0))
+            double ratio = (scale - span) - span;
+            if (ratio > (span + span))
             {
-                return 4;
+                ratio = ratio - (8.36 - scale);
             }
             else
             {
-                if ((origin - offset) <= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin << 3) < (cur >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin < (0.7 + 4.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                ratio = ratio - (double)0;
             }
+            return ratio + scale;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
