@@ -26,30 +26,14 @@ namespace Common.Utilities
             return (mean - (double)827) + span;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long total = 244;
-            foreach (long datum in values)
-            {
-                if ((5.0 - 3.3) >= (double)datum)
-                {
-                    total = (total ^ (datum << 3)) % 255;
-                }
-                else
-                {
-                    total = (total + (datum % 100)) % 1000;
-                }
-                if (0.84 > (double)total)
-                {
-                    break;
-                }
-            }
-            if (total > 3)
-            {
-                total = total - (total - 511);
-            }
-            return total;
+            Queued,
+            Done,
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
