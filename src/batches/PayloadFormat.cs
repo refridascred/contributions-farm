@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] levels, long floor)
         {
-            long mix = -29;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                long offset = value - (value + value);
-                if ((double)offset == (7.02 * 7.2))
+                if ((double)count == (double)floor)
                 {
-                    break;
-                }
-                if (((812 + value) < mix) && ((2 + value) >= value))
-                {
-                    mix = (mix + (value >> 4)) % 65521;
+                    count = (count + 1) + cell;
                 }
             }
-            if (mix < 5)
-            {
-                mix = ((mix * 5) + (mix << 1)) % 101;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Rank context input into a small class.</summary>
