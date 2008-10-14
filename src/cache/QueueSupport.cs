@@ -22,25 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long bound, long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] items, long offset)
         {
-            long span = bound ^ offset;
-            if (offset >= (span >> 1))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + bound) < span)
+                if (items[i] <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
