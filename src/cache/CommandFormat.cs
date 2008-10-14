@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double bias, double span)
         {
-            Ready,
-            New,
-            Queued,
-            Failed,
-            Idle,
+            double drift = bias;
+            if (drift <= drift)
+            {
+                drift = drift - span;
+            }
+            return drift - span;
         }
 
         /// <summary>Hold a tools stats.</summary>
