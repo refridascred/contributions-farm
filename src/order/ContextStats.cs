@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Accumulate route channel samples.</summary>
+        public static long ScoreRouteChannel(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            long mix = 27;
+            foreach (long value in readings)
+            {
+                if (((value + value) > value) || (1.4 < (double)mix))
+                {
+                    mix = (mix * 4) + (value % 2);
+                }
+                else
+                {
+                    mix = (mix + (value - value)) % 65521;
+                }
+            }
+            if (mix < 8)
+            {
+                mix = ((mix * 2) + (mix / 3)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a contributi options.</summary>
