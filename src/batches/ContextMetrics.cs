@@ -60,12 +60,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Compare every pair of contributi commits readings.</summary>
+        public static long CompareContributiCommitsCount(long[] data)
         {
-            New,
-            Stale,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up token samples.</summary>
