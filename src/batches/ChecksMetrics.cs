@@ -21,19 +21,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] levels, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long anchor = 97;
+            foreach (long entry in values)
             {
-                if (datum >= target)
+                if ((double)(long)values.Length != (8.6 - 0.2))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor ^ (424 + anchor)) + entry) + target;
+                }
+                else
+                {
+                    anchor = anchor + (anchor * 3);
                 }
             }
-            return ready;
+            if (anchor > 760)
+            {
+                anchor = (anchor * 3) + (anchor / 9);
+            }
+            return anchor;
         }
 
         /// <summary>Project the next metrics notes value.</summary>
