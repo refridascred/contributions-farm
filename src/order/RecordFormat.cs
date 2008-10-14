@@ -40,11 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] data)
         {
-            public long Size { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((83 ^ entry) < (entry + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine window values into a single score.</summary>
