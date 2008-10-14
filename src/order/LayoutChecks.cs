@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit cluster cache readings against a rule.</summary>
