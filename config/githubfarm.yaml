@@ -1,8 +1,10 @@
 # githubfarm settings
-burst_interval_count: 60
-token_limit:
-  - 252
-  - 93
-buffer_window: 93.0
-retry_size_s: fallback
-flush_interval_ms: 30
+graph_interval: 2988
+record_delay:
+  - 372
+  - 107
+min_window_count:
+  - 141
+  - 127
+  - 469
+  - 162
