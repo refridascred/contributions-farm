@@ -1,12 +1,18 @@
 {
-  "persist": {
-    "readonly": false,
-    "cache_size": ["eu-west", "blue", "green"],
-    "metric_threshold": "strict",
-    "verbose": "eu-west",
-    "audit": 500
+  "batch_capacity": "primary",
+  "enabled": true,
+  "flush_size": "local",
+  "flush_size_count": {
+    "base_threshold": {
+      "channel_capacity": 8475,
+      "record_interval": 1316,
+      "idle_interval_count": "local",
+      "warm_delay": "cached",
+      "base_timeout": "primary"
+    },
+    "burst_size_pct": "primary",
+    "retry_size_ms": 75.02,
+    "sync_interval": "cached"
   },
-  "cache_timeout": 43,
-  "audit": 1024,
-  "default_ttl": 33
+  "cache_timeout": "green"
 }
