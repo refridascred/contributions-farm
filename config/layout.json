@@ -1,8 +1,18 @@
 {
-  "idle_size_ms": [116, 411],
-  "metrics_delay": 4583,
-  "flush_timeout": "strict",
-  "poll_interval_pct": 82.23,
-  "verbose": true,
-  "idle_retries": 1828
+  "format_size": true,
+  "command_delay": false,
+  "queue_size": 2839,
+  "batch_ratio_ms": {
+    "burst_interval": 44,
+    "flush_window_count": 5495,
+    "compress": {
+      "hard_capacity": [238, 480, 46, 457],
+      "route_timeout": [376, 74, 320, 365],
+      "batch_limit": ["stable", "blue"]
+    },
+    "readonly": true,
+    "retry_window_ms": "standard",
+    "base_retries_ms": 250
+  },
+  "stats_limit": ["fallback", "staging", "latest"]
 }
