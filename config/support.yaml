@@ -1,11 +1,35 @@
 # support settings
-burst_delay: 65.26
-compress: stable
-sync_delay: 100
-max_capacity_ms:
-  contributi_size: true
-  idle_size_count: 144
-  poll_capacity: 72.23
-  strict: 9
-notes_retries: 250
-graph_depth: 6.88
+sync_threshold_pct: 37
+cluster_depth:
+  warm_ttl: false
+  poll_limit_pct: false
+  queue_timeout:
+    idle_window_count: primary
+    base_capacity_ms: cached
+    persist: true
+  cluster_retries: 60
+  base_capacity:
+    - 403
+    - 256
+  idle_ratio:
+    batch_window: 28.47
+    persist: local
+    window_timeout: standard
+    sync_capacity: 27
+    burst_retries_count: false
+    schema_timeout: green
+poll_capacity: 500
+dry_run:
+  min_limit_s: cached
+  burst_ttl_count:
+    record_delay: true
+    max_interval_ms:
+      - blue
+      - fallback
+      - green
+    layout_depth: true
+    burst_size: true
+    idle_depth_ms: 57
+  warm_size: 60
+  hard_size_ms: 80.39
+  compress: staging
