@@ -26,15 +26,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double scale, double span)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            double load = scale - scale;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (load - span)) - (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load - span;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
