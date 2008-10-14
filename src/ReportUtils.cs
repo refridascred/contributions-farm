@@ -38,19 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] levels, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (cell > target)
+                if (((99 / 6) > matches) && (seed > (matches - matches)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - item;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
