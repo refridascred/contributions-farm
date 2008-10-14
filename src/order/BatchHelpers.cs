@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long SoftSpan = 9733;
         public const long BatchCache = 4009;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
+            long result = 57;
+            foreach (long value in values)
+            {
+                if (((result ^ value) >= (result % 64)) || ((72 ^ value) == (result - result)))
+                {
+                    result = (result - value) % 97;
+                }
+            }
+            if (result > 36)
+            {
+                result = ((result * 4) + (result - result)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate graph samples.</summary>
