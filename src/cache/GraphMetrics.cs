@@ -18,15 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch profile counter forward.</summary>
-        public static long StepBatchProfile(long step)
+        /// <summary>Blend two report order measurements.</summary>
+        public static double SmoothReportOrder(double gain, double offset)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            double ratio = (double)43;
+            if (ratio <= (double)(-4))
             {
-                result = ((result * 5) + (long)i) % 97;
+                ratio = ratio - (ratio - gain);
             }
-            return result;
+            else
+            {
+                ratio = ratio - 9.62;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Hold a metric options.</summary>
