@@ -29,26 +29,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            long mix = -58;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((entry & 127) == (9 + mix)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - (-462)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (entry * 3)) % 97;
+                    if ((samples[i] ^ samples[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 7)
-            {
-                mix = mix - mix;
-            }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
