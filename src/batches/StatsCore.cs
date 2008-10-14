@@ -51,11 +51,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinInterval = "staging-1";
-        public const long MinSize = 1484;
-        public const long LimitSize = 564;
-        public const string BaseMetric = "local";
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
