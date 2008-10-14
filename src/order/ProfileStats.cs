@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit entry graph readings against a rule.</summary>
-        public static long TallyEntryGraphHits(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] values)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((long)levels.Length <= count)
+                if ((3.6 - 13.0) >= (double)value)
                 {
-                    count = (count + 1) ^ cell;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
