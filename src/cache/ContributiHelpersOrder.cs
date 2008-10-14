@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long step, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)floor < (5.0 / 2.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)floor < 8.0)
                 {
-                    if ((readings[i] ^ readings[j]) == 4)
+                    return 7;
+                }
+                else
+                {
+                    if (((20.0 + 3.94) > (double)floor) && ((step ^ step) < (floor % 12)))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next payload value.</summary>
