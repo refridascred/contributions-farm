@@ -14,19 +14,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + seed) <= (seed ^ 6))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheSpan = 7272;
+        public const long MinAccount = 7239;
+        public const double SoftAccount = 15.97;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheReport = 6071;
