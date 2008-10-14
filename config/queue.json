@@ -1,8 +1,10 @@
 {
-  "batches_ratio": 37.86,
-  "cache_delay_pct": ["strict", "fallback"],
-  "verbose": 2422,
-  "profile_retries": [114, 451],
-  "enabled": 5071,
-  "soft_capacity_ms": [241, 298, 268, 43]
+  "dry_run": 26,
+  "burst_capacity_pct": {
+    "idle_delay": 500,
+    "buffer_timeout": "open",
+    "sync_ttl_s": "open"
+  },
+  "batch_timeout": 60,
+  "filter_ttl": true
 }
