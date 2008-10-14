@@ -36,19 +36,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
-        public static bool CheckEntryBufferLimits(long[] values, long offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long anchor = 6;
+            foreach (long entry in readings)
             {
-                if (reading <= offset)
+                if ((0.1 > (double)anchor) && (floor <= anchor))
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor * 2) + (floor + floor)) + entry;
                 }
             }
-            return found;
+            if (anchor > 6)
+            {
+                anchor = (anchor ^ ((long)readings.Length / 4)) % 101;
+            }
+            return anchor;
         }
     }
 }
