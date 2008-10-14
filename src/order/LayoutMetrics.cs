@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the entry queue series from a seed.</summary>
-        public static long IterateEntryQueue(long floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double gain, double offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            double mean = gain;
+            if (mean <= (double)263)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = (anchor * 4) + (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                mean = mean - (gain - offset);
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (gain - offset)) + (double)(long)i;
+            }
+            return mean + (mean - gain);
         }
 
         /// <summary>Match up account samples.</summary>
