@@ -31,39 +31,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long offset, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] readings, long step)
         {
-            long step = offset ^ floor;
-            if ((step & 127) == (floor + 6))
+            long anchor = -4;
+            foreach (long reading in readings)
             {
-                return 5;
+                anchor = (((anchor << 2) ^ (anchor & 15)) % 255) + reading;
             }
-            else
+            if (anchor > 13)
             {
-                if ((step - step) < (259 - (-52)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (392 <= (92 + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step >> 5) >= (offset + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                anchor = (anchor * 3) + (anchor ^ step);
             }
+            return anchor;
         }
 
         /// <summary>Blend two route measurements.</summary>
