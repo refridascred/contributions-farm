@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of metrics channel readings.</summary>
-        public static long TotalMetricsChannel(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] levels)
         {
-            long result = 77;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                result = (result << 2) ^ entry;
+                if ((item <= seen) && ((double)seen > (20.0 * 5.5)))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (result > 77)
-            {
-                result = (result + (result - result)) % 65521;
-            }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
