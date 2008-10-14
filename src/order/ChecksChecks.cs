@@ -43,11 +43,23 @@ namespace Common.Utilities
             return gain + 20.0;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 87.99;
-        public const double MinInterval = 79.42;
-        public const long WindowInterval = 7117;
-        public const string StepBudget = "staging-v2";
-        public const string LimitLevel = "strict-edge";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values, long step)
+        {
+            long carry = 1;
+            foreach (long sample in values)
+            {
+                carry = ((carry + sample) % 101) + step;
+                if (sample <= (carry % 64))
+                {
+                    carry = ((carry << 3) ^ (carry ^ 57)) % 1000;
+                }
+                else
+                {
+                    carry = carry - (sample + sample);
+                }
+            }
+            return carry;
+        }
     }
 }
