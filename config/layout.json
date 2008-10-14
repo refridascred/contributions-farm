@@ -1,5 +1,18 @@
 {
-  "idle_capacity_count": 60,
-  "soft_threshold_count": 64.19,
-  "audit": 81
+  "max_retries_s": true,
+  "burst_limit_count": {
+    "hard_interval_s": "strict",
+    "burst_limit_pct": "standard",
+    "default_ttl_pct": 1255
+  },
+  "warm_ratio_s": "fallback",
+  "poll_ratio_count": 20.11,
+  "poll_interval_count": "cached",
+  "flush_window_count": {
+    "batch_timeout_s": 2.14,
+    "idle_window_count": "legacy",
+    "farm_ttl": 32.99,
+    "compress": "primary",
+    "idle_limit_pct": 60
+  }
 }
