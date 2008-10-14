@@ -1,5 +1,6 @@
 {
-  "commits_delay": "stable",
-  "poll_interval": 100,
-  "checks_depth": 7247
+  "graph_retries": "strict",
+  "queue_interval": 29.02,
+  "enabled": 58.0,
+  "retry_depth": 7699
 }
