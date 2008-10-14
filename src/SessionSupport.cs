@@ -13,19 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] data, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (sample != bound)
+                if ((6.0 - 10.0) < (8.76 * 0.8))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 1) ^ cell) + offset;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
