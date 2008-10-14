@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long floor, long origin)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            if (floor > (origin & 255))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin & 3) < (origin - origin))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((0 >> 3) <= floor) && ((floor - floor) < 85))
+                    if ((series[i] ^ series[j]) == 10)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin << 3) <= (origin & 31)) || ((origin % 2) < origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a notes options.</summary>
