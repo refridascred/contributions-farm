@@ -19,17 +19,18 @@ namespace Common.Utilities
         public const double SoftQueue = 98.42;
         public const long RetryWidth = 5564;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] values, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (values[i] >= bound)
+                if ((matches % 97) < value)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
