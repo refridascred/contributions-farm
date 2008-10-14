@@ -34,27 +34,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of profile token entries.</summary>
-        public static long ScoreProfileToken(long[] values, long offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] samples, long origin)
         {
-            long anchor = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.4 - 10.0) == (double)datum)
+                if (samples[i] <= origin)
                 {
-                    break;
+                    return (long)i;
                 }
-                if (((datum - anchor) >= (952 << 3)) && ((datum * 5) > datum))
-                {
-                    anchor = (anchor + (anchor >> 5)) - offset;
-                }
-                else
-                {
-                    anchor = (anchor ^ (datum + anchor)) % 255;
-                }
-                anchor = ((anchor << 2) ^ (datum - datum)) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
