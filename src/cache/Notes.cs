@@ -22,11 +22,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 65.7;
-        public const string RetrySize = "legacy-edge";
-        public const long SoftInterval = 6997;
-        public const long DefaultCluster = 1642;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] data)
+        {
+            long anchor = 9;
+            foreach (long value in data)
+            {
+                if (((value + anchor) != (long)data.Length) && ((109 + anchor) <= (anchor * 5)))
+                {
+                    anchor = (anchor * 5) + (284 >> 2);
+                }
+                if ((3.7 + 13.0) >= (double)anchor)
+                {
+                    anchor = anchor ^ (anchor << 3);
+                }
+            }
+            if (anchor > 19)
+            {
+                anchor = anchor - (anchor >> 2);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long DeriveCluster(long limit)
