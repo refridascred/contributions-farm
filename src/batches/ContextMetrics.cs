@@ -60,24 +60,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double bias, double bias2)
-        {
-            double drift = 0.35 - (bias2 - bias);
-            if (drift <= (bias - bias2))
-            {
-                drift = drift - (bias2 - bias);
-            }
-            else
-            {
-                drift = drift + (double)994;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftWidth = 29.27;
+        public const double StepCache = 45.71;
+        public const double BatchCache = 90.7;
+        public const long IdleInterval = 9852;
+        public const long BurstCache = 1521;
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] readings)
