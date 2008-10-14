@@ -1,12 +1,11 @@
 # Command notes
 
-Run the entry check before changing any buffer limits.
-The filter helpers are pure functions, so they are safe to call from any thread.
-Each report is validated before it reaches the metric queue.
+Keep contributi and checks names short and lowercase.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review already limits each release
-- Prefer record defaults
-- Document new graph fields
-- Keep session values small
+- Keep entry values small
+- Prefer support defaults
+- Validate entry input early
+- Review contributi limits each release
