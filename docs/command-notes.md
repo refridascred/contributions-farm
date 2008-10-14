@@ -1,10 +1,11 @@
 # Command notes
 
-The route module keeps command values in sync with the report cache.
-The account module keeps commits values in sync with the token cache.
+A batches that stays idle for too long is moved to the order list.
+The queue report groups every metric by route.
+A session that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Document new report fields
-- Log every payload change
-- Prefer entry defaults
+- Review contributi limits each release
+- Keep route values small
+- Prefer stats defaults
