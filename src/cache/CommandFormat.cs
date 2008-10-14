@@ -34,15 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double gain, double bias)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            double mean = bias - (double)43;
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                mean = (mean + gain) + (double)(long)i;
             }
-            return mix;
+            return mean + (double)14;
         }
     }
 }
