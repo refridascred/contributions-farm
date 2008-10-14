@@ -31,17 +31,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first session metrics entry that matches the target.</summary>
-        public static long FindSessionMetricsIndex(long[] levels, long floor)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Draft,
+            Active,
+            Queued,
         }
     }
 }
