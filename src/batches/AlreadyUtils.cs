@@ -60,21 +60,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] series)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((2.0 + 14.0) <= (double)tally)
                 {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 2) ^ datum) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
