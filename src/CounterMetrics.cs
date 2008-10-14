@@ -46,10 +46,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultTimeout = "alpha-1";
-        public const long MaxNotes = 569;
-        public const long DefaultNotes = 5131;
-        public const double MinTimeout = 87.69;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
