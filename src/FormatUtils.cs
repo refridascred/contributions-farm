@@ -52,17 +52,19 @@ namespace Common.Utilities
             return (weight + scale) + span;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] data, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (data[i] <= target)
+                if (sample < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define record limits and defaults.</summary>
