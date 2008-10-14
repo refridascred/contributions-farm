@@ -27,13 +27,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Validate graph tools readings against a bound.</summary>
+        public static bool GuardGraphToolsRange(long[] readings, long step)
         {
-            Pending,
-            Closed,
-            Dropped,
-            Retry,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a batch header.</summary>
