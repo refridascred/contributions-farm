@@ -48,11 +48,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "open-edge";
-        public const long WindowQueue = 2093;
-        public const string MinBudget = "standard-edge";
-        public const long MaxLevel = 2430;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheLevel = 9854;
