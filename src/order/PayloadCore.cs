@@ -25,18 +25,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] values)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((double)(-711) == (double)tally)
-                {
-                    tally = (tally + 2) - value;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
