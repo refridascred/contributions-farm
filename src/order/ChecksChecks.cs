@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double scale, double floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] data)
         {
-            double gain = (floor * 4.63) * 10.0;
-            if (gain <= gain)
+            long mix = 70;
+            foreach (long entry in data)
             {
-                gain = gain + (scale * 16.0);
+                if ((entry - entry) == (mix & 31))
+                {
+                    mix = (mix ^ mix) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 16.0) + (double)(long)i;
-            }
-            return gain + (gain * 2.5);
+            return mix;
         }
 
         /// <summary>Hold a session options.</summary>
