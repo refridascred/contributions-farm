@@ -23,28 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] samples, long origin)
+        /// <summary>Measure how many payload tools samples are out of range.</summary>
+        public static long CountPayloadToolsHits(long[] items, long limit)
         {
-            long result = 83;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (origin < (result + 726))
+                if (limit >= reading)
                 {
-                    result = ((result * 5) + origin) % 97;
-                    result = ((result << 3) ^ (6 & 3)) % 255;
-                }
-                result = ((result << 3) ^ (result - (long)samples.Length)) % 255;
-                if ((double)result != (4.47 / 6.0))
-                {
-                    result = (result * 4) + (origin + result);
-                }
-                if ((origin < (origin % 12)) && ((190 ^ value) > (value * 3)))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Combine support values into a single score.</summary>
