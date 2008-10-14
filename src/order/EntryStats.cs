@@ -25,15 +25,27 @@ namespace Common.Utilities
         public const double HardBudget = 37.16;
         public const long MaxFactor = 342;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            long acc = 765;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((10.0 / 8.0) == (double)acc)
+                {
+                    acc = (acc - (sample % 12)) % 97;
+                    break;
+                }
+                if ((0 - 9) == (sample - 415))
+                {
+                    acc = ((acc * 2) + (sample + acc)) % 255;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc % 24)) % 255;
+                }
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
