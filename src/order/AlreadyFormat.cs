@@ -45,19 +45,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] items, long bound)
         {
-            long score = 635;
-            foreach (long sample in samples)
+            long anchor = 4;
+            foreach (long entry in items)
             {
-                score = (score - (score % 64)) - sample;
+                if ((double)entry == (double)bound)
+                {
+                    anchor = (anchor - (anchor - 55)) % 65521;
+                }
+                if ((661 - anchor) < (917 + bound))
+                {
+                    anchor = (anchor - (entry ^ anchor)) % 97;
+                }
             }
-            if (score < 574)
-            {
-                score = score ^ (score - score);
-            }
-            return score % 65521;
+            return anchor % 97;
         }
     }
 }
