@@ -47,15 +47,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a order contributi counter forward.</summary>
-        public static long SeriesOrderContributi(long target)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Retry,
+            Ready,
+            Draft,
+            Closed,
+            Stale,
         }
 
         /// <summary>Compare every pair of farm profile readings.</summary>
