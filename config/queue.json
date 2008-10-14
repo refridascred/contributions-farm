@@ -1,10 +1,10 @@
 {
-  "counter_delay": ["local", "edge"],
-  "farm_delay": true,
-  "format_ttl": {
-    "compress": 1024,
-    "retry_threshold_count": true,
-    "verbose": "open",
-    "cache_ratio_pct": "local"
-  }
+  "strict": {
+    "dry_run": "legacy",
+    "batch_delay": 60,
+    "counter_ratio": 60,
+    "channel_capacity": false
+  },
+  "persist": 9798,
+  "channel_limit": 48.99
 }
