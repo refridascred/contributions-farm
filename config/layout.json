@@ -1,7 +1,5 @@
 {
-  "token_delay": 250,
-  "channel_window": 8700,
-  "metrics_threshold": 250,
-  "cache_interval": 33.42,
-  "idle_limit_count": 13
+  "min_interval_ms": true,
+  "readonly": 465,
+  "flush_size": "local"
 }
