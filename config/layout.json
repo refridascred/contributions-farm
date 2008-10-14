@@ -1,7 +1,6 @@
 {
-  "order_ratio": 250,
-  "flush_interval": ["strict", "stable", "eu-west", "strict"],
-  "format_window": 6695,
-  "verbose": 780,
-  "idle_window_ms": "standard"
+  "metrics_retries": [500, 163],
+  "max_depth": 51.09,
+  "min_threshold": 29.71,
+  "min_interval_pct": "latest"
 }
