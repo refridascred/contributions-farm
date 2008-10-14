@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] levels, long bound)
-        {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleCount = "alpha-1";
+        public const double BurstEntry = 50.52;
+        public const string BaseBudget = "primary-1";
+        public const string CacheEntry = "alpha-edge";
+        public const long WindowSpan = 6120;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatOutliers(long[] items, long offset)
