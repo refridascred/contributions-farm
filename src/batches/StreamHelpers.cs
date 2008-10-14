@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] samples)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((double)seen <= (19.0 / 3.0)) || ((sample & 3) < (sample % 3))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a entry options.</summary>
