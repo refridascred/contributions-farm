@@ -56,22 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] levels, long origin)
         {
-            long mark = 14;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((datum % 2) == (datum / 6)))
+                if ((levels[i] <= origin) && ((levels[i] % 2) == 0))
                 {
-                    mark = (mark << 2) ^ (datum * 5);
-                }
-                else
-                {
-                    mark = mark - (datum - 0);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the commits level values.</summary>
