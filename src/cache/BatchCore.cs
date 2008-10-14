@@ -39,12 +39,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Audit graph support readings against a rule.</summary>
+        public static long CountGraphSupportHits(long[] samples, long origin)
         {
-            Retry,
-            Pending,
-            Active,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry & 1) >= seen) || (((double)entry > (19.0 - 5.23)) || ((double)seen > (5.0 - 17.0))))
+                {
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
