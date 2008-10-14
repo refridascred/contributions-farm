@@ -1,5 +1,5 @@
 {
-  "record_interval": "green",
-  "retry_timeout_pct": true,
-  "warm_depth_count": "staging"
+  "verbose": "blue",
+  "default_timeout_ms": "latest",
+  "min_interval": ["blue", "local", "local", "primary"]
 }
