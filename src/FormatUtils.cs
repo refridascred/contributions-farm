@@ -54,19 +54,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] readings, long floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < floor)
+                if ((data[i] > bound) && ((data[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
