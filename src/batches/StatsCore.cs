@@ -57,12 +57,11 @@ namespace Common.Utilities
         public const long LimitSize = 564;
         public const string BaseMetric = "local";
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Active,
-            Ready,
-            Stale,
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
