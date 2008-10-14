@@ -1,13 +1,8 @@
 # githubfarm settings
-cache_interval_count: 83.85
-sync_capacity_s:
-  cluster_interval: 7525
-  entry_capacity: latest
-  burst_window_s: 3874
-  default_ttl: cached
-  route_retries: true
-  cache_retries_count: 70
-audit: eu-west
-batch_timeout_ms: fallback
-batch_size: true
-poll_interval_s: 60
+burst_interval_count: 60
+token_limit:
+  - 252
+  - 93
+buffer_window: 93.0
+retry_size_s: fallback
+flush_interval_ms: 30
