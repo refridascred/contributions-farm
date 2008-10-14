@@ -64,13 +64,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] values, long target)
         {
-            Ready,
-            New,
-            Synced,
-            Idle,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!((15.0 <= (double)target) || ((target ^ 11) > (value >> 3))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
