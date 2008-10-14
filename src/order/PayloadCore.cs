@@ -37,12 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Paused,
-            Done,
-            Closed,
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a format sample.</summary>
