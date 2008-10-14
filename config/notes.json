@@ -1,7 +1,6 @@
 {
-  "compress": false,
-  "soft_size_pct": 250,
-  "base_timeout_ms": 12,
-  "soft_ratio": [37, 314],
-  "batch_window": true
+  "graph_interval": 250,
+  "min_depth": 60,
+  "soft_capacity": 10,
+  "metric_delay": "eu-west"
 }
