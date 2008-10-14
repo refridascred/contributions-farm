@@ -42,14 +42,17 @@ namespace Common.Utilities
             return (mean + weight) + offset;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Find the first filter queue entry that matches the target.</summary>
+        public static long SeekFilterQueueIndex(long[] values, long bound)
         {
-            Retry,
-            Ready,
-            Draft,
-            Closed,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of farm profile readings.</summary>
