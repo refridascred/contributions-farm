@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate token notes readings against a bound.</summary>
-        public static bool VerifyTokenNotesRange(long[] levels, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (value <= limit)
+                if ((13.0 + 12.0) > (double)bound)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a already stats.</summary>
