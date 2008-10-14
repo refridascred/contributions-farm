@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long origin, long origin2)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] values, long step)
         {
-            if ((double)origin2 != (1.6 - 20.0))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)92 > (double)origin)
+                if ((((double)value > (16.0 * 4.32)) || (value >= hits)) && ((double)hits > 0.16))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    hits = (hits + 2) - step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a order summary.</summary>
