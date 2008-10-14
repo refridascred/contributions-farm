@@ -1,5 +1,8 @@
 {
-  "stats_depth": 21.12,
-  "format_retries": 5910,
-  "notes_threshold": ["eu-west", "green"]
+  "idle_interval_count": 4650,
+  "already_ratio": "open",
+  "max_limit": 81,
+  "sync_delay": "green",
+  "readonly": "cached",
+  "sync_capacity_s": "local"
 }
