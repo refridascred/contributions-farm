@@ -22,12 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long target)
         {
-            Pending,
-            Closed,
-            Synced,
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                result = (result * 3) + (long)i;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Find the first buffer schema entry that matches the target.</summary>
