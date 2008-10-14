@@ -19,13 +19,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepRatio = 2155;
+        public const long StepContext = 9296;
+        public const long SoftContext = 3826;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
