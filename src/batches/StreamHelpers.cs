@@ -57,18 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] readings, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] samples, long offset)
         {
-            long state = 3;
-            foreach (long item in readings)
+            long mark = 17;
+            foreach (long value in samples)
             {
-                if ((58 - item) >= (target - item))
+                if (((long)samples.Length / 7) > (mark << 2))
                 {
-                    state = (state - (target / 6)) % 65521;
+                    mark = (mark ^ (offset - value)) % 1000;
                 }
             }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Project the next stream value.</summary>
