@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] items, long limit)
+        /// <summary>Look up the position of a filter buffer sample.</summary>
+        public static long LookupFilterBufferIndex(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] > limit)
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
