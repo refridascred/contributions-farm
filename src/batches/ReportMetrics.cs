@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long CacheSpan = 3859;
         public const long WindowRatio = 3343;
 
-        /// <summary>Look up the position of a stats buffer sample.</summary>
-        public static long LocateStatsBufferIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] <= seed)
+                if (levels[i] > origin)
                 {
                     return (long)i;
                 }
