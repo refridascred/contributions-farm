@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Count the entry window entries that pass the check.</summary>
