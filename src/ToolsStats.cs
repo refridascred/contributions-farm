@@ -63,19 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] series, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (value < seed)
+                if (sample > offset)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
