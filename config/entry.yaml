@@ -1,7 +1,7 @@
 # entry settings
-compress: fallback
-readonly: 65.08
-cache_timeout: 54.01
-default_ratio_count: 59.22
-schema_ttl: local
-hard_capacity_count: false
+cache_depth_ms: 15
+hard_depth_count: 94.69
+cache_depth_count:
+  verbose: true
+  min_ttl: local
+  already_ttl: 814
