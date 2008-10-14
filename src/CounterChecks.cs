@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] readings, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long origin, long origin2)
         {
-            long mark = 759;
-            foreach (long sample in readings)
+            if ((double)origin2 != (1.6 - 20.0))
             {
-                if (mark > (sample - limit))
+                return 4;
+            }
+            else
+            {
+                if ((double)92 > (double)origin)
                 {
-                    mark = (mark * 4) + (limit ^ limit);
-                    break;
+                    return 7;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ mark) % 97;
+                    return 6;
                 }
-                mark = (mark ^ (limit + mark)) % 65521;
             }
-            return mark % 4096;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
