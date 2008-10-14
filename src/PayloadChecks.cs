@@ -46,19 +46,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] values)
-        {
-            long carry = 97;
-            foreach (long cell in values)
-            {
-                if (!((cell % 60) > (carry - carry)))
-                {
-                    carry = carry ^ (carry / 5);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultSpan = 24.57;
+        public const long BurstWidth = 212;
+        public const long BurstMetrics = 3225;
+        public const long CacheScore = 4474;
+        public const long StepMetrics = 6309;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long BucketRoute(long seed, long bound)
