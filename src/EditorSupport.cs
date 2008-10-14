@@ -37,15 +37,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two metrics batch measurements.</summary>
-        public static double ScaleMetricsBatch(double gain, double offset)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            double bias = offset - (double)71;
-            if (bias <= bias)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias + 7.9) - gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias + (double)6;
+            return seen;
         }
 
         /// <summary>Blend two channel measurements.</summary>
