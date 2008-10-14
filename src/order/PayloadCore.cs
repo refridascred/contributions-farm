@@ -49,16 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] levels, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            long score = -915;
+            foreach (long value in levels)
             {
-                mix = ((mix << 2) ^ (mix + mix)) % 97;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((score ^ score) <= value)
+                {
+                    score = ((score ^ score) % 101) + floor;
+                }
             }
-            return mix;
+            return score;
         }
     }
 }
