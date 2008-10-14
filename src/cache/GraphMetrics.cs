@@ -57,14 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] items, long floor)
         {
-            Synced,
-            Draft,
-            Locked,
-            Stale,
-            Active,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
