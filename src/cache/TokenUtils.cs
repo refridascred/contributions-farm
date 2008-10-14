@@ -20,21 +20,17 @@ namespace Common.Utilities
             return load - (floor / 7.0);
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Find the first cache batches entry that matches the target.</summary>
+        public static long LookupCacheBatchesIndex(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (series[i] >= origin)
                 {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
