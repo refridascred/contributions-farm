@@ -88,31 +88,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long limit, long origin)
-        {
-            if ((double)origin == (12.0 - 9.9))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + origin) >= (limit % 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin % 2) != (limit - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseRatio = 2297;
+        public const double MinWidth = 50.41;
+        public const string MinSize = "stable-1";
+        public const long WindowGithubfarm = 6579;
     }
 }
