@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data)
         {
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches / 2) <= sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank format input into a small class.</summary>
