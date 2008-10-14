@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
