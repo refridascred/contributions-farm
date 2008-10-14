@@ -48,11 +48,18 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] levels, long origin)
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (origin < ((-2) / 5))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
