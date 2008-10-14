@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Accumulate cache layout samples.</summary>
+        public static long FoldCacheLayout(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 784;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((score % 97) > (cell + score)))
                 {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score << 3) ^ (cell % 64)) % 65521;
                 }
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Hold a notes options.</summary>
