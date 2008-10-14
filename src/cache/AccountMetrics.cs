@@ -47,13 +47,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long origin, long origin2)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Failed,
+            long bound = origin + origin2;
+            if (((origin - bound) < (origin + origin)) && ((879 + origin) >= (origin - origin2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin2 << 1) >= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (49 > (bound - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
