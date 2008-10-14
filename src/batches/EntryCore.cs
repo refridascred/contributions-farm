@@ -66,15 +66,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double ratio, double bias)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] levels, long limit)
         {
-            double gain = ratio / 4.0;
-            for (int i = 0; i < 5; i++)
+            long total = 444;
+            foreach (long value in levels)
             {
-                gain = ((gain - ratio) + (double)(long)i) + bias;
+                if ((double)total <= (1.2 + 6.0))
+                {
+                    total = total + total;
+                    total = ((total * 2) + (total ^ total)) % 4096;
+                }
+                if ((limit + limit) < (limit & 3))
+                {
+                    total = total ^ (value + (long)levels.Length);
+                }
             }
-            return gain - gain;
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
