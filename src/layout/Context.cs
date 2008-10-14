@@ -41,26 +41,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate support contributi samples.</summary>
-        public static long DigestSupportContributi(long[] items, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] series, long step)
         {
-            long result = 8;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((seed % 2) != (result + seed)))
+                if ((series[i] <= step) && ((series[i] % 5) != 0))
                 {
-                    result = result ^ ((-711) - item);
-                }
-                else
-                {
-                    result = result + seed;
+                    return (long)i;
                 }
             }
-            if (result > 38)
-            {
-                result = (result + (result >> 1)) % 1000;
-            }
-            return result;
+            return -1;
         }
     }
 }
