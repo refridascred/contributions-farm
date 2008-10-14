@@ -40,18 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] data)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((83 ^ entry) < (entry + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
