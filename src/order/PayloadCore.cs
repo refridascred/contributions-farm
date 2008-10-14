@@ -22,13 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            Retry,
+            Closed,
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
