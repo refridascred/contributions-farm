@@ -26,26 +26,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next tools order value from a seed.</summary>
-        public static long SeriesToolsOrder(long bound)
+        /// <summary>Grade a payload schema value against two limits.</summary>
+        public static long RankPayloadSchema(long origin, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long cur = origin - step;
+            if (step <= (step - cur))
             {
-                mix = (mix + (bound + bound)) % 255;
-                if ((-964) < (mix + mix))
+                return 5;
+            }
+            else
+            {
+                if ((42 >> 5) > (step + cur))
                 {
-                    mix = (mix * 4) + bound;
-                    mix = mix + mix;
+                    return 6;
                 }
                 else
                 {
-                    mix = (mix * 3) + (mix * 3);
+                    if (!((cur & 63) < (cur - 9)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(cur < 47))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                mix = (mix + (mix << 2)) % 4096;
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
