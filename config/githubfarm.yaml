@@ -1,8 +1,6 @@
 # githubfarm settings
-buffer_threshold: false
-warm_window_count: 80.51
-farm_size:
-  - stable
-  - local
-  - eu-west
-persist: false
+base_depth: 7008
+poll_capacity_count: fallback
+warm_capacity_pct: 50.47
+cache_window: 1024
+flush_window_s: 250
