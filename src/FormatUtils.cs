@@ -27,21 +27,27 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Digest a series of profile token entries.</summary>
+        public static long ScoreProfileToken(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((2.4 - 10.0) == (double)datum)
                 {
-                    if ((samples[i] ^ samples[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                if (((datum - anchor) >= (952 << 3)) && ((datum * 5) > datum))
+                {
+                    anchor = (anchor + (anchor >> 5)) - offset;
+                }
+                else
+                {
+                    anchor = (anchor ^ (datum + anchor)) % 255;
+                }
+                anchor = ((anchor << 2) ^ (datum - datum)) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
