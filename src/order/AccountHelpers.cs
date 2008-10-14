@@ -49,13 +49,24 @@ namespace Common.Utilities
         public const long BatchDepth = 1982;
         public const string BurstGithubfarm = "stable-edge";
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] levels, long seed)
         {
-            Pending,
-            Queued,
-            Done,
-            New,
+            long anchor = 17;
+            foreach (long value in levels)
+            {
+                anchor = (anchor + (3 % 24)) - value;
+                anchor = anchor + (anchor - anchor);
+                if ((anchor % 5) > (anchor / 5))
+                {
+                    break;
+                }
+            }
+            if (anchor > 7)
+            {
+                anchor = ((anchor * 4) + (seed / 5)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
