@@ -50,16 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a commits notes counter forward.</summary>
-        public static long StepCommitsNotes(long seed)
+        /// <summary>Count the queue batch entries that pass the check.</summary>
+        public static long MeasureQueueBatchHits(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                mark = mark + mark;
-                mark = ((mark * 4) + (long)i) % 97;
+                if (!((entry / 2) < (hits + entry)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
