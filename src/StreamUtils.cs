@@ -63,19 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] data, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long score = 21;
+            foreach (long reading in samples)
             {
-                if (reading < limit)
+                if ((score & 3) >= (floor ^ score))
                 {
-                    ready = false;
-                    break;
+                    score = ((score << 2) ^ (7 + (-948))) + reading;
                 }
             }
-            return ready;
+            if (score > 72)
+            {
+                score = (score - floor) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a metrics options.</summary>
