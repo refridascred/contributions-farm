@@ -1,7 +1,5 @@
 {
-  "warm_timeout_s": 50.5,
-  "filter_timeout": 7500,
-  "route_threshold": "blue",
-  "schema_delay": ["stable", "stable", "open", "latest"],
-  "order_depth": ["primary", "eu-west"]
+  "record_interval": "green",
+  "retry_timeout_pct": true,
+  "warm_depth_count": "staging"
 }
