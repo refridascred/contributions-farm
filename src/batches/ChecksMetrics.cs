@@ -12,13 +12,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] series)
         {
-            New,
-            Active,
-            Synced,
-            Pending,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count + reading) > (reading & 127))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
