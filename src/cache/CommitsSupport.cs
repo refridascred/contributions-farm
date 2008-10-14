@@ -66,21 +66,9 @@ namespace Common.Utilities
         public const double IdleSpan = 1.89;
         public const long StepQueue = 5709;
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 26.28;
+        public const string StepCluster = "cached-v2";
+        public const long BurstCluster = 9703;
     }
 }
