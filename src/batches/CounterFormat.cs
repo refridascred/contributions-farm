@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double scale, double offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] readings)
         {
-            double mean = 19.0;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                mean = ((mean + mean) + (double)(long)i) - offset;
+                if ((double)count >= (7.4 - 1.71))
+                {
+                    count = (count + 2) ^ cell;
+                }
             }
-            return mean - (9.2 - scale);
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
