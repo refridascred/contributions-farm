@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long origin, long target)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long span = origin + target;
-            if (!((target + target) <= (target & 15)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (span < (span * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((145 - origin) < (3 >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
