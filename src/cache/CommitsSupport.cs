@@ -49,12 +49,19 @@ namespace Common.Utilities
         public const string BurstDepth = "latest-v2";
         public const long SoftSpan = 6318;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleRatio = 9971;
-        public const long SoftEditor = 475;
-        public const long WindowWidth = 736;
-        public const string SoftSize = "primary-v2";
-        public const string StepCount = "primary-v2";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (item >= (item + 78))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up buffer record samples.</summary>
         public static long CompareBufferRecordCount(long[] samples)
