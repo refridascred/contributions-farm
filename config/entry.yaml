@@ -1,13 +1,11 @@
 # entry settings
-channel_window: 58.2
-graph_depth: true
-stats_delay: 7634
-record_ttl:
-  default_ttl_count:
-    base_timeout_count: 6778
-    verbose: 6927
-    hard_window_count: 72
-    cache_window_count: false
-  audit: eu-west
-  cache_depth_s: false
-dry_run: 1024
+soft_limit_count: 4.27
+min_depth_ms: 1024
+sync_window_s: 3947
+readonly:
+  audit: true
+  retry_depth: 91
+  default_ratio_ms:
+    cluster_limit: 80
+    flush_ratio: true
+    sync_depth_s: 6826
