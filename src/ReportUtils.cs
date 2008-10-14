@@ -32,15 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a githubfarm contributi reading.</summary>
-        public static double ScaleGithubfarmContributi(double scale, double span)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long origin, long seed)
         {
-            double load = (span + scale) / 3.0;
-            for (int i = 0; i < 5; i++)
+            if ((origin << 3) < (origin + seed))
             {
-                load = (load + span) - (double)(long)i;
+                return 1;
             }
-            return load + load;
+            else
+            {
+                if ((6.64 / 6.0) == (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed - 954) <= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (14.0 - 7.63))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
