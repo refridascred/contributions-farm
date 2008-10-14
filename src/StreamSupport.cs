@@ -29,13 +29,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 8509;
+        public const double BatchProfile = 10.08;
+        public const long SoftProfile = 9135;
     }
 }
