@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of record support readings.</summary>
-        public static long WeighRecordSupport(long[] series)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long carry = -51;
-            foreach (long sample in series)
-            {
-                if (sample >= (carry - sample))
-                {
-                    carry = carry ^ (sample * 3);
-                }
-            }
-            return carry % 97;
+            Stale,
+            Ready,
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a format info.</summary>
