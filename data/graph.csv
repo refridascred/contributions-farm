@@ -1,10 +1,7 @@
-id,token,region
-1,796,blue
-2,local,72.01
-3,6.96,9.88
-4,fallback,standard
-5,blue,standard
-6,676,921
-7,757,602
-8,fallback,282
-9,blue,91.2
+id,owner,score,rank,level
+1,69.65,stable,32.26,737
+2,40.31,30,17.99,39
+3,254,960,359,staging
+4,50.04,175,84.44,759
+5,334,78.27,63.13,608
+6,local,977,300,946
