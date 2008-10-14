@@ -1,6 +1,24 @@
 {
-  "burst_retries_s": 68,
-  "buffer_delay": 2894,
-  "dry_run": "eu-west",
-  "stream_capacity": "legacy"
+  "audit": 93.69,
+  "enabled": {
+    "session_window": {
+      "sync_window_pct": false,
+      "base_capacity_ms": 2.73,
+      "support_window": "staging",
+      "flush_interval_count": false,
+      "max_capacity_count": ["local", "blue", "edge"]
+    },
+    "audit": 53.98,
+    "flush_capacity": 60
+  },
+  "session_capacity": {
+    "soft_delay": "stable",
+    "burst_ratio_pct": "cached",
+    "flush_threshold": "standard",
+    "idle_ttl": [109, 445, 378, 87],
+    "min_timeout_count": 7963,
+    "audit": 2.67
+  },
+  "readonly": ["local", "latest"],
+  "default_timeout_ms": ["staging", "cached", "eu-west"]
 }
