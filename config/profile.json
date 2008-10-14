@@ -1,7 +1,14 @@
 {
-  "enabled": "latest",
-  "burst_delay": ["blue", "fallback", "blue", "staging"],
-  "commits_limit": "blue",
-  "sync_ttl_count": false,
-  "batch_timeout_ms": true
+  "account_timeout": 75,
+  "enabled": 25.49,
+  "sync_delay_s": ["eu-west", "eu-west"],
+  "burst_retries_s": {
+    "batch_threshold_ms": true,
+    "cluster_depth": false,
+    "account_threshold": [466, 243, 25, 383],
+    "warm_interval_pct": 81.5,
+    "base_retries_pct": "legacy",
+    "min_limit": "edge"
+  },
+  "dry_run": 35.96
 }
