@@ -61,21 +61,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up token farm samples.</summary>
-        public static long MatchTokenFarmCount(long[] samples)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
     }
 }
