@@ -53,18 +53,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] readings)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((4.2 * 9.9) > (double)value)
-                {
-                    hits = hits + 3;
-                }
+                acc = (acc ^ (long)i) % 4096;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
     }
 }
