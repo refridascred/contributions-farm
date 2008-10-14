@@ -40,10 +40,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryFactor = 2162;
-        public const long BaseScore = 3690;
-        public const string RetryInterval = "primary";
-        public const string DefaultPayload = "standard-v2";
+        /// <summary>Iterate the cluster filter series from a seed.</summary>
+        public static long DeriveClusterFilter(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                state = state - (limit & 127);
+                state = (state + 692) % 4096;
+                if (((long)i ^ limit) >= (state + 310))
+                {
+                    state = ((state << 3) ^ (2 + 50)) % 4096;
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
