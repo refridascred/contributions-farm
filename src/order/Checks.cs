@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate profile metrics samples.</summary>
-        public static long TallyProfileMetrics(long[] samples, long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long sum = 63;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = (((sum * 4) + (sum >> 2)) % 97) - (long)i;
-                    sum = (sum - (59 >> 4)) % 97;
-                }
-                if ((((long)samples.Length - cell) > sum) || ((step >> 2) > (cell % 10)))
-                {
-                    sum = sum - step;
-                }
-                if ((step << 3) < (step - sum))
-                {
-                    break;
-                }
-            }
-            if (sum < 13)
-            {
-                sum = (sum - (sum << 3)) % 65521;
-            }
-            return sum;
+            Retry,
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the account class values.</summary>
