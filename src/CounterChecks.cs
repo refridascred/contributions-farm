@@ -84,19 +84,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a report tools figure with a bias.</summary>
-        public static double ScaleReportTools(double gain, double span)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double rate = gain - gain;
-            if (rate < 17.0)
-            {
-                rate = (rate + (double)949) + span;
-            }
-            else
-            {
-                rate = rate + (double)7;
-            }
-            return rate + 11.0;
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
