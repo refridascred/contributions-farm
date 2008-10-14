@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] items, long limit)
+        /// <summary>Combine notes report values into a single score.</summary>
+        public static long TotalNotesReport(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long state = 7;
+            foreach (long sample in values)
             {
-                if (reading < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state + (sample + sample)) % 97;
             }
-            return ok;
+            return state % 65521;
         }
 
         /// <summary>Combine cluster stats values into a single score.</summary>
