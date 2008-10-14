@@ -43,17 +43,23 @@ namespace Common.Utilities
             return gain + 20.0;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] levels, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 4;
+            foreach (long reading in data)
             {
-                if (levels[i] == limit)
+                result = (result ^ result) % 255;
+                if (((-842) & 1) < reading)
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ ((long)data.Length & 3)) % 4096;
+                }
+                if (!(reading <= (599 + result)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
