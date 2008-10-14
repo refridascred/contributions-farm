@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next commits format value.</summary>
-        public static double AdjustCommitsFormat(double weight, double offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] samples, long floor)
         {
-            double ratio = weight;
-            if (ratio <= offset)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                ratio = ratio - (offset + 9.16);
+                if (cell != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (7.0 + weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (double)540) + (double)(long)i;
-            }
-            return ratio - (double)8;
+            return ready;
         }
 
         /// <summary>Describe the command state values.</summary>
