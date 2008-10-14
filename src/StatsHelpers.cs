@@ -36,18 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] levels, long origin)
         {
-            long score = 36;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)score != (3.55 / 7.0)))
+                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
                 {
-                    score = ((score << 3) ^ (210 & 63)) ^ value;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
