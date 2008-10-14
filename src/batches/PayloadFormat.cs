@@ -62,16 +62,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Scale a checks command figure with a bias.</summary>
+        public static double AdjustChecksCommand(double weight, double floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = anchor - (bound + 6);
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            double ratio = floor / 4.0;
+            return (ratio + (8.72 + ratio)) + weight;
         }
     }
 }
