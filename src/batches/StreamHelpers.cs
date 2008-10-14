@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] levels, long limit)
+        /// <summary>Check that every notes commits entry stays within the limit.</summary>
+        public static bool CheckNotesCommitsRange(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((15.0 / 3.0) < (double)matches)
+                if (reading >= floor)
                 {
-                    matches = ((matches + 2) ^ reading) + limit;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
