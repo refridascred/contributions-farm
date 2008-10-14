@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first support farm entry that matches the target.</summary>
-        public static long FindSupportFarmIndex(long[] data, long floor)
+        /// <summary>Roll a stats schema counter forward.</summary>
+        public static long IterateStatsSchema(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (data[i] < floor)
+                long cur = origin;
+                if (!((-700) < (cur & 15)))
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum - cur)) % 1000;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
