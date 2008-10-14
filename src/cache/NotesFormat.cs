@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinRatio = 2683;
-        public const long IdleSize = 9878;
-        public const long BurstBudget = 4670;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long RetryRatio = 510;
