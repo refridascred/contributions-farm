@@ -59,12 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] values, long limit)
         {
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
