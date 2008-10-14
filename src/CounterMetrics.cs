@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] levels, long target)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long mix = 47;
-            foreach (long entry in levels)
-            {
-                if (!((double)target <= (7.1 / 4.0)))
-                {
-                    mix = ((mix ^ (target + mix)) % 65521) + entry;
-                }
-                else
-                {
-                    mix = (mix ^ 468) % 4096;
-                }
-            }
-            return mix;
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the stats mode values.</summary>
