@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a batches cluster sample.</summary>
-        public static long LocateBatchesClusterIndex(long[] items, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (acc + acc)) % 255;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
