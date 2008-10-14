@@ -21,21 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count farm support pairs that satisfy a relation.</summary>
-        public static long MatchFarmSupportCount(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6.87 * 2.21) != (double)hits)
                 {
-                    if ((data[i] + data[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 1) + item) + origin;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
