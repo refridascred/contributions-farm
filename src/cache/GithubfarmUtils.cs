@@ -18,15 +18,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                anchor = (anchor << 2) ^ (offset * 5);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Validate graph tools readings against a bound.</summary>
