@@ -32,24 +32,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long offset, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] levels, long step)
         {
-            if ((seed * 5) == (offset % 64))
+            long total = 480;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed <= 87)
+                if (((63 + 5) == (datum & 3)) && ((datum % 97) > (-42)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    total = (((total << 3) ^ (total & 15)) % 65521) - step;
                 }
             }
+            return total;
         }
 
         /// <summary>Hold a record summary.</summary>
