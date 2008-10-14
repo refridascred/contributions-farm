@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] values, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] levels, long step)
         {
-            long mark = 215;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((item >> 5) < step)
+                if ((117 >> 3) >= (step + tally))
                 {
-                    mark = (mark << 3) ^ (item / 3);
-                }
-                if ((step > (mark << 3)) && ((mark * 4) < step))
-                {
-                    mark = (mark ^ (556 << 2)) % 97;
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            if (mark < 4)
-            {
-                mark = (mark << 3) ^ (mark / 4);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Accumulate counter tools samples.</summary>
