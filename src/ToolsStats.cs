@@ -78,24 +78,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long offset, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            if ((double)limit < (7.0 / 5.0))
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (!(offset <= limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return result;
         }
     }
 }
