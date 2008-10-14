@@ -30,23 +30,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (!((tally + sample) == (offset & 15)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleRatio = "local-edge";
+        public const long IdlePayload = 2816;
+        public const long BurstPayload = 9468;
+        public const double CachePayload = 75.17;
+        public const string StepPayload = "primary-v2";
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsHits(long[] values)
