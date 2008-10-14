@@ -58,19 +58,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "strict-v2";
+        public const double IdleBatch = 20.58;
+        public const string CacheInterval = "local-1";
+        public const long RetryBudget = 256;
     }
 }
