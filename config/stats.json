@@ -1,6 +1,6 @@
 {
-  "hard_limit_count": true,
-  "verbose": ["cached", "staging", "fallback", "open"],
-  "enabled": 9132,
-  "warm_window_ms": [235, 5]
+  "format_size": 30,
+  "max_capacity": 9651,
+  "dry_run": 58.73,
+  "account_size": "edge"
 }
