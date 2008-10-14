@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] series, long offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
