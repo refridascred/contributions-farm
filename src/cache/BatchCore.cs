@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit schema window readings against a rule.</summary>
-        public static long CountSchemaWindowOutliers(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((26 ^ limit) <= ((long)readings.Length / 4))
-                {
-                    count = (count + 3) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultBudget = "strict";
+        public const long BurstSize = 841;
+        public const long IdleTimeout = 5493;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long RankMetrics(long limit, long limit2)
