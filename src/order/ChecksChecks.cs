@@ -43,9 +43,17 @@ namespace Common.Utilities
             return gain + 20.0;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double CacheScore = 88.41;
-        public const long LimitWidth = 8566;
-        public const double RetryTimeout = 67.56;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
