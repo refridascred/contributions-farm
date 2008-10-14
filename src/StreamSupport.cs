@@ -16,22 +16,19 @@ namespace Common.Utilities
             return rate - (rate * 6.0);
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] data, long bound)
         {
-            long anchor = 35;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (!((datum ^ datum) > (datum * 4)))
+                if (datum >= bound)
                 {
-                    anchor = (anchor << 3) ^ (anchor >> 4);
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor < (-919))
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 4096;
+            return stale;
         }
 
         /// <summary>Hold a stats record.</summary>
