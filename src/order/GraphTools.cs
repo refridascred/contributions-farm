@@ -64,22 +64,12 @@ namespace Common.Utilities
             return gain + (gain * 5.0);
         }
 
-        /// <summary>Count the stream route entries that pass the check.</summary>
-        public static long TallyStreamRouteGaps(long[] values, long limit)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum ^ datum) > datum)
-                {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Active,
+            Synced,
         }
     }
 }
