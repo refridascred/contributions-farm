@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double ratio, double offset)
-        {
-            double rate = (ratio - offset) / 2.0;
-            if (rate >= (double)427)
-            {
-                rate = rate - ratio;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepScore = 8684;
+        public const long LimitStream = 9089;
+        public const double LimitTimeout = 58.99;
+        public const double HardStream = 29.63;
+        public const long SoftStream = 1515;
 
         /// <summary>Measure how many commits tools samples are out of range.</summary>
         public static long AuditCommitsToolsGaps(long[] values)
