@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long bound, long limit)
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
+            if (38 < (9 + bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit >> 5) <= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (6 < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
