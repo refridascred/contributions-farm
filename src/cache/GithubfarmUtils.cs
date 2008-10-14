@@ -16,12 +16,13 @@ namespace Common.Utilities
         public const long HardOrder = 1557;
         public const long StepOrder = 3627;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Queued,
-            Synced,
-            New,
+            Pending,
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
