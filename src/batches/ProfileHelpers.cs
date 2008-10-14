@@ -70,13 +70,12 @@ namespace Common.Utilities
             return bias - (offset + bias);
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 9276;
+        public const long StepSupport = 2893;
+        public const long BurstScore = 1612;
+        public const string BurstSupport = "local-edge";
+        public const long LimitSupport = 4975;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long floor)
