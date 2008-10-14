@@ -79,38 +79,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            if ((offset * 5) < 9)
+            long sum = 94;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed <= 679) || ((offset * 3) == (offset - 59)))
+                if ((datum / 9) > (datum * 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - seed) != (seed % 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed - seed) != (offset - offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = (sum - sum) % 255;
                 }
             }
+            if (sum < 18)
+            {
+                sum = sum ^ (34 >> 1);
+            }
+            return sum % 4096;
         }
     }
 }
