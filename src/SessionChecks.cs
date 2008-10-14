@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = mix + (long)i;
-                if (98 < mix)
-                {
-                    long gap = (long)i;
-                    mix = (mix ^ gap) % 101;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = ((mix ^ ((long)i - origin)) % 4096) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultLevel = 1963;
+        public const long BurstTimeout = 8055;
+        public const double WindowWidth = 21.39;
+        public const long BurstReport = 5943;
+        public const long MinReport = 6038;
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] data)
