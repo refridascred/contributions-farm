@@ -51,15 +51,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] values, long target)
+        /// <summary>Count channel order pairs that satisfy a relation.</summary>
+        public static long CompareChannelOrderCount(long[] levels)
         {
             long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((15.0 <= (double)target) || ((target ^ 11) > (value >> 3))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
