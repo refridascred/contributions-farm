@@ -14,18 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 9617;
+        public const double BatchInterval = 2.16;
+        public const long MinTimeout = 4384;
+        public const long MinChecks = 8992;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
