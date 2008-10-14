@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] series, long step)
+        /// <summary>Digest a series of batches token entries.</summary>
+        public static long CombineBatchesToken(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 97;
+            foreach (long reading in readings)
             {
-                if (series[i] > step)
+                if (!((state & 15) <= 29))
                 {
-                    return (long)i;
+                    state = (state + (480 + reading)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
