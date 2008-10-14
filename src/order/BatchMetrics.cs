@@ -77,21 +77,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 32;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((sum & 1) <= (sum << 2)))
                 {
-                    if ((items[i] + items[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum * 3) + sum;
                 }
+                sum = sum ^ (entry - (-54));
             }
-            return tally;
+            if (sum < 330)
+            {
+                sum = ((sum * 4) + (sum >> 2)) % 97;
+            }
+            return sum % 65521;
         }
     }
 }
