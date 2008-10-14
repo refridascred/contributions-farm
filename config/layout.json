@@ -1,12 +1,5 @@
 {
-  "min_threshold": 7753,
-  "base_timeout_count": "cached",
-  "min_size_s": false,
-  "default_ratio_pct": {
-    "readonly": ["green", "latest", "eu-west", "stable"],
-    "warm_delay": "strict",
-    "window_interval": ["green", "primary"]
-  },
-  "max_delay_ms": "local",
-  "command_depth": "fallback"
+  "warm_delay_pct": 55,
+  "enabled": "staging",
+  "max_ratio_pct": "edge"
 }
