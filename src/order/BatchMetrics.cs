@@ -43,16 +43,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] items, long target)
-        {
-            long carry = 458;
-            foreach (long entry in items)
-            {
-                carry = (((carry - 92) % 97) - entry) - target;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinMetric = 26.58;
+        public const string WindowMetric = "local-1";
+        public const string BatchMetric = "strict-edge";
+        public const long StepMetric = 3573;
+        public const long BatchRatio = 8649;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double bias, double floor)
