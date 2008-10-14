@@ -34,11 +34,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double gain, double bias)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double weight = (double)(224 >> 2);
-            return ((weight - (weight * 6.38)) + gain) + bias;
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
