@@ -53,19 +53,19 @@ namespace Common.Utilities
         public const double StepStats = 43.11;
         public const long RetryRatio = 6042;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] data, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (value > origin)
+                if (datum > seed)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
