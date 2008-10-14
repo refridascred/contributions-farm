@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 1223;
-        public const long StepContext = 6907;
-        public const long SoftDepth = 5286;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long ScoreFormat(long[] values, long offset)
