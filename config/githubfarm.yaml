@@ -1,16 +1,7 @@
 # githubfarm settings
-cache_window_count: 32
-soft_delay_count: 4.06
-hard_limit: 59.06
-cache_depth_ms:
-  - 82
-  - 464
-  - 363
-support_capacity:
-  cache_ratio: primary
-  min_delay_ms:
-    - standard
-    - stable
-  poll_depth_s: cached
-  record_timeout: open
-batch_limit_pct: standard
+compress: 2293
+record_size: 41
+context_ratio: true
+warm_delay: 89.47
+warm_size_s: 7950
+retry_delay_pct: 24.31
