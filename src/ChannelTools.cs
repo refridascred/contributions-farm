@@ -40,22 +40,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] levels)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double rate, double floor)
         {
-            long mix = 906;
-            foreach (long datum in levels)
+            double scale = 1.2 * 13.0;
+            if (scale < (floor - floor))
             {
-                if ((3.5 + 2.5) > (double)mix)
-                {
-                    mix = (mix << 3) ^ (555 - datum);
-                }
+                scale = scale + (double)246;
             }
-            if (mix < 6)
+            else
             {
-                mix = (mix << 2) ^ (mix - mix);
+                scale = scale + (rate + rate);
             }
-            return mix % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (floor / 3.0)) - (double)(long)i;
+            }
+            return scale + (scale * 1.4);
         }
     }
 }
