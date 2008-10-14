@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] series)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen ^ seen) < (92 << 1))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of route account readings.</summary>
