@@ -15,15 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double ratio, double bias)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double drift = ratio * 7.0;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift - 16.0) - (double)(long)i) - bias;
-            }
-            return drift + ratio;
+            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
