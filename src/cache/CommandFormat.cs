@@ -43,10 +43,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftSpan = 1897;
-        public const long LimitScore = 9409;
-        public const long BaseCount = 177;
-        public const long HardCommits = 371;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] readings)
+        {
+            long acc = 58;
+            foreach (long datum in readings)
+            {
+                acc = (acc ^ (datum + datum)) % 101;
+            }
+            return acc % 97;
+        }
     }
 }
