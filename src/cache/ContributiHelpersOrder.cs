@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a format farm reading.</summary>
-        public static double ProjectFormatFarm(double ratio, double span)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double ratio2 = (double)73 * 9.0;
-            if (ratio2 < (ratio2 * 8.9))
-            {
-                ratio2 = (ratio2 - (ratio2 - ratio2)) + ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 - span;
-            }
-            return ratio2 - ratio2;
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count already support pairs that satisfy a relation.</summary>
