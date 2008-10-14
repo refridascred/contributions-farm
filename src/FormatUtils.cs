@@ -34,17 +34,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] samples, long origin)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)17 / 8.0;
+            if (ratio > (ratio + floor))
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - weight;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)8) + (double)(long)i;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Project the next payload value.</summary>
