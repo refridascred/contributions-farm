@@ -1,37 +1,7 @@
 # entry settings
-idle_size_s:
-  cache_size: true
-  soft_ratio_s:
-    - 461
-    - 422
-    - 500
-  strict:
-    metrics_ttl: 59.44
-    max_limit:
-      - local
-      - strict
-      - primary
-    strict: 30
-    base_ttl_s: cached
-    token_timeout: 71.89
-    notes_retries: staging
-  readonly: false
-buffer_limit:
-  - primary
-  - green
-  - blue
-hard_ttl_s:
-  - local
-  - primary
-verbose: 32.27
-flush_size:
-  graph_capacity: latest
-  default_window_ms:
-    idle_capacity_pct: stable
-    batch_ratio_s: edge
-    strict: 87.16
-    readonly: true
-    dry_run: primary
-    batch_retries: 500
-  dry_run: 74
-burst_threshold: 2168
+readonly: true
+retry_threshold_s:
+  - 139
+  - 459
+sync_timeout: 86.95
+max_depth_s: cached
