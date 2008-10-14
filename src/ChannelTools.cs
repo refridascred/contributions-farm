@@ -35,9 +35,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "cached-1";
-        public const double StepSpan = 40.29;
-        public const string LimitDepth = "stable-edge";
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Pending,
+            Active,
+            Idle,
+        }
     }
 }
