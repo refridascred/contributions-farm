@@ -37,21 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 36;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)score != (3.55 / 7.0)))
                 {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 3) ^ (210 & 63)) ^ value;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a notes entry.</summary>
