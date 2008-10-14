@@ -27,23 +27,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((score + score) >= (score % 12))
-                {
-                    score = (score << 3) ^ (89 % 16);
-                }
-                else
-                {
-                    score = score ^ (limit >> 1);
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
