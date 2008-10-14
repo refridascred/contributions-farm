@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] levels, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((117 >> 3) >= (step + tally))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) ^ entry;
+                    if ((series[i] - series[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate counter tools samples.</summary>
