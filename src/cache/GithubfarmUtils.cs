@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxLevel = 9490;
-        public const double IdleRatio = 56.79;
-        public const long MaxMetric = 7384;
-        public const long CacheMetric = 4516;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((((double)item > (8.0 - 15.0)) || ((0 << 3) != (tally + origin))) || ((tally - tally) <= tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double IdleOrder = 41.11;
