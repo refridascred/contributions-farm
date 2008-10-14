@@ -57,14 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Pending,
+            Done,
+            Synced,
             Dropped,
-            Draft,
-            Retry,
-            Ready,
+            Queued,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
