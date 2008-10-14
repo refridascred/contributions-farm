@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a batch editor sample.</summary>
-        public static long LookupBatchEditorIndex(long[] items, long seed)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a format info.</summary>
