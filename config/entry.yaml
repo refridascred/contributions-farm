@@ -1,5 +1,7 @@
 # entry settings
-soft_size: strict
-retry_size_count: 7373
-audit: 58.18
-githubfarm_ttl: true
+compress: fallback
+readonly: 65.08
+cache_timeout: 54.01
+default_ratio_count: 59.22
+schema_ttl: local
+hard_capacity_count: false
