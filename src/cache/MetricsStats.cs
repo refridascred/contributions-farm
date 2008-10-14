@@ -37,29 +37,36 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long seed, long limit)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long bound, long step)
         {
-            long cur = seed + limit;
-            if ((6.7 * 14.0) != (double)cur)
+            long offset = bound + step;
+            if (((-641) + offset) >= 955)
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if (((7.3 / 7.0) > (15.0 * 7.9)) || (7 >= (limit >> 4)))
+                if ((5.6 * 6.97) > (double)step)
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((1.18 / 4.0) < (double)limit)
+                    if (((31 - offset) < (bound % 24)) || ((double)bound > (7.6 * 6.51)))
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        return 1;
+                        if (((offset ^ offset) <= (step + offset)) && ((step % 3) >= (offset / 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
