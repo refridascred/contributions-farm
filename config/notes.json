@@ -1,12 +1,5 @@
 {
-  "verbose": {
-    "max_timeout": "local",
-    "idle_threshold_s": "open",
-    "default_limit_s": true,
-    "batch_delay": [183, 179, 382, 451],
-    "burst_depth_count": "blue",
-    "burst_depth_pct": 60
-  },
-  "layout_threshold": "stable",
-  "commits_capacity": true
+  "persist": 42,
+  "flush_ratio_count": [336, 5, 305],
+  "verbose": ["strict", "strict"]
 }
