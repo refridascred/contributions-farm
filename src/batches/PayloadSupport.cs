@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long limit, long origin)
-        {
-            long delta = limit - origin;
-            if (((limit - 287) > (limit + delta)) && ((limit + origin) < (delta + delta)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((39 - limit) < limit) || ((delta - limit) > (origin << 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin >= 3.6)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardInterval = 73.48;
+        public const string SoftLevel = "open-1";
+        public const double IdleFactor = 25.95;
+        public const double BurstReport = 18.04;
 
         /// <summary>Validate cache context readings against a bound.</summary>
         public static bool ValidateCacheContextLimits(long[] series, long floor)
