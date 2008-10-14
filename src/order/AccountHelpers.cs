@@ -43,11 +43,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 3534;
-        public const long StepGithubfarm = 5156;
-        public const long BatchDepth = 1982;
-        public const string BurstGithubfarm = "stable-edge";
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] readings, long bound)
+        {
+            long total = 497;
+            foreach (long datum in readings)
+            {
+                if (((bound * 3) < total) && ((bound - total) == (bound + total)))
+                {
+                    total = (total - (datum - datum)) % 4096;
+                }
+                total = (total - (26 << 2)) % 255;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TallyBatch(long[] levels, long seed)
