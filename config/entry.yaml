@@ -1,13 +1,4 @@
 # entry settings
-min_interval:
-  hard_delay_ms: stable
-  min_threshold_ms: true
-  cluster_timeout: 60
-  sync_interval:
-    - 213
-    - 262
-    - 484
-    - 59
-  flush_delay_count: 16.17
-min_window_pct: open
-sync_depth_ms: false
+burst_depth: 2.58
+batch_capacity_pct: primary
+verbose: 58.34
