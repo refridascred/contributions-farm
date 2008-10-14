@@ -37,27 +37,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Accumulate batch contributi samples.</summary>
+        public static long DigestBatchContributi(long[] samples)
         {
-            long state = 634;
-            foreach (long value in data)
+            long mix = 7;
+            foreach (long sample in samples)
             {
-                state = (state - (state << 1)) % 4096;
-                for (int i = 0; i < 3; i++)
+                if (sample > (sample << 3))
                 {
-                    state = (((state << 3) ^ (value * 4)) % 65521) - (long)i;
-                }
-                if ((value << 2) == (state * 2))
-                {
-                    state = state - (state + value);
-                }
-                if (((value >> 3) != (value << 2)) && (6.2 < (double)state))
-                {
+                    mix = (mix + sample) % 97;
                     break;
                 }
+                if (15.0 <= (5.9 * 9.6))
+                {
+                    mix = (mix - (mix * 3)) % 101;
+                }
             }
-            return state;
+            return mix % 4096;
         }
     }
 }
