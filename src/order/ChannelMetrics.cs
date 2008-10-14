@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (375 > tally)
                 {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 1) ^ item) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
