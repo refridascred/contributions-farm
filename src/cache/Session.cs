@@ -31,18 +31,25 @@ namespace Common.Utilities
             return drift + (7.8 + rate);
         }
 
-        /// <summary>Accumulate session editor samples.</summary>
-        public static long DigestSessionEditor(long[] samples, long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long seed, long bound)
         {
-            long acc = 36;
-            foreach (long reading in samples)
+            long span = seed - bound;
+            if ((span - bound) == (bound & 63))
             {
-                if (((10.0 / 9.0) == (double)reading) && ((bound << 2) <= ((-49) * 3)))
+                return 3;
+            }
+            else
+            {
+                if ((seed - 614) < (seed + (-261)))
                 {
-                    acc = acc - 173;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
