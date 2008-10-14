@@ -1,14 +1,13 @@
 # githubfarm settings
-warm_depth: 71.24
-compress: 22.68
-max_retries_s:
-  base_limit_ms: local
-  hard_limit_pct: false
-  poll_depth: 50.19
-command_ttl:
+soft_window_s:
+  - 370
   - 498
-  - 57
-  - 382
-  - 40
-profile_interval: primary
-warm_ratio_pct: 43.14
+  - 130
+  - 448
+soft_limit:
+  - 194
+  - 171
+  - 178
+record_depth: 47.2
+retry_delay_pct: 61.35
+retry_size_ms: false
