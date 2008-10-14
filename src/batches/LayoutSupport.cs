@@ -27,12 +27,21 @@ namespace Common.Utilities
         public const long SoftBudget = 7459;
         public const long CacheNotes = 8002;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinWidth = 5126;
-        public const long HardRoute = 1326;
-        public const long SoftScore = 9707;
-        public const string MinRoute = "cached-1";
-        public const long WindowRoute = 6616;
+        /// <summary>Derive the next buffer command value from a seed.</summary>
+        public static long StepBufferCommand(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((54 >> 5) >= ((long)i % 3))
+                {
+                    acc = (acc ^ target) % 1000;
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] samples, long origin)
