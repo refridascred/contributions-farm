@@ -26,17 +26,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheFactor = 7548;
+        public const long LimitSize = 2413;
+        public const string MaxSpan = "strict-edge";
+        public const double MinChannel = 85.16;
     }
 }
