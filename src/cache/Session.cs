@@ -54,17 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report cache reading by value.</summary>
-        public static long SeekReportCacheIndex(long[] values, long seed)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= seed) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
     }
 }
