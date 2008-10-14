@@ -31,16 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] samples)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                carry = (carry - carry) % 4096;
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((1.0 + 2.0) == (double)hits)
+                {
+                    hits = (hits + 3) + item;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
