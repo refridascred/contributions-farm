@@ -21,18 +21,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] levels, long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((seen - 694) > seen)
+                if (entry > origin)
                 {
-                    seen = ((seen + 1) + value) + origin;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
