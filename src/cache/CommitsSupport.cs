@@ -65,18 +65,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long acc = 3;
-            foreach (long datum in readings)
-            {
-                if ((double)datum <= (double)acc)
-                {
-                    acc = (acc ^ (datum - datum)) % 101;
-                }
-            }
-            return acc;
+            Dropped,
+            Queued,
+            Pending,
+            Locked,
         }
     }
 }
