@@ -22,39 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long seed, long bound)
-        {
-            if ((bound << 2) <= bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound + 6) < (bound * 5)) && ((seed & 63) >= (bound / 9)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)seed < (9.7 + 7.15)) || ((double)seed != (6.4 / 4.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + seed) < (seed + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 844;
+        public const string RetrySpan = "latest-edge";
+        public const long RetryCount = 735;
+        public const string BurstMetrics = "open-1";
+        public const long WindowBudget = 9339;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] values)
