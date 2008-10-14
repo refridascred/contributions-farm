@@ -49,19 +49,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate support graph readings against a bound.</summary>
-        public static bool GuardSupportGraphRange(long[] values, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (datum > limit)
+                if ((long)values.Length >= (96 + matches))
                 {
-                    flag = false;
-                    break;
+                    matches = ((matches + 2) ^ item) + target;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
