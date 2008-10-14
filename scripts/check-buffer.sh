@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging edge latest cached; do
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in edge legacy fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
+mode="${1:-latest}"
 case "${mode}" in
-    green)
+    eu-west)
         log "fast path"
         ;;
     *)
