@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count account entry pairs that satisfy a relation.</summary>
-        public static long CompareAccountEntryCount(long[] items)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate cluster cache samples.</summary>
