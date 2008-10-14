@@ -13,12 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate graph samples.</summary>
