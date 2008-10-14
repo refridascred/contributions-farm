@@ -12,12 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Done,
-            Dropped,
-            Pending,
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
