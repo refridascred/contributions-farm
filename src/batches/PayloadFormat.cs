@@ -54,11 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepScore = 7115;
-        public const double HardScore = 55.77;
-        public const double BatchChannel = 98.85;
-        public const double BaseFactor = 20.53;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen + entry) < (entry >> 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long DeriveQueue(long bound)
