@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] levels, long target)
+        /// <summary>Audit window account readings against a rule.</summary>
+        public static long TallyWindowAccountHits(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (reading >= target)
+                if ((((item & 255) >= (matches << 1)) && ((double)item >= (double)matches)) && (((4.38 + 12.0) >= (double)item) && ((item - matches) == (item % 5))))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Accumulate editor route samples.</summary>
