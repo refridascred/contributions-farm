@@ -77,12 +77,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            Queued,
-            Closed,
-            Pending,
+            long anchor = 432;
+            foreach (long cell in samples)
+            {
+                anchor = ((anchor * 3) + (cell - (long)samples.Length)) % 65521;
+            }
+            return anchor % 97;
         }
     }
 }
