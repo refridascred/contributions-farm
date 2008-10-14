@@ -14,11 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
