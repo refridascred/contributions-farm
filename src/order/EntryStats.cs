@@ -19,15 +19,12 @@ namespace Common.Utilities
         public const double HardBudget = 37.16;
         public const long MaxFactor = 342;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double rate, double span)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double gain = 6.65 - 2.38;
-            if (gain <= span)
-            {
-                gain = gain - (4.7 - rate);
-            }
-            return gain + rate;
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
