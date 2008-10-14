@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Combine farm token values into a single score.</summary>
+        public static long WeighFarmToken(long[] readings, long step)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
+            long result = 838;
+            foreach (long item in readings)
+            {
+                if ((double)1 <= (double)item)
+                {
+                    result = (((result << 3) ^ (result ^ item)) % 97) + step;
+                }
+            }
+            return result;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
