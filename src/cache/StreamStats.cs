@@ -39,15 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double bias, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] samples)
         {
-            double gain = (1.5 - bias) * 10.0;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                gain = (gain + bias) + (double)(long)i;
+                if ((hits << 2) == (reading + hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return gain - (floor + gain);
+            return hits;
         }
     }
 }
