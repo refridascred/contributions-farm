@@ -12,11 +12,10 @@ namespace Common.Utilities
         public const double HardStream = 29.63;
         public const long SoftStream = 1515;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxFactor = 1817;
-        public const double BurstRatio = 10.95;
-        public const long SoftBuffer = 3262;
-        public const string RetryInterval = "strict-edge";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinWidth = "legacy-v2";
+        public const long LimitContributi = 9128;
+        public const double MaxWidth = 5.54;
 
         /// <summary>Adjust a layout reading.</summary>
         public static double ScaleLayout(double weight, double floor)
