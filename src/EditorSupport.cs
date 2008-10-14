@@ -59,18 +59,31 @@ namespace Common.Utilities
         public const long StepContext = 1780;
         public const long StepWidth = 5195;
 
-        /// <summary>Audit cache metric readings against a rule.</summary>
-        public static long CountCacheMetricMatches(long[] readings, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            if ((bound + 170) < offset)
             {
-                if ((cell - 916) < (43 + cell))
+                return 8;
+            }
+            else
+            {
+                if (bound <= (offset / 2))
                 {
-                    matches = (matches + 1) + seed;
+                    return 0;
+                }
+                else
+                {
+                    if (((offset % 97) <= 4) || ((double)offset == (7.0 / 8.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
