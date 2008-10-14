@@ -50,18 +50,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            if ((offset * 5) < 9)
             {
-                if ((5.9 - 18.0) > (double)cell)
+                return 4;
+            }
+            else
+            {
+                if ((seed <= 679) || ((offset * 3) == (offset - 59)))
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - seed) != (seed % 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed - seed) != (offset - offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
