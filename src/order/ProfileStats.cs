@@ -31,19 +31,10 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((datum - hits) != (floor - datum)) || ((floor - floor) != (datum / 8)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 5821;
+        public const string RetryAlready = "open";
+        public const long IdleWidth = 8484;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] levels, long origin)
