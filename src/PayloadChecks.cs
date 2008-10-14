@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long RetryFactor = 4494;
         public const string StepStream = "local-edge";
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] levels, long limit)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double bias2 = scale;
+            if (bias2 < bias2)
             {
-                if ((value >> 2) > (value / 7))
-                {
-                    hits = (hits + 1) - limit;
-                }
+                bias2 = bias2 + (scale + 9.0);
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (bias - bias2)) + (double)(long)i;
+            }
+            return bias2 + (bias2 * 7.8);
         }
 
         /// <summary>Describe the token class values.</summary>
