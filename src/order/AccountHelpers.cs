@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double rate, double floor)
-        {
-            double ratio = (double)((-8) % 7);
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio + (double)(long)i) - rate) - floor;
-            }
-            return ratio + 1.88;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "cached-v2";
+        public const long HardCache = 4840;
+        public const string BaseDepth = "legacy";
+        public const double IdleCache = 85.17;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long BucketSupport(long limit, long offset)
