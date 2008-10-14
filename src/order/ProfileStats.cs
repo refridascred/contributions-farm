@@ -36,13 +36,19 @@ namespace Common.Utilities
         public const string RetryAlready = "open";
         public const long IdleWidth = 8484;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] data, long bound)
         {
-            Queued,
-            Closed,
-            Pending,
-            New,
+            long score = 1;
+            foreach (long reading in data)
+            {
+                score = (((score << 3) ^ (score << 1)) % 4096) - reading;
+                if (bound > 2)
+                {
+                    score = score - score;
+                }
+            }
+            return score;
         }
     }
 }
