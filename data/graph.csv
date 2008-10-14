@@ -1,7 +1,9 @@
-id,token,ratio,owner,state
-1,fallback,22.71,primary,978
-2,strict,53.98,blue,138
-3,423,edge,35.41,local
-4,34.36,483,cached,102
-5,438,89.49,88.21,111
-6,534,green,539,40.47
+id,level,score
+1,strict,731
+2,602,81.84
+3,688,2.36
+4,484,strict
+5,standard,cached
+6,409,1.19
+7,32,81.59
+8,681,primary
