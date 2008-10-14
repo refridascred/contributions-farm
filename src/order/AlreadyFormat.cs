@@ -56,17 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first graph already entry that matches the target.</summary>
-        public static long SeekGraphAlreadyIndex(long[] readings, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Done,
+            Draft,
+            Dropped,
         }
     }
 }
