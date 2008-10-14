@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
