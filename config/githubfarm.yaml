@@ -1,7 +1,4 @@
 # githubfarm settings
-compress: 2293
-record_size: 41
-context_ratio: true
-warm_delay: 89.47
-warm_size_s: 7950
-retry_delay_pct: 24.31
+flush_ratio_count: 100
+idle_delay_ms: 80.67
+soft_limit: 3820
