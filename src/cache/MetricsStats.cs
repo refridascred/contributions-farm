@@ -25,22 +25,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] series, long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mix = 1;
-            foreach (long entry in series)
-            {
-                if ((1.87 + 5.0) != (double)seed)
-                {
-                    mix = (mix + (mix >> 2)) - entry;
-                }
-                else
-                {
-                    mix = (mix + (13 - seed)) % 97;
-                }
-            }
-            return mix % 4096;
+            Locked,
+            Queued,
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Accumulate batches samples.</summary>
