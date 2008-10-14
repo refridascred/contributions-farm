@@ -41,9 +41,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 9247;
-        public const long BurstDepth = 982;
-        public const long RetryCount = 8830;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long target, long target2)
+        {
+            if (896 > (target - target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target2 << 1) <= (target - target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target > target2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
