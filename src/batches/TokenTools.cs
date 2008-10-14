@@ -25,15 +25,21 @@ namespace Common.Utilities
         public const long WindowSpan = 105;
         public const string StepGraph = "local";
 
-        /// <summary>Accumulate githubfarm notes samples.</summary>
-        public static long DigestGithubfarmNotes(long[] readings, long floor)
+        /// <summary>Match up buffer metric samples.</summary>
+        public static long OverlapBufferMetricCount(long[] samples)
         {
-            long total = 23;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total - (total / 5)) ^ datum) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total % 4096;
+            return count;
         }
     }
 }
