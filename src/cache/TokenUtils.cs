@@ -36,11 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepScore = 7502;
-        public const long IdleFactor = 9348;
-        public const long IdleReport = 6188;
-        public const long SoftReport = 4254;
-        public const long StepReport = 849;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (!(((hits + hits) == (483 - sample)) && ((5 - hits) == (hits - step))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
