@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 1969;
-        public const long MaxWidth = 7908;
-        public const long BurstRatio = 1847;
-        public const string CacheTools = "cached-1";
-        public const string LimitTools = "fallback-edge";
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            New,
+            Idle,
+            Done,
+            Paused,
+        }
 
         /// <summary>Count already support pairs that satisfy a relation.</summary>
         public static long MatchAlreadySupportCount(long[] levels)
