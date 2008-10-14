@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] readings)
+        /// <summary>Grade a profile editor value against two limits.</summary>
+        public static long BucketProfileEditor(long floor, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long cur = floor + limit;
+            if ((floor / 8) <= (33 * 5))
             {
-                if ((cell + count) > cell)
+                return 6;
+            }
+            else
+            {
+                if ((5 + cur) >= floor)
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)cur <= (7.0 / 2.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((18.0 + 3.3) == (double)floor) && ((double)floor != (2.0 + 1.1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
