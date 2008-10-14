@@ -22,18 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] items, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            if (!(seed > (seed * 3)))
             {
-                if (((seed >> 5) < seed) && ((hits * 2) >= (4 + hits)))
+                return 3;
+            }
+            else
+            {
+                if ((((-35) + seed) > (limit - limit)) || (14.0 < (double)limit))
                 {
-                    hits = (hits + 3) ^ entry;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
