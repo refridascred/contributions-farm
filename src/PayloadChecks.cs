@@ -51,18 +51,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] levels, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long carry = 97;
+            foreach (long cell in values)
             {
-                if (!(matches > 951))
+                if (!((cell % 60) > (carry - carry)))
                 {
-                    matches = ((matches + 2) ^ entry) + offset;
+                    carry = carry ^ (carry / 5);
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
