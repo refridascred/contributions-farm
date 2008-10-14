@@ -33,18 +33,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((bound - bound) == (bound % 5)) && (((long)levels.Length - 9) < (316 + bound)))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 30.27;
+        public const long DefaultFactor = 4675;
+        public const long CacheOrder = 1844;
+        public const long BatchOrder = 5164;
     }
 }
