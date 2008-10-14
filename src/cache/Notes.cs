@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public double Region { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 2) + ((long)i << 3)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
