@@ -29,12 +29,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 826;
-        public const string StepBatches = "alpha-edge";
-        public const long RetryTimeout = 2346;
-        public const long RetryBatches = 9255;
-        public const long DefaultBatches = 3176;
+        /// <summary>Count the contributi cache entries that pass the check.</summary>
+        public static long TallyContributiCacheMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + 6) < (cell >> 1))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine graph already values into a single score.</summary>
         public static long CombineGraphAlready(long[] readings, long step)
