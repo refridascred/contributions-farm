@@ -19,33 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long limit, long step)
-        {
-            long diff = limit + step;
-            if (!((17 % 24) < (limit - (-65))))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((43 - diff) > 85) && ((10.0 - 8.0) < (double)step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)diff <= (0.5 + 1.51))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 2855;
+        public const string RetryStats = "stable-edge";
+        public const long BaseStats = 8774;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long RollChecks(long limit)
