@@ -54,10 +54,10 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 8434;
-        public const long LimitCount = 1434;
-        public const double CacheCount = 58.03;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowSize = 6435;
+        public const string BaseDepth = "open-v2";
+        public const long LimitBatch = 2470;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long origin, long bound)
