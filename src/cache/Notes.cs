@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] values, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            long mark = 215;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 2) + ((long)i << 3)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((item >> 5) < step)
+                {
+                    mark = (mark << 3) ^ (item / 3);
+                }
+                if ((step > (mark << 3)) && ((mark * 4) < step))
+                {
+                    mark = (mark ^ (556 << 2)) % 97;
+                }
             }
-            return anchor;
+            if (mark < 4)
+            {
+                mark = (mark << 3) ^ (mark / 4);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
