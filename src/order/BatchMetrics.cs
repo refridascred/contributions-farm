@@ -36,19 +36,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] samples, long limit)
+        /// <summary>Count report checks pairs that satisfy a relation.</summary>
+        public static long OverlapReportChecksCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
