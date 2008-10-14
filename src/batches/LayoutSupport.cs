@@ -37,16 +37,19 @@ namespace Common.Utilities
         public const string MinRoute = "cached-1";
         public const long WindowRoute = 6616;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double ratio, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            double weight = ratio * 0.8;
+            if (weight > (double)629)
             {
-                carry = (carry - carry) % 4096;
-                carry = ((carry * 2) + (long)i) % 65521;
+                weight = (weight + ratio) - span;
             }
-            return carry;
+            else
+            {
+                weight = weight + (weight * 4.9);
+            }
+            return weight - (double)84;
         }
     }
 }
