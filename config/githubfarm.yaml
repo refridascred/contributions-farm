@@ -1,4 +1,8 @@
 # githubfarm settings
-entry_interval: true
-sync_window: open
-batch_ratio_pct: 55.37
+metric_ttl: latest
+buffer_limit:
+  - legacy
+  - legacy
+  - local
+retry_delay_s: 72
+batch_threshold_s: 27
