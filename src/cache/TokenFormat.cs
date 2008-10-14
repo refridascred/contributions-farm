@@ -22,22 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] levels, long seed)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double drift = ratio * 7.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (seed >= entry)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = ((drift - 16.0) - (double)(long)i) - bias;
             }
-            return count;
+            return drift + ratio;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
