@@ -33,32 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long target, long seed)
-        {
-            if (target <= (seed + seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((((-74) + seed) < target) || ((441 - seed) >= target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed - seed) > (seed << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstContext = "cached-1";
+        public const long DefaultContext = 6786;
+        public const long BurstWidth = 7033;
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] levels)
