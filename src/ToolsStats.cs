@@ -66,10 +66,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "strict-v2";
-        public const double IdleBatch = 20.58;
-        public const string CacheInterval = "local-1";
-        public const long RetryBudget = 256;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long offset, long limit)
+        {
+            if ((double)limit < (7.0 / 5.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(offset <= limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
