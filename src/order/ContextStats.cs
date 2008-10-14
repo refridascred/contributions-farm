@@ -34,12 +34,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Idle,
-            Paused,
-            Stale,
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a graph summary.</summary>
