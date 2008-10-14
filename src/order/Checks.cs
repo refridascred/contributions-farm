@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstInterval = 82.59;
-        public const double LimitScore = 83.47;
-        public const double CacheFactor = 50.86;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((long)values.Length / 7) <= (0 * 4))
+                {
+                    hits = ((hits + 2) + cell) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
