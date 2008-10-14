@@ -19,12 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long bound, long target)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
+            if ((double)1 > (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound - target) <= (bound ^ 66))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
