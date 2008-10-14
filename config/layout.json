@@ -1,11 +1,7 @@
 {
-  "max_retries_s": "eu-west",
-  "retry_threshold_ms": 71.16,
-  "token_retries": "local",
-  "metric_ratio": [229, 12],
-  "cache_limit_pct": {
-    "audit": 62,
-    "filter_threshold": ["edge", "strict", "eu-west", "edge"],
-    "default_interval_pct": 33.1
-  }
+  "poll_ratio": 49.16,
+  "max_capacity": [115, 67, 197, 226],
+  "dry_run": 1757,
+  "counter_threshold": "fallback",
+  "retry_depth_pct": 1024
 }
