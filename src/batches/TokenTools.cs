@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double scale, double offset)
+        /// <summary>Check that every tools route entry stays within the limit.</summary>
+        public static bool ValidateToolsRouteRange(long[] readings, long step)
         {
-            double ratio = 7.0;
-            if (ratio < 2.1)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                ratio = (ratio + 1.32) + scale;
+                if (reading != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio - (ratio - offset);
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
