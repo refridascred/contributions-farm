@@ -46,15 +46,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double weight, double offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] series, long origin)
         {
-            double bias = 4.06 + (8.1 * 12.0);
-            if (bias < offset)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = (bias - (offset + offset)) + weight;
+                if ((series[i] > origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - (offset + bias);
+            return -1;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
