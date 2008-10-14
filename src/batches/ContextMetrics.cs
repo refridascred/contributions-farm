@@ -35,15 +35,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Fold a list of support already readings.</summary>
+        public static long FoldSupportAlready(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            long anchor = -12;
+            foreach (long reading in readings)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                if (!((double)anchor <= (double)reading))
+                {
+                    anchor = ((anchor * 2) + (reading >> 3)) % 65521;
+                }
+                if ((32 >> 2) == ((-4) + reading))
+                {
+                    anchor = ((anchor * 2) + (long)readings.Length) % 4096;
+                }
             }
-            return total;
+            if (anchor < 4)
+            {
+                anchor = (anchor * 2) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
