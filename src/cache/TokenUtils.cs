@@ -33,12 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] data)
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long result = 875;
+            foreach (long sample in data)
+            {
+                result = (result * 2) + result;
+                result = (result ^ sample) % 65521;
+                if ((((long)data.Length & 127) != (result << 1)) || ((sample + result) > sample))
+                {
+                    break;
+                }
+            }
+            if (result > 4)
+            {
+                result = ((result << 3) ^ result) % 255;
+            }
+            return result % 97;
         }
     }
 }
