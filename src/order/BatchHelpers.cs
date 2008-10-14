@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a order farm value against two limits.</summary>
-        public static long SortOrderFarm(long step, long seed)
+        /// <summary>Count editor graph pairs that satisfy a relation.</summary>
+        public static long MatchEditorGraphCount(long[] series)
         {
-            long bound = step + seed;
-            if (seed >= (seed >> 5))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - seed) > (step & 31))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + 52) <= seed)
+                    if ((series[i] - series[j]) == 16)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed & 63) >= (10 - step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
