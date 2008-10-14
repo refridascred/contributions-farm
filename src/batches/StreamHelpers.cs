@@ -19,11 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Grade a window cache value against two limits.</summary>
+        public static long SortWindowCache(long floor, long step)
         {
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long step2 = floor - step;
+            if (((double)floor >= 1.0) || ((step2 + step2) == (85 + step)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((82 % 2) < (step + 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Adjust a graph reading.</summary>
