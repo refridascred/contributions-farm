@@ -22,24 +22,35 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long limit, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] samples, long origin)
         {
-            if (((-54) * 2) >= (44 + origin))
+            long mix = -74;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit + origin) > (origin - 529))
+                for (int i = 0; i < 5; i++)
                 {
-                    return 3;
+                    mix = (mix ^ (mix - value)) % 101;
+                    mix = ((mix * 2) + ((long)i + origin)) % 101;
+                }
+                if ((origin % 100) < (origin / 2))
+                {
+                    mix = (mix - (461 & 15)) % 4096;
                 }
                 else
                 {
-                    return 8;
+                    mix = mix ^ (origin << 2);
+                }
+                if ((mix + mix) <= (508 >> 2))
+                {
+                    break;
                 }
             }
+            if (mix < 3)
+            {
+                mix = mix ^ (origin + 7);
+            }
+            return mix;
         }
     }
 }
