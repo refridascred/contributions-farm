@@ -43,23 +43,9 @@ namespace Common.Utilities
             return gain + 20.0;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values, long step)
-        {
-            long carry = 1;
-            foreach (long sample in values)
-            {
-                carry = ((carry + sample) % 101) + step;
-                if (sample <= (carry % 64))
-                {
-                    carry = ((carry << 3) ^ (carry ^ 57)) % 1000;
-                }
-                else
-                {
-                    carry = carry - (sample + sample);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double CacheScore = 88.41;
+        public const long LimitWidth = 8566;
+        public const double RetryTimeout = 67.56;
     }
 }
