@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of cluster graph readings.</summary>
-        public static long ScoreClusterGraph(long[] values, long floor)
+        /// <summary>Count the stats metrics entries that pass the check.</summary>
+        public static long AuditStatsMetricsMatches(long[] series)
         {
-            long result = 222;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((floor + result) >= (floor / 4))
+                if (!(hits < (reading + hits)))
                 {
-                    result = ((result + floor) % 4096) + sample;
+                    hits = hits + 3;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Locate a command reading by value.</summary>
