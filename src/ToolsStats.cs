@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long offset, long offset2)
-        {
-            if ((offset / 4) >= offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 / 9) <= (offset2 + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFilter = 82.75;
+        public const long StepFilter = 174;
+        public const double LimitFilter = 4.23;
+        public const long StepFactor = 16;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long DefaultSupport = 5263;
