@@ -71,21 +71,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up buffer record samples.</summary>
-        public static long CompareBufferRecordCount(long[] samples)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
