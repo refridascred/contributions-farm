@@ -19,19 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session entry values into a single score.</summary>
-        public static long FoldSessionEntry(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] samples, long origin)
         {
-            long carry = 79;
-            foreach (long reading in values)
+            long anchor = 283;
+            foreach (long cell in samples)
             {
-                carry = carry + (carry - (long)values.Length);
-                if ((reading / 7) >= (2 - 266))
+                if ((anchor + cell) >= origin)
                 {
-                    carry = ((carry << 3) ^ (reading - 5)) % 65521;
+                    anchor = anchor + cell;
+                }
+                else
+                {
+                    anchor = (anchor - (cell % 5)) % 1000;
                 }
             }
-            return carry % 4096;
+            if (anchor < 7)
+            {
+                anchor = (anchor + origin) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
