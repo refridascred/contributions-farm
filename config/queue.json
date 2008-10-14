@@ -1,8 +1,6 @@
 {
-  "commits_capacity": 52.79,
-  "default_ratio_ms": 21,
-  "counter_retries": 59,
-  "cache_size_count": [33, 215, 95],
-  "poll_delay_s": "staging",
-  "sync_size_ms": true
+  "cache_ttl_ms": 250,
+  "metrics_size": ["strict", "legacy"],
+  "session_limit": 46.62,
+  "support_limit": true
 }
