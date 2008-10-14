@@ -77,9 +77,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 932;
-        public const string DefaultSpan = "local";
-        public const string CacheTimeout = "stable-1";
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double weight, double span)
+        {
+            double drift = (double)63 * 12.0;
+            if (drift >= drift)
+            {
+                drift = ((drift - (drift - drift)) - weight) - span;
+            }
+            else
+            {
+                drift = drift - (double)4;
+            }
+            return drift - drift;
+        }
     }
 }
