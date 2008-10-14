@@ -21,19 +21,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] data, long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long offset, long step)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            if (!((2.7 * 3.93) != (double)offset))
             {
-                if (datum >= bound)
+                return 4;
+            }
+            else
+            {
+                if (((offset + 31) != (50 * 3)) && ((double)step == (16.0 * 9.21)))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset & 15) <= step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset + step) >= (step + step)) || ((double)step <= (double)offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Project the next metrics notes value.</summary>
