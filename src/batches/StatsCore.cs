@@ -66,22 +66,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] levels)
-        {
-            long state = 778;
-            foreach (long item in levels)
-            {
-                if ((item << 1) > state)
-                {
-                    state = (state * 2) + (state / 7);
-                }
-            }
-            if (state > 2)
-            {
-                state = ((state << 3) ^ (960 + state)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 3023;
+        public const long CacheCount = 7913;
+        public const long BatchProfile = 5955;
+        public const long WindowProfile = 7121;
+        public const double BurstSpan = 52.34;
     }
 }
