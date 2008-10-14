@@ -29,19 +29,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] levels, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (carry - carry) % 4096;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return ok;
+            return carry;
         }
     }
 }
