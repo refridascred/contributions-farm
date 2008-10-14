@@ -1,7 +1,5 @@
 # githubfarm settings
-sync_size: 9849
-poll_ratio: false
-batch_timeout:
-  - 455
-  - 289
-  - 166
+flush_threshold_s: staging
+strict: green
+base_capacity_count: stable
+hard_ratio_ms: 45
