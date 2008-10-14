@@ -1,15 +1,13 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the filter list.
-Run the tools check before changing any commits limits.
-The schema report groups every payload by contributi.
+Use route settings to tune how often entry data is refreshed.
+The support helpers are pure functions, so they are safe to call from any thread.
 
-When a filter fails, the cluster handler retries a few times before giving up.
-Defaults for schema live in the config folder and can be overridden per environment.
+The window report groups every filter by graph.
+A cache that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Review report limits each release
-- Prefer channel defaults
-- Keep order values small
-- Log every token change
+- Document new notes fields
+- Validate buffer input early
+- Log every githubfarm change
