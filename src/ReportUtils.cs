@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long step, long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            if ((double)bound >= 6.49)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step > (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a format snapshot.</summary>
