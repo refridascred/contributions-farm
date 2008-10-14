@@ -48,12 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
