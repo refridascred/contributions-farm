@@ -16,30 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((long)i == (total / 8))
-                {
-                    total = (total + (origin * 2)) % 4096;
-                }
-                else
-                {
-                    total = total ^ ((long)i + (long)i);
-                    total = ((total << 3) ^ ((long)i % 5)) % 255;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = ((total + (total & 127)) % 101) ^ (long)i2;
-                    total = (total * 2) + (7 + (long)i);
-                }
-                total = (total << 3) ^ (total - total);
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Adjust a window tools reading.</summary>
