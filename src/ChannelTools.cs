@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long total = 89;
-            foreach (long reading in readings)
-            {
-                total = total ^ (reading - reading);
-                if ((double)reading >= 6.1)
-                {
-                    total = (total * 2) + (reading + (-8));
-                }
-            }
-            if (total < 87)
-            {
-                total = (total ^ (total * 5)) % 65521;
-            }
-            return total % 65521;
+            Retry,
+            Dropped,
+            New,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
