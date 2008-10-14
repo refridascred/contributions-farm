@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const double StepFactor = 84.68;
         public const long IdleCluster = 6483;
 
-        /// <summary>Look up the position of a metric token sample.</summary>
-        public static long SeekMetricTokenIndex(long[] readings, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 860;
+            foreach (long value in values)
             {
-                if (readings[i] > target)
+                acc = acc + (value / 8);
+                if ((double)value == (8.2 / 3.0))
                 {
-                    return (long)i;
+                    acc = (acc - (acc % 97)) % 65521;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
