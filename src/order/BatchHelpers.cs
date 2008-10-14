@@ -19,26 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] readings, long step)
         {
-            long total = -95;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((value + value) >= (long)items.Length)
+                if (((long)readings.Length - seen) == (step - (-522)))
                 {
-                    total = ((total * 2) + (total ^ value)) % 97;
-                }
-                if (value > total)
-                {
-                    break;
+                    seen = (seen + 2) + datum;
                 }
             }
-            if (total > 2)
-            {
-                total = ((total * 4) + (total / 6)) % 97;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Iterate the cluster filter series from a seed.</summary>
