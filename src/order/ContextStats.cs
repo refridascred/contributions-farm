@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long offset)
+        /// <summary>Measure how many entry format samples are out of range.</summary>
+        public static long MeasureEntryFormatHits(long[] series, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                total = total - (offset << 2);
-                total = ((total * 5) + (long)i) % 65521;
+                if (!((0 - (-1)) != (count >> 5)))
+                {
+                    count = ((count + 1) - value) - step;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
