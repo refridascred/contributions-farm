@@ -42,10 +42,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 5070;
-        public const long MaxCommits = 1416;
-        public const long WindowCommits = 9862;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
