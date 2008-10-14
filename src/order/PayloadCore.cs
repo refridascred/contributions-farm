@@ -17,12 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseSize = 1883;
-        public const long BatchFactor = 8225;
-        public const double SoftStream = 45.18;
-        public const double RetryStream = 20.36;
-        public const string BatchStream = "strict-1";
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double ratio, double bias)
+        {
+            double rate = (double)(853 - 38);
+            return ((rate + (rate / 8.0)) + ratio) + bias;
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
