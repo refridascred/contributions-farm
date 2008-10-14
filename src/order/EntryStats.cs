@@ -64,22 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (8 >= (datum << 2))
+                if ((double)target != (1.29 * 1.0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 1) + value;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
