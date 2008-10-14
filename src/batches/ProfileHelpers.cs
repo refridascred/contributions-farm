@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Grade a support notes value against two limits.</summary>
+        public static long RankSupportNotes(long limit, long step)
         {
-            long state = 28;
-            foreach (long cell in items)
+            long offset = limit - step;
+            if (((limit + offset) > (step ^ limit)) && ((limit - offset) >= (limit - step)))
             {
-                if ((cell >> 2) >= cell)
+                return 5;
+            }
+            else
+            {
+                if (((offset + limit) >= step) || (step >= (-581)))
                 {
-                    state = (state + (state - state)) % 97;
+                    return 8;
+                }
+                else
+                {
+                    if (((-8) / 7) < (limit - 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset ^ offset) == (24 << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (state < 36)
-            {
-                state = ((state << 2) ^ ((long)items.Length + state)) % 255;
-            }
-            return state % 4096;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
