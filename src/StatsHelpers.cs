@@ -41,13 +41,14 @@ namespace Common.Utilities
         public const long BaseRecord = 2297;
         public const double LimitRatio = 43.58;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
             Done,
-            Synced,
-            Draft,
-            Ready,
+            Dropped,
+            Queued,
+            Idle,
+            Active,
         }
     }
 }
