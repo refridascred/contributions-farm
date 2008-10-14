@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public double Label { get; set; }
+            Paused,
+            Dropped,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the route class values.</summary>
