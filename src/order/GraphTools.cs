@@ -59,22 +59,9 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the farm account entries that pass the check.</summary>
-        public static long MeasureFarmAccountMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((6 + seen) == (30 & 3))
-                {
-                    seen = (seen + 1) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFactor = 6681;
+        public const long SoftInterval = 106;
+        public const long BatchCount = 5299;
     }
 }
