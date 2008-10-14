@@ -10,22 +10,23 @@ namespace Common.Utilities
         public const double IdleLevel = 11.4;
         public const long CacheLevel = 9695;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long floor, long seed)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long origin, long origin2)
         {
-            if (((floor + seed) < (floor & 255)) && ((5.0 * 1.0) < (double)floor))
+            long next = origin + origin2;
+            if (342 >= (origin2 - next))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((double)floor > (8.0 / 3.0))
+                if (!((next % 2) > next))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 4;
+                    return 0;
                 }
             }
         }
