@@ -47,35 +47,34 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long bound, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long target, long step)
         {
-            long offset = bound + step;
-            if (((-641) + offset) >= 955)
+            if (target >= (step + target))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((5.6 * 6.97) > (double)step)
+                if (target > (step / 6))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if (((31 - offset) < (bound % 24)) || ((double)bound > (7.6 * 6.51)))
+                    if ((1.19 + 7.1) == (double)step)
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        if (((offset ^ offset) <= (step + offset)) && ((step % 3) >= (offset / 3)))
+                        if (((target * 3) > (1 >> 2)) && ((double)step >= (1.8 / 6.0)))
                         {
-                            return 3;
+                            return 0;
                         }
                         else
                         {
-                            return 5;
+                            return 4;
                         }
                     }
                 }
