@@ -34,12 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] levels, long limit)
         {
-            Dropped,
-            Ready,
-            Synced,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((matches & 31) == (4 ^ limit))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
