@@ -19,31 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long target, long seed)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            if (target <= (3 + 5))
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((target >> 3) != (target % 10))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed <= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Fold a list of window tools readings.</summary>
