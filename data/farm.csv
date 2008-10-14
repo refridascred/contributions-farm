@@ -1,6 +1,9 @@
-id,level
-1,eu-west
-2,blue
-3,edge
-4,primary
-5,green
+id,weight,count,score
+1,76.34,782,primary
+2,844,854,288
+3,336,901,511
+4,19.19,766,360
+5,647,923,187
+6,edge,latest,338
+7,23.9,41.55,664
+8,cached,44.84,4.92
