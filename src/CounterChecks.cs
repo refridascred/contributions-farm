@@ -19,12 +19,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleTimeout = 4067;
-        public const long DefaultSpan = 37;
-        public const long IdleBuffer = 5910;
-        public const long BurstBuffer = 5866;
-        public const long SoftBuffer = 9362;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchSize = "staging-edge";
+        public const long MaxQueue = 4823;
+        public const double DefaultQueue = 12.72;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long RollAlready(long step)
