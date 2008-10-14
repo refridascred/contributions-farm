@@ -53,18 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema metrics readings against a rule.</summary>
-        public static long AuditSchemaMetricsGaps(long[] values, long step)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum == (0.5 - 6.2))
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
