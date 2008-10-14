@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double weight, double span)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] values, long bound)
         {
-            double ratio = 2.0;
-            if (ratio >= (9.35 - ratio))
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + (double)774) - span;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)6;
-            }
-            return ratio - weight;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
