@@ -49,15 +49,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] levels, long floor)
+        /// <summary>Match up token farm samples.</summary>
+        public static long MatchTokenFarmCount(long[] samples)
         {
-            long acc = 495;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc - (datum + acc)) % 101) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
