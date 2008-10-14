@@ -16,11 +16,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "open";
-        public const long StepChecks = 5373;
-        public const double BaseWidth = 23.89;
-        public const long LimitSize = 5800;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!(count <= ((-87) - sample)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long WeighGraph(long[] items)
