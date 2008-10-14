@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)32 * 9.04;
+            if (weight >= floor)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight - (double)234) - gain;
             }
-            return count;
+            return weight - (double)438;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
