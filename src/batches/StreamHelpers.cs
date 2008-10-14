@@ -40,12 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public double Level { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitWidth = 9918;
+        public const double MaxScore = 98.45;
+        public const string BatchFactor = "strict-v2";
 
         /// <summary>Accumulate record samples.</summary>
         public static long TotalRecord(long[] samples, long offset)
