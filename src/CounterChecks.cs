@@ -65,19 +65,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] items, long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Done,
+            Draft,
+            Idle,
+            Paused,
         }
     }
 }
