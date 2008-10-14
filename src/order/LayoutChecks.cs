@@ -20,18 +20,21 @@ namespace Common.Utilities
         public const long LimitBudget = 1471;
         public const long MinBatch = 2861;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] readings, long bound)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            long total = 780;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((563 << 3) > (bound << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total << 2) ^ total) - entry;
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the entry mode values.</summary>
