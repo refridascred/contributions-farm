@@ -6,14 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=318
+log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for item in strict legacy; do
+    log "checking ${item}"
 done
-log "total ${total}"
