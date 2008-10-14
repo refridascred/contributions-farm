@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Accumulate report metric samples.</summary>
+        public static long CombineReportMetric(long[] items)
         {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = -3;
+            foreach (long reading in items)
+            {
+                mark = ((mark << 3) ^ ((long)items.Length / 4)) % 4096;
+                if (((mark / 3) != (42 + mark)) && ((reading + mark) >= (reading + 1)))
+                {
+                    mark = mark ^ (reading + mark);
+                }
+                else
+                {
+                    mark = mark + (reading * 2);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Match up commits token samples.</summary>
