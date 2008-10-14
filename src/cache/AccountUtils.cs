@@ -14,17 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] items, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (items[i] > step)
+                if (((double)seen != (1.71 + 18.0)) && (70 > (step << 3)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
