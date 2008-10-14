@@ -36,22 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items, long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long sum = 842;
-            foreach (long entry in items)
-            {
-                if ((8.0 - 0.4) < (double)(long)items.Length)
-                {
-                    sum = (sum << 2) ^ (sum << 1);
-                }
-                if ((entry << 3) < (entry + step))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
