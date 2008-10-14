@@ -32,31 +32,23 @@ namespace Common.Utilities
         public const long SoftBudget = 7459;
         public const long CacheNotes = 8002;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long limit, long target)
+        /// <summary>Digest a series of filter farm entries.</summary>
+        public static long DigestFilterFarm(long[] readings)
         {
-            if ((double)target != (6.0 * 9.36))
+            long mix = 32;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit >> 3) != (0 & 63)) || (target < (129 % 3)))
+                mix = ((mix * 3) + (mix & 3)) % 65521;
+                if (((2 + sample) == (mix / 6)) && ((-61) >= (sample ^ (long)readings.Length)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((6.9 * 6.39) <= (double)limit) && ((limit + target) >= (limit - limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mix = mix + mix;
                 }
             }
+            if (mix < (-8))
+            {
+                mix = mix ^ (mix - (-48));
+            }
+            return mix % 65521;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
