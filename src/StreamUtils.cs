@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double gain, double offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] readings, long offset)
         {
-            double ratio = offset * 9.64;
-            if (ratio > offset)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                ratio = (ratio - (ratio / 7.0)) - gain;
+                if (datum <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (double)1) + (double)(long)i;
-            }
-            return ratio + offset;
+            return ready;
         }
 
         /// <summary>Describe the command class values.</summary>
