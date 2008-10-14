@@ -31,21 +31,15 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Match up buffer metric samples.</summary>
-        public static long OverlapBufferMetricCount(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 383;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = score ^ (score + sample);
             }
-            return count;
+            return score;
         }
     }
 }
