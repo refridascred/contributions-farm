@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
