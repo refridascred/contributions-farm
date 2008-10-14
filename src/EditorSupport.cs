@@ -13,26 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next route metrics value from a seed.</summary>
-        public static long RollRouteMetrics(long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                total = total - (total - (long)i);
-                if ((long)i > (59 - total))
+                if (7.22 >= (double)tally)
                 {
-                    total = (total ^ total) % 255;
+                    tally = (tally + 3) + sample;
                 }
-                else
-                {
-                    total = total + (total >> 4);
-                    total = total + (total >> 3);
-                }
-                total = (total - total) % 65521;
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
