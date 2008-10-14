@@ -41,39 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long step, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long offset = step + limit;
-            if ((step / 6) < (limit + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (1.89 > (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step >= (3 ^ step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset - 13) > (limit - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
