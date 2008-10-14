@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine graph editor values into a single score.</summary>
-        public static long DigestGraphEditor(long[] series)
-        {
-            long anchor = 27;
-            foreach (long entry in series)
-            {
-                anchor = ((anchor << 2) ^ (44 - anchor)) + entry;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 1223;
+        public const long StepContext = 6907;
+        public const long SoftDepth = 5286;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long ScoreFormat(long[] values, long offset)
