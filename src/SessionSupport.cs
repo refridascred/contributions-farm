@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string CacheEntry = "alpha-edge";
         public const long WindowSpan = 6120;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] items, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((6.0 - 10.0) < (8.76 * 0.8))
+                if ((bound > (0 - 477)) && !((5.52 + 12.0) <= (double)bound))
                 {
-                    hits = ((hits + 1) ^ cell) + offset;
+                    count = (count + 2) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
