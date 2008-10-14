@@ -57,11 +57,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a contributi command reading.</summary>
-        public static double SmoothContributiCommand(double bias, double span)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] readings, long bound)
         {
-            double load = span;
-            return (load + (span * 3.2)) + bias;
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((4.9 + 7.3) != (double)bound)
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
