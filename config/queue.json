@@ -1,16 +1,8 @@
 {
-  "min_threshold": {
-    "strict": {
-      "audit": 1671,
-      "sync_ttl": 84,
-      "schema_retries": "green"
-    },
-    "tools_retries": 5.0,
-    "hard_retries_pct": "legacy",
-    "idle_window_ms": true
-  },
-  "burst_timeout": 250,
-  "profile_threshold": 63.96,
-  "warm_capacity": "stable",
-  "poll_delay_s": 4687
+  "batch_retries": ["latest", "strict"],
+  "max_retries_count": 13,
+  "flush_size_s": 250,
+  "batches_depth": "stable",
+  "default_timeout_s": "primary",
+  "flush_delay_pct": "primary"
 }
