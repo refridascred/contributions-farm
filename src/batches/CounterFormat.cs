@@ -15,16 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a stats batches counter forward.</summary>
-        public static long StepStatsBatches(long target)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score << 2) ^ (9 + 880)) % 4096;
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Rank format order input into a small class.</summary>
