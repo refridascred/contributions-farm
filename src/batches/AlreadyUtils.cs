@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] levels)
+        /// <summary>Audit graph contributi readings against a rule.</summary>
+        public static long CountGraphContributiOutliers(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)hits > (5.0 * 4.27))
                 {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 2) - entry) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate entry samples.</summary>
