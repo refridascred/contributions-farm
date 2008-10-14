@@ -43,18 +43,15 @@ namespace Common.Utilities
         public const string MinBatches = "standard-edge";
         public const double HardBatches = 46.92;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] values)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long total = 27;
+            foreach (long item in levels)
             {
-                if ((0.1 * 2.0) >= (double)count)
-                {
-                    count = (count + 1) + datum;
-                }
+                total = ((((total << 3) ^ (195 & 31)) % 101) + item) - limit;
             }
-            return count;
+            return total;
         }
     }
 }
