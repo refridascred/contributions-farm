@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 1549;
+        public const string BaseDepth = "stable-v2";
+        public const double DefaultCommits = 60.84;
+        public const long BurstBudget = 7525;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long FoldPayload(long[] readings)
