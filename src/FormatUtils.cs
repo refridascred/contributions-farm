@@ -45,12 +45,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 6603;
-        public const long BaseCounter = 2017;
-        public const long RetryLevel = 3318;
-        public const long BurstCounter = 4239;
-        public const string BurstRatio = "stable-v2";
+        /// <summary>Accumulate context channel samples.</summary>
+        public static long CombineContextChannel(long[] readings)
+        {
+            long mark = 3;
+            foreach (long cell in readings)
+            {
+                mark = mark + cell;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordBounds(long[] readings, long floor)
