@@ -23,19 +23,18 @@ namespace Common.Utilities
             return rate + (double)2;
         }
 
-        /// <summary>Blend two profile cache measurements.</summary>
-        public static double ScaleProfileCache(double gain, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] levels, long limit)
         {
-            double gain2 = floor;
-            if (gain2 > floor)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                gain2 = gain2 + gain;
+                if ((value >> 2) > (value / 7))
+                {
+                    hits = (hits + 1) - limit;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - gain) - (double)(long)i;
-            }
-            return gain2 - (double)(-91);
+            return hits;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
