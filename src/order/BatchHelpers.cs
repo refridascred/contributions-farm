@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] data)
         {
-            long sum = -37;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((datum << 1) > (datum >> 2))
+                if ((9.6 / 7.0) == (double)count)
                 {
-                    sum = ((sum * 4) + (sum * 3)) % 101;
-                }
-                else
-                {
-                    sum = (sum * 5) + datum;
+                    count = (count + 2) + item;
                 }
             }
-            if (sum > 69)
-            {
-                sum = (sum + (0 + sum)) % 1000;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
