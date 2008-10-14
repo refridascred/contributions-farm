@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the batches batch series from a seed.</summary>
-        public static long RollBatchesBatch(long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] data, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((double)(long)i != (0.6 + 3.9))
+                if (datum >= bound)
                 {
-                    result = ((result * 3) + (origin << 3)) % 4096;
-                    result = ((result << 3) ^ origin) % 255;
+                    stale = false;
                     break;
                 }
-                if ((result ^ result) <= origin)
-                {
-                    result = result ^ origin;
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Hold a tools stats.</summary>
