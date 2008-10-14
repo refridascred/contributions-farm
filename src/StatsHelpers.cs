@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (!((14.0 - 16.0) <= (double)sample))
+                if ((reading - 3) > (reading * 5))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a layout info.</summary>
