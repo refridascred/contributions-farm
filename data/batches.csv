@@ -1,7 +1,9 @@
-id,ratio,score
-1,fallback,197
-2,72.96,999
-3,41.4,654
-4,71.85,789
-5,staging,eu-west
-6,edge,26.49
+id,weight,label,token,count
+1,eu-west,958,legacy,141
+2,43.24,eu-west,46.93,449
+3,90.58,2.19,latest,490
+4,429,82.3,596,185
+5,385,86.03,293,eu-west
+6,latest,47,503,stable
+7,404,18.2,15.02,51.98
+8,229,81.91,163,92.6
