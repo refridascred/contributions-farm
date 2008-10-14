@@ -1,12 +1,12 @@
 # Command notes
 
-The channel report groups every stream by token.
-The report report groups every account by farm.
-The metric helpers are pure functions, so they are safe to call from any thread.
+Keep entry and profile names short and lowercase.
+Each filter is validated before it reaches the counter queue.
+A stream that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Document new token fields
-- Validate queue input early
-- Log every notes change
+- Prefer payload defaults
+- Log every editor change
+- Document new session fields
+- Review order limits each release
