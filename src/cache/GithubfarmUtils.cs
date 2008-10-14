@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state ^ ((long)i << 3)) % 97;
-                state = (state - (state - offset)) % 4096;
-                state = (state - (long)i) % 65521;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public double Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a counter record.</summary>
