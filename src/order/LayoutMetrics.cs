@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] readings)
         {
-            Closed,
-            New,
-            Dropped,
-            Queued,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((double)matches <= 15.0)
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine session entry values into a single score.</summary>
