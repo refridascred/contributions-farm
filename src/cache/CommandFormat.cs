@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mix = 3;
-            foreach (long cell in levels)
-            {
-                if ((cell + cell) <= cell)
-                {
-                    mix = mix ^ (cell / 6);
-                }
-                else
-                {
-                    mix = mix ^ (cell - cell);
-                }
-            }
-            if (mix < 895)
-            {
-                mix = mix + (long)levels.Length;
-            }
-            return mix % 4096;
+            Queued,
+            Stale,
+            Closed,
         }
 
         /// <summary>Blend two route measurements.</summary>
