@@ -19,16 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 4) + ((long)i + 42)) % 101;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Stale,
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
