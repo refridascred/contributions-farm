@@ -41,18 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] levels, long floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] levels, long offset)
         {
-            long score = -915;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score ^ score) <= value)
+                if (levels[i] >= offset)
                 {
-                    score = ((score ^ score) % 101) + floor;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
