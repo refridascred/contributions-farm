@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count route channel pairs that satisfy a relation.</summary>
-        public static long CompareRouteChannelCount(long[] levels)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
                 {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
