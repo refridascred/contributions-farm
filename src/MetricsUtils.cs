@@ -35,15 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] data, long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long result = 87;
-            foreach (long reading in data)
-            {
-                result = ((result - (reading % 8)) % 97) + origin;
-            }
-            return result;
+            Draft,
+            Dropped,
+            Queued,
+            Ready,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
