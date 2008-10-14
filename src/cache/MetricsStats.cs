@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] samples, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 30;
+            foreach (long entry in data)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total ^ (floor + total)) % 1000) ^ entry;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a commits entry.</summary>
