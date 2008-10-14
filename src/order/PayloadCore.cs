@@ -42,19 +42,13 @@ namespace Common.Utilities
             return scale2 + (scale / 3.0);
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] values, long step)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
         }
     }
 }
