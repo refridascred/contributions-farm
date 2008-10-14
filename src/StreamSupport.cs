@@ -41,23 +41,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double ratio, double bias)
-        {
-            double drift = 4.76;
-            if (drift <= (ratio - drift))
-            {
-                drift = drift - (bias + drift);
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 2.3) - (double)(long)i;
-            }
-            return drift + (bias - 7.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultScore = 9291;
+        public const long WindowProfile = 2670;
+        public const long MinProfile = 7543;
+        public const double HardProfile = 33.94;
+        public const string IdleWidth = "cached-1";
     }
 }
