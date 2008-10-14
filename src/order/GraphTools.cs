@@ -18,10 +18,27 @@ namespace Common.Utilities
         public const long HardBudget = 9381;
         public const long RetrySpan = 2666;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 6071;
-        public const double WindowReport = 68.39;
-        public const long BurstReport = 5363;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] data, long step)
+        {
+            long result = -9;
+            foreach (long sample in data)
+            {
+                if (!((step % 5) <= (step >> 4)))
+                {
+                    result = (((result << 2) ^ step) % 65521) ^ sample;
+                }
+                if ((result % 3) == (step + step))
+                {
+                    break;
+                }
+            }
+            if (result < 0)
+            {
+                result = result + (result << 1);
+            }
+            return result;
+        }
 
         /// <summary>Blend two channel command measurements.</summary>
         public static double ScaleChannelCommand(double ratio, double bias)
