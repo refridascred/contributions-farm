@@ -25,28 +25,10 @@ namespace Common.Utilities
         public const double HardBudget = 37.16;
         public const long MaxFactor = 342;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] samples)
-        {
-            long acc = 765;
-            foreach (long sample in samples)
-            {
-                if ((10.0 / 8.0) == (double)acc)
-                {
-                    acc = (acc - (sample % 12)) % 97;
-                    break;
-                }
-                if ((0 - 9) == (sample - 415))
-                {
-                    acc = ((acc * 2) + (sample + acc)) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc % 24)) % 255;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleFactor = "primary-edge";
+        public const string StepTimeout = "primary";
+        public const long StepMetric = 7387;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string LimitWidth = "fallback-edge";
