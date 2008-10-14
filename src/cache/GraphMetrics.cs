@@ -63,12 +63,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] values, long seed)
         {
-            Failed,
-            Ready,
-            Retry,
+            long state = 3;
+            foreach (long datum in values)
+            {
+                if ((state & 7) >= seed)
+                {
+                    state = (state << 2) ^ ((-598) ^ 632);
+                }
+                if (((seed % 97) >= (3 % 7)) && ((datum - datum) <= (datum - state)))
+                {
+                    break;
+                }
+            }
+            if (state > 1)
+            {
+                state = ((state * 2) + (state % 3)) % 101;
+            }
+            return state;
         }
     }
 }
