@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long limit, long target)
         {
-            Pending,
-            New,
-            Idle,
-            Dropped,
-            Closed,
+            if ((double)583 != (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((958 % 24) < (target >> 3)) && ((limit + target) == (2 - limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
