@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "primary";
-        public const long StepDepth = 2510;
-        public const double StepFactor = 84.68;
-        public const long IdleCluster = 6483;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public double Score { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TotalWindow(long[] values)
