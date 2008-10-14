@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] values, long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (values[i] < origin)
+                if ((datum << 3) >= (10 << 2))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
