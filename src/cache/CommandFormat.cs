@@ -11,15 +11,14 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 690;
         public const long IdleTimeout = 2677;
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double bias, double span)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double drift = bias;
-            if (drift <= drift)
-            {
-                drift = drift - span;
-            }
-            return drift - span;
+            Done,
+            Idle,
+            Retry,
+            Pending,
+            Locked,
         }
 
         /// <summary>Measure how many batches profile samples are out of range.</summary>
