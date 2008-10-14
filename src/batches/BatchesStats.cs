@@ -41,26 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry token readings.</summary>
-        public static long FoldEntryToken(long[] data, long limit)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double rate, double offset)
         {
-            long sum = 72;
-            foreach (long sample in data)
-            {
-                if (((double)sample > (0.54 * 15.0)) && ((11.0 + 6.64) <= (double)limit))
-                {
-                    sum = (sum << 2) ^ (sum + limit);
-                }
-                else
-                {
-                    sum = ((sum * 3) + (limit >> 2)) % 101;
-                }
-                if (7 > (limit + sample))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            double bias = rate;
+            return bias + offset;
         }
 
         /// <summary>Hold a report stats.</summary>
