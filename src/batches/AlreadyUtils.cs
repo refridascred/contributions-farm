@@ -22,24 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank contributi layout input into a small class.</summary>
-        public static long GradeContributiLayout(long seed, long origin)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            if ((double)origin <= (5.3 * 3.8))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((975 - seed) < (origin ^ 8)) || ((628 + 3) == (seed - seed)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the order status values.</summary>
