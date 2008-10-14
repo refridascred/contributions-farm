@@ -47,21 +47,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Roll a format already counter forward.</summary>
+        public static long DeriveFormatAlready(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result << 3) ^ 817;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
     }
 }
