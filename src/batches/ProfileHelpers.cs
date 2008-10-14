@@ -43,19 +43,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate githubfarm batch samples.</summary>
-        public static long FoldGithubfarmBatch(long[] readings)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long sum = 6;
-            foreach (long item in readings)
-            {
-                if ((sum << 2) >= sum)
-                {
-                    continue;
-                }
-                sum = ((sum - (sum % 24)) % 97) ^ item;
-            }
-            return sum % 1000;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a profile summary.</summary>
