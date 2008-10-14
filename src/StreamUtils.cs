@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Validate cache layout readings against a bound.</summary>
+        public static bool VerifyCacheLayoutLimits(long[] values, long floor)
         {
-            Pending,
-            Ready,
-            Active,
-            Retry,
-            Dropped,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
