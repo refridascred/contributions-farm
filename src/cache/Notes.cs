@@ -53,15 +53,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next order stream value.</summary>
-        public static double ScaleOrderStream(double weight, double offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] items)
         {
-            double drift = (double)(406 + (-47));
-            if (drift < (5.75 + weight))
+            long total = 85;
+            foreach (long datum in items)
             {
-                drift = (drift - (double)6) - offset;
+                if ((datum & 31) != (datum << 2))
+                {
+                    total = total ^ (datum & 1);
+                }
+                else
+                {
+                    total = ((total * 4) + 647) % 255;
+                }
             }
-            return drift + (0.2 - weight);
+            return total;
         }
     }
 }
