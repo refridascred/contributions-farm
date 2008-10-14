@@ -49,21 +49,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up githubfarm entry samples.</summary>
-        public static long PairGithubfarmEntryCount(long[] items)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = -27;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((0.8 - 15.0) == (double)reading)
                 {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - ((long)samples.Length >> 1)) % 4096;
+                }
+                else
+                {
+                    result = ((result * 2) + (offset & 63)) % 101;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
