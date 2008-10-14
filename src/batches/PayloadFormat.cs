@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] items, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mix = -29;
+            foreach (long value in data)
             {
-                if (origin < (item & 127))
+                long offset = value - (value + value);
+                if ((double)offset == (7.02 * 7.2))
                 {
-                    seen = seen + 3;
+                    break;
                 }
-                else
+                if (((812 + value) < mix) && ((2 + value) >= value))
                 {
-                    seen = seen - 1;
+                    mix = (mix + (value >> 4)) % 65521;
                 }
             }
-            return seen;
+            if (mix < 5)
+            {
+                mix = ((mix * 5) + (mix << 1)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Rank context input into a small class.</summary>
