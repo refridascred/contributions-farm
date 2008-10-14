@@ -1,8 +1,7 @@
 {
-  "persist": "cached",
-  "max_ttl_s": "edge",
-  "session_ttl": 78,
-  "soft_limit_count": 57,
-  "stream_interval": false,
-  "base_interval_pct": "edge"
+  "order_ratio": 250,
+  "flush_interval": ["strict", "stable", "eu-west", "strict"],
+  "format_window": 6695,
+  "verbose": 780,
+  "idle_window_ms": "standard"
 }
