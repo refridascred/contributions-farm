@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up already contributi samples.</summary>
-        public static long CompareAlreadyContributiCount(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -69;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum - ((long)readings.Length ^ target)) ^ reading;
             }
-            return tally;
+            if (sum < 5)
+            {
+                sum = (sum ^ (target * 5)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the cache class values.</summary>
