@@ -17,18 +17,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the session layout entries that pass the check.</summary>
-        public static long TallySessionLayoutMatches(long[] values, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if (42 > (floor + seed))
             {
-                if ((double)cell < (double)tally)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed <= (4.0 / 6.0))
                 {
-                    tally = (tally + 1) - offset;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the farm phase values.</summary>
