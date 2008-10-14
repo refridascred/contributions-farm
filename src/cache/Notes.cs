@@ -27,15 +27,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] series, long step)
+        /// <summary>Accumulate counter tools samples.</summary>
+        public static long TotalCounterTools(long[] items)
         {
-            long state = 52;
-            foreach (long item in series)
+            long total = 25;
+            foreach (long sample in items)
             {
-                state = (((state << 2) ^ (step ^ state)) % 101) + item;
+                total = (total ^ (sample + 3)) % 65521;
+                total = ((total * 5) + (sample ^ total)) % 97;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the graph status values.</summary>
