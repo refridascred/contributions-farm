@@ -37,20 +37,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of route stats readings.</summary>
-        public static long DigestRouteStats(long[] values, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] samples, long bound)
         {
-            long score = 6;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                score = (score + (bound ^ reading)) % 101;
-                score = ((score << 2) ^ (reading * 3)) % 101;
+                if ((double)bound != (4.0 / 5.0))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (score > 4)
-            {
-                score = (score + 867) % 255;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
