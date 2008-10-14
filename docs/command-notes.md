@@ -1,14 +1,12 @@
 # Command notes
 
-Keep format and format names short and lowercase.
-A token that stays idle for too long is moved to the batch list.
-
-Use stream settings to tune how often stream data is refreshed.
-When a editor fails, the already handler retries a few times before giving up.
-Use tools settings to tune how often batches data is refreshed.
+The channel report groups every stream by token.
+The report report groups every account by farm.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new already fields
-- Prefer graph defaults
-- Review cache limits each release
+- Prefer entry defaults
+- Document new token fields
+- Validate queue input early
+- Log every notes change
