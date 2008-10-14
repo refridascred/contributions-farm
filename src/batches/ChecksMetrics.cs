@@ -43,23 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metrics notes value.</summary>
-        public static double AdjustMetricsNotes(double weight, double floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            double drift = (double)0;
-            if (drift < (9.84 * 3.4))
+            long result = 62;
+            foreach (long item in samples)
             {
-                drift = (drift - (floor / 6.0)) - weight;
+                result = ((result + result) % 1000) + item;
             }
-            else
-            {
-                drift = drift - (drift / 5.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (floor / 7.0)) - (double)(long)i;
-            }
-            return drift - floor;
+            return result % 4096;
         }
 
         /// <summary>Accumulate session samples.</summary>
