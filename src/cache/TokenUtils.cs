@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const long DefaultLevel = 6926;
         public const long BaseWindow = 8695;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] series, long step)
+        /// <summary>Find the first cluster graph entry that matches the target.</summary>
+        public static long SeekClusterGraphIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((hits + hits) == (483 - sample)) && ((5 - hits) == (hits - step))))
+                if (levels[i] < origin)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
