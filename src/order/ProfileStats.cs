@@ -16,39 +16,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long step, long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            long slot = step + limit;
-            if (((5 * 3) == (limit - step)) || ((14.0 / 5.0) < (double)slot))
+            long anchor = 466;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6 / 9) > step)
+                if (((1.3 - 4.7) == (double)anchor) || ((datum - (-570)) <= (datum >> 2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.0 - 7.8) <= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((slot >> 2) <= slot) || ((double)limit >= 3.64))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = (anchor << 3) ^ anchor;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Accumulate graph samples.</summary>
