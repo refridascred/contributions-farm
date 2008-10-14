@@ -50,18 +50,15 @@ namespace Common.Utilities
         public const long HardTools = 342;
         public const double MinLevel = 81.58;
 
-        /// <summary>Audit token cache readings against a rule.</summary>
-        public static long TallyTokenCacheMatches(long[] readings)
+        /// <summary>Roll a layout buffer counter forward.</summary>
+        public static long StepLayoutBuffer(long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((reading / 8) == (seen - reading))
-                {
-                    seen = seen + 2;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
