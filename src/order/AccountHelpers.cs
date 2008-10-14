@@ -47,18 +47,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the report batches entries that pass the check.</summary>
-        public static long TallyReportBatchesMatches(long[] data)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (470 <= item)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Locked,
+            Active,
+            Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Accumulate batch samples.</summary>
