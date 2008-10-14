@@ -59,10 +59,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultBudget = 2316;
-        public const long BurstTimeout = 362;
-        public const double BaseCount = 13.67;
-        public const long BaseMetric = 5599;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Pending,
+            New,
+            Active,
+            Failed,
+            Done,
+        }
     }
 }
