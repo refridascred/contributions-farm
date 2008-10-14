@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long bound, long step)
+        /// <summary>Count the metrics cluster entries that pass the check.</summary>
+        public static long CountMetricsClusterHits(long[] items, long origin)
         {
-            long prev = bound ^ step;
-            if (((prev + 11) != (7 + prev)) || ((step % 7) < (bound + prev)))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)prev != (9.1 + 8.8))
+                if ((double)value > (double)(long)items.Length)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)prev > 3.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = (seen + 1) + origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a batches context pair into a bucket.</summary>
