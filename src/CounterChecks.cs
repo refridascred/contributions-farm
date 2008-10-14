@@ -32,13 +32,17 @@ namespace Common.Utilities
         public const long MinProfile = 1203;
         public const long DefaultProfile = 4089;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] items, long limit)
         {
-            Idle,
-            Failed,
-            Synced,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
