@@ -35,15 +35,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a token layout reading.</summary>
-        public static double ScaleTokenLayout(double rate, double floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long seed, long bound)
         {
-            double gain = floor;
-            if (gain <= gain)
+            long offset = seed - bound;
+            if (((offset + seed) > bound) && ((seed ^ bound) == (seed >> 2)))
             {
-                gain = (gain + (7.1 * 3.0)) - rate;
+                return 3;
             }
-            return gain + (double)99;
+            else
+            {
+                if ((offset <= (seed ^ offset)) || ((double)bound <= (double)50))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed > (9.2 - 7.69))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
