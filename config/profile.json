@@ -1,7 +1,7 @@
 {
-  "base_timeout": 60,
-  "batch_retries": 9228,
-  "min_depth_ms": ["standard", "legacy", "open"],
-  "report_interval": 3248,
-  "max_ratio": "latest"
+  "idle_delay_ms": "edge",
+  "strict": "green",
+  "checks_ratio": [42, 492, 49, 171],
+  "idle_interval": "primary",
+  "sync_limit": "eu-west"
 }
