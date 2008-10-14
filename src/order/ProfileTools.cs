@@ -40,13 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            Queued,
+            Closed,
+            Retry,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
