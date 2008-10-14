@@ -13,22 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] readings)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double rate = (offset - 2.3) * 5.1;
+            if (rate < (6.5 - 18.0))
             {
-                if (1 >= (matches * 4))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = rate + (double)5;
             }
-            return matches;
+            else
+            {
+                rate = rate + (rate - ratio);
+            }
+            return rate - rate;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
