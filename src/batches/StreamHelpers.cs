@@ -45,12 +45,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 5020;
-        public const double BurstTools = 50.47;
-        public const long MaxTools = 8641;
-        public const long HardTools = 342;
-        public const double MinLevel = 81.58;
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double ratio, double offset)
+        {
+            double bias = (double)99 - (double)865;
+            if (bias > bias)
+            {
+                bias = bias - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + ratio) + (double)(long)i;
+            }
+            return bias - 5.41;
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
