@@ -24,19 +24,22 @@ namespace Common.Utilities
         public const long RetryFactor = 4494;
         public const string StepStream = "local-edge";
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double scale, double bias)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            double bias2 = scale;
-            if (bias2 < bias2)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                bias2 = bias2 + (scale + 9.0);
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = (anchor ^ (anchor ^ anchor)) ^ (long)i2;
+                    anchor = anchor + (anchor << 2);
+                }
+                anchor = anchor + (anchor ^ anchor);
+                anchor = (anchor ^ anchor) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (bias - bias2)) + (double)(long)i;
-            }
-            return bias2 + (bias2 * 7.8);
+            return anchor;
         }
 
         /// <summary>Describe the token class values.</summary>
