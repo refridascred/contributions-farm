@@ -32,18 +32,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] readings, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((6.87 * 2.21) != (double)hits)
+                if ((target % 7) != (target + 417))
                 {
-                    hits = ((hits + 1) + item) + origin;
+                    seen = (seen + 1) - item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
