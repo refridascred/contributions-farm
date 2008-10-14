@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank metric record input into a small class.</summary>
-        public static long BucketMetricRecord(long bound, long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long bound2 = bound ^ floor;
-            if ((bound2 * 4) <= 338)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor & 7) > (bound2 + bound2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5 & 31) >= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1.48 + 9.0) >= (double)bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Match up stats samples.</summary>
