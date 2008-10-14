@@ -91,13 +91,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Measure how many account tools samples are out of range.</summary>
+        public static long MeasureAccountToolsMatches(long[] levels, long origin)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((1 * 4) < (origin + matches))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
     }
 }
