@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
