@@ -1,5 +1,12 @@
 {
-  "persist": 42,
-  "flush_ratio_count": [336, 5, 305],
-  "verbose": ["strict", "strict"]
+  "idle_limit_pct": 19.46,
+  "poll_ratio_count": false,
+  "strict": 48.88,
+  "verbose": {
+    "batch_capacity_pct": [409, 71],
+    "retry_depth_ms": "green",
+    "min_timeout": "latest",
+    "max_window_count": 77.97,
+    "farm_delay": 17
+  }
 }
