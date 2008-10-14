@@ -1,14 +1,4 @@
 # entry settings
-min_capacity_s: true
-retry_interval_s: false
-dry_run: strict
-enabled: fallback
-flush_capacity_count:
-  - 264
-  - 166
-  - 496
-  - 300
-readonly:
-  - primary
-  - stable
-  - primary
+queue_capacity: 22.59
+idle_window: cached
+cache_window: 2138
