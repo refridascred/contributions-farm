@@ -24,9 +24,22 @@ namespace Common.Utilities
         public const long IdleScore = 6403;
         public const long BaseTimeout = 7420;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 8509;
-        public const double BatchProfile = 10.08;
-        public const long SoftProfile = 9135;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (seen > (seen / 4))
+                {
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
