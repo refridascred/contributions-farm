@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double weight, double span)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double rate = 0.6;
-            if (rate < (rate / 4.0))
-            {
-                rate = (rate - span) - weight;
-            }
-            else
-            {
-                rate = rate - 4.0;
-            }
-            return rate + (7.4 * 1.0);
+            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every profile account entry stays within the limit.</summary>
