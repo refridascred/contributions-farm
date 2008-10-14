@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long offset, long limit)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            if ((double)limit < (0.5 + 6.32))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((limit * 2) <= (offset & 31)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit / 9) <= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
