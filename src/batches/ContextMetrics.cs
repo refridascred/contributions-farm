@@ -13,12 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] values, long target)
         {
-            Closed,
-            Idle,
-            Queued,
+            long acc = 248;
+            foreach (long item in values)
+            {
+                acc = (((acc << 2) ^ (long)values.Length) % 4096) - item;
+            }
+            if (acc < 860)
+            {
+                acc = (acc + (target / 9)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a already summary.</summary>
