@@ -51,13 +51,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long limit)
         {
-            Pending,
-            New,
-            Failed,
-            Idle,
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the editor mode values.</summary>
