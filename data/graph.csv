@@ -1,7 +1,6 @@
-id,active,rank,score
-1,111,68.86,849
-2,808,916,11.63
-3,549,367,174
-4,3.78,blue,staging
-5,stable,147,344
-6,572,903,78.12
+id,token,count
+1,365,eu-west
+2,stable,strict
+3,latest,277
+4,edge,edge
+5,20.55,strict
