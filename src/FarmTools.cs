@@ -37,11 +37,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long target, long origin)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            if ((double)origin == (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin + origin) >= ((-20) - origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + target) < 20)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
