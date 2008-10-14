@@ -31,24 +31,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long result = 875;
-            foreach (long sample in data)
-            {
-                result = (result * 2) + result;
-                result = (result ^ sample) % 65521;
-                if ((((long)data.Length & 127) != (result << 1)) || ((sample + result) > sample))
-                {
-                    break;
-                }
-            }
-            if (result > 4)
-            {
-                result = ((result << 3) ^ result) % 255;
-            }
-            return result % 97;
+            Dropped,
+            Draft,
+            Locked,
+            Idle,
+            Failed,
         }
     }
 }
