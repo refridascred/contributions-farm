@@ -1,12 +1,11 @@
 # Command notes
 
-Keep session and commits names short and lowercase.
-Run the githubfarm check before changing any graph limits.
-Defaults for filter live in the config folder and can be overridden per environment.
+A cache that stays idle for too long is moved to the checks list.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep notes values small
-- Review contributi limits each release
-- Log every order change
-- Validate commits input early
+- Document new cluster fields
+- Validate channel input early
+- Review entry limits each release
