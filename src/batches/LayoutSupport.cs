@@ -16,12 +16,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseDepth = "legacy-edge";
-        public const string SoftWidth = "legacy-edge";
-        public const long BaseFactor = 7633;
-        public const long StepFactor = 8452;
-        public const string BurstBatches = "legacy";
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double ratio, double bias)
+        {
+            double weight = ratio;
+            if (weight < bias)
+            {
+                weight = weight - (double)545;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (0.11 * 7.7)) + (double)(long)i;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleLevel = 3059;
