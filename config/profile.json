@@ -1,7 +1,14 @@
 {
-  "flush_size_ms": 43,
-  "payload_threshold": "fallback",
-  "dry_run": 1.66,
-  "base_threshold_count": ["eu-west", "edge", "fallback"],
-  "flush_ratio_count": 1749
+  "token_window": false,
+  "min_ttl": 7697,
+  "farm_depth": 99,
+  "warm_retries_pct": {
+    "context_ratio": "local",
+    "audit": "eu-west",
+    "verbose": "primary",
+    "graph_ratio": true,
+    "max_threshold_pct": ["latest", "strict"]
+  },
+  "persist": 60,
+  "strict": true
 }
