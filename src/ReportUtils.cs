@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const double IdleLevel = 11.4;
         public const long CacheLevel = 9695;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double ratio, double span)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double load = ratio;
-            if (load >= (ratio + ratio))
-            {
-                load = (load + (double)15) - span;
-            }
-            return load - 2.8;
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up notes samples.</summary>
