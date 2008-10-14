@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const string StepLayout = "standard-1";
         public const string DefaultLayout = "latest-edge";
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] values, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((values[i] > seed) && ((values[i] % 2) != 0))
+                if ((sample ^ sample) > hits)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next tools value.</summary>
