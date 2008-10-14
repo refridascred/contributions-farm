@@ -43,23 +43,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((6 * 3) == (hits - item))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 54.97;
+        public const long DefaultWindow = 8015;
+        public const double RetryWindow = 16.35;
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long CompareChannelCount(long[] values)
