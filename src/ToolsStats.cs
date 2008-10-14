@@ -15,15 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double scale, double bias)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings)
         {
-            double scale2 = scale;
-            if (scale2 > scale2)
+            long sum = 56;
+            foreach (long cell in readings)
             {
-                scale2 = (scale2 - (double)(-740)) - bias;
+                if (((cell & 127) >= sum) && (sum >= cell))
+                {
+                    sum = ((sum << 3) ^ sum) % 255;
+                }
             }
-            return scale2 + scale;
+            return sum % 65521;
         }
 
         /// <summary>Hold a session record.</summary>
