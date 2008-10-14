@@ -80,22 +80,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] series, long offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(offset < 6))
+                if ((readings[i] == offset) && ((readings[i] % 2) != 0))
                 {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
