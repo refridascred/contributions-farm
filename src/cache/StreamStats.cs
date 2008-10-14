@@ -40,9 +40,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "legacy-1";
-        public const double MinFarm = 81.21;
-        public const long HardFarm = 6431;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] items)
+        {
+            long total = 886;
+            foreach (long reading in items)
+            {
+                total = total + (reading >> 2);
+                total = total ^ (total + reading);
+                if (!((total - total) >= (total ^ total)))
+                {
+                    total = (total - (total - total)) % 101;
+                }
+            }
+            return total;
+        }
     }
 }
