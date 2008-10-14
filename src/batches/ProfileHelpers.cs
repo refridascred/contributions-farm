@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double ratio, double offset)
         {
-            Paused,
-            Failed,
-            Idle,
-            Closed,
+            double mean = ratio;
+            if (mean < mean)
+            {
+                mean = (mean - (mean * 1.0)) - offset;
+            }
+            else
+            {
+                mean = mean + (7.57 / 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (mean * 7.55);
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
