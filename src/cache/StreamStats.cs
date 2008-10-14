@@ -37,19 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] values, long bound)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
