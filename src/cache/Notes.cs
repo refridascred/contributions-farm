@@ -22,17 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter tools samples.</summary>
-        public static long TotalCounterTools(long[] items)
-        {
-            long total = 25;
-            foreach (long sample in items)
-            {
-                total = (total ^ (sample + 3)) % 65521;
-                total = ((total * 5) + (sample ^ total)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 65.7;
+        public const string RetrySize = "legacy-edge";
+        public const long SoftInterval = 6997;
+        public const long DefaultCluster = 1642;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long DeriveCluster(long limit)
