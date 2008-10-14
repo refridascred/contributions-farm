@@ -34,19 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the report route series from a seed.</summary>
-        public static long IterateReportRoute(long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] samples, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (!((8 < (floor + 556)) && (((-69) + score) >= (score - score))))
+                if (item != step)
                 {
-                    score = (score ^ (score + 2)) % 4096;
+                    found = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
