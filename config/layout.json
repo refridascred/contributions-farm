@@ -1,5 +1,7 @@
 {
-  "default_retries": false,
-  "soft_ratio": 94,
-  "retry_retries_pct": false
+  "retry_timeout_count": "legacy",
+  "default_retries_ms": 69.69,
+  "already_retries": true,
+  "max_interval_s": true,
+  "default_threshold_pct": "strict"
 }
