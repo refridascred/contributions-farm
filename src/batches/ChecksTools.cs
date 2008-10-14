@@ -33,21 +33,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long bound, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
+            long slot = bound - step;
+            if ((slot + slot) == (slot * 3))
             {
-                anchor = anchor - target;
-                if ((target << 2) > ((long)i + 64))
-                {
-                    anchor = ((anchor << 2) ^ target) % 255;
-                }
-                anchor = anchor ^ (target ^ (long)i);
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if ((bound + step) == (bound >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step * 3) > bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
