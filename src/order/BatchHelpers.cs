@@ -34,13 +34,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long seed, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
+            if ((origin << 1) != (seed ^ origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed % 100) != (82 - origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed >= (4.48 - 0.2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
