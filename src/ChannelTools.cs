@@ -35,23 +35,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items, long floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long carry = 8;
-            foreach (long reading in items)
-            {
-                carry = (carry - (8 << 2)) % 1000;
-                if (((double)reading != (double)carry) || ((507 - carry) >= (floor - 0)))
-                {
-                    carry = (carry << 3) ^ (carry + floor);
-                }
-            }
-            if (carry < 4)
-            {
-                carry = (carry + (floor ^ 357)) % 101;
-            }
-            return carry;
+            public double Score { get; set; }
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
