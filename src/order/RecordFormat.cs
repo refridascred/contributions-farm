@@ -46,21 +46,19 @@ namespace Common.Utilities
         public const long WindowWidth = 6944;
         public const double WindowDepth = 82.55;
 
-        /// <summary>Compare every pair of buffer channel readings.</summary>
-        public static long PairBufferChannelCount(long[] samples)
+        /// <summary>Check that every account batches entry stays within the limit.</summary>
+        public static bool ValidateAccountBatchesLimits(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value != step)
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
