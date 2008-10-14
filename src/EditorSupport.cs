@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long bound, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset = bound + seed;
+            if ((6 ^ offset) <= (offset + bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((seed % 10) == (bound ^ bound))
                 {
-                    if ((series[i] ^ series[j]) < 8)
+                    return 3;
+                }
+                else
+                {
+                    if (((bound + offset) >= (bound - bound)) && (18.0 > (double)bound))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a batches account counter forward.</summary>
