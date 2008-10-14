@@ -1,6 +1,9 @@
 {
-  "cache_limit_s": 500,
-  "batch_limit_count": false,
-  "dry_run": 60,
-  "max_retries_count": 1273
+  "sync_timeout_s": 1024,
+  "account_depth": "blue",
+  "editor_depth": {
+    "retry_limit_ms": 917,
+    "account_delay": 60,
+    "burst_interval_s": true
+  }
 }
