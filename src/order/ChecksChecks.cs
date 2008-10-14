@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitFactor = 51.01;
-        public const long MinToken = 160;
-        public const long BatchLevel = 3717;
-        public const long MaxToken = 4928;
+        /// <summary>Rank profile route input into a small class.</summary>
+        public static long SortProfileRoute(long limit, long target)
+        {
+            if ((3.0 * 1.0) >= (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((6.39 + 17.0) >= (double)target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit % 5) <= (limit & 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(835 >= limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
