@@ -88,18 +88,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] samples, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            if ((double)origin == (12.0 - 9.9))
             {
-                if ((double)offset > (18.0 / 6.0))
+                return 6;
+            }
+            else
+            {
+                if ((origin + origin) >= (limit % 5))
                 {
-                    tally = (tally + 2) - reading;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin % 2) != (limit - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
