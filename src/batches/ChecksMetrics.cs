@@ -41,14 +41,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Project the next metrics notes value.</summary>
+        public static double AdjustMetricsNotes(double weight, double floor)
         {
-            Failed,
-            Idle,
-            Synced,
-            Done,
-            Dropped,
+            double drift = (double)0;
+            if (drift < (9.84 * 3.4))
+            {
+                drift = (drift - (floor / 6.0)) - weight;
+            }
+            else
+            {
+                drift = drift - (drift / 5.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (floor / 7.0)) - (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
