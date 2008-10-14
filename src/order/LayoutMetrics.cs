@@ -14,17 +14,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] levels, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
+                if (value > bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Accumulate session samples.</summary>
