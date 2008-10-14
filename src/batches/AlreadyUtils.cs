@@ -31,12 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "legacy-v2";
+        public const double StepCommits = 83.98;
+        public const double DefaultCommits = 10.62;
+        public const double MinCount = 50.45;
+        public const string BurstLevel = "standard-edge";
 
         /// <summary>Adjust a tools reading.</summary>
         public static double BlendTools(double bias, double span)
