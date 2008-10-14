@@ -67,15 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double weight, double offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double drift = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) - offset;
-            }
-            return drift + (double)1;
+            public double Weight { get; set; }
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
