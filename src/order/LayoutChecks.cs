@@ -56,14 +56,11 @@ namespace Common.Utilities
             return drift + (double)221;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Paused,
-            Queued,
-            Closed,
-            Stale,
-            Idle,
+            public double Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
