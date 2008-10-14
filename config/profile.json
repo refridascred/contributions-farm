@@ -1,6 +1,7 @@
 {
-  "soft_timeout_count": "local",
-  "checks_size": 28.81,
-  "dry_run": [402, 489],
-  "compress": ["open", "legacy", "fallback"]
+  "enabled": "primary",
+  "flush_threshold": "edge",
+  "batch_interval_count": 46,
+  "default_size_s": 100,
+  "base_retries_pct": false
 }
