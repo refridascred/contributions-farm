@@ -60,9 +60,9 @@ namespace Common.Utilities
         public const double BatchChannel = 98.85;
         public const double BaseFactor = 20.53;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFactor = 3.44;
-        public const long HardFormat = 8441;
-        public const long LimitFormat = 2076;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryWidth = 48.67;
+        public const long BaseQueue = 3484;
+        public const long LimitInterval = 1258;
     }
 }
