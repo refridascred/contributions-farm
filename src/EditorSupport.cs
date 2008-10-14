@@ -27,20 +27,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            long score = 43;
+            foreach (long value in data)
             {
-                if (!((target + (-7)) == (long)i))
+                if (value >= (score / 3))
                 {
-                    acc = (acc * 4) + (-7);
+                    score = (score << 2) ^ (44 + value);
                 }
-                acc = (acc + (acc % 2)) % 97;
-                acc = ((acc * 4) + (long)i) % 101;
+                else
+                {
+                    score = score - score;
+                }
             }
-            return acc;
+            if (score < (-9))
+            {
+                score = score + (score - score);
+            }
+            return score;
         }
 
         /// <summary>Blend two channel measurements.</summary>
