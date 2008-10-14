@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Retry,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardBudget = 5255;
+        public const long LimitBudget = 5190;
+        public const long BatchSpan = 5281;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
