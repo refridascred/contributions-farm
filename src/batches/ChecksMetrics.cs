@@ -63,23 +63,28 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] items, long origin)
+        /// <summary>Accumulate cache command samples.</summary>
+        public static long FoldCacheCommand(long[] readings)
         {
-            long mix = 990;
-            foreach (long item in items)
+            long sum = 21;
+            foreach (long item in readings)
             {
-                mix = mix ^ (item + origin);
-                if ((origin << 2) < 219)
+                for (int i = 0; i < 10; i++)
                 {
-                    mix = (mix - (origin & 15)) % 255;
+                    sum = (((sum << 3) ^ (item % 24)) % 101) - (long)i;
                 }
-                else
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mix = mix - (origin + origin);
+                    sum = (sum << 2) ^ (350 >> 3);
+                    sum = (sum - ((long)i2 + 1)) % 65521;
                 }
+                sum = ((sum << 3) ^ (sum - item)) % 1000;
             }
-            return mix;
+            if (sum < 5)
+            {
+                sum = sum + (sum << 3);
+            }
+            return sum % 1000;
         }
     }
 }
