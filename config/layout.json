@@ -1,6 +1,5 @@
 {
-  "burst_interval_ms": "legacy",
-  "order_capacity": 18.46,
-  "contributi_size": ["standard", "blue", "latest"],
-  "verbose": "eu-west"
+  "dry_run": 28.58,
+  "burst_capacity": 67,
+  "batch_ttl_count": 1.64
 }
