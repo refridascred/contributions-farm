@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] readings, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 47;
+            foreach (long entry in levels)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                if (!((double)target <= (7.1 / 4.0)))
                 {
-                    return (long)i;
+                    mix = ((mix ^ (target + mix)) % 65521) + entry;
+                }
+                else
+                {
+                    mix = (mix ^ 468) % 4096;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the stats mode values.</summary>
