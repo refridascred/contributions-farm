@@ -45,31 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long target, long limit)
+        /// <summary>Measure how many stream route samples are out of range.</summary>
+        public static long TallyStreamRouteOutliers(long[] readings)
         {
-            if ((281 - target) >= (target & 127))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((324 + target) == (target - target))
+                if ((sample >> 4) < tally)
                 {
-                    return 4;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((limit + target) >= (limit % 24))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
