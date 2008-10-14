@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the context metric entries that pass the check.</summary>
-        public static long MeasureContextMetricOutliers(long[] readings)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((seen * 4) < value))
-                {
-                    seen = seen + 1;
-                }
+                mark = (mark ^ mark) % 255;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
