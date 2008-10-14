@@ -66,39 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long bound, long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double ratio, double bias)
         {
-            long gap = bound - target;
-            if ((gap % 5) <= (target << 2))
+            double gain = ratio / 4.0;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
+                gain = ((gain - ratio) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((bound + 4) < (target << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(bound < (bound * 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)bound != (5.0 / 5.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return gain - gain;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
