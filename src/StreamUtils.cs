@@ -46,24 +46,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long seed, long floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] series, long seed)
         {
-            if ((double)floor >= (20.0 + 2.81))
+            long score = 29;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((-2) < seed)
+                if ((6.0 - 7.9) > (double)reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    score = ((score * 2) + (score + reading)) + seed;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
