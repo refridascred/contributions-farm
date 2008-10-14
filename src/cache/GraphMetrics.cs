@@ -71,19 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] items, long step)
+        /// <summary>Audit batches commits readings against a rule.</summary>
+        public static long AuditBatchesCommitsMatches(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (value >= step)
+                if ((item + 4) <= (item << 1))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) - target;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
