@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] levels, long origin)
         {
-            Locked,
-            Retry,
-            Paused,
-            Draft,
+            long mark = 71;
+            foreach (long value in levels)
+            {
+                if (origin < (value + origin))
+                {
+                    mark = mark ^ (value / 2);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
