@@ -1,7 +1,6 @@
 {
-  "queue_ttl": true,
-  "persist": ["eu-west", "stable", "edge", "blue"],
-  "base_interval_s": 1024,
-  "sync_delay": 1024,
-  "default_threshold": true
+  "cache_interval": 2697,
+  "idle_ratio_ms": "fallback",
+  "enabled": 59.8,
+  "sync_window": ["legacy", "local"]
 }
