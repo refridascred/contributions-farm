@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Measure how many graph batches samples are out of range.</summary>
+        public static long CountGraphBatchesOutliers(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                carry = ((carry * 5) + (seed + seed)) % 65521;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((double)entry > (11.0 * 9.0))
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the entry status values.</summary>
