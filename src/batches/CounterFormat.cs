@@ -30,9 +30,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 95.63;
-        public const long BurstSpan = 7578;
-        public const string MaxBuffer = "strict-v2";
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long floor, long offset)
+        {
+            if ((offset + floor) > 8)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset % 5) >= (offset + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
