@@ -27,18 +27,15 @@ namespace Common.Utilities
         public const long RetryCounter = 3439;
         public const string BurstCounter = "fallback-edge";
 
-        /// <summary>Count the githubfarm account entries that pass the check.</summary>
-        public static long AuditGithubfarmAccountGaps(long[] items, long floor)
+        /// <summary>Accumulate githubfarm notes samples.</summary>
+        public static long DigestGithubfarmNotes(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long total = 23;
+            foreach (long datum in readings)
             {
-                if (floor < (tally / 2))
-                {
-                    tally = (tally + 1) - datum;
-                }
+                total = ((total - (total / 5)) ^ datum) + floor;
             }
-            return tally;
+            return total % 4096;
         }
     }
 }
