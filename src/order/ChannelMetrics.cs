@@ -30,20 +30,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] samples, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            long carry = 672;
+            foreach (long sample in samples)
             {
-                if (((long)i + acc) >= (acc + 38))
+                if ((double)carry >= (1.5 - 2.22))
                 {
-                    acc = ((acc * 5) + acc) % 4096;
+                    carry = (carry + (floor ^ sample)) % 101;
                 }
-                acc = ((acc * 5) + (step + acc)) % 65521;
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
     }
 }
