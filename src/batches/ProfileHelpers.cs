@@ -64,13 +64,38 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long target, long floor)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public double Region { get; set; }
+            if ((floor >> 3) > target)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target >= (floor - floor)) || ((floor << 2) < floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + target) > (floor - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(floor < (828 - floor)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
