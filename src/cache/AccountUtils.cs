@@ -27,18 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] values)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((count % 16) == (2 + reading))
+                if (((double)matches >= (4.0 + 4.69)) && ((matches - (long)values.Length) != (222 ^ value)))
                 {
-                    count = count + 3;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
