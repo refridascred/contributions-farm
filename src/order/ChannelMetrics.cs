@@ -13,11 +13,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 1549;
-        public const string BaseDepth = "stable-v2";
-        public const double DefaultCommits = 60.84;
-        public const long BurstBudget = 7525;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long bound, long origin)
+        {
+            if ((origin + origin) != (bound ^ origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((7.0 - 4.5) > (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long FoldPayload(long[] readings)
