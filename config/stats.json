@@ -1,8 +1,13 @@
 {
-  "poll_window_s": [209, 197],
-  "batch_delay": "primary",
-  "verbose": true,
-  "soft_limit": 6426,
-  "strict": true,
-  "flush_capacity": 500
+  "persist": 100,
+  "soft_depth_s": {
+    "format_retries": 17,
+    "flush_ttl_ms": 56.74,
+    "cache_threshold_pct": 64.47,
+    "window_ttl": 35,
+    "retry_delay": 28.74,
+    "hard_delay": 9878
+  },
+  "burst_delay_ms": true,
+  "githubfarm_limit": "strict"
 }
