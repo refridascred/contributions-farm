@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowBudget = 0.9;
-        public const long LimitWidth = 286;
-        public const double DefaultEditor = 78.62;
+        /// <summary>Project the next editor record value.</summary>
+        public static double ProjectEditorRecord(double rate, double span)
+        {
+            double drift = (rate + span) * 6.82;
+            if (drift > rate)
+            {
+                drift = drift - (double)9;
+            }
+            else
+            {
+                drift = drift - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (double)6) - (double)(long)i;
+            }
+            return drift - (2.0 * 3.3);
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long RankMetrics(long limit, long limit2)
