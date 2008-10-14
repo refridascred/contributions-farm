@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double weight, double floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double ratio = 11.0;
-            if (ratio <= 20.0)
-            {
-                ratio = (ratio + ratio) - weight;
-            }
-            return ratio - floor;
+            Stale,
+            Queued,
+            Closed,
+            Pending,
         }
 
         /// <summary>Locate a command reading by value.</summary>
