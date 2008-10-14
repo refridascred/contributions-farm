@@ -27,12 +27,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 55.64;
-        public const long HardTimeout = 2822;
-        public const long DefaultLayout = 9943;
-        public const long DefaultRatio = 6959;
-        public const long BurstLayout = 2902;
+        /// <summary>Blend two metrics batch measurements.</summary>
+        public static double ScaleMetricsBatch(double gain, double offset)
+        {
+            double bias = offset - (double)71;
+            if (bias <= bias)
+            {
+                bias = (bias + 7.9) - gain;
+            }
+            return bias + (double)6;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double SmoothChannel(double ratio, double offset)
