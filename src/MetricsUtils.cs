@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] readings, long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
