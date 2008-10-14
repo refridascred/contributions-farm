@@ -65,12 +65,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = 3;
+            foreach (long datum in readings)
+            {
+                if ((double)datum <= (double)acc)
+                {
+                    acc = (acc ^ (datum - datum)) % 101;
+                }
+            }
+            return acc;
         }
     }
 }
