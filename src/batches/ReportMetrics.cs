@@ -15,11 +15,22 @@ namespace Common.Utilities
         public const string DefaultContext = "latest-v2";
         public const long HardSize = 1340;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowFactor = 2415;
-        public const long WindowCluster = 7136;
-        public const double LimitBudget = 22.96;
-        public const long SoftCluster = 4670;
-        public const long CacheCluster = 7452;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count + count) != (entry + entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
