@@ -1,6 +1,9 @@
 {
-  "persist": 5,
-  "retry_limit_s": 6585,
-  "enabled": true,
-  "burst_window": "local"
+  "githubfarm_threshold": "fallback",
+  "batch_capacity_ms": {
+    "cache_retries_ms": 70.66,
+    "context_timeout": 2373,
+    "base_interval_count": 2423
+  },
+  "default_size_ms": 2.23
 }
