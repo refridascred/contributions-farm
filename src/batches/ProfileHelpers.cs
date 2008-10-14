@@ -53,24 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long offset, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] series, long step)
         {
-            if (!((offset / 4) == (target ^ target)))
+            bool ok = true;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((18.0 * 6.0) != (double)target)
+                if (entry != step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
