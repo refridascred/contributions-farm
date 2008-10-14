@@ -55,17 +55,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] readings, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] values)
         {
-            long anchor = -4;
-            foreach (long reading in readings)
+            long anchor = 0;
+            foreach (long datum in values)
             {
-                anchor = (((anchor << 2) ^ (anchor & 15)) % 255) + reading;
-            }
-            if (anchor > 13)
-            {
-                anchor = (anchor * 3) + (anchor ^ step);
+                anchor = ((anchor * 4) + anchor) ^ datum;
             }
             return anchor;
         }
