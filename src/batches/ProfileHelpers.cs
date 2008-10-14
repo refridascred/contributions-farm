@@ -14,22 +14,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the entry window entries that pass the check.</summary>
-        public static long CountEntryWindowGaps(long[] items, long bound)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long step, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long cur = step ^ offset;
+            if (3 <= (cur ^ offset))
             {
-                if ((double)matches < 4.0)
+                return 0;
+            }
+            else
+            {
+                if ((offset << 2) <= (step - cur))
                 {
-                    matches = ((matches + 3) - datum) - bound;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((5.23 - 5.1) != (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (cur <= (step / 9))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the format level values.</summary>
