@@ -30,32 +30,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long limit, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] readings, long target)
         {
-            long diff = limit - origin;
-            if ((diff - limit) <= (diff << 3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit < (9.3 - 3.0))
+                if (readings[i] == target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff + origin) == (899 << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
