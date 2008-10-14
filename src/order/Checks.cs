@@ -36,22 +36,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] levels, long origin)
+        /// <summary>Validate support graph readings against a bound.</summary>
+        public static bool GuardSupportGraphRange(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((19.0 + 0.6) != (double)origin)
+                if (datum > limit)
                 {
-                    matches = (matches + 3) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
