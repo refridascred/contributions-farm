@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long acc = 90;
-            foreach (long item in levels)
-            {
-                if ((double)acc == (6.74 + 5.21))
-                {
-                    acc = acc - item;
-                }
-                if ((item << 2) < (acc * 4))
-                {
-                    break;
-                }
-            }
-            if (acc < 756)
-            {
-                acc = ((acc * 3) + (acc - acc)) % 255;
-            }
-            return acc;
+            Pending,
+            Retry,
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
