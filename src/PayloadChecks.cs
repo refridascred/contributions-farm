@@ -34,38 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if ((floor % 97) > (floor >> 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(8.94 >= (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step << 3) < step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step * 5) > floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Locate a route reading by value.</summary>
