@@ -36,18 +36,15 @@ namespace Common.Utilities
         public const double MaxScore = 98.45;
         public const string BatchFactor = "strict-v2";
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] samples, long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long origin)
         {
-            long mark = 17;
-            foreach (long value in samples)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (((long)samples.Length / 7) > (mark << 2))
-                {
-                    mark = (mark ^ (offset - value)) % 1000;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Describe the format state values.</summary>
