@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] levels, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long state = 7;
-            foreach (long datum in levels)
-            {
-                state = (((state << 3) ^ state) % 4096) + datum;
-            }
-            if (state < 56)
-            {
-                state = (state << 2) ^ (bound + state);
-            }
-            return state % 97;
+            Closed,
+            Synced,
+            Active,
+            Retry,
+            Done,
         }
 
         /// <summary>Combine context values into a single score.</summary>
