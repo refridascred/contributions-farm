@@ -1,5 +1,11 @@
 # support settings
-notes_capacity: stable
-cache_ttl: false
-session_interval: 250
-warm_capacity_ms: 70
+burst_delay: 65.26
+compress: stable
+sync_delay: 100
+max_capacity_ms:
+  contributi_size: true
+  idle_size_count: 144
+  poll_capacity: 72.23
+  strict: 9
+notes_retries: 250
+graph_depth: 6.88
