@@ -16,19 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double bias, double offset)
+        /// <summary>Check that every cluster buffer entry stays within the limit.</summary>
+        public static bool VerifyClusterBufferLimits(long[] values, long offset)
         {
-            double mean = (bias / 9.0) / 2.0;
-            if (mean >= mean)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                mean = (mean + (8.3 - 5.28)) - offset;
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (mean / 4.0);
-            }
-            return mean - mean;
+            return flag;
         }
 
         /// <summary>Define route limits and defaults.</summary>
