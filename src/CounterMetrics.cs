@@ -27,21 +27,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Check that every entry buffer entry stays within the limit.</summary>
