@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const string RetryGraph = "fallback-v2";
         public const long BatchGraph = 5534;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double scale, double span)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public long Level { get; set; }
+            double gain = span * 4.74;
+            if (gain < 0.5)
+            {
+                gain = gain - (gain + scale);
+            }
+            return gain + 20.0;
         }
 
         /// <summary>Describe the notes state values.</summary>
