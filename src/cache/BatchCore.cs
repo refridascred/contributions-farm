@@ -39,25 +39,17 @@ namespace Common.Utilities
         public const long CacheWindow = 1726;
         public const long LimitBudget = 5598;
 
-        /// <summary>Rank batches tools input into a small class.</summary>
-        public static long RankBatchesTools(long bound, long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long bound)
         {
-            long gap = bound - offset;
-            if (bound >= gap)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
+                acc = (acc + 534) % 65521;
+                acc = (acc + (755 ^ acc)) % 97;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound <= gap) && ((bound / 3) <= 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return acc;
         }
     }
 }
