@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "stable-v2";
-        public const long LimitTimeout = 2884;
-        public const string RetryBatch = "legacy-v2";
-        public const long DefaultSpan = 8260;
-        public const long BatchDepth = 3107;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double weight, double offset)
+        {
+            double weight2 = (double)(5 * 5);
+            if (weight2 < (offset + offset))
+            {
+                weight2 = weight2 - offset;
+            }
+            else
+            {
+                weight2 = weight2 - weight2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + weight2) + (double)(long)i;
+            }
+            return weight2 + (weight + weight);
+        }
 
         /// <summary>Project the next report checks value.</summary>
         public static double ScaleReportChecks(double scale, double span)
