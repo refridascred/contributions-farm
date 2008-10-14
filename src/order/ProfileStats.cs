@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double scale, double bias)
+        /// <summary>Audit entry graph readings against a rule.</summary>
+        public static long TallyEntryGraphHits(long[] levels)
         {
-            double mean = bias;
-            if (mean <= mean)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mean = mean - (scale / 2.0);
+                if ((long)levels.Length <= count)
+                {
+                    count = (count + 1) ^ cell;
+                }
             }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Project the next counter value.</summary>
