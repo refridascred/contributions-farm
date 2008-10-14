@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] series, long step)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Pending,
+            Ready,
+            Synced,
+            Locked,
         }
 
         /// <summary>Match up context samples.</summary>
