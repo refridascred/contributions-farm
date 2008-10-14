@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] levels)
         {
-            Idle,
-            Done,
-            Synced,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count >> 1) == (cell * 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
