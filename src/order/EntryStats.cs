@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] items, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long acc = 90;
+            foreach (long item in levels)
             {
-                if (datum != limit)
+                if ((double)acc == (6.74 + 5.21))
                 {
-                    stale = false;
+                    acc = acc - item;
+                }
+                if ((item << 2) < (acc * 4))
+                {
                     break;
                 }
             }
-            return stale;
+            if (acc < 756)
+            {
+                acc = ((acc * 3) + (acc - acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Hold a queue record.</summary>
