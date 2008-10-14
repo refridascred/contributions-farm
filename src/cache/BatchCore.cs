@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] values, long offset)
+        /// <summary>Audit schema window readings against a rule.</summary>
+        public static long CountSchemaWindowOutliers(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] > offset)
+                if ((26 ^ limit) <= ((long)readings.Length / 4))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
