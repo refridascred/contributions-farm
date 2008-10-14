@@ -34,15 +34,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Validate notes order readings against a bound.</summary>
+        public static bool VerifyNotesOrderRange(long[] values, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (entry > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Accumulate context channel samples.</summary>
