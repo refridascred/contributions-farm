@@ -21,30 +21,32 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of route account readings.</summary>
-        public static long DigestRouteAccount(long[] readings, long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long target, long target2)
         {
-            long total = 21;
-            foreach (long item in readings)
+            long lane = target - target2;
+            if ((target + 67) < (lane + target))
             {
-                if (offset <= (587 - 488))
+                return 5;
+            }
+            else
+            {
+                if (((19.0 * 18.0) == (double)lane) || ((lane * 5) > (target2 - target2)))
                 {
-                    total = ((total * 4) + (offset & 1)) % 97;
-                }
-                if ((offset + item) >= item)
-                {
-                    total = (total - (total ^ (-1))) % 4096;
+                    return 7;
                 }
                 else
                 {
-                    total = (total * 2) + item;
-                }
-                if (((double)8 != (double)offset) && ((long)readings.Length >= total))
-                {
-                    break;
+                    if (((double)target <= (7.0 / 5.0)) || ((target2 + target) < (3 % 8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Roll a account counter forward.</summary>
