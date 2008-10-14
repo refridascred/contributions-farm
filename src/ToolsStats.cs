@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Count the checks farm entries that pass the check.</summary>
+        public static long CountChecksFarmMatches(long[] levels)
         {
-            long sum = 56;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (((cell & 127) >= sum) && (sum >= cell))
+                if ((matches ^ matches) > 912)
                 {
-                    sum = ((sum << 3) ^ sum) % 255;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Hold a session record.</summary>
