@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!(((double)reading <= (4.0 * 7.0)) || (reading <= seed)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 8880;
+        public const double IdleLevel = 11.4;
+        public const long CacheLevel = 9695;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
