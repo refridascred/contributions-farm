@@ -44,19 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context notes readings against a bound.</summary>
-        public static bool CheckContextNotesRange(long[] readings, long floor)
+        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
+        public static bool CheckEntryBufferLimits(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (entry != floor)
+                if (reading <= offset)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
