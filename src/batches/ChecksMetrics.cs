@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] samples, long floor)
+        /// <summary>Digest a series of channel buffer entries.</summary>
+        public static long WeighChannelBuffer(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -4;
+            foreach (long cell in series)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
+                anchor = (anchor - (anchor & 63)) % 97;
+                if (cell >= (cell - step))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
