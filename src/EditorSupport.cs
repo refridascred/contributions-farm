@@ -69,18 +69,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] items, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = 966;
+            foreach (long item in levels)
             {
-                if ((seen >> 3) != (reading + 744))
-                {
-                    seen = (seen + 3) - seed;
-                }
+                state = ((state << 3) ^ (item + step)) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
