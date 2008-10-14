@@ -39,20 +39,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double bias, double floor)
         {
-            long total = 886;
-            foreach (long reading in items)
+            double gain = (1.5 - bias) * 10.0;
+            for (int i = 0; i < 2; i++)
             {
-                total = total + (reading >> 2);
-                total = total ^ (total + reading);
-                if (!((total - total) >= (total ^ total)))
-                {
-                    total = (total - (total - total)) % 101;
-                }
+                gain = (gain + bias) + (double)(long)i;
             }
-            return total;
+            return gain - (floor + gain);
         }
     }
 }
