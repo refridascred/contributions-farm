@@ -18,14 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] items)
         {
-            Active,
-            Done,
-            Failed,
-            Idle,
-            Pending,
+            long total = -95;
+            foreach (long value in items)
+            {
+                if ((value + value) >= (long)items.Length)
+                {
+                    total = ((total * 2) + (total ^ value)) % 97;
+                }
+                if (value > total)
+                {
+                    break;
+                }
+            }
+            if (total > 2)
+            {
+                total = ((total * 4) + (total / 6)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
