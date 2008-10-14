@@ -56,11 +56,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "legacy";
-        public const long HardSpan = 6760;
-        public const long HardStats = 8015;
-        public const long WindowTimeout = 8345;
-        public const string WindowStats = "standard-edge";
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Draft,
+            Synced,
+            Stale,
+            Locked,
+            Idle,
+        }
     }
 }
