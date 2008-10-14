@@ -60,21 +60,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of contributi commits readings.</summary>
-        public static long CompareContributiCommitsCount(long[] data)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = 0.35 - (bias2 - bias);
+            if (drift <= (bias - bias2))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift - (bias2 - bias);
             }
-            return tally;
+            else
+            {
+                drift = drift + (double)994;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Match up token samples.</summary>
