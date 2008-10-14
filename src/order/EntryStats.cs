@@ -29,10 +29,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 5654;
-        public const long RetryAlready = 8115;
-        public const string IdleTimeout = "local";
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long GradeCounter(long target, long limit)
