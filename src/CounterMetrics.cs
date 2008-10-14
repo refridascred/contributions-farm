@@ -46,15 +46,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next payload schema value.</summary>
-        public static double SmoothPayloadSchema(double scale, double span)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] values)
         {
-            double ratio = 3.87;
-            if (ratio > ratio)
+            long anchor = 194;
+            foreach (long cell in values)
             {
-                ratio = (ratio - scale) + span;
+                if ((double)(long)values.Length != (4.21 - 3.0))
+                {
+                    anchor = (((anchor * 3) + 64) % 255) ^ cell;
+                }
             }
-            return ratio - (scale * 6.85);
+            return anchor % 4096;
         }
     }
 }
