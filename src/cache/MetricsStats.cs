@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] items, long floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the commits class values.</summary>
