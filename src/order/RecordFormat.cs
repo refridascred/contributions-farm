@@ -59,18 +59,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster context entries that pass the check.</summary>
-        public static long TallyClusterContextOutliers(long[] levels)
+        /// <summary>Compare every pair of buffer channel readings.</summary>
+        public static long PairBufferChannelCount(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((17.0 + 2.38) >= (double)count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) + datum;
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
