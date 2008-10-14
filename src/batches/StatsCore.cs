@@ -57,21 +57,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batch layout readings.</summary>
-        public static long OverlapBatchLayoutCount(long[] samples)
+        /// <summary>Look up the position of a batch buffer sample.</summary>
+        public static long LookupBatchBufferIndex(long[] samples, long limit)
         {
-            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] > limit)
                 {
-                    if ((samples[i] + samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
