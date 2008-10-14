@@ -46,23 +46,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the stats buffer entries that pass the check.</summary>
-        public static long CountStatsBufferGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches - entry) < 20)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 5070;
+        public const long MaxCommits = 1416;
+        public const long WindowCommits = 9862;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
