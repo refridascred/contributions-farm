@@ -41,12 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double scale, double offset)
         {
-            Pending,
-            Retry,
-            New,
+            double drift = scale / 2.0;
+            if (drift < drift)
+            {
+                drift = (drift - (scale - drift)) + offset;
+            }
+            else
+            {
+                drift = drift + (drift - drift);
+            }
+            return drift + scale;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
