@@ -59,18 +59,28 @@ namespace Common.Utilities
             return (mean + (span * 11.0)) + bias;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values, long origin)
         {
-            long state = 0;
-            foreach (long item in items)
+            long anchor = 90;
+            foreach (long entry in values)
             {
-                if ((7.9 / 9.0) != (double)item)
+                anchor = anchor ^ (-45);
+                anchor = (anchor + anchor) % 97;
+                if (origin > (origin << 3))
                 {
-                    state = (state + (state + state)) % 1000;
+                    anchor = anchor + anchor;
+                }
+                if ((anchor * 2) <= (45 + entry))
+                {
+                    break;
                 }
             }
-            return state % 4096;
+            if (anchor < 814)
+            {
+                anchor = (anchor ^ (4 + origin)) % 4096;
+            }
+            return anchor;
         }
     }
 }
