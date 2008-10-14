@@ -46,17 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] levels, long step)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
