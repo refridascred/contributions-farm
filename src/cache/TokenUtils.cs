@@ -20,12 +20,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowInterval = 9723;
-        public const long StepCount = 848;
-        public const double StepTimeout = 4.63;
-        public const long DefaultLevel = 6926;
-        public const long BaseWindow = 8695;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] readings, long target)
+        {
+            long total = 2;
+            foreach (long entry in readings)
+            {
+                total = (((total ^ 25) % 101) + entry) + target;
+                if ((double)total == (6.0 * 4.0))
+                {
+                    break;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
