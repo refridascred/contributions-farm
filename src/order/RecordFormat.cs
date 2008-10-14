@@ -40,11 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 93.75;
-        public const long LimitStats = 1582;
-        public const long WindowWidth = 6944;
-        public const double WindowDepth = 82.55;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public long Size { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Check that every account batches entry stays within the limit.</summary>
         public static bool ValidateAccountBatchesLimits(long[] data, long step)
