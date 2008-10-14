@@ -17,22 +17,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 3524;
+        public const long HardTools = 3004;
+        public const long StepTools = 1501;
+        public const double MaxScore = 5.35;
+        public const double WindowTimeout = 25.6;
 
         /// <summary>Digest a series of context command entries.</summary>
         public static long FoldContextCommand(long[] readings, long bound)
