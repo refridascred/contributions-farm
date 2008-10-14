@@ -34,13 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Dropped,
-            Active,
-            New,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxChecks = 28.29;
+        public const string RetryChecks = "strict-1";
+        public const double StepSpan = 32.61;
+        public const long StepChecks = 31;
+        public const long BatchChecks = 2228;
 
         /// <summary>Count the stats buffer entries that pass the check.</summary>
         public static long CountStatsBufferGaps(long[] values)
