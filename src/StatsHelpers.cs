@@ -54,17 +54,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] levels, long floor)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the layout cluster series from a seed.</summary>
