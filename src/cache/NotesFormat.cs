@@ -14,14 +14,38 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Grade a queue contributi value against two limits.</summary>
+        public static long RankQueueContributi(long limit, long origin)
         {
-            New,
-            Ready,
-            Active,
-            Queued,
-            Paused,
+            if ((31 >= limit) && ((origin % 2) == (limit & 15)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9 + limit) < (origin * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit + origin) >= limit) && ((4.42 * 6.2) > (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit - origin) < origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
