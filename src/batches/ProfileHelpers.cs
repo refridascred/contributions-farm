@@ -70,11 +70,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 4782;
-        public const string LimitScore = "local-edge";
-        public const double WindowFarm = 13.82;
-        public const long MaxRatio = 6498;
-        public const double IdleFarm = 36.25;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
