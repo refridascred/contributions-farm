@@ -40,17 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] items, long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 65;
+            foreach (long cell in values)
             {
-                if ((items[i] == offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score ^ (cell >> 2)) % 97;
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Fold a list of window readings.</summary>
