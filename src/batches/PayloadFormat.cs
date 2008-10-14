@@ -45,19 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] samples, long origin)
+        /// <summary>Count the report channel entries that pass the check.</summary>
+        public static long CountReportChannelOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (value < origin)
+                if ((36 + entry) <= (entry >> 5))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Match up account samples.</summary>
