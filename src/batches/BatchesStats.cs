@@ -57,12 +57,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "legacy-1";
-        public const long MinFactor = 8072;
-        public const long DefaultRoute = 3208;
-        public const double StepRoute = 67.59;
-        public const double SoftInterval = 70.22;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinSize = 80.76;
+        public const double BaseSpan = 35.48;
+        public const long CacheLayout = 7236;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutOutliers(long[] levels, long origin)
