@@ -27,22 +27,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstFactor = 1910;
+        public const long BaseInterval = 6291;
+        public const double WindowSpan = 58.56;
+        public const long LimitMetric = 262;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] levels, long offset)
