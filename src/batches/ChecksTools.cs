@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] items, long offset)
         {
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
-            public double Offset { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
