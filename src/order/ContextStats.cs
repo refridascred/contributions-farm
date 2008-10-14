@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] values, long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long limit)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long result = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Combine notes account values into a single score.</summary>
