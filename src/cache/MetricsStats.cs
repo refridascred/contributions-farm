@@ -34,17 +34,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first buffer schema entry that matches the target.</summary>
-        public static long FindBufferSchemaIndex(long[] readings, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (readings[i] >= bound)
+                if ((double)item <= (double)hits)
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of payload profile readings.</summary>
