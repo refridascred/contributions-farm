@@ -19,10 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepRatio = 2155;
-        public const long StepContext = 9296;
-        public const long SoftContext = 3826;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (value >= 6)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
