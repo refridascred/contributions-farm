@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] items, long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)item >= (2.1 / 6.0))
-                {
-                    tally = (tally + 1) - limit;
-                }
+                carry = (carry + carry) % 4096;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
