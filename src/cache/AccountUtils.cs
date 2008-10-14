@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheInterval = 86.4;
-        public const double StepGithubfarm = 93.5;
-        public const double DefaultGithubfarm = 42.94;
-        public const double LimitTimeout = 38.63;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Paused,
+            Ready,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long RankBatches(long offset, long bound)
