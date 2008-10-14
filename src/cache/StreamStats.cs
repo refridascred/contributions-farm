@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Paused,
-            New,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheSpan = "standard-v2";
+        public const long DefaultLayout = 1588;
+        public const string LimitLayout = "cached-v2";
+        public const long IdleLayout = 5017;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BaseGithubfarm = 9824;
