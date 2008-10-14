@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double rate, double span)
+        /// <summary>Audit graph record readings against a rule.</summary>
+        public static long TallyGraphRecordHits(long[] samples, long limit)
         {
-            double rate2 = 7.16;
-            return (rate2 + (rate * 2.68)) + span;
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((limit & 15) <= (cell ^ cell)) && (((double)cell >= (1.3 / 5.0)) || ((hits % 7) >= ((-6) - cell))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
