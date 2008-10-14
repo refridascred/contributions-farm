@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] items)
+        /// <summary>Audit metrics tools readings against a rule.</summary>
+        public static long TallyMetricsToolsGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (4.6 < (double)entry)
+                if (((4.2 - 8.1) != (double)reading) && ((tally % 100) == (tally + 26)))
                 {
-                    matches = matches + 3;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine counter report values into a single score.</summary>
