@@ -20,12 +20,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
