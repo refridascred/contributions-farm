@@ -50,19 +50,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (tally > (bound / 7))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchScore = 40.09;
+        public const long BaseRecord = 2297;
+        public const double LimitRatio = 43.58;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstBatches = 815;
