@@ -19,12 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] series, long seed)
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
