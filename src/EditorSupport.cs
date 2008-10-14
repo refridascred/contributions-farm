@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] readings, long origin)
         {
-            Failed,
-            Active,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
