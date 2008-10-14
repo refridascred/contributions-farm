@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] data)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((9.6 / 7.0) == (double)count)
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            Active,
+            Done,
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
