@@ -75,37 +75,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long limit, long offset)
+        /// <summary>Grade a counter command value against two limits.</summary>
+        public static long GradeCounterCommand(long origin, long limit)
         {
-            long span = limit + offset;
-            if ((7.0 / 3.0) >= (double)span)
+            long span = origin - limit;
+            if (!(3.5 <= (double)origin))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((span + limit) == (77 % 3))
+                if (((12.0 + 2.68) != (double)origin) || ((limit / 3) < (span - limit)))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if (!(117 < (offset / 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((span + limit) == (5 & 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
