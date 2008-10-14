@@ -1,6 +1,21 @@
 {
-  "warm_ttl_ms": 4652,
-  "session_delay": 61.0,
-  "cache_limit_pct": "legacy",
-  "batch_ratio": 67
+  "max_interval_count": true,
+  "tools_delay": {
+    "audit": 60,
+    "min_capacity": 325,
+    "cache_depth_pct": [173, 354, 455, 324],
+    "githubfarm_depth": 12.58,
+    "cache_interval_s": ["eu-west", "staging", "fallback", "latest"]
+  },
+  "max_size_ms": "edge",
+  "min_ttl": 30,
+  "hard_delay_s": {
+    "audit": {
+      "commits_capacity": "legacy",
+      "batch_ratio_ms": true,
+      "strict": false
+    },
+    "max_limit_ms": "standard",
+    "stats_size": "fallback"
+  }
 }
