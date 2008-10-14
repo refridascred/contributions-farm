@@ -31,10 +31,19 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 5821;
-        public const string RetryAlready = "open";
-        public const long IdleWidth = 8484;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample << 3) >= 2)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TotalStream(long[] data, long bound)
