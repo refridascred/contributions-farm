@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the queue window series from a seed.</summary>
-        public static long IterateQueueWindow(long limit)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Roll a channel payload counter forward.</summary>
