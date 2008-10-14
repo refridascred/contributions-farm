@@ -1,17 +1,6 @@
 {
-  "enabled": true,
-  "max_timeout_pct": {
-    "account_size": [250, 241, 134],
-    "min_threshold_ms": "open",
-    "cache_delay": 83.81,
-    "burst_depth_count": true
-  },
-  "audit": 14,
-  "channel_window": 500,
-  "context_capacity": {
-    "poll_ttl": "eu-west",
-    "soft_threshold_s": "stable",
-    "farm_window": "green",
-    "soft_delay": false
-  }
+  "batches_retries": 500,
+  "githubfarm_limit": 500,
+  "enabled": 78.63,
+  "entry_timeout": 20
 }
