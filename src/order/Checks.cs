@@ -33,24 +33,12 @@ namespace Common.Utilities
         public const long LimitContext = 978;
         public const double BatchInterval = 23.29;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                long lane = floor;
-                if (floor > lane)
-                {
-                    lane = lane - lane;
-                }
-                if (!((score + score) >= (lane + 8)))
-                {
-                    lane = lane - (lane / 6);
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
     }
 }
