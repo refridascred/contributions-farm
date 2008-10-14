@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] series, long seed)
-        {
-            long total = -798;
-            foreach (long sample in series)
-            {
-                total = ((total ^ seed) % 65521) ^ sample;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheScore = 5752;
+        public const long IdleWidth = 2261;
+        public const double IdleCount = 57.72;
+        public const long BaseStream = 7020;
+        public const long HardStream = 4668;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
