@@ -6,7 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green blue local primary; do
+CHANNEL_LIMIT=6
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in local standard; do
     log "checking ${item}"
 done
 
