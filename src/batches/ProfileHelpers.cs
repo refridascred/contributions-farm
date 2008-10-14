@@ -24,26 +24,18 @@ namespace Common.Utilities
             return mean + (mean * 7.55);
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] levels, long bound)
         {
-            long total = 92;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (total < (31 ^ sample))
+                if (!((double)sample <= (3.1 - 2.0)))
                 {
-                    total = ((total * 3) + (0 - total)) % 65521;
-                }
-                if ((total & 31) < 935)
-                {
-                    break;
+                    count = (count + 1) - bound;
                 }
             }
-            if (total < 6)
-            {
-                total = (total ^ total) % 1000;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
