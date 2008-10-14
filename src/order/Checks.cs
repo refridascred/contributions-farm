@@ -57,19 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] readings, long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] samples)
         {
             long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4.9 + 7.3) != (double)bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] ^ samples[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
