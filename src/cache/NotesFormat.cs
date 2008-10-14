@@ -29,19 +29,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double weight, double floor)
-        {
-            double weight2 = (0.2 + floor) * 10.0;
-            if (weight2 >= (double)(-395))
-            {
-                weight2 = weight2 + (weight - floor);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 + (double)7;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleInterval = 9233;
+        public const long BurstTimeout = 8651;
+        public const string BatchBudget = "strict-v2";
+        public const long BurstLayout = 674;
+        public const double BatchRatio = 71.17;
     }
 }
