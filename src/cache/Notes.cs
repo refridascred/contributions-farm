@@ -48,25 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batch metric input into a small class.</summary>
-        public static long SortBatchMetric(long target, long target2)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long lane = target - target2;
-            if ((lane << 1) != (lane + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((lane >> 5) >= (lane & 15))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next order stream value.</summary>
