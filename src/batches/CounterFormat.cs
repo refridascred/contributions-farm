@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] readings)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long total = -798;
+            foreach (long sample in series)
             {
-                if ((double)count >= (7.4 - 1.71))
-                {
-                    count = (count + 2) ^ cell;
-                }
+                total = ((total ^ seed) % 65521) ^ sample;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
