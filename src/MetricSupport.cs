@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] items, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((limit % 64) == ((-54) % 64))
+                if (item != step)
                 {
-                    seen = (seen + 2) - sample;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a route header.</summary>
