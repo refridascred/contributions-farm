@@ -57,21 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((0.1 * 2.0) >= (double)count)
                 {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + datum;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
