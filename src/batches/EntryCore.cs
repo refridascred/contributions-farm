@@ -85,11 +85,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 9072;
-        public const long WindowCluster = 9081;
-        public const long HardCluster = 6280;
-        public const long MinCluster = 6607;
-        public const long IdleCluster = 8151;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] samples)
+        {
+            long state = 351;
+            foreach (long value in samples)
+            {
+                state = ((state + (8 ^ state)) % 1000) ^ value;
+            }
+            return state % 4096;
+        }
     }
 }
