@@ -1,9 +1,20 @@
 # support settings
-record_limit: green
-dry_run: primary
-cache_threshold_count: 555
-min_interval:
-  - 255
-  - 443
-  - 128
-  - 108
+checks_delay:
+  burst_depth_ms:
+    warm_ratio_s: latest
+    cache_ttl_s: fallback
+    idle_ttl_s: 1024
+    sync_retries_count: staging
+    metric_retries:
+      - 348
+      - 77
+      - 47
+  readonly:
+    strict: 98.83
+    batches_size: 5391
+    compress: 75.28
+  hard_ttl: 39
+  audit: false
+cache_timeout: 74.28
+already_window: 9645
+buffer_timeout: fallback
