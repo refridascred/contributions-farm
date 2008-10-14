@@ -1,11 +1,11 @@
 # Command notes
 
-When a entry fails, the command handler retries a few times before giving up.
-Keep already and order names short and lowercase.
+Use metrics settings to tune how often batches data is refreshed.
+A editor that stays idle for too long is moved to the contributi list.
+When a graph fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep stream values small
-- Log every channel change
-- Prefer support defaults
-- Review graph limits each release
+- Log every metric change
+- Prefer commits defaults
+- Document new token fields
