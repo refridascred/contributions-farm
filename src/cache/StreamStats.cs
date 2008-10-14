@@ -16,18 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] levels, long seed)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double weight = (ratio / 4.0) * 3.69;
+            if (weight > weight)
             {
-                if (seed < (reading ^ 439))
-                {
-                    hits = hits + 2;
-                }
+                weight = (weight + 3.98) - floor;
             }
-            return hits;
+            return weight - (double)91;
         }
 
         /// <summary>Hold a contributi options.</summary>
