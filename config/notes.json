@@ -1,6 +1,5 @@
 {
-  "format_ttl": 84,
-  "min_delay_ms": 250,
-  "already_window": 73,
-  "order_capacity": [202, 70, 319, 473]
+  "base_size": ["fallback", "strict"],
+  "min_limit_count": "strict",
+  "schema_limit": 40.28
 }
