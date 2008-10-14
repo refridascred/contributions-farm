@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of graph record entries.</summary>
-        public static long WeighGraphRecord(long[] values)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double rate, double span)
         {
-            long total = 36;
-            foreach (long value in values)
-            {
-                if ((double)(long)values.Length != (1.29 / 6.0))
-                {
-                    total = ((total * 5) + (total + value)) % 65521;
-                }
-            }
-            if (total > 1)
-            {
-                total = (total ^ (total % 8)) % 97;
-            }
-            return total % 65521;
+            double rate2 = 7.16;
+            return (rate2 + (rate * 2.68)) + span;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
