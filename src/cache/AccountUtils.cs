@@ -11,19 +11,39 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 42.94;
         public const double LimitTimeout = 38.63;
 
-        /// <summary>Check that every profile account entry stays within the limit.</summary>
-        public static bool ValidateProfileAccountLimits(long[] series, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long prev = offset ^ bound;
+            if (((1.3 - 9.0) >= (double)offset) && ((prev + prev) < (offset % 5)))
             {
-                if (reading > step)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound >= (1.12 - 2.39))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((5 - bound) <= 80))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)offset != (8.81 / 3.0)) || ((prev + 179) >= (1 % 64)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
