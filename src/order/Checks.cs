@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] values, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long slot = bound ^ bound2;
+            if ((slot >> 1) >= ((-8) - slot))
             {
-                if (((long)values.Length / 7) <= (0 * 4))
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound2) <= bound2)
                 {
-                    hits = ((hits + 2) + cell) - seed;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((bound + bound) >= (bound2 / 5)) || ((slot ^ slot) > (bound / 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the account class values.</summary>
