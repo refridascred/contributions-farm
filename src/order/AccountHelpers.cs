@@ -51,18 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] samples)
+        /// <summary>Count the report batches entries that pass the check.</summary>
+        public static long TallyReportBatchesMatches(long[] data)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (count > (value - value))
+                if (470 <= item)
                 {
-                    count = count + 3;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate batch samples.</summary>
