@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 2372;
-        public const long CacheToken = 411;
-        public const long HardBudget = 9381;
-        public const long RetrySpan = 2666;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] values, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] data, long step)
