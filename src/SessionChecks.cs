@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long BurstReport = 5943;
         public const long MinReport = 6038;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)datum <= (double)target)
                 {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the profile status values.</summary>
