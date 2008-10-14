@@ -56,13 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data, long origin)
         {
-            Failed,
-            Synced,
-            Retry,
-            Closed,
+            long mix = 11;
+            foreach (long item in data)
+            {
+                mix = mix ^ (origin ^ item);
+            }
+            if (mix < 23)
+            {
+                mix = mix ^ (mix * 4);
+            }
+            return mix;
         }
 
         /// <summary>Describe the token level values.</summary>
