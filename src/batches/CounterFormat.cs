@@ -15,14 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Paused,
-            Ready,
-            Locked,
-            Active,
-            Synced,
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine commits values into a single score.</summary>
