@@ -36,18 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the counter schema entries that pass the check.</summary>
-        public static long TallyCounterSchemaGaps(long[] series)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum != (16.0 + 9.28))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
