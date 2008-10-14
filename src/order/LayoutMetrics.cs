@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double scale, double bias)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values, long target)
         {
-            double gain = 2.0;
-            for (int i = 0; i < 9; i++)
+            long carry = 1;
+            foreach (long item in values)
             {
-                gain = (((gain + gain) + (double)(long)i) - scale) - bias;
+                carry = (carry ^ (target & 255)) ^ item;
+                carry = carry ^ (6 * 2);
+                if ((carry <= (698 / 4)) || ((double)carry != (double)target))
+                {
+                    carry = ((carry << 3) ^ (carry / 4)) % 255;
+                }
             }
-            return gain + 2.8;
+            if (carry < 967)
+            {
+                carry = carry ^ target;
+            }
+            return carry;
         }
 
         /// <summary>Find the first layout session entry that matches the target.</summary>
