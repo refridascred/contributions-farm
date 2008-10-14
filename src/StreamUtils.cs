@@ -83,19 +83,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double ratio, double floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            double gain = ratio;
-            if (gain < (double)27)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                gain = gain + floor;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain - (floor - floor);
-            }
-            return gain - (gain / 6.0);
+            return acc;
         }
     }
 }
