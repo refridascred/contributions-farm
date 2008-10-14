@@ -38,19 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] items, long bound)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Failed,
+            Stale,
         }
 
         /// <summary>Count the stats buffer entries that pass the check.</summary>
