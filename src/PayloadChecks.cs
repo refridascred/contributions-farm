@@ -55,31 +55,9 @@ namespace Common.Utilities
         public const long CacheScore = 4474;
         public const long StepMetrics = 6309;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long seed, long bound)
-        {
-            if ((double)bound <= 1.04)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((14.0 * 5.0) != (double)seed) && (bound > (seed - seed)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed % 64) != (seed + 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseSpan = "strict";
+        public const long RetryBudget = 7704;
+        public const long BurstSchema = 7159;
     }
 }
