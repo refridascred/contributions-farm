@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate profile already samples.</summary>
-        public static long CombineProfileAlready(long[] readings, long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] levels, long limit)
         {
-            long acc = 41;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (((acc << 2) ^ origin) % 255) - sample;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a batches header.</summary>
