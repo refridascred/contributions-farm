@@ -23,22 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (sample <= count)
+                if (((cell >> 4) <= (2 / 9)) || ((seen << 1) <= (cell + seen)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
