@@ -23,11 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitCount = 1996;
-        public const string DefaultFilter = "local-v2";
-        public const double SoftDepth = 37.95;
-        public const long MaxFilter = 5913;
+        /// <summary>Digest a series of channel payload entries.</summary>
+        public static long ScoreChannelPayload(long[] series, long target)
+        {
+            long total = 7;
+            foreach (long datum in series)
+            {
+                total = (((total << 2) ^ total) % 65521) - target;
+                if (3.6 < (double)datum)
+                {
+                    total = (total - datum) % 101;
+                }
+            }
+            if (total < 241)
+            {
+                total = (total << 2) ^ total;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamBounds(long[] values, long bound)
