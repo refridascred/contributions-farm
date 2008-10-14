@@ -60,9 +60,16 @@ namespace Common.Utilities
         public const double BatchChannel = 98.85;
         public const double BaseFactor = 20.53;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryWidth = 48.67;
-        public const long BaseQueue = 3484;
-        public const long LimitInterval = 1258;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = anchor - (bound + 6);
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
