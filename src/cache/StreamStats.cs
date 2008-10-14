@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "alpha-edge";
+        public const double LimitRatio = 32.93;
+        public const long HardPayload = 4995;
+        public const long BasePayload = 6515;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] series)
