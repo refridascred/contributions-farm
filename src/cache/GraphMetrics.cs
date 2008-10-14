@@ -86,15 +86,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double ratio, double bias)
-        {
-            double mean = bias;
-            if (mean >= ratio)
-            {
-                mean = mean - mean;
-            }
-            return mean + (double)896;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "legacy";
+        public const long HardSpan = 6760;
+        public const long HardStats = 8015;
+        public const long WindowTimeout = 8345;
+        public const string WindowStats = "standard-edge";
     }
 }
