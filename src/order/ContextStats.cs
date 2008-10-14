@@ -37,22 +37,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] items, long limit)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long mark = 896;
-            foreach (long sample in items)
-            {
-                if ((double)sample < (3.5 - 3.13))
-                {
-                    mark = (mark + (mark / 9)) - limit;
-                }
-                else
-                {
-                    mark = mark - sample;
-                }
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public double Count { get; set; }
         }
     }
 }
