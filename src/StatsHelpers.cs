@@ -44,32 +44,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long target, long floor)
+        /// <summary>Count the schema filter entries that pass the check.</summary>
+        public static long CountSchemaFilterOutliers(long[] samples)
         {
-            long span = target ^ floor;
-            if (778 < floor)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((221 / 3) == (target * 4))
+                if ((1.43 <= (double)hits) && ((533 - item) > hits))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((span & 3) < (floor - span))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a report counter forward.</summary>
