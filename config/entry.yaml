@@ -1,5 +1,23 @@
 # entry settings
-min_timeout_count: primary
-dry_run: primary
-idle_depth_pct: strict
-persist: true
+burst_size: 4036
+audit: green
+min_capacity:
+  schema_depth:
+    readonly: 500
+    channel_delay: 63.64
+    retry_size:
+      - local
+      - open
+  hard_threshold_ms: true
+  already_size: 51
+  flush_retries_count: false
+poll_threshold_count:
+  default_capacity_s: 53
+  layout_capacity: strict
+  batch_ratio:
+    base_timeout: 869
+    burst_delay: standard
+    poll_limit: 30
+    default_ttl_s: 32.32
+hard_delay: true
+account_threshold: 11
