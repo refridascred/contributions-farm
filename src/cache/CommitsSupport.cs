@@ -14,32 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long seed, long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] readings, long floor)
         {
-            long delta = seed + target;
-            if ((8 << 1) < (target & 63))
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + 973) <= (target & 255))
+                if (entry >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta / 8) > 509)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Blend two batch editor measurements.</summary>
