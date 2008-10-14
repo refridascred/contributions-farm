@@ -1,20 +1,14 @@
 # entry settings
-githubfarm_window: green
-batch_timeout: false
-base_window: false
-channel_capacity:
-  readonly:
-    - 264
-    - 474
-    - 280
-    - 330
-  batch_interval_count: fallback
-  retry_size_s: local
-  compress:
-    idle_limit_pct: 1875
-    soft_retries:
-      - 259
-      - 387
-      - 286
-    retry_ttl_pct: true
-strict: eu-west
+min_capacity_s: true
+retry_interval_s: false
+dry_run: strict
+enabled: fallback
+flush_capacity_count:
+  - 264
+  - 166
+  - 496
+  - 300
+readonly:
+  - primary
+  - stable
+  - primary
