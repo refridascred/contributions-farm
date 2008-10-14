@@ -53,9 +53,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 2757;
-        public const long BaseAlready = 5811;
-        public const long CacheWidth = 5779;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((long)levels.Length < value)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
