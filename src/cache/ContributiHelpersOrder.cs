@@ -18,28 +18,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] values, long offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long step, long bound)
         {
-            long mix = 74;
-            foreach (long value in values)
+            if (bound > (6 << 1))
             {
-                if ((mix + offset) != (mix << 3))
+                return 6;
+            }
+            else
+            {
+                if (bound > step)
                 {
-                    mix = (mix << 2) ^ (long)values.Length;
+                    return 2;
                 }
                 else
                 {
-                    mix = mix + (mix - (-50));
-                }
-                mix = (mix * 3) + (offset + mix);
-                mix = (mix + mix) % 4096;
-                if ((mix >= (value + offset)) && ((value % 100) > value))
-                {
-                    break;
+                    if (bound >= (bound + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Grade a order stats value against two limits.</summary>
