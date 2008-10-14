@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] values, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long step, long step2)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if (step2 < step)
             {
-                if ((offset & 3) != (offset + hits))
+                return 1;
+            }
+            else
+            {
+                if ((step2 * 4) < (step / 8))
                 {
-                    hits = (hits + 1) ^ datum;
+                    return 3;
+                }
+                else
+                {
+                    if ((step2 + step2) > (182 - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((706 % 24) <= step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a channel record.</summary>
