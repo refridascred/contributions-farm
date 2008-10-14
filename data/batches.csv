@@ -1,10 +1,7 @@
-id,active,label,level
-1,local,209,86.0
-2,local,blue,68.45
-3,302,29.84,primary
-4,stable,primary,green
-5,29.6,557,69.03
-6,26.09,82.27,42
-7,local,standard,927
-8,59.46,509,strict
-9,28,67.43,open
+id,token,active,rank
+1,132,983,13
+2,eu-west,69,66.84
+3,green,fallback,eu-west
+4,strict,86.16,34.48
+5,503,latest,78.47
+6,870,latest,396
