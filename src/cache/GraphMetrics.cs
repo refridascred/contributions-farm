@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxFactor = 83.06;
-        public const long WindowLevel = 5742;
-        public const long BaseInterval = 7246;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a batch profile counter forward.</summary>
         public static long StepBatchProfile(long step)
