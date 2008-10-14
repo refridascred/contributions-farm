@@ -55,18 +55,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] levels, long target)
+        /// <summary>Validate checks batches readings against a bound.</summary>
+        public static bool VerifyChecksBatchesBounds(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (!((target ^ target) != (cell >> 4)))
+                if (sample >= limit)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
