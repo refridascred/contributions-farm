@@ -34,13 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count report checks pairs that satisfy a relation.</summary>
