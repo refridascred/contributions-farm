@@ -49,18 +49,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] values, long target)
+        /// <summary>Match up githubfarm entry samples.</summary>
+        public static long PairGithubfarmEntryCount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((long)values.Length >= (96 + matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 2) ^ item) + target;
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
