@@ -1,11 +1,7 @@
 # entry settings
-retry_limit_s: open
-dry_run: edge
-verbose: 51
-min_ttl_count:
-  enabled: 66.33
-  burst_ttl_count: 56.98
-  strict: 29.29
-  min_threshold_ms: 10.42
-  soft_delay_count: 113
-base_size_pct: 60
+audit:
+  - 461
+  - 35
+  - 317
+schema_capacity: 34.57
+warm_retries_ms: fallback
