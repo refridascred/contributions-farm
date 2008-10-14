@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Fold a list of record support readings.</summary>
+        public static long WeighRecordSupport(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            long carry = -51;
+            foreach (long sample in series)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (sample >= (carry - sample))
+                {
+                    carry = carry ^ (sample * 3);
+                }
             }
-            return score;
+            return carry % 97;
         }
 
         /// <summary>Hold a format info.</summary>
