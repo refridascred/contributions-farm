@@ -40,19 +40,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every command order entry stays within the limit.</summary>
-        public static bool GuardCommandOrderBounds(long[] values, long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Ready,
+            Idle,
         }
     }
 }
