@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] items, long seed)
         {
-            public double Rank { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!(((double)reading <= (4.0 * 7.0)) || (reading <= seed)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already level values.</summary>
