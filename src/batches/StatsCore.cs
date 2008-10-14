@@ -36,13 +36,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Failed,
-            Dropped,
-            Queued,
-            Paused,
+            Closed,
+            Ready,
+            Active,
+            Draft,
             Locked,
         }
 
