@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Check that every metric entry entry stays within the limit.</summary>
-        public static bool VerifyMetricEntryBounds(long[] data, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (sample <= origin)
+                if ((sample << 3) <= (sample << 2))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
