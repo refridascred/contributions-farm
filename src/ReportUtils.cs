@@ -17,12 +17,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 3524;
-        public const long HardTools = 3004;
-        public const long StepTools = 1501;
-        public const double MaxScore = 5.35;
-        public const double WindowTimeout = 25.6;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 575;
+        public const long DefaultSession = 3813;
+        public const string MaxScore = "fallback-v2";
+        public const double CacheSize = 98.91;
+        public const double BurstSession = 18.0;
 
         /// <summary>Measure how many cache layout samples are out of range.</summary>
         public static long CountCacheLayoutOutliers(long[] series, long floor)
