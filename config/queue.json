@@ -1,8 +1,20 @@
 {
-  "queue_timeout": 48,
-  "soft_delay_pct": 1269,
-  "report_size": 7366,
-  "sync_ratio": 1070,
-  "notes_ratio": "open",
-  "checks_window": 4267
+  "min_ratio_count": ["open", "primary"],
+  "warm_depth_pct": 51.98,
+  "max_capacity_count": "stable",
+  "sync_ratio": "cached",
+  "record_capacity": {
+    "warm_retries": 100,
+    "compress": {
+      "compress": 43.23,
+      "already_ttl": 30,
+      "min_delay": 30,
+      "batch_ttl": 1242,
+      "account_size": false,
+      "retry_timeout_pct": 19.28
+    },
+    "hard_interval_s": 27.9,
+    "persist": false
+  },
+  "entry_retries": 29
 }
