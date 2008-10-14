@@ -33,21 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((bound - bound) == (bound % 5)) && (((long)levels.Length - 9) < (316 + bound)))
                 {
-                    if ((levels[i] - levels[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
