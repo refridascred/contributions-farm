@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 8880;
-        public const double IdleLevel = 11.4;
-        public const long CacheLevel = 9695;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Active,
+            Ready,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
