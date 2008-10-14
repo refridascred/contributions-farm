@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every batches tools entry stays within the limit.</summary>
-        public static bool GuardBatchesToolsLimits(long[] items, long bound)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowBudget = 3054;
+        public const long BatchProfile = 7321;
+        public const string BurstLevel = "latest-v2";
+        public const double BurstRatio = 52.7;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetryDepth = "stable-1";
