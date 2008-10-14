@@ -27,13 +27,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of account entries.</summary>
