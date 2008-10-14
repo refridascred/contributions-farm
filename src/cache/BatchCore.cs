@@ -37,13 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultCount = 21.0;
+        public const long IdleEntry = 3482;
+        public const long BatchEntry = 6052;
+        public const double HardSize = 0.16;
+        public const long RetryEntry = 6521;
 
         /// <summary>Audit graph support readings against a rule.</summary>
         public static long CountGraphSupportHits(long[] samples, long origin)
