@@ -59,18 +59,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] series)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (datum < ((-664) ^ tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Failed,
+            Dropped,
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Look up the position of a batch buffer sample.</summary>
