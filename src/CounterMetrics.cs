@@ -46,23 +46,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double gain, double bias)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double weight = (double)(34 << 2);
-            if (weight > (double)922)
-            {
-                weight = weight - gain;
-            }
-            else
-            {
-                weight = weight + (bias / 9.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (weight / 9.0)) + (double)(long)i;
-            }
-            return weight + bias;
+            Pending,
+            Idle,
+            Paused,
+            Queued,
         }
     }
 }
