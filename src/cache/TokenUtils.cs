@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Ready,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowInterval = 9723;
+        public const long StepCount = 848;
+        public const double StepTimeout = 4.63;
+        public const long DefaultLevel = 6926;
+        public const long BaseWindow = 8695;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelGaps(long[] series, long step)
