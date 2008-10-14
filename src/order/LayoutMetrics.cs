@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long carry = 1;
-            foreach (long item in values)
-            {
-                carry = (carry ^ (target & 255)) ^ item;
-                carry = carry ^ (6 * 2);
-                if ((carry <= (698 / 4)) || ((double)carry != (double)target))
-                {
-                    carry = ((carry << 3) ^ (carry / 4)) % 255;
-                }
-            }
-            if (carry < 967)
-            {
-                carry = carry ^ target;
-            }
-            return carry;
+            Closed,
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Find the first layout session entry that matches the target.</summary>
