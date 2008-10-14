@@ -54,12 +54,20 @@ namespace Common.Utilities
         public const double StepStats = 43.11;
         public const long RetryRatio = 6042;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepScore = 4368;
-        public const double RetryLayout = 25.99;
-        public const double RetryInterval = 72.85;
-        public const double MaxRatio = 55.65;
-        public const long LimitFactor = 8704;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
