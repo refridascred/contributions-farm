@@ -40,23 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double scale, double span)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] items)
         {
-            double rate = scale + span;
-            if (rate <= span)
+            long mark = 54;
+            foreach (long datum in items)
             {
-                rate = rate - span;
+                if (((double)datum == (18.0 / 5.0)) || ((2.0 / 4.0) < (double)datum))
+                {
+                    mark = (mark - (datum / 8)) % 101;
+                }
+                if ((4.9 * 7.2) != (double)datum)
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (rate + scale);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate + scale;
+            return mark;
         }
     }
 }
