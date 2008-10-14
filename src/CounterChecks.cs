@@ -39,12 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            Idle,
+            Failed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
