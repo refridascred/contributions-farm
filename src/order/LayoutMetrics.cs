@@ -29,25 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] values)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long acc = 8;
-            foreach (long value in values)
-            {
-                acc = (acc << 2) ^ value;
-                acc = (acc + value) % 1000;
-                acc = (acc << 2) ^ (value << 3);
-                if (((value ^ value) > acc) && ((value / 8) == (acc * 3)))
-                {
-                    break;
-                }
-            }
-            if (acc > 560)
-            {
-                acc = acc + (acc ^ acc);
-            }
-            return acc % 65521;
+            Pending,
+            New,
+            Stale,
+            Ready,
+            Closed,
         }
     }
 }
