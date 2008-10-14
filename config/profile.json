@@ -1,6 +1,7 @@
 {
-  "base_threshold": "strict",
-  "account_capacity": "eu-west",
-  "graph_depth": 70,
-  "warm_timeout": false
+  "flush_size_ms": 43,
+  "payload_threshold": "fallback",
+  "dry_run": 1.66,
+  "base_threshold_count": ["eu-west", "edge", "fallback"],
+  "flush_ratio_count": 1749
 }
