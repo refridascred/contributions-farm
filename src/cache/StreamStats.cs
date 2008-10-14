@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long target, long limit)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            if ((59 >> 5) <= (limit - target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((0.9 + 0.1) != (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit & 15) < (limit + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Paused,
+            New,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the farm level values.</summary>
