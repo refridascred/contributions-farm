@@ -1,14 +1,5 @@
 # support settings
-hard_window_count:
-  hard_window_pct: true
-  readonly: local
-  verbose:
-    contributi_ttl: 98.58
-    editor_threshold: true
-    max_retries_ms: eu-west
-  channel_retries: 59
-queue_depth:
-  - eu-west
-  - fallback
-order_interval: true
-persist: green
+idle_limit_count: 75
+sync_retries_ms: 60
+soft_depth_s: true
+flush_ratio: legacy
