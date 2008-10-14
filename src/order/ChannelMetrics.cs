@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] samples, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (375 > tally)
+                if ((40 >> 2) == (hits << 3))
                 {
-                    tally = ((tally + 1) ^ item) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) - entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
