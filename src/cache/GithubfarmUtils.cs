@@ -19,10 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 41.11;
-        public const long HardOrder = 1557;
-        public const long StepOrder = 3627;
+        /// <summary>Match up already contributi samples.</summary>
+        public static long CompareAlreadyContributiCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
