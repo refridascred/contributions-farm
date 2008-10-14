@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] values, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] items, long limit)
         {
-            long sum = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                sum = (sum << 3) ^ value;
-                sum = sum + sum;
-                sum = (sum - ((long)values.Length + sum)) % 4096;
-                if ((592 & 1) > seed)
+                if ((double)item >= (2.1 / 6.0))
                 {
-                    break;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
