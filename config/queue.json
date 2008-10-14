@@ -1,6 +1,6 @@
 {
-  "sync_limit_ms": "latest",
-  "persist": true,
-  "graph_depth": 7135,
-  "tools_capacity": [65, 495, 96, 103]
+  "cache_capacity": 1024,
+  "burst_retries_count": 57.4,
+  "hard_timeout_count": "primary",
+  "strict": 60
 }
