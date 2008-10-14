@@ -59,17 +59,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 6409;
+        public const string MinSize = "open-v2";
+        public const string SoftCount = "alpha-edge";
+        public const long DefaultStream = 4451;
     }
 }
