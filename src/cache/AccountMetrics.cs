@@ -49,18 +49,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the profile batches entries that pass the check.</summary>
-        public static long CountProfileBatchesGaps(long[] levels)
+        /// <summary>Count the already metrics entries that pass the check.</summary>
+        public static long CountAlreadyMetricsMatches(long[] data)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!((5.0 / 3.0) <= (double)datum) && (((double)count >= (double)datum) && ((count + datum) >= 2)))
+                if (matches <= (cell << 3))
                 {
-                    count = count + 2;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
