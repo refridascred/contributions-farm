@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the tools phase values.</summary>
