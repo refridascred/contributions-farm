@@ -29,19 +29,12 @@ namespace Common.Utilities
             return ((bias - 1.0) + scale) + floor;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] series, long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Active,
+            Draft,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
