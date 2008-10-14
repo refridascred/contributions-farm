@@ -1,8 +1,6 @@
 {
-  "batch_window": "local",
-  "retry_capacity": 59,
-  "max_delay_count": 88.03,
-  "max_ratio": true,
-  "min_ttl": 5,
-  "stream_depth": "cached"
+  "batch_timeout_s": [158, 103, 248],
+  "retry_limit_ms": false,
+  "warm_size": "cached",
+  "audit": [93, 315, 224]
 }
