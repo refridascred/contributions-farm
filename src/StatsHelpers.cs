@@ -54,10 +54,13 @@ namespace Common.Utilities
         public const long BaseRecord = 2297;
         public const double LimitRatio = 43.58;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 815;
-        public const string BaseBatches = "alpha-v2";
-        public const long HardBatches = 7409;
-        public const string CacheCount = "open-edge";
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Done,
+            Synced,
+            Draft,
+            Ready,
+        }
     }
 }
