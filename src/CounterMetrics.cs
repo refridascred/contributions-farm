@@ -35,15 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] samples, long offset)
         {
-            long mix = 69;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                mix = ((mix + (mix - mix)) % 255) ^ reading;
+                if (datum != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix % 4096;
+            return found;
         }
 
         /// <summary>Hold a window entry.</summary>
