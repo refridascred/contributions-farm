@@ -6,7 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary local edge; do
+BUFFER_LIMIT=81
+log "limit is ${BUFFER_LIMIT}"
+
+for item in blue fallback stable staging; do
     log "checking ${item}"
 done
 
