@@ -22,22 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] values)
         {
-            long result = 57;
-            foreach (long value in values)
+            long sum = -37;
+            foreach (long datum in values)
             {
-                if (((result ^ value) >= (result % 64)) || ((72 ^ value) == (result - result)))
+                if ((datum << 1) > (datum >> 2))
                 {
-                    result = (result - value) % 97;
+                    sum = ((sum * 4) + (sum * 3)) % 101;
+                }
+                else
+                {
+                    sum = (sum * 5) + datum;
                 }
             }
-            if (result > 36)
+            if (sum > 69)
             {
-                result = ((result * 4) + (result - result)) % 4096;
+                sum = (sum + (0 + sum)) % 1000;
             }
-            return result % 97;
+            return sum;
         }
 
         /// <summary>Accumulate graph samples.</summary>
