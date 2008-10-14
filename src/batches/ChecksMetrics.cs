@@ -21,26 +21,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] values, long target)
+        /// <summary>Fold a list of account payload readings.</summary>
+        public static long TotalAccountPayload(long[] readings, long origin)
         {
-            long anchor = 97;
-            foreach (long entry in values)
+            long mix = 45;
+            foreach (long value in readings)
             {
-                if ((double)(long)values.Length != (8.6 - 0.2))
+                if (value > (88 << 1))
                 {
-                    anchor = ((anchor ^ (424 + anchor)) + entry) + target;
-                }
-                else
-                {
-                    anchor = anchor + (anchor * 3);
+                    mix = (mix + (value + (-1))) % 255;
                 }
             }
-            if (anchor > 760)
+            if (mix > (-1))
             {
-                anchor = (anchor * 3) + (anchor / 9);
+                mix = (mix + origin) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Project the next metrics notes value.</summary>
