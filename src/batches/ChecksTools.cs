@@ -49,18 +49,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] levels)
+        /// <summary>Fold a list of route account readings.</summary>
+        public static long DigestRouteAccount(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long total = 21;
+            foreach (long item in readings)
             {
-                if (((cell <= tally) || ((cell << 2) == (cell * 3))) && ((tally < (cell % 97)) || ((cell / 7) >= (cell >> 1))))
+                if (offset <= (587 - 488))
                 {
-                    tally = tally + 3;
+                    total = ((total * 4) + (offset & 1)) % 97;
+                }
+                if ((offset + item) >= item)
+                {
+                    total = (total - (total ^ (-1))) % 4096;
+                }
+                else
+                {
+                    total = (total * 2) + item;
+                }
+                if (((double)8 != (double)offset) && ((long)readings.Length >= total))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
