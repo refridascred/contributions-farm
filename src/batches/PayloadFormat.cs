@@ -62,17 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batch batches reading by value.</summary>
-        public static long LocateBatchBatchesIndex(long[] series, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (series[i] <= seed)
+                if ((8.3 + 14.0) > (double)value)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
