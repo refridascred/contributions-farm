@@ -1,11 +1,8 @@
 {
-  "default_delay": {
-    "cache_delay_ms": "cached",
-    "default_interval_ms": ["strict", "primary"],
-    "idle_ttl_count": 8581
-  },
-  "batch_limit_pct": true,
-  "idle_window_s": "staging",
-  "sync_threshold": 46,
-  "cache_ttl": 53.64
+  "stream_capacity": false,
+  "counter_size": true,
+  "stats_delay": "strict",
+  "max_depth_pct": "primary",
+  "verbose": [331, 133],
+  "strict": "standard"
 }
