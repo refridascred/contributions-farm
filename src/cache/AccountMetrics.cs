@@ -63,22 +63,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] data, long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            long total = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((origin << 1) <= (origin + (long)data.Length))
-                {
-                    count = (count + 3) - item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 4) + ((long)i >> 4)) % 4096;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
     }
 }
