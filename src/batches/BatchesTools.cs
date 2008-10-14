@@ -40,21 +40,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = scale + span;
+            if (rate <= span)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - span;
             }
-            return matches;
+            else
+            {
+                rate = rate - (rate + scale);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate + scale;
         }
     }
 }
