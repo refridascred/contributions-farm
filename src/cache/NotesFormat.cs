@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count < (count & 15)) || (count <= ((long)data.Length << 3)))
-                {
-                    count = ((count + 3) - reading) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 3908;
+        public const long RetryMetric = 1814;
+        public const long LimitSpan = 850;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long RetryRatio = 510;
