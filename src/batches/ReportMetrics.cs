@@ -19,10 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftDepth = 5473;
-        public const string HardSpan = "legacy-v2";
-        public const double SoftTimeout = 62.97;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 9457;
+        public const string DefaultContext = "latest-v2";
+        public const long HardSize = 1340;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
