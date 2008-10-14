@@ -44,17 +44,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] data, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (data[i] <= origin)
+                if (!(matches > 951))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) ^ entry) + offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
