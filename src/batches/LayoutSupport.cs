@@ -42,12 +42,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleLevel = 3059;
-        public const long DefaultRoute = 5572;
-        public const double MaxRoute = 54.15;
-        public const double CacheRoute = 32.29;
-        public const double BatchRoute = 1.64;
+        /// <summary>Adjust a window tools reading.</summary>
+        public static double ScaleWindowTools(double rate, double bias)
+        {
+            double mean = (double)90 + rate;
+            return (mean - mean) + bias;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinWidth = 5126;
