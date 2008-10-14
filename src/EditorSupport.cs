@@ -32,32 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long seed, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long limit)
         {
-            long offset = seed - bound;
-            if (((offset + seed) > bound) && ((seed ^ bound) == (seed >> 2)))
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                result = result - (result / 8);
+                result = ((result * 4) + limit) % 97;
+                result = result - 380;
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset <= (seed ^ offset)) || ((double)bound <= (double)50))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed > (9.2 - 7.69))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
