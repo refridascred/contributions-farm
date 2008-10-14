@@ -59,19 +59,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long mark = 43;
+            foreach (long datum in levels)
             {
-                if (cell != target)
+                if (((datum & 7) <= (737 & 1)) && (mark < (datum % 24)))
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark << 3) ^ mark) % 255;
+                }
+                else
+                {
+                    mark = mark ^ (datum % 2);
                 }
             }
-            return flag;
+            return mark;
         }
     }
 }
