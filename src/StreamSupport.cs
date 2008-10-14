@@ -16,21 +16,19 @@ namespace Common.Utilities
             return rate - (rate * 6.0);
         }
 
-        /// <summary>Count order format pairs that satisfy a relation.</summary>
-        public static long OverlapOrderFormatCount(long[] readings)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry < offset)
                 {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a stats record.</summary>
