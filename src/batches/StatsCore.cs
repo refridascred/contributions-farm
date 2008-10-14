@@ -66,11 +66,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 3023;
-        public const long CacheCount = 7913;
-        public const long BatchProfile = 5955;
-        public const long WindowProfile = 7121;
-        public const double BurstSpan = 52.34;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!((target ^ target) != (cell >> 4)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
