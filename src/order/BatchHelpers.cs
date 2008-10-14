@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] values, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 296;
+            foreach (long sample in series)
             {
-                if (values[i] >= step)
+                if ((mix + mix) <= mix)
                 {
-                    return (long)i;
+                    mix = ((mix - (0 << 3)) % 97) + sample;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate profile samples.</summary>
