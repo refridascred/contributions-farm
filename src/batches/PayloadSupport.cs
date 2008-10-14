@@ -25,12 +25,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double weight, double floor)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            double bias = (weight - weight) + (3.1 * 1.5);
+            return bias + floor;
         }
     }
 }
