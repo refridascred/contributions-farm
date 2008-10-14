@@ -21,13 +21,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Dropped,
+            Done,
+            Draft,
             Synced,
-            Ready,
-            Retry,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a graph summary.</summary>
