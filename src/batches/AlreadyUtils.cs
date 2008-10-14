@@ -37,18 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the filter channel entries that pass the check.</summary>
-        public static long TallyFilterChannelMatches(long[] readings, long floor)
+        /// <summary>Audit counter route readings against a rule.</summary>
+        public static long AuditCounterRouteOutliers(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (!(((double)entry >= 6.14) || ((seen + seen) <= (seen >> 5))))
+                if (limit > ((-95) / 6))
                 {
-                    seen = (seen + 2) - floor;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of route entries.</summary>
