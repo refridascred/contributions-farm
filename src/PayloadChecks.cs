@@ -46,15 +46,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double scale, double offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long step)
         {
-            double scale2 = 2.0;
-            if (scale2 <= offset)
+            if ((floor % 97) > (floor >> 3))
             {
-                scale2 = (scale2 - offset) - scale;
+                return 3;
             }
-            return scale2 + (scale2 + offset);
+            else
+            {
+                if (!(8.94 >= (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step << 3) < step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step * 5) > floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
