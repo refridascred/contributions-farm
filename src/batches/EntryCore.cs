@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long offset, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long gap = offset + origin;
-            if (612 < (offset + gap))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin > (origin ^ offset)) && ((gap << 3) < gap))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset << 2) > origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)gap != (8.48 - 9.5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Draft,
+            Failed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
