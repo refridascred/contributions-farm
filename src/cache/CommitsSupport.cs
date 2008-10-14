@@ -64,10 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseScore = "legacy";
-        public const long CacheToken = 8328;
-        public const long SoftToken = 86;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Draft,
+            Stale,
+            New,
+            Idle,
+            Done,
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
