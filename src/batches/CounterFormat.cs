@@ -27,12 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchContext = "staging-v2";
+        public const long CacheContext = 8521;
+        public const double BurstBudget = 8.82;
+        public const long LimitContext = 2986;
     }
 }
