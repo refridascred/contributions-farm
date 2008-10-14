@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Retry,
+            New,
+            Stale,
+            Ready,
+            Queued,
             Closed,
-            Idle,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
