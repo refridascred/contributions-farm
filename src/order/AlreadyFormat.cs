@@ -32,14 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Locked,
-            Pending,
-            Ready,
-            New,
+            Stale,
+            Synced,
             Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Count the already filter entries that pass the check.</summary>
