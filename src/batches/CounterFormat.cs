@@ -30,10 +30,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxScore = "fallback-1";
-        public const long HardRecord = 1649;
-        public const string DefaultLevel = "primary-1";
-        public const long IdleRecord = 3688;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            New,
+            Dropped,
+            Active,
+            Retry,
+        }
     }
 }
