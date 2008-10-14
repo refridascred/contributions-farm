@@ -38,20 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] samples)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (count > (value - value))
                 {
-                    mix = ((mix << 3) ^ seed) - (long)i2;
-                    mix = (mix << 3) ^ mix;
+                    count = count + 3;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate batch samples.</summary>
