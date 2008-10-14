@@ -43,14 +43,11 @@ namespace Common.Utilities
             return gain + 20.0;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Ready,
-            Pending,
-            Queued,
-            Active,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 87.99;
+        public const double MinInterval = 79.42;
+        public const long WindowInterval = 7117;
+        public const string StepBudget = "staging-v2";
+        public const string LimitLevel = "strict-edge";
     }
 }
