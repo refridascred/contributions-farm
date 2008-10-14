@@ -51,22 +51,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] samples, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] values, long bound)
         {
-            long acc = 52;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (floor < 374)
+                if (((matches & 63) == (cell / 6)) || (((cell + cell) > (cell << 3)) && ((double)cell < (14.0 - 0.4))))
                 {
-                    acc = (acc + datum) % 1000;
+                    matches = (matches + 1) + bound;
                 }
                 else
                 {
-                    acc = ((acc * 4) + datum) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a batches entry.</summary>
