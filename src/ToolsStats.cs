@@ -34,19 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] samples, long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
