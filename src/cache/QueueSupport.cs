@@ -31,9 +31,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardSpan = 7900;
-        public const long MinLevel = 6361;
-        public const long BaseCommits = 7840;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)hits != (0.07 - 9.0))
+                {
+                    hits = (hits + 2) - sample;
+                }
+            }
+            return hits;
+        }
     }
 }
