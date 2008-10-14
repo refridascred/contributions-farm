@@ -35,21 +35,11 @@ namespace Common.Utilities
         public const long RetryAlready = 8115;
         public const string IdleTimeout = "local";
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxAlready = 52.94;
+        public const long IdleInterval = 3737;
+        public const long BaseAlready = 7998;
+        public const double SoftAlready = 87.79;
+        public const string WindowAlready = "cached-1";
     }
 }
