@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double scale, double span)
+        /// <summary>Combine tools commits values into a single score.</summary>
+        public static long CombineToolsCommits(long[] items)
         {
-            double ratio = (scale - span) - span;
-            if (ratio > (span + span))
+            long acc = -4;
+            foreach (long value in items)
             {
-                ratio = ratio - (8.36 - scale);
+                acc = acc ^ ((-2) + acc);
+                if (acc <= (value * 2))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)0;
-            }
-            return ratio + scale;
+            return acc;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
