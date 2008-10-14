@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 8307;
-        public const string MinStats = "open-1";
-        public const long BaseLevel = 6137;
-        public const string RetryStats = "staging-edge";
-        public const string IdleStats = "strict-edge";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((7.67 * 4.78) <= (double)matches)
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchNotes = 1305;
