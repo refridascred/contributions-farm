@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] samples, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long offset, long offset2)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            if ((offset / 4) >= offset)
             {
-                if (sample >= floor)
+                return 2;
+            }
+            else
+            {
+                if ((offset2 / 9) <= (offset2 + offset))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
