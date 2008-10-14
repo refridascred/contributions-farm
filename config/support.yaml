@@ -1,35 +1,13 @@
 # support settings
-sync_threshold_pct: 37
-cluster_depth:
-  warm_ttl: false
-  poll_limit_pct: false
-  queue_timeout:
-    idle_window_count: primary
-    base_capacity_ms: cached
-    persist: true
-  cluster_retries: 60
-  base_capacity:
-    - 403
-    - 256
-  idle_ratio:
-    batch_window: 28.47
-    persist: local
-    window_timeout: standard
-    sync_capacity: 27
-    burst_retries_count: false
-    schema_timeout: green
-poll_capacity: 500
-dry_run:
-  min_limit_s: cached
-  burst_ttl_count:
-    record_delay: true
-    max_interval_ms:
-      - blue
-      - fallback
-      - green
-    layout_depth: true
-    burst_size: true
-    idle_depth_ms: 57
-  warm_size: 60
-  hard_size_ms: 80.39
-  compress: staging
+flush_window_count:
+  persist: edge
+  min_depth_s: false
+  flush_interval_pct:
+    schema_interval: 13.97
+    contributi_capacity: 60
+    hard_retries: 50.61
+  max_ttl_count: 9501
+cache_limit: 0.92
+counter_threshold: 40
+base_interval_pct: 500
+flush_interval_count: 76
