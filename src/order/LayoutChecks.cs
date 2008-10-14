@@ -95,21 +95,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Active,
+            Draft,
         }
     }
 }
