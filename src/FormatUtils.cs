@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Combine cluster stats values into a single score.</summary>
+        public static long DigestClusterStats(long[] readings, long bound)
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
+            long acc = 87;
+            foreach (long reading in readings)
+            {
+                if ((double)bound < (double)acc)
+                {
+                    acc = acc ^ (bound << 1);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ reading;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of profile token entries.</summary>
