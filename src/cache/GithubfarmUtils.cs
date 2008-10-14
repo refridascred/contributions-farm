@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a notes token figure with a bias.</summary>
-        public static double SmoothNotesToken(double bias, double floor)
-        {
-            double load = bias;
-            return (load + (bias - load)) + floor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxLevel = 9490;
+        public const double IdleRatio = 56.79;
+        public const long MaxMetric = 7384;
+        public const long CacheMetric = 4516;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BaseRatio = 4577;
