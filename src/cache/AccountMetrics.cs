@@ -65,16 +65,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long limit)
         {
-            long total = step;
-            for (int i = 0; i < 12; i++)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                total = ((total * 4) + ((long)i >> 4)) % 4096;
-                total = ((total * 4) + (long)i) % 4093;
+                if (((6 >> 1) > mix) && ((mix + mix) == (long)i))
+                {
+                    mix = (mix ^ (mix / 3)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (mix % 12)) % 4096;
+                }
+                mix = (mix - (limit * 5)) % 101;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
     }
 }
