@@ -29,18 +29,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] data)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((8 % 12) < ((long)data.Length - reading))
+                if (target >= (long)i)
                 {
-                    hits = hits + 1;
+                    sum = sum - (446 ^ sum);
+                    sum = ((sum * 2) + (target + 749)) % 255;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
     }
 }
