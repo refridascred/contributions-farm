@@ -31,17 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] items, long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
