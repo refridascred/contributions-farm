@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                long lane = limit;
-                total = ((total * 4) + lane) % 255;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a account counter forward.</summary>
