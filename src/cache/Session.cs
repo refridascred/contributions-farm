@@ -43,22 +43,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long anchor = 32;
-            foreach (long item in items)
-            {
-                if ((double)item != (20.0 - 18.0))
-                {
-                    anchor = anchor ^ (anchor ^ 3);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + 73;
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
