@@ -16,19 +16,18 @@ namespace Common.Utilities
             return rate - (rate * 6.0);
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] values, long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long origin)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result << 3) ^ result) % 65521;
+                result = (result * 2) + (origin % 7);
+                result = (result - (19 + result)) % 4096;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Hold a stats record.</summary>
