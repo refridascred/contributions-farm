@@ -19,19 +19,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] items)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            long state = -207;
+            foreach (long sample in items)
             {
-                if ((floor + 9) == (1 + 7))
+                if ((sample >= ((long)items.Length / 5)) || ((sample % 16) == (state + state)))
                 {
-                    carry = ((carry * 2) + (long)i) % 4096;
+                    state = (state ^ (state ^ state)) % 65521;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            if (state > 6)
+            {
+                state = ((state << 2) ^ (state + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
