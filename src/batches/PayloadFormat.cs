@@ -58,22 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepScore = 7115;
+        public const double HardScore = 55.77;
+        public const double BatchChannel = 98.85;
+        public const double BaseFactor = 20.53;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaGaps(long[] data)
