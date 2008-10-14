@@ -32,15 +32,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            long result = 769;
+            foreach (long sample in data)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                result = (result + (sample >> 2)) % 101;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
