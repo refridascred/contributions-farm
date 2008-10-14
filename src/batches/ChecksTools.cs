@@ -35,11 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen ^ seen) < (92 << 1))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
