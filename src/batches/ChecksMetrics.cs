@@ -21,22 +21,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of account payload readings.</summary>
-        public static long TotalAccountPayload(long[] readings, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] data, long bound)
         {
-            long mix = 45;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (value > (88 << 1))
+                if (datum >= bound)
                 {
-                    mix = (mix + (value + (-1))) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > (-1))
-            {
-                mix = (mix + origin) % 1000;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Project the next metrics notes value.</summary>
