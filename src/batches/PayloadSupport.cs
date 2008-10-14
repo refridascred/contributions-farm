@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the metrics cluster entries that pass the check.</summary>
-        public static long CountMetricsClusterHits(long[] items, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long delta = limit - origin;
+            if (((limit - 287) > (limit + delta)) && ((limit + origin) < (delta + delta)))
             {
-                if ((double)value > (double)(long)items.Length)
+                return 5;
+            }
+            else
+            {
+                if (((39 - limit) < limit) || ((delta - limit) > (origin << 3)))
                 {
-                    seen = (seen + 1) + origin;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin >= 3.6)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
