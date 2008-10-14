@@ -33,13 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
             public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
