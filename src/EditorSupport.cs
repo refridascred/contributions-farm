@@ -37,21 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] levels)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = bias - weight;
+            if (drift > (bias + bias))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + (3.6 / 3.0);
             }
-            return seen;
+            return drift + bias;
         }
 
         /// <summary>Blend two channel measurements.</summary>
