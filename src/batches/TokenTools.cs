@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] values, long floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = floor;
+            if (gain < (floor * 5.0))
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                gain = (gain - floor) + scale;
             }
-            return -1;
+            return gain - floor;
         }
 
         /// <summary>Match up buffer metric samples.</summary>
