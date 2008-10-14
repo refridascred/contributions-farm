@@ -53,14 +53,19 @@ namespace Common.Utilities
         public const double SoftTimeout = 74.04;
         public const double BaseCount = 85.56;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Blend two token graph measurements.</summary>
+        public static double BlendTokenGraph(double gain, double bias)
         {
-            Queued,
-            Ready,
-            Pending,
-            Done,
-            Retry,
+            double drift = gain;
+            if (drift >= (gain / 5.0))
+            {
+                drift = drift + (double)61;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (bias + 7.0)) - (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Hold a filter record.</summary>
