@@ -54,23 +54,11 @@ namespace Common.Utilities
         public const string MinBudget = "standard-edge";
         public const long MaxLevel = 2430;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((2.57 + 1.6) == (double)sample)
-                {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheLevel = 9854;
+        public const string HardBudget = "legacy";
+        public const long MaxRatio = 6958;
+        public const double IdleBuffer = 8.66;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TotalQueue(long[] data)
