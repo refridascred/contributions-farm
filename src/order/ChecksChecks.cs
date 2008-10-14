@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] items)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (28 < item)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
