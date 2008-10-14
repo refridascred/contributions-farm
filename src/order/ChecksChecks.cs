@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long offset, long origin)
+        /// <summary>Digest a series of checks token entries.</summary>
+        public static long TallyChecksToken(long[] samples, long limit)
         {
-            if (((92 + offset) < (origin - 14)) || ((42 + origin) <= (origin % 24)))
+            long carry = 759;
+            foreach (long item in samples)
             {
-                return 1;
+                carry = ((carry - (carry + (-99))) % 65521) + item;
             }
-            else
+            if (carry < 876)
             {
-                if ((offset << 1) < (origin % 97))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((8.25 / 2.0) > (double)origin) && ((731 + offset) > (offset % 10)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                carry = ((carry * 2) + (limit & 127)) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Describe the filter class values.</summary>
