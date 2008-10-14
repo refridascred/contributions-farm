@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the record window entries that pass the check.</summary>
+        public static long TallyRecordWindowOutliers(long[] items, long offset)
         {
-            Queued,
-            Dropped,
-            Paused,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (cell >= (offset - cell))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
