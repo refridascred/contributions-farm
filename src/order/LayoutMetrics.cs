@@ -29,28 +29,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the commits cache series from a seed.</summary>
-        public static long RollCommitsCache(long seed)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)i + seed) == (mix << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix + seed;
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ ((long)i % 12)) % 4096;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (((mix * 3) + mix) % 1000) ^ (long)i2;
-                    mix = mix - (930 ^ (long)i);
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
     }
 }
