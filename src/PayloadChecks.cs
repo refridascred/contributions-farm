@@ -67,35 +67,28 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long target, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long seed, long bound)
         {
-            if ((6.72 - 3.2) != (double)floor)
+            if ((double)bound <= 1.04)
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((double)target != (double)floor)
+                if (((14.0 * 5.0) != (double)seed) && (bound > (seed - seed)))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((target / 8) <= (target << 2))
+                    if ((seed % 64) != (seed + 8))
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        if (((floor >> 3) > (floor - target)) && ((target % 60) == (target >> 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 3;
                     }
                 }
             }
