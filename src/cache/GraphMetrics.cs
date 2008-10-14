@@ -56,19 +56,15 @@ namespace Common.Utilities
         public const long BaseSpan = 6314;
         public const long MaxReport = 7213;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            long score = 78;
+            foreach (long entry in samples)
             {
-                if ((origin & 63) == (long)i)
-                {
-                    mark = mark - ((long)i - origin);
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
+                score = ((score << 3) ^ score) ^ entry;
             }
-            return mark;
+            return score % 4096;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
