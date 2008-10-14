@@ -69,13 +69,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Blend two window filter measurements.</summary>
+        public static double AdjustWindowFilter(double ratio, double offset)
         {
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
+            double load = offset;
+            if (load > (double)0)
+            {
+                load = load - (load * 4.67);
+            }
+            else
+            {
+                load = load + (double)5;
+            }
+            return load + (4.0 - ratio);
         }
     }
 }
