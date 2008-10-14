@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryInterval = 3524;
-        public const long SoftMetric = 6550;
-        public const string RetryMetric = "legacy";
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] series, long origin)
