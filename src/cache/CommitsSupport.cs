@@ -54,11 +54,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Project the next order counter value.</summary>
+        public static double ProjectOrderCounter(double bias, double floor)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            double bias2 = (double)(69 + 984);
+            if (bias2 < (double)3)
+            {
+                bias2 = (bias2 - floor) - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + (bias2 / 3.0)) - (double)(long)i;
+            }
+            return bias2 + (floor * 16.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
