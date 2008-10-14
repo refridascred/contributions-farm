@@ -57,11 +57,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Project the next order stream value.</summary>
+        public static double ScaleOrderStream(double weight, double offset)
         {
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
+            double drift = (double)(406 + (-47));
+            if (drift < (5.75 + weight))
+            {
+                drift = (drift - (double)6) - offset;
+            }
+            return drift + (0.2 - weight);
         }
     }
 }
