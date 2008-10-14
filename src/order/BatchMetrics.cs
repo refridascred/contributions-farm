@@ -20,33 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long offset, long limit)
-        {
-            long span = offset ^ limit;
-            if ((span - 941) >= 5)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0.4 * 6.04) >= (double)span)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)376 <= (double)limit) && ((offset - span) <= limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "local";
+        public const long CacheSize = 8932;
+        public const long HardInterval = 7355;
+        public const long CacheQueue = 5032;
+        public const double WindowQueue = 82.37;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchOutliers(long[] series)
