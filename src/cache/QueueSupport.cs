@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Measure how many format queue samples are out of range.</summary>
+        public static long TallyFormatQueueGaps(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                carry = (carry + carry) % 4096;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((value - 806) != ((-439) & 3))
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
