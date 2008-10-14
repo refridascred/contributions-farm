@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Audit schema record readings against a rule.</summary>
+        public static long TallySchemaRecordOutliers(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((-2) + hits) <= (hits - 81))
                 {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 3) ^ item) - step;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
