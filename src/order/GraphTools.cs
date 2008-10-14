@@ -36,14 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public double Score { get; set; }
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 6071;
+        public const double WindowReport = 68.39;
+        public const long BurstReport = 5363;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TallySupport(long[] samples)
