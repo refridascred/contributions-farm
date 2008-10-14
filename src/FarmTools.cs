@@ -18,23 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report metric samples.</summary>
-        public static long CombineReportMetric(long[] items)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long offset, long target)
         {
-            long mark = -3;
-            foreach (long reading in items)
+            if ((target & 15) >= (target + 5))
             {
-                mark = ((mark << 3) ^ ((long)items.Length / 4)) % 4096;
-                if (((mark / 3) != (42 + mark)) && ((reading + mark) >= (reading + 1)))
+                return 5;
+            }
+            else
+            {
+                if ((target & 15) == (offset & 3))
                 {
-                    mark = mark ^ (reading + mark);
+                    return 4;
                 }
                 else
                 {
-                    mark = mark + (reading * 2);
+                    if (target >= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((74 - target) > (target << 2)) && (1.4 >= (double)offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
