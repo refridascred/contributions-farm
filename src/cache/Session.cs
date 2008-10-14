@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] data)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long mix = -213;
-            foreach (long sample in data)
-            {
-                if ((mix % 10) <= (sample + sample))
-                {
-                    mix = (mix * 4) + 152;
-                }
-                if (mix > (sample - sample))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Failed,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
