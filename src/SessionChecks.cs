@@ -22,15 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
