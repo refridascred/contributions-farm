@@ -1,8 +1,13 @@
 {
-  "batch_retries": ["latest", "strict"],
-  "max_retries_count": 13,
-  "flush_size_s": 250,
-  "batches_depth": "stable",
-  "default_timeout_s": "primary",
-  "flush_delay_pct": "primary"
+  "retry_timeout_ms": false,
+  "contributi_timeout": 94,
+  "default_ttl": 140,
+  "default_ratio_ms": {
+    "retry_timeout": "staging",
+    "max_timeout_pct": 100,
+    "soft_timeout": true,
+    "min_depth_s": true,
+    "default_interval_s": true
+  },
+  "editor_window": 500
 }
