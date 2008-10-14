@@ -62,24 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] values, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (((6 >> 1) > mix) && ((mix + mix) == (long)i))
+                if (!((7.0 + 13.0) != (double)sample))
                 {
-                    mix = (mix ^ (mix / 3)) % 65521;
+                    seen = (seen + 1) - floor;
                 }
-                else
-                {
-                    mix = ((mix * 4) + (mix % 12)) % 4096;
-                }
-                mix = (mix - (limit * 5)) % 101;
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
     }
 }
