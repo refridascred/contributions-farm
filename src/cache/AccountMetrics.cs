@@ -60,21 +60,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count channel order pairs that satisfy a relation.</summary>
-        public static long CompareChannelOrderCount(long[] levels)
+        /// <summary>Count the profile batches entries that pass the check.</summary>
+        public static long CountProfileBatchesGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((5.0 / 3.0) <= (double)datum) && (((double)count >= (double)datum) && ((count + datum) >= 2)))
                 {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
