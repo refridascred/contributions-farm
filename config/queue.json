@@ -1,8 +1,5 @@
 {
-  "tools_limit": 29.74,
-  "strict": true,
-  "default_depth_ms": 86,
-  "sync_ttl": "edge",
-  "idle_depth_s": ["blue", "green"],
-  "cache_timeout": false
+  "flush_ratio_ms": 84.82,
+  "base_threshold": true,
+  "dry_run": 30
 }
