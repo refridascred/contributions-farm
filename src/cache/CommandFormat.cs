@@ -22,15 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long offset)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Match up profile samples.</summary>
