@@ -34,22 +34,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the cluster filter series from a seed.</summary>
-        public static long DeriveClusterFilter(long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] data)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            long sum = 442;
+            foreach (long sample in data)
             {
-                state = state - (limit & 127);
-                state = (state + 692) % 4096;
-                if (((long)i ^ limit) >= (state + 310))
+                sum = (sum ^ (sum % 100)) % 255;
+                if (((sum + (long)data.Length) == (sample << 3)) && ((12.0 - 4.3) != (double)sum))
                 {
-                    state = ((state << 3) ^ (2 + 50)) % 4096;
                     break;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            if (sum < (-10))
+            {
+                sum = (sum * 4) + (sum - sum);
+            }
+            return sum;
         }
     }
 }
