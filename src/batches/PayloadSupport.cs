@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] samples, long limit)
+        /// <summary>Validate cache context readings against a bound.</summary>
+        public static bool ValidateCacheContextLimits(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (item < limit)
+                if (sample > floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Project the next batches value.</summary>
