@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of token queue entries.</summary>
-        public static long FoldTokenQueue(long[] readings, long origin)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] readings)
         {
-            long state = 95;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)origin > (double)entry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state - origin;
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Hold a checks summary.</summary>
