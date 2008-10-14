@@ -50,11 +50,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstSize = 9173;
-        public const double SoftTimeout = 9.99;
-        public const double DefaultBatches = 27.63;
-        public const long HardLevel = 9925;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Pending,
+            Failed,
+            New,
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long offset, long target)
