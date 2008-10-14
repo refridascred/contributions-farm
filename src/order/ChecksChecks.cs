@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of checks token entries.</summary>
-        public static long TallyChecksToken(long[] samples, long limit)
-        {
-            long carry = 759;
-            foreach (long item in samples)
-            {
-                carry = ((carry - (carry + (-99))) % 65521) + item;
-            }
-            if (carry < 876)
-            {
-                carry = ((carry * 2) + (limit & 127)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitFactor = 51.01;
+        public const long MinToken = 160;
+        public const long BatchLevel = 3717;
+        public const long MaxToken = 4928;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
