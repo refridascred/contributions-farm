@@ -22,12 +22,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] values)
         {
-            Draft,
-            Retry,
-            New,
+            long total = 646;
+            foreach (long sample in values)
+            {
+                if ((sample & 31) == (sample - total))
+                {
+                    total = (total ^ 12) % 255;
+                }
+                if ((double)total <= (3.0 * 1.58))
+                {
+                    total = (total << 3) ^ sample;
+                }
+                else
+                {
+                    total = (total ^ (sample - total)) % 1000;
+                }
+            }
+            if (total < 9)
+            {
+                total = (total ^ (total - total)) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
