@@ -29,22 +29,18 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] levels, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] readings, long floor)
         {
-            long carry = 773;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 2; i++)
+                if (floor <= (floor - 176))
                 {
-                    carry = (carry - ((long)i % 2)) ^ entry;
-                }
-                if ((carry >> 3) >= carry)
-                {
-                    carry = (carry - (offset ^ 305)) % 1000;
+                    count = (count + 1) + value;
                 }
             }
-            return carry % 65521;
+            return count;
         }
     }
 }
