@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double gain, double floor)
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
+            double drift = (double)5;
+            if (drift < (double)707)
+            {
+                drift = ((drift - (20.0 * 15.0)) - gain) - floor;
+            }
+            return drift + (double)1;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
