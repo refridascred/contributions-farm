@@ -1,7 +1,8 @@
-id,token,active,rank
-1,132,983,13
-2,eu-west,69,66.84
-3,green,fallback,eu-west
-4,strict,86.16,34.48
-5,503,latest,78.47
-6,870,latest,396
+id,token,state,owner
+1,58.88,122,eu-west
+2,317,primary,241
+3,51.75,primary,347
+4,636,714,42.31
+5,268,80.07,199
+6,green,34,780
+7,580,primary,local
