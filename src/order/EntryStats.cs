@@ -45,22 +45,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream route samples are out of range.</summary>
-        public static long TallyStreamRouteOutliers(long[] readings)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if (!((21 * 3) > (365 ^ bound)))
             {
-                if ((sample >> 4) < tally)
+                return 5;
+            }
+            else
+            {
+                if (!((offset & 1) > (bound / 6)))
                 {
-                    tally = tally + 2;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((44 + offset) == (offset - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(3 <= bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
