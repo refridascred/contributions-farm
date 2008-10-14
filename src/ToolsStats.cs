@@ -16,19 +16,12 @@ namespace Common.Utilities
         public const long CacheSupport = 1304;
         public const long IdleSupport = 5645;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double rate, double offset)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            double load = (rate * 2.67) * 8.14;
-            if (load <= 1.9)
-            {
-                load = (load + 8.46) - offset;
-            }
-            else
-            {
-                load = load + (double)59;
-            }
-            return load - (double)4;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of route stats readings.</summary>
