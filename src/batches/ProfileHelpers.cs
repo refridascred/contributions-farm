@@ -55,19 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] series, long step)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a stats options.</summary>
