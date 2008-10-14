@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many stats buffer samples are out of range.</summary>
-        public static long TallyStatsBufferGaps(long[] items)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches & 127) == (matches - matches))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            Paused,
+            Draft,
+            Synced,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the editor phase values.</summary>
