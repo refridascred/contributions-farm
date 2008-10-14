@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] data, long bound)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryInterval = 3524;
+        public const long SoftMetric = 6550;
+        public const string RetryMetric = "legacy";
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
