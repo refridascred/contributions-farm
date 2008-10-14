@@ -56,10 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryWidth = 37.04;
-        public const string HardFarm = "cached-1";
-        public const string SoftFarm = "open-edge";
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Closed,
+            Queued,
+            Synced,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double ScaleEntry(double ratio, double offset)
