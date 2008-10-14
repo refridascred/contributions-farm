@@ -1,11 +1,6 @@
-id,weight,count,active
-1,720,81.73,595
-2,1.96,115,19
-3,primary,edge,strict
-4,33.07,943,16.36
-5,205,277,51.53
-6,60.38,14.1,latest
-7,stable,6.59,737
-8,19.82,51.36,281
-9,staging,31.67,420
-10,11,staging,open
+id,label,state
+1,68,stable
+2,78.96,40.35
+3,21.09,786
+4,27.21,green
+5,967,375
