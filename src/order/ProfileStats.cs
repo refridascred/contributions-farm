@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] values)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((3.6 - 13.0) >= (double)value)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Draft,
+            Dropped,
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
