@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metric route reading by value.</summary>
-        public static long FindMetricRouteIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepDepth = "standard-1";
+        public const long LimitFarm = 9633;
+        public const double HardSize = 60.88;
+        public const long MaxCount = 1667;
+        public const double CacheSize = 93.87;
 
         /// <summary>Validate graph tools readings against a bound.</summary>
         public static bool GuardGraphToolsRange(long[] readings, long step)
