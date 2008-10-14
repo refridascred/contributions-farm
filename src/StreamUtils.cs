@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long target)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = offset * 9.64;
+            if (ratio > offset)
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (ratio / 7.0)) - gain;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (double)1) + (double)(long)i;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Digest a series of cluster notes entries.</summary>
