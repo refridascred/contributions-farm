@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const string DefaultPayload = "legacy-edge";
         public const double HardRatio = 49.6;
 
-        /// <summary>Validate cache channel readings against a bound.</summary>
-        public static bool GuardCacheChannelRange(long[] items, long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long state = 19;
+            foreach (long reading in items)
             {
-                if (sample <= limit)
+                if (((state & 63) == (25 + reading)) || (state >= (reading + reading)))
                 {
-                    stale = false;
-                    break;
+                    state = state - reading;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
