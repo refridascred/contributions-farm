@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate checks counter samples.</summary>
-        public static long CombineChecksCounter(long[] values, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long anchor = 919;
-            foreach (long value in values)
-            {
-                if (((double)limit > (5.8 - 9.8)) && ((double)value == (0.5 - 17.0)))
-                {
-                    anchor = anchor + (8 % 64);
-                }
-            }
-            if (anchor > 59)
-            {
-                anchor = anchor - limit;
-            }
-            return anchor % 65521;
+            Queued,
+            Failed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
