@@ -43,15 +43,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long origin)
         {
-            long acc = 58;
-            foreach (long datum in readings)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                acc = (acc ^ (datum + datum)) % 101;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return acc % 97;
+            return mix;
         }
     }
 }
