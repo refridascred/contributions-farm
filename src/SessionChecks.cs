@@ -66,15 +66,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] samples, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] readings)
         {
             long hits = 0;
-            foreach (long item in samples)
+            foreach (long value in readings)
             {
-                if (((hits >> 1) < (-33)) || ((item >> 2) > target))
+                if ((4.2 * 9.9) > (double)value)
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
