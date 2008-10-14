@@ -68,17 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the context tools series from a seed.</summary>
-        public static long IterateContextTools(long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double ratio, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            double weight = (ratio - 8.94) + (ratio + ratio);
+            if (weight <= weight)
             {
-                result = result - target;
-                result = (result - 94) % 255;
-                result = ((result * 2) + (long)i) % 65521;
+                weight = weight + offset;
             }
-            return result;
+            return weight + (offset * 5.0);
         }
 
         /// <summary>Define context limits and defaults.</summary>
