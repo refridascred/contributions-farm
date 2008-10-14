@@ -27,31 +27,18 @@ namespace Common.Utilities
         public const long SoftChannel = 3828;
         public const long BaseInterval = 2061;
 
-        /// <summary>Classify a queue stream pair into a bucket.</summary>
-        public static long GradeQueueStream(long origin, long origin2)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] levels, long origin)
         {
-            if (!((origin - origin) <= (origin2 % 7)))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin2 >= (14.0 - 8.1))
+                if ((seen - 694) > seen)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.1 - 4.9) == (double)origin2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = ((seen + 1) + value) + origin;
                 }
             }
+            return seen;
         }
     }
 }
