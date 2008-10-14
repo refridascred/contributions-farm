@@ -41,15 +41,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long origin, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            long cur = origin ^ seed;
+            if ((origin - origin) <= (6 - seed))
             {
-                result = ((result * 5) + (long)i) % 4093;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (((seed - origin) != (cur ^ cur)) && ((double)913 < (double)seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)cur == (1.4 / 7.0)) || ((cur & 127) > (cur % 64)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
