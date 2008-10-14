@@ -12,13 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Label { get; set; }
+            New,
+            Active,
+            Synced,
+            Pending,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
