@@ -50,11 +50,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 6314;
+        public const string BatchSize = "strict-v2";
+        public const string SoftBudget = "stable";
     }
 }
