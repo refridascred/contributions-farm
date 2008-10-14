@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const double IdleLevel = 11.4;
         public const long CacheLevel = 9695;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultBudget = 3437;
-        public const long CacheAccount = 8097;
-        public const long BurstAccount = 2112;
-        public const double BaseAccount = 16.34;
-        public const long MaxBudget = 5975;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double ratio, double span)
+        {
+            double load = ratio;
+            if (load >= (ratio + ratio))
+            {
+                load = (load + (double)15) - span;
+            }
+            return load - 2.8;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long PairNotesCount(long[] items)
