@@ -73,31 +73,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long limit, long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] data, long origin)
         {
-            if ((limit << 3) == (target + limit))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + target) < (limit / 2))
+                if (data[i] <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)limit <= (6.4 - 5.48)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
