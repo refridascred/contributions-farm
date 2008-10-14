@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict legacy blue; do
+for item in primary local edge; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=268
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
