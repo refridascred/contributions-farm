@@ -72,12 +72,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] items, long origin)
         {
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            long mix = 990;
+            foreach (long item in items)
+            {
+                mix = mix ^ (item + origin);
+                if ((origin << 2) < 219)
+                {
+                    mix = (mix - (origin & 15)) % 255;
+                }
+                else
+                {
+                    mix = mix - (origin + origin);
+                }
+            }
+            return mix;
         }
     }
 }
