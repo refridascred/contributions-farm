@@ -1,5 +1,8 @@
 {
-  "dry_run": 28.58,
-  "burst_capacity": 67,
-  "batch_ttl_count": 1.64
+  "persist": "cached",
+  "max_ttl_s": "edge",
+  "session_ttl": 78,
+  "soft_limit_count": 57,
+  "stream_interval": false,
+  "base_interval_pct": "edge"
 }
