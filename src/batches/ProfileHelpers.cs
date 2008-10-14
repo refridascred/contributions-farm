@@ -49,13 +49,20 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((double)floor < (double)state))
+                {
+                    long step = (state + state) ^ (floor - state);
+                    state = (state - step) % 101;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
