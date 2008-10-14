@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((9.31 + 19.0) > (double)sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate graph tools readings against a bound.</summary>
