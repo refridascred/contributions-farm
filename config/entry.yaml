@@ -1,6 +1,9 @@
 # entry settings
-enabled: strict
-report_window: 19
-min_depth_ms: local
-warm_delay_count: 15.2
-sync_ratio: true
+audit:
+  - 12
+  - 235
+  - 27
+burst_capacity_pct: 100
+verbose: 30
+base_size_s: false
+persist: 60
