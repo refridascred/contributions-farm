@@ -21,11 +21,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a graph summary.</summary>
