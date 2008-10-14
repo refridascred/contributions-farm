@@ -24,15 +24,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mix = 99;
-            foreach (long entry in series)
-            {
-                mix = ((mix << 3) ^ mix) - entry;
-            }
-            return mix;
+            Dropped,
+            Synced,
+            Queued,
         }
     }
 }
