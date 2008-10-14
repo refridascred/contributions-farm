@@ -37,18 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit counter route readings against a rule.</summary>
-        public static long AuditCounterRouteOutliers(long[] readings, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (limit > ((-95) / 6))
+                if (datum < offset)
                 {
-                    matches = (matches + 3) ^ datum;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Digest a series of route entries.</summary>
