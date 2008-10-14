@@ -80,22 +80,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] samples, long offset)
+        /// <summary>Adjust a contributi command reading.</summary>
+        public static double SmoothContributiCommand(double bias, double span)
         {
-            long result = -27;
-            foreach (long reading in samples)
-            {
-                if ((0.8 - 15.0) == (double)reading)
-                {
-                    result = (result - ((long)samples.Length >> 1)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 2) + (offset & 63)) % 101;
-                }
-            }
-            return result;
+            double load = span;
+            return (load + (span * 3.2)) + bias;
         }
     }
 }
