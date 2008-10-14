@@ -12,12 +12,21 @@ namespace Common.Utilities
             return (rate + weight) + offset;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Count payload already pairs that satisfy a relation.</summary>
+        public static long PairPayloadAlreadyCount(long[] readings)
         {
-            public bool Count { get; set; }
-            public double Size { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a metric command value against two limits.</summary>
