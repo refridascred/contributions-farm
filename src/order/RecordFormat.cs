@@ -27,31 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long floor, long limit)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            if ((limit > 3) || ((floor / 8) < limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((floor + limit) <= limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor << 3) >= limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a checks options.</summary>
