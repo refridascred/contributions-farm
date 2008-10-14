@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double weight, double offset)
         {
-            Stale,
-            Paused,
-            Active,
-            Dropped,
-            Synced,
+            double rate = offset;
+            if (rate <= (7.04 - rate))
+            {
+                rate = rate - (double)30;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate + (weight - weight);
         }
 
         /// <summary>Combine checks payload values into a single score.</summary>
