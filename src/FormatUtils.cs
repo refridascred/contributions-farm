@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] data, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] items, long limit)
         {
             bool ok = true;
-            foreach (long reading in data)
+            foreach (long reading in items)
             {
-                if (reading < floor)
+                if (reading < limit)
                 {
                     ok = false;
                     break;
