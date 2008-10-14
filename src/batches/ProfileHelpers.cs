@@ -24,39 +24,26 @@ namespace Common.Utilities
             return mean + (mean * 7.55);
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long step, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long cur = step ^ offset;
-            if (3 <= (cur ^ offset))
+            long total = 92;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 2) <= (step - cur))
+                if (total < (31 ^ sample))
                 {
-                    return 7;
+                    total = ((total * 3) + (0 - total)) % 65521;
                 }
-                else
+                if ((total & 31) < 935)
                 {
-                    if ((5.23 - 5.1) != (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (cur <= (step / 9))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            if (total < 6)
+            {
+                total = (total ^ total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Project the next buffer value.</summary>
