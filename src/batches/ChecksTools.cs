@@ -50,15 +50,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Ready,
-            Done,
-            Closed,
-            Retry,
-            New,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftSize = 2671;
+        public const string BurstGraph = "legacy-v2";
+        public const long BatchFactor = 2103;
+        public const string BaseGraph = "standard";
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long CompareChannelCount(long[] values)
