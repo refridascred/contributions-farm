@@ -32,21 +32,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Combine record filter values into a single score.</summary>
+        public static long TotalRecordFilter(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 5;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((0.81 - 20.0) <= (double)result) || ((sample - sample) != (result + 96)))
                 {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 2) ^ (746 & 63)) % 65521;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
