@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Active,
-            Pending,
-            Synced,
+            Retry,
             Done,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
