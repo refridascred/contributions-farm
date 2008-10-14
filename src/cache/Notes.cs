@@ -34,18 +34,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] levels, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seen / 6) <= seen)
-                {
-                    seen = ((seen + 3) + reading) - seed;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a entry record.</summary>
