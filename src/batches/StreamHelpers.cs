@@ -50,12 +50,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
+            Done,
+            Stale,
             Pending,
-            Failed,
-            New,
+            Paused,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
