@@ -55,32 +55,21 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long origin, long offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            long bound = origin ^ offset;
-            if (!(3.4 >= (double)bound))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound ^ origin) <= (3 * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound <= (13.0 / 3.0))
+                    if ((data[i] - data[j]) > 18)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a profile record.</summary>
