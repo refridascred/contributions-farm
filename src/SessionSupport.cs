@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long step, long bound)
         {
-            Paused,
-            Dropped,
-            Pending,
-            Queued,
+            long offset = step - bound;
+            if ((979 % 7) > step)
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset < (offset + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((602 ^ step) < step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound < (7.5 - 7.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
