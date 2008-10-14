@@ -1,16 +1,13 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-A layout that stays idle for too long is moved to the metrics list.
-Run the format check before changing any farm limits.
+A stream that stays idle for too long is moved to the route list.
+The session module keeps channel values in sync with the buffer cache.
 
-Each metric is validated before it reaches the batch queue.
-The layout module keeps context values in sync with the batches cache.
-When a channel fails, the order handler retries a few times before giving up.
+Defaults for stream live in the config folder and can be overridden per environment.
+Use profile settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Review account limits each release
-- Log every support change
-- Validate metrics input early
-- Prefer filter defaults
+- Document new metric fields
+- Prefer batch defaults
+- Log every already change
