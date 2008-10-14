@@ -80,17 +80,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] series, long target)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
     }
 }
