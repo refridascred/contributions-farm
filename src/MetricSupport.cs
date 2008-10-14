@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long origin, long target)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            long bound = origin + target;
+            if ((bound * 3) >= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound + bound) == (bound - 924)) && (bound <= (target & 31)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9 - target) != (12 / 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin >= (bound * 2)) || (75 < origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route header.</summary>
