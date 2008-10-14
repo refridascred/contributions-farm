@@ -24,13 +24,22 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Measure how many batches profile samples are out of range.</summary>
+        public static long TallyBatchesProfileGaps(long[] samples, long floor)
         {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (floor <= (floor & 7))
+                {
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many commits farm samples are out of range.</summary>
