@@ -22,17 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] series, long origin)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Adjust a account reading.</summary>
