@@ -34,11 +34,31 @@ namespace Common.Utilities
         public const long RetryAlready = 8115;
         public const string IdleTimeout = "local";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxAlready = 52.94;
-        public const long IdleInterval = 3737;
-        public const long BaseAlready = 7998;
-        public const double SoftAlready = 87.79;
-        public const string WindowAlready = "cached-1";
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long target, long limit)
+        {
+            if ((281 - target) >= (target & 127))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((324 + target) == (target - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + target) >= (limit % 24))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
