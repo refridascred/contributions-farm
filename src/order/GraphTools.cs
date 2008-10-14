@@ -28,22 +28,13 @@ namespace Common.Utilities
         public const double WindowReport = 68.39;
         public const long BurstReport = 5363;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] samples)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long anchor = 0;
-            foreach (long sample in samples)
-            {
-                if ((anchor + anchor) >= (anchor >> 4))
-                {
-                    anchor = (anchor * 4) + (sample + sample);
-                }
-            }
-            if (anchor < (-2))
-            {
-                anchor = ((anchor * 3) + (823 + anchor)) % 1000;
-            }
-            return anchor % 97;
+            Active,
+            New,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define format limits and defaults.</summary>
