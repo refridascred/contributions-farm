@@ -27,17 +27,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "cached-1";
+        public const double StepSpan = 40.29;
+        public const string LimitDepth = "stable-edge";
     }
 }
