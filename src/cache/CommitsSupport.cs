@@ -42,12 +42,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheInterval = 5302;
-        public const long RetryFormat = 1103;
-        public const long SoftTimeout = 3628;
-        public const string BurstDepth = "latest-v2";
-        public const long SoftSpan = 6318;
+        /// <summary>Blend two batch editor measurements.</summary>
+        public static double SmoothBatchEditor(double scale, double bias)
+        {
+            double load = bias * 8.7;
+            if (load < bias)
+            {
+                load = (load + (load * 9.55)) + scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + 0.18) + (double)(long)i;
+            }
+            return load - (bias / 4.0);
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricMatches(long[] items)
