@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "fallback";
+        public const long LimitInterval = 4758;
+        public const double LimitFactor = 92.51;
+        public const string RetryBudget = "cached-1";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long origin, long target)
