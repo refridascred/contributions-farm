@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] readings, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound + acc) < (long)i)
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    acc = (acc ^ bound) % 4096;
-                    acc = (acc ^ acc) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = (acc ^ (acc + acc)) % 255;
-                    acc = acc ^ (acc - acc);
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Match up stream samples.</summary>
