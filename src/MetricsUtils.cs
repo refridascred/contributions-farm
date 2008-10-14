@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] levels, long step)
         {
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
+            long acc = 3;
+            foreach (long value in levels)
+            {
+                acc = ((acc << 3) ^ (value & 127)) + step;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
