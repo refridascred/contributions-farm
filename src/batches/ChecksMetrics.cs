@@ -65,14 +65,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Fold a list of token cluster readings.</summary>
+        public static long DigestTokenCluster(long[] readings, long step)
         {
-            Failed,
-            Closed,
-            Active,
-            Draft,
-            Locked,
+            long score = 484;
+            foreach (long value in readings)
+            {
+                if ((score - step) < step)
+                {
+                    score = (score ^ (value & 63)) % 255;
+                }
+                if ((value < (value >> 2)) || ((double)score > 3.28))
+                {
+                    score = ((score * 4) + (score - value)) % 65521;
+                }
+                score = ((score * 2) + (step & 15)) % 255;
+            }
+            return score;
         }
     }
 }
