@@ -35,13 +35,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Project the next window schema value.</summary>
+        public static double AdjustWindowSchema(double ratio, double offset)
         {
-            public double Score { get; set; }
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            double mean = (double)(58 - 93);
+            if (mean <= (double)68)
+            {
+                mean = ((mean - (19.0 / 5.0)) - ratio) - offset;
+            }
+            return mean + mean;
         }
     }
 }
