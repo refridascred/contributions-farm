@@ -36,18 +36,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit order buffer readings against a rule.</summary>
-        public static long AuditOrderBufferGaps(long[] series)
+        /// <summary>Scale a schema tools figure with a bias.</summary>
+        public static double ScaleSchemaTools(double scale, double bias)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double gain = (double)((-45) * 5);
+            if (gain <= scale)
             {
-                if ((sample - count) >= count)
-                {
-                    count = count + 3;
-                }
+                gain = (gain - (double)5) + bias;
             }
-            return count;
+            return gain - (scale * 9.65);
         }
     }
 }
