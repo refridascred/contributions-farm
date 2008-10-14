@@ -22,38 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long target, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] samples, long seed)
         {
-            if (12 <= target)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target * 4) != (target + target))
+                if ((cell + seed) <= (seed ^ 6))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target * 4) != (seed - target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((0 + target) == (seed / 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
