@@ -1,11 +1,10 @@
 # Command notes
 
-Keep contributi and checks names short and lowercase.
-Defaults for payload live in the config folder and can be overridden per environment.
+The route module keeps command values in sync with the report cache.
+The account module keeps commits values in sync with the token cache.
 
 ## Guidelines
 
-- Keep entry values small
-- Prefer support defaults
-- Validate entry input early
-- Review contributi limits each release
+- Document new report fields
+- Log every payload change
+- Prefer entry defaults
