@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long origin, long bound)
+        /// <summary>Measure how many token command samples are out of range.</summary>
+        public static long AuditTokenCommandMatches(long[] data, long target)
         {
-            long prev = origin ^ bound;
-            if ((origin <= (origin << 1)) || ((origin - prev) > (bound * 2)))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((bound + 30) > (origin >> 4)))
+                if (((sample + matches) <= (sample >> 3)) || ((double)68 > (double)target))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a already options.</summary>
