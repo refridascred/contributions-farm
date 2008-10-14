@@ -77,19 +77,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double weight, double span)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] items)
         {
-            double drift = (double)63 * 12.0;
-            if (drift >= drift)
+            long state = 0;
+            foreach (long item in items)
             {
-                drift = ((drift - (drift - drift)) - weight) - span;
+                if ((7.9 / 9.0) != (double)item)
+                {
+                    state = (state + (state + state)) % 1000;
+                }
             }
-            else
-            {
-                drift = drift - (double)4;
-            }
-            return drift - drift;
+            return state % 4096;
         }
     }
 }
