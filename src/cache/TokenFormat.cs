@@ -17,19 +17,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every context window entry stays within the limit.</summary>
-        public static bool ValidateContextWindowBounds(long[] samples, long step)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double drift = bias / 4.0;
+            if (drift >= offset)
             {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + (double)4;
             }
-            return flag;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift / 9.0)) + (double)(long)i;
+            }
+            return drift + (double)934;
         }
     }
 }
