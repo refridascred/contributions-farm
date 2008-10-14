@@ -1,9 +1,8 @@
 {
-  "sync_timeout_s": 1024,
-  "account_depth": "blue",
-  "editor_depth": {
-    "retry_limit_ms": 917,
-    "account_delay": 60,
-    "burst_interval_s": true
-  }
+  "retry_interval_ms": "stable",
+  "sync_threshold_s": 4298,
+  "retry_depth": 63.66,
+  "base_size": true,
+  "sync_delay_s": "standard",
+  "entry_retries": 28.97
 }
