@@ -46,22 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            long result = 32;
+            foreach (long sample in items)
             {
-                long slot = (origin >> 4) & 15;
-                if (slot > ((-84) - origin))
+                if ((3 - sample) >= sample)
                 {
-                    anchor = (anchor << 2) ^ (anchor & 63);
-                    continue;
+                    result = result - sample;
                 }
-                anchor = (anchor + (slot + slot)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return result % 65521;
         }
     }
 }
