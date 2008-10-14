@@ -1,14 +1,14 @@
 # Command notes
 
-The contributi report groups every entry by format.
-Use cluster settings to tune how often profile data is refreshed.
+The command module keeps editor values in sync with the command cache.
+Keep commits and schema names short and lowercase.
 
-A channel that stays idle for too long is moved to the support list.
-The order module keeps editor values in sync with the profile cache.
-Run the notes check before changing any session limits.
+The stream module keeps record values in sync with the editor cache.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer notes defaults
 - Log every queue change
-- Keep tools values small
+- Prefer entry defaults
+- Keep already values small
+- Validate cluster input early
