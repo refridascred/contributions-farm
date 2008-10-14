@@ -66,23 +66,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter command value against two limits.</summary>
-        public static long GradeCounterCommand(long origin, long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long bound, long target)
         {
-            long span = origin - limit;
-            if (!(3.5 <= (double)origin))
+            long gap = bound - target;
+            if ((gap % 5) <= (target << 2))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (((12.0 + 2.68) != (double)origin) || ((limit / 3) < (span - limit)))
+                if ((bound + 4) < (target << 1))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    if (!(bound < (bound * 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)bound != (5.0 / 5.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
