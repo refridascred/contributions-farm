@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
