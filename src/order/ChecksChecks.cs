@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] data)
         {
-            long mix = 70;
-            foreach (long entry in data)
+            long mark = 4;
+            foreach (long value in data)
             {
-                if ((entry - entry) == (mix & 31))
-                {
-                    mix = (mix ^ mix) % 65521;
-                }
+                mark = ((mark + (804 + 890)) % 1000) ^ value;
             }
-            return mix;
+            if (mark < (-855))
+            {
+                mark = ((mark * 3) + (44 + mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a session options.</summary>
