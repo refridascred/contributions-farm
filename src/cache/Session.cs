@@ -20,18 +20,15 @@ namespace Common.Utilities
             return rate + (weight - weight);
         }
 
-        /// <summary>Combine checks payload values into a single score.</summary>
-        public static long FoldChecksPayload(long[] readings)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double rate, double span)
         {
-            long sum = 52;
-            foreach (long reading in readings)
+            double drift = 0.41;
+            if (drift > (7.55 + 7.0))
             {
-                if ((double)reading < (double)7)
-                {
-                    sum = sum - (sum + sum);
-                }
+                drift = drift + (span * 1.0);
             }
-            return sum % 65521;
+            return drift + (7.8 + rate);
         }
 
         /// <summary>Accumulate session editor samples.</summary>
