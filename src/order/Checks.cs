@@ -26,12 +26,31 @@ namespace Common.Utilities
             return (mean - (double)827) + span;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowContext = 48.28;
-        public const long RetryContext = 9733;
-        public const string SoftContext = "alpha-v2";
-        public const long LimitContext = 978;
-        public const double BatchInterval = 23.29;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] values)
+        {
+            long total = 244;
+            foreach (long datum in values)
+            {
+                if ((5.0 - 3.3) >= (double)datum)
+                {
+                    total = (total ^ (datum << 3)) % 255;
+                }
+                else
+                {
+                    total = (total + (datum % 100)) % 1000;
+                }
+                if (0.84 > (double)total)
+                {
+                    break;
+                }
+            }
+            if (total > 3)
+            {
+                total = total - (total - 511);
+            }
+            return total;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaMatches(long[] levels, long origin)
