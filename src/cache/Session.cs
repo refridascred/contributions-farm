@@ -36,13 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double bias, double offset)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
+            double load = 8.76 - 4.2;
+            if (load > (double)84)
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (load - offset);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
