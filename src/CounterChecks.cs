@@ -52,13 +52,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Paused,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheDepth = 71.03;
+        public const string BatchSize = "latest-edge";
+        public const long WindowCount = 577;
+        public const long StepLevel = 6645;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsRange(long[] values, long step)
