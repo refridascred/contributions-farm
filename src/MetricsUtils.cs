@@ -18,19 +18,12 @@ namespace Common.Utilities
         public const string DefaultPayload = "legacy-edge";
         public const double HardRatio = 49.6;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] items)
-        {
-            long state = 19;
-            foreach (long reading in items)
-            {
-                if (((state & 63) == (25 + reading)) || (state >= (reading + reading)))
-                {
-                    state = state - reading;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "primary-edge";
+        public const double MinRatio = 60.28;
+        public const long DefaultBatch = 8010;
+        public const string StepTimeout = "standard-edge";
+        public const string MinBudget = "stable";
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
