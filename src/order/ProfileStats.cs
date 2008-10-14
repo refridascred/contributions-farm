@@ -30,19 +30,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of window tools readings.</summary>
-        public static long DigestWindowTools(long[] data)
+        /// <summary>Rank session format input into a small class.</summary>
+        public static long GradeSessionFormat(long step, long seed)
         {
-            long carry = 41;
-            foreach (long entry in data)
+            long delta = step + seed;
+            if ((delta - step) <= (delta - delta))
             {
-                carry = ((carry - 71) % 1000) - entry;
-                if ((60 + 3) <= carry)
+                return 6;
+            }
+            else
+            {
+                if (!((12.0 + 7.74) < (double)delta))
                 {
-                    carry = (carry << 2) ^ (carry << 2);
+                    return 1;
+                }
+                else
+                {
+                    if ((step + seed) != (seed - seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step + step) <= (delta - 995))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
