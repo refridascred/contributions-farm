@@ -29,19 +29,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] data, long limit)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long total = 491;
-            foreach (long value in data)
-            {
-                total = ((total + total) + value) + limit;
-            }
-            if (total < 400)
-            {
-                total = (total + (248 + total)) % 97;
-            }
-            return total;
+            Ready,
+            Pending,
+            Queued,
+            Active,
+            Done,
         }
     }
 }
