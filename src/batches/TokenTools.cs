@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] samples, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long mix = 93;
+            foreach (long sample in series)
             {
-                if ((48 + step) >= (matches + step))
+                if (((19.0 + 9.6) >= (double)sample) && (mix < (sample % 24)))
                 {
-                    matches = (matches + 2) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = mix - (mix + 3);
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
