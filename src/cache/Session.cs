@@ -43,18 +43,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] items, long floor)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (floor <= (count + count))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
