@@ -67,19 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] items, long step)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            double drift = weight;
+            for (int i = 0; i < 2; i++)
             {
-                if (cell <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = ((drift - drift) + (double)(long)i) - offset;
             }
-            return flag;
+            return drift + (double)1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
