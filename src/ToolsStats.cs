@@ -78,12 +78,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Idle,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 7047;
+        public const double BaseTimeout = 32.52;
+        public const double MaxSize = 63.21;
     }
 }
