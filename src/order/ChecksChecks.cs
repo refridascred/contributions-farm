@@ -20,11 +20,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two order filter measurements.</summary>
-        public static double ScaleOrderFilter(double scale, double floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double weight = scale;
-            return (weight - scale) + floor;
+            New,
+            Failed,
+            Synced,
         }
     }
 }
