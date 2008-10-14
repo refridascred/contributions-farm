@@ -1,4 +1,6 @@
 # entry settings
-burst_depth: 2.58
-batch_capacity_pct: primary
-verbose: 58.34
+sync_capacity_pct: 1024
+strict: local
+burst_delay_pct: 68.87
+context_ttl: cached
+session_threshold: blue
