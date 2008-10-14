@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric batches reading.</summary>
-        public static double ScaleMetricBatches(double ratio, double floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double gain, double bias)
         {
-            double load = 0.9;
-            if (load <= (double)3)
+            double weight = bias;
+            if (weight >= gain)
             {
-                load = load - floor;
+                weight = weight - (weight - 1.6);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                load = load - (ratio - 0.1);
+                weight = (weight + (double)543) + (double)(long)i;
             }
-            return load + (ratio / 5.0);
+            return weight + (double)62;
         }
 
         /// <summary>Hold a account summary.</summary>
