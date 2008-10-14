@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] values, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (values[i] >= target)
+                if (28 < item)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
