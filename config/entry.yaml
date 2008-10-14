@@ -1,32 +1,23 @@
 # entry settings
-min_ratio_ms: 2.68
-profile_window: 51.93
-max_timeout:
-  - eu-west
-  - strict
-  - fallback
-  - green
-cache_size: 100
-retry_threshold_s:
-  base_size_pct:
-    queue_delay: true
-    retry_size:
-      - 50
-      - 261
-    compress: false
-    farm_timeout: 55.61
-    warm_capacity: 92.41
-    base_window_count: cached
-  base_capacity_ms: 500
-  burst_capacity: cached
-  burst_interval_count:
-    - cached
-    - standard
-    - stable
-    - cached
-  record_capacity: 8.6
-  cache_depth_s: 89
-readonly:
-  - 126
-  - 20
-  - 88
+poll_depth_ms: blue
+dry_run:
+  soft_window_count: false
+  sync_retries:
+    idle_limit_s: legacy
+    warm_threshold_count: 40.36
+    default_interval_s: edge
+    max_interval_s: strict
+    persist: true
+  verbose: 974
+  audit:
+    min_threshold_count: 250
+    burst_threshold:
+      - standard
+      - stable
+    order_threshold: blue
+    contributi_ttl:
+      - 459
+      - 495
+    poll_depth: true
+    stream_retries: 72.33
+batch_size_ms: 53.67
