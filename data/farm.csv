@@ -1,8 +1,9 @@
-id,label
-1,cached
-2,645
-3,local
-4,eu-west
-5,66.36
-6,107
-7,70
+id,level,rank
+1,510,88.99
+2,986,37.16
+3,primary,12.57
+4,eu-west,50.89
+5,strict,389
+6,15.19,primary
+7,eu-west,latest
+8,45.82,11.19
