@@ -60,11 +60,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleRatio = 1960;
-        public const string BurstChannel = "strict-1";
-        public const double MinSize = 12.39;
-        public const long MaxChannel = 3274;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] samples)
+        {
+            long mark = 14;
+            foreach (long datum in samples)
+            {
+                if (!((datum % 2) == (datum / 6)))
+                {
+                    mark = (mark << 2) ^ (datum * 5);
+                }
+                else
+                {
+                    mark = mark - (datum - 0);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double scale, double offset)
