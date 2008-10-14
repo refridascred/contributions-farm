@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)target < (9.7 + 5.04))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((19.0 * 7.71) <= (double)step)
                 {
-                    if ((series[i] - series[j]) < 12)
+                    return 5;
+                }
+                else
+                {
+                    if (((target << 1) <= (step - 135)) || ((target ^ step) < (target / 2)))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
