@@ -34,38 +34,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a filter cache pair into a bucket.</summary>
-        public static long BucketFilterCache(long step, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long target)
         {
-            if ((step / 6) > origin)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin >> 4) >= origin) || ((step / 9) == (origin % 8)))
+                if (!((target + (-7)) == (long)i))
                 {
-                    return 6;
+                    acc = (acc * 4) + (-7);
                 }
-                else
-                {
-                    if ((0.29 / 8.0) >= (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + step) >= (step + 91))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                acc = (acc + (acc % 2)) % 97;
+                acc = ((acc * 4) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Blend two channel measurements.</summary>
