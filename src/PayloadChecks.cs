@@ -46,21 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of githubfarm token readings.</summary>
-        public static long OverlapGithubfarmTokenCount(long[] samples)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = 2.0;
+            if (scale2 <= offset)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale2 = (scale2 - offset) - scale;
             }
-            return seen;
+            return scale2 + (scale2 + offset);
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
