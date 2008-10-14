@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit metrics tools readings against a rule.</summary>
-        public static long TallyMetricsToolsGaps(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (((4.2 - 8.1) != (double)reading) && ((tally % 100) == (tally + 26)))
+                if ((hits - item) > item)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the metrics level values.</summary>
