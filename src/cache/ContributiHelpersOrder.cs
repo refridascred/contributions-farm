@@ -12,21 +12,28 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count already support pairs that satisfy a relation.</summary>
-        public static long MatchAlreadySupportCount(long[] levels)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 74;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((mix + offset) != (mix << 3))
                 {
-                    if ((levels[i] + levels[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix << 2) ^ (long)values.Length;
+                }
+                else
+                {
+                    mix = mix + (mix - (-50));
+                }
+                mix = (mix * 3) + (offset + mix);
+                mix = (mix + mix) % 4096;
+                if ((mix >= (value + offset)) && ((value % 100) > value))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
