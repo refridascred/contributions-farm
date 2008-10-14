@@ -40,22 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 93.75;
+        public const long LimitStats = 1582;
+        public const long WindowWidth = 6944;
+        public const double WindowDepth = 82.55;
 
         /// <summary>Compare every pair of buffer channel readings.</summary>
         public static long PairBufferChannelCount(long[] samples)
