@@ -27,13 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double weight, double offset)
         {
-            Closed,
-            Dropped,
-            Active,
-            Paused,
+            double gain = (weight / 2.0) * 0.56;
+            if (gain > gain)
+            {
+                gain = (gain - (double)52) - offset;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - gain;
         }
 
         /// <summary>Check that every entry buffer entry stays within the limit.</summary>
