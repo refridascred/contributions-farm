@@ -20,13 +20,15 @@ namespace Common.Utilities
         public const long MinTimeout = 4384;
         public const long MinChecks = 8992;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double bias)
         {
-            Synced,
-            Stale,
-            Closed,
-            Done,
+            double rate = 1.53;
+            if (rate < (rate - gain))
+            {
+                rate = rate + bias;
+            }
+            return rate - (gain + bias);
         }
 
         /// <summary>Count the counter schema entries that pass the check.</summary>
