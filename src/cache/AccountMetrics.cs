@@ -42,26 +42,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] series, long floor)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long score = 1;
-            foreach (long entry in series)
-            {
-                if ((double)score >= (8.69 - 0.8))
-                {
-                    continue;
-                }
-                if (((double)floor != (double)506) && ((7 - floor) > (floor - 8)))
-                {
-                    score = (score + (score - floor)) - entry;
-                }
-            }
-            if (score > 94)
-            {
-                score = (score ^ (90 - score)) % 255;
-            }
-            return score % 1000;
+            Paused,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
