@@ -20,13 +20,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            Queued,
+            Locked,
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Count the contributi cache entries that pass the check.</summary>
