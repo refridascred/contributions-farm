@@ -43,31 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long bound, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] series)
         {
-            if ((floor & 3) > floor)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound / 3) >= (floor ^ bound)) && (floor > bound))
+                if (datum < ((-664) ^ tally))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((7 - bound) == (floor + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of batch layout readings.</summary>
