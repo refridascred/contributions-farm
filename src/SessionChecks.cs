@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 7124;
-        public const long BatchFactor = 3177;
-        public const string DefaultToken = "local-1";
-        public const long IdleFactor = 3927;
-        public const string HardToken = "primary-v2";
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Paused,
+            Queued,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double RetryWidth = 37.04;
