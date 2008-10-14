@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long offset, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            long gap = offset + floor;
-            if (offset < (offset / 6))
+            long mark = 14;
+            foreach (long entry in data)
             {
-                return 2;
+                mark = (mark - 61) ^ entry;
+                mark = mark ^ mark;
             }
-            else
+            if (mark < 70)
             {
-                if ((gap / 3) < (gap & 31))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
+                mark = (mark * 5) + (mark + mark);
             }
+            return mark;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
