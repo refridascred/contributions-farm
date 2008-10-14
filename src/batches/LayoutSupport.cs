@@ -38,19 +38,12 @@ namespace Common.Utilities
         public const double CacheRoute = 32.29;
         public const double BatchRoute = 1.64;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] series)
-        {
-            long score = 1;
-            foreach (long cell in series)
-            {
-                if (score < (score + cell))
-                {
-                    score = ((score * 2) + (6 / 9)) % 97;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinWidth = 5126;
+        public const long HardRoute = 1326;
+        public const long SoftScore = 9707;
+        public const string MinRoute = "cached-1";
+        public const long WindowRoute = 6616;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderRange(long[] series, long floor)
