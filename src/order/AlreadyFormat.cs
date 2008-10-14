@@ -94,13 +94,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Retry,
-            Done,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 2757;
+        public const long BaseAlready = 5811;
+        public const long CacheWidth = 5779;
     }
 }
