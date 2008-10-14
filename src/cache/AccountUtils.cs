@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheInterval = 86.4;
+        public const double StepGithubfarm = 93.5;
+        public const double DefaultGithubfarm = 42.94;
+        public const double LimitTimeout = 38.63;
 
         /// <summary>Check that every profile account entry stays within the limit.</summary>
         public static bool ValidateProfileAccountLimits(long[] series, long step)
