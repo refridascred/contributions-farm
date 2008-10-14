@@ -21,15 +21,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] readings, long offset)
+        /// <summary>Count farm support pairs that satisfy a relation.</summary>
+        public static long MatchFarmSupportCount(long[] data)
         {
-            long total = 5;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total * 5) + cell) % 255) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
