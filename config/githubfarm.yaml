@@ -1,10 +1,7 @@
 # githubfarm settings
-cache_retries_ms: false
-hard_ratio: 4468
-flush_ttl: true
-sync_limit_count: 8061
-enabled:
-  - 13
-  - 242
-  - 274
-  - 238
+readonly: latest
+context_retries: cached
+hard_limit_pct: legacy
+default_size:
+  - local
+  - fallback
