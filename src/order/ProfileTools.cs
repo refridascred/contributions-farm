@@ -41,11 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheBudget = 9000;
-        public const long LimitBudget = 214;
-        public const long HardBudget = 4313;
-        public const string MaxChannel = "standard";
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Synced,
+            Queued,
+            Closed,
+            Retry,
+            Active,
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long WeighGraph(long[] items)
