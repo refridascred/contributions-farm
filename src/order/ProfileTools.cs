@@ -41,32 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long origin, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long cur = origin ^ seed;
-            if ((origin - origin) <= (6 - seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((seed - origin) != (cur ^ cur)) && ((double)913 < (double)seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)cur == (1.4 / 7.0)) || ((cur & 127) > (cur % 64)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
