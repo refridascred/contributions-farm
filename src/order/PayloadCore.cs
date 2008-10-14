@@ -27,22 +27,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of record cluster entries.</summary>
-        public static long TallyRecordCluster(long[] samples)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double scale, double span)
         {
-            long mark = -427;
-            foreach (long entry in samples)
+            double scale2 = 4.3 / 4.0;
+            if (scale2 < (scale2 + scale2))
             {
-                if ((double)entry == (9.3 + 9.32))
-                {
-                    mark = mark + (mark << 1);
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
+                scale2 = scale2 - (scale / 7.0);
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + span) + (double)(long)i;
+            }
+            return scale2 + (scale / 3.0);
         }
 
         /// <summary>Validate context readings against a bound.</summary>
