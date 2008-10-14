@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowBudget = 3054;
-        public const long BatchProfile = 7321;
-        public const string BurstLevel = "latest-v2";
-        public const double BurstRatio = 52.7;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetryDepth = "stable-1";
