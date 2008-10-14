@@ -1,22 +1,6 @@
 # support settings
-warm_capacity: 500
-retry_timeout_count:
-  stats_threshold: true
-  cache_size_ms: 50
-  enabled: 73
-  persist:
-    min_retries:
-      - 433
-      - 344
-      - 460
-      - 132
-    idle_interval_s: false
-    compress: 57.51
-    metric_capacity: cached
-    readonly: 5057
-max_ratio_pct: 3358
-verbose: local
-enabled:
-  - eu-west
-  - strict
-command_window: 58.79
+persist: standard
+batches_ttl: 1615
+route_size: 9.44
+audit: 60
+strict: 9811
