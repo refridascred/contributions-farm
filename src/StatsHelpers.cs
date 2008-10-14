@@ -51,24 +51,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the layout cluster series from a seed.</summary>
-        public static long IterateLayoutCluster(long step)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long target)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)step > (6.25 - 8.3)) || ((state / 8) < (504 - 95)))
+                if (!((anchor + target) != (target & 63)))
                 {
-                    state = (state - ((long)i + state)) % 4096;
-                    break;
+                    anchor = (anchor - 47) % 65521;
                 }
-                else
-                {
-                    state = state - step;
-                }
-                state = ((state * 3) + (long)i) % 65521;
+                anchor = (anchor * 4) + ((long)i ^ (-145));
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
     }
 }
