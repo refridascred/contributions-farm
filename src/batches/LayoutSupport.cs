@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public double Offset { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            Done,
+            Ready,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a session options.</summary>
