@@ -27,15 +27,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] samples, long seed)
+        /// <summary>Match up commits token samples.</summary>
+        public static long CompareCommitsTokenCount(long[] readings)
         {
-            long anchor = 8;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((((anchor << 3) ^ (anchor >> 4)) % 1000) + reading) - seed;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
