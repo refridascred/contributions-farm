@@ -1,6 +1,13 @@
 # entry settings
-batch_window_count:
-  - 53
-  - 133
-retry_ttl_pct: 49.01
-max_delay: staging
+channel_window: 58.2
+graph_depth: true
+stats_delay: 7634
+record_ttl:
+  default_ttl_count:
+    base_timeout_count: 6778
+    verbose: 6927
+    hard_window_count: 72
+    cache_window_count: false
+  audit: eu-west
+  cache_depth_s: false
+dry_run: 1024
