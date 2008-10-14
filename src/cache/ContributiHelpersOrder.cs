@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long step, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double bias, double bias2)
         {
-            if ((double)floor < (5.0 / 2.0))
+            double scale = (double)4;
+            if (scale < scale)
             {
-                return 1;
+                scale = scale + (6.0 + bias2);
             }
-            else
-            {
-                if ((double)floor < 8.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((20.0 + 3.94) > (double)floor) && ((step ^ step) < (floor % 12)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return scale + bias;
         }
 
         /// <summary>Project the next payload value.</summary>
