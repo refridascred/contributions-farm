@@ -22,19 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double scale, double offset)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double mean = (double)(6 / 9);
-            if (mean >= (double)9)
-            {
-                mean = ((mean - (mean / 3.0)) + scale) - offset;
-            }
-            else
-            {
-                mean = mean + 11.0;
-            }
-            return mean + mean;
+            Active,
+            Dropped,
+            Closed,
+            Retry,
         }
 
         /// <summary>Find the first session metrics entry that matches the target.</summary>
