@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a buffer record counter forward.</summary>
-        public static long DeriveBufferRecord(long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long acc = 4;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                acc = (acc ^ (905 % 5)) % 65521;
+                if ((acc - acc) == (datum + datum))
                 {
-                    state = (((state << 3) ^ state) % 4096) - (long)i2;
+                    acc = ((acc * 2) + (datum ^ datum)) % 255;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
