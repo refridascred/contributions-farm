@@ -36,13 +36,18 @@ namespace Common.Utilities
         public const long HardNotes = 1452;
         public const string DefaultNotes = "strict-v2";
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] readings, long step)
         {
-            Paused,
-            Failed,
-            Draft,
-            Queued,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits + hits) <= ((long)readings.Length + 4))
+                {
+                    hits = ((hits + 3) + sample) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the queue mode values.</summary>
