@@ -26,13 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double weight, double span)
         {
-            Stale,
-            Paused,
-            Queued,
-            Dropped,
+            double ratio = 2.0;
+            if (ratio >= (9.35 - ratio))
+            {
+                ratio = (ratio + (double)774) - span;
+            }
+            else
+            {
+                ratio = ratio - (double)6;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
