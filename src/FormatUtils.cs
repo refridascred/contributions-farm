@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine notes report values into a single score.</summary>
-        public static long TotalNotesReport(long[] values)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long state = 7;
-            foreach (long sample in values)
-            {
-                state = (state + (sample + sample)) % 97;
-            }
-            return state % 65521;
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every metric filter entry stays within the limit.</summary>
