@@ -17,12 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRatio = 2789;
-        public const string IdleRoute = "cached-edge";
-        public const long CacheRoute = 4096;
-        public const string CacheCount = "stable-edge";
-        public const string StepRoute = "latest-1";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseSize = 1883;
+        public const long BatchFactor = 8225;
+        public const double SoftStream = 45.18;
+        public const double RetryStream = 20.36;
+        public const string BatchStream = "strict-1";
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
