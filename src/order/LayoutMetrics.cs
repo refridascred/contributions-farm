@@ -29,21 +29,17 @@ namespace Common.Utilities
             return mean + (mean - gain);
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (readings[i] > limit)
                 {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
