@@ -41,13 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] readings, long seed)
         {
-            Draft,
-            Active,
-            Locked,
-            Done,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the stream class values.</summary>
