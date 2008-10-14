@@ -29,15 +29,15 @@ namespace Common.Utilities
         public const long IdleWidth = 9697;
         public const long BurstFactor = 4177;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] samples)
         {
-            long anchor = 62;
-            foreach (long sample in series)
+            long mix = 95;
+            foreach (long value in samples)
             {
-                anchor = (anchor ^ (sample % 60)) % 4096;
+                mix = mix + (value / 4);
             }
-            return anchor;
+            return mix % 97;
         }
 
         /// <summary>Hold a buffer record.</summary>
