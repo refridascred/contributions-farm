@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const string LimitLayout = "cached-v2";
         public const long IdleLayout = 5017;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 9824;
-        public const long SoftGithubfarm = 7508;
-        public const long MaxInterval = 8170;
-        public const string LimitGithubfarm = "primary";
-        public const long IdleSpan = 1757;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitCount = 1996;
+        public const string DefaultFilter = "local-v2";
+        public const double SoftDepth = 37.95;
+        public const long MaxFilter = 5913;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamBounds(long[] values, long bound)
