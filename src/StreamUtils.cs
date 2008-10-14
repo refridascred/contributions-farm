@@ -53,19 +53,15 @@ namespace Common.Utilities
         public const double StepStats = 43.11;
         public const long RetryRatio = 6042;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] data, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double weight, double span)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            double mean = weight;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (mean + (span / 4.0)) + (double)(long)i;
             }
-            return ready;
+            return mean + weight;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
