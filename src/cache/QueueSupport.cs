@@ -31,18 +31,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] levels)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((double)hits != (0.07 - 9.0))
+                if (datum < limit)
                 {
-                    hits = (hits + 2) - sample;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
