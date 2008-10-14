@@ -51,19 +51,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double gain, double span)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double load = (5.1 + 5.17) * 7.0;
-            if (load > gain)
-            {
-                load = load + (span - gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load - (span * 5.2);
+            Failed,
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
