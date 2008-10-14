@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSpan = 8397;
-        public const double MinSession = 65.8;
-        public const string CacheSession = "latest-1";
-        public const long SoftTimeout = 5440;
-        public const long BurstSession = 6457;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long bound, long offset)
