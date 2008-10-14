@@ -66,19 +66,14 @@ namespace Common.Utilities
         public const double SoftTimeout = 74.04;
         public const double BaseCount = 85.56;
 
-        /// <summary>Check that every metric metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricMetricsRange(long[] readings, long seed)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Ready,
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a filter record.</summary>
