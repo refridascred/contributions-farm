@@ -1,7 +1,7 @@
 {
-  "cache_capacity_count": 250,
-  "default_window_count": 9,
-  "base_window": [217, 258],
-  "poll_retries_ms": 78,
-  "strict": "green"
+  "poll_ratio": 3769,
+  "batch_interval_s": false,
+  "default_threshold_ms": 15.38,
+  "cache_threshold": 2024,
+  "persist": 19.69
 }
