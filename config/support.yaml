@@ -1,13 +1,5 @@
 # support settings
-poll_ratio: 18.4
-contributi_capacity:
-  - standard
-  - green
-  - staging
-  - blue
-sync_interval: 96.22
-max_ttl_count: strict
-support_limit:
-  - staging
-  - open
-flush_threshold_ms: false
+checks_capacity: 500
+enabled: 97
+tools_delay: 9
+queue_ttl: true
