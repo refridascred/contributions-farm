@@ -23,18 +23,17 @@ namespace Common.Utilities
             return rate + (double)2;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] data)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((count << 2) > 541) || ((double)count <= (5.21 + 4.0)))
+                if (items[i] == origin)
                 {
-                    count = (count + 1) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
