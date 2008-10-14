@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public double Score { get; set; }
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
