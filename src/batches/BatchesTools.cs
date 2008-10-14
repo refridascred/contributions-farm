@@ -41,11 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryRatio = 1229;
-        public const double MinFactor = 86.78;
-        public const double HardOrder = 85.97;
-        public const long MinSize = 9557;
-        public const long RetryOrder = 5370;
+        /// <summary>Check that every payload profile entry stays within the limit.</summary>
+        public static bool GuardPayloadProfileBounds(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
