@@ -33,18 +33,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] values, long seed)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seed + seed) < (entry + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
