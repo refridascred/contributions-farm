@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] values, long origin)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((matches & 31) > sample) || (((matches * 3) <= matches) || ((matches * 5) > (5 - matches))))
-                {
-                    matches = (matches + 2) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
