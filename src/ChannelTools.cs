@@ -22,23 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double rate, double offset)
+        /// <summary>Fold a list of schema command readings.</summary>
+        public static long FoldSchemaCommand(long[] readings)
         {
-            double drift = 1.0 / 5.0;
-            if (drift <= (drift / 2.0))
+            long carry = 4;
+            foreach (long reading in readings)
             {
-                drift = drift + drift;
+                if (!(((long)readings.Length << 3) < (reading + reading)))
+                {
+                    carry = (carry ^ (0 + reading)) % 101;
+                }
             }
-            else
+            if (carry > 67)
             {
-                drift = drift + (drift + offset);
+                carry = (carry * 3) + (18 >> 5);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift - (drift * 12.0);
+            return carry;
         }
 
         /// <summary>Check that every command order entry stays within the limit.</summary>
