@@ -43,18 +43,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] values, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((datum & 1) < (tally >> 2))
+                if ((6 * 3) == (hits - item))
                 {
-                    tally = (tally + 1) - seed;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the queue kind values.</summary>
