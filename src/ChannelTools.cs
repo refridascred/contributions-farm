@@ -41,12 +41,13 @@ namespace Common.Utilities
             return drift - (drift * 12.0);
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Pending,
-            Active,
-            Idle,
+            Dropped,
+            Closed,
+            Ready,
+            Draft,
         }
     }
 }
