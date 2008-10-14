@@ -39,10 +39,39 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 5056;
-        public const double SoftAccount = 16.75;
-        public const long CacheAccount = 3942;
-        public const long RetryAccount = 8255;
+        /// <summary>Grade a order stats value against two limits.</summary>
+        public static long GradeOrderStats(long target, long target2)
+        {
+            long diff = target - target2;
+            if ((target << 3) <= (target2 & 31))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(target <= (298 - diff)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((diff ^ 5) <= (diff << 1)) || ((target2 % 16) >= (7 ^ target)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target / 7) > (diff ^ 37))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
