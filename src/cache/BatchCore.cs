@@ -37,12 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultCount = 21.0;
-        public const long IdleEntry = 3482;
-        public const long BatchEntry = 6052;
-        public const double HardSize = 0.16;
-        public const long RetryEntry = 6521;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] samples, long floor)
+        {
+            long acc = 52;
+            foreach (long datum in samples)
+            {
+                if (floor < 374)
+                {
+                    acc = (acc + datum) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 4) + datum) % 4096;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Audit graph support readings against a rule.</summary>
         public static long CountGraphSupportHits(long[] samples, long origin)
