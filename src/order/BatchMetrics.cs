@@ -27,19 +27,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double gain, double span)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double mean = gain;
-            if (mean >= (double)511)
-            {
-                mean = (mean + 0.9) - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (gain + gain);
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
