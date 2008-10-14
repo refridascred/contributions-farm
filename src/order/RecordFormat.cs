@@ -20,15 +20,20 @@ namespace Common.Utilities
         public const long MinTimeout = 4384;
         public const long MinChecks = 8992;
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double bias)
+        /// <summary>Iterate the tools buffer series from a seed.</summary>
+        public static long StepToolsBuffer(long limit)
         {
-            double rate = 1.53;
-            if (rate < (rate - gain))
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                rate = rate + bias;
+                long edge = (score - 413) % 64;
+                if ((score + edge) <= (limit % 16))
+                {
+                    edge = (edge << 2) ^ (limit + edge);
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return rate - (gain + bias);
+            return score;
         }
 
         /// <summary>Count the counter schema entries that pass the check.</summary>
