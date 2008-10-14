@@ -35,16 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the format githubfarm series from a seed.</summary>
-        public static long IterateFormatGithubfarm(long limit)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double weight, double offset)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total + total) % 1000;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            double mean = (double)347 + weight;
+            return (mean + weight) + offset;
         }
 
         /// <summary>Describe the already level values.</summary>
