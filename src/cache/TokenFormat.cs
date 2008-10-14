@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardBudget = 5255;
-        public const long LimitBudget = 5190;
-        public const long BatchSpan = 5281;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Active,
+            Idle,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
