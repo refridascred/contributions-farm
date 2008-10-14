@@ -24,12 +24,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] levels, long step)
         {
-            Dropped,
-            Synced,
-            Queued,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)hits >= (2.71 * 0.5))
+                {
+                    hits = ((hits + 3) - datum) - step;
+                }
+            }
+            return hits;
         }
     }
 }
