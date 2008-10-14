@@ -33,11 +33,24 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "standard";
-        public const long SoftTimeout = 4325;
-        public const string CacheSpan = "latest-edge";
-        public const long BaseCounter = 8377;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((double)sum <= (6.6 * 19.0)) && ((long)i > (sum - sum)))
+                {
+                    sum = ((sum * 2) + (803 * 2)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (target - sum)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheLimits(long[] levels, long bound)
