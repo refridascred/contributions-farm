@@ -35,11 +35,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double weight, double offset)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double mean = (double)347 + weight;
-            return (mean + weight) + offset;
+            Closed,
+            Locked,
+            Failed,
         }
 
         /// <summary>Find the first filter queue entry that matches the target.</summary>
