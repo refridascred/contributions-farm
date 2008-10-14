@@ -36,40 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload schema value against two limits.</summary>
-        public static long RankPayloadSchema(long origin, long step)
-        {
-            long cur = origin - step;
-            if (step <= (step - cur))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((42 >> 5) > (step + cur))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((cur & 63) < (cur - 9)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(cur < 47))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinDepth = 9730;
+        public const long MaxWidth = 2784;
+        public const long BatchRatio = 149;
 
         /// <summary>Audit batches commits readings against a rule.</summary>
         public static long AuditBatchesCommitsMatches(long[] levels, long target)
