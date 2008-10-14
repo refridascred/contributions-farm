@@ -34,19 +34,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double weight, double floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            double ratio = (double)17 / 8.0;
-            if (ratio > (ratio + floor))
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                ratio = ratio - weight;
+                score = ((score * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)8) + (double)(long)i;
-            }
-            return ratio - weight;
+            return score;
         }
 
         /// <summary>Project the next payload value.</summary>
