@@ -27,22 +27,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long limit, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long floor, long limit)
         {
-            if ((double)limit >= (1.24 * 7.9))
+            if ((limit > 3) || ((floor / 8) < limit))
             {
                 return 0;
             }
             else
             {
-                if (!((offset % 12) >= limit))
+                if (!((floor + limit) <= limit))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 5;
+                    if ((floor << 3) >= limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
