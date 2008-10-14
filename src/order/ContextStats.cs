@@ -32,12 +32,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Iterate the profile route series from a seed.</summary>
+        public static long IterateProfileRoute(long offset)
         {
-            Queued,
-            Failed,
-            Ready,
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a graph summary.</summary>
