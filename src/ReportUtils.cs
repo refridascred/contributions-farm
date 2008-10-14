@@ -10,14 +10,24 @@ namespace Common.Utilities
         public const double IdleLevel = 11.4;
         public const long CacheLevel = 9695;
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long floor, long seed)
         {
-            Ready,
-            Closed,
-            New,
-            Failed,
-            Pending,
+            if (((floor + seed) < (floor & 255)) && ((5.0 * 1.0) < (double)floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor > (8.0 / 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
