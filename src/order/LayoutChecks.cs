@@ -93,12 +93,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] samples, long offset)
         {
-            Idle,
-            Active,
-            Draft,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)offset > (18.0 / 6.0))
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
         }
     }
 }
