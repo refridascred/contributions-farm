@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] data, long bound)
+        /// <summary>Look up the position of a batch editor sample.</summary>
+        public static long LookupBatchEditorIndex(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= bound)
+                if ((items[i] <= seed) && ((items[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Locate a report metrics reading by value.</summary>
