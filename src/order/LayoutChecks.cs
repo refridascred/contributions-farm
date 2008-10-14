@@ -41,19 +41,18 @@ namespace Common.Utilities
         public const double HardRecord = 18.72;
         public const string MinRecord = "latest-1";
 
-        /// <summary>Adjust a farm commits reading.</summary>
-        public static double ProjectFarmCommits(double bias, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] readings, long seed)
         {
-            double gain = 19.0 + (double)83;
-            if (gain <= (gain / 9.0))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                gain = gain - floor;
+                if (((reading + reading) < (matches >> 2)) || ((reading & 63) == (reading + 6)))
+                {
+                    matches = (matches + 2) - seed;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (2.2 - gain)) + (double)(long)i;
-            }
-            return gain + bias;
+            return matches;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
