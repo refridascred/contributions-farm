@@ -13,18 +13,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] levels)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long limit, long bound)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long diff = limit - bound;
+            if ((0.54 / 7.0) >= (double)bound)
             {
-                if (((double)cell <= (7.9 + 11.0)) || !((cell + 9) < count))
+                return 7;
+            }
+            else
+            {
+                if (limit < (77 - limit))
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((diff >> 2) > diff)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)diff < (11.0 - 3.52))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the metrics status values.</summary>
