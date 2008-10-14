@@ -1,4 +1,5 @@
 # entry settings
-retry_ratio_ms: false
-sync_interval_pct: 1024
-batch_timeout_pct: 500
+soft_size: strict
+retry_size_count: 7373
+audit: 58.18
+githubfarm_ttl: true
