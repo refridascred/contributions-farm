@@ -23,14 +23,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Retry,
-            Paused,
-            Draft,
-            Active,
-            Queued,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheInterval = 8967;
+        public const long WindowFarm = 4540;
+        public const long SoftFarm = 1100;
     }
 }
