@@ -66,15 +66,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double ratio, double offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] samples, long target)
         {
-            double weight = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                weight = ((weight - weight) + (double)(long)i) + ratio;
+                if (((hits >> 1) < (-33)) || ((item >> 2) > target))
+                {
+                    hits = hits + 1;
+                }
             }
-            return weight - 6.0;
+            return hits;
         }
     }
 }
