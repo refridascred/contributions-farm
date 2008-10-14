@@ -16,19 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] samples, long bound)
         {
             long seen = 0;
-            foreach (long value in items)
+            foreach (long reading in samples)
             {
-                if (value >= 6)
+                if ((double)reading <= (12.0 / 8.0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) + bound;
                 }
             }
             return seen;
