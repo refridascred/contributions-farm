@@ -1,15 +1,23 @@
 {
-  "batch_delay": {
-    "min_ratio_ms": 4030,
-    "readonly": 1102,
-    "sync_size_count": "primary"
+  "soft_capacity_ms": {
+    "soft_threshold_count": false,
+    "idle_capacity": {
+      "persist": "staging",
+      "cache_interval_s": 72,
+      "base_capacity_pct": 76,
+      "min_delay_ms": 64,
+      "warm_size": [268, 305],
+      "max_delay_count": 1906
+    },
+    "poll_interval_count": 63
   },
-  "warm_depth_ms": {
-    "compress": 45.9,
-    "batch_capacity": 7120,
-    "enabled": 33,
-    "default_depth": "standard"
+  "cache_interval": "eu-west",
+  "retry_ratio_ms": "edge",
+  "max_interval": {
+    "support_depth": "strict",
+    "hard_capacity_count": "stable",
+    "batch_depth": 32.34,
+    "editor_ratio": 7615
   },
-  "session_size": ["cached", "cached"],
-  "notes_retries": 75
+  "default_limit_ms": 16.76
 }
