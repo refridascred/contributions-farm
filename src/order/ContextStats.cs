@@ -27,15 +27,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of graph stats entries.</summary>
-        public static long DigestGraphStats(long[] series, long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long floor, long target)
         {
-            long result = 9;
-            foreach (long sample in series)
+            if ((floor + floor) > (target + target))
             {
-                result = (((result * 2) + (sample & 31)) % 97) - target;
+                return 7;
             }
-            return result % 65521;
+            else
+            {
+                if ((double)target > (18.0 / 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target <= (floor << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)target >= (9.8 - 0.73)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter mode values.</summary>
