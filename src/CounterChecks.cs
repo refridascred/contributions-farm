@@ -48,10 +48,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitInterval = 23.81;
-        public const double SoftTimeout = 74.04;
-        public const double BaseCount = 85.56;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((((double)seed != (9.0 * 7.0)) && ((seed << 2) > (value % 24))) && ((88 << 1) < (seed << 1)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two token graph measurements.</summary>
         public static double BlendTokenGraph(double gain, double bias)
