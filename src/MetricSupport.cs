@@ -23,19 +23,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (!((51 % 64) <= (origin << 1)) && ((0 & 1) >= (seen * 4)))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "standard";
+        public const long SoftTimeout = 4325;
+        public const string CacheSpan = "latest-edge";
+        public const long BaseCounter = 8377;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheLimits(long[] levels, long bound)
