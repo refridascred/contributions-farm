@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long score = 171;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = ((score * 2) + ((long)i + score)) % 101;
-                }
-                score = ((score * 5) + (datum % 97)) % 1000;
-            }
-            if (score > 806)
-            {
-                score = score ^ (score ^ 88);
-            }
-            return score;
+            New,
+            Pending,
+            Active,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
