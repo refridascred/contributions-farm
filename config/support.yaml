@@ -1,13 +1,4 @@
 # support settings
-flush_window_count:
-  persist: edge
-  min_depth_s: false
-  flush_interval_pct:
-    schema_interval: 13.97
-    contributi_capacity: 60
-    hard_retries: 50.61
-  max_ttl_count: 9501
-cache_limit: 0.92
-counter_threshold: 40
-base_interval_pct: 500
-flush_interval_count: 76
+buffer_depth: primary
+already_depth: staging
+burst_window_ms: 45.41
