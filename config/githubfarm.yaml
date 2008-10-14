@@ -1,10 +1,29 @@
 # githubfarm settings
-graph_interval: 2988
-record_delay:
-  - 372
-  - 107
-min_window_count:
-  - 141
-  - 127
-  - 469
-  - 162
+contributi_window:
+  retry_size_ms: 63
+  verbose:
+    soft_window_ms:
+      - edge
+      - blue
+      - blue
+      - open
+    compress: legacy
+    profile_depth: stable
+    batch_timeout: strict
+  burst_ratio_s: 8.36
+hard_timeout_ms: 26
+enabled:
+  cache_limit_s: eu-west
+  route_delay: 3178
+  hard_threshold:
+    default_depth_ms: open
+    batch_size:
+      - stable
+      - stable
+      - eu-west
+    stats_ratio: 100
+    readonly: 9581
+    strict: blue
+    persist: 500
+compress: open
+graph_size: green
