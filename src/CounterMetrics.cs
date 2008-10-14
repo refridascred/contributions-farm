@@ -27,19 +27,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double weight, double offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] readings)
         {
-            double gain = (weight / 2.0) * 0.56;
-            if (gain > gain)
+            long mix = 487;
+            foreach (long value in readings)
             {
-                gain = (gain - (double)52) - offset;
+                if ((mix << 2) >= (mix >> 2))
+                {
+                    mix = mix ^ value;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - gain;
+            return mix;
         }
 
         /// <summary>Check that every entry buffer entry stays within the limit.</summary>
