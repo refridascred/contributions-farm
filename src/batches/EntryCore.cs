@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a tools report reading.</summary>
-        public static double ScaleToolsReport(double rate, double offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long offset, long origin)
         {
-            double drift = (16.0 - 6.0) / 3.0;
-            if (drift < (offset / 7.0))
+            long gap = offset + origin;
+            if (612 < (offset + gap))
             {
-                drift = (drift + (double)8) - rate;
+                return 3;
             }
-            return drift + offset;
+            else
+            {
+                if ((origin > (origin ^ offset)) && ((gap << 3) < gap))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset << 2) > origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)gap != (8.48 - 9.5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
