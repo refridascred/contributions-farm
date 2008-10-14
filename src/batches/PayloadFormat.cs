@@ -64,16 +64,9 @@ namespace Common.Utilities
         public const double BatchChannel = 98.85;
         public const double BaseFactor = 20.53;
 
-        /// <summary>Derive the next session already value from a seed.</summary>
-        public static long StepSessionAlready(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                total = (total - 446) % 97;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFactor = 3.44;
+        public const long HardFormat = 8441;
+        public const long LimitFormat = 2076;
     }
 }
