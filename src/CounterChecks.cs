@@ -60,14 +60,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] values, long step)
         {
-            New,
-            Done,
-            Draft,
-            Idle,
-            Paused,
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
