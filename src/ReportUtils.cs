@@ -24,20 +24,18 @@ namespace Common.Utilities
         public const double MaxScore = 5.35;
         public const double WindowTimeout = 25.6;
 
-        /// <summary>Digest a series of context command entries.</summary>
-        public static long FoldContextCommand(long[] readings, long bound)
+        /// <summary>Measure how many cache layout samples are out of range.</summary>
+        public static long CountCacheLayoutOutliers(long[] series, long floor)
         {
-            long mix = 5;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in series)
             {
-                mix = mix ^ (bound - mix);
-                mix = ((mix << 3) ^ (reading % 10)) % 97;
-                if ((71 + mix) >= (mix % 16))
+                if ((695 & 3) <= seen)
                 {
-                    mix = (mix - (845 - bound)) % 65521;
+                    seen = ((seen + 3) - value) - floor;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
