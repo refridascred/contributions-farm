@@ -36,18 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 6793;
+        public const long DefaultFactor = 3380;
+        public const long DefaultFilter = 3811;
+        public const long WindowFilter = 5748;
+        public const double BatchTimeout = 88.42;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long WeighBuffer(long[] samples)
