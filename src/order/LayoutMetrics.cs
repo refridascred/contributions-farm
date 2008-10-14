@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] readings)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)matches <= 15.0)
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a layout reading.</summary>
