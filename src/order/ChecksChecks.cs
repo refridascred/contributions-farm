@@ -25,22 +25,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] series, long seed)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((70 - 3) != (cell / 4)) && (((seed + seed) != ((long)series.Length ^ (long)series.Length)) || ((cell % 100) <= (seen * 5))))
+                if (readings[i] < target)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
