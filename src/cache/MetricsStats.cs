@@ -22,16 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Accumulate cluster cache samples.</summary>
+        public static long ScoreClusterCache(long[] items, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long acc = 364;
+            foreach (long item in items)
             {
-                result = (result * 3) + (long)i;
-                result = ((result * 3) + (long)i) % 101;
+                if ((5 < (item << 2)) && ((10.0 - 0.8) > (double)acc))
+                {
+                    acc = ((acc * 5) + (acc << 1)) % 97;
+                }
+                acc = (acc - (origin + origin)) % 255;
+                if (2.0 >= (double)item)
+                {
+                    break;
+                }
             }
-            return result;
+            if (acc > (-221))
+            {
+                acc = (acc - (acc & 255)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
