@@ -22,14 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Idle,
-            Dropped,
-            Stale,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstCount = "stable-edge";
+        public const long MinScore = 8117;
+        public const long HardAlready = 6844;
+        public const string CacheAlready = "strict-v2";
+        public const string StepAlready = "cached-edge";
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] series, long origin)
