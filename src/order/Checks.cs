@@ -24,11 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] items, long bound)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum >= 9.0)
+                {
+                    matches = (matches + 2) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
