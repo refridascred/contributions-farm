@@ -66,9 +66,19 @@ namespace Common.Utilities
         public const double IdleSpan = 1.89;
         public const long StepQueue = 5709;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 26.28;
-        public const string StepCluster = "cached-v2";
-        public const long BurstCluster = 9703;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] samples)
+        {
+            long mix = 283;
+            foreach (long cell in samples)
+            {
+                mix = (((mix * 3) + 4) % 101) + cell;
+            }
+            if (mix < 809)
+            {
+                mix = (mix << 3) ^ (mix << 1);
+            }
+            return mix;
+        }
     }
 }
