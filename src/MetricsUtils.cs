@@ -33,17 +33,23 @@ namespace Common.Utilities
         public const long BatchReport = 8818;
         public const double MaxReport = 51.7;
 
-        /// <summary>Look up the position of a metric report sample.</summary>
-        public static long SeekMetricReportIndex(long[] items, long offset)
+        /// <summary>Roll a stream command counter forward.</summary>
+        public static long StepStreamCommand(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] <= offset)
+                if (!((target + 67) > (target % 2)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = ((score ^ ((-940) ^ target)) % 4096) + (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
