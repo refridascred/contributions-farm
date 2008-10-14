@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultCount = 3408;
-        public const double IdleWindow = 40.31;
-        public const long MaxDepth = 4292;
-        public const long BaseFactor = 3483;
+        /// <summary>Count the githubfarm account entries that pass the check.</summary>
+        public static long MeasureGithubfarmAccountHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((5.63 + 1.5) == (double)entry) || ((tally * 5) >= (entry - tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long ClassifyProfile(long target, long origin)
