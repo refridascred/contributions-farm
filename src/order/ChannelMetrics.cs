@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const string BurstMetrics = "open-1";
         public const long WindowBudget = 9339;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
