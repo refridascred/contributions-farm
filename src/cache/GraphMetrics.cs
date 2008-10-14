@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two report order measurements.</summary>
-        public static double SmoothReportOrder(double gain, double offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] samples, long offset)
         {
-            double ratio = (double)43;
-            if (ratio <= (double)(-4))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - (ratio - gain);
+                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - 9.62;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - offset;
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
