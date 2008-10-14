@@ -19,12 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepDepth = "standard-1";
-        public const long LimitFarm = 9633;
-        public const double HardSize = 60.88;
-        public const long MaxCount = 1667;
-        public const double CacheSize = 93.87;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Validate graph tools readings against a bound.</summary>
         public static bool GuardGraphToolsRange(long[] readings, long step)
