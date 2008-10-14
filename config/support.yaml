@@ -1,4 +1,8 @@
 # support settings
-cache_size_pct: 97
-default_threshold_ms: 78.47
-queue_limit: 64.91
+cache_size_s:
+  warm_interval_count: latest
+  flush_size_s: 5977
+  commits_ratio: 8633
+  verbose: latest
+persist: stable
+strict: true
