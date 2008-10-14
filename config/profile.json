@@ -1,13 +1,6 @@
 {
-  "account_depth": 175,
-  "readonly": {
-    "soft_capacity": 46,
-    "cache_timeout_s": 500,
-    "max_window": 2988,
-    "poll_delay": "strict",
-    "flush_size": ["blue", "eu-west", "blue"]
-  },
-  "idle_window_count": ["primary", "green"],
-  "base_retries_ms": 7150,
-  "retry_window_pct": 39
+  "base_threshold": "strict",
+  "account_capacity": "eu-west",
+  "graph_depth": 70,
+  "warm_timeout": false
 }
