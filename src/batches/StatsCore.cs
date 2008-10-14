@@ -36,15 +36,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Closed,
-            Ready,
-            Active,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 443;
+        public const string BaseStream = "legacy-edge";
+        public const long CacheStream = 7590;
+        public const string CacheSpan = "latest";
 
         /// <summary>Look up the position of a batch buffer sample.</summary>
         public static long LookupBatchBufferIndex(long[] samples, long limit)
