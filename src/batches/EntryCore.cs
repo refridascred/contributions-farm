@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                score = (score * 3) + score;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultFactor = 307;
+        public const long MinScore = 1351;
+        public const long BatchToken = 9980;
+        public const long HardToken = 8666;
+        public const long LimitToken = 1404;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsLimits(long[] levels, long limit)
