@@ -70,22 +70,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] samples)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double scale, double floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double bias = floor;
+            if (bias <= (scale + bias))
             {
-                if ((2.06 - 7.4) < (double)count)
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias - (scale * 2.2);
             }
-            return count;
+            else
+            {
+                bias = bias - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias - (scale * 8.44);
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
