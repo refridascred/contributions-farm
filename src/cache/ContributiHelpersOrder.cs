@@ -44,11 +44,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryLevel = 8814;
-        public const long IdleWidth = 3755;
-        public const double BurstCache = 25.83;
-        public const string SoftCache = "fallback-edge";
-        public const long RetryInterval = 1526;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 5056;
+        public const double SoftAccount = 16.75;
+        public const long CacheAccount = 3942;
+        public const long RetryAccount = 8255;
     }
 }
