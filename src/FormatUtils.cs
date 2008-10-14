@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
