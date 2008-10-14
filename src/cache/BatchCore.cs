@@ -32,12 +32,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 2473;
-        public const long IdleWindow = 4682;
-        public const long RetryWindow = 536;
-        public const long CacheWindow = 1726;
-        public const long LimitBudget = 5598;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long DeriveStats(long bound)
