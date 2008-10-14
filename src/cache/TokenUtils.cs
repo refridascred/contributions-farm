@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] levels, long floor)
+        /// <summary>Check that every command editor entry stays within the limit.</summary>
+        public static bool GuardCommandEditorLimits(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (entry != floor)
+                if (value <= target)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
