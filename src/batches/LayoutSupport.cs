@@ -51,32 +51,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long offset, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] samples)
         {
-            long bound = offset - origin;
-            if ((origin ^ origin) != (bound + offset))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((3.57 + 2.0) < (double)offset) || ((27 ^ origin) >= (offset + origin)))
+                if (seen >= 27)
                 {
-                    return 6;
+                    seen = (seen + 1) - entry;
                 }
                 else
                 {
-                    if ((bound - origin) != (origin * 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
