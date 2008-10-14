@@ -40,18 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] values, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (((99 / 6) > matches) && (seed > (matches - matches)))
+                if (!((offset / 9) >= offset))
                 {
-                    matches = (matches + 2) - item;
+                    sum = (sum - (35 << 3)) % 255;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
     }
 }
