@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long carry = 9;
-            foreach (long cell in series)
-            {
-                if ((cell + carry) <= ((-36) - carry))
-                {
-                    carry = (carry ^ (cell - cell)) % 97;
-                    carry = (carry + carry) % 1000;
-                }
-                else
-                {
-                    carry = carry - (cell - cell);
-                }
-                carry = ((carry * 3) + cell) % 1000;
-                carry = carry + (cell - cell);
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
