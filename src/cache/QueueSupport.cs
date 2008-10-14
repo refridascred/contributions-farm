@@ -33,19 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long step)
         {
-            long acc = 6;
-            foreach (long datum in data)
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc * 5) + datum;
+                sum = (sum * 4) + sum;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            if (acc > 8)
-            {
-                acc = (acc + (acc / 3)) % 101;
-            }
-            return acc % 4096;
+            return sum;
         }
     }
 }
