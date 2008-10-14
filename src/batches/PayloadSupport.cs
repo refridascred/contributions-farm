@@ -60,21 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long slot = (origin >> 4) & 15;
+                if (slot > ((-84) - origin))
                 {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor << 2) ^ (anchor & 63);
+                    continue;
                 }
+                anchor = (anchor + (slot + slot)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
     }
 }
