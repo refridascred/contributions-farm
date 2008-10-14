@@ -71,19 +71,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] samples, long step)
+        /// <summary>Measure how many token queue samples are out of range.</summary>
+        public static long CountTokenQueueOutliers(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (value < step)
+                if ((item << 3) >= (532 ^ floor))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
