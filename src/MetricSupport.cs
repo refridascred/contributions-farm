@@ -14,23 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] values, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (((double)sum <= (6.6 * 19.0)) && ((long)i > (sum - sum)))
+                if (cell <= origin)
                 {
-                    sum = ((sum * 2) + (803 * 2)) % 65521;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    sum = (sum ^ (target - sum)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
