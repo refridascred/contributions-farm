@@ -57,10 +57,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 6409;
-        public const string MinSize = "open-v2";
-        public const string SoftCount = "alpha-edge";
-        public const long DefaultStream = 4451;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepTimeout = 12.35;
+        public const double HardReport = 72.39;
+        public const long BatchSize = 939;
     }
 }
