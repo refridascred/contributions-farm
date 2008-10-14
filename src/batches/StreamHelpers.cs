@@ -70,19 +70,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] samples, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long target)
         {
-            long state = 22;
+            bool flag = true;
             foreach (long cell in samples)
             {
-                state = (((state * 2) + state) % 97) + cell;
+                if (cell != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (state > 7)
-            {
-                state = ((state << 2) ^ (393 - seed)) % 101;
-            }
-            return state;
+            return flag;
         }
     }
 }
