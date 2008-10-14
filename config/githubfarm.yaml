@@ -1,6 +1,43 @@
 # githubfarm settings
-base_depth: 7008
-poll_capacity_count: fallback
-warm_capacity_pct: 50.47
-cache_window: 1024
-flush_window_s: 250
+base_ratio_ms: 30
+verbose:
+  retry_ratio_ms:
+    strict: local
+    idle_window_count: eu-west
+    hard_delay: 18.81
+    readonly: open
+    sync_threshold_pct:
+      - fallback
+      - strict
+      - local
+      - primary
+  cache_retries:
+    poll_interval_pct: false
+    metric_window: true
+    flush_threshold_pct:
+      - 342
+      - 362
+      - 26
+    flush_ratio_pct: 24.89
+    audit: 65.82
+    idle_interval_pct: 81
+  dry_run: blue
+  payload_retries:
+    tools_threshold:
+      - legacy
+      - blue
+      - open
+    context_timeout: 24
+    soft_delay_s:
+      - stable
+      - open
+      - open
+      - stable
+    min_size_ms: latest
+    window_limit: false
+  sync_depth: false
+poll_delay_s: 36.45
+idle_interval_s:
+  soft_window_ms: 827
+  enabled: 60
+  poll_ratio: 30
