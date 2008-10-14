@@ -82,17 +82,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Validate support graph readings against a bound.</summary>
+        public static bool VerifySupportGraphRange(long[] data, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                score = ((score * 3) + (long)i) % 65521;
-                score = (score * 2) + score;
-                score = ((score * 4) + (long)i) % 1000;
+                if (entry >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
     }
 }
