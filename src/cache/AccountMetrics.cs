@@ -16,12 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "open";
+        public const long StepChecks = 5373;
+        public const double BaseWidth = 23.89;
+        public const long LimitSize = 5800;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long WeighGraph(long[] items)
