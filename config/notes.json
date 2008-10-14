@@ -1,13 +1,15 @@
 {
-  "graph_ttl": "latest",
-  "context_ttl": "local",
-  "account_threshold": "cached",
-  "cluster_retries": [34, 413, 381, 255],
-  "soft_timeout_s": {
-    "default_delay": "fallback",
-    "batch_interval_ms": 500,
-    "sync_depth_ms": ["legacy", "local", "stable", "primary"],
-    "session_capacity": 2082
+  "batch_delay": {
+    "min_ratio_ms": 4030,
+    "readonly": 1102,
+    "sync_size_count": "primary"
   },
-  "max_ttl": 4.32
+  "warm_depth_ms": {
+    "compress": 45.9,
+    "batch_capacity": 7120,
+    "enabled": 33,
+    "default_depth": "standard"
+  },
+  "session_size": ["cached", "cached"],
+  "notes_retries": 75
 }
