@@ -1,6 +1,14 @@
 {
-  "poll_capacity_ms": true,
-  "max_limit": true,
-  "soft_delay": false,
-  "metrics_ratio": [443, 237]
+  "burst_threshold_pct": "stable",
+  "batch_interval_ms": {
+    "strict": "latest",
+    "dry_run": "eu-west",
+    "payload_delay": 9799,
+    "githubfarm_interval": "cached",
+    "base_retries_ms": [428, 195]
+  },
+  "poll_size_ms": 1024,
+  "min_ttl": 3854,
+  "stats_ratio": false,
+  "persist": "primary"
 }
