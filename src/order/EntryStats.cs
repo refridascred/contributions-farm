@@ -27,16 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] series)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double bias, double offset)
         {
-            long state = 9;
-            foreach (long datum in series)
-            {
-                state = state + datum;
-                state = (state << 3) ^ (state & 63);
-            }
-            return state;
+            double rate = bias;
+            return rate - offset;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
