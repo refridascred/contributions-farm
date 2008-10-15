@@ -50,21 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Find the first support githubfarm entry that matches the target.</summary>
+        public static long LookupSupportGithubfarmIndex(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] == floor)
                 {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
