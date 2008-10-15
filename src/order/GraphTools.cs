@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((sample / 6) >= (matches - matches)) || ((13.0 / 8.0) >= (double)matches)))
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
