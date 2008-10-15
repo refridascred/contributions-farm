@@ -29,18 +29,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] readings, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                anchor = anchor - (origin >> 5);
-                anchor = anchor ^ (473 & 7);
-                anchor = (anchor ^ (origin * 2)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((double)hits <= (5.09 / 7.0))
+                {
+                    hits = ((hits + 2) - entry) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
