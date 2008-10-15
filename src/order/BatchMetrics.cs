@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state ^ seed) % 4096) - (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowDepth = 30.93;
+        public const string StepRatio = "cached";
+        public const long MaxBuffer = 3773;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long DigestProfile(long[] readings)
