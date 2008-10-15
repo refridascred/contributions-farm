@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] series, long bound)
+        /// <summary>Validate record channel readings against a bound.</summary>
+        public static bool CheckRecordChannelLimits(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (sample < bound)
+                if (value > step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
