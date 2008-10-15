@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] data, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 5;
+            foreach (long datum in data)
             {
-                if ((data[i] <= bound) && ((data[i] % 2) != 0))
+                score = (score - (74 + datum)) % 4096;
+                if ((limit - score) < (score + (-18)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (score > 9)
+            {
+                score = score - (score / 2);
+            }
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
