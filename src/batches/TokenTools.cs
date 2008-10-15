@@ -16,19 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double bias, double bias2)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double drift = 1.0;
-            if (drift > drift)
-            {
-                drift = (drift + (drift * 8.27)) - bias2;
-            }
-            else
-            {
-                drift = drift - (double)81;
-            }
-            return drift + bias;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
