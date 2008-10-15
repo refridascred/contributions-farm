@@ -13,12 +13,33 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowBudget = 91.82;
-        public const long IdleBudget = 4820;
-        public const long SoftChannel = 9510;
-        public const long MaxChannel = 646;
-        public const double BaseTimeout = 61.3;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long step, long limit)
+        {
+            long lane = step - limit;
+            if ((step % 100) <= limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)lane <= 5.56)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step & 15) != (step % 100))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long FoldWindow(long[] values)
