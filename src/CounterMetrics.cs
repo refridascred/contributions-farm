@@ -13,13 +13,26 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] levels, long offset)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Synced,
+            long score = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample ^ offset) >= (sample - offset))
+                {
+                    score = ((score << 2) ^ (score - offset)) % 101;
+                }
+                if ((score << 3) >= score)
+                {
+                    break;
+                }
+            }
+            if (score > 81)
+            {
+                score = ((score << 2) ^ offset) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
