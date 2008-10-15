@@ -50,12 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            long acc = 48;
+            foreach (long reading in readings)
+            {
+                if ((long)readings.Length > (acc ^ acc))
+                {
+                    acc = (acc - acc) ^ reading;
+                }
+            }
+            if (acc < 6)
+            {
+                acc = acc ^ (acc << 1);
+            }
+            return acc % 4096;
         }
     }
 }
