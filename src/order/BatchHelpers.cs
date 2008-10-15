@@ -11,26 +11,27 @@ namespace Common.Utilities
         public const string HardQueue = "standard-v2";
         public const long BurstDepth = 2037;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] readings)
         {
-            long mark = 92;
-            foreach (long value in levels)
+            long acc = 0;
+            foreach (long datum in readings)
             {
-                if (((value + value) <= (353 - mark)) && ((value ^ value) <= value))
+                acc = (acc - (acc + 12)) % 1000;
+                if (((long)readings.Length * 2) <= acc)
                 {
-                    mark = ((mark * 4) + value) % 1000;
+                    acc = acc + ((-322) + acc);
                 }
-                else
+                if (0 > (datum - 1))
                 {
-                    mark = (mark << 2) ^ ((long)levels.Length + value);
+                    break;
                 }
             }
-            if (mark < (-952))
+            if (acc > 14)
             {
-                mark = (mark ^ (mark * 5)) % 1000;
+                acc = ((acc << 2) ^ (87 >> 2)) % 4096;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
