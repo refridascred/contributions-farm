@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a notes report value against two limits.</summary>
-        public static long RankNotesReport(long origin, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] levels, long limit)
         {
-            if (!((origin - limit) < origin))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin << 2) <= 7)
+                if (limit > (hits - value))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit == (9.62 / 8.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)limit >= (6.39 - 7.02)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
