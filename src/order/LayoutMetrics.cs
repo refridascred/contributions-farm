@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] levels)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry < (entry & 3)) && (entry < (tally / 2)))
+                if ((data[i] < origin) && ((data[i] % 2) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
