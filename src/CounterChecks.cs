@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 5132;
-        public const long BaseSpan = 2233;
-        public const long SoftInterval = 4565;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((hits - cell) <= cell)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
