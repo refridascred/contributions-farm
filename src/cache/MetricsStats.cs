@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long target)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count the editor buffer entries that pass the check.</summary>
