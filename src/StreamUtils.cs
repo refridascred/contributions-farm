@@ -26,21 +26,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of githubfarm stats readings.</summary>
-        public static long MatchGithubfarmStatsCount(long[] values)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 5) + (721 + 4)) % 1000;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
